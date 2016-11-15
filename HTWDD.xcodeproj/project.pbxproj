@@ -226,6 +226,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59FA9A41DD09C8400259D7F /* Build configuration list for PBXNativeTarget "HTWDD" */;
 			buildPhases = (
+				B52A9B6A1DDB203D00313FC3 /* SwiftLint */,
 				B59FA9831DD09C8300259D7F /* Sources */,
 				B59FA9841DD09C8300259D7F /* Frameworks */,
 				B52A9B5F1DDB1B8000313FC3 /* Carthage */,
@@ -355,6 +356,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which carthage >/dev/null; then\n#carthage update --platform iOS\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\nfi\n";
+		};
+		B52A9B6A1DDB203D00313FC3 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\nelse\n    echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
