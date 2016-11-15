@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */;
 			buildPhases = (
-				B52A9B691DDB1E8500313FC3 /* Run Carthage Update */,
+				B52A9B691DDB1E8500313FC3 /* Run Carthage Bootstrap */,
 			);
 			dependencies = (
 			);
@@ -343,19 +343,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		B52A9B691DDB1E8500313FC3 /* Run Carthage Update */ = {
+		B52A9B691DDB1E8500313FC3 /* Run Carthage Bootstrap */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Carthage Update";
+			name = "Run Carthage Bootstrap";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which carthage >/dev/null; then\n#carthage update --platform iOS\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\nfi\n";
+			shellScript = "if which carthage >/dev/null; then\n    carthage bootstrap --platform iOS\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\nfi\n";
 		};
 		B52A9B6A1DDB203D00313FC3 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

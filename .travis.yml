@@ -1,0 +1,6 @@
+osx_image: xcode8
+language: objective-c
+before_script:
+  - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
+xcode_project: HTWDD.xcodeproj
+xcode_scheme: HTWDD
