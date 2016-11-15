@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
+		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
+		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
+				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +68,6 @@
 				B59FA9961DD09C8400259D7F /* Info.plist */,
 				B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */,
 			);
-			name = "Supporting Files";
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
@@ -70,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Schedule;
 			path = Schedule;
 			sourceTree = "<group>";
 		};
@@ -78,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Grades;
 			path = Grades;
 			sourceTree = "<group>";
 		};
@@ -86,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Exams;
 			path = Exams;
 			sourceTree = "<group>";
 		};
@@ -94,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Canteen;
 			path = Canteen;
 			sourceTree = "<group>";
 		};
@@ -105,7 +106,6 @@
 				B52A9B551DDB170000313FC3 /* Extensions */,
 				B52A9B571DDB172300313FC3 /* Settings */,
 			);
-			name = Core;
 			path = Core;
 			sourceTree = "<group>";
 		};
@@ -113,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "Settings UI";
 			path = "Settings UI";
 			sourceTree = "<group>";
 		};
@@ -126,7 +125,6 @@
 				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B531DDB16D900313FC3 /* Settings UI */,
 			);
-			name = "Main Categories";
 			path = "Main Categories";
 			sourceTree = "<group>";
 		};
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -143,7 +140,6 @@
 			children = (
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
 			);
-			name = "Base Classes";
 			path = "Base Classes";
 			sourceTree = "<group>";
 		};
@@ -151,8 +147,16 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Settings;
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		B52A9B5A1DDB1B7C00313FC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */,
+				B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B59FA97E1DD09C8300259D7F = {
@@ -161,6 +165,7 @@
 				B59FA9891DD09C8400259D7F /* HTWDD */,
 				B59FA99E1DD09C8400259D7F /* HTWDDTests */,
 				B59FA9881DD09C8400259D7F /* Products */,
+				B52A9B5A1DDB1B7C00313FC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +206,7 @@
 			buildPhases = (
 				B59FA9831DD09C8300259D7F /* Sources */,
 				B59FA9841DD09C8300259D7F /* Frameworks */,
+				B52A9B5F1DDB1B8000313FC3 /* Carthage */,
 				B59FA9851DD09C8300259D7F /* Resources */,
 			);
 			buildRules = (
@@ -290,6 +296,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B59FA9831DD09C8300259D7F /* Sources */ = {
@@ -430,6 +455,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2URYCAZR48;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "HTWDD/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -444,6 +473,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2URYCAZR48;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "HTWDD/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
