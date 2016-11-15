@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B52A9B651DDB1E7C00313FC3 /* HTWDD Generate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */;
+			buildPhases = (
+				B52A9B691DDB1E8500313FC3 /* Run Carthage Update */,
+			);
+			dependencies = (
+			);
+			name = "HTWDD Generate";
+			productName = "HTWDD Generate";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
@@ -104,6 +118,7 @@
 			children = (
 				B52A9B561DDB170700313FC3 /* Base Classes */,
 				B52A9B551DDB170000313FC3 /* Extensions */,
+				B52A9B601DDB1D3600313FC3 /* Routing */,
 				B52A9B571DDB172300313FC3 /* Settings */,
 			);
 			path = Core;
@@ -157,6 +172,13 @@
 				B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B52A9B601DDB1D3600313FC3 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Routing;
 			sourceTree = "<group>";
 		};
 		B59FA97E1DD09C8300259D7F = {
@@ -246,6 +268,11 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "HTW Dresden";
 				TargetAttributes = {
+					B52A9B651DDB1E7C00313FC3 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 2URYCAZR48;
+						ProvisioningStyle = Automatic;
+					};
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 2URYCAZR48;
@@ -274,6 +301,7 @@
 			targets = (
 				B59FA9861DD09C8300259D7F /* HTWDD */,
 				B59FA99A1DD09C8400259D7F /* HTWDDTests */,
+				B52A9B651DDB1E7C00313FC3 /* HTWDD Generate */,
 			);
 		};
 /* End PBXProject section */
@@ -313,6 +341,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		B52A9B691DDB1E8500313FC3 /* Run Carthage Update */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Carthage Update";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which carthage >/dev/null; then\n#carthage update --platform iOS\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -357,6 +399,22 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B52A9B671DDB1E7C00313FC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 2URYCAZR48;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B52A9B681DDB1E7C00313FC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 2URYCAZR48;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B59FA9A21DD09C8400259D7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -519,6 +577,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52A9B671DDB1E7C00313FC3 /* Debug */,
+				B52A9B681DDB1E7C00313FC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B59FA9821DD09C8300259D7F /* Build configuration list for PBXProject "HTWDD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
