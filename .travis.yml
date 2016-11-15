@@ -4,5 +4,5 @@ before_script:
   - brew update
   - brew upgrade xctool
   - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
-xcode_project: HTWDD.xcodeproj
-xcode_scheme: HTWDD
+script:
+  - xcodebuild -project HTWDD.xcodeproj -scheme HTWDD -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.1' test | xcpretty --color
