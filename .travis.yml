@@ -3,4 +3,4 @@ osx_image: xcode8
 before_script:
   - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
 script:
-  - scan tests --scheme HTWDD --skip-build
+  - scan tests --scheme HTWDD --skip_build
