@@ -1,8 +1,6 @@
-osx_image: xcode8
 language: objective-c
+osx_image: xcode8
 before_script:
-  - brew update
-  - brew upgrade xctool
   - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
 script:
-  - xcodebuild -project HTWDD.xcodeproj -scheme HTWDD -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.1' test | xcpretty --color
+  - scan tests --scheme HTWDD
