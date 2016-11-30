@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeMainVC.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		B52A9B4E1DDB165B00313FC3 /* Grades */ = {
 			isa = PBXGroup;
 			children = (
+				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -179,15 +182,16 @@
 			children = (
 			);
 			name = Routing;
+			path = Routing;
 			sourceTree = "<group>";
 		};
 		B59FA97E1DD09C8300259D7F = {
 			isa = PBXGroup;
 			children = (
+				B52A9B5A1DDB1B7C00313FC3 /* Frameworks */,
 				B59FA9891DD09C8400259D7F /* HTWDD */,
 				B59FA99E1DD09C8400259D7F /* HTWDDTests */,
 				B59FA9881DD09C8400259D7F /* Products */,
-				B52A9B5A1DDB1B7C00313FC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,8 +217,8 @@
 		B59FA99E1DD09C8400259D7F /* HTWDDTests */ = {
 			isa = PBXGroup;
 			children = (
-				B59FA9A11DD09C8400259D7F /* Info.plist */,
 				B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */,
+				B59FA9A11DD09C8400259D7F /* Info.plist */,
 			);
 			path = HTWDDTests;
 			sourceTree = "<group>";
@@ -379,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 			);
