@@ -27,7 +27,7 @@
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */; };
-		B538EF051E1D56D70031077C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF041E1D56D70031077C /* Settings.swift */; };
+		B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF041E1D56D70031077C /* SettingsManager.swift */; };
 		B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF061E1D58690031077C /* NSObject+Rx.swift */; };
 		B538EF0A1E1D5BD10031077C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF091E1D5BD10031077C /* Log.swift */; };
 		B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0B1E1D603D0031077C /* GradeModel.swift */; };
@@ -53,7 +53,7 @@
 		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTWDDTest.swift; sourceTree = "<group>"; };
-		B538EF041E1D56D70031077C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B538EF041E1D56D70031077C /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B538EF061E1D58690031077C /* NSObject+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+Rx.swift"; path = "HTWDD/Core/Settings/NSObject+Rx.swift"; sourceTree = SOURCE_ROOT; };
 		B538EF091E1D5BD10031077C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		B538EF0B1E1D603D0031077C /* GradeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeModel.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		B52A9B571DDB172300313FC3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B538EF041E1D56D70031077C /* Settings.swift */,
+				B538EF041E1D56D70031077C /* SettingsManager.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
-				B538EF051E1D56D70031077C /* Settings.swift in Sources */,
+				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 			);
