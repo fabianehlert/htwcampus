@@ -27,8 +27,8 @@ final class SettingsManager {
         }
     }
 
-    private(set) var sNumber = Setting<String>()
-    private(set) var unixPassword = Setting<String>()
+    var sNumber = Setting<String>()
+    var unixPassword = Setting<String>()
 
     private let disposeBag = DisposeBag()
 
@@ -98,7 +98,7 @@ final class SettingsManager {
 
 struct Setting<T> {
 
-    private(set) var value: T?
+    var value: T?
 
     fileprivate mutating func setValue(_ newValue: Any) throws {
         if let n = newValue as? T {

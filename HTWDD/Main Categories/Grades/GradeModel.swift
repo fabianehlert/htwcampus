@@ -16,11 +16,11 @@ protocol GradeSettings: class {
 extension SettingsManager: GradeSettings {}
 
 final class GradeModel {
-    
+
     weak var settings: GradeSettings?
-    
+
     init(settings: GradeSettings) {
         self.settings = settings
     }
-    
+
 }
