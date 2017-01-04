@@ -10,4 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    func inNavigationController() -> NavigationController {
+        if let n = self.navigationController as? NavigationController {
+            return n
+        }
+        return NavigationController(rootViewController: self)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
 }
