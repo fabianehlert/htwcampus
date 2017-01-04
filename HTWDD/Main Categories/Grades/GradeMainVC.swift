@@ -13,7 +13,12 @@ class GradeMainVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        Course.get(sNumber: "", password: "").subscribe(onNext: { courses in
+
+            print(courses)
+
+        }, onError: { error in print(error) }).addDisposableTo(self.rx_disposeBag)
+
     }
 
 }
