@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
+		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
@@ -42,7 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeMainVC.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
+		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
+		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
+				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -181,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Routing;
 			path = Routing;
 			sourceTree = "<group>";
 		};
@@ -383,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
