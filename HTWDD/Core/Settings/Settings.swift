@@ -23,10 +23,12 @@ final class SettingsManager {
         // keys
         enum Key {
             static let sNumber = "sNumber"
+            static let unixPassword = "unixPassword"
         }
     }
 
     private(set) var sNumber = Setting<String>()
+    private(set) var unixPassword = Setting<String>()
 
     private let disposeBag = DisposeBag()
 
@@ -76,6 +78,8 @@ final class SettingsManager {
         switch key {
         case Const.Key.sNumber:
             try self.sNumber.setValue(value)
+        case Const.Key.unixPassword:
+            try self.unixPassword.setValue(value)
         default:
             throw Err.unknownKey(key)
         }
@@ -84,6 +88,7 @@ final class SettingsManager {
     func save() throws {
         var object = [String: Any]()
         object[Const.Key.sNumber] = self.sNumber.value
+        object[Const.Key.unixPassword] = self.unixPassword.value
 
         let data = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted) // for better readability
         UserDefaults.standard.set(data, forKey: Const.userDefaultsKey)
