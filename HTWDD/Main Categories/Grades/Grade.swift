@@ -11,7 +11,7 @@ import RxSwift
 
 struct Grade {
 
-    enum Semester {
+    enum Semester: Hashable, CustomStringConvertible, Comparable {
         case summer(year: Int)
         case winter(year: Int)
 
@@ -31,6 +31,51 @@ struct Grade {
                 self = .summer(year: year)
             } else {
                 self = .winter(year: year)
+            }
+        }
+
+        var description: String {
+            switch self {
+            case .summer(let year):
+                return "SS_\(year)"
+            case .winter(let year):
+                return "WS_\(year)"
+            }
+        }
+
+        var hashValue: Int {
+            return description.hashValue
+        }
+
+        static func <(lhs: Semester, rhs: Semester) -> Bool {
+            switch (lhs, rhs) {
+            case (.summer(let year1), .summer(let year2)):
+                return year1 < year2
+            case (.winter(let year1), .winter(let year2)):
+                return year1 < year2
+            case (.summer(let year1), .winter(let year2)):
+                if year1 == year2 {
+                    return true
+                } else {
+                    return year1 < year2
+                }
+            case (.winter(let year1), .summer(let year2)):
+                if year1 == year2 {
+                    return false
+                } else {
+                    return year1 < year2
+                }
+            }
+        }
+
+        static func ==(lhs: Semester, rhs: Semester) -> Bool {
+            switch (lhs, rhs) {
+            case (.summer(let year1), .summer(let year2)):
+                return year1 == year2
+            case (.winter(let year1), .winter(let year2)):
+                return year1 == year2
+            default:
+                return false
             }
         }
     }
@@ -55,6 +100,23 @@ struct Grade {
         ]
 
         return Network.postArray(url: Grade.url, params: parameters, encoding: .url)
+    }
+
+    /// Groups and sorts a given array of grades by their semester.
+    ///
+    /// - Parameter grades: the array that should be sorted
+    /// - Returns: array of semesters + their grades, already sorted by semester
+    static func groupAndOrderBySemester(grades: [Grade]) -> [(Semester, [Grade])] {
+
+        var semesterHash = [Semester: [Grade]]()
+
+        for grade in grades {
+            semesterHash[grade.semester, or: []].append(grade)
+        }
+
+        return semesterHash.sorted {
+            return $0.key < $1.key
+        }
     }
 }
 

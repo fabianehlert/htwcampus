@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxOptional
 
 class GradeMainVC: ViewController {
 
@@ -15,19 +16,28 @@ class GradeMainVC: ViewController {
 
         let sNumber = ""
         let password = ""
-        
-        Course.get(sNumber: sNumber, password: password).subscribe(onNext: { courses in
 
-            guard let c = courses.first else {
-                return
-            }
-            Grade.get(sNumber: sNumber, password: password, course: c).subscribe(onNext: { grades in
-                
-                print(grades)
-                
-            }, onError: { error in print(error) }).addDisposableTo(self.rx_disposeBag)
+        Course.get(sNumber: sNumber, password: password)
+            .map { $0.first }
+            .filterNil()
+            .subscribe(onNext: { course in
 
-        }, onError: { error in print(error) }).addDisposableTo(self.rx_disposeBag)
+                Grade.get(sNumber: sNumber, password: password, course: course)
+                    .map(Grade.groupAndOrderBySemester)
+                    .subscribe(onNext: { grades in
+
+                        print(grades)
+
+                    }, onError: {
+                        error in
+                        print(error)
+                    }).addDisposableTo(self.rx_disposeBag)
+
+            }, onError: { error in
+
+                print(error)
+
+            }).addDisposableTo(self.rx_disposeBag)
 
     }
 

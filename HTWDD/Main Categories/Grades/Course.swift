@@ -24,6 +24,7 @@ struct Course {
 
         return Network.postArray(url: Course.url, params: parameters, encoding: .url)
     }
+
 }
 
 extension Course: JSONInitializable {
