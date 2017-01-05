@@ -19,4 +19,17 @@ extension Dictionary {
         }
     }
 
+    mutating func merge<S>(_ other: S)
+        where S: Sequence, S.Iterator.Element == (Key, Value) {
+            for (k, v) in other {
+                self[k] = v
+            }
+    }
+
+    init<S: Sequence>(_ sequence: S)
+        where S.Iterator.Element == (Key, Value) {
+            self = [:]
+            self.merge(sequence)
+    }
+
 }

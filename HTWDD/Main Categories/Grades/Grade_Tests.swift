@@ -9,77 +9,46 @@
 import XCTest
 @testable import HTWDD
 
-class Semester_Tests: XCTestCase {
-
-    func test_init() {
-        XCTAssertNil(Grade.Semester(rawValue: "abc"))
-        XCTAssertNil(Grade.Semester(rawValue: "20039"))
-        XCTAssertNil(Grade.Semester(rawValue: "abcdf"))
-        XCTAssertNil(Grade.Semester(rawValue: "this is some arbitrary string"))
-
-        guard var s = Grade.Semester(rawValue: "20122") else {
-            XCTFail("20122 was not parsed as a valid semester string")
-            return
-        }
-
-        XCTAssertEqual(s.year, 2012)
-        XCTAssertTrue(Grade.Semester.winter(year: 2012) ~= s)
-
-        s = Grade.Semester(rawValue: "30001")!
-        XCTAssertEqual(s.year, 3000)
-        XCTAssertTrue(Grade.Semester.summer(year: 3000) ~= s)
-    }
-
-    func test_description() {
-        let s1 = Grade.Semester.summer(year: 2016)
-        XCTAssertEqual(s1.description, "SS_2016")
-
-        let s2 = Grade.Semester.winter(year: 3021)
-        XCTAssertEqual(s2.description, "WS_3021")
-    }
-
-    func test_hashValue() {
-        let s1 = Grade.Semester.summer(year: 2016)
-        XCTAssertEqual(s1.hashValue, "SS_2016".hashValue)
-
-        let s2 = Grade.Semester.winter(year: 3021)
-        XCTAssertEqual(s2.hashValue, "WS_3021".hashValue)
-    }
-
-    func test_comparable() {
-        let s1 = Grade.Semester.winter(year: 2000)
-        let s2 = Grade.Semester.winter(year: 2001)
-        XCTAssertTrue(s1 < s2)
-
-        let s3 = Grade.Semester.summer(year: 2000)
-        let s4 = Grade.Semester.summer(year: 2001)
-        XCTAssertTrue(s3 < s4)
-
-        let s5 = Grade.Semester.summer(year: 2000)
-        let s6 = Grade.Semester.winter(year: 2000)
-        XCTAssertTrue(s5 < s6)
-
-        let s7 = Grade.Semester.winter(year: 2000)
-        let s8 = Grade.Semester.summer(year: 2000)
-        XCTAssertTrue(s7 > s8)
-    }
+class Grade_Tests: XCTestCase {
 
     func test_equality() {
-        let s1 = Grade.Semester.summer(year: 2012)
-        let s2 = Grade.Semester.summer(year: 2012)
-        XCTAssertEqual(s1, s2)
+        var g1 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        var g2 = Grade(nr: 1, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        XCTAssertNotEqual(g1, g2)
 
-        let s3 = Grade.Semester.summer(year: 2012)
-        let s4 = Grade.Semester.winter(year: 2012)
-        XCTAssertNotEqual(s3, s4)
+        g1 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g2 = Grade(nr: 0, status: "", credits: 2.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        XCTAssertNotEqual(g1, g2)
 
-        let s5 = Grade.Semester.summer(year: 2012)
-        let s6 = Grade.Semester.summer(year: 2013)
-        XCTAssertNotEqual(s5, s6)
+        g1 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g2 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 2), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        XCTAssertNotEqual(g1, g2)
+
+        g1 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g2 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 1, note: nil)
+        XCTAssertNotEqual(g1, g2)
+
+        g1 = Grade(nr: 0, status: "abc", credits: 1.0, text: "text", semester: Semester.summer(year: 1), numberOfTry: 3, date: Date(timeIntervalSince1970: 0), mark: 0, note: "a note")
+        g2 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        XCTAssertEqual(g1, g2)
+
     }
 
-}
+    func test_groupAndOrderBySemester() {
 
-class Grade_Tests: XCTestCase {
+        let g1 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        let g2 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.winter(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        let g3 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.winter(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        let g4 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        let g5 = Grade(nr: 0, status: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+
+        let result = Grade.groupAndOrderBySemester(grades: [g1, g2, g3, g4, g5])
+        let hashMap = [Semester: [Grade]](result)
+        XCTAssertEqual(hashMap[Semester.summer(year: 1)]!, [g1, g4, g5])
+        XCTAssertEqual(hashMap[Semester.winter(year: 1)]!, [g2, g3])
+
+        XCTAssertEqual(result[0].0, Semester.summer(year: 1))
+        XCTAssertEqual(result[1].0, Semester.winter(year: 1))
+    }
 
 }
