@@ -46,6 +46,7 @@
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E481E1EAB62006D99AE /* RxOptional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F58E471E1EAB62006D99AE /* RxOptional.framework */; };
 		B5F58E491E1EAC29006D99AE /* RxOptional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F58E471E1EAB62006D99AE /* RxOptional.framework */; };
+		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
+		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				B538EF191E1D761E0031077C /* Course.swift */,
 				B538EF1B1E1D762E0031077C /* Grade.swift */,
+				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
 			);
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */,
 				B538EF0E1E1D61F80031077C /* SettingsManager_Tests.swift in Sources */,
 				B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */,
 			);

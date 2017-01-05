@@ -29,8 +29,19 @@ struct Grade {
             }
             if type == "1" {
                 self = .summer(year: year)
-            } else {
+            } else if type == "2" {
                 self = .winter(year: year)
+            } else {
+                return nil
+            }
+        }
+
+        var year: Int {
+            switch self {
+            case .summer(let year):
+                return year
+            case .winter(let year):
+                return year
             }
         }
 
