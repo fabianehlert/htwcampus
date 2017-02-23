@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         baseInitialization()
 
         self.window = UIWindow()
-        self.window?.rootViewController = GradeMainVC().inNavigationController()
+        self.window?.rootViewController = ScheduleMainVC().inNavigationController()
         self.window?.makeKeyAndVisible()
         return true
     }

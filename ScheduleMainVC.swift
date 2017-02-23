@@ -6,4 +6,16 @@
 //  Copyright © 2017 HTW Dresden. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ScheduleMainVC: CollectionViewController {
+
+    init() {
+        super.init(layout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
