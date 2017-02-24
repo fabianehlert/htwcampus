@@ -12,21 +12,50 @@ class ScheduleMainVC: CollectionViewController {
 
     init() {
         super.init(layout: UICollectionViewFlowLayout())
+        self.collectionView.dataSource = self
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var lectures = [Lecture]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Lecture.get(year: "2016", major: "044", group: "71-IK").subscribe(onNext: { lectures in
-            print(lectures)
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
+        Lecture.get(year: "2016", major: "044", group: "71-IK").subscribe(onNext: { [weak self] lectures in
+            self?.lectures = lectures
+            
         }, onError: { err in
+            
             print(err)
         })
         .addDisposableTo(self.rx_disposeBag)
     }
 
+}
+
+extension ScheduleMainVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.lectures.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor.red
+        return cell
+    }
+    
 }
