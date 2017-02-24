@@ -21,7 +21,7 @@ class ScheduleMainVC: CollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var lectures = [Lecture]() {
+    var lectures = [Day: [Lecture]]() {
         didSet {
             self.collectionView.reloadData()
         }
@@ -32,8 +32,11 @@ class ScheduleMainVC: CollectionViewController {
 
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
-        Lecture.get(year: "2016", major: "044", group: "71-IK").subscribe(onNext: { [weak self] lectures in
+        Lecture.get(year: "2016", major: "044", group: "71-IK")
+            .map(Lecture.groupByDay)
+            .subscribe(onNext: { [weak self] lectures in
             self?.lectures = lectures
+            dump(lectures)
 
         }, onError: { err in
 
