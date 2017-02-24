@@ -26,14 +26,14 @@ import RxSwift
  },
  */
 
+enum Day: Int {
+    case monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
+}
+
 struct Lecture {
 
     enum Week: Int {
         case all = 0, even, odd
-    }
-
-    enum Day: Int {
-        case monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
     }
 
     var rooms: [String]
@@ -56,6 +56,15 @@ struct Lecture {
         return Network.getArray(url: Lecture.url, params: parameters)
     }
 
+    static func groupByDay(lectures: [Lecture]) -> [Day: [Lecture]] {
+        var dayHash = [Day: [Lecture]](minimumCapacity: 7)
+
+        for l in lectures {
+            dayHash[l.day, or: []].append(l)
+        }
+
+        return dayHash
+    }
 }
 
 extension Lecture: JSONInitializable {
