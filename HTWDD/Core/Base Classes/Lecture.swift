@@ -28,12 +28,6 @@ import RxSwift
 
 struct Lecture {
 
-    enum `Type`: String {
-        case v = "V"
-        case p = "P"
-        case u = "UE" // TODO: not sure, if this is correct!
-    }
-
     enum Week: Int {
         case all = 0, even, odd
     }
@@ -49,7 +43,7 @@ struct Lecture {
     var tag: String
     var name: String
     var professor: String
-    var type: Type
+    var type: String
     var week: Week
     var day: Day
 
@@ -81,7 +75,7 @@ extension Lecture: JSONInitializable {
             let tag = j["lessonTag"] as? String,
             let name = j["name"] as? String,
             let professor = j["professor"] as? String,
-            let type = (j["type"] as? String).flatMap(Type.init),
+            let type = j["type"] as? String,
             let week = (j["week"] as? Int).flatMap(Week.init)
             else {
                 return nil
