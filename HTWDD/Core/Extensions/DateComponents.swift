@@ -6,7 +6,7 @@
 //  Copyright © 2017 HTW Dresden. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension DateComponents {
 
@@ -21,6 +21,13 @@ extension DateComponents {
         }
 
         return Calendar.current.dateComponents([.hour, .minute, .second], from: date)
+    }
+
+    /// Seconds since 00:00:00
+    var time: CGFloat {
+        return CGFloat(self.hour ?? 0) * 60 * 60 +
+               CGFloat(self.minute ?? 0) * 60 +
+               CGFloat(self.second ?? 0)
     }
 
 }

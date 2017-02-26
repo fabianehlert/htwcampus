@@ -13,7 +13,6 @@ class ScheduleMainVC: CollectionViewController {
     init() {
         let layout = TimetableCollectionViewLayout()
         super.init(layout: layout)
-        layout.dataSource = self
         self.collectionView.dataSource = self
     }
 
@@ -24,6 +23,7 @@ class ScheduleMainVC: CollectionViewController {
     var lectures = [Day: [Lecture]]() {
         didSet {
             self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 
@@ -36,7 +36,7 @@ class ScheduleMainVC: CollectionViewController {
             .map(Lecture.groupByDay)
             .subscribe(onNext: { [weak self] lectures in
             self?.lectures = lectures
-            dump(lectures)
+//            dump(lectures)
 
         }, onError: { err in
 
@@ -50,16 +50,20 @@ class ScheduleMainVC: CollectionViewController {
 extension ScheduleMainVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.lectures.count
+        guard let day = Day(rawValue: section) else {
+            return 0
+        }
+        return self.lectures[day]?.count ?? 0
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return self.lectures.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         cell.contentView.backgroundColor = UIColor.red
+        cell.contentView.layer.cornerRadius = 5
         return cell
     }
 
@@ -67,12 +71,31 @@ extension ScheduleMainVC: UICollectionViewDataSource {
 
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
 
-    func numberOfDays() -> Int {
-        return 7
+    func itemMargin() -> CGFloat {
+        return 2
     }
 
     func widthPerDay() -> CGFloat {
-        return self.view.bounds.width / 3
+        let numberOfDays = UIDevice.current.orientation == .portrait ? 3 : 7
+        return self.view.bounds.width / CGFloat(numberOfDays)
+    }
+
+    func startHour() -> CGFloat {
+        return 6
+    }
+
+    func endHour() -> CGFloat {
+        return 19
+    }
+
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
+        guard let day = Day(rawValue: indexPath.section) else {
+            return nil
+        }
+        guard let item = self.lectures[day]?[safe: indexPath.row] else {
+            return nil
+        }
+        return (item.begin, item.end)
     }
 
 }

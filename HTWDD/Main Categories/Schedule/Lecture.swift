@@ -27,7 +27,7 @@ import RxSwift
  */
 
 enum Day: Int {
-    case monday = 1, tuesday, wednesday, thursday, friday, saturday, sunday
+    case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
 struct Lecture {
@@ -80,7 +80,7 @@ extension Lecture: JSONInitializable {
             let rooms = j["Rooms"] as? [String],
             let begin = (j["beginTime"] as? String).flatMap(DateComponents.timeFromString),
             let end = (j["endTime"] as? String).flatMap(DateComponents.timeFromString),
-            let day = (j["day"] as? Int).flatMap(Day.init),
+            let day = (j["day"] as? Int).map({ $0 - 1 }).flatMap(Day.init),
             let tag = j["lessonTag"] as? String,
             let name = j["name"] as? String,
             let professor = j["professor"] as? String,
