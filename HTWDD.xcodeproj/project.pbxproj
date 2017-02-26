@@ -84,9 +84,9 @@
 		B538EF191E1D761E0031077C /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		B538EF1B1E1D762E0031077C /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		B538EF1D1E1D9E6D0031077C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lecture.swift; path = "HTWDD/Core/Base Classes/Lecture.swift"; sourceTree = SOURCE_ROOT; };
+		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lecture.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
-		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimetableCollectionViewLayout.swift; path = HTWDD/Core/Extensions/TimetableCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
+		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimetableCollectionViewLayout.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMainVC.swift; sourceTree = SOURCE_ROOT; };
+		B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMainVC.swift; sourceTree = "<group>"; };
 		B5CD5C721E5F37970083D75E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
@@ -142,8 +142,8 @@
 		B52A9B4D1DDB160700313FC3 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B555070F1E601AE300C16F5F /* Lecture.swift */,
+				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 			);
 			path = Schedule;
@@ -154,11 +154,11 @@
 			children = (
 				B538EF191E1D761E0031077C /* Course.swift */,
 				B538EF1B1E1D762E0031077C /* Grade.swift */,
+				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
+				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
 				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				B5F58E4C1E1EB15A006D99AE /* Semester.swift */,
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
-				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
-				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -224,9 +224,9 @@
 		B52A9B561DDB170700313FC3 /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
-				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
