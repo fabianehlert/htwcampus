@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class ScheduleMainVC: CollectionViewController {
 
     init() {
-        let layout = TimetableCollectionViewLayout()
-        super.init(layout: layout)
+        super.init(layout: TimetableCollectionViewLayout())
         self.collectionView.dataSource = self
     }
 
@@ -34,9 +34,10 @@ class ScheduleMainVC: CollectionViewController {
 
         Lecture.get(year: "2016", major: "044", group: "71-IK")
             .map(Lecture.groupByDay)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] lectures in
             self?.lectures = lectures
-//            dump(lectures)
+                dump(self?.lectures[.monday])
 
         }, onError: { err in
 
@@ -78,6 +79,10 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
     func widthPerDay() -> CGFloat {
         let numberOfDays = UIDevice.current.orientation == .portrait ? 3 : 7
         return self.view.bounds.width / CGFloat(numberOfDays)
+    }
+
+    func height() -> CGFloat {
+        return self.collectionView.bounds.height - (self.navigationController?.navigationBar.bounds.height ?? 0)
     }
 
     func startHour() -> CGFloat {
