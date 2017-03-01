@@ -10,6 +10,7 @@ import UIKit
 
 protocol TimetableCollectionViewLayoutDataSource {
     func widthPerDay() -> CGFloat
+    func height() -> CGFloat
     func startHour() -> CGFloat
     func endHour() -> CGFloat
     func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
@@ -38,7 +39,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
             return CGSize.zero
         }
 
-        let height = collectionView.bounds.size.height
+        let height = self.dataSource.height()
         let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
         let width = CGFloat(sections) * dataSource.widthPerDay()
 
