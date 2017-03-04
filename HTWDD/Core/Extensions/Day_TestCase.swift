@@ -24,4 +24,18 @@ class Day_TestCase: XCTestCase {
 
     }
 
+    func test_weekday() {
+        var date = Date.from(day: 4, month: 3, year: 2017)
+        XCTAssertEqual(date?.weekday, Day.saturday)
+
+        date = Date.from(day: 24, month: 12, year: 2017)
+        XCTAssertEqual(date?.weekday, Day.sunday)
+
+        date = Date.from(day: 20, month: 03, year: 2017)
+        XCTAssertEqual(date?.weekday, Day.monday)
+
+        date = Date.from(day: 30, month: 03, year: 2017)
+        XCTAssertEqual(date?.weekday, Day.thursday)
+    }
+
 }

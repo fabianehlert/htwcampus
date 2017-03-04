@@ -33,11 +33,12 @@ extension Date {
     }
 
     var weekday: Day {
-        let c = Calendar.current.dateComponents(in: TimeZone.current, from: self)
+        let c = Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
         guard let rawDay = c.weekday else {
             fatalError("Expected a date to have a weekday.")
         }
-        guard let day = Day(rawValue: rawDay - 1) else {
+
+        guard let day = Day(rawValue: rawDay - 2 < 0 ? 6 : rawDay - 2) else {
             fatalError("Expected rawDay to be between 1 and 7")
         }
         return day
