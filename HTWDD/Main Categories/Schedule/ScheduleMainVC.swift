@@ -18,6 +18,7 @@ class ScheduleMainVC: CollectionViewController {
         self.dataSource = ScheduleDataSource(originDate: semesterStart)
         super.init(layout: TimetableCollectionViewLayout())
         self.dataSource.collectionView = self.collectionView
+        self.collectionView.isDirectionalLockEnabled = true
     }
 
     required init?(coder aDecoder: NSCoder) {
