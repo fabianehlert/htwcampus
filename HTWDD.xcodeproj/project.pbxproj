@@ -24,6 +24,7 @@
 		B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */; };
 		B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */; };
 		B50EB4F31E6AC25D0022E40C /* htw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B50EB4F21E6AC25D0022E40C /* htw.gpx */; };
+		B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F21E6AC25D0022E40C /* htw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = htw.gpx; sourceTree = "<group>"; };
+		B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture_TestCase.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				B555070F1E601AE300C16F5F /* Lecture.swift */,
+				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
 				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
@@ -536,6 +539,7 @@
 			files = (
 				B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */,
 				B5F58E4F1E1EB172006D99AE /* Semester_Tests.swift in Sources */,
+				B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */,
 				B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */,
 				B538EF0E1E1D61F80031077C /* SettingsManager_Tests.swift in Sources */,
 				B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */,
