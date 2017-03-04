@@ -26,4 +26,21 @@ extension Date {
         return dateFormatter(format: format).date(from: string)
     }
 
+    static func from(day: Int, month: Int, year: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date? {
+        var c = DateComponents(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
+        c.timeZone = TimeZone.autoupdatingCurrent
+        return Calendar.current.date(from: c)
+    }
+
+    var weekday: Day {
+        let c = Calendar.current.dateComponents(in: TimeZone.current, from: self)
+        guard let rawDay = c.weekday else {
+            fatalError("Expected a date to have a weekday.")
+        }
+        guard let day = Day(rawValue: rawDay - 1) else {
+            fatalError("Expected rawDay to be between 1 and 7")
+        }
+        return day
+    }
+
 }
