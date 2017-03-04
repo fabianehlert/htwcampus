@@ -27,6 +27,8 @@ class ScheduleMainVC: CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.dataSource.register(type: LectureCollectionViewCell.self)
+
         self.dataSource.load()
     }
 
