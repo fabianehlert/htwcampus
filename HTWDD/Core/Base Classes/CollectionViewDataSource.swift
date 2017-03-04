@@ -49,6 +49,10 @@ class CollectionViewDataSource: NSObject {
         }
     }
 
+    func invalidate() {
+        self.collectionView?.reloadData()
+    }
+
 }
 
 extension CollectionViewDataSource: UICollectionViewDataSource {

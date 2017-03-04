@@ -43,11 +43,6 @@ class ScheduleDataSource: CollectionViewDataSource {
             .addDisposableTo(self.disposeBag)
     }
 
-    func invalidate() {
-        self.collectionView?.reloadData()
-        self.collectionView?.collectionViewLayout.invalidateLayout()
-    }
-
     func lecture(at indexPath: IndexPath) -> Lecture? {
         let day = self.originDate.weekday.dayByAdding(days: indexPath.section)
         return self.lectures[day]?[safe: indexPath.row]
