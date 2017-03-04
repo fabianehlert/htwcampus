@@ -25,6 +25,9 @@
 		B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */; };
 		B50EB4F31E6AC25D0022E40C /* htw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B50EB4F21E6AC25D0022E40C /* htw.gpx */; };
 		B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */; };
+		B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */; };
+		B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */; };
+		B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
@@ -76,6 +79,9 @@
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F21E6AC25D0022E40C /* htw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = htw.gpx; sourceTree = "<group>"; };
 		B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture_TestCase.swift; sourceTree = "<group>"; };
+		B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
+		B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceProtocols.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */,
+				B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */,
+				B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
 		B52A9B4C1DDB15FE00313FC3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +257,7 @@
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
+				B50EB4FC1E6ADB410022E40C /* DataSource */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -516,6 +533,7 @@
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
 				B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */,
+				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
@@ -525,8 +543,10 @@
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
+				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
 				B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */,
+				B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
