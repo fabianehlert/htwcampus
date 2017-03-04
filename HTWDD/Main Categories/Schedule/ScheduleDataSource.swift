@@ -63,14 +63,12 @@ class ScheduleDataSource: NSObject {
 extension ScheduleDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let day = Day(rawValue: section) else {
-            return 0
-        }
+        let day = self.originDate.weekday.dayByAdding(days: section)
         return self.lectures[day]?.count ?? 0
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.lectures.count
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
