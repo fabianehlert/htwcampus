@@ -44,4 +44,12 @@ extension Date {
         return day
     }
 
+    var weekNumber: Int {
+        let c = Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
+        guard let week = c.weekOfYear else {
+            fatalError("Expected date to have a week number.")
+        }
+        return week
+    }
+
 }
