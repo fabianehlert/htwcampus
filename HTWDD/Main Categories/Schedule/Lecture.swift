@@ -29,31 +29,18 @@ import RxSwift
 enum Day: Int {
     case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
 
-    /// Returns a day with the added number of days.
+    /// Returns a day with the added number of days. (Use negative number to subtract)
     ///
-    /// NOTE: Use only with positive numbers. To subsctract, use dayBySubtracting(days:)
-    ///
-    /// - Parameter days: the number of days to add. Has to be >= 0!
+    /// - Parameter days: the number of days to add/subtract.
     /// - Returns: case of Day
     func dayByAdding(days: Int) -> Day {
-        assert(days >= 0)
-        return Day(rawValue: (self.rawValue + days) % 7)!
-    }
-
-    /// Returns a day with the subsctracted number of days.
-    ///
-    /// NOTE: Use only with positive numbers. To add, use dayByAdding(days:)
-    ///
-    /// - Parameter days: the number of days to subtract. Has to be >= 0!
-    /// - Returns: case of Day
-    func dayBySubtracting(days: Int) -> Day {
-        assert(days >= 0)
-        var newRawValue = (self.rawValue - days) % 7
+        var newRawValue = (self.rawValue + days) % 7
         if newRawValue < 0 {
             newRawValue += 7
         }
         return Day(rawValue: newRawValue)!
     }
+
 }
 
 struct Lecture {

@@ -19,14 +19,9 @@ class Lecture_TestCase: XCTestCase {
         XCTAssertEqual(d1.dayByAdding(days: 30), Day.wednesday)
         XCTAssertEqual(d1.dayByAdding(days: 21), Day.monday)
 
-    }
-
-    func test_day_subsctract() {
-
-        let d1 = Day.monday
-        XCTAssertEqual(d1.dayBySubtracting(days: 1), Day.sunday)
-        XCTAssertEqual(d1.dayBySubtracting(days: 7), Day.monday)
-        XCTAssertEqual(d1.dayBySubtracting(days: 13), Day.tuesday)
+        XCTAssertEqual(d1.dayByAdding(days: -1), Day.sunday)
+        XCTAssertEqual(d1.dayByAdding(days: -7), Day.monday)
+        XCTAssertEqual(d1.dayByAdding(days: -13), Day.tuesday)
     }
 
 }
