@@ -9,12 +9,30 @@
 import UIKit
 
 protocol TimetableCollectionViewLayoutDataSource {
-    func widthPerDay() -> CGFloat
+    // MARK: required methods
     func height() -> CGFloat
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
+
+    // Mark: optional, have standard implementation
+    func widthPerDay() -> CGFloat
     func startHour() -> CGFloat
     func endHour() -> CGFloat
-    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
     func itemMargin() -> CGFloat
+}
+
+extension TimetableCollectionViewLayoutDataSource {
+    func widthPerDay() -> CGFloat {
+        return 120
+    }
+    func startHour() -> CGFloat {
+        return 0
+    }
+    func endHour() -> CGFloat {
+        return 24
+    }
+    func itemMargin() -> CGFloat {
+        return 2
+    }
 }
 
 class TimetableCollectionViewLayout: UICollectionViewLayout {
