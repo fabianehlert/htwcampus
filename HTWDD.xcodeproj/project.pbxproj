@@ -28,6 +28,7 @@
 		B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */; };
 		B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */; };
 		B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */; };
+		B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */; };
 		B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
@@ -83,6 +84,7 @@
 		B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 		B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceProtocols.swift; sourceTree = "<group>"; };
+		B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -172,6 +174,7 @@
 			children = (
 				B555070F1E601AE300C16F5F /* Lecture.swift */,
 				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
+				B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */,
 				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
@@ -529,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
+				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
