@@ -9,7 +9,7 @@
 import UIKit
 
 /// Use to display an error in the collection view.
-class ErrorCell: UICollectionViewCell {
+class ErrorCell: CollectionViewCell {
 
     /// Setting the error String will replace the labels string with the given one.
     var error: String? {
@@ -21,19 +21,9 @@ class ErrorCell: UICollectionViewCell {
         }
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-
     private let label = UILabel()
 
-    private func setup() {
+    override func initialSetup() {
         self.label.frame = self.contentView.bounds
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
