@@ -409,7 +409,7 @@
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 2URYCAZR48;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B59FA99A1DD09C8400259D7F = {
 						CreatedOnToolsVersion = 8.1;
@@ -720,6 +720,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDD";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60241fff-cf46-4e2f-acb5-a3b91c69fcf5";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Development";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -728,6 +730,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 2URYCAZR48;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,6 +741,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDD";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "04ff3ab3-f5e7-48bf-bf32-ac2f34815f3f";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Release";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
