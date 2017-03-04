@@ -26,23 +26,6 @@ import RxSwift
  },
  */
 
-enum Day: Int {
-    case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
-
-    /// Returns a day with the added number of days. (Use negative number to subtract)
-    ///
-    /// - Parameter days: the number of days to add/subtract.
-    /// - Returns: case of Day
-    func dayByAdding(days: Int) -> Day {
-        var newRawValue = (self.rawValue + days) % 7
-        if newRawValue < 0 {
-            newRawValue += 7
-        }
-        return Day(rawValue: newRawValue)!
-    }
-
-}
-
 struct Lecture {
 
     enum Week: Int {
@@ -50,7 +33,7 @@ struct Lecture {
     }
 
     var rooms: [String]
-    var weeks: [Int]
+    var weeks: Set<Int>
     var begin: DateComponents
     var end: DateComponents
     var tag: String
@@ -114,7 +97,7 @@ extension Lecture: JSONInitializable {
         self.professor = professor
         self.type = type
         self.week = week
-        self.weeks = weeks
+        self.weeks = Set(weeks)
     }
 
 }
