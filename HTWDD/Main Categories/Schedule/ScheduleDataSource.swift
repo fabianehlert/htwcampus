@@ -9,7 +9,9 @@
 import UIKit
 import RxSwift
 
-class ScheduleDataSource: NSObject {
+extension Lecture: Identifiable {}
+
+class ScheduleDataSource: CollectionViewDataSource {
 
     private(set) var lectures = [Day: [Lecture]]() {
         didSet {
@@ -18,13 +20,6 @@ class ScheduleDataSource: NSObject {
     }
 
     private let disposeBag = DisposeBag()
-
-    weak var collectionView: UICollectionView? {
-        didSet {
-            self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-            self.collectionView?.dataSource = self
-        }
-    }
 
     var originDate: Date {
         didSet {
@@ -58,24 +53,18 @@ class ScheduleDataSource: NSObject {
         return self.lectures[day]?[safe: indexPath.row]
     }
 
-}
+    // MARK: CollectionViewDataSource methods
 
-extension ScheduleDataSource: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let day = self.originDate.weekday.dayByAdding(days: section)
-        return self.lectures[day]?.count ?? 0
+    override func item(at index: IndexPath) -> Identifiable? {
+        return lecture(at: index)
     }
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSections() -> Int {
         return 10
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.contentView.backgroundColor = UIColor.red
-        cell.contentView.layer.cornerRadius = 5
-        return cell
+    override func numberOfItems(in section: Int) -> Int {
+        let day = self.originDate.weekday.dayByAdding(days: section)
+        return self.lectures[day]?.count ?? 0
     }
-
 }
