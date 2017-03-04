@@ -9,8 +9,6 @@
 import UIKit
 import RxSwift
 
-extension Lecture: Identifiable {}
-
 class ScheduleDataSource: CollectionViewDataSource {
 
     private(set) var lectures = [Day: [Lecture]]() {
