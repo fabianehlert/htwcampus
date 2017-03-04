@@ -37,7 +37,7 @@ class ScheduleMainVC: CollectionViewController {
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
 
     func widthPerDay() -> CGFloat {
-        let numberOfDays = UIDevice.current.orientation == .portrait ? 3 : 7
+        let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 3
         return self.view.bounds.width / CGFloat(numberOfDays)
     }
 
