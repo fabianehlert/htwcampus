@@ -28,17 +28,12 @@ class ScheduleMainVC: CollectionViewController {
         super.viewDidLoad()
 
         self.dataSource.register(type: LectureCollectionViewCell.self)
-
         self.dataSource.load()
     }
 
 }
 
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
-
-    func itemMargin() -> CGFloat {
-        return 2
-    }
 
     func widthPerDay() -> CGFloat {
         let numberOfDays = UIDevice.current.orientation == .portrait ? 3 : 7
