@@ -79,7 +79,7 @@
 
 /* Begin PBXFileReference section */
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
-		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day_TestCase.swift; path = ../../Core/Extensions/Day_TestCase.swift; sourceTree = "<group>"; };
+		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day_TestCase.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F21E6AC25D0022E40C /* htw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = htw.gpx; sourceTree = "<group>"; };
 		B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -153,11 +153,12 @@
 		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */,
 				B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */,
 				B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */,
+				B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */,
 			);
 			name = DataSource;
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		B52A9B4C1DDB15FE00313FC3 /* Supporting Files */ = {
@@ -174,13 +175,13 @@
 		B52A9B4D1DDB160700313FC3 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				B555070F1E601AE300C16F5F /* Lecture.swift */,
-				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
 				B50EB5011E6AFFA20022E40C /* Day.swift */,
 				B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */,
+				B555070F1E601AE300C16F5F /* Lecture.swift */,
 				B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */,
-				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
+				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
 				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
+				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 			);
 			path = Schedule;
@@ -249,12 +250,12 @@
 		B52A9B551DDB170000313FC3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B5FCAE601E62EAEF00E35DDB /* Array.swift */,
 				B538EF1D1E1D9E6D0031077C /* Date.swift */,
 				B55507111E601FB400C16F5F /* DateComponents.swift */,
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
 				B538EF061E1D58690031077C /* NSObject+Rx.swift */,
 				B538EF0F1E1D62040031077C /* UserDefaults.swift */,
-				B5FCAE601E62EAEF00E35DDB /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,11 +263,11 @@
 		B52A9B561DDB170700313FC3 /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B50EB4FC1E6ADB410022E40C /* DataSource */,
+				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
-				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
-				B50EB4FC1E6ADB410022E40C /* DataSource */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -317,11 +318,11 @@
 		B59FA97E1DD09C8300259D7F = {
 			isa = PBXGroup;
 			children = (
-				B50EB4F21E6AC25D0022E40C /* htw.gpx */,
 				B52A9B5A1DDB1B7C00313FC3 /* Frameworks */,
 				B59FA9891DD09C8400259D7F /* HTWDD */,
 				B59FA99E1DD09C8400259D7F /* HTWDDTests */,
 				B59FA9881DD09C8400259D7F /* Products */,
+				B50EB4F21E6AC25D0022E40C /* htw.gpx */,
 			);
 			sourceTree = "<group>";
 		};
