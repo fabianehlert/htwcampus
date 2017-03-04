@@ -54,9 +54,7 @@ class ScheduleDataSource: NSObject {
     }
 
     func lecture(at indexPath: IndexPath) -> Lecture? {
-        guard let day = Day(rawValue: indexPath.section) else {
-            return nil
-        }
+        let day = self.originDate.weekday.dayByAdding(days: indexPath.section)
         return self.lectures[day]?[safe: indexPath.row]
     }
 
