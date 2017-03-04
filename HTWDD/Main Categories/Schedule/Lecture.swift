@@ -76,7 +76,7 @@ extension Lecture: JSONInitializable {
             let rooms = j["Rooms"] as? [String],
             let begin = (j["beginTime"] as? String).flatMap(DateComponents.timeFromString),
             let end = (j["endTime"] as? String).flatMap(DateComponents.timeFromString),
-            let day = (j["day"] as? Int).map({ $0 - 1 }).flatMap(Day.init),
+            let day = (j["day"] as? Int).map({ $0 - 1 }).flatMap({ Day(rawValue: $0) }),
             let tag = j["lessonTag"] as? String,
             let name = j["name"] as? String,
             let professor = j["professor"] as? String,

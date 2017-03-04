@@ -10,7 +10,7 @@ import Foundation
 
 enum Day: Int {
     case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
-    
+
     /// Returns a day with the added number of days. (Use negative number to subtract)
     ///
     /// - Parameter days: the number of days to add/subtract.
@@ -22,5 +22,21 @@ enum Day: Int {
         }
         return Day(rawValue: newRawValue)!
     }
-    
+
+    /// Returns the week number, if adding `addingDays` days and current is `starting`.
+    ///
+    /// - Parameters:
+    ///   - starting: week number of the current day
+    ///   - addingDays: number of days to add
+    /// - Returns: a week number between 1 and 52
+    func weekNumber(starting: Int, addingDays: Int) -> Int {
+        let completeWeeks = addingDays / 7
+        let weeks = completeWeeks + ((self.rawValue + addingDays % 7) > 6 ? 1 : 0)
+        var newWeek = starting + weeks
+        while newWeek > 52 {
+            newWeek -= 52
+        }
+        return newWeek
+    }
+
 }
