@@ -11,21 +11,28 @@ import UIKit
 extension Lecture: Identifiable {}
 
 struct LectureViewModel: ViewModel {
+    let model: Lecture
     init(model: Lecture) {
-
+        self.model = model
     }
 }
 
 class LectureCollectionViewCell: CollectionViewCell, Cell {
 
+    let label = UILabel()
+
     override func initialSetup() {
         layer.cornerRadius = 5
         layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 3
+        layer.borderWidth = 2
+        self.label.frame = self.contentView.bounds
+        self.label.textAlignment = .center
+        self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.contentView.addSubview(self.label)
     }
 
     func update(viewModel: LectureViewModel) {
-
+        label.text = viewModel.model.tag
     }
 
 }
