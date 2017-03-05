@@ -20,7 +20,7 @@ platform :ios do
   end
 
   after_all do |lane|
-    slack
+    
   end
 
   error do |lane, exception|
