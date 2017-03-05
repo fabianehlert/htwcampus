@@ -13,6 +13,12 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     private(set) var lectures = [Day: [Lecture]]() {
         didSet {
+            self.data = calculate(input: self.lectures)
+        }
+    }
+
+    private var data = [[Lecture]]() {
+        didSet {
             self.invalidate()
         }
     }
@@ -21,12 +27,14 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     var originDate: Date {
         didSet {
-            self.invalidate()
+            self.data = calculate(input: self.lectures)
         }
     }
+    var numberOfDays: Int
 
-    init(originDate: Date) {
+    init(originDate: Date, numberOfDays: Int) {
         self.originDate = originDate
+        self.numberOfDays = numberOfDays
     }
 
     func load() {
@@ -42,8 +50,23 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     func lecture(at indexPath: IndexPath) -> Lecture? {
-        let day = self.originDate.weekday.dayByAdding(days: indexPath.section)
-        return self.lectures[day]?[safe: indexPath.row]
+        return self.data[indexPath.section][indexPath.row]
+    }
+
+    private func calculate(input: [Day: [Lecture]]) -> [[Lecture]] {
+        let sections = 0..<self.numberOfSections()
+        let originDay = self.originDate.weekday
+        let startWeek = self.originDate.weekNumber
+
+        let a: [[Lecture]] = sections.map { section in
+            let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
+            return (self.lectures[originDay.dayByAdding(days: section)] ?? []).filter { lecture in
+                let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
+                let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
+                return weekEvenOddValidation && weekOnlyValidation
+            }
+        }
+        return a
     }
 
     // MARK: CollectionViewDataSource methods
@@ -53,11 +76,10 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     override func numberOfSections() -> Int {
-        return 10
+        return numberOfDays
     }
 
     override func numberOfItems(in section: Int) -> Int {
-        let day = self.originDate.weekday.dayByAdding(days: section)
-        return self.lectures[day]?.count ?? 0
+        return self.data[safe: section]?.count ?? 0
     }
 }

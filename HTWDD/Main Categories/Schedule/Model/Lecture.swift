@@ -30,10 +30,21 @@ struct Lecture {
 
     enum Week: Int {
         case all = 0, even, odd
+
+        func validate(weekNumber: Int) -> Bool {
+            switch self {
+            case .all:
+                return true
+            case .even:
+                return weekNumber % 2 == 0
+            case .odd:
+                return weekNumber % 2 == 1
+            }
+        }
     }
 
     var rooms: [String]
-    var weeks: Set<Int>
+    var weeks: Set<Int>?
     var begin: DateComponents
     var end: DateComponents
     var tag: String
@@ -86,7 +97,10 @@ extension Lecture: JSONInitializable {
                 return nil
         }
 
-        let weeks = (j["WeeksOnly"] as? String).map { $0.components(separatedBy: ";").flatMap { Int($0) } } ?? []
+        var weeks = (j["WeeksOnly"] as? String).map { $0.components(separatedBy: ";").flatMap { Int($0) } }
+        if weeks?.isEmpty ?? true {
+            weeks = nil
+        }
 
         self.rooms = rooms
         self.begin = begin
@@ -97,7 +111,7 @@ extension Lecture: JSONInitializable {
         self.professor = professor
         self.type = type
         self.week = week
-        self.weeks = Set(weeks)
+        self.weeks = weeks.map(Set.init)
     }
 
 }
