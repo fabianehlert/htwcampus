@@ -8,58 +8,68 @@
 
 import UIKit
 
-protocol TimetableCollectionViewLayoutDataSource {
+protocol TimetableCollectionViewLayoutDataSource: class {
     // MARK: required methods
-    func height() -> CGFloat
+    var height: CGFloat { get }
     func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
 
     // Mark: optional, have standard implementation
-    func widthPerDay() -> CGFloat
-    func startHour() -> CGFloat
-    func endHour() -> CGFloat
-    func itemMargin() -> CGFloat
+    var widthPerDay: CGFloat { get }
+    var startHour: CGFloat { get }
+    var endHour: CGFloat { get }
+    var itemMargin: CGFloat { get }
 }
 
 extension TimetableCollectionViewLayoutDataSource {
-    func widthPerDay() -> CGFloat {
+    var widthPerDay: CGFloat {
         return 120
     }
-    func startHour() -> CGFloat {
+    var startHour: CGFloat {
         return 0
     }
-    func endHour() -> CGFloat {
+    var endHour: CGFloat {
         return 24
     }
-    func itemMargin() -> CGFloat {
+    var itemMargin: CGFloat {
         return 2
     }
 }
 
 class TimetableCollectionViewLayout: UICollectionViewLayout {
 
-    var dataSource: TimetableCollectionViewLayoutDataSource {
-        guard let d = self.collectionView?.delegate as? TimetableCollectionViewLayoutDataSource else {
-            fatalError("Expected \(self.collectionView?.delegate) to be TimetableCollectionViewLayoutDataSource")
-        }
-        return d
+    private(set) weak var dataSource: TimetableCollectionViewLayoutDataSource?
+
+    init(dataSource: TimetableCollectionViewLayoutDataSource) {
+        self.dataSource = dataSource
+        super.init()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private var heightPerHour: CGFloat {
-        let start = self.dataSource.startHour()
-        let end = self.dataSource.endHour()
+        guard let dataSource = self.dataSource else {
+            fatalError("Please set dataSource property of TimetableCollectionViewLayout before calling \(#function)!")
+        }
+        let start = dataSource.startHour
+        let end = dataSource.endHour
         let height = self.collectionViewContentSize.height
         return height / (end - start)
     }
 
     override var collectionViewContentSize: CGSize {
 
-        guard let collectionView = self.collectionView else {
+        guard
+            let collectionView = self.collectionView,
+            let dataSource = self.dataSource
+        else {
             return CGSize.zero
         }
 
-        let height = self.dataSource.height()
+        let height = dataSource.height
         let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
-        let width = CGFloat(sections) * dataSource.widthPerDay()
+        let width = CGFloat(sections) * dataSource.widthPerDay
 
         return CGSize(width: width, height: height)
     }
@@ -74,18 +84,22 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
 
-        guard let t = self.dataSource.dateComponentsForItem(at: indexPath) else {
+        guard let dataSource = self.dataSource else {
+            fatalError("Please set dataSource property of TimetableCollectionViewLayout before calling \(#function)!")
+        }
+
+        guard let t = dataSource.dateComponentsForItem(at: indexPath) else {
             return nil
         }
 
-        let margin = self.dataSource.itemMargin()
+        let margin = dataSource.itemMargin
 
         let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attr.frame.origin.x = CGFloat(indexPath.section) * self.dataSource.widthPerDay() + margin
+        attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin
 
-        attr.frame.origin.y = (t.begin.time / 3600 - self.dataSource.startHour()) * self.heightPerHour + margin
+        attr.frame.origin.y = (t.begin.time / 3600 - dataSource.startHour) * self.heightPerHour + margin
         attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 * margin
-        attr.frame.size.width = self.dataSource.widthPerDay() - 2 * margin
+        attr.frame.size.width = dataSource.widthPerDay - 2 * margin
 
         return attr
     }
@@ -100,15 +114,18 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
     private func indexPathsForItemsInRect(rect: CGRect) -> [IndexPath] {
 
-        guard let collectionView = self.collectionView else {
+        guard
+            let collectionView = self.collectionView,
+            let dataSource = self.dataSource
+        else {
             return []
         }
 
         var indexPaths = [IndexPath]()
 
-        let start = max(Int(floor(rect.origin.x / self.dataSource.widthPerDay())), 0)
+        let start = max(Int(floor(rect.origin.x / dataSource.widthPerDay)), 0)
         let sections = (collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 1) - 1
-        let end = max(Int(floor((rect.origin.x + rect.size.width ) / self.dataSource.widthPerDay())), 0)
+        let end = max(Int(floor((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
 
         for section in min(start, sections)...min(end, sections) {
             let itemCount = Int(collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: section) ?? 0)
