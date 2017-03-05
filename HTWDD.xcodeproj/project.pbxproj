@@ -509,7 +509,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which carthage >/dev/null; then\n    carthage build --platform iOS --verbose\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\n    exit 1\nfi\n";
+			shellScript = "if which carthage >/dev/null; then\n    carthage update --platform iOS --verbose\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\n    exit 1\nfi\n";
 		};
 		B52A9B6A1DDB203D00313FC3 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
