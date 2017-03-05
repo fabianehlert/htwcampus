@@ -30,6 +30,8 @@ class ScheduleMainVC: CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Stundenplan"
+
         self.dataSource.register(type: LectureCollectionViewCell.self)
         self.dataSource.load()
     }
@@ -46,7 +48,8 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
     var height: CGFloat {
         let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        return self.collectionView.bounds.height - navbarHeight - statusBarHeight
+        let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
+        return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight
     }
 
     var startHour: CGFloat {
