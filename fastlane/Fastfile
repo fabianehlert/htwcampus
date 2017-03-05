@@ -16,11 +16,7 @@ platform :ios do
   end
 
   after_all do |lane|
-    # This block is called, only if the executed lane was successful
-
-    slack(
-      message: "Successfully built app."
-    )
+    slack
   end
 
   error do |lane, exception|
