@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         baseInitialization()
 
         self.window = UIWindow()
-        self.window?.rootViewController = ScheduleMainVC().inNavigationController()
+        let tabbar = UITabBarController()
+        tabbar.setViewControllers([ScheduleMainVC().inNavigationController(), GradeMainVC().inNavigationController()], animated: false)
+        self.window?.rootViewController = tabbar
         self.window?.makeKeyAndVisible()
         return true
     }
