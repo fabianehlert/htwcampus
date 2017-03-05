@@ -25,7 +25,7 @@ extension DateComponents {
 
     /// Seconds since 00:00:00
     var time: CGFloat {
-        return CGFloat(self.hour ?? 0) * 60 * 60 +
+        return CGFloat(self.hour ?? 0) * 3600 +
                CGFloat(self.minute ?? 0) * 60 +
                CGFloat(self.second ?? 0)
     }
