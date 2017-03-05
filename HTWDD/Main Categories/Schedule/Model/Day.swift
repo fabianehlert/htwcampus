@@ -31,7 +31,8 @@ enum Day: Int {
     /// - Returns: a week number between 1 and 52
     func weekNumber(starting: Int, addingDays: Int) -> Int {
         let completeWeeks = addingDays / 7
-        let weeks = completeWeeks + ((self.rawValue + addingDays % 7) > 6 ? 1 : 0)
+        let overflow: Int = (self.rawValue + addingDays % 7) > 6 ? 1 : 0
+        let weeks = completeWeeks + overflow
         var newWeek = starting + weeks
         while newWeek > 52 {
             newWeek -= 52
