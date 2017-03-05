@@ -12,7 +12,7 @@ class CollectionViewController: ViewController {
 
     var collectionView: UICollectionView
 
-    init(layout: UICollectionViewLayout) {
+    init(layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
         self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         super.init(nibName: nil, bundle: nil)
     }

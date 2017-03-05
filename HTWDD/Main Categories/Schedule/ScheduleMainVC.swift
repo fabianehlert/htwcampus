@@ -16,7 +16,9 @@ class ScheduleMainVC: CollectionViewController {
     init() {
         let semesterStart = Date.from(day: 20, month: 03, year: 2017)!
         self.dataSource = ScheduleDataSource(originDate: semesterStart)
-        super.init(layout: TimetableCollectionViewLayout())
+        super.init()
+        let layout = TimetableCollectionViewLayout(dataSource: self)
+        self.collectionView.setCollectionViewLayout(layout, animated: false)
         self.dataSource.collectionView = self.collectionView
         self.collectionView.isDirectionalLockEnabled = true
     }
@@ -36,22 +38,22 @@ class ScheduleMainVC: CollectionViewController {
 
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
 
-    func widthPerDay() -> CGFloat {
+    var widthPerDay: CGFloat {
         let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 3
         return self.view.bounds.width / CGFloat(numberOfDays)
     }
 
-    func height() -> CGFloat {
+    var height: CGFloat {
         let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         return self.collectionView.bounds.height - navbarHeight - statusBarHeight
     }
 
-    func startHour() -> CGFloat {
+    var startHour: CGFloat {
         return 6
     }
 
-    func endHour() -> CGFloat {
+    var endHour: CGFloat {
         return 19
     }
 
