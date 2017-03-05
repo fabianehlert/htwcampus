@@ -125,7 +125,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
         let start = max(Int(floor(rect.origin.x / dataSource.widthPerDay)), 0)
         let sections = (collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0)
-        let end = max(Int(floor((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
+        let end = max(Int(ceil((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
 
         for section in min(start, sections)..<min(end, sections) {
             let itemCount = Int(collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: section) ?? 0)
