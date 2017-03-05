@@ -2,6 +2,5 @@ language: objective-c
 osx_image: xcode8
 before_script:
   - bundle install
-  - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
 script:
   - ./fastlane/travis.sh
