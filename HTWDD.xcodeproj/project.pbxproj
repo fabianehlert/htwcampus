@@ -169,6 +169,7 @@
 				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
 			);
 			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B50EB5041E6B007B0022E40C /* Views */ = {
@@ -178,6 +179,7 @@
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B52A9B4C1DDB15FE00313FC3 /* Supporting Files */ = {
@@ -196,8 +198,8 @@
 			children = (
 				B50EB5031E6B00700022E40C /* Model */,
 				B50EB5041E6B007B0022E40C /* Views */,
-				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
+				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
