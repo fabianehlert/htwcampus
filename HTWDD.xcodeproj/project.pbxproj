@@ -57,6 +57,12 @@
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
+		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
+		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
+		B5BE72881E6C83B300D05B6D /* EventDate_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72871E6C83B300D05B6D /* EventDate_TestCase.swift */; };
+		B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72891E6C86A600D05B6D /* EventPeriod.swift */; };
+		B5BE728C1E6C86B400D05B6D /* EventPeriod_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */; };
+		B5BE728E1E6C886400D05B6D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE728D1E6C886400D05B6D /* Event.swift */; };
 		B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */; };
 		B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C721E5F37970083D75E /* CollectionViewController.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
@@ -115,13 +121,19 @@
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
+		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
+		B5BE72871E6C83B300D05B6D /* EventDate_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate_TestCase.swift; sourceTree = "<group>"; };
+		B5BE72891E6C86A600D05B6D /* EventPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPeriod.swift; sourceTree = "<group>"; };
+		B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPeriod_TestCase.swift; sourceTree = "<group>"; };
+		B5BE728D1E6C886400D05B6D /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMainVC.swift; sourceTree = "<group>"; };
 		B5CD5C721E5F37970083D75E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
-		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
-		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
+		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = Grades/Semester.swift; sourceTree = "<group>"; };
+		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester_Tests.swift; path = Grades/Semester_Tests.swift; sourceTree = "<group>"; };
 		B5FCAE601E62EAEF00E35DDB /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,8 +220,6 @@
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
 				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
-				B5F58E4C1E1EB15A006D99AE /* Semester.swift */,
-				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -251,6 +261,7 @@
 		B52A9B541DDB16ED00313FC3 /* Main Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B5BE72801E6C808700D05B6D /* General */,
 				B52A9B511DDB16B800313FC3 /* Canteen */,
 				B52A9B501DDB169100313FC3 /* Exams */,
 				B52A9B4E1DDB165B00313FC3 /* Grades */,
@@ -366,6 +377,21 @@
 				B59FA9A11DD09C8400259D7F /* Info.plist */,
 			);
 			path = HTWDDTests;
+			sourceTree = "<group>";
+		};
+		B5BE72801E6C808700D05B6D /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE728D1E6C886400D05B6D /* Event.swift */,
+				B5BE72851E6C83A500D05B6D /* EventDate.swift */,
+				B5BE72871E6C83B300D05B6D /* EventDate_TestCase.swift */,
+				B5BE72891E6C86A600D05B6D /* EventPeriod.swift */,
+				B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */,
+				B5F58E4C1E1EB15A006D99AE /* Semester.swift */,
+				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
+				B5BE72811E6C809200D05B6D /* SemesterInformation.swift */,
+			);
+			name = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
+				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
@@ -563,6 +590,8 @@
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
+				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
+				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
@@ -570,6 +599,7 @@
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
+				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,
 				B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */,
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */,
@@ -586,7 +616,9 @@
 				B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */,
 				B5F58E4F1E1EB172006D99AE /* Semester_Tests.swift in Sources */,
 				B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */,
+				B5BE72881E6C83B300D05B6D /* EventDate_TestCase.swift in Sources */,
 				B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */,
+				B5BE728C1E6C86B400D05B6D /* EventPeriod_TestCase.swift in Sources */,
 				B538EF0E1E1D61F80031077C /* SettingsManager_Tests.swift in Sources */,
 				B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */,
 			);
