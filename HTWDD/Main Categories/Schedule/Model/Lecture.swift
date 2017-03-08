@@ -8,51 +8,20 @@
 
 import Foundation
 import RxSwift
-
-/*
- {
-     "Rooms": [
-         "S 528"
-     ],
-     "WeeksOnly": "49;50;51;1;2;3;4;5",
-     "beginTime": "09:20:00",
-     "day": 1,
-     "endTime": "10:50:00",
-     "lessonTag": "UF",
-     "name": "Unternehmensführung",
-     "professor": "Neuvians",
-     "type": "V",
-     "week": 0
- },
- */
+import Marshal
 
 struct Lecture {
 
-    enum Week: Int {
-        case all = 0, even, odd
-
-        func validate(weekNumber: Int) -> Bool {
-            switch self {
-            case .all:
-                return true
-            case .even:
-                return weekNumber % 2 == 0
-            case .odd:
-                return weekNumber % 2 == 1
-            }
-        }
-    }
-
-    var rooms: [String]
-    var weeks: Set<Int>?
-    var begin: DateComponents
-    var end: DateComponents
-    var tag: String
-    var name: String
-    var professor: String
-    var type: String
-    var week: Week
-    var day: Day
+    let rooms: [String]
+    let weeks: Set<Int>?
+    let begin: DateComponents
+    let end: DateComponents
+    let tag: String
+    let name: String
+    let professor: String
+    let type: String
+    let week: Week
+    let day: Day
 
     static func get(year: String, major: String, group: String) -> Observable<[Lecture]> {
         let parameters = [
@@ -74,44 +43,35 @@ struct Lecture {
     }
 }
 
-extension Lecture: JSONInitializable {
+extension Lecture: Unmarshaling {
 
     static let url = "https://www2.htw-dresden.de/~app/API/GetTimetable.php"
 
-    init?(json: Any?) {
-        guard let j = json as? [String: Any] else {
-            return nil
+    init(object: MarshaledObject) throws {
+        self.rooms = try object <| "Rooms"
+        self.begin = try object <| "beginTime"
+        self.end = try object <| "endTime"
+        let rawDay: Int = try object <| "day"
+        guard let day = Day(rawValue: rawDay - 1) else {
+            throw Day.Error.outOfBounds(rawDay - 1)
         }
-
-        guard
-            let rooms = j["Rooms"] as? [String],
-            let begin = (j["beginTime"] as? String).flatMap(DateComponents.timeFromString),
-            let end = (j["endTime"] as? String).flatMap(DateComponents.timeFromString),
-            let day = (j["day"] as? Int).map({ $0 - 1 }).flatMap({ Day(rawValue: $0) }),
-            let tag = j["lessonTag"] as? String,
-            let name = j["name"] as? String,
-            let professor = j["professor"] as? String,
-            let type = j["type"] as? String,
-            let week = (j["week"] as? Int).flatMap(Week.init)
-            else {
-                return nil
-        }
-
-        var weeks = (j["WeeksOnly"] as? String).map { $0.components(separatedBy: ";").flatMap { Int($0) } }
-        if weeks?.isEmpty ?? true {
-            weeks = nil
-        }
-
-        self.rooms = rooms
-        self.begin = begin
-        self.end = end
         self.day = day
-        self.tag = tag
-        self.name = name
-        self.professor = professor
-        self.type = type
+        self.tag = try object <| "lessonTag"
+        self.name = try object <| "name"
+        self.professor = try object <| "professor"
+        self.type = try object <| "type"
+        let rawWeek: Int = try object <| "week"
+        guard let week = Week(rawValue: rawWeek) else {
+            throw Day.Error.outOfBounds(rawWeek)
+        }
         self.week = week
-        self.weeks = weeks.map(Set.init)
+
+        let weeksString: String? = try? object <| "WeeksOnly"
+        if let weeks = weeksString?.components(separatedBy: ";").flatMap({ Int($0) }), !weeks.isEmpty {
+            self.weeks = Set(weeks)
+        } else {
+            self.weeks = nil
+        }
     }
 
 }

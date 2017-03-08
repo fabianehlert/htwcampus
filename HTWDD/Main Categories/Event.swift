@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Marshal
 
 struct Event: Hashable {
     let name: String
@@ -24,22 +25,11 @@ struct Event: Hashable {
     }
 }
 
-extension Event: JSONInitializable {
+extension Event: Unmarshaling {
 
-    init?(json: Any?) {
-        guard let j = json as? [String: String] else {
-            return nil
-        }
-
-        guard
-            let name = j["name"],
-            let period = EventPeriod(json: j)
-        else {
-                return nil
-        }
-
-        self.name = name
-        self.period = period
+    init(object: MarshaledObject) throws {
+        self.name = try object <| "name"
+        self.period = try EventPeriod(object: object)
     }
 
 }

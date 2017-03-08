@@ -38,6 +38,7 @@
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */; };
 		B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52DF0D71E7096F30095C854 /* Marshal.framework */; };
+		B52DF0DA1E70A8870095C854 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0D91E70A8870095C854 /* Week.swift */; };
 		B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF041E1D56D70031077C /* SettingsManager.swift */; };
 		B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF061E1D58690031077C /* NSObject+Rx.swift */; };
 		B538EF0A1E1D5BD10031077C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF091E1D5BD10031077C /* Log.swift */; };
@@ -101,6 +102,7 @@
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTWDDTest.swift; sourceTree = "<group>"; };
 		B52DF0D71E7096F30095C854 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/iOS/Marshal.framework; sourceTree = "<group>"; };
+		B52DF0D91E70A8870095C854 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		B538EF041E1D56D70031077C /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B538EF061E1D58690031077C /* NSObject+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		B538EF091E1D5BD10031077C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */,
 				B555070F1E601AE300C16F5F /* Lecture.swift */,
 				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
+				B52DF0D91E70A8870095C854 /* Week.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
+				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,

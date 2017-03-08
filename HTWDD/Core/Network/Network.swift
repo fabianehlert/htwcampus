@@ -9,15 +9,16 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
-protocol JSONInitializable {
-    init?(json: Any?)
-}
+import Marshal
 
 enum Network {
 
     enum ParameterEncoding {
         case url, json
+    }
+
+    enum Error: Swift.Error {
+        case wrongType(expected: String, got: String)
     }
 
     private static func data(parameters: [String: String], encoding: ParameterEncoding) -> Data? {
@@ -41,12 +42,12 @@ enum Network {
         return URLSession.shared.rx.json(request: req).map { $0 as Any? }
     }
 
-    static func get<T: JSONInitializable>(url: String, params: [String: String] = [:]) -> Observable<T?> {
-        return get(url: url, params: params).map { T(json: $0) }
+    static func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
+        return get(url: url, params: params).map(self.mapSingleObject)
     }
 
-    static func getArray<T: JSONInitializable>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
-        return get(url: url, params: params).map { ($0 as? [Any])?.flatMap(T.init) ?? [] }
+    static func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
+        return get(url: url, params: params).map(self.mapArray)
     }
 
     private static func post(url: String, params: [String: String], encoding: ParameterEncoding) -> Observable<Any?> {
@@ -65,12 +66,25 @@ enum Network {
         return URLSession.shared.rx.json(request: r).map { $0 as Any? }
     }
 
-    static func post<T: JSONInitializable>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<T?> {
-        return post(url: url, params: params, encoding: encoding).map { T(json: $0) }
+    static func post<T: Unmarshaling>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<T> {
+        return post(url: url, params: params, encoding: encoding).map(self.mapSingleObject)
     }
 
-    static func postArray<T: JSONInitializable>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<[T]> {
-        return post(url: url, params: params, encoding: encoding).map { ($0 as? [Any])?.flatMap(T.init) ?? [] }
+    static func postArray<T: Unmarshaling>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<[T]> {
+        return post(url: url, params: params, encoding: encoding).map(self.mapArray)
     }
 
+    private static func mapSingleObject<T: Unmarshaling>(json: Any?) throws -> T {
+        guard let jsonObject = json as? [String: Any] else {
+            throw Error.wrongType(expected: String(describing: [String: Any].self), got: String(describing: json))
+        }
+        return try T(object: jsonObject)
+    }
+
+    private static func mapArray<T: Unmarshaling>(json: Any?) throws -> [T] {
+        guard let jsonArray = json as? [[String: Any]] else {
+            throw Error.wrongType(expected: String(describing: [[String: Any]].self), got: String(describing: json))
+        }
+        return try jsonArray.map(T.init)
+    }
 }

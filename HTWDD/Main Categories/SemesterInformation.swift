@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Marshal
 
 struct SemesterInformation {
 
@@ -27,40 +28,26 @@ struct SemesterInformation {
 
 }
 
-extension SemesterInformation: JSONInitializable {
+extension SemesterInformation: Unmarshaling {
 
     static let url = "https://www2.htw-dresden.de/~app/API/semesterplan.json"
 
-    init?(json: Any?) {
-        guard let j = json as? [String: Any] else {
-            return nil
-        }
-
-        guard
-            let year = j["year"] as? Int,
-            let type = j["type"] as? String,
-            let period = EventPeriod(json: j["period"]),
-            let freeDays = (j["freeDays"] as? [Any])?.flatMap(Event.init),
-            let lectures = EventPeriod(json: j["lecturePeriod"]),
-            let exams = EventPeriod(json: j["examsPeriod"]),
-            let reregistration = EventPeriod(json: j["reregistration"])
-        else {
-                return nil
-        }
-
+    init(object: MarshaledObject) throws {
+        let year: Int = try object <| "year"
+        let type: String = try object <| "type"
         if type == "W" {
             self.semester = .winter(year: year)
         } else if type == "S" {
             self.semester = .summer(year: year)
         } else {
-            return nil
+            throw MarshalError.typeMismatch(expected: Semester.self, actual: "\(year)\(type)")
         }
-
-        self.period = period
+        self.period = try object <| "period"
+        let freeDays: [Event] = try object <| "freeDays"
         self.freeDays = Set(freeDays)
-        self.lectures = lectures
-        self.exams = exams
-        self.reregistration = reregistration
+        self.lectures = try object <| "lecturePeriod"
+        self.exams = try object <| "examsPeriod"
+        self.reregistration = try object <| "reregistration"
     }
 
 }

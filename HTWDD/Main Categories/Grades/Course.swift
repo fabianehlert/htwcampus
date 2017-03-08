@@ -8,13 +8,14 @@
 
 import Foundation
 import RxSwift
+import Marshal
 
 struct Course {
-    var abschlTxt: String
-    var POVersion: String
-    var abschlNr: String
-    var stgNr: String
-    var stgTxt: String
+    let abschlTxt: String
+    let POVersion: String
+    let abschlNr: String
+    let stgNr: String
+    let stgTxt: String
 
     static func get(sNumber: String, password: String) -> Observable<[Course]> {
         let parameters = [
@@ -27,25 +28,15 @@ struct Course {
 
 }
 
-extension Course: JSONInitializable {
+extension Course: Unmarshaling {
     static let url = "https://wwwqis.htw-dresden.de/appservice/getcourses"
 
-    init?(json: Any?) {
-
-        guard let j = json as? [String: String] else {
-            return nil
-        }
-
-        guard
-            let abschlTxt = j["AbschlTxt"],
-            let POVersion = j["POVersion"],
-            let abschlNr = j["AbschlNr"],
-            let stgNr = j["StgNr"],
-            let stgTxt = j["StgTxt"]
-            else {
-                return nil
-        }
-
-        self.init(abschlTxt: abschlTxt, POVersion: POVersion, abschlNr: abschlNr, stgNr: stgNr, stgTxt: stgTxt)
+    init(object: MarshaledObject) throws {
+        self.abschlTxt = try object <| "AbschlTxt"
+        self.POVersion = try object <| "POVersion"
+        self.abschlNr = try object <| "AbschlNr"
+        self.stgNr = try object <| "StgNr"
+        self.stgTxt = try object <| "StgTxt"
     }
+
 }
