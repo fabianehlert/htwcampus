@@ -23,7 +23,6 @@ enum Week: Int {
     }
 
     enum Error: Swift.Error {
-        case wrongType(String)
         case outOfBounds(Int)
     }
 
