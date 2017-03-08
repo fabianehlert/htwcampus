@@ -19,14 +19,14 @@ class EventDate_TestCase: XCTestCase {
         XCTAssertEqual(date.month, 2)
         XCTAssertEqual(date.day, 20)
 
-        _ = try EventDate.value(from: "")
-        _ = try EventDate.value(from: "2000-13-10")
-        _ = try EventDate.value(from: "2000-12-32")
-        _ = try EventDate.value(from: "2000-0-12")
-        _ = try EventDate.value(from: "2000-3-0")
-        _ = try EventDate.value(from: "a-12-3")
-        _ = try EventDate.value(from: "2000-a-3")
-        _ = try EventDate.value(from: "2000-3-a")
+        XCTAssertNil(try? EventDate.value(from: ""))
+        XCTAssertNil(try? EventDate.value(from: "2000-13-10"))
+        XCTAssertNil(try? EventDate.value(from: "2000-12-32"))
+        XCTAssertNil(try? EventDate.value(from: "2000-0-12"))
+        XCTAssertNil(try? EventDate.value(from: "2000-3-0"))
+        XCTAssertNil(try? EventDate.value(from: "a-12-3"))
+        XCTAssertNil(try? EventDate.value(from: "2000-a-3"))
+        XCTAssertNil(try? EventDate.value(from: "2000-3-a"))
     }
 
 }
