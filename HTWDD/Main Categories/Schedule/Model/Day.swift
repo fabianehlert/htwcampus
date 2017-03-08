@@ -11,6 +11,10 @@ import Foundation
 enum Day: Int {
     case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
 
+    enum Error: Swift.Error {
+        case outOfBounds(Int)
+    }
+
     /// Returns a day with the added number of days. (Use negative number to subtract)
     ///
     /// - Parameter days: the number of days to add/subtract.

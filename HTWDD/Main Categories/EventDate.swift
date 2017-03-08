@@ -7,33 +7,18 @@
 //
 
 import Foundation
+import Marshal
 
 struct EventDate: Hashable {
+
+    enum Error: Swift.Error {
+        case wrongType(String)
+        case wrongFormat(String)
+    }
+
     let day: Int
     let month: Int
     let year: Int
-
-    /// Initializes an EventDate with a String in the format 'yyyy-MM-dd'
-    ///
-    /// - Parameter raw: the EventDate representation as a String
-    init?(raw: String) {
-        let parts = raw.components(separatedBy: "-").flatMap { Int($0) }
-        guard parts.count == 3 else {
-            return nil
-        }
-        self.year = parts[0]
-        self.month = parts[1]
-        self.day = parts[2]
-
-        guard (1..<12).contains(self.month) else {
-            return nil
-        }
-
-        // it would maybe make sense to check this dependend on the month
-        guard (1..<31).contains(self.day) else {
-            return nil
-        }
-    }
 
     var hashValue: Int {
         var hash = 5381
@@ -46,4 +31,31 @@ struct EventDate: Hashable {
     static func ==(lhs: EventDate, rhs: EventDate) -> Bool {
         return lhs.day == rhs.day && lhs.month == rhs.month && lhs.year == rhs.year
     }
+}
+
+extension EventDate: ValueType {
+
+    public static func value(from object: Any) throws -> EventDate {
+        guard let raw = object as? String else {
+            throw Error.wrongType("\(object)")
+        }
+
+        let parts = raw.components(separatedBy: "-").flatMap { Int($0) }
+        guard parts.count == 3 else {
+            throw Error.wrongFormat(raw)
+        }
+
+        let newDate = EventDate(day: parts[2], month: parts[1], year: parts[0])
+
+        guard (1...12).contains(newDate.month) else {
+            throw Error.wrongFormat(raw)
+        }
+
+        // it would maybe make sense to check this dependend on the month
+        guard (1...31).contains(newDate.day) else {
+            throw Error.wrongFormat(raw)
+        }
+        return newDate
+    }
+
 }

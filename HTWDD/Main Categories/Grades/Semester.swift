@@ -7,30 +7,15 @@
 //
 
 import Foundation
+import Marshal
 
 enum Semester: Hashable, CustomStringConvertible, Comparable {
     case summer(year: Int)
     case winter(year: Int)
 
-    init?(rawValue: String) {
-        guard rawValue.characters.count == 5 else {
-            return nil
-        }
-
-        var raw = rawValue
-
-        let type = raw.characters.removeLast()
-
-        guard let year = Int(raw), type == "1" || type == "2" else {
-            return nil
-        }
-        if type == "1" {
-            self = .summer(year: year)
-        } else if type == "2" {
-            self = .winter(year: year)
-        } else {
-            return nil
-        }
+    enum Error: Swift.Error {
+        case wrongType(String)
+        case wrongFormat(String)
     }
 
     var year: Int {
@@ -86,4 +71,35 @@ enum Semester: Hashable, CustomStringConvertible, Comparable {
             return false
         }
     }
+}
+
+extension Semester: ValueType {
+
+    static func value(from object: Any) throws -> Semester {
+        guard let number = object as? Int else {
+            throw Error.wrongType("\(object)")
+        }
+
+        let rawValue = "\(number)"
+
+        guard rawValue.characters.count == 5 else {
+            throw Error.wrongFormat(rawValue)
+        }
+
+        var raw = rawValue
+
+        let type = raw.characters.removeLast()
+
+        guard let year = Int(raw), type == "1" || type == "2" else {
+            throw Error.wrongFormat(rawValue)
+        }
+        if type == "1" {
+            return .summer(year: year)
+        } else if type == "2" {
+            return .winter(year: year)
+        } else {
+            throw Error.wrongFormat(rawValue)
+        }
+    }
+
 }

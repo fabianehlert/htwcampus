@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Marshal
 
 struct EventPeriod: Hashable {
 
@@ -26,20 +27,11 @@ struct EventPeriod: Hashable {
 
 }
 
-extension EventPeriod: JSONInitializable {
+extension EventPeriod: Unmarshaling {
 
-    init?(json: Any?) {
-        guard let j = json as? [String: String] else {
-            return nil
-        }
-        guard
-            let begin = j["beginDay"].flatMap(EventDate.init),
-            let end = j["endDay"].flatMap(EventDate.init)
-        else {
-                return nil
-        }
-        self.begin = begin
-        self.end = end
+    init(object: MarshaledObject) throws {
+        self.begin = try object.value(for: "beginDay")
+        self.end = try object.value(for: "endDay")
     }
 
 }

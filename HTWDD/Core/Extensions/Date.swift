@@ -22,8 +22,16 @@ private func dateFormatter(format: String) -> DateFormatter {
 
 extension Date {
 
-    static func fromString(_ string: String, format: String) -> Date? {
-        return dateFormatter(format: format).date(from: string)
+    enum Error: Swift.Error {
+        case wrongType(String)
+        case wrongFormat(raw: String, format: String)
+    }
+
+    static func from(string: String, format: String) throws -> Date {
+        guard let date = dateFormatter(format: format).date(from: string) else {
+            throw Error.wrongFormat(raw: string, format: format)
+        }
+        return date
     }
 
     static func from(day: Int, month: Int, year: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date? {

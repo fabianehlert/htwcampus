@@ -8,11 +8,12 @@
 
 import Foundation
 import RxSwift
+import Marshal
 
 struct Grade {
 
     var nr: Int
-    var status: String
+    var state: String
     var credits: Double
     var text: String
     var semester: Semester
@@ -51,38 +52,22 @@ struct Grade {
     }
 }
 
-extension Grade: JSONInitializable {
+extension Grade: Unmarshaling {
     static let url = "https://wwwqis.htw-dresden.de/appservice/getgrades"
 
-    init?(json: Any?) {
-        guard let j = json as? [String: String] else {
-            return nil
-        }
-
-        guard
-            let nr = j["PrNr"].flatMap({ Int($0) }),
-            let status = j["Status"],
-            let credits = j["EctsCredits"].flatMap({ Double($0) }),
-            let text = j["PrTxt"],
-            let semester = j["Semester"].flatMap({ Semester(rawValue: $0) }),
-            let numberOfTry = j["Versuch"].flatMap({ Int($0) }),
-            let date = j["PrDatum"].flatMap({ Date.fromString($0, format: "dd.MM.yyyy") }),
-            let mark = j["PrNote"].flatMap({ Double($0) }).map({ $0 / 100 })
-        else {
-                return nil
-        }
-
-        self.nr = nr
-        self.status = status
-        self.credits = credits
-        self.text = text
-        self.semester = semester
-        self.numberOfTry = numberOfTry
-        self.date = date
-        self.mark = mark
-        self.note = j["Vermerk"].flatMap { $0.isEmpty ? nil : $0 }
-
+    init(object: MarshaledObject) throws {
+        self.nr = try object.value(for: "nr")
+        self.state = try object.value(for: "state")
+        self.credits = try object.value(for: "credits")
+        self.text = try object.value(for: "text")
+        self.semester = try object.value(for: "semester")
+        self.numberOfTry = try object.value(for: "tries")
+        let dateRaw: String = try object.value(for: "examDate")
+        self.date = try Date.from(string: dateRaw, format: "yyyy-MM-dd'T'HH:mmZ")
+        self.mark = try object.value(for: "grade") / 100
+        self.note = try? object.value(for: "note")
     }
+
 }
 
 extension Grade: Equatable {
