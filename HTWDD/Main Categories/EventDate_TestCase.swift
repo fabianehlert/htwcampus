@@ -11,25 +11,22 @@ import XCTest
 
 class EventDate_TestCase: XCTestCase {
 
-    func test_init() {
+    func test_init() throws {
         let raw = "2000-02-20"
-        guard let date = EventDate(raw: raw) else {
-            XCTFail("Expected date to be non nil.")
-            return
-        }
+        let date = try EventDate.value(from: raw)
 
         XCTAssertEqual(date.year, 2000)
         XCTAssertEqual(date.month, 2)
         XCTAssertEqual(date.day, 20)
 
-        XCTAssertNil(EventDate(raw: ""))
-        XCTAssertNil(EventDate(raw: "2000-13-10"))
-        XCTAssertNil(EventDate(raw: "2000-12-32"))
-        XCTAssertNil(EventDate(raw: "2000-0-12"))
-        XCTAssertNil(EventDate(raw: "2000-3-0"))
-        XCTAssertNil(EventDate(raw: "a-12-3"))
-        XCTAssertNil(EventDate(raw: "2000-a-3"))
-        XCTAssertNil(EventDate(raw: "2000-3-a"))
+        _ = try EventDate.value(from: "")
+        _ = try EventDate.value(from: "2000-13-10")
+        _ = try EventDate.value(from: "2000-12-32")
+        _ = try EventDate.value(from: "2000-0-12")
+        _ = try EventDate.value(from: "2000-3-0")
+        _ = try EventDate.value(from: "a-12-3")
+        _ = try EventDate.value(from: "2000-a-3")
+        _ = try EventDate.value(from: "2000-3-a")
     }
 
 }
