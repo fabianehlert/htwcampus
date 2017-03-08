@@ -12,15 +12,15 @@ import Marshal
 
 struct Grade {
 
-    var nr: Int
-    var state: String
-    var credits: Double
-    var text: String
-    var semester: Semester
-    var numberOfTry: Int
-    var date: Date
-    var mark: Double
-    var note: String?
+    let nr: Int
+    let state: String
+    let credits: Double
+    let text: String
+    let semester: Semester
+    let numberOfTry: Int
+    let date: Date
+    let mark: Double
+    let note: String?
 
     static func get(sNumber: String, password: String, course: Course) -> Observable<[Grade]> {
         let parameters = [

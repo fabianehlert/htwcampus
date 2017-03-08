@@ -11,21 +11,18 @@ import XCTest
 
 class Semester_Tests: XCTestCase {
 
-    func test_init() {
-        XCTAssertNil(Semester(rawValue: "abc"))
-        XCTAssertNil(Semester(rawValue: "20039"))
-        XCTAssertNil(Semester(rawValue: "abcdf"))
-        XCTAssertNil(Semester(rawValue: "this is some arbitrary string"))
+    func test_init() throws {
+        _ = try Semester.value(from: "abc")
+        _ = try Semester.value(from: "20039")
+        _ = try Semester.value(from: "abcdf")
+        _ = try Semester.value(from: "this is some arbitrary string")
 
-        guard var s = Semester(rawValue: "20122") else {
-            XCTFail("20122 was not parsed as a valid semester string")
-            return
-        }
+        var s = try Semester.value(from: "20122")
 
         XCTAssertEqual(s.year, 2012)
         XCTAssertTrue(Semester.winter(year: 2012) ~= s)
 
-        s = Semester(rawValue: "30001")!
+        s = try Semester.value(from: "30001")
         XCTAssertEqual(s.year, 3000)
         XCTAssertTrue(Semester.summer(year: 3000) ~= s)
     }
