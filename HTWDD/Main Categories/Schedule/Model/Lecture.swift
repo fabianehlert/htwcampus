@@ -62,7 +62,7 @@ extension Lecture: Unmarshaling {
         self.type = try object <| "type"
         let rawWeek: Int = try object <| "week"
         guard let week = Week(rawValue: rawWeek) else {
-            throw Day.Error.outOfBounds(rawWeek)
+            throw Week.Error.outOfBounds(rawWeek)
         }
         self.week = week
 
