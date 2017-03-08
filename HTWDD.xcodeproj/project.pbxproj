@@ -136,8 +136,8 @@
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
-		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = Grades/Semester.swift; sourceTree = "<group>"; };
-		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester_Tests.swift; path = Grades/Semester_Tests.swift; sourceTree = "<group>"; };
+		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = Semester.swift; sourceTree = "<group>"; };
+		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester_Tests.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
 		B5FCAE601E62EAEF00E35DDB /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,9 +267,9 @@
 		B52A9B541DDB16ED00313FC3 /* Main Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE72801E6C808700D05B6D /* General */,
 				B52A9B511DDB16B800313FC3 /* Canteen */,
 				B52A9B501DDB169100313FC3 /* Exams */,
+				B5BE72801E6C808700D05B6D /* General */,
 				B52A9B4E1DDB165B00313FC3 /* Grades */,
 				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B531DDB16D900313FC3 /* Settings UI */,
@@ -395,10 +395,11 @@
 				B5BE72891E6C86A600D05B6D /* EventPeriod.swift */,
 				B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */,
 				B5F58E4C1E1EB15A006D99AE /* Semester.swift */,
-				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 				B5BE72811E6C809200D05B6D /* SemesterInformation.swift */,
+				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
 			name = General;
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
