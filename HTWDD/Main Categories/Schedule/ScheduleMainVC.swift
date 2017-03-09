@@ -33,8 +33,15 @@ class ScheduleMainVC: CollectionViewController {
         self.title = Loca.scheduleTitle
 
         self.dataSource.register(type: LectureCollectionViewCell.self)
-        self.dataSource.register(supplementary: LectureHeaderView.self, kind: .header) { view, indexPath in
-            view.title = self.dataSource.dayName(indexPath: indexPath)
+        self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
+        }
+        self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
+            guard let `self` = self else {
+                return
+            }
+            let hour = Int(self.startHour) - 1 + indexPath.row
+            time.timeString = "\(hour)"
         }
         self.dataSource.load()
     }

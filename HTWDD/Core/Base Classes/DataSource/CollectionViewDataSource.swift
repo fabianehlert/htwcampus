@@ -10,6 +10,7 @@ import UIKit
 
 enum SupplementaryKind: String {
     case header
+    case description
 }
 
 class CollectionViewDataSource: NSObject {
@@ -58,7 +59,8 @@ class CollectionViewDataSource: NSObject {
         }
     }
 
-    func register<S: UICollectionReusableView>(supplementary: S.Type, kind: SupplementaryKind, config: @escaping (S, IndexPath) -> Void) where S: Identifiable {
+    func registerSupplementary<S: CollectionReusableView>(_ supplementary: S.Type, kind: SupplementaryKind, config: @escaping (S, IndexPath) -> Void) where S: Identifiable {
+
         assert(self.collectionView != nil)
         let identifier = S.identifier
         self.collectionView?.register(supplementary, forSupplementaryViewOfKind: kind.rawValue, withReuseIdentifier: identifier)
