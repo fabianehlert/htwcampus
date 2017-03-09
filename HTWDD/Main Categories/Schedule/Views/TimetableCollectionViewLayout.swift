@@ -39,6 +39,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
     private enum Const {
         static let headerHeight: CGFloat = 40
+        static let timeWidth: CGFloat = 70
     }
 
     private(set) weak var dataSource: TimetableCollectionViewLayoutDataSource?
@@ -73,7 +74,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
         let height = dataSource.height
         let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
-        let width = CGFloat(sections) * dataSource.widthPerDay
+        let width = CGFloat(sections) * dataSource.widthPerDay + Const.timeWidth
 
         return CGSize(width: width, height: height)
     }
@@ -85,8 +86,11 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         let headerAttributes = self.indexPathsForHeaderViews(in: rect).flatMap {
             return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.header.rawValue, at: $0)
         }
+        let timeAttributes = self.indexPathsForTimeViews(in: rect).flatMap {
+            return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: $0)
+        }
 
-        return itemAttributes + headerAttributes
+        return itemAttributes + headerAttributes + timeAttributes
     }
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -102,7 +106,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         let margin = dataSource.itemMargin
 
         let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin
+        attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + Const.timeWidth
 
         attr.frame.origin.y = (t.begin.time / 3600 - dataSource.startHour) * self.heightPerHour + margin + Const.headerHeight
         attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 * margin
@@ -117,10 +121,18 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         }
 
         let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
-        attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay
-        attr.frame.origin.y = 0
-        attr.frame.size.height = Const.headerHeight
-        attr.frame.size.width = dataSource.widthPerDay
+        if elementKind == SupplementaryKind.header.rawValue {
+            attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + Const.timeWidth
+            attr.frame.origin.y = 0
+            attr.frame.size.height = Const.headerHeight
+            attr.frame.size.width = dataSource.widthPerDay
+        } else if elementKind == SupplementaryKind.description.rawValue {
+            let height = self.heightPerHour
+            attr.frame.origin.x = 0
+            attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight
+            attr.frame.size.height = height
+            attr.frame.size.width = Const.timeWidth
+        }
 
         return attr
     }
@@ -142,6 +154,24 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         let end = max(Int(ceil((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
 
         return (min(start, sections)..<min(end, sections)).map { IndexPath(item: 0, section: $0) }
+    }
+
+    private func indexPathsForTimeViews(in rect: CGRect) -> [IndexPath] {
+
+        guard rect.origin.x <= Const.timeWidth else {
+            return []
+        }
+
+        guard
+            let dataSource = self.dataSource
+            else {
+                return []
+        }
+
+        let startHour = Int(dataSource.startHour)
+        let endHour = Int(dataSource.endHour)
+
+        return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
     }
 
     private func indexPathsForItemsInRect(rect: CGRect) -> [IndexPath] {
