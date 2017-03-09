@@ -17,7 +17,7 @@ File.open(ARGV[0]).each do |line|
 	value = line[/\".*\"\s*=\s*\"(.*)\";/, 1]
 
 	puts "\t// #{value}\n"
-	puts "\tvar #{key}: String { return NSLocalizedString(\"#{key}\", comment: \"\") }\n"
+	puts "\tstatic var #{key}: String { return NSLocalizedString(\"#{key}\", comment: \"\") }\n"
 end
 
 puts "}\n"
