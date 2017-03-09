@@ -26,6 +26,31 @@ struct EventDate: Hashable {
     static func ==(lhs: EventDate, rhs: EventDate) -> Bool {
         return lhs.day == rhs.day && lhs.month == rhs.month && lhs.year == rhs.year
     }
+
+}
+
+extension EventDate {
+
+    init?(date: Date) {
+        let components = date.components
+        guard
+            let year = components.year,
+            let month = components.month,
+            let day = components.day
+            else {
+                return nil
+        }
+        self.year = year
+        self.month = month
+        self.day = day
+    }
+
+    var date: Date {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = DateComponents(calendar: calendar, timeZone: TimeZone.autoupdatingCurrent, year: self.year, month: self.month, day: self.day)
+        return calendar.date(from: components)!
+    }
+
 }
 
 extension EventDate: ValueType {

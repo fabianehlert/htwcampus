@@ -39,6 +39,7 @@
 		B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */; };
 		B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52DF0D71E7096F30095C854 /* Marshal.framework */; };
 		B52DF0DA1E70A8870095C854 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0D91E70A8870095C854 /* Week.swift */; };
+		B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */; };
 		B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF041E1D56D70031077C /* SettingsManager.swift */; };
 		B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF061E1D58690031077C /* NSObject+Rx.swift */; };
 		B538EF0A1E1D5BD10031077C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF091E1D5BD10031077C /* Log.swift */; };
@@ -103,6 +104,7 @@
 		B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTWDDTest.swift; sourceTree = "<group>"; };
 		B52DF0D71E7096F30095C854 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/iOS/Marshal.framework; sourceTree = "<group>"; };
 		B52DF0D91E70A8870095C854 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		B538EF041E1D56D70031077C /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B538EF061E1D58690031077C /* NSObject+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		B538EF091E1D5BD10031077C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -136,8 +138,8 @@
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
-		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = Semester.swift; sourceTree = "<group>"; };
-		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester_Tests.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
+		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
+		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
 		B5FCAE601E62EAEF00E35DDB /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,6 +288,7 @@
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
 				B538EF061E1D58690031077C /* NSObject+Rx.swift */,
 				B5BE727A1E6C4CBD00D05B6D /* Observable.swift */,
+				B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */,
 				B538EF0F1E1D62040031077C /* UserDefaults.swift */,
 			);
 			path = Extensions;
@@ -398,7 +401,6 @@
 				B5BE72811E6C809200D05B6D /* SemesterInformation.swift */,
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
-			name = General;
 			path = General;
 			sourceTree = "<group>";
 		};
@@ -603,6 +605,7 @@
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
+				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
@@ -783,7 +786,7 @@
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDD";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "60241fff-cf46-4e2f-acb5-a3b91c69fcf5";
+				PROVISIONING_PROFILE = "e61afe5e-6c75-4748-b452-08c8a03c5c86";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW Development";
 				SWIFT_VERSION = 3.0;
 			};

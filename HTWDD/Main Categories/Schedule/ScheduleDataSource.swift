@@ -11,11 +11,13 @@ import RxSwift
 
 class ScheduleDataSource: CollectionViewDataSource {
 
-    private(set) var lectures = [Day: [Lecture]]() {
+    private(set) var lectures = [Day: [Lecture]]()
+    private var semesterInformations = [SemesterInformation]() {
         didSet {
-            self.data = calculate(input: self.lectures)
+            self.semesterInformation = SemesterInformation.information(date: self.originDate, input: self.semesterInformations)
         }
     }
+    private var semesterInformation: SemesterInformation?
 
     private var data = [[Lecture]]() {
         didSet {
@@ -27,7 +29,7 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     var originDate: Date {
         didSet {
-            self.data = calculate(input: self.lectures)
+            self.data = self.calculate()
         }
     }
     var numberOfDays: Int
@@ -38,27 +40,48 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     func load() {
-        Lecture.get(year: "2016", major: "044", group: "71-IK")
+        let lecturesObservable = Lecture.get(year: "2016", major: "044", group: "71-IK")
             .map(Lecture.groupByDay)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] lectures in
-                self?.lectures = lectures
-                }, onError: { err in
-                    print(err)
-            })
-            .addDisposableTo(self.disposeBag)
+
+        let informationObservable = SemesterInformation.get()
+
+        Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
+                  .observeOn(MainScheduler.instance)
+                  .subscribe(onNext: { [weak self] lectures, information in
+
+                    self?.lectures = lectures
+                    self?.semesterInformations = information
+                    self?.data = self?.calculate() ?? []
+
+        }, onError: { _ in
+
+        }).addDisposableTo(self.disposeBag)
     }
 
     func lecture(at indexPath: IndexPath) -> Lecture? {
         return self.data[indexPath.section][indexPath.row]
     }
 
-    private func calculate(input: [Day: [Lecture]]) -> [[Lecture]] {
+    private func calculate() -> [[Lecture]] {
+        guard let semesterInformation = self.semesterInformation, !self.lectures.isEmpty else {
+            return []
+        }
+
         let sections = 0..<self.numberOfSections()
         let originDay = self.originDate.weekday
         let startWeek = self.originDate.weekNumber
 
         let a: [[Lecture]] = sections.map { section in
+            let date = self.originDate.byAdding(days: TimeInterval(section))
+
+            guard semesterInformation.lecturesContains(date: date) else {
+                return []
+            }
+
+            guard !semesterInformation.freeDaysContains(date: date) else {
+                return []
+            }
+
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
             return (self.lectures[originDay.dayByAdding(days: section)] ?? []).filter { lecture in
                 let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)

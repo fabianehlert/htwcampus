@@ -30,8 +30,6 @@ class ScheduleMainVC: CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        SemesterInformation.get().debug().subscribe().addDisposableTo(self.rx_disposeBag)
-
         self.title = "Stundenplan"
 
         self.dataSource.register(type: LectureCollectionViewCell.self)

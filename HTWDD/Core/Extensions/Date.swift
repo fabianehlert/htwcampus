@@ -36,9 +36,12 @@ extension Date {
         return Calendar.current.date(from: c)
     }
 
+    func byAdding(days n: TimeInterval) -> Date {
+        return self.addingTimeInterval(n.days)
+    }
+
     var weekday: Day {
-        let c = Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
-        guard let rawDay = c.weekday else {
+        guard let rawDay = self.components.weekday else {
             fatalError("Expected a date to have a weekday.")
         }
 
@@ -54,6 +57,10 @@ extension Date {
             fatalError("Expected date to have a week number.")
         }
         return week
+    }
+
+    var components: DateComponents {
+        return Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
     }
 
 }
