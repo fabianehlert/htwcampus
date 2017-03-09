@@ -26,13 +26,15 @@
 		B50EB4F31E6AC25D0022E40C /* htw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B50EB4F21E6AC25D0022E40C /* htw.gpx */; };
 		B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */; };
 		B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */; };
-		B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */; };
+		B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F81E6ADADC0022E40C /* ErrorViews.swift */; };
 		B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */; };
 		B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */; };
 		B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */; };
 		B50EB5021E6AFFA20022E40C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB5011E6AFFA20022E40C /* Day.swift */; };
 		B5111E171E71E68F00D68155 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
 		B5111E1D1E71ECAD00D68155 /* Loca.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1C1E71ECAD00D68155 /* Loca.swift */; };
+		B5111E201E71F44300D68155 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1F1E71F44300D68155 /* View.swift */; };
+		B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E231E71F7A200D68155 /* CollectionReusableView.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
@@ -101,6 +103,9 @@
 		B5111E161E71E68900D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E1C1E71ECAD00D68155 /* Loca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loca.swift; sourceTree = "<group>"; };
+		B5111E1F1E71F44300D68155 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B5111E231E71F7A200D68155 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
+		B5111E261E71FEC100D68155 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +182,7 @@
 			children = (
 				B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */,
 				B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */,
-				B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */,
+				B50EB4F81E6ADADC0022E40C /* ErrorViews.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -307,7 +312,9 @@
 				B50EB4FC1E6ADB410022E40C /* DataSource */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
+				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
+				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
 			);
 			path = "Base Classes";
@@ -610,6 +617,7 @@
 			files = (
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
+				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B5111E1D1E71ECAD00D68155 /* Loca.swift in Sources */,
@@ -617,6 +625,7 @@
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
+				B5111E201E71F44300D68155 /* View.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
 				B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */,
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
@@ -640,7 +649,7 @@
 				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,
 				B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */,
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
-				B50EB4F91E6ADADC0022E40C /* ErrorCell.swift in Sources */,
+				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,

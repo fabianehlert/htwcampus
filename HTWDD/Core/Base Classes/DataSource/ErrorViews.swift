@@ -24,11 +24,39 @@ class ErrorCell: CollectionViewCell {
     private let label = UILabel()
 
     override func initialSetup() {
+        self.contentView.backgroundColor = .red
         self.label.frame = self.contentView.bounds
+        self.label.textColor = .white
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
         self.label.font = UIFont.systemFont(ofSize: 10)
         self.contentView.addSubview(self.label)
+    }
+
+}
+
+class ErrorSupplementaryView: CollectionReusableView {
+
+    /// Setting the error String will replace the labels string with the given one.
+    var error: String? {
+        get {
+            return label.text
+        }
+        set {
+            label.text = newValue
+        }
+    }
+
+    private let label = UILabel()
+
+    override func initialSetup() {
+        self.backgroundColor = .red
+        self.label.frame = self.bounds
+        self.label.textColor = .white
+        self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.label.numberOfLines = 0
+        self.label.font = UIFont.systemFont(ofSize: 10)
+        self.addSubview(self.label)
     }
 
 }
