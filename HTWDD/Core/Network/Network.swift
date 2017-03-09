@@ -18,7 +18,7 @@ enum Network {
     }
 
     enum Error: Swift.Error {
-        case wrongType(expected: String, got: String)
+        case wrongType(expected: Any, got: Any)
     }
 
     private static func data(parameters: [String: String], encoding: ParameterEncoding) -> Data? {
@@ -76,14 +76,14 @@ enum Network {
 
     private static func mapSingleObject<T: Unmarshaling>(json: Any?) throws -> T {
         guard let jsonObject = json as? [String: Any] else {
-            throw Error.wrongType(expected: String(describing: [String: Any].self), got: String(describing: json))
+            throw Error.wrongType(expected: [String: Any].self, got: type(of: json))
         }
         return try T(object: jsonObject)
     }
 
     private static func mapArray<T: Unmarshaling>(json: Any?) throws -> [T] {
         guard let jsonArray = json as? [[String: Any]] else {
-            throw Error.wrongType(expected: String(describing: [[String: Any]].self), got: String(describing: json))
+            throw Error.wrongType(expected: [[String: Any]].self, got: type(of: json))
         }
         return try jsonArray.map(T.init)
     }

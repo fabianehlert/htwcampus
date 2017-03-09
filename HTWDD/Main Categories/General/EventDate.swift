@@ -11,11 +11,6 @@ import Marshal
 
 struct EventDate: Hashable {
 
-    enum Error: Swift.Error {
-        case wrongType(String)
-        case wrongFormat(String)
-    }
-
     let day: Int
     let month: Int
     let year: Int
@@ -37,23 +32,23 @@ extension EventDate: ValueType {
 
     public static func value(from object: Any) throws -> EventDate {
         guard let raw = object as? String else {
-            throw Error.wrongType("\(object)")
+            throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))
         }
 
         let parts = raw.components(separatedBy: "-").flatMap { Int($0) }
         guard parts.count == 3 else {
-            throw Error.wrongFormat(raw)
+            throw MarshalError.typeMismatch(expected: 3, actual: parts.count)
         }
 
         let newDate = EventDate(day: parts[2], month: parts[1], year: parts[0])
 
         guard (1...12).contains(newDate.month) else {
-            throw Error.wrongFormat(raw)
+            throw MarshalError.typeMismatch(expected: (1...12), actual: newDate.month)
         }
 
         // it would maybe make sense to check this dependend on the month
         guard (1...31).contains(newDate.day) else {
-            throw Error.wrongFormat(raw)
+            throw MarshalError.typeMismatch(expected: (1...31), actual: newDate.day)
         }
         return newDate
     }
