@@ -3,17 +3,17 @@ import Foundation
 
 enum Loca {
 	// Monday
-	var monday: String { return NSLocalizedString("monday", comment: "") }
+	static var monday: String { return NSLocalizedString("monday", comment: "") }
 	// Tuesday
-	var tuesday: String { return NSLocalizedString("tuesday", comment: "") }
+	static var tuesday: String { return NSLocalizedString("tuesday", comment: "") }
 	// Wednesday
-	var wednesday: String { return NSLocalizedString("wednesday", comment: "") }
+	static var wednesday: String { return NSLocalizedString("wednesday", comment: "") }
 	// Thursday
-	var thursday: String { return NSLocalizedString("thursday", comment: "") }
+	static var thursday: String { return NSLocalizedString("thursday", comment: "") }
 	// Friday
-	var friday: String { return NSLocalizedString("friday", comment: "") }
+	static var friday: String { return NSLocalizedString("friday", comment: "") }
 	// Saturday
-	var saturday: String { return NSLocalizedString("saturday", comment: "") }
+	static var saturday: String { return NSLocalizedString("saturday", comment: "") }
 	// Sunday
-	var sunday: String { return NSLocalizedString("sunday", comment: "") }
+	static var sunday: String { return NSLocalizedString("sunday", comment: "") }
 }

@@ -31,7 +31,7 @@
 		B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */; };
 		B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */; };
 		B50EB5021E6AFFA20022E40C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB5011E6AFFA20022E40C /* Day.swift */; };
-		B5111E171E71E68F00D68155 /* Loca.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Loca.strings */; };
+		B5111E171E71E68F00D68155 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
 		B5111E1D1E71ECAD00D68155 /* Loca.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1C1E71ECAD00D68155 /* Loca.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
@@ -93,14 +93,13 @@
 		B50EB4F21E6AC25D0022E40C /* htw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = htw.gpx; sourceTree = "<group>"; };
 		B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
-		B50EB4F81E6ADADC0022E40C /* ErrorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
+		B50EB4F81E6ADADC0022E40C /* ErrorViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViews.swift; sourceTree = "<group>"; };
 		B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceProtocols.swift; sourceTree = "<group>"; };
 		B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		B50EB5011E6AFFA20022E40C /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B5111E161E71E68900D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		B5111E181E71E68F00D68155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Loca.strings; sourceTree = "<group>"; };
-		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Loca.strings; sourceTree = "<group>"; };
+		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E1C1E71ECAD00D68155 /* Loca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loca.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -212,7 +211,7 @@
 				B59FA9961DD09C8400259D7F /* Info.plist */,
 				B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */,
 				B5111E1C1E71ECAD00D68155 /* Loca.swift */,
-				B5111E191E71E68F00D68155 /* Loca.strings */,
+				B5111E191E71E68F00D68155 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -509,7 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5111E171E71E68F00D68155 /* Loca.strings in Resources */,
+				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
 			);
@@ -538,7 +537,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "scripts/loca.rb $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Base.lproj/Loca.strings > $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Loca.swift";
+			shellScript = "scripts/loca.rb $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/en.lproj/Localizable.strings > $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Loca.swift";
 		};
 		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -674,13 +673,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B5111E191E71E68F00D68155 /* Loca.strings */ = {
+		B5111E191E71E68F00D68155 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B5111E181E71E68F00D68155 /* Base */,
 				B5111E1A1E71E69100D68155 /* de */,
+				B5111E261E71FEC100D68155 /* en */,
 			);
-			name = Loca.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */ = {
