@@ -21,6 +21,7 @@ class LectureHeaderView: CollectionReusableView, Identifiable {
 
     private let label = UILabel()
     override func initialSetup() {
+        self.backgroundColor = .white
         self.label.frame = self.bounds
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.textAlignment = .center
