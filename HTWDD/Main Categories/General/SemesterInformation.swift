@@ -26,6 +26,41 @@ struct SemesterInformation {
         return Network.getArray(url: SemesterInformation.url)
     }
 
+    static func information(date: Date, input: [SemesterInformation]) -> SemesterInformation? {
+        for e in input {
+            if e.contains(date: date) {
+                return e
+            }
+        }
+        return nil
+    }
+
+    func contains(date: Date) -> Bool {
+        guard let eventDate = EventDate(date: date) else {
+            return false
+        }
+        return self.period.contains(date: eventDate)
+    }
+
+    func lecturesContains(date: Date) -> Bool {
+        guard let eventDate = EventDate(date: date) else {
+            return false
+        }
+        return self.lectures.contains(date: eventDate)
+    }
+
+    func freeDaysContains(date: Date) -> Bool {
+        guard let eventDate = EventDate(date: date) else {
+            return false
+        }
+
+        for d in self.freeDays {
+            if d.period.contains(date: eventDate) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 extension SemesterInformation: Unmarshaling {

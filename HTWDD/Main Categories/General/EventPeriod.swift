@@ -25,6 +25,9 @@ struct EventPeriod: Hashable {
         return lhs.begin == rhs.begin && lhs.end == rhs.end
     }
 
+    func contains(date: EventDate) -> Bool {
+        return (begin.date...end.date).contains(date.date)
+    }
 }
 
 extension EventPeriod: Unmarshaling {
