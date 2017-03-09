@@ -33,6 +33,9 @@ class ScheduleMainVC: CollectionViewController {
         self.title = "Stundenplan"
 
         self.dataSource.register(type: LectureCollectionViewCell.self)
+        self.dataSource.register(supplementary: LectureHeaderView.self, kind: .header) { view, indexPath in
+            view.title = self.dataSource.dayName(indexPath: indexPath)
+        }
         self.dataSource.load()
     }
 
