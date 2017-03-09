@@ -28,6 +28,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         self.label.frame = self.contentView.bounds
         self.label.textAlignment = .center
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.contentView.backgroundColor = .white
         self.contentView.addSubview(self.label)
     }
 

@@ -8,6 +8,14 @@
 
 import UIKit
 
+fileprivate class SeperatorView: CollectionReusableView {
+
+    override func initialSetup() {
+        backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    }
+
+}
+
 protocol TimetableCollectionViewLayoutDataSource: class {
     // MARK: required methods
     var height: CGFloat { get }
@@ -40,6 +48,14 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
     private enum Const {
         static let headerHeight: CGFloat = 40
         static let timeWidth: CGFloat = 70
+
+        static let separation = "separation"
+
+        enum Z {
+            static let seperator = 0
+            static let supplementary = 1
+            static let lectures = 2
+        }
     }
 
     private(set) weak var dataSource: TimetableCollectionViewLayoutDataSource?
@@ -47,6 +63,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
     init(dataSource: TimetableCollectionViewLayoutDataSource) {
         self.dataSource = dataSource
         super.init()
+        self.register(SeperatorView.self, forDecorationViewOfKind: Const.separation)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -89,8 +106,11 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         let timeAttributes = self.indexPathsForTimeViews(in: rect).flatMap {
             return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: $0)
         }
+        let decorations = self.indexPathsForDecorationViews(rect: rect).flatMap {
+            return self.layoutAttributesForDecorationView(ofKind: Const.separation, at: $0)
+        }
 
-        return itemAttributes + headerAttributes + timeAttributes
+        return itemAttributes + headerAttributes + timeAttributes + decorations
     }
 
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -111,6 +131,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         attr.frame.origin.y = (t.begin.time / 3600 - dataSource.startHour) * self.heightPerHour + margin + Const.headerHeight
         attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 * margin
         attr.frame.size.width = dataSource.widthPerDay - 2 * margin
+        attr.zIndex = Const.Z.lectures
 
         return attr
     }
@@ -129,16 +150,26 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         } else if elementKind == SupplementaryKind.description.rawValue {
             let height = self.heightPerHour
             attr.frame.origin.x = 0
-            attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight
+            attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight - height / 2
             attr.frame.size.height = height
             attr.frame.size.width = Const.timeWidth
         }
+        attr.zIndex = Const.Z.supplementary
 
         return attr
     }
 
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return nil
+
+        let attr = UICollectionViewLayoutAttributes(forDecorationViewOfKind: elementKind, with: indexPath)
+        attr.frame.origin.x = 0
+        let height = self.heightPerHour
+        attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight
+        attr.frame.size.width = self.collectionViewContentSize.width
+        attr.frame.size.height = 0.5
+        attr.zIndex = Const.Z.seperator
+
+        return attr
     }
 
     private func indexPathsForHeaderViews(in rect: CGRect) -> [IndexPath] {
@@ -162,15 +193,23 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
             return []
         }
 
-        guard
-            let dataSource = self.dataSource
-            else {
-                return []
+        guard let dataSource = self.dataSource else {
+            return []
         }
 
         let startHour = Int(dataSource.startHour)
         let endHour = Int(dataSource.endHour)
 
+        return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
+    }
+
+    private func indexPathsForDecorationViews(rect: CGRect) -> [IndexPath] {
+        guard let dataSource = self.dataSource else {
+            return []
+        }
+
+        let startHour = Int(dataSource.startHour)
+        let endHour = Int(dataSource.endHour)
         return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
     }
 
