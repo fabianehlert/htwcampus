@@ -30,7 +30,7 @@ class ScheduleMainVC: CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Stundenplan"
+        self.title = Loca.scheduleTitle
 
         self.dataSource.register(type: LectureCollectionViewCell.self)
         self.dataSource.register(supplementary: LectureHeaderView.self, kind: .header) { view, indexPath in
