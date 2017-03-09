@@ -60,11 +60,7 @@ extension Lecture: Unmarshaling {
         self.name = try object <| "name"
         self.professor = try object <| "professor"
         self.type = try object <| "type"
-        let rawWeek: Int = try object <| "week"
-        guard let week = Week(rawValue: rawWeek) else {
-            throw Week.Error.outOfBounds(rawWeek)
-        }
-        self.week = week
+        self.week = try object <| "week"
 
         let weeksString: String? = try? object <| "WeeksOnly"
         if let weeks = weeksString?.components(separatedBy: ";").flatMap({ Int($0) }), !weeks.isEmpty {
