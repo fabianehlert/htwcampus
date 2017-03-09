@@ -34,6 +34,7 @@
 		B5111E171E71E68F00D68155 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
 		B5111E1D1E71ECAD00D68155 /* Loca.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1C1E71ECAD00D68155 /* Loca.swift */; };
 		B5111E201E71F44300D68155 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1F1E71F44300D68155 /* View.swift */; };
+		B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E211E71F78700D68155 /* LectureHeaderView.swift */; };
 		B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E231E71F7A200D68155 /* CollectionReusableView.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
@@ -104,6 +105,7 @@
 		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E1C1E71ECAD00D68155 /* Loca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loca.swift; sourceTree = "<group>"; };
 		B5111E1F1E71F44300D68155 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B5111E211E71F78700D68155 /* LectureHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureHeaderView.swift; sourceTree = "<group>"; };
 		B5111E231E71F7A200D68155 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		B5111E261E71FEC100D68155 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
+				B5111E211E71F78700D68155 /* LectureHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,

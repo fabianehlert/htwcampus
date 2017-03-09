@@ -28,3 +28,8 @@ protocol Cell: class {
     associatedtype ViewModelType: ViewModel
     func update(viewModel: ViewModelType)
 }
+
+protocol SupplementaryView: class, Identifiable {
+    associatedtype Data
+    func update(data: Data)
+}

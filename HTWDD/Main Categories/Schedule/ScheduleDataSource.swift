@@ -11,6 +11,8 @@ import RxSwift
 
 class ScheduleDataSource: CollectionViewDataSource {
 
+    private let days = [Loca.monday, Loca.tuesday, Loca.wednesday, Loca.thursday, Loca.friday, Loca.saturday, Loca.sunday]
+
     private(set) var lectures = [Day: [Lecture]]()
     private var semesterInformations = [SemesterInformation]() {
         didSet {
@@ -60,6 +62,11 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     func lecture(at indexPath: IndexPath) -> Lecture? {
         return self.data[indexPath.section][indexPath.row]
+    }
+
+    func dayName(indexPath: IndexPath) -> String {
+        let index = (self.originDate.weekday.rawValue + indexPath.section) % self.days.count
+        return self.days[index]
     }
 
     private func calculate() -> [[Lecture]] {
