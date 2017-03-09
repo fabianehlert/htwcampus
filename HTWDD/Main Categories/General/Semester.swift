@@ -13,11 +13,6 @@ enum Semester: Hashable, CustomStringConvertible, Comparable {
     case summer(year: Int)
     case winter(year: Int)
 
-    enum Error: Swift.Error {
-        case wrongType(String)
-        case wrongFormat(String)
-    }
-
     var year: Int {
         switch self {
         case .summer(let year):
@@ -77,28 +72,28 @@ extension Semester: ValueType {
 
     static func value(from object: Any) throws -> Semester {
         guard let number = object as? Int else {
-            throw Error.wrongType("\(object)")
+            throw MarshalError.typeMismatch(expected: Int.self, actual: type(of: object))
         }
 
         let rawValue = "\(number)"
 
         guard rawValue.characters.count == 5 else {
-            throw Error.wrongFormat(rawValue)
+            throw MarshalError.typeMismatch(expected: 5, actual: rawValue.characters.count)
         }
 
         var raw = rawValue
 
         let type = raw.characters.removeLast()
 
-        guard let year = Int(raw), type == "1" || type == "2" else {
-            throw Error.wrongFormat(rawValue)
+        guard let year = Int(raw) else {
+            throw MarshalError.typeMismatch(expected: Int.self, actual: raw)
         }
         if type == "1" {
             return .summer(year: year)
         } else if type == "2" {
             return .winter(year: year)
         } else {
-            throw Error.wrongFormat(rawValue)
+            throw MarshalError.typeMismatch(expected: "1 or 2", actual: type)
         }
     }
 

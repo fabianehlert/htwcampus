@@ -35,17 +35,13 @@ extension DateComponents {
 
 extension DateComponents: ValueType {
 
-    enum Error: Swift.Error {
-        case wrongType(String)
-        case wrongFormat(raw: String, format: String)
-    }
-
     public static func value(from object: Any) throws -> DateComponents {
         guard let string = object as? String else {
-            throw Error.wrongType("\(object)")
+            throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))
         }
+        let format = "HH:mm:SS"
         guard let components = DateComponents.time(from: string) else {
-            throw Error.wrongFormat(raw: string, format: "HH:mm:SS")
+            throw MarshalError.typeMismatch(expected: format, actual: string)
         }
         return components
     }

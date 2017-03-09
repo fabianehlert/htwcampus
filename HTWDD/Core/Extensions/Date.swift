@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Marshal
 
 private var dateFormatters = [String: DateFormatter]()
 private func dateFormatter(format: String) -> DateFormatter {
@@ -22,14 +23,9 @@ private func dateFormatter(format: String) -> DateFormatter {
 
 extension Date {
 
-    enum Error: Swift.Error {
-        case wrongType(String)
-        case wrongFormat(raw: String, format: String)
-    }
-
     static func from(string: String, format: String) throws -> Date {
         guard let date = dateFormatter(format: format).date(from: string) else {
-            throw Error.wrongFormat(raw: string, format: format)
+            throw MarshalError.typeMismatch(expected: format, actual: string)
         }
         return date
     }
