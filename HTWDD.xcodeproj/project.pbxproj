@@ -550,7 +550,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "scripts/loca.rb $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/en.lproj/Localizable.strings > $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Loca.swift";
+			shellScript = "`which ruby` scripts/loca.rb $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/en.lproj/Localizable.strings > $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Loca.swift";
 		};
 		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;

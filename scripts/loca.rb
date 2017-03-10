@@ -1,5 +1,3 @@
-#!/usr/local/bin/ruby
-
 if ARGV[0] == nil
 	puts 'Specify input file!'
 	exit 1
