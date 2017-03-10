@@ -67,7 +67,7 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
     }
 
     var endHour: CGFloat {
-        return 21
+        return 19
     }
 
     func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
