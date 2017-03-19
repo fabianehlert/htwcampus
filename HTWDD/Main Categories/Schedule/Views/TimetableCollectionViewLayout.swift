@@ -53,8 +53,9 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
         enum Z {
             static let seperator = 0
-            static let supplementary = 1
-            static let lectures = 2
+            static let lectures = 1
+            static let header = 2
+            static let times = 3
         }
     }
 
@@ -147,14 +148,15 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
             attr.frame.origin.y = 0
             attr.frame.size.height = Const.headerHeight
             attr.frame.size.width = dataSource.widthPerDay
+            attr.zIndex = Const.Z.header
         } else if elementKind == SupplementaryKind.description.rawValue {
             let height = self.heightPerHour
-            attr.frame.origin.x = 0
+            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
             attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight - height / 2
             attr.frame.size.height = height
             attr.frame.size.width = Const.timeWidth
+            attr.zIndex = Const.Z.times
         }
-        attr.zIndex = Const.Z.supplementary
 
         return attr
     }
@@ -188,10 +190,6 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
     }
 
     private func indexPathsForTimeViews(in rect: CGRect) -> [IndexPath] {
-
-        guard rect.origin.x <= Const.timeWidth else {
-            return []
-        }
 
         guard let dataSource = self.dataSource else {
             return []
