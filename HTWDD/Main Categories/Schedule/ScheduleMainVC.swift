@@ -59,7 +59,7 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
         let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-        return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight
+        return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
     }
 
     var startHour: CGFloat {
