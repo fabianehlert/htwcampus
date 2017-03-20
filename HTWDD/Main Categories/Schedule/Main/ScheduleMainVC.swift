@@ -13,6 +13,8 @@ class ScheduleMainVC: CollectionViewController {
 
     let dataSource: ScheduleDataSource
 
+    fileprivate var lastSelectedIndexPath: IndexPath?
+
     init() {
         let semesterStart = Date.from(day: 20, month: 03, year: 2017)!
         self.dataSource = ScheduleDataSource(originDate: semesterStart, numberOfDays: 20)
@@ -47,8 +49,9 @@ class ScheduleMainVC: CollectionViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.lastSelectedIndexPath = indexPath
         let detail = ScheduleDetailVC()
-        detail.transition = AnimatedViewControllerTransition(back: self, front: detail)
+        detail.transition = AnimatedViewControllerTransition(duration: 0.4, back: self, front: detail)
         detail.modalPresentationStyle = .overCurrentContext
         self.definesPresentationContext = true
         self.present(detail, animated: true, completion: nil)
@@ -89,9 +92,8 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
 
 extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
 
-    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView {
-        let cells = self.collectionView.indexPathsForSelectedItems?.flatMap(self.collectionView.cellForItem(at:))
-        return (cells?.first)!
+    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
+        return self.lastSelectedIndexPath.flatMap(self.collectionView.cellForItem(at:))
     }
 
 }

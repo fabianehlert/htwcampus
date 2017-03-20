@@ -74,7 +74,7 @@ extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
             small.active = false
             self.correctGroup.active = true
 
-            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
                 self.view.alpha = 1
                 self.view.layoutIfNeeded()
             }, completion: completion)
@@ -82,7 +82,7 @@ extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
         case .dismiss:
             self.correctGroup.active = false
             self.constrainContainer(to: source)
-            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
                 self.view.layoutIfNeeded()
                 self.view.alpha = 0
             }, completion: completion)
