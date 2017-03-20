@@ -109,7 +109,7 @@
 		B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		B50EB5011E6AFFA20022E40C /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		B5111E161E71E68900D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B5111E161E71E68900D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E1C1E71ECAD00D68155 /* Loca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loca.swift; sourceTree = "<group>"; };
 		B5111E1F1E71F44300D68155 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -221,9 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */,
-				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 				B5111E211E71F78700D68155 /* LectureHeaderView.swift */,
 				B5111E271E7206B500D68155 /* LectureTimeView.swift */,
+				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,8 +244,8 @@
 		B52A9B4D1DDB160700313FC3 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				B5EA53671E7FC5F700183E07 /* Main */,
 				B5EA536A1E7FC60E00183E07 /* Detail */,
+				B5EA53671E7FC5F700183E07 /* Main */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -331,9 +331,9 @@
 			isa = PBXGroup;
 			children = (
 				B50EB4FC1E6ADB410022E40C /* DataSource */,
+				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
-				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
@@ -451,6 +451,7 @@
 				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
 			);
 			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		B5EA536A1E7FC60E00183E07 /* Detail */ = {
@@ -459,6 +460,7 @@
 				B5EA53681E7FC60800183E07 /* DetailVC.swift */,
 			);
 			name = Detail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -741,6 +743,7 @@
 				B5111E261E71FEC100D68155 /* en */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */ = {
