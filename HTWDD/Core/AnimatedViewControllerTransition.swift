@@ -81,11 +81,6 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
             return
         }
 
-        guard let sourceView = self.back?.viewForTransition(self) else {
-            cancelled = true
-            return
-        }
-
         if self.direction == .present {
             views.container.addSubview(views.destination)
         }
@@ -94,7 +89,9 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
 
         let duration = self.transitionDuration(using: transitionContext)
 
-        let rect = sourceView.convert(sourceView.bounds, to: views.container)
+        let sourceView = self.back?.viewForTransition(self)
+
+        let rect = sourceView.map { $0.convert($0.bounds, to: views.container) } ?? CGRect.zero
 
         self.front?.animate(source: rect, duration: duration, direction: self.direction, completion: { fininshed in
             transitionContext.completeTransition(fininshed)
