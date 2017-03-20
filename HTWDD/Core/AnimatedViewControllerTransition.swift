@@ -84,12 +84,10 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
         }
 
         if self.direction == .present {
-            views.container.addSubview(views.to)
-        } else {
-            views.container.insertSubview(views.to, at: 0)
+            views.container.addSubview(views.destination)
         }
 
-        views.to.frame = views.container.bounds
+        views.destination.frame = views.container.bounds
 
         let duration = self.transitionDuration(using: transitionContext)
 
@@ -103,15 +101,11 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
 
 fileprivate extension UIViewControllerContextTransitioning {
 
-    var views: (from: UIView, to: UIView, container: UIView)? {
-        guard
-            let fromView = self.view(forKey: .from),
-            let toView = self.view(forKey: .to)
-        else {
+    var views: (destination: UIView, container: UIView)? {
+        guard let destination = self.view(forKey: .to) ?? self.view(forKey: .from) else {
             return nil
         }
-
-        return (fromView, toView, self.containerView)
+        return (destination, self.containerView)
     }
 
 }
