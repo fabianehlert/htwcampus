@@ -33,3 +33,8 @@ protocol SupplementaryView: class, Identifiable {
     associatedtype Data
     func update(data: Data)
 }
+
+protocol Highlightable {
+    func highlight(animated: Bool)
+    func unhighlight(animated: Bool)
+}

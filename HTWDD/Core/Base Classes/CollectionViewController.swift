@@ -36,4 +36,18 @@ class CollectionViewController: ViewController {
 
 extension CollectionViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? Highlightable else {
+            return
+        }
+        cell.highlight(animated: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? Highlightable else {
+            return
+        }
+        cell.unhighlight(animated: true)
+    }
+
 }
