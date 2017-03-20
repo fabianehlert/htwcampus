@@ -10,11 +10,11 @@ import XCTest
 @testable import HTWDD
 
 class Array_TestCase: XCTestCase {
-    
+
     func test_safeSubscript() {
         let array = [1, 2, 3]
         XCTAssertEqual(array[safe: 0], 1)
         XCTAssertNil(array[safe: array.count])
     }
-    
+
 }

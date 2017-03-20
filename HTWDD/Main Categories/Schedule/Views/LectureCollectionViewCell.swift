@@ -41,11 +41,11 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 extension LectureCollectionViewCell: Highlightable {
 
     func highlight(animated: Bool) {
-        
+
     }
 
     func unhighlight(animated: Bool) {
-        
+
     }
 
 }
