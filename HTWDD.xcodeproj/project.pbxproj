@@ -79,6 +79,7 @@
 		B5EA535F1E7FBB1500183E07 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535E1E7FBB1500183E07 /* String.swift */; };
 		B5EA53611E7FBB6600183E07 /* String_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53601E7FBB6600183E07 /* String_TestCase.swift */; };
 		B5EA53631E7FBC3E00183E07 /* Authenticator_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53621E7FBC3E00183E07 /* Authenticator_TestCase.swift */; };
+		B5EA53651E7FBE8D00183E07 /* Array_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53641E7FBE8D00183E07 /* Array_TestCase.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
@@ -159,6 +160,7 @@
 		B5EA535E1E7FBB1500183E07 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B5EA53601E7FBB6600183E07 /* String_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_TestCase.swift; sourceTree = "<group>"; };
 		B5EA53621E7FBC3E00183E07 /* Authenticator_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator_TestCase.swift; sourceTree = "<group>"; };
+		B5EA53641E7FBE8D00183E07 /* Array_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array_TestCase.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				B5FCAE601E62EAEF00E35DDB /* Array.swift */,
+				B5EA53641E7FBE8D00183E07 /* Array_TestCase.swift */,
 				B538EF1D1E1D9E6D0031077C /* Date.swift */,
 				B55507111E601FB400C16F5F /* DateComponents.swift */,
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
@@ -694,6 +697,7 @@
 				B5BE72881E6C83B300D05B6D /* EventDate_TestCase.swift in Sources */,
 				B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */,
 				B5BE728C1E6C86B400D05B6D /* EventPeriod_TestCase.swift in Sources */,
+				B5EA53651E7FBE8D00183E07 /* Array_TestCase.swift in Sources */,
 				B538EF0E1E1D61F80031077C /* SettingsManager_Tests.swift in Sources */,
 				B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */,
 			);
