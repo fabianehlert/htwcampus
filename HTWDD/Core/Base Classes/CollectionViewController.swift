@@ -40,7 +40,7 @@ extension CollectionViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? Highlightable else {
             return
         }
-        cell.highlight(animated: true)
+        cell.highlight(animated: false)
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
