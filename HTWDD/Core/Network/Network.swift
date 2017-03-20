@@ -11,26 +11,37 @@ import RxSwift
 import RxCocoa
 import Marshal
 
-enum Network {
+class Network {
 
-    enum ParameterEncoding {
-        case url, json
+    enum Parameter {
+        case none
+        case url([String: String])
+        case json(Any)
+
+        var data: Data? {
+            switch self {
+            case .none:
+                return nil
+            case .url(let dic):
+                return dic.map { "\($0)=\($1)" }.joined(separator: "&").data(using: .utf8)
+            case .json(let obj):
+                return try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
+            }
+        }
+
+        var contentType: String? {
+            switch self {
+            case .json(_): return "application/json"
+            default: return nil
+            }
+        }
     }
 
     enum Error: Swift.Error {
         case wrongType(expected: Any, got: Any)
     }
 
-    private static func data(parameters: [String: String], encoding: ParameterEncoding) -> Data? {
-        switch encoding {
-        case .json:
-            return try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        case .url:
-            return parameters.map { "\($0)=\($1)" }.joined(separator: "&").data(using: .utf8)
-        }
-    }
-
-    private static func get(url: String, params: [String: String]) -> Observable<Any?> {
+    private func get(url: String, params: [String: String]) -> Observable<Any?> {
 
         let p = params.map { "\($0)=\($1)" }
         guard let url = URL(string: "\(url)?\(p.joined(separator: "&"))") else {
@@ -42,46 +53,46 @@ enum Network {
         return URLSession.shared.rx.json(request: req).map { $0 as Any? }
     }
 
-    static func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
+    func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
         return get(url: url, params: params).map(self.mapSingleObject)
     }
 
-    static func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
+    func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
         return get(url: url, params: params).map(self.mapArray)
     }
 
-    private static func post(url: String, params: [String: String], encoding: ParameterEncoding) -> Observable<Any?> {
+    private func post(url: String, params: Parameter) -> Observable<Any?> {
 
         guard let u = URL(string: "\(url)") else {
             return Observable.just(nil)
         }
 
         var r = URLRequest(url: u, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
-        r.httpBody = data(parameters: params, encoding: encoding)
+        r.httpBody = params.data
         r.httpMethod = "POST"
-        if encoding == .json {
-            r.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let contentType = params.contentType {
+            r.addValue(contentType, forHTTPHeaderField: "Content-Type")
         }
 
         return URLSession.shared.rx.json(request: r).map { $0 as Any? }
     }
 
-    static func post<T: Unmarshaling>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<T> {
-        return post(url: url, params: params, encoding: encoding).map(self.mapSingleObject)
+    func post<T: Unmarshaling>(url: String, params: Parameter) -> Observable<T> {
+        return post(url: url, params: params).map(self.mapSingleObject)
     }
 
-    static func postArray<T: Unmarshaling>(url: String, params: [String: String] = [:], encoding: ParameterEncoding = .json) -> Observable<[T]> {
-        return post(url: url, params: params, encoding: encoding).map(self.mapArray)
+    func postArray<T: Unmarshaling>(url: String, params: Parameter) -> Observable<[T]> {
+        return post(url: url, params: params).map(self.mapArray)
     }
 
-    private static func mapSingleObject<T: Unmarshaling>(json: Any?) throws -> T {
+    private func mapSingleObject<T: Unmarshaling>(json: Any?) throws -> T {
         guard let jsonObject = json as? [String: Any] else {
             throw Error.wrongType(expected: [String: Any].self, got: type(of: json))
         }
         return try T(object: jsonObject)
     }
 
-    private static func mapArray<T: Unmarshaling>(json: Any?) throws -> [T] {
+    private func mapArray<T: Unmarshaling>(json: Any?) throws -> [T] {
         guard let jsonArray = json as? [[String: Any]] else {
             throw Error.wrongType(expected: [[String: Any]].self, got: type(of: json))
         }

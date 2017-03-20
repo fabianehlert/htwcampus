@@ -28,6 +28,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     private let disposeBag = DisposeBag()
+    private let network = Network()
 
     var originDate: Date {
         didSet {
@@ -42,10 +43,10 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     func load() {
-        let lecturesObservable = Lecture.get(year: "2016", major: "044", group: "71")
+        let lecturesObservable = Lecture.get(network: self.network, year: "2016", major: "044", group: "71")
             .map(Lecture.groupByDay)
 
-        let informationObservable = SemesterInformation.get()
+        let informationObservable = SemesterInformation.get(network: self.network)
 
         Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
                   .observeOn(MainScheduler.instance)
