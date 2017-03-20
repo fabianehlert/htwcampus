@@ -22,8 +22,8 @@ struct SemesterInformation {
     let exams: EventPeriod
     let reregistration: EventPeriod
 
-    static func get() -> Observable<[SemesterInformation]> {
-        return Network.getArray(url: SemesterInformation.url)
+    static func get(network: Network) -> Observable<[SemesterInformation]> {
+        return network.getArray(url: SemesterInformation.url)
     }
 
     static func information(date: Date, input: [SemesterInformation]) -> SemesterInformation? {

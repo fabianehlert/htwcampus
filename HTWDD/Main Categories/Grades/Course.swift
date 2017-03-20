@@ -17,13 +17,13 @@ struct Course {
     let stgNr: String
     let stgTxt: String
 
-    static func get(sNumber: String, password: String) -> Observable<[Course]> {
+    static func get(network: Network, sNumber: String, password: String) -> Observable<[Course]> {
         let parameters = [
             "sNummer": sNumber,
             "RZLogin": password
         ]
 
-        return Network.postArray(url: Course.url, params: parameters, encoding: .url)
+        return network.postArray(url: Course.url, params: .url(parameters))
     }
 
 }
