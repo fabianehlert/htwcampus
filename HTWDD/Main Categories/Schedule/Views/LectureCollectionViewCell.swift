@@ -22,9 +22,10 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
     let label = UILabel()
 
     override func initialSetup() {
-        layer.cornerRadius = 5
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 2
+        self.layer.cornerRadius = 5
+        self.clipsToBounds = true
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 2
         self.label.frame = self.contentView.bounds
         self.label.textAlignment = .center
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -33,7 +34,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
     }
 
     func update(viewModel: LectureViewModel) {
-        label.text = viewModel.model.tag
+        self.label.text = viewModel.model.tag
     }
 
 }
@@ -41,11 +42,27 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 extension LectureCollectionViewCell: Highlightable {
 
     func highlight(animated: Bool) {
-
+        let animations: () -> Void = {
+            self.contentView.backgroundColor = .blue
+            self.label.textColor = .white
+        }
+        if !animated {
+            animations()
+        } else {
+            UIView.animate(withDuration: 0.1, animations: animations)
+        }
     }
 
     func unhighlight(animated: Bool) {
-
+        let animations: () -> Void = {
+            self.contentView.backgroundColor = .white
+            self.label.textColor = .black
+        }
+        if !animated {
+            animations()
+        } else {
+            UIView.animate(withDuration: 0.1, animations: animations)
+        }
     }
 
 }
