@@ -49,6 +49,8 @@ class ScheduleMainVC: CollectionViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detail = ScheduleDetailVC()
         detail.transition = AnimatedViewControllerTransition(back: self, front: detail)
+        detail.modalPresentationStyle = .overCurrentContext
+        self.definesPresentationContext = true
         self.present(detail, animated: true, completion: nil)
     }
 
