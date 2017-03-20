@@ -88,7 +88,8 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
 extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
 
     func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView {
-        return self.view
+        let cells = self.collectionView.indexPathsForSelectedItems?.flatMap(self.collectionView.cellForItem(at:))
+        return (cells?.first)!
     }
 
 }
