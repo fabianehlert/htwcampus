@@ -22,16 +22,14 @@ struct Grade {
     let mark: Double
     let note: String?
 
-    static func get(network: Network, sNumber: String, password: String, course: Course) -> Observable<[Grade]> {
+    static func get(network: Network, course: Course) -> Observable<[Grade]> {
         let parameters = [
-            "sNummer": sNumber,
-            "RZLogin": password,
-            "POVersion": course.POVersion,
+            "POVersion": "\(course.POVersion)",
             "AbschlNr": course.abschlNr,
             "StgNr": course.stgNr
         ]
 
-        return network.postArray(url: Grade.url, params: .url(parameters))
+        return network.getArray(url: Grade.url, params: parameters)
     }
 
     /// Groups and sorts a given array of grades by their semester.
@@ -53,7 +51,7 @@ struct Grade {
 }
 
 extension Grade: Unmarshaling {
-    static let url = "https://wwwqis.htw-dresden.de/appservice/getgrades"
+    static let url = "https://wwwqis.htw-dresden.de/appservice/v2/getgrades"
 
     init(object: MarshaledObject) throws {
         self.nr = try object.value(for: "nr")

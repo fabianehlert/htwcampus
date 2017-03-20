@@ -10,22 +10,21 @@ import UIKit
 
 class GradeMainVC: ViewController {
 
-    let network = Network()
+    let network = Network(authenticator: Base(username: "", password: ""))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let sNumber = ""
-        let password = ""
-
-        Course.get(network: self.network, sNumber: sNumber, password: password)
+        Course.get(network: self.network)
             .map { $0.first }
             .filterNil()
             .subscribe(onNext: { [weak self] course in
 
+                print(course)
+
                 guard let `self` = self else { return }
 
-                Grade.get(network: self.network, sNumber: sNumber, password: password, course: course)
+                Grade.get(network: self.network, course: course)
                     .map(Grade.groupAndOrderBySemester)
                     .subscribe(onNext: { grades in
 
