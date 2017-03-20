@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Parameter {
+public enum Parameter {
     case none
     case url([String: String])
     case json(Any)

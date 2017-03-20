@@ -11,17 +11,28 @@ import RxSwift
 import RxCocoa
 import Marshal
 
-class Network {
+public class Network {
 
-    enum Error: Swift.Error {
+    /// Errors that can occur during network requests.
+    ///
+    /// - invalidURL: the given or created url was not valid.
+    /// - wrongType: the mapping failed
+    public enum Error: Swift.Error {
         case invalidURL(String)
-        case wrongType(expected: Any, got: Any)
+        case wrongType(expected: Any.Type, got: Any.Type)
     }
 
-    let authenticator: Authenticator?
-    init(authenticator: Authenticator? = nil) {
+    /// The authenticator thats used (or nil if no authentication)
+    public let authenticator: Authenticator?
+
+    /// Initialize a new instance of Network.
+    ///
+    /// - Parameter authenticator: optional authenticator for HTTP authentication
+    public init(authenticator: Authenticator? = nil) {
         self.authenticator = authenticator
     }
+
+    // MARK: - GET
 
     private func get(url: String, params: [String: String]) -> Observable<Any> {
 
@@ -36,13 +47,27 @@ class Network {
         return URLSession.shared.rx.json(request: req).map { $0 as Any }
     }
 
-    func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
+    /// get a single object as response.
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: optional parameters to add to the url
+    /// - Returns: Observable containing the loaded object
+    public func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
         return get(url: url, params: params).map(self.mapSingleObject)
     }
 
-    func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
+    /// get an array of objects as response
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: optional parameters to add to the url
+    /// - Returns: Observable containing the loaded objects
+    public func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
         return get(url: url, params: params).map(self.mapArray)
     }
+
+    // MARK: - POST
 
     private func post(url: String, params: Parameter) -> Observable<Any> {
 
@@ -62,11 +87,23 @@ class Network {
         return URLSession.shared.rx.json(request: req).map { $0 as Any }
     }
 
-    func post<T: Unmarshaling>(url: String, params: Parameter) -> Observable<T> {
+    /// post a request and expect a single object as response
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: parameters to attach to the request (http body)
+    /// - Returns: Observable containing the loaded object
+    public func post<T: Unmarshaling>(url: String, params: Parameter) -> Observable<T> {
         return post(url: url, params: params).map(self.mapSingleObject)
     }
 
-    func postArray<T: Unmarshaling>(url: String, params: Parameter) -> Observable<[T]> {
+    /// post a request and expect an array of objects as response
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: parameters to attach to the request (http body)
+    /// - Returns: Observable containing the loaded objects
+    public func postArray<T: Unmarshaling>(url: String, params: Parameter) -> Observable<[T]> {
         return post(url: url, params: params).map(self.mapArray)
     }
 
