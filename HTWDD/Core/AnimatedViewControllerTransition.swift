@@ -93,7 +93,9 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
 
         let duration = self.transitionDuration(using: transitionContext)
 
-        self.front?.animate(source: sourceView.frame, duration: duration, direction: self.direction, completion: { fininshed in
+        let rect = sourceView.convert(sourceView.bounds, to: views.container)
+
+        self.front?.animate(source: rect, duration: duration, direction: self.direction, completion: { fininshed in
             transitionContext.completeTransition(fininshed)
         })
     }
