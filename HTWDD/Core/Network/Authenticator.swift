@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Authenticator {
+public protocol Authenticator {
     func authenticate(request: inout URLRequest)
 }
 
