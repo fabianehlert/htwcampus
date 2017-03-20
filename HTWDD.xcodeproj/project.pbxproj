@@ -80,6 +80,7 @@
 		B5EA53611E7FBB6600183E07 /* String_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53601E7FBB6600183E07 /* String_TestCase.swift */; };
 		B5EA53631E7FBC3E00183E07 /* Authenticator_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53621E7FBC3E00183E07 /* Authenticator_TestCase.swift */; };
 		B5EA53651E7FBE8D00183E07 /* Array_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53641E7FBE8D00183E07 /* Array_TestCase.swift */; };
+		B5EA53691E7FC60800183E07 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53681E7FC60800183E07 /* DetailVC.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
@@ -161,6 +162,7 @@
 		B5EA53601E7FBB6600183E07 /* String_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String_TestCase.swift; sourceTree = "<group>"; };
 		B5EA53621E7FBC3E00183E07 /* Authenticator_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator_TestCase.swift; sourceTree = "<group>"; };
 		B5EA53641E7FBE8D00183E07 /* Array_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array_TestCase.swift; sourceTree = "<group>"; };
+		B5EA53681E7FC60800183E07 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
@@ -242,10 +244,8 @@
 		B52A9B4D1DDB160700313FC3 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				B50EB5031E6B00700022E40C /* Model */,
-				B50EB5041E6B007B0022E40C /* Views */,
-				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
-				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
+				B5EA53671E7FC5F700183E07 /* Main */,
+				B5EA536A1E7FC60E00183E07 /* Detail */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -440,6 +440,25 @@
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		B5EA53671E7FC5F700183E07 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B50EB5031E6B00700022E40C /* Model */,
+				B50EB5041E6B007B0022E40C /* Views */,
+				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
+				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		B5EA536A1E7FC60E00183E07 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B5EA53681E7FC60800183E07 /* DetailVC.swift */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,6 +671,7 @@
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
+				B5EA53691E7FC60800183E07 /* DetailVC.swift in Sources */,
 				B5111E201E71F44300D68155 /* View.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
 				B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */,
