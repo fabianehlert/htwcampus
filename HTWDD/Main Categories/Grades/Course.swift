@@ -12,24 +12,19 @@ import Marshal
 
 struct Course {
     let abschlTxt: String
-    let POVersion: String
+    let POVersion: Int
     let abschlNr: String
     let stgNr: String
     let stgTxt: String
 
-    static func get(network: Network, sNumber: String, password: String) -> Observable<[Course]> {
-        let parameters = [
-            "sNummer": sNumber,
-            "RZLogin": password
-        ]
-
-        return network.postArray(url: Course.url, params: .url(parameters))
+    static func get(network: Network) -> Observable<[Course]> {
+        return network.getArray(url: Course.url)
     }
 
 }
 
 extension Course: Unmarshaling {
-    static let url = "https://wwwqis.htw-dresden.de/appservice/getcourses"
+    static let url = "https://wwwqis.htw-dresden.de/appservice/v2/getcourses"
 
     init(object: MarshaledObject) throws {
         self.abschlTxt = try object <| "AbschlTxt"
