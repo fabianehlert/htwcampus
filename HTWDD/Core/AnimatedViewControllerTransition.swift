@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AnimatedViewControllerTransitionDataSource: class {
-    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView
+    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView?
 }
 
 protocol AnimatedViewControllerTransitionAnimator: class {
@@ -22,13 +22,16 @@ enum Direction {
 
 class AnimatedViewControllerTransition: NSObject {
 
+    let duration: TimeInterval
     fileprivate weak var back: AnimatedViewControllerTransitionDataSource?
     fileprivate weak var front: AnimatedViewControllerTransitionAnimator?
 
     fileprivate var direction = Direction.present
 
-    init?(back: UIViewController, front: UIViewController) {
+    init?(duration: TimeInterval, back: UIViewController, front: UIViewController) {
         let _ = front.view
+
+        self.duration = duration
 
         guard
             let back = back as? AnimatedViewControllerTransitionDataSource,
@@ -60,7 +63,7 @@ extension AnimatedViewControllerTransition: UIViewControllerTransitioningDelegat
 extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return transitionContext?.isAnimated ?? false ? 0.3 : 0.0
+        return transitionContext?.isAnimated ?? false ? self.duration : 0.0
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
