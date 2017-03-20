@@ -46,6 +46,12 @@ class ScheduleMainVC: CollectionViewController {
         self.dataSource.load()
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detail = ScheduleDetailVC()
+        detail.transition = AnimatedViewControllerTransition(back: self, front: detail)
+        self.present(detail, animated: true, completion: nil)
+    }
+
 }
 
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
@@ -75,6 +81,14 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
             return nil
         }
         return (item.begin, item.end)
+    }
+
+}
+
+extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
+
+    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView {
+        return self.view
     }
 
 }
