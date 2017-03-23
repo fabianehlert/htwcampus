@@ -84,6 +84,7 @@
 		B5EA536D1E7FCE8B00183E07 /* ScheduleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */; };
 		B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53711E7FD25C00183E07 /* AnimatedViewControllerTransition.swift */; };
 		B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53731E7FDA5E00183E07 /* UIViewController.swift */; };
+		B5EB17601E83AEA7004B0402 /* ScheduleDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB175F1E83AEA7004B0402 /* ScheduleDetailContentView.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
@@ -169,6 +170,7 @@
 		B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDetailVC.swift; sourceTree = "<group>"; };
 		B5EA53711E7FD25C00183E07 /* AnimatedViewControllerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedViewControllerTransition.swift; sourceTree = "<group>"; };
 		B5EA53731E7FDA5E00183E07 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		B5EB175F1E83AEA7004B0402 /* ScheduleDetailContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDetailContentView.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */,
+				B5EB175F1E83AEA7004B0402 /* ScheduleDetailContentView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
+				B5EB17601E83AEA7004B0402 /* ScheduleDetailContentView.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,

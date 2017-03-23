@@ -12,18 +12,30 @@ import Cartography
 class ScheduleDetailVC: ViewController {
 
     let button = UIButton()
-    let container = UIView()
+    private let content: ScheduleDetailContentView
+
+    private let lecture: Lecture
+
+    init(lecture: Lecture) {
+        self.lecture = lecture
+        self.content = ScheduleDetailContentView(lecture: lecture)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.button.setTitle("PRESS ME", for: .normal)
         self.button.addTarget(self, action: #selector(self.buttonPressed(_:)), for: .touchUpInside)
-        self.container.addSubview(button)
+        self.content.addSubview(button)
         self.view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
 
-        self.container.backgroundColor = .blue
-        self.container.layer.cornerRadius = 10
-        self.view.addSubview(self.container)
+        self.content.backgroundColor = .blue
+        self.content.layer.cornerRadius = 10
+        self.view.addSubview(self.content)
 
         self.addConstraints()
     }
@@ -31,28 +43,28 @@ class ScheduleDetailVC: ViewController {
     var correctGroup = ConstraintGroup()
 
     @discardableResult
-    func constrainContainer(to frame: CGRect) -> ConstraintGroup {
-        return constrain(self.view, self.container, block: { view, container in
-            container.leading == view.leading + frame.origin.x
-            container.width == frame.size.width
-            container.top == view.top + frame.origin.y
-            container.height == frame.size.height
+    func constraincontent(to frame: CGRect) -> ConstraintGroup {
+        return constrain(self.view, self.content, block: { view, content in
+            content.leading == view.leading + frame.origin.x
+            content.width == frame.size.width
+            content.top == view.top + frame.origin.y
+            content.height == frame.size.height
         })
     }
 
     func addConstraints() {
-        constrain(self.container, self.button) { view, button in
+        constrain(self.content, self.button) { view, button in
             button.height == 40
             button.bottom == view.bottom
             button.leading == view.leading
             button.trailing == view.trailing
         }
 
-        self.correctGroup = constrain(self.view, self.container, block: { view, container in
-            container.edges == inset(view.edges, 50) ~ 700
-            container.width <= 350 ~ LayoutPriority(1000)
-            container.height <= 200 ~ LayoutPriority(1000)
-            container.center == view.center ~ 1000
+        self.correctGroup = constrain(self.view, self.content, block: { view, content in
+            content.edges == inset(view.edges, 50) ~ 700
+            content.width <= 350 ~ LayoutPriority(1000)
+            content.height <= 200 ~ LayoutPriority(1000)
+            content.center == view.center ~ 1000
         })
     }
 
@@ -68,7 +80,7 @@ extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
         switch direction {
         case .present:
             self.view.alpha = 0
-            let small = self.constrainContainer(to: source)
+            let small = self.constraincontent(to: source)
             self.correctGroup.active = false
             self.view.layoutIfNeeded()
             small.active = false
@@ -81,7 +93,7 @@ extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
 
         case .dismiss:
             self.correctGroup.active = false
-            self.constrainContainer(to: source)
+            self.constraincontent(to: source)
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
                 self.view.layoutIfNeeded()
                 self.view.alpha = 0
