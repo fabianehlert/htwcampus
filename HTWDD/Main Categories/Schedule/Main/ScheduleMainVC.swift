@@ -49,8 +49,12 @@ class ScheduleMainVC: CollectionViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = self.dataSource.lecture(at: indexPath) else {
+            Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
+            return
+        }
         self.lastSelectedIndexPath = indexPath
-        let detail = ScheduleDetailVC()
+        let detail = ScheduleDetailVC(lecture:  item)
         detail.transition = AnimatedViewControllerTransition(duration: 0.4, back: self, front: detail)
         detail.modalPresentationStyle = .overCurrentContext
         self.definesPresentationContext = true
