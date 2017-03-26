@@ -149,7 +149,7 @@
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../Supporting Files/AppDelegate.swift"; sourceTree = "<group>"; };
+		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59FA9941DD09C8400259D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				B52DF0D91E70A8870095C854 /* Week.swift */,
 			);
 			name = Model;
-			path = Main/Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B50EB5041E6B007B0022E40C /* Views */ = {
@@ -355,11 +355,11 @@
 				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
+				B5A0D8821E86FD48007827A6 /* Coordinator.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
+				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
-				B5A0D8821E86FD48007827A6 /* Coordinator.swift */,
-				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -464,14 +464,15 @@
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
 			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B5BE72801E6C808700D05B6D /* General */ = {
 			isa = PBXGroup;
 			children = (
-				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
-				B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */,
 				B5A0D8861E87B365007827A6 /* Models */,
+				B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */,
+				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -489,8 +490,8 @@
 		B5EA536A1E7FC60E00183E07 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */,
 				B5EB175F1E83AEA7004B0402 /* ScheduleDetailContentView.swift */,
+				B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -501,6 +502,7 @@
 				B5EA53701E7FD24800183E07 /* Transitions */,
 			);
 			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		B5EA53701E7FD24800183E07 /* Transitions */ = {
@@ -509,6 +511,7 @@
 				B5EA53711E7FD25C00183E07 /* AnimatedViewControllerTransition.swift */,
 			);
 			name = Transitions;
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
