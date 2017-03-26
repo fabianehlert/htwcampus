@@ -8,10 +8,16 @@
 
 import UIKit
 
+class AppContext: CoordinatorBridge {
+
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator?
+    private let bridge = AppContext()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -19,18 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
-        baseInitialization()
+        let window = UIWindow()
+        let appCoordinator = AppCoordinator(window: window)
+        appCoordinator.start(bridge: self.bridge)
 
-        self.window = UIWindow()
-        let tabbar = UITabBarController()
-        tabbar.setViewControllers([ScheduleMainVC().inNavigationController(), GradeMainVC().inNavigationController()], animated: false)
-        self.window?.rootViewController = tabbar
-        self.window?.makeKeyAndVisible()
+        self.appCoordinator = appCoordinator
+        self.window = window
+
         return true
-    }
-
-    private func baseInitialization() {
-        SettingsManager.shared.loadInitial()
     }
 
 }

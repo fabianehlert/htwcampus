@@ -65,6 +65,10 @@
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
+		B5A0D8831E86FD48007827A6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8821E86FD48007827A6 /* Coordinator.swift */; };
+		B5A0D8851E86FE7D007827A6 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */; };
+		B5A0D8881E87B3B0007827A6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */; };
+		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
 		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
@@ -145,12 +149,16 @@
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../Supporting Files/AppDelegate.swift"; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59FA9941DD09C8400259D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A0D8821E86FD48007827A6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
 		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
@@ -241,7 +249,6 @@
 		B52A9B4C1DDB15FE00313FC3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
 				B59FA9911DD09C8400259D7F /* Assets.xcassets */,
 				B59FA9961DD09C8400259D7F /* Info.plist */,
 				B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */,
@@ -257,6 +264,7 @@
 				B5EA536A1E7FC60E00183E07 /* Detail */,
 				B5EA53671E7FC5F700183E07 /* Main */,
 				B50EB5031E6B00700022E40C /* Model */,
+				B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -350,6 +358,8 @@
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
+				B5A0D8821E86FD48007827A6 /* Coordinator.swift */,
+				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -441,7 +451,7 @@
 			path = HTWDDTests;
 			sourceTree = "<group>";
 		};
-		B5BE72801E6C808700D05B6D /* General */ = {
+		B5A0D8861E87B365007827A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B5BE728D1E6C886400D05B6D /* Event.swift */,
@@ -452,6 +462,16 @@
 				B5F58E4C1E1EB15A006D99AE /* Semester.swift */,
 				B5BE72811E6C809200D05B6D /* SemesterInformation.swift */,
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B5BE72801E6C808700D05B6D /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
+				B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */,
+				B5A0D8861E87B365007827A6 /* Models */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -691,7 +711,9 @@
 			files = (
 				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
+				B5A0D8881E87B3B0007827A6 /* AppCoordinator.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
+				B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
@@ -721,6 +743,7 @@
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
 				B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
+				B5A0D8831E86FD48007827A6 /* Coordinator.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */,
@@ -736,6 +759,7 @@
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
+				B5A0D8851E86FE7D007827A6 /* ScheduleCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
