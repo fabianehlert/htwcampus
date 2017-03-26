@@ -1,21 +1,20 @@
 //
-//  ScheduleCoordinator.swift
+//  GradeCoordinator.swift
 //  HTWDD
 //
-//  Created by Benjamin Herzog on 25/03/2017.
+//  Created by Benjamin Herzog on 26/03/2017.
 //  Copyright © 2017 HTW Dresden. All rights reserved.
 //
 
 import UIKit
-
-class ScheduleCoordinator: Coordinator {
+class GradeCoordinator: Coordinator {
 
     var rootViewController: UIViewController {
         return self.mainViewController
     }
 
     private let tabbarController: TabBarController
-    private let mainViewController = ScheduleMainVC().inNavigationController()
+    private let mainViewController = GradeMainVC().inNavigationController()
     init(tabbarController: TabBarController) {
         self.tabbarController = tabbarController
     }

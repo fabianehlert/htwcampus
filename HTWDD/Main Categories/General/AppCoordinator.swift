@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: NSObject, Coordinator {
 
     enum Category: Int {
-        case schedule
+        case schedule, grade
     }
 
     var rootViewController: UIViewController {
@@ -20,18 +20,23 @@ class AppCoordinator: Coordinator {
 
     private var window: UIWindow?
     let tabBarController: TabBarController
-    private let childs: [(category: Category, coordinator: Coordinator)]
+    fileprivate let children: [(category: Category, coordinator: Coordinator)]
 
     init(window: UIWindow) {
         self.window = window
         self.tabBarController = TabBarController()
-        window.rootViewController = self.tabBarController
 
-        self.childs = [
-            (.schedule, ScheduleCoordinator(tabbarController: self.tabBarController))
+        self.children = [
+            (.schedule, ScheduleCoordinator(tabbarController: self.tabBarController)),
+            (.grade, GradeCoordinator(tabbarController: self.tabBarController))
         ]
 
-        let controllers = self.childs.flatMap {
+        super.init()
+
+        self.tabBarController.delegate = self
+        window.rootViewController = self.tabBarController
+
+        let controllers = self.children.flatMap {
             return $0.coordinator.rootViewController
         }
 
@@ -41,14 +46,30 @@ class AppCoordinator: Coordinator {
     func initialiaze(bridge: CoordinatorBridge) {
         SettingsManager.shared.loadInitial()
 
-        self.childs.forEach {
+        self.children.forEach {
             $0.coordinator.initialiaze(bridge: bridge)
         }
     }
 
+    fileprivate var bridge: CoordinatorBridge?
     func start(bridge: CoordinatorBridge) {
-        self.childs.first?.1.start(bridge: bridge)
+        self.bridge = bridge
+        self.children.first?.1.start(bridge: bridge)
         self.window?.makeKeyAndVisible()
+    }
+
+}
+
+extension AppCoordinator: UITabBarControllerDelegate {
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let bridge = self.bridge else {
+            return
+        }
+
+        self.children.first(where: { _, coordinator in
+            coordinator.rootViewController === viewController
+        })?.coordinator.start(bridge: bridge)
     }
 
 }
