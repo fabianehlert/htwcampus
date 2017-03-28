@@ -15,7 +15,8 @@ platform :ios do
     scan(
       skip_build: true,
       scheme: 'HTWDD',
-      devices: ['iPhone SE']
+      devices: ['iPhone SE'],
+      clean: true
     )
   end
 
