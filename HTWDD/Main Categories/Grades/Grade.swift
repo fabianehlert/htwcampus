@@ -54,28 +54,28 @@ extension Grade: Unmarshaling {
     static let url = "https://wwwqis.htw-dresden.de/appservice/v2/getgrades"
 
     init(object: MarshaledObject) throws {
-        self.nr = try object.value(for: "nr")
-        self.state = try object.value(for: "state")
-        self.credits = try object.value(for: "credits")
-        self.text = try object.value(for: "text")
-        self.semester = try object.value(for: "semester")
-        self.numberOfTry = try object.value(for: "tries")
+        self.nr = try object <| "nr"
+        self.state = try object <| "state"
+        self.credits = try object <| "credits"
+        self.text = try object <| "text"
+        self.semester = try object <| "semester"
+        self.numberOfTry = try object <| "tries"
 
-        let dateRaw: String? = try object.value(for: "examDate")
+        let dateRaw: String? = try object <| "examDate"
         if let dateRaw = dateRaw {
             self.date = try Date.from(string: dateRaw, format: "yyyy-MM-dd'T'HH:mmZ")
         } else {
             self.date = nil
         }
 
-        let markRaw: Double? = try object.value(for: "grade")
+        let markRaw: Double? = try object <| "grade"
         if let markRaw = markRaw {
             self.mark = markRaw / 100
         } else {
             self.mark = nil
         }
 
-        self.note = try? object.value(for: "note")
+        self.note = try? object <| "note"
     }
 
 }
