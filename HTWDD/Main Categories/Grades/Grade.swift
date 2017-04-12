@@ -62,18 +62,12 @@ extension Grade: Unmarshaling {
         self.numberOfTry = try object <| "tries"
 
         let dateRaw: String? = try object <| "examDate"
-        if let dateRaw = dateRaw {
-            self.date = try Date.from(string: dateRaw, format: "yyyy-MM-dd'T'HH:mmZ")
-        } else {
-            self.date = nil
+        self.date = try dateRaw.map {
+             try Date.from(string: $0, format: "yyyy-MM-dd'T'HH:mmZ")
         }
 
         let markRaw: Double? = try object <| "grade"
-        if let markRaw = markRaw {
-            self.mark = markRaw / 100
-        } else {
-            self.mark = nil
-        }
+        self.mark = markRaw.map { $0 / 100 }
 
         self.note = try? object <| "note"
     }
