@@ -16,7 +16,7 @@ class ScheduleMainVC: CollectionViewController {
     fileprivate var lastSelectedIndexPath: IndexPath?
 
     init() {
-        let semesterStart = Date.from(day: 20, month: 03, year: 2017)!
+        let semesterStart = Date()
         self.dataSource = ScheduleDataSource(originDate: semesterStart, numberOfDays: 20)
         super.init()
         let layout = TimetableCollectionViewLayout(dataSource: self)
