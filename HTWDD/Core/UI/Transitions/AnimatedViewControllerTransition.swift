@@ -29,7 +29,7 @@ class AnimatedViewControllerTransition: NSObject {
     fileprivate var direction = Direction.present
 
     init?(duration: TimeInterval, back: UIViewController, front: UIViewController) {
-        let _ = front.view
+        _ = front.view
 
         self.duration = duration
 
