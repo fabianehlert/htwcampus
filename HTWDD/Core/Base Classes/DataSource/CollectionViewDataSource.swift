@@ -31,7 +31,7 @@ class CollectionViewDataSource: NSObject {
 
     weak var collectionView: UICollectionView? {
         didSet {
-            self.collectionView?.register(ErrorCell.self, forCellWithReuseIdentifier: Const.errorIdentifier)
+            self.collectionView?.register(ErrorCollectionCell.self, forCellWithReuseIdentifier: Const.errorIdentifier)
             self.collectionView?.register(ErrorSupplementaryView.self, forSupplementaryViewOfKind: Const.errorIdentifier, withReuseIdentifier: Const.errorIdentifier)
             self.collectionView?.dataSource = self
         }
@@ -126,7 +126,7 @@ extension CollectionViewDataSource: UICollectionViewDataSource {
     }
 
     private func errorCell(collectionView: UICollectionView, indexPath: IndexPath, error: String) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.errorIdentifier, for: indexPath) as! ErrorCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.errorIdentifier, for: indexPath) as! ErrorCollectionCell
         cell.error = error
         return cell
     }
