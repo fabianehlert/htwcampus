@@ -18,8 +18,8 @@ struct Grade {
     let text: String
     let semester: Semester
     let numberOfTry: Int
-    let date: Date
-    let mark: Double
+    let date: Date?
+    let mark: Double?
     let note: String?
 
     static func get(network: Network, course: Course) -> Observable<[Grade]> {
@@ -60,9 +60,21 @@ extension Grade: Unmarshaling {
         self.text = try object.value(for: "text")
         self.semester = try object.value(for: "semester")
         self.numberOfTry = try object.value(for: "tries")
-        let dateRaw: String = try object.value(for: "examDate")
-        self.date = try Date.from(string: dateRaw, format: "yyyy-MM-dd'T'HH:mmZ")
-        self.mark = try object.value(for: "grade") / 100
+
+        let dateRaw: String? = try object.value(for: "examDate")
+        if let dateRaw = dateRaw {
+            self.date = try Date.from(string: dateRaw, format: "yyyy-MM-dd'T'HH:mmZ")
+        } else {
+            self.date = nil
+        }
+
+        let markRaw: Double? = try object.value(for: "grade")
+        if let markRaw = markRaw {
+            self.mark = markRaw / 100
+        } else {
+            self.mark = nil
+        }
+
         self.note = try? object.value(for: "note")
     }
 
