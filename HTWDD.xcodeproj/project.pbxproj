@@ -275,9 +275,9 @@
 			children = (
 				B538EF191E1D761E0031077C /* Course.swift */,
 				B538EF1B1E1D762E0031077C /* Grade.swift */,
+				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
-				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				B5B4A8A21E87DBB9002CBBFA /* GradeCoordinator.swift */,
 			);
 			path = Grades;

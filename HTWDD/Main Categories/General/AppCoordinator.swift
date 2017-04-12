@@ -43,7 +43,7 @@ class AppCoordinator: NSObject, Coordinator {
         self.tabBarController.setViewControllers(controllers, animated: false)
     }
 
-    func initialiaze(bridge: CoordinatorBridge) {
+    func initialize(bridge: CoordinatorBridge) {
         SettingsManager.shared.loadInitial()
 
         self.children.forEach {
