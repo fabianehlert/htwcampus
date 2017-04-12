@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow()
         let appCoordinator = AppCoordinator(window: window)
+        appCoordinator.initialize(bridge: self.bridge)
         appCoordinator.start(bridge: self.bridge)
 
         self.appCoordinator = appCoordinator

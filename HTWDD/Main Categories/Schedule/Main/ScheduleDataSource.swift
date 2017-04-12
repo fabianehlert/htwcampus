@@ -103,11 +103,11 @@ class ScheduleDataSource: CollectionViewDataSource {
     // MARK: CollectionViewDataSource methods
 
     override func item(at index: IndexPath) -> Identifiable? {
-        return lecture(at: index)
+        return self.lecture(at: index)
     }
 
     override func numberOfSections() -> Int {
-        return numberOfDays
+        return self.numberOfDays
     }
 
     override func numberOfItems(in section: Int) -> Int {
