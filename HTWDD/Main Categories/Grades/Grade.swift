@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Marshal
 
-struct Grade {
+struct Grade: Identifiable {
 
     let nr: Int
     let state: String

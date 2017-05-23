@@ -10,37 +10,19 @@ import UIKit
 
 class GradeMainVC: ViewController {
 
-    let network = Network(authenticator: Base(username: "", password: ""))
+    let tableView = UITableView()
+    let dataSource = GradeDataSource(username: "", password: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Course.get(network: self.network)
-            .map { $0.first }
-            .filterNil()
-            .subscribe(onNext: { [weak self] course in
+        self.tableView.frame = self.view.bounds
+        self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-                print(course)
-
-                guard let `self` = self else { return }
-
-                Grade.get(network: self.network, course: course)
-                    .map(Grade.groupAndOrderBySemester)
-                    .subscribe(onNext: { grades in
-
-                        print(grades)
-
-                    }, onError: {
-                        error in
-                        print(error)
-                    }).addDisposableTo(self.rx_disposeBag)
-
-            }, onError: { error in
-
-                print(error)
-
-            }).addDisposableTo(self.rx_disposeBag)
-
+        self.view.addSubview(self.tableView)
+        self.dataSource.tableView = self.tableView
+        self.dataSource.register(type: GradeCell.self)
+        self.dataSource.load()
     }
 
 }
