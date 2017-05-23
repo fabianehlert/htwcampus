@@ -8,18 +8,13 @@
 
 import UIKit
 
-class GradeMainVC: ViewController {
+class GradeMainVC: TableViewController {
 
-    let tableView = UITableView()
     let dataSource = GradeDataSource(username: "", password: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.frame = self.view.bounds
-        self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        self.view.addSubview(self.tableView)
         self.dataSource.tableView = self.tableView
         self.dataSource.register(type: GradeCell.self)
         self.dataSource.load()

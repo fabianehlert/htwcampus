@@ -25,6 +25,7 @@
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
 		39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */; };
+		B50875481ED40BE6004A320E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50875471ED40BE6004A320E /* TableViewController.swift */; };
 		B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */; };
 		B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */; };
 		B50EB4F31E6AC25D0022E40C /* htw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = B50EB4F21E6AC25D0022E40C /* htw.gpx */; };
@@ -116,6 +117,7 @@
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = "HTWDD/Main Categories/Grades/GradeDataSource.swift"; sourceTree = SOURCE_ROOT; };
 		39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeCell.swift; path = "../../Core/Base Classes/GradeCell.swift"; sourceTree = "<group>"; };
+		B50875471ED40BE6004A320E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
 		B50EB4F21E6AC25D0022E40C /* htw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = htw.gpx; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
+				B50875471ED40BE6004A320E /* TableViewController.swift */,
 				B5A0D8821E86FD48007827A6 /* Coordinator.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
@@ -736,6 +739,7 @@
 				B5111E1D1E71ECAD00D68155 /* Loca.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
+				B50875481ED40BE6004A320E /* TableViewController.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B5111E201E71F44300D68155 /* View.swift in Sources */,
