@@ -9,7 +9,7 @@
 import Foundation
 
 enum Week: Int {
-    case all = 0, even, odd
+    case all = 0, odd, even
 
     func validate(weekNumber: Int) -> Bool {
         switch self {
