@@ -11,7 +11,6 @@ import Cartography
 
 class ScheduleDetailVC: ViewController {
 
-    let button = UIButton()
     private let content: ScheduleDetailContentView
 
     private let lecture: Lecture
@@ -28,9 +27,9 @@ class ScheduleDetailVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.button.setTitle("PRESS ME", for: .normal)
-        self.button.addTarget(self, action: #selector(self.buttonPressed(_:)), for: .touchUpInside)
-        self.content.addSubview(button)
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.buttonPressed(_:)))
+        self.view.addGestureRecognizer(gesture)
         self.view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
 
         self.content.backgroundColor = .blue
@@ -53,13 +52,6 @@ class ScheduleDetailVC: ViewController {
     }
 
     func addConstraints() {
-        constrain(self.content, self.button) { view, button in
-            button.height == 40
-            button.bottom == view.bottom
-            button.leading == view.leading
-            button.trailing == view.trailing
-        }
-
         self.correctGroup = constrain(self.view, self.content, block: { view, content in
             content.edges == inset(view.edges, 50) ~ 700
             content.width <= 350 ~ LayoutPriority(1000)
