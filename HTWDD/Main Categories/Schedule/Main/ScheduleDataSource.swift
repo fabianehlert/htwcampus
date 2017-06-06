@@ -50,15 +50,15 @@ class ScheduleDataSource: CollectionViewDataSource {
 
         Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
                   .observeOn(MainScheduler.instance)
-                  .subscribe(onNext: { [weak self] lectures, information in
+            .subscribe { [weak self] (event) in
+                guard case let .next((lectures, information)) = event else {
+                    return
+                }
 
-                    self?.lectures = lectures
-                    self?.semesterInformations = information
-                    self?.data = self?.calculate() ?? []
-
-        }, onError: { _ in
-
-        }).addDisposableTo(self.disposeBag)
+                self?.lectures = lectures
+                self?.semesterInformations = information
+                self?.data = self?.calculate() ?? []
+        }.addDisposableTo(self.disposeBag)
     }
 
     func lecture(at indexPath: IndexPath) -> Lecture? {
