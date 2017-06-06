@@ -83,17 +83,17 @@ extension Semester: ValueType {
 
         var raw = rawValue
 
-        let type = raw.characters.removeLast()
+        let rawType = raw.characters.removeLast()
 
         guard let year = Int(raw) else {
             throw MarshalError.typeMismatch(expected: Int.self, actual: raw)
         }
-        if type == "1" {
+        if rawType == "1" {
             return .summer(year: year)
-        } else if type == "2" {
+        } else if rawType == "2" {
             return .winter(year: year)
         } else {
-            throw MarshalError.typeMismatch(expected: "1 or 2", actual: type)
+            throw MarshalError.typeMismatch(expected: "1 or 2", actual: rawType)
         }
     }
 

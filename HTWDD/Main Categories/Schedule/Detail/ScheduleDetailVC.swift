@@ -60,7 +60,7 @@ class ScheduleDetailVC: ViewController {
         })
     }
 
-    func buttonPressed(_ sender: UIButton) {
+    @objc func buttonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }

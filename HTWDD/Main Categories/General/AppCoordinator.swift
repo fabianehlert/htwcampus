@@ -67,8 +67,8 @@ extension AppCoordinator: UITabBarControllerDelegate {
             return
         }
 
-        self.children.first(where: { _, coordinator in
-            coordinator.rootViewController === viewController
+        self.children.first(where: { child in
+            child.coordinator.rootViewController === viewController
         })?.coordinator.start(bridge: bridge)
     }
 

@@ -1,0 +1,19 @@
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
+language: objective-c
+cache: Carthage
+osx_image: xcode8
+xcode_sdk: iphonesimulator9.3
+xcode_scheme:
+- RxOptional iOS
+- RxOptional watchOS
+- RxOptional macOS
+- RxOptional tvOS
+
+before_install:
+- brew update
+- brew unlink carthage
+- brew install carthage
+- carthage bootstrap 

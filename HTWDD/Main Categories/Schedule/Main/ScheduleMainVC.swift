@@ -18,14 +18,20 @@ class ScheduleMainVC: CollectionViewController {
     init() {
         self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20)
         super.init()
+        self.initialSetup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20)
+        super.init(coder: aDecoder)
+        self.initialSetup()
+    }
+
+    private func initialSetup() {
         let layout = TimetableCollectionViewLayout(dataSource: self)
         self.collectionView.setCollectionViewLayout(layout, animated: false)
         self.dataSource.collectionView = self.collectionView
         self.collectionView.isDirectionalLockEnabled = true
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
