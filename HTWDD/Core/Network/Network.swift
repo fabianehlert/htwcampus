@@ -36,9 +36,9 @@ public class Network {
 
     private func get(url: String, params: [String: String]) -> Observable<Any> {
 
-        let p: [String] = params.map { "\($0.key)=\($0.value)" }
+        let p: [String] = params.map { $0.key + "=" + $0.value }
         let joinedParameters = p.joined(separator: "&")
-        let urlString = "\(url)?\(joinedParameters)"
+        let urlString = url + "?" + joinedParameters
         guard let url = URL(string: urlString) else {
             return Observable.error(Error.invalidURL(urlString))
         }
