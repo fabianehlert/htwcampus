@@ -17,7 +17,8 @@ class ScheduleDetailVC: ViewController {
 
     init(lecture: Lecture) {
         self.lecture = lecture
-        self.content = ScheduleDetailContentView(lecture: lecture)
+        let viewModel = ScheduleDetailContentViewModel(lecture: lecture)
+        self.content = ScheduleDetailContentView(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -28,7 +29,7 @@ class ScheduleDetailVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.buttonPressed(_:)))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized))
         self.view.addGestureRecognizer(gesture)
         self.view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
 
@@ -42,7 +43,7 @@ class ScheduleDetailVC: ViewController {
     var correctGroup = ConstraintGroup()
 
     @discardableResult
-    func constraincontent(to frame: CGRect) -> ConstraintGroup {
+    private func constraincontent(to frame: CGRect) -> ConstraintGroup {
         return constrain(self.view, self.content, block: { view, content in
             content.leading == view.leading + frame.origin.x
             content.width == frame.size.width
@@ -53,15 +54,16 @@ class ScheduleDetailVC: ViewController {
 
     func addConstraints() {
         self.correctGroup = constrain(self.view, self.content, block: { view, content in
-            content.edges == inset(view.edges, 50) ~ 700
-            content.width <= 350 ~ LayoutPriority(1000)
-            content.height <= 200 ~ LayoutPriority(1000)
-            content.center == view.center ~ 1000
+            content.edges == inset(view.edges, 50) ~ 700.0
+            content.width <= 350 ~ 1000.0
+            content.height <= 350 ~ 1000.0
+            content.center == view.center ~ 1000.0
         })
     }
 
-    @objc func buttonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @objc
+    private func tapRecognized(_ sender: UIGestureRecognizer) {
+        self.dismiss(animated: true)
     }
 }
 
