@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 
+// TODO: This should be injected!
+let auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71")
+
 class ScheduleMainVC: CollectionViewController {
 
     let dataSource: ScheduleDataSource
@@ -16,16 +19,22 @@ class ScheduleMainVC: CollectionViewController {
     fileprivate var lastSelectedIndexPath: IndexPath?
 
     init() {
-        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20)
+        self.dataSource = ScheduleDataSource(originDate: Date.from(day: 16, month: 10, year: 2017)!, numberOfDays: 20, auth: auth)
         super.init()
+        self.initialSetup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.dataSource = ScheduleDataSource(originDate: Date.from(day: 16, month: 10, year: 2017)!, numberOfDays: 20, auth: auth)
+        super.init(coder: aDecoder)
+        self.initialSetup()
+    }
+
+    private func initialSetup() {
         let layout = TimetableCollectionViewLayout(dataSource: self)
         self.collectionView.setCollectionViewLayout(layout, animated: false)
         self.dataSource.collectionView = self.collectionView
         self.collectionView.isDirectionalLockEnabled = true
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
@@ -42,7 +51,7 @@ class ScheduleMainVC: CollectionViewController {
                 return
             }
             let hour = Int(self.startHour) - 1 + indexPath.row
-            time.timeString = "\(hour)"
+            time.timeString = String(hour)
         }
         self.dataSource.load()
     }

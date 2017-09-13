@@ -11,6 +11,28 @@ import RxSwift
 
 class ScheduleDataSource: CollectionViewDataSource {
 
+    struct Auth {
+        let year: String
+        let major: String
+        let group: String
+    }
+
+    var originDate: Date {
+        didSet {
+            self.data = self.calculate()
+        }
+    }
+    var numberOfDays: Int {
+        didSet {
+            self.data = self.calculate()
+        }
+    }
+    var auth: Auth {
+        didSet {
+            self.data = self.calculate()
+        }
+    }
+
     private let days = [Loca.monday, Loca.tuesday, Loca.wednesday, Loca.thursday, Loca.friday, Loca.saturday, Loca.sunday]
 
     private(set) var lectures = [Day: [Lecture]]()
@@ -30,16 +52,10 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let network = Network()
 
-    var originDate: Date {
-        didSet {
-            self.data = self.calculate()
-        }
-    }
-    var numberOfDays: Int
-
-    init(originDate: Date, numberOfDays: Int) {
+    init(originDate: Date, numberOfDays: Int, auth: Auth) {
         self.originDate = originDate
         self.numberOfDays = numberOfDays
+        self.auth = auth
     }
 
     func load() {
@@ -50,15 +66,15 @@ class ScheduleDataSource: CollectionViewDataSource {
 
         Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
                   .observeOn(MainScheduler.instance)
-                  .subscribe(onNext: { [weak self] lectures, information in
+            .subscribe { [weak self] (event) in
+                guard case let .next((lectures, information)) = event else {
+                    return
+                }
 
-                    self?.lectures = lectures
-                    self?.semesterInformations = information
-                    self?.data = self?.calculate() ?? []
-
-        }, onError: { _ in
-
-        }).addDisposableTo(self.disposeBag)
+                self?.lectures = lectures
+                self?.semesterInformations = information
+                self?.data = self?.calculate() ?? []
+        }.addDisposableTo(self.disposeBag)
     }
 
     func lecture(at indexPath: IndexPath) -> Lecture? {

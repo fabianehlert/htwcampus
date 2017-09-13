@@ -9,16 +9,31 @@
 import UIKit
 import Cartography
 
-class ScheduleDetailContentView: View {
+class ScheduleDetailContentViewModel {
 
-    let lecture: Lecture
-
-    private let label = UILabel()
+    private let lecture: Lecture
 
     init(lecture: Lecture) {
         self.lecture = lecture
+    }
+
+    var tag: String {
+        return self.lecture.name
+    }
+
+}
+
+class ScheduleDetailContentView: View {
+
+    let viewModel: ScheduleDetailContentViewModel
+
+    private let label = UILabel()
+
+    init(viewModel: ScheduleDetailContentViewModel) {
+        self.viewModel = viewModel
+
         super.init(frame: .zero)
-        self.label.text = self.lecture.tag
+        self.label.text = self.viewModel.tag
 
         self.addSubview(label)
         constrain(self, self.label) { container, label in
