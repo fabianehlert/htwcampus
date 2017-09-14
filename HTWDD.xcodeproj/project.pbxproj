@@ -70,11 +70,8 @@
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
-		B5A0D8831E86FD48007827A6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8821E86FD48007827A6 /* Coordinator.swift */; };
-		B5A0D8851E86FE7D007827A6 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */; };
-		B5A0D8881E87B3B0007827A6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */; };
+		B5A0D8881E87B3B0007827A6 /* HTWApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
-		B5B4A8A31E87DBB9002CBBFA /* GradeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A8A21E87DBB9002CBBFA /* GradeCoordinator.swift */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
 		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
@@ -166,11 +163,8 @@
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5A0D8821E86FD48007827A6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
-		B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTWApplication.swift; sourceTree = "<group>"; };
 		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		B5B4A8A21E87DBB9002CBBFA /* GradeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCoordinator.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
 		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
@@ -276,7 +270,6 @@
 				B5EA536A1E7FC60E00183E07 /* Detail */,
 				B5EA53671E7FC5F700183E07 /* Main */,
 				B50EB5031E6B00700022E40C /* Model */,
-				B5A0D8841E86FE7D007827A6 /* ScheduleCoordinator.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -289,7 +282,6 @@
 				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
-				B5B4A8A21E87DBB9002CBBFA /* GradeCoordinator.swift */,
 				39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */,
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
 			);
@@ -371,7 +363,6 @@
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 				B50875471ED40BE6004A320E /* TableViewController.swift */,
-				B5A0D8821E86FD48007827A6 /* Coordinator.swift */,
 				B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */,
 				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
@@ -479,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A0D8861E87B365007827A6 /* Models */,
-				B5A0D8871E87B3B0007827A6 /* AppCoordinator.swift */,
+				B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */,
 				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
 			);
 			path = General;
@@ -721,7 +712,7 @@
 			files = (
 				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
-				B5A0D8881E87B3B0007827A6 /* AppCoordinator.swift in Sources */,
+				B5A0D8881E87B3B0007827A6 /* HTWApplication.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
 				B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
@@ -755,10 +746,8 @@
 				B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */,
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
-				B5A0D8831E86FD48007827A6 /* Coordinator.swift in Sources */,
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
-				B5B4A8A31E87DBB9002CBBFA /* GradeCoordinator.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
 				B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */,
@@ -775,7 +764,6 @@
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
-				B5A0D8851E86FE7D007827A6 /* ScheduleCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppContext: CoordinatorBridge {
+class AppContext {
 
 }
 
@@ -16,7 +16,7 @@ class AppContext: CoordinatorBridge {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var appCoordinator: AppCoordinator?
+    private var appCoordinator: HTWApplication?
     private let bridge = AppContext()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -26,9 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let window = UIWindow()
-        let appCoordinator = AppCoordinator(window: window)
-        appCoordinator.initialize(bridge: self.bridge)
-        appCoordinator.start(bridge: self.bridge)
+        let appCoordinator = HTWApplication(window: window, bridge: self.bridge)
+        appCoordinator.start()
 
         self.appCoordinator = appCoordinator
         self.window = window

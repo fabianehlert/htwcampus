@@ -44,8 +44,9 @@ struct Grade: Identifiable {
             semesterHash[grade.semester, or: []].append(grade)
         }
 
+        // newest first
         return semesterHash.sorted {
-            return $0.key < $1.key
+            return $0.key > $1.key
         }
     }
 }

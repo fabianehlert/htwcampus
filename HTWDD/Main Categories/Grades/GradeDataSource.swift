@@ -10,14 +10,14 @@ import UIKit
 import RxSwift
 
 class GradeDataSource: TableViewDataSource {
-    let network: Network
-    var semesters = [(semester: Semester, grades: [Grade])]() {
+    private let network: Network
+    private var semesters = [(semester: Semester, grades: [Grade])]() {
         didSet {
             self.tableView?.reloadData()
         }
     }
 
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.semesters.count
@@ -31,6 +31,11 @@ class GradeDataSource: TableViewDataSource {
         return self.semesters[index.section].grades[index.row]
     }
 
+    override func titleFor(section: Int) -> String? {
+        let semester = self.semesters[section].semester
+        return semester.localized
+    }
+
     private func loadCourses() -> Observable<[Course]> {
         return Course.get(network: self.network)
     }
@@ -39,8 +44,10 @@ class GradeDataSource: TableViewDataSource {
         return Grade.get(network: self.network, course: course)
     }
 
-    func load() {
+    func load() -> PublishSubject<[(Semester, [Grade])]> {
         self.disposeBag = DisposeBag()
+
+        let subject = PublishSubject<[(Semester, [Grade])]>()
 
         loadCourses()
             .flatMap { (courses) -> Observable<[(Semester, [Grade])]> in
@@ -53,10 +60,14 @@ class GradeDataSource: TableViewDataSource {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] semesters in
                 self?.semesters = semesters
+                subject.onNext(semesters)
+                subject.onCompleted()
                 }, onError: { error in
                     Log.error(error)
+                    subject.onError(error)
             })
             .addDisposableTo(self.disposeBag)
+        return subject
     }
 
     init(username: String, password: String) {

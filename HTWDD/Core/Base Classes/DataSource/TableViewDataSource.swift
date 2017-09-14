@@ -13,15 +13,19 @@ class TableViewDataSource: NSObject {
     // MARK: Override those methods in subclass!
 
     func numberOfSections() -> Int {
-        preconditionFailure("\(#function) needs to be overriden in subclass (\(self))!")
+        preconditionFailure("\(#function) needs to be overriden in subclass (\(type(of: self)))!")
     }
 
     func numberOfItems(in section: Int) -> Int {
-        preconditionFailure("\(#function) needs to be overriden in subclass (\(self))!")
+        preconditionFailure("\(#function) needs to be overriden in subclass (\(type(of: self)))!")
     }
 
     func item(at index: IndexPath) -> Identifiable? {
-        preconditionFailure("\(#function) needs to be overriden in subclass (\(self))!")
+        preconditionFailure("\(#function) needs to be overriden in subclass (\(type(of: self)))!")
+    }
+
+    func titleFor(section: Int) -> String? {
+        return nil
     }
 
     weak var tableView: UITableView? {
@@ -87,4 +91,9 @@ extension TableViewDataSource: UITableViewDataSource {
         cell.error = error
         return cell
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.titleFor(section: section)
+    }
+
 }

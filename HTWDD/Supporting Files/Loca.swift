@@ -18,4 +18,10 @@ enum Loca {
 	static var sunday: String { return NSLocalizedString("sunday", comment: "") }
 	// Schedule
 	static var scheduleTitle: String { return NSLocalizedString("scheduleTitle", comment: "") }
+	// Grades
+	static var gradesTitle: String { return NSLocalizedString("gradesTitle", comment: "") }
+	// Summersemester
+	static var summerSemester: String { return NSLocalizedString("summerSemester", comment: "") }
+	// Wintersemester
+	static var winterSemester: String { return NSLocalizedString("winterSemester", comment: "") }
 }

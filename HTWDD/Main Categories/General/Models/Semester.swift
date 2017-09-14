@@ -22,6 +22,15 @@ enum Semester: Hashable, CustomStringConvertible, Comparable {
         }
     }
 
+    var localized: String {
+        switch self {
+        case .summer(let year):
+            return Loca.summerSemester + " \(year)"
+        case .winter(let year):
+            return Loca.winterSemester + " \(year)"
+        }
+    }
+
     var description: String {
         switch self {
         case .summer(let year):

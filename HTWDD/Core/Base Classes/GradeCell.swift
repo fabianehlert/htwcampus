@@ -22,7 +22,6 @@ class GradeCell: TableViewCell {
 
     override func initialSetup() {
         self.label.frame = self.contentView.bounds
-//        self.label.textColor = .black
         self.label.textAlignment = .center
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
@@ -33,7 +32,7 @@ class GradeCell: TableViewCell {
 
 extension GradeCell: Cell {
     func update(viewModel: GradeViewModel) {
-        self.title = viewModel.grade.text
+        self.title = viewModel.grade.text + " - \(viewModel.grade.mark ?? 0)"
     }
 }
 
