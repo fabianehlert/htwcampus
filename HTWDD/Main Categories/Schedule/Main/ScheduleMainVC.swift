@@ -19,13 +19,13 @@ class ScheduleMainVC: CollectionViewController {
     fileprivate var lastSelectedIndexPath: IndexPath?
 
     init() {
-        self.dataSource = ScheduleDataSource(originDate: Date.from(day: 16, month: 10, year: 2017)!, numberOfDays: 20, auth: auth)
+        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20, auth: auth)
         super.init()
         self.initialSetup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.dataSource = ScheduleDataSource(originDate: Date.from(day: 16, month: 10, year: 2017)!, numberOfDays: 20, auth: auth)
+        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20, auth: auth)
         super.init(coder: aDecoder)
         self.initialSetup()
     }

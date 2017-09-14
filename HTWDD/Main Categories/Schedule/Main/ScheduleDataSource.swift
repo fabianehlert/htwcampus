@@ -59,7 +59,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     func load() {
-        let lecturesObservable = Lecture.get(network: self.network, year: "2016", major: "044", group: "71")
+        let lecturesObservable = Lecture.get(network: self.network, year: self.auth.year, major: self.auth.major, group: self.auth.group)
             .map(Lecture.groupByDay)
 
         let informationObservable = SemesterInformation.get(network: self.network)
