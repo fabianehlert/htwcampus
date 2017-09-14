@@ -15,10 +15,12 @@ class GradeMainVC: TableViewController {
 
     private let refreshControl = UIRefreshControl()
 
+    override func initialSetup() {
+        self.title = Loca.gradesTitle
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = Loca.gradesTitle
 
         self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
 
@@ -42,9 +44,15 @@ class GradeMainVC: TableViewController {
             .delay(0.5, scheduler: MainScheduler.instance)
         .subscribe(onNext: { [weak self] _ in
             self?.refreshControl.endRefreshing()
-        }, onError: { [weak self] _ in
+        }, onError: { [weak self] err in
             self?.refreshControl.endRefreshing()
+            self?.showAlert(error: err)
         }).addDisposableTo(self.rx_disposeBag)
     }
 
+    private func showAlert(error: Error) {
+        let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

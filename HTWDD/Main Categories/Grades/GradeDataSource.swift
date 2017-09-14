@@ -17,8 +17,6 @@ class GradeDataSource: TableViewDataSource {
         }
     }
 
-    private var disposeBag = DisposeBag()
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.semesters.count
     }
@@ -44,12 +42,8 @@ class GradeDataSource: TableViewDataSource {
         return Grade.get(network: self.network, course: course)
     }
 
-    func load() -> PublishSubject<[(Semester, [Grade])]> {
-        self.disposeBag = DisposeBag()
-
-        let subject = PublishSubject<[(Semester, [Grade])]>()
-
-        loadCourses()
+    func load() -> Observable<[(Semester, [Grade])]> {
+        return loadCourses()
             .flatMap { (courses) -> Observable<[(Semester, [Grade])]> in
                 let grades = courses.map(self.loadGrades)
                 return Observable.combineLatest(grades)
@@ -58,16 +52,10 @@ class GradeDataSource: TableViewDataSource {
             }
             .debug()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] semesters in
+            .map { [weak self] semesters in
                 self?.semesters = semesters
-                subject.onNext(semesters)
-                subject.onCompleted()
-                }, onError: { error in
-                    Log.error(error)
-                    subject.onError(error)
-            })
-            .addDisposableTo(self.disposeBag)
-        return subject
+                return semesters
+            }
     }
 
     init(username: String, password: String) {

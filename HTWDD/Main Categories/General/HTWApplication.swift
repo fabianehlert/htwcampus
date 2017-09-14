@@ -41,14 +41,6 @@ class HTWApplication: NSObject {
             return pair.controller
         }
 
-        // trigger viewDidLoad
-        for c in controllers {
-            _ = c.view
-            for child in c.childViewControllers {
-                _ = child.view
-            }
-        }
-
         self.tabBarController.setViewControllers(controllers, animated: false)
     }
 
