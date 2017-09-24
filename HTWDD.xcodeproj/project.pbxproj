@@ -82,6 +82,7 @@
 		B5C742301E7FECA000987227 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C7422F1E7FECA000987227 /* Cartography.framework */; };
 		B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */; };
 		B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C721E5F37970083D75E /* CollectionViewController.swift */; };
+		B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
 		B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535A1E7FBA3D00183E07 /* Parameter.swift */; };
 		B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535C1E7FBA4900183E07 /* Authenticator.swift */; };
 		B5EA535F1E7FBB1500183E07 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535E1E7FBB1500183E07 /* String.swift */; };
@@ -176,6 +177,7 @@
 		B5C7422F1E7FECA000987227 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMainVC.swift; sourceTree = "<group>"; };
 		B5CD5C721E5F37970083D75E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewModel.swift; sourceTree = "<group>"; };
 		B5EA535A1E7FBA3D00183E07 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		B5EA535C1E7FBA4900183E07 /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B5EA535E1E7FBB1500183E07 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				B5111E211E71F78700D68155 /* LectureHeaderView.swift */,
 				B5111E271E7206B500D68155 /* LectureTimeView.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
+				B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,7 +576,7 @@
 					};
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 2URYCAZR48;
+						DevelopmentTeam = 3E4PGPNR47;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
@@ -730,6 +733,7 @@
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */,
+				B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */,
 				B5111E201E71F44300D68155 /* View.swift in Sources */,
 				B5EA536D1E7FCE8B00183E07 /* ScheduleDetailVC.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
@@ -952,19 +956,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2URYCAZR48;
+				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "HTWDD/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=150";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDD";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e61afe5e-6c75-4748-b452-08c8a03c5c86";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW Development";
+				PROVISIONING_PROFILE = "23ac1ed9-d5ff-40dd-b6e6-65676b733551";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW App Dev";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -975,19 +979,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 2URYCAZR48;
+				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "HTWDD/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDD";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04ff3ab3-f5e7-48bf-bf32-ac2f34815f3f";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW Release";
+				PROVISIONING_PROFILE = "4be22951-7cfe-4d20-b1f6-7e62e809c6ee";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW App Distribution";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
