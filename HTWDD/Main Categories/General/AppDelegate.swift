@@ -8,10 +8,6 @@
 
 import UIKit
 
-class AppContext {
-
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
