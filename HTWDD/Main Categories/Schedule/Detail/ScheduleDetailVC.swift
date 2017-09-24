@@ -31,7 +31,8 @@ class ScheduleDetailVC: ViewController {
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized))
         self.view.addGestureRecognizer(gesture)
-        self.view.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        self.view.backgroundColor = UIColor.clear
+        self.view.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
 
         self.content.backgroundColor = .blue
         self.content.layer.cornerRadius = 10
@@ -65,6 +66,7 @@ class ScheduleDetailVC: ViewController {
     private func tapRecognized(_ sender: UIGestureRecognizer) {
         self.dismiss(animated: true)
     }
+
 }
 
 extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {

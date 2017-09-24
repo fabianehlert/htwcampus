@@ -44,6 +44,8 @@ final class ScheduleMainVC: CollectionViewController {
 
         self.title = Loca.scheduleTitle
 
+        self.register3DTouch()
+
         self.dataSource.register(type: LectureCollectionViewCell.self)
         self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
             view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
@@ -58,17 +60,29 @@ final class ScheduleMainVC: CollectionViewController {
         self.dataSource.load()
     }
 
+    private func register3DTouch() {
+        guard self.traitCollection.forceTouchCapability == .available else {
+            return
+        }
+
+        self.registerForPreviewing(with: self, sourceView: self.collectionView)
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = self.dataSource.lecture(at: indexPath) else {
             Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
             return
         }
         self.lastSelectedIndexPath = indexPath
-        let detail = ScheduleDetailVC(lecture:  item)
-        detail.transition = AnimatedViewControllerTransition(duration: 0.4, back: self, front: detail)
-        detail.modalPresentationStyle = .overCurrentContext
+        let detail = ScheduleDetailVC(lecture: item)
+        self.presentDetail(detail)
+    }
+
+    fileprivate func presentDetail(_ controller: UIViewController) {
+        controller.transition = AnimatedViewControllerTransition(duration: 0.4, back: self, front: controller)
+        controller.modalPresentationStyle = .overCurrentContext
         self.definesPresentationContext = true
-        self.present(detail, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
     }
 
 }
@@ -108,6 +122,25 @@ extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
 
     func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
         return self.lastSelectedIndexPath.flatMap(self.collectionView.cellForItem(at:))
+    }
+
+}
+
+extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: location),
+            let item = self.dataSource.lecture(at: indexPath)
+        else {
+            return nil
+        }
+
+        self.lastSelectedIndexPath = indexPath
+        return ScheduleDetailVC(lecture:  item)
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.presentDetail(viewControllerToCommit)
     }
 
 }
