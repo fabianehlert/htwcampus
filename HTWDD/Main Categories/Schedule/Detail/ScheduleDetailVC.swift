@@ -34,7 +34,6 @@ class ScheduleDetailVC: ViewController {
         self.view.backgroundColor = UIColor.clear
         self.view.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
 
-        self.content.backgroundColor = .blue
         self.content.layer.cornerRadius = 10
         self.view.addSubview(self.content)
 
@@ -71,7 +70,7 @@ class ScheduleDetailVC: ViewController {
 
 extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
 
-    func animate(source: CGRect, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
+    func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
 
         switch direction {
         case .present:
@@ -82,17 +81,34 @@ extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
             small.active = false
             self.correctGroup.active = true
 
+            for v in self.content.subviews {
+                v.alpha = 0
+            }
+
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
                 self.view.alpha = 1
                 self.view.layoutIfNeeded()
+
+                for v in self.content.subviews {
+                    v.alpha = 1
+                }
             }, completion: completion)
 
         case .dismiss:
             self.correctGroup.active = false
             self.constraincontent(to: source)
+
+            for v in self.content.subviews {
+                v.alpha = 1
+            }
+
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
                 self.view.layoutIfNeeded()
                 self.view.alpha = 0
+
+                for v in self.content.subviews {
+                    v.alpha = 0
+                }
             }, completion: completion)
         }
 

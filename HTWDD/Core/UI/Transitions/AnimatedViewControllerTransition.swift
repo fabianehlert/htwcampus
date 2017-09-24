@@ -13,7 +13,7 @@ protocol AnimatedViewControllerTransitionDataSource: class {
 }
 
 protocol AnimatedViewControllerTransitionAnimator: class {
-    func animate(source: CGRect, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void)
+    func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void)
 }
 
 enum Direction {
@@ -93,7 +93,7 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
 
         let rect = sourceView.map { $0.convert($0.bounds, to: views.container) } ?? CGRect.zero
 
-        self.front?.animate(source: rect, duration: duration, direction: self.direction, completion: { fininshed in
+        self.front?.animate(source: rect, sourceView: sourceView, duration: duration, direction: self.direction, completion: { fininshed in
             transitionContext.completeTransition(fininshed)
         })
     }

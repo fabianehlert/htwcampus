@@ -79,7 +79,7 @@ final class ScheduleMainVC: CollectionViewController {
     }
 
     fileprivate func presentDetail(_ controller: UIViewController) {
-        controller.transition = AnimatedViewControllerTransition(duration: 0.4, back: self, front: controller)
+        controller.transition = AnimatedViewControllerTransition(duration: 0.5, back: self, front: controller)
         controller.modalPresentationStyle = .overCurrentContext
         self.definesPresentationContext = true
         self.present(controller, animated: true, completion: nil)
