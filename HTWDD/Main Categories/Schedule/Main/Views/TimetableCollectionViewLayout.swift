@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate class SeperatorView: CollectionReusableView {
+private class SeperatorView: CollectionReusableView {
 
     override func initialSetup() {
         backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -30,7 +30,7 @@ protocol TimetableCollectionViewLayoutDataSource: class {
 
 extension TimetableCollectionViewLayoutDataSource {
     var widthPerDay: CGFloat {
-        return 120
+        return 100
     }
     var startHour: CGFloat {
         return 0
@@ -202,6 +202,8 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
     }
 
     private func indexPathsForDecorationViews(rect: CGRect) -> [IndexPath] {
+        return []
+        // maybe we want to have the separators back
         guard let dataSource = self.dataSource else {
             return []
         }

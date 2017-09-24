@@ -12,20 +12,22 @@ import RxSwift
 // TODO: This should be injected!
 let auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71")
 
-class ScheduleMainVC: CollectionViewController {
+final class ScheduleMainVC: CollectionViewController {
 
-    let dataSource: ScheduleDataSource
+    private static let defaultStartDate = Date.from(day: 9, month: 10, year: 2017) ?? Date()
+
+    private let dataSource: ScheduleDataSource
 
     fileprivate var lastSelectedIndexPath: IndexPath?
 
     init() {
-        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20, auth: auth)
+        self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
         super.init()
         self.initialSetup()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.dataSource = ScheduleDataSource(originDate: Date(), numberOfDays: 20, auth: auth)
+        self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
         super.init(coder: aDecoder)
         self.initialSetup()
     }
@@ -86,11 +88,11 @@ extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
     }
 
     var startHour: CGFloat {
-        return 7
+        return 6.5
     }
 
     var endHour: CGFloat {
-        return 19
+        return 21
     }
 
     func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
