@@ -11,7 +11,7 @@ import Foundation
 final class Log {
 
     static func error(_ error: @autoclosure () -> Error) {
-        print("‼️", String(describing: error()))
+        self.error(String(describing: error()))
     }
 
     static func error(_ error: @autoclosure () -> String) {

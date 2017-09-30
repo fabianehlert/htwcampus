@@ -10,6 +10,10 @@ import Foundation
 
 extension TimeInterval {
 
+    var seconds: TimeInterval {
+        return self
+    }
+
     var minutes: TimeInterval {
         return self * 60
     }
