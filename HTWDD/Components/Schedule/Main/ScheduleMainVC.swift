@@ -75,14 +75,11 @@ final class ScheduleMainVC: CollectionViewController {
         }
         self.lastSelectedIndexPath = indexPath
         let detail = ScheduleDetailVC(lecture: item)
-        self.presentDetail(detail)
+        self.presentDetail(detail, animated: true)
     }
 
-    fileprivate func presentDetail(_ controller: UIViewController) {
-        controller.transition = AnimatedViewControllerTransition(duration: 0.5, back: self, front: controller)
-        controller.modalPresentationStyle = .overCurrentContext
-        self.definesPresentationContext = true
-        self.present(controller, animated: true, completion: nil)
+    fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
+        self.navigationController?.pushViewController(controller, animated: animated)
     }
 
 }
@@ -144,7 +141,7 @@ extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.presentDetail(viewControllerToCommit)
+        self.presentDetail(viewControllerToCommit, animated: false)
     }
 
 }
