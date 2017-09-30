@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+private let saveInterval: TimeInterval = 5.seconds
+private var saveTimer: Timer?
+
 final class SettingsManager {
 
     enum Err: Error {
@@ -22,25 +25,40 @@ final class SettingsManager {
 
         // keys
         enum Key {
+            static let scheduleYear = "scheduleYear"
+            static let scheduleMajor = "scheduleMajor"
+            static let scheduleGroup = "scheduleGroup"
+
             static let sNumber = "sNumber"
             static let unixPassword = "unixPassword"
         }
     }
 
-    var sNumber = Setting<String>()
-    var unixPassword = Setting<String>()
+    let sNumber = Setting<String>(Const.Key.sNumber)
+    let unixPassword = Setting<String>(Const.Key.unixPassword)
+
+    let scheduleYear = Setting<Int>(Const.Key.scheduleYear)
+    let scheduleMajor = Setting<Int>(Const.Key.scheduleMajor)
+    let scheduleGroup = Setting<Int>(Const.Key.scheduleGroup)
 
     private let disposeBag = DisposeBag()
 
     static let shared = SettingsManager()
 
     func loadInitial() {
+        self.sNumber.settingsManager = self
+        self.unixPassword.settingsManager = self
+
         do {
             try self.load()
         } catch {
             Log.error(error)
         }
         observeNotifications()
+    }
+
+    deinit {
+        self.save()
     }
 
     private func observeNotifications() {
@@ -53,11 +71,7 @@ final class SettingsManager {
         }
 
         merged.subscribe(onNext: { [weak self] _ in
-            do {
-                try self?.save()
-            } catch {
-                Log.error(error)
-            }
+            self?.save()
         }).addDisposableTo(self.disposeBag)
     }
 
@@ -80,27 +94,57 @@ final class SettingsManager {
             try self.sNumber.setValue(value)
         case Const.Key.unixPassword:
             try self.unixPassword.setValue(value)
+        case Const.Key.scheduleYear:
+            try self.scheduleYear.setValue(value)
+        case Const.Key.scheduleMajor:
+            try self.scheduleMajor.setValue(value)
+        case Const.Key.scheduleGroup:
+            try self.scheduleGroup.setValue(value)
         default:
             throw Err.unknownKey(key)
         }
     }
 
-    func save() throws {
+    @objc
+    func save() {
         var object = [String: Any]()
-        object[Const.Key.sNumber] = self.sNumber.value
-        object[Const.Key.unixPassword] = self.unixPassword.value
 
-        let data = try JSONSerialization.data(withJSONObject: object, options: .prettyPrinted) // for better readability
+        object[self.sNumber.key] = self.sNumber.value
+        object[self.unixPassword.key] = self.unixPassword.value
+        object[self.scheduleYear.key] = self.scheduleYear.value
+        object[self.scheduleMajor.key] = self.scheduleMajor.value
+        object[self.scheduleGroup.key] = self.scheduleGroup.value
+
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: .prettyPrinted) else {
+            Log.error("Failed at saving settings to user defaults")
+            return
+        }
+        // TODO: Don't use user defaults for sensitive information!
         UserDefaults.standard.set(data, forKey: Const.userDefaultsKey)
     }
 
 }
 
-struct Setting<T> {
+final class Setting<T> {
 
-    var value: T?
+    let key: String
+    init(_ key: String) {
+        self.key = key
+    }
 
-    fileprivate mutating func setValue(_ newValue: Any) throws {
+    fileprivate weak var settingsManager: SettingsManager?
+
+    var value: T? {
+        didSet {
+            saveTimer?.invalidate()
+            guard let manager = self.settingsManager else {
+                return
+            }
+            saveTimer = Timer.scheduledTimer(timeInterval: saveInterval, target: manager, selector: #selector(SettingsManager.save), userInfo: nil, repeats: false)
+        }
+    }
+
+    fileprivate func setValue(_ newValue: Any) throws {
         if let n = newValue as? T {
             self.value = n
         } else {
