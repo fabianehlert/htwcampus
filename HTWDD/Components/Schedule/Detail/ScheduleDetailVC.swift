@@ -11,14 +11,12 @@ import Cartography
 
 class ScheduleDetailVC: ViewController {
 
-    private let content: ScheduleDetailContentView
+    private let viewModel: ScheduleDetailContentViewModel
 
-    private let lecture: Lecture
+    private let label = UILabel()
 
     init(lecture: Lecture) {
-        self.lecture = lecture
-        let viewModel = ScheduleDetailContentViewModel(lecture: lecture)
-        self.content = ScheduleDetailContentView(viewModel: viewModel)
+        self.viewModel = ScheduleDetailContentViewModel(lecture: lecture)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,89 +27,17 @@ class ScheduleDetailVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized))
-        self.view.addGestureRecognizer(gesture)
-        self.view.backgroundColor = UIColor.clear
-        self.view.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        self.label.text = self.viewModel.tag
+        self.view.addSubview(label)
 
-        self.content.layer.cornerRadius = 10
-        self.view.addSubview(self.content)
-
-        self.addConstraints()
-    }
-
-    var correctGroup = ConstraintGroup()
-
-    @discardableResult
-    private func constraincontent(to frame: CGRect) -> ConstraintGroup {
-        return constrain(self.view, self.content, block: { view, content in
-            content.leading == view.leading + frame.origin.x
-            content.width == frame.size.width
-            content.top == view.top + frame.origin.y
-            content.height == frame.size.height
-        })
-    }
-
-    func addConstraints() {
-        self.correctGroup = constrain(self.view, self.content, block: { view, content in
-            content.edges == inset(view.edges, 50) ~ 700.0
-            content.width <= 350 ~ 1000.0
-            content.height <= 350 ~ 1000.0
-            content.center == view.center ~ 1000.0
-        })
+        constrain(self.view, self.label) { container, label in
+            label.edges == container.edgesWithinMargins
+        }
     }
 
     @objc
     private func tapRecognized(_ sender: UIGestureRecognizer) {
         self.dismiss(animated: true)
-    }
-
-}
-
-extension ScheduleDetailVC: AnimatedViewControllerTransitionAnimator {
-
-    func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
-
-        switch direction {
-        case .present:
-            self.view.alpha = 0
-            let small = self.constraincontent(to: source)
-            self.correctGroup.active = false
-            self.view.layoutIfNeeded()
-            small.active = false
-            self.correctGroup.active = true
-
-            for v in self.content.subviews {
-                v.alpha = 0
-            }
-
-            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
-                self.view.alpha = 1
-                self.view.layoutIfNeeded()
-
-                for v in self.content.subviews {
-                    v.alpha = 1
-                }
-            }, completion: completion)
-
-        case .dismiss:
-            self.correctGroup.active = false
-            self.constraincontent(to: source)
-
-            for v in self.content.subviews {
-                v.alpha = 1
-            }
-
-            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations: {
-                self.view.layoutIfNeeded()
-                self.view.alpha = 0
-
-                for v in self.content.subviews {
-                    v.alpha = 0
-                }
-            }, completion: completion)
-        }
-
     }
 
 }
