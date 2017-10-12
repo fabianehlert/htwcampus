@@ -17,13 +17,13 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 
         static let textColor = UIColor.black
 
-        static let highlightedScale: CGFloat = 0.98
+        static let highlightedScale: CGFloat = 0.95
 
-        static let shadowRadius: CGFloat = 3.5
-        static let highlightedShadowRadius: CGFloat = 2.5
+        static let shadowRadius: CGFloat = 4
+        static let highlightedShadowRadius: CGFloat = 2
 
-        static let shadowOpacity: Float = 0.25
-        static let highlightedShadowOpacity: Float = 0.3
+        static let shadowOpacity: Float = 0.15
+        static let highlightedShadowOpacity: Float = 0.45
     }
 
     let titleLabel: UILabel = {
@@ -127,10 +127,25 @@ extension LectureCollectionViewCell: Highlightable {
             self.layer.shadowRadius = Const.highlightedShadowRadius
             self.layer.shadowOpacity = Const.highlightedShadowOpacity
         }
+
         if !animated {
             animations()
         } else {
-            UIView.animate(withDuration: 0.3, animations: animations)
+			let duration = 0.08
+
+			let shadowRadiusAnimation = CABasicAnimation(keyPath: "shadowRadius")
+			shadowRadiusAnimation.fromValue = Const.shadowRadius
+			shadowRadiusAnimation.toValue = Const.highlightedShadowRadius
+			shadowRadiusAnimation.duration = duration
+			self.layer.add(shadowRadiusAnimation, forKey: "shadowRadiusAnimation")
+
+			let shadowOpacityAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+			shadowOpacityAnimation.fromValue = Const.shadowOpacity
+			shadowOpacityAnimation.toValue = Const.highlightedShadowOpacity
+			shadowOpacityAnimation.duration = duration
+			self.layer.add(shadowOpacityAnimation, forKey: "shadowOpacityAnimation")
+
+			UIView.animate(withDuration: duration, animations: animations)
         }
     }
 
@@ -141,10 +156,25 @@ extension LectureCollectionViewCell: Highlightable {
             self.layer.shadowRadius = Const.shadowRadius
             self.layer.shadowOpacity = Const.shadowOpacity
         }
+
         if !animated {
             animations()
         } else {
-            UIView.animate(withDuration: 0.3, animations: animations)
+			let duration = 0.18
+
+			let shadowRadiusAnimation = CABasicAnimation(keyPath: "shadowRadius")
+			shadowRadiusAnimation.fromValue = Const.highlightedShadowRadius
+			shadowRadiusAnimation.toValue = Const.shadowRadius
+			shadowRadiusAnimation.duration = duration
+			self.layer.add(shadowRadiusAnimation, forKey: "shadowRadiusAnimation")
+
+			let shadowOpacityAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+			shadowOpacityAnimation.fromValue = Const.highlightedShadowOpacity
+			shadowOpacityAnimation.toValue = Const.shadowOpacity
+			shadowOpacityAnimation.duration = duration
+			self.layer.add(shadowOpacityAnimation, forKey: "shadowOpacityAnimation")
+
+			UIView.animate(withDuration: duration, animations: animations)
         }
     }
 
