@@ -15,6 +15,7 @@ class OnboardStudygroupViewController: UIViewController {
 	@IBOutlet private weak var continueButton: IntroButton? {
 		didSet {
 			self.continueButton?.layer.cornerRadius = 12
+			self.continueButton?.isEnabled = false
 		}
 	}
 

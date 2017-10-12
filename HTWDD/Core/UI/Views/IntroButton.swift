@@ -14,6 +14,12 @@ class IntroButton: UIButton {
 			self.isHighlighted ? self.highlight(animated: true) : self.unhighlight(animated: true)
 		}
 	}
+
+	override var isEnabled: Bool {
+		didSet {
+			self.alpha = self.isEnabled ? 1 : 0.3
+		}
+	}
 }
 
 // MARK: - Highlightable
