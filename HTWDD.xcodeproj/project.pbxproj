@@ -24,6 +24,8 @@
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */; };
 		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
+		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
+		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
@@ -118,6 +120,8 @@
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardWelcomeViewController.xib; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
+		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
+		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
@@ -231,8 +235,7 @@
 		1F77AD181F8FA5A600351A73 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
-				1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */,
+				1F88748A1F8FB28B00EE6492 /* Steps */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -243,6 +246,33 @@
 				1F8874881F8FB07300EE6492 /* IntroButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1F88748A1F8FB28B00EE6492 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				1F88748B1F8FB29800EE6492 /* Welcome */,
+				1F88748C1F8FB2A200EE6492 /* Studygroup */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		1F88748B1F8FB29800EE6492 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
+				1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		1F88748C1F8FB2A200EE6492 /* Studygroup */ = {
+			isa = PBXGroup;
+			children = (
+				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
+				1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */,
+			);
+			path = Studygroup;
 			sourceTree = "<group>";
 		};
 		1FC21DC51F8F949F003E244F /* Components */ = {
@@ -672,6 +702,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */,
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */,
@@ -815,6 +846,7 @@
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
+				1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
