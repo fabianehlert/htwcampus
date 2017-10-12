@@ -135,6 +135,10 @@ extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
             return nil
         }
 
+		if let cell = self.collectionView.cellForItem(at: indexPath) {
+			previewingContext.sourceRect = cell.frame
+		}
+
         self.lastSelectedIndexPath = indexPath
         return ScheduleDetailVC(lecture:  item)
     }
