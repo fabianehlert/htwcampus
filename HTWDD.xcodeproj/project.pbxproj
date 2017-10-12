@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
+		1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
@@ -112,6 +114,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
+		1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardWelcomeViewController.xib; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
@@ -222,6 +226,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F77AD181F8FA5A600351A73 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
+				1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		1FC21DC51F8F949F003E244F /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +484,7 @@
 		B59FA9891DD09C8400259D7F /* HTWDD */ = {
 			isa = PBXGroup;
 			children = (
+				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B521DDB16D400313FC3 /* Core */,
 				B52A9B541DDB16ED00313FC3 /* Main Categories */,
 				1FC21DC51F8F949F003E244F /* Components */,
@@ -649,6 +663,7 @@
 			files = (
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
+				1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +777,7 @@
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
 				B50875481ED40BE6004A320E /* TableViewController.swift in Sources */,
+				1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */,
