@@ -26,6 +26,8 @@
 		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
+		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
+		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
@@ -122,6 +124,8 @@
 		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
+		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
+		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
@@ -244,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8874881F8FB07300EE6492 /* IntroButton.swift */,
+				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,6 +340,14 @@
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1FE108041F8FF796002B8E69 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1FE108051F8FF7A1002B8E69 /* Regex.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
@@ -528,6 +541,7 @@
 				B52A9B521DDB16D400313FC3 /* Core */,
 				B52A9B541DDB16ED00313FC3 /* Main Categories */,
 				1FC21DC51F8F949F003E244F /* Components */,
+				1FE108041F8FF796002B8E69 /* Helper */,
 				B52A9B4C1DDB15FE00313FC3 /* Supporting Files */,
 			);
 			path = HTWDD;
@@ -836,6 +850,7 @@
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
 				B5EB17601E83AEA7004B0402 /* ScheduleDetailContentView.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
+				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */,
@@ -854,6 +869,7 @@
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
+				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
 				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,

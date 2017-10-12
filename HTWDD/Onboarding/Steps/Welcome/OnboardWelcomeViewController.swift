@@ -28,4 +28,9 @@ class OnboardWelcomeViewController: ViewController {
         super.didReceiveMemoryWarning()
     }
 
+	@IBAction func continueBoarding() {
+		let stg = OnboardStudygroupViewController()
+		self.navigationController?.pushViewController(stg, animated: true)
+	}
+
 }

@@ -23,60 +23,63 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouA-y8-XFp">
-                    <rect key="frame" x="16" y="90" width="343" height="72"/>
+                    <rect key="frame" x="16" y="92" width="343" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="56"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85r-hE-YdT" customClass="IntroButton" customModule="HTWDD" customModuleProvider="target">
-                    <rect key="frame" x="45" y="579" width="285" height="56"/>
+                    <rect key="frame" x="45" y="581" width="285" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" name="HTWBlue"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <state key="normal" title="Continue">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="continueBoarding" destination="-1" eventType="touchUpInside" id="b8j-Yn-2Ec"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlb-WG-rIw">
-                    <rect key="frame" x="58" y="234" width="191" height="28"/>
+                    <rect key="frame" x="45" y="236" width="191" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your schedule shows you all your lectures." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPP-AM-Mob">
-                    <rect key="frame" x="58" y="260" width="259" height="45"/>
+                    <rect key="frame" x="45" y="262" width="285" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Canteen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdK-23-BUu">
-                    <rect key="frame" x="58" y="322" width="191" height="28"/>
+                    <rect key="frame" x="45" y="324" width="191" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See what is being served for lunch in the canteens around you." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-eN-ooY">
-                    <rect key="frame" x="58" y="348" width="259" height="45"/>
+                    <rect key="frame" x="45" y="350" width="285" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grades" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ht-tw-lQT">
-                    <rect key="frame" x="58" y="415" width="191" height="28"/>
+                    <rect key="frame" x="45" y="417" width="191" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View what your professors graded you in your exams." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgr-S1-OgR">
-                    <rect key="frame" x="58" y="441" width="259" height="45"/>
+                    <rect key="frame" x="45" y="443" width="285" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
