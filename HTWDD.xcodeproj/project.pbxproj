@@ -114,8 +114,8 @@
 /* Begin PBXFileReference section */
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = "HTWDD/Main Categories/Grades/GradeDataSource.swift"; sourceTree = SOURCE_ROOT; };
-		39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeCell.swift; path = "../../Core/Base Classes/GradeCell.swift"; sourceTree = "<group>"; };
+		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
+		39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		B50875471ED40BE6004A320E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
@@ -222,6 +222,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FC21DC51F8F949F003E244F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B52A9B4D1DDB160700313FC3 /* Schedule */,
+				B52A9B4E1DDB165B00313FC3 /* Grades */,
+				1FC21DC61F8F9512003E244F /* Canteen */,
+				1FC21DC71F8F951B003E244F /* Exams */,
+				1FC21DC81F8F953F003E244F /* Settings */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1FC21DC61F8F9512003E244F /* Canteen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Canteen;
+			sourceTree = "<group>";
+		};
+		1FC21DC71F8F951B003E244F /* Exams */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exams;
+			sourceTree = "<group>";
+		};
+		1FC21DC81F8F953F003E244F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1FC21DC91F8F9976003E244F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1FC21DCB1F8F9A47003E244F /* Views */,
+				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		1FC21DCA1F8F9981003E244F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B538EF191E1D761E0031077C /* Course.swift */,
+				B538EF1B1E1D762E0031077C /* Grade.swift */,
+				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
+				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
+				39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1FC21DCB1F8F9A47003E244F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +295,7 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		B50EB5031E6B00700022E40C /* Model */ = {
+		B50EB5031E6B00700022E40C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B50EB5011E6AFFA20022E40C /* Day.swift */,
@@ -242,7 +304,7 @@
 				B50EB4F41E6ACB3E0022E40C /* Lecture_TestCase.swift */,
 				B52DF0D91E70A8870095C854 /* Week.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B50EB5041E6B007B0022E40C /* Views */ = {
@@ -272,9 +334,9 @@
 		B52A9B4D1DDB160700313FC3 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				B5EA536A1E7FC60E00183E07 /* Detail */,
+				B50EB5031E6B00700022E40C /* Models */,
 				B5EA53671E7FC5F700183E07 /* Main */,
-				B50EB5031E6B00700022E40C /* Model */,
+				B5EA536A1E7FC60E00183E07 /* Detail */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -282,29 +344,10 @@
 		B52A9B4E1DDB165B00313FC3 /* Grades */ = {
 			isa = PBXGroup;
 			children = (
-				B538EF191E1D761E0031077C /* Course.swift */,
-				B538EF1B1E1D762E0031077C /* Grade.swift */,
-				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
-				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
-				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
-				39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */,
-				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
+				1FC21DCA1F8F9981003E244F /* Models */,
+				1FC21DC91F8F9976003E244F /* Main */,
 			);
 			path = Grades;
-			sourceTree = "<group>";
-		};
-		B52A9B501DDB169100313FC3 /* Exams */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Exams;
-			sourceTree = "<group>";
-		};
-		B52A9B511DDB16B800313FC3 /* Canteen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Canteen;
 			sourceTree = "<group>";
 		};
 		B52A9B521DDB16D400313FC3 /* Core */ = {
@@ -320,22 +363,10 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		B52A9B531DDB16D900313FC3 /* Settings UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Settings UI";
-			sourceTree = "<group>";
-		};
 		B52A9B541DDB16ED00313FC3 /* Main Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B52A9B511DDB16B800313FC3 /* Canteen */,
-				B52A9B501DDB169100313FC3 /* Exams */,
 				B5BE72801E6C808700D05B6D /* General */,
-				B52A9B4E1DDB165B00313FC3 /* Grades */,
-				B52A9B4D1DDB160700313FC3 /* Schedule */,
-				B52A9B531DDB16D900313FC3 /* Settings UI */,
 			);
 			path = "Main Categories";
 			sourceTree = "<group>";
@@ -442,6 +473,7 @@
 			children = (
 				B52A9B521DDB16D400313FC3 /* Core */,
 				B52A9B541DDB16ED00313FC3 /* Main Categories */,
+				1FC21DC51F8F949F003E244F /* Components */,
 				B52A9B4C1DDB15FE00313FC3 /* Supporting Files */,
 			);
 			path = HTWDD;
