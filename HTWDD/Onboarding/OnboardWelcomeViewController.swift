@@ -12,13 +12,12 @@ class OnboardWelcomeViewController: ViewController {
 
 	// MARK: - Outlets
 
-	@IBOutlet private weak var continueButton: UIButton? {
+	@IBOutlet private weak var continueButton: IntroButton? {
 		didSet {
 			self.continueButton?.layer.cornerRadius = 12
 		}
 	}
 
-	
 	// MARK: - ViewController lifecycle
 
     override func viewDidLoad() {
