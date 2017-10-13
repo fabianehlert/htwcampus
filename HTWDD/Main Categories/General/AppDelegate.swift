@@ -12,8 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var appCoordinator: HTWApplication?
-    private let bridge = AppContext()
+
+    private var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -22,11 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let window = UIWindow()
-        let appCoordinator = HTWApplication(window: window, bridge: self.bridge)
-        appCoordinator.start()
 
-        self.appCoordinator = appCoordinator
-        self.window = window
+		self.appCoordinator = AppCoordinator(window: window)
+		self.window = window
 
         return true
     }

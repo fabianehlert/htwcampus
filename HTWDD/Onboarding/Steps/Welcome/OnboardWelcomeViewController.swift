@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol OnboardWelcomeViewControllerDelegate: class {
+	func didTapContinue(_ vc: OnboardWelcomeViewController)
+}
+
 class OnboardWelcomeViewController: ViewController {
+
+	weak var delegate: OnboardWelcomeViewControllerDelegate?
 
 	// MARK: - Outlets
 
@@ -28,9 +34,10 @@ class OnboardWelcomeViewController: ViewController {
         super.didReceiveMemoryWarning()
     }
 
-	@IBAction func continueBoarding() {
-		let stg = OnboardStudygroupViewController()
-		self.navigationController?.pushViewController(stg, animated: true)
+	// MARK: - Actions
+
+	@IBAction private func continueBoarding() {
+		self.delegate?.didTapContinue(self)
 	}
 
 }

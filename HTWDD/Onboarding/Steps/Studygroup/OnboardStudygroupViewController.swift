@@ -8,14 +8,21 @@
 
 import UIKit
 
+protocol OnboardStudygroupViewControllerDelegate: class {
+	func didTapContinue(_ vc: OnboardStudygroupViewController)
+	func didTapSkip(_ vc: OnboardStudygroupViewController)
+}
+
 class OnboardStudygroupViewController: UIViewController {
+
+	weak var delegate: OnboardStudygroupViewControllerDelegate?
 
 	// MARK: - Outlets
 
 	@IBOutlet private weak var continueButton: IntroButton? {
 		didSet {
 			self.continueButton?.layer.cornerRadius = 12
-			self.continueButton?.isEnabled = false
+			// self.continueButton?.isEnabled = false
 		}
 	}
 
@@ -54,6 +61,15 @@ class OnboardStudygroupViewController: UIViewController {
 		self.yearTextField?.becomeFirstResponder()
 	}
 
+	// MARK: - Actions
+
+	@IBAction private func continueBoarding() {
+		self.delegate?.didTapContinue(self)
+	}
+
+	@IBAction private func skipBoarding() {
+		self.delegate?.didTapSkip(self)
+	}
 }
 
 // MARK: - UITextFieldDelegate

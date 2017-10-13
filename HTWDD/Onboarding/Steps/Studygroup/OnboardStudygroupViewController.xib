@@ -40,6 +40,9 @@
                     <state key="normal" title="Let's go!">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="continueBoarding" destination="-1" eventType="touchUpInside" id="IqW-g4-4JO"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a44-Ba-9Iv">
                     <rect key="frame" x="16" y="92" width="343" height="72"/>
@@ -54,7 +57,7 @@
                     <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="---" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-uq-JHt" customClass="StudygroupTextField" customModule="HTWDD" customModuleProvider="target">
                     <rect key="frame" x="137" y="308" width="100" height="60"/>
@@ -62,7 +65,7 @@
                     <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="--" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-J5-3Sa" customClass="StudygroupTextField" customModule="HTWDD" customModuleProvider="target">
                     <rect key="frame" x="245" y="308" width="85" height="60"/>
@@ -70,7 +73,7 @@
                     <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uF-fQ-h2j">
                     <rect key="frame" x="151" y="381" width="73" height="30"/>
@@ -79,6 +82,9 @@
                     <state key="normal" title="Not now">
                         <color key="titleColor" name="HTWBlue"/>
                     </state>
+                    <connections>
+                        <action selector="skipBoarding" destination="-1" eventType="touchUpInside" id="8vQ-JM-mI0"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
