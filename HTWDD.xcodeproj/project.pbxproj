@@ -28,7 +28,6 @@
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
-		1F94C3FF1F90D2A700988E72 /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FE1F90D2A700988E72 /* RootViewCoordinator.swift */; };
 		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
 		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
 		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
@@ -129,7 +128,6 @@
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		1F94C3FE1F90D2A700988E72 /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
 		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
 		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */,
-				1F94C3FE1F90D2A700988E72 /* RootViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -891,7 +888,6 @@
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
 				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,
-				1F94C3FF1F90D2A700988E72 /* RootViewCoordinator.swift in Sources */,
 				B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */,
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,

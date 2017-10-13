@@ -23,7 +23,7 @@ class OnboardingCoordinator: Coordinator {
 		return navigationController
 	}()
 
-	var rootViewController: NavigationController {
+	var rootViewController: UIViewController {
 		return self.navigationController
 	}
 

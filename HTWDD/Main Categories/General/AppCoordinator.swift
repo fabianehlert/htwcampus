@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCoordinator: RootViewCoordinator {
+class AppCoordinator: Coordinator {
 	private var window: UIWindow
 	private let tabBarController = TabBarController()
 

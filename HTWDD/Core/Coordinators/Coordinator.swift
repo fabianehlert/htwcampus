@@ -6,12 +6,15 @@
 //  Copyright © 2017 HTW Dresden. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
 	Objects handling (coordinating) the presentation of ViewControllers need to implement this protocol.
 */
 public protocol Coordinator: class {
+	/// RootViewController.
+	var rootViewController: UIViewController { get }
+
 	/// The array containing any child Coordinators
 	var childCoordinators: [Coordinator] { get set }
 }
