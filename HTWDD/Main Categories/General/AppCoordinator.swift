@@ -58,5 +58,6 @@ extension AppCoordinator: OnboardingCoordinatorDelegate {
 			print("Onboarding was successful: nope")
 		}
 		coordinator.rootViewController.dismiss(animated: true, completion: nil)
+		self.removeChildCoordinator(coordinator)
 	}
 }
