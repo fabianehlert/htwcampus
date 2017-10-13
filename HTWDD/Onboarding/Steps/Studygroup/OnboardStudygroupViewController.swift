@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OnboardStudygroupViewControllerDelegate: class {
-	func didTapContinue(_ vc: OnboardStudygroupViewController)
+	func didTapContinue(_ vc: OnboardStudygroupViewController, auth: ScheduleDataSource.Auth?)
 	func didTapSkip(_ vc: OnboardStudygroupViewController)
 }
 
@@ -22,7 +22,7 @@ class OnboardStudygroupViewController: UIViewController {
 	@IBOutlet private weak var continueButton: IntroButton? {
 		didSet {
 			self.continueButton?.layer.cornerRadius = 12
-			// self.continueButton?.isEnabled = false
+			self.continueButton?.isEnabled = false
 		}
 	}
 
@@ -64,7 +64,15 @@ class OnboardStudygroupViewController: UIViewController {
 	// MARK: - Actions
 
 	@IBAction private func continueBoarding() {
-		self.delegate?.didTapContinue(self)
+		if let y = self.yearTextField?.text,
+			let m = self.majorTextField?.text,
+			let g = self.groupTextField?.text {
+
+			let group = ScheduleDataSource.Auth(year: y, major: m, group: g)
+			self.delegate?.didTapContinue(self, auth: group)
+		} else {
+			self.delegate?.didTapContinue(self, auth: nil)
+		}
 	}
 
 	@IBAction private func skipBoarding() {
@@ -96,6 +104,15 @@ extension OnboardStudygroupViewController: UITextFieldDelegate {
 	@objc func inputChanges(textField: StudygroupTextField) {
 		if textField.isInputFinal() {
 			self.jumpToNextField(from: textField)
+		}
+
+		if let y = yearTextField?.isInputFinal(),
+			let m = majorTextField?.isInputFinal(),
+			let g = groupTextField?.isInputFinal() {
+
+			if y && m && g {
+				self.continueButton?.isEnabled = true
+			}
 		}
 	}
 

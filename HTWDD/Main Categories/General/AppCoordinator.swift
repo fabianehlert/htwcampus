@@ -18,35 +18,45 @@ class AppCoordinator: Coordinator {
 		return self.tabBarController
 	}
 
+	var schedule: ScheduleMainVC
+	var grades: GradeMainVC
+
 	// MARK: - Init
 
 	init(window: UIWindow) {
 		self.window = window
 
-		let schedule = ScheduleMainVC().inNavigationController()
-		let grades = GradeMainVC().inNavigationController()
+		self.schedule = ScheduleMainVC()
+		self.grades = GradeMainVC()
 
-		self.tabBarController.setViewControllers([schedule, grades], animated: false)
+		self.tabBarController.setViewControllers([
+			schedule.inNavigationController(),
+			grades.inNavigationController()], animated: false)
 
 		self.window.rootViewController = self.rootViewController
 		self.window.makeKeyAndVisible()
 
 		// TODO: Implement state check and show onboarding if necessary.
-		self.showOnboarding()
+		self.showOnboarding(animated: false)
 	}
 
-	private func showOnboarding() {
+	private func showOnboarding(animated: Bool) {
 		let onboarding = OnboardingCoordinator()
 		onboarding.delegate = self
 		self.addChildCoordinator(onboarding)
-		self.rootViewController.present(onboarding.rootViewController, animated: false, completion: nil)
+		self.rootViewController.present(onboarding.rootViewController, animated: animated, completion: nil)
 	}
 }
 
 // MARK: - OnboardingCoordinatorDelegate
 extension AppCoordinator: OnboardingCoordinatorDelegate {
-	func finishedOnboarding(coordinator: OnboardingCoordinator, success: Bool) {
-		print("Onboarding was successful: \(success)")
+	func finishedOnboarding(coordinator: OnboardingCoordinator, auth: ScheduleDataSource.Auth?) {
+		if let auth = auth {
+			print("Onboarding was successful: \(auth)")
+			self.schedule.auth = auth
+		} else {
+			print("Onboarding was successful: nope")
+		}
 		coordinator.rootViewController.dismiss(animated: true, completion: nil)
 	}
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OnboardingCoordinatorDelegate: class {
-	func finishedOnboarding(coordinator: OnboardingCoordinator, success: Bool)
+	func finishedOnboarding(coordinator: OnboardingCoordinator, auth: ScheduleDataSource.Auth?)
 }
 
 class OnboardingCoordinator: Coordinator {
@@ -51,11 +51,11 @@ extension OnboardingCoordinator: OnboardWelcomeViewControllerDelegate {
 
 // MARK: - OnboardStudygroupViewControllerDelegate
 extension OnboardingCoordinator: OnboardStudygroupViewControllerDelegate {
-	func didTapContinue(_ vc: OnboardStudygroupViewController) {
-		self.delegate?.finishedOnboarding(coordinator: self, success: true)
+	func didTapContinue(_ vc: OnboardStudygroupViewController, auth: ScheduleDataSource.Auth?) {
+		self.delegate?.finishedOnboarding(coordinator: self, auth: auth)
 	}
 
 	func didTapSkip(_ vc: OnboardStudygroupViewController) {
-		self.delegate?.finishedOnboarding(coordinator: self, success: false)
+		self.delegate?.finishedOnboarding(coordinator: self, auth: nil)
 	}
 }
