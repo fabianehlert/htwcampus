@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudygroupTextField: UITextField {
+class StudygroupTextField: TextField {
 
 	enum ConfigurationType {
 		case
@@ -57,22 +57,19 @@ class StudygroupTextField: UITextField {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.setup()
 	}
 
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		self.setup()
 	}
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		self.setup()
 	}
 
 	// MARK: - Setup
 
-	private func setup() {
+	override func initialSetup() {
 		self.updateUI()
 	}
 
