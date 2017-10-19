@@ -36,8 +36,7 @@ class AppCoordinator: Coordinator {
 		self.window.rootViewController = self.rootViewController
 		self.window.makeKeyAndVisible()
 
-		// TODO: Implement state check and show onboarding if necessary.
-		self.showOnboarding(animated: false)
+		// self.showOnboarding(animated: false)
 	}
 
 	private func showOnboarding(animated: Bool) {
