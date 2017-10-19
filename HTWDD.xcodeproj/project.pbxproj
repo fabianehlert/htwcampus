@@ -21,6 +21,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
+		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
+		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
+		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
+		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
+		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
+		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
+		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
+		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
+		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
@@ -67,10 +77,11 @@
 		B55507101E601AE300C16F5F /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
 		B55507121E601FB400C16F5F /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */; };
+		B556410C1F990CB9006B9B1B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556410B1F990CB8006B9B1B /* Colors.swift */; };
+		B58ECB151F990D5300949F4F /* HTWNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58ECB141F990D5300949F4F /* HTWNamespace.swift */; };
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
-		B5A0D8881E87B3B0007827A6 /* HTWApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
@@ -112,6 +123,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
+		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
+		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
+		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
+		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
+		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
@@ -158,6 +179,8 @@
 		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B556410B1F990CB8006B9B1B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B58ECB141F990D5300949F4F /* HTWNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWNamespace.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,7 +188,6 @@
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTWApplication.swift; sourceTree = "<group>"; };
 		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
@@ -222,6 +244,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F77AD181F8FA5A600351A73 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1F88748A1F8FB28B00EE6492 /* Steps */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		1F8874871F8FB04500EE6492 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F8874881F8FB07300EE6492 /* IntroButton.swift */,
+				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1F88748A1F8FB28B00EE6492 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
+				1F88748B1F8FB29800EE6492 /* Welcome */,
+				1F88748C1F8FB2A200EE6492 /* Studygroup */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		1F88748B1F8FB29800EE6492 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		1F88748C1F8FB2A200EE6492 /* Studygroup */ = {
+			isa = PBXGroup;
+			children = (
+				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
+				1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */,
+			);
+			path = Studygroup;
+			sourceTree = "<group>";
+		};
+		1F94C3FD1F90D28B00988E72 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		1FC21DC51F8F949F003E244F /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +356,14 @@
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1FE108041F8FF796002B8E69 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1FE108051F8FF7A1002B8E69 /* Regex.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
@@ -353,12 +435,14 @@
 		B52A9B521DDB16D400313FC3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1F94C3FD1F90D28B00988E72 /* Coordinators */,
 				B52A9B561DDB170700313FC3 /* Base Classes */,
 				B52A9B551DDB170000313FC3 /* Extensions */,
 				B538EF081E1D5BC60031077C /* Logging */,
 				B538EF161E1D6ACD0031077C /* Network */,
 				B52A9B571DDB172300313FC3 /* Settings */,
 				B5EA536F1E7FD24000183E07 /* UI */,
+				B58ECB141F990D5300949F4F /* HTWNamespace.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -413,6 +497,7 @@
 				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
+				1F2B8A0F1F99029E00026099 /* TextField.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -481,9 +566,11 @@
 		B59FA9891DD09C8400259D7F /* HTWDD */ = {
 			isa = PBXGroup;
 			children = (
+				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B521DDB16D400313FC3 /* Core */,
 				B52A9B541DDB16ED00313FC3 /* Main Categories */,
 				1FC21DC51F8F949F003E244F /* Components */,
+				1FE108041F8FF796002B8E69 /* Helper */,
 				B52A9B4C1DDB15FE00313FC3 /* Supporting Files */,
 			);
 			path = HTWDD;
@@ -517,7 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A0D8861E87B365007827A6 /* Models */,
-				B5A0D8871E87B3B0007827A6 /* HTWApplication.swift */,
+				1F94C4001F90DB4200988E72 /* AppCoordinator.swift */,
 				B5EBE3521F6EA20F0073C450 /* AppContext.swift */,
 				B59FA98A1DD09C8400259D7F /* AppDelegate.swift */,
 			);
@@ -546,7 +633,9 @@
 		B5EA536F1E7FD24000183E07 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1F8874871F8FB04500EE6492 /* Views */,
 				B5EA53701E7FD24800183E07 /* Transitions */,
+				B556410B1F990CB8006B9B1B /* Colors.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -657,6 +746,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */,
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
@@ -760,7 +850,7 @@
 			files = (
 				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
-				B5A0D8881E87B3B0007827A6 /* HTWApplication.swift in Sources */,
+				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
 				B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
@@ -773,10 +863,13 @@
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
 				B50875481ED40BE6004A320E /* TableViewController.swift in Sources */,
+				1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */,
+				1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */,
 				B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */,
+				B556410C1F990CB9006B9B1B /* Colors.swift in Sources */,
 				B5111E201E71F44300D68155 /* View.swift in Sources */,
 				B5EA536D1E7FCE8B00183E07 /* ScheduleDetailVC.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
@@ -788,8 +881,10 @@
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
+				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
+				1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */,
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
@@ -797,6 +892,7 @@
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
+				1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
@@ -804,7 +900,10 @@
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
+				1F2B8A101F99029E00026099 /* TextField.swift in Sources */,
+				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
+				B58ECB151F990D5300949F4F /* HTWNamespace.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
 				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,
 				B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */,
@@ -814,6 +913,7 @@
 				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
+				1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

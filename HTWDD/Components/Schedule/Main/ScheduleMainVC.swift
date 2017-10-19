@@ -9,10 +9,15 @@
 import UIKit
 import RxSwift
 
-// TODO: This should be injected!
-let auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71")
-
 final class ScheduleMainVC: CollectionViewController {
+
+    // TODO: This should be injected
+	var auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71") {
+		didSet {
+			self.dataSource.auth = auth
+			self.dataSource.load()
+		}
+	}
 
     private static let defaultStartDate = Date.from(day: 9, month: 10, year: 2017) ?? Date()
 
@@ -137,7 +142,7 @@ extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
 		}
 
         self.lastSelectedIndexPath = indexPath
-        return ScheduleDetailVC(lecture:  item)
+        return ScheduleDetailVC(lecture: item)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
