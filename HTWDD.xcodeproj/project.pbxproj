@@ -458,8 +458,6 @@
 			isa = PBXGroup;
 			children = (
 				B5BE72801E6C808700D05B6D /* General */,
-				B52A9B4E1DDB165B00313FC3 /* Grades */,
-				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B531DDB16D900313FC3 /* Settings */,
 			);
 			path = "Main Categories";
@@ -822,7 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\nelse\n    echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\nelse\n    echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    exit 1\nfi";
 		};
 		B538EF111E1D63AA0031077C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
