@@ -24,7 +24,6 @@
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
-		1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */; };
 		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
@@ -125,7 +124,6 @@
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
-		1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardWelcomeViewController.xib; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
-				1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -746,7 +743,6 @@
 				1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */,
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
-				1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

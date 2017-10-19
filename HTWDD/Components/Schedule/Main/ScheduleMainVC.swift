@@ -11,6 +11,7 @@ import RxSwift
 
 final class ScheduleMainVC: CollectionViewController {
 
+    // TODO: This should be injected
 	var auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71") {
 		didSet {
 			self.dataSource.auth = auth
@@ -141,7 +142,7 @@ extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
 		}
 
         self.lastSelectedIndexPath = indexPath
-        return ScheduleDetailVC(lecture:  item)
+        return ScheduleDetailVC(lecture: item)
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
