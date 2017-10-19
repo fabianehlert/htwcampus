@@ -458,6 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				B5BE72801E6C808700D05B6D /* General */,
+				B52A9B4E1DDB165B00313FC3 /* Grades */,
+				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B531DDB16D900313FC3 /* Settings */,
 			);
 			path = "Main Categories";
