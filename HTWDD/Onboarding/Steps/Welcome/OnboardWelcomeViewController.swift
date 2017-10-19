@@ -63,7 +63,7 @@ class OnboardWelcomeViewController: ViewController {
         self.view.addSubview(descriptionStackView)
 
         let ctaButton = IntroButton()
-        ctaButton.backgroundColor = UIColor.blue
+        ctaButton.backgroundColor = UIColor.htw.blue
         ctaButton.translatesAutoresizingMaskIntoConstraints = false
         ctaButton.setTitle("Continue", for: .normal)
         ctaButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
