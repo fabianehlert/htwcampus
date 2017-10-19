@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
+		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F77AD1C1F8FA67D00351A73 /* OnboardWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */; };
 		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
@@ -122,6 +123,7 @@
 
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F77AD1A1F8FA67D00351A73 /* OnboardWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardWelcomeViewController.xib; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				B5A0D8891E87B624007827A6 /* TabBarController.swift */,
 				B5111E1F1E71F44300D68155 /* View.swift */,
 				B52A9B581DDB173600313FC3 /* ViewController.swift */,
+				1F2B8A0F1F99029E00026099 /* TextField.swift */,
 			);
 			path = "Base Classes";
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
+				1F2B8A101F99029E00026099 /* TextField.swift in Sources */,
 				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
