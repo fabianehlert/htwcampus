@@ -112,6 +112,8 @@ extension OnboardStudygroupViewController: UITextFieldDelegate {
 
 			if y && m && g {
 				self.continueButton?.isEnabled = true
+			} else {
+				self.continueButton?.isEnabled = false
 			}
 		}
 	}
