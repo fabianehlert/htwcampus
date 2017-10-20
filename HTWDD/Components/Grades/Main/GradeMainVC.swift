@@ -38,17 +38,17 @@ class GradeMainVC: TableViewController {
         self.reload()
     }
 
-    @objc func reload() {
-        self.dataSource.load()
-            .take(1)
-            .delay(0.5, scheduler: MainScheduler.instance)
-        .subscribe(onNext: { [weak self] _ in
-            self?.refreshControl.endRefreshing()
-        }, onError: { [weak self] err in
-            self?.refreshControl.endRefreshing()
-            self?.showAlert(error: err)
-        }).addDisposableTo(self.rx_disposeBag)
-    }
+	@objc func reload() {
+		self.dataSource.load()
+			.take(1)
+			.delay(0.5, scheduler: MainScheduler.instance)
+			.subscribe(onNext: { [weak self] _ in
+				self?.refreshControl.endRefreshing()
+				}, onError: { [weak self] err in
+					self?.refreshControl.endRefreshing()
+					self?.showAlert(error: err)
+			}).disposed(by: self.rx_disposeBag)
+	}
 
     private func showAlert(error: Error) {
         let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error)", preferredStyle: .alert)

@@ -58,26 +58,26 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.auth = auth
     }
 
-    func load() {
-        let lecturesObservable = Lecture.get(network: self.network, year: self.auth.year, major: self.auth.major, group: self.auth.group)
-            .map(Lecture.groupByDay)
+	func load() {
+		let lecturesObservable = Lecture.get(network: self.network, year: self.auth.year, major: self.auth.major, group: self.auth.group)
+			.map(Lecture.groupByDay)
 
-        let informationObservable = SemesterInformation.get(network: self.network)
+		let informationObservable = SemesterInformation.get(network: self.network)
 
-        Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
-                  .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] (event) in
-                guard case let .next((lectures, information)) = event else {
-                    return
-                }
+		Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
+			.observeOn(MainScheduler.instance)
+			.subscribe { [weak self] (event) in
+				guard case let .next((lectures, information)) = event else {
+					return
+				}
 
-                self?.lectures = lectures
-                self?.semesterInformations = information
-                self?.data = self?.calculate() ?? []
-        }.addDisposableTo(self.disposeBag)
-    }
+				self?.lectures = lectures
+				self?.semesterInformations = information
+				self?.data = self?.calculate() ?? []
+			}.disposed(by: self.disposeBag)
+	}
 
-    func lecture(at indexPath: IndexPath) -> Lecture? {
+	func lecture(at indexPath: IndexPath) -> Lecture? {
         return self.data[indexPath.section][indexPath.row]
     }
 

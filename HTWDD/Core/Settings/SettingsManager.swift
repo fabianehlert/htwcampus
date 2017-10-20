@@ -61,19 +61,19 @@ final class SettingsManager {
         self.save()
     }
 
-    private func observeNotifications() {
-        let terminate = NotificationCenter.default.rx.notification(.UIApplicationWillTerminate)
-        let background = NotificationCenter.default.rx.notification(.UIApplicationDidEnterBackground)
-        let memoryWarning = NotificationCenter.default.rx.notification(.UIApplicationDidReceiveMemoryWarning)
+	private func observeNotifications() {
+		let terminate = NotificationCenter.default.rx.notification(.UIApplicationWillTerminate)
+		let background = NotificationCenter.default.rx.notification(.UIApplicationDidEnterBackground)
+		let memoryWarning = NotificationCenter.default.rx.notification(.UIApplicationDidReceiveMemoryWarning)
 
-        let merged = Observable.combineLatest(terminate, background, memoryWarning) { _, _, _ in
-            return true
-        }
+		let merged = Observable.combineLatest(terminate, background, memoryWarning) { _, _, _ in
+			return true
+		}
 
-        merged.subscribe(onNext: { [weak self] _ in
-            self?.save()
-        }).addDisposableTo(self.disposeBag)
-    }
+		merged.subscribe(onNext: { [weak self] _ in
+			self?.save()
+		}).disposed(by: self.disposeBag)
+	}
 
     private func load() throws {
         guard
