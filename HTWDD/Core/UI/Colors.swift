@@ -26,23 +26,23 @@ extension HTWNamespace where Base: UIColor {
     static var blue: UIColor {
         return UIColor(hex: 0x265B93)
     }
-    
+
     static var orange: UIColor {
         return UIColor(hex: 0xF1A13D)
     }
-    
+
     static var textBody: UIColor {
         return UIColor(hex: 0x7F7F7F)
     }
-    
+
     static var textHeadline: UIColor {
         return UIColor(hex: 0x000000)
     }
-    
+
     static var lightBlue: UIColor {
         return UIColor(hex: 0x5060F5)
     }
-    
+
     static var martianRed: UIColor {
         return UIColor(hex: 0xE35D50)
     }

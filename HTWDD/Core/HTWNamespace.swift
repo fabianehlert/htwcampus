@@ -11,7 +11,7 @@ import Foundation
 // shamelessly copied from https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Reactive.swift
 
 public struct HTWNamespace<Base> {
-    
+
     public let base: Base
 
     public init(_ base: Base) {
@@ -20,7 +20,7 @@ public struct HTWNamespace<Base> {
 }
 
 public protocol HTWNamespaceCompatible {
-    
+
     associatedtype CompatibleType
 
     static var htw: HTWNamespace<CompatibleType>.Type { get set }
@@ -29,14 +29,14 @@ public protocol HTWNamespaceCompatible {
 }
 
 extension HTWNamespaceCompatible {
-    
+
     public static var htw: HTWNamespace<Self>.Type {
         get {
             return HTWNamespace<Self>.self
         }
         set {}
     }
-    
+
     public var htw: HTWNamespace<Self> {
         get {
             return HTWNamespace(self)
