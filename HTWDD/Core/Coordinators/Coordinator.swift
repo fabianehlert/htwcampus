@@ -12,20 +12,25 @@ import UIKit
 	Objects handling (coordinating) the presentation of ViewControllers need to implement this protocol.
 */
 public protocol Coordinator: class {
-	/// RootViewController.
+	/** RootViewController.
+	*/
 	var rootViewController: UIViewController { get }
 
-	/// The array containing any child Coordinators
+	/** The array containing the child Coordinators.
+		⚠️ Highly important. Holds **references** to all child coordinators.
+	*/
 	var childCoordinators: [Coordinator] { get set }
 }
 
 public extension Coordinator {
-	/// Add a child coordinator to the parent
+	/** Add a child coordinator to the parent.
+	*/
 	public func addChildCoordinator(_ childCoordinator: Coordinator) {
 		self.childCoordinators.append(childCoordinator)
 	}
 
-	/// Remove a child coordinator from the parent
+	/** Remove a child coordinator from the parent
+	*/
 	public func removeChildCoordinator(_ childCoordinator: Coordinator) {
 		self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
 	}
