@@ -5,8 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +34,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-L8-TDo" customClass="IntroButton" customModule="HTWDD" customModuleProvider="target">
                     <rect key="frame" x="45" y="581" width="285" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" name="HTWBlue"/>
+                    <color key="backgroundColor" red="0.035999999999999997" green="0.28349268436431885" blue="0.52300000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <state key="normal" title="Let's go!">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,7 +79,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                     <state key="normal" title="Not now">
-                        <color key="titleColor" name="HTWBlue"/>
+                        <color key="titleColor" red="0.035653121769428253" green="0.28349268436431885" blue="0.52300000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="skipBoarding" destination="-1" eventType="touchUpInside" id="8vQ-JM-mI0"/>
@@ -92,9 +91,4 @@
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="HTWBlue">
-            <color red="0.14901960780000001" green="0.35686274509999999" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-    </resources>
 </document>
