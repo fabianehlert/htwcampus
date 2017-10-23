@@ -18,8 +18,8 @@ class AppCoordinator: Coordinator {
 		return self.tabBarController
 	}
 
-	var schedule: ScheduleMainVC
-	var grades: GradeMainVC
+	private var schedule: ScheduleMainVC
+	private var grades: GradeMainVC
 
 	// MARK: - Init
 
@@ -41,22 +41,21 @@ class AppCoordinator: Coordinator {
 
 	private func showOnboarding(animated: Bool) {
 		let onboarding = OnboardingCoordinator()
-		onboarding.delegate = self
+		onboarding.onFinish = { [weak self] coordinator, auth in
+
+			print("Auth 🔑 --> \(String(describing: auth))")
+			if let auth = auth {
+				self?.schedule.auth = auth
+			}
+
+			if let coordinator = coordinator {
+				coordinator.rootViewController.dismiss(animated: true, completion: nil)
+				self?.removeChildCoordinator(coordinator)
+			}
+
+		}
+
 		self.addChildCoordinator(onboarding)
 		self.rootViewController.present(onboarding.rootViewController, animated: animated, completion: nil)
-	}
-}
-
-// MARK: - OnboardingCoordinatorDelegate
-extension AppCoordinator: OnboardingCoordinatorDelegate {
-	func finishedOnboarding(coordinator: OnboardingCoordinator, auth: ScheduleDataSource.Auth?) {
-		if let auth = auth {
-			print("Onboarding was successful: \(auth)")
-			self.schedule.auth = auth
-		} else {
-			print("Onboarding was successful: nope")
-		}
-		coordinator.rootViewController.dismiss(animated: true, completion: nil)
-		self.removeChildCoordinator(coordinator)
 	}
 }

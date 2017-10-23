@@ -8,13 +8,9 @@
 
 import UIKit
 
-protocol OnboardWelcomeViewControllerDelegate: class {
-	func didTapContinue(_ vc: OnboardWelcomeViewController)
-}
-
 class OnboardWelcomeViewController: ViewController {
 
-	weak var delegate: OnboardWelcomeViewControllerDelegate?
+	var onContinue: ((OnboardWelcomeViewController) -> Void)?
 
 	// MARK: - ViewController lifecycle
 
@@ -27,9 +23,9 @@ class OnboardWelcomeViewController: ViewController {
 
         let welcome = UILabel()
         if #available(iOS 11.0, *) {
-            welcome.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+            welcome.font = .preferredFont(forTextStyle: .largeTitle)
         } else {
-            welcome.font = UIFont.preferredFont(forTextStyle: .headline)
+            welcome.font = .preferredFont(forTextStyle: .headline)
         }
         welcome.translatesAutoresizingMaskIntoConstraints = false
         welcome.text = "Welcome!"
@@ -46,9 +42,9 @@ class OnboardWelcomeViewController: ViewController {
         let stackViews: [UIStackView] = descriptions.map { descPair in
             let title = UILabel()
             title.text = descPair.0
-            title.font = UIFont.preferredFont(forTextStyle: .headline)
+            title.font = .preferredFont(forTextStyle: .headline)
             let desc = UILabel()
-            desc.font = UIFont.preferredFont(forTextStyle: .body)
+            desc.font = .preferredFont(forTextStyle: .body)
             desc.text = descPair.1
             desc.numberOfLines = 0
             let s = UIStackView(arrangedSubviews: [title, desc])
@@ -62,13 +58,15 @@ class OnboardWelcomeViewController: ViewController {
         descriptionStackView.spacing = 8.0
         self.view.addSubview(descriptionStackView)
 
-        let ctaButton = IntroButton()
-        ctaButton.backgroundColor = UIColor.htw.blue
-        ctaButton.translatesAutoresizingMaskIntoConstraints = false
-        ctaButton.setTitle("Continue", for: .normal)
-        ctaButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
-        ctaButton.layer.cornerRadius = 12
-        self.view.addSubview(ctaButton)
+        // TODO: UIColor.htw.blue vs UIColor(named: "htwBlue")
+
+        let continueButton = IntroButton()
+        continueButton.backgroundColor = UIColor.htw.blue
+        continueButton.translatesAutoresizingMaskIntoConstraints = false
+        continueButton.setTitle("Continue", for: .normal)
+        continueButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
+        continueButton.layer.cornerRadius = 12
+        self.view.addSubview(continueButton)
 
         NSLayoutConstraint.activate([
 
@@ -83,19 +81,26 @@ class OnboardWelcomeViewController: ViewController {
             descriptionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             descriptionStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9),
 
-            ctaButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
-            ctaButton.heightAnchor.constraint(equalToConstant: 55),
-            ctaButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            ctaButton.widthAnchor.constraint(equalTo: descriptionStackView.widthAnchor)
+            continueButton.heightAnchor.constraint(equalToConstant: 55),
+            continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            continueButton.widthAnchor.constraint(equalTo: descriptionStackView.widthAnchor)
 
         ])
+
+		var bottom = NSLayoutConstraint()
+		if #available(iOS 11.0, *) {
+			bottom = continueButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+		} else {
+			bottom = continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20)
+		}
+		NSLayoutConstraint.activate([bottom])
 
     }
 
 	// MARK: - Actions
 
 	@objc private func continueBoarding() {
-		self.delegate?.didTapContinue(self)
+		self.onContinue?(self)
 	}
 
 }

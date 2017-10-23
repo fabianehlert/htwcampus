@@ -8,14 +8,10 @@
 
 import UIKit
 
-protocol OnboardStudygroupViewControllerDelegate: class {
-	func didTapContinue(_ vc: OnboardStudygroupViewController, auth: ScheduleDataSource.Auth?)
-	func didTapSkip(_ vc: OnboardStudygroupViewController)
-}
-
 class OnboardStudygroupViewController: UIViewController {
 
-	weak var delegate: OnboardStudygroupViewControllerDelegate?
+	var onContinue: ((OnboardStudygroupViewController, ScheduleDataSource.Auth?) -> Void)?
+	var onSkip: ((OnboardStudygroupViewController) -> Void)?
 
 	// MARK: - Outlets
 
@@ -69,14 +65,14 @@ class OnboardStudygroupViewController: UIViewController {
 			let g = self.groupTextField?.text {
 
 			let group = ScheduleDataSource.Auth(year: y, major: m, group: g)
-			self.delegate?.didTapContinue(self, auth: group)
+			self.onContinue?(self, group)
 		} else {
-			self.delegate?.didTapContinue(self, auth: nil)
+			self.onContinue?(self, nil)
 		}
 	}
 
 	@IBAction private func skipBoarding() {
-		self.delegate?.didTapSkip(self)
+		self.onSkip?(self)
 	}
 }
 

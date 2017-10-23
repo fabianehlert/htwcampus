@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol OnboardingCoordinatorDelegate: class {
-	func finishedOnboarding(coordinator: OnboardingCoordinator, auth: ScheduleDataSource.Auth?)
-}
-
 class OnboardingCoordinator: Coordinator {
-	weak var delegate: OnboardingCoordinatorDelegate?
-
 	var childCoordinators: [Coordinator] = []
 
 	private lazy var navigationController: NavigationController = {
@@ -27,35 +21,30 @@ class OnboardingCoordinator: Coordinator {
 		return self.navigationController
 	}
 
+	var onFinish: ((OnboardingCoordinator?, ScheduleDataSource.Auth?) -> Void)?
+
 	// MARK: - Init
 
 	init() {
+		self.showWelcomeOnboarding()
+	}
+
+	private func showWelcomeOnboarding() {
 		let welcome = OnboardWelcomeViewController()
-		welcome.delegate = self
+		welcome.onContinue = { [weak self] vc in
+			self?.showStudyGroupOnboarding()
+		}
 		self.navigationController.viewControllers = [welcome]
 	}
 
 	private func showStudyGroupOnboarding() {
 		let studyGroupVC = OnboardStudygroupViewController()
-		studyGroupVC.delegate = self
+		studyGroupVC.onContinue = { [weak self] vc, auth in
+			self?.onFinish?(self, auth)
+		}
+		studyGroupVC.onSkip = { [weak self] vc in
+			self?.onFinish?(self, nil)
+		}
 		self.navigationController.pushViewController(studyGroupVC, animated: true)
-	}
-}
-
-// MARK: - OnboardWelcomeViewControllerDelegate
-extension OnboardingCoordinator: OnboardWelcomeViewControllerDelegate {
-    func didTapContinue(_ vc: OnboardWelcomeViewController) {
-		self.showStudyGroupOnboarding()
-    }
-}
-
-// MARK: - OnboardStudygroupViewControllerDelegate
-extension OnboardingCoordinator: OnboardStudygroupViewControllerDelegate {
-	func didTapContinue(_ vc: OnboardStudygroupViewController, auth: ScheduleDataSource.Auth?) {
-		self.delegate?.finishedOnboarding(coordinator: self, auth: auth)
-	}
-
-	func didTapSkip(_ vc: OnboardStudygroupViewController) {
-		self.delegate?.finishedOnboarding(coordinator: self, auth: nil)
 	}
 }
