@@ -24,9 +24,8 @@
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
-		1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* IntroButton.swift */; };
+		1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* ReactiveButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
-		1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
 		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
 		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
@@ -126,9 +125,8 @@
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
-		1F8874881F8FB07300EE6492 /* IntroButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroButton.swift; sourceTree = "<group>"; };
+		1F8874881F8FB07300EE6492 /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
-		1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardStudygroupViewController.xib; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
@@ -247,7 +245,9 @@
 		1F77AD181F8FA5A600351A73 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				1F88748A1F8FB28B00EE6492 /* Steps */,
+				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
+				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
+				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -255,37 +255,10 @@
 		1F8874871F8FB04500EE6492 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F8874881F8FB07300EE6492 /* IntroButton.swift */,
+				1F8874881F8FB07300EE6492 /* ReactiveButton.swift */,
 				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		1F88748A1F8FB28B00EE6492 /* Steps */ = {
-			isa = PBXGroup;
-			children = (
-				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
-				1F88748B1F8FB29800EE6492 /* Welcome */,
-				1F88748C1F8FB2A200EE6492 /* Studygroup */,
-			);
-			path = Steps;
-			sourceTree = "<group>";
-		};
-		1F88748B1F8FB29800EE6492 /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
-			);
-			path = Welcome;
-			sourceTree = "<group>";
-		};
-		1F88748C1F8FB2A200EE6492 /* Studygroup */ = {
-			isa = PBXGroup;
-			children = (
-				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
-				1F88748E1F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib */,
-			);
-			path = Studygroup;
 			sourceTree = "<group>";
 		};
 		1F94C3FD1F90D28B00988E72 /* Coordinators */ = {
@@ -299,6 +272,7 @@
 		1FC21DC51F8F949F003E244F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B4E1DDB165B00313FC3 /* Grades */,
 				1FC21DC61F8F9512003E244F /* Canteen */,
@@ -447,18 +421,10 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		B52A9B531DDB16D900313FC3 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		B52A9B541DDB16ED00313FC3 /* Main Categories */ = {
 			isa = PBXGroup;
 			children = (
 				B5BE72801E6C808700D05B6D /* General */,
-				B52A9B531DDB16D900313FC3 /* Settings */,
 			);
 			path = "Main Categories";
 			sourceTree = "<group>";
@@ -564,7 +530,6 @@
 		B59FA9891DD09C8400259D7F /* HTWDD */ = {
 			isa = PBXGroup;
 			children = (
-				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B521DDB16D400313FC3 /* Core */,
 				B52A9B541DDB16ED00313FC3 /* Main Categories */,
 				1FC21DC51F8F949F003E244F /* Components */,
@@ -744,7 +709,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F8874901F8FB2BF00EE6492 /* OnboardStudygroupViewController.xib in Resources */,
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
@@ -882,7 +846,7 @@
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
-				1F8874891F8FB07300EE6492 /* IntroButton.swift in Sources */,
+				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,

@@ -49,8 +49,9 @@ class AppCoordinator: Coordinator {
 			}
 
 			if let coordinator = coordinator {
-				coordinator.rootViewController.dismiss(animated: true, completion: nil)
-				self?.removeChildCoordinator(coordinator)
+				coordinator.rootViewController.dismiss(animated: true, completion: {
+					self?.removeChildCoordinator(coordinator)
+				})
 			}
 
 		}

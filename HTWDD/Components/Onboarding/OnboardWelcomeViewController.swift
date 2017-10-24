@@ -21,18 +21,24 @@ class OnboardWelcomeViewController: ViewController {
 
     private func setupUI() {
 
-        let welcome = UILabel()
+		// Title label
+
+        let titleLabel = UILabel()
+		titleLabel.text = "Welcome!"
+
         if #available(iOS 11.0, *) {
-            welcome.font = .preferredFont(forTextStyle: .largeTitle)
+            titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
         } else {
-            welcome.font = .preferredFont(forTextStyle: .headline)
+            titleLabel.font = .preferredFont(forTextStyle: .headline)
         }
-        welcome.translatesAutoresizingMaskIntoConstraints = false
-        welcome.text = "Welcome!"
-        let welcomeContainer = UIView()
-        welcomeContainer.translatesAutoresizingMaskIntoConstraints = false
-        welcomeContainer.addSubview(welcome)
-        self.view.addSubview(welcomeContainer)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+		let titleContainer = UIView()
+        titleContainer.translatesAutoresizingMaskIntoConstraints = false
+        titleContainer.addSubview(titleLabel)
+        self.view.addSubview(titleContainer)
+
+		// Description box
 
         let descriptions: [(String, String)] = [
             ("Schedule", "Your schedule shows you all your lectures."),
@@ -59,8 +65,9 @@ class OnboardWelcomeViewController: ViewController {
         self.view.addSubview(descriptionStackView)
 
         // TODO: UIColor.htw.blue vs UIColor(named: "htwBlue")
+		// Continue Button
 
-        let continueButton = IntroButton()
+        let continueButton = ReactiveButton()
         continueButton.backgroundColor = UIColor.htw.blue
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         continueButton.setTitle("Continue", for: .normal)
@@ -69,22 +76,20 @@ class OnboardWelcomeViewController: ViewController {
         self.view.addSubview(continueButton)
 
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
 
-            welcome.centerXAnchor.constraint(equalTo: welcomeContainer.centerXAnchor),
-            welcome.centerYAnchor.constraint(equalTo: welcomeContainer.centerYAnchor),
-
-            welcomeContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            welcomeContainer.topAnchor.constraint(equalTo: self.view.topAnchor),
-            welcomeContainer.bottomAnchor.constraint(equalTo: descriptionStackView.topAnchor),
+            titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor),
+            titleContainer.bottomAnchor.constraint(equalTo: descriptionStackView.topAnchor),
 
             descriptionStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             descriptionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            descriptionStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9),
+            descriptionStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
 
             continueButton.heightAnchor.constraint(equalToConstant: 55),
             continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             continueButton.widthAnchor.constraint(equalTo: descriptionStackView.widthAnchor)
-
         ])
 
 		var bottom = NSLayoutConstraint()

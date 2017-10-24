@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IntroButton: UIButton {
+class ReactiveButton: UIButton {
 	override var isHighlighted: Bool {
 		didSet {
 			self.isHighlighted ? self.highlight(animated: true) : self.unhighlight(animated: true)
@@ -23,15 +23,19 @@ class IntroButton: UIButton {
 }
 
 // MARK: - Highlightable
-extension IntroButton: Highlightable {
+extension ReactiveButton: Highlightable {
 
 	enum Const {
 		static let highlightedScale: CGFloat = 0.95
+
+		static let normalAlpha: CGFloat = 1.0
+		static let highlightedAlpha: CGFloat = 0.6
 	}
 
 	func highlight(animated: Bool) {
 		let animations: () -> Void = {
 			self.transform = CGAffineTransform.identity.scaledBy(x: Const.highlightedScale, y: Const.highlightedScale)
+			self.alpha = Const.highlightedAlpha
 		}
 
 		if !animated {
@@ -45,6 +49,7 @@ extension IntroButton: Highlightable {
 	func unhighlight(animated: Bool) {
 		let animations: () -> Void = {
 			self.transform = CGAffineTransform.identity
+			self.alpha = Const.normalAlpha
 		}
 
 		if !animated {

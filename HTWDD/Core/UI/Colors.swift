@@ -47,4 +47,7 @@ extension HTWNamespace where Base: UIColor {
         return UIColor(hex: 0xE35D50)
     }
 
+	static var veryLightGrey: UIColor {
+		return UIColor(hex: 0xEFEFEF)
+	}
 }
