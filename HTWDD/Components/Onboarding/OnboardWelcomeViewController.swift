@@ -64,7 +64,6 @@ class OnboardWelcomeViewController: ViewController {
         descriptionStackView.spacing = 8.0
         self.view.addSubview(descriptionStackView)
 
-        // TODO: UIColor.htw.blue vs UIColor(named: "htwBlue")
 		// Continue Button
 
         let continueButton = ReactiveButton()
@@ -76,12 +75,13 @@ class OnboardWelcomeViewController: ViewController {
         self.view.addSubview(continueButton)
 
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
+			titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+			titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor),
+			titleContainer.bottomAnchor.constraint(equalTo: descriptionStackView.topAnchor),
+			titleContainer.widthAnchor.constraint(equalTo: descriptionStackView.widthAnchor),
 
-            titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor),
-            titleContainer.bottomAnchor.constraint(equalTo: descriptionStackView.topAnchor),
+			titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
 
             descriptionStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             descriptionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),

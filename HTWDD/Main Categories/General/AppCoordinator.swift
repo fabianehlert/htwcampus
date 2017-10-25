@@ -34,6 +34,7 @@ class AppCoordinator: Coordinator {
 			grades.inNavigationController()], animated: false)
 
 		self.window.rootViewController = self.rootViewController
+		self.window.tintColor = UIColor.htw.blue
 		self.window.makeKeyAndVisible()
 
 		// self.showOnboarding(animated: false)

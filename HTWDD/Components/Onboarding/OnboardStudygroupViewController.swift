@@ -159,15 +159,13 @@ class OnboardStudygroupViewController: ViewController {
 		var bottom = NSLayoutConstraint()
 		if #available(iOS 11.0, *) {
 			top = titleContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 12)
-			bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 12)
+			bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
 		} else {
 			top = titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -20)
 			bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20)
 		}
 		NSLayoutConstraint.activate([top, bottom])
 
-		// TODO: continueButton has wrong y position
-		
 		// Make first text field active
 		self.yearTextField.becomeFirstResponder()
 	}
