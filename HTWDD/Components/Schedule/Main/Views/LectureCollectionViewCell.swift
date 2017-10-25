@@ -22,7 +22,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         static let highlightedShadowRadius: CGFloat = 2
 
         static let shadowOpacity: Float = 0.15
-        static let highlightedShadowOpacity: Float = 0.45
+        static let highlightedShadowOpacity: Float = 0.3
     }
 
     let titleLabel: UILabel = {

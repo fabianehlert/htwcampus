@@ -10,21 +10,27 @@ import UIKit
 
 class LectureHeaderView: CollectionReusableView, Identifiable {
 
+	private let label = UILabel()
+
     var title: String? {
         get {
             return self.label.text
         }
         set {
-            self.label.text = newValue
+            self.label.text = newValue?.uppercased()
         }
     }
 
-    private let label = UILabel()
+	// MARK: - Init
+
     override func initialSetup() {
-        self.backgroundColor = .white
-        self.label.frame = self.bounds
+        self.backgroundColor = UIColor.htw.veryLightGrey
+
+		self.label.frame = self.bounds
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.label.textAlignment = .center
+		self.label.font = .systemFont(ofSize: 16, weight: .semibold)
+		self.label.textColor = UIColor.htw.mediumGrey
+		self.label.textAlignment = .center
         self.addSubview(self.label)
     }
 

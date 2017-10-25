@@ -10,19 +10,27 @@ import UIKit
 
 class LectureTimeView: CollectionReusableView, Identifiable {
 
+	private let label = UILabel()
+
     var timeString: String? {
         get {
             return self.label.text
         }
         set {
-            self.label.text = newValue
+			// TODO: properly generate array consisting of hours of the day.
+			self.label.text = newValue?.appending(":00")
         }
     }
 
-    private let label = UILabel()
+	// MARK: - Init
+
     override func initialSetup() {
+		self.backgroundColor = UIColor.htw.veryLightGrey
+
         self.label.frame = self.bounds
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		self.label.font = .systemFont(ofSize: 14, weight: .semibold)
+		self.label.textColor = UIColor.htw.textBody
         self.label.textAlignment = .center
         self.addSubview(self.label)
     }

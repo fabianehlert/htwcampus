@@ -11,7 +11,7 @@ import RxSwift
 
 final class ScheduleMainVC: CollectionViewController {
 
-    // TODO: This should be injected
+	// TODO: This should be injected
 	var auth = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71") {
 		didSet {
 			self.dataSource.auth = auth
@@ -19,137 +19,141 @@ final class ScheduleMainVC: CollectionViewController {
 		}
 	}
 
-    private static let defaultStartDate = Date.from(day: 9, month: 10, year: 2017) ?? Date()
+	private static let defaultStartDate = Date.from(day: 9, month: 10, year: 2017) ?? Date()
 
-    private let dataSource: ScheduleDataSource
+	private let dataSource: ScheduleDataSource
 
-    fileprivate var lastSelectedIndexPath: IndexPath?
+	fileprivate var lastSelectedIndexPath: IndexPath?
 
 	// MARK: - Init
 
-    init() {
-        self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
-        super.init()
-    }
+	init() {
+		self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+		super.init()
+	}
 
-    required init?(coder aDecoder: NSCoder) {
-        self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
-        super.init(coder: aDecoder)
-    }
+	required init?(coder aDecoder: NSCoder) {
+		self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+		super.init(coder: aDecoder)
+	}
 
 	override func initialSetup() {
+		// Basic setup
 		self.title = Loca.scheduleTitle
 		self.tabBarItem.image = UIImage(named: "Class")
 
+		// CollectionView layout
 		let layout = TimetableCollectionViewLayout(dataSource: self)
-        self.collectionView.setCollectionViewLayout(layout, animated: false)
-        self.dataSource.collectionView = self.collectionView
-        self.collectionView.isDirectionalLockEnabled = true
+		self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
+		self.collectionView.isDirectionalLockEnabled = true
+		self.collectionView.setCollectionViewLayout(layout, animated: false)
+
+		// DataSource
+		self.dataSource.collectionView = self.collectionView
+		self.dataSource.register(type: LectureCollectionViewCell.self)
+		self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
+			view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
+		}
+		self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
+			guard let `self` = self else {
+				return
+			}
+			let hour = Int(self.startHour) - 1 + indexPath.row
+			time.timeString = String(hour)
+		}
+		self.dataSource.load()
 	}
 
 	// MARK: - ViewController lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		self.register3DTouch()
+	}
 
-        self.dataSource.register(type: LectureCollectionViewCell.self)
-        self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
-        }
-        self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
-            guard let `self` = self else {
-                return
-            }
-            let hour = Int(self.startHour) - 1 + indexPath.row
-            time.timeString = String(hour)
-        }
-        self.dataSource.load()
-    }
+	// MARK: - Private
 
-    private func register3DTouch() {
-        guard self.traitCollection.forceTouchCapability == .available else {
-            return
-        }
+	private func register3DTouch() {
+		guard self.traitCollection.forceTouchCapability == .available else {
+			return
+		}
+		self.registerForPreviewing(with: self, sourceView: self.collectionView)
+	}
 
-        self.registerForPreviewing(with: self, sourceView: self.collectionView)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = self.dataSource.lecture(at: indexPath) else {
-            Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
-            return
-        }
-        self.lastSelectedIndexPath = indexPath
-        let detail = ScheduleDetailVC(lecture: item)
-        self.presentDetail(detail, animated: true)
-    }
-
-    fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
-        self.navigationController?.pushViewController(controller, animated: animated)
-    }
-
+	fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
+		self.navigationController?.pushViewController(controller, animated: animated)
+	}
 }
 
+// MARK: - CollectionViewDelegate
+extension ScheduleMainVC {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let item = self.dataSource.lecture(at: indexPath) else {
+			Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
+			return
+		}
+		self.lastSelectedIndexPath = indexPath
+		let detail = ScheduleDetailVC(lecture: item)
+		self.presentDetail(detail, animated: true)
+	}
+}
+
+// MARK: - TimetableCollectionViewLayoutDataSource
 extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
+	var widthPerDay: CGFloat {
+		let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 1.5
+		return self.view.bounds.width / CGFloat(numberOfDays)
+	}
 
-    var widthPerDay: CGFloat {
-        let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 3
-        return self.view.bounds.width / CGFloat(numberOfDays)
-    }
+	var height: CGFloat {
+		let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
+		let statusBarHeight = UIApplication.shared.statusBarFrame.height
+		let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
+		return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
+	}
 
-    var height: CGFloat {
-        let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-        return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
-    }
+	var startHour: CGFloat {
+		return 6.5
+	}
 
-    var startHour: CGFloat {
-        return 6.5
-    }
+	var endHour: CGFloat {
+		return 21
+	}
 
-    var endHour: CGFloat {
-        return 21
-    }
-
-    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
-        guard let item = self.dataSource.lecture(at: indexPath) else {
-            return nil
-        }
-        return (item.begin, item.end)
-    }
-
+	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
+		guard let item = self.dataSource.lecture(at: indexPath) else {
+			return nil
+		}
+		return (item.begin, item.end)
+	}
 }
 
-extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
-
-    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
-        return self.lastSelectedIndexPath.flatMap(self.collectionView.cellForItem(at:))
-    }
-
-}
-
+// MARK: - UIViewControllerPreviewingDelegate
 extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard
-            let indexPath = self.collectionView.indexPathForItem(at: location),
-            let item = self.dataSource.lecture(at: indexPath)
-        else {
-            return nil
-        }
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		guard
+			let indexPath = self.collectionView.indexPathForItem(at: location),
+			let item = self.dataSource.lecture(at: indexPath)
+			else {
+				return nil
+		}
 
 		if let cell = self.collectionView.cellForItem(at: indexPath) {
 			previewingContext.sourceRect = cell.frame
 		}
 
-        self.lastSelectedIndexPath = indexPath
-        return ScheduleDetailVC(lecture: item)
-    }
+		self.lastSelectedIndexPath = indexPath
+		return ScheduleDetailVC(lecture: item)
+	}
 
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.presentDetail(viewControllerToCommit, animated: false)
-    }
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		self.presentDetail(viewControllerToCommit, animated: false)
+	}
+}
 
+// MARK: - AnimatedViewControllerTransitionDataSource
+extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
+	func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
+		return self.lastSelectedIndexPath.flatMap(self.collectionView.cellForItem(at:))
+	}
 }

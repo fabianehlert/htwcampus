@@ -44,7 +44,8 @@ class ScheduleDetailVC: ViewController {
 
 		NSLayoutConstraint.activate([
 			self.label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-			self.label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+			self.label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+			self.label.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9)
 		])
 	}
 

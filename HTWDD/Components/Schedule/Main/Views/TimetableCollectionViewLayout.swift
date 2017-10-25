@@ -9,11 +9,9 @@
 import UIKit
 
 private class SeperatorView: CollectionReusableView {
-
     override func initialSetup() {
-        backgroundColor = UIColor.black.withAlphaComponent(0.4)
+		backgroundColor = UIColor.black.withAlphaComponent(0.2)
     }
-
 }
 
 protocol TimetableCollectionViewLayoutDataSource: class {
@@ -39,7 +37,7 @@ extension TimetableCollectionViewLayoutDataSource {
         return 24
     }
     var itemMargin: CGFloat {
-        return 2
+        return 16
     }
 }
 
@@ -47,7 +45,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
 
     private enum Const {
         static let headerHeight: CGFloat = 40
-        static let timeWidth: CGFloat = 70
+        static let timeWidth: CGFloat = 50
 
         static let separation = "separation"
 
@@ -130,7 +128,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
         attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + Const.timeWidth
 
         attr.frame.origin.y = (t.begin.time / 3600 - dataSource.startHour) * self.heightPerHour + margin + Const.headerHeight
-        attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 * margin
+        attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 // * margin
         attr.frame.size.width = dataSource.widthPerDay - 2 * margin
         attr.zIndex = Const.Z.lectures
 
@@ -202,7 +200,7 @@ class TimetableCollectionViewLayout: UICollectionViewLayout {
     }
 
     private func indexPathsForDecorationViews(rect: CGRect) -> [IndexPath] {
-        return []
+        // return []
         // maybe we want to have the separators back
         guard let dataSource = self.dataSource else {
             return []
