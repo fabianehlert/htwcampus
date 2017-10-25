@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Cartography
 
 class LectureCollectionViewCell: CollectionViewCell, Cell {
 
@@ -30,9 +29,9 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.textColor = Const.textColor
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 2
-        label.textAlignment = .center
+		label.textAlignment = .center
+		label.numberOfLines = 2
+		label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,29 +39,30 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .caption2)
-        label.textAlignment = .center
-        label.textColor = Const.textColor
+		label.textColor = Const.textColor
+		label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let startLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textAlignment = .left
-        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+		label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let endLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .right
-        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+		label.font = UIFont.preferredFont(forTextStyle: .footnote)
+		label.textAlignment = .right
+		label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     override func initialSetup() {
+		self.contentView.backgroundColor = .white
         self.contentView.layer.cornerRadius = 5
         self.contentView.clipsToBounds = true
 
@@ -72,36 +72,34 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         self.layer.shadowOpacity = Const.shadowOpacity
 
         let textContainer = UIView()
-
-        self.contentView.backgroundColor = .white
+		textContainer.translatesAutoresizingMaskIntoConstraints = false
         textContainer.addSubview(self.titleLabel)
         textContainer.addSubview(self.subtitleLabel)
-        self.contentView.addSubview(textContainer)
+
+		self.contentView.addSubview(textContainer)
         self.contentView.addSubview(self.startLabel)
         self.contentView.addSubview(self.endLabel)
 
-        constrain(self.contentView, textContainer, self.titleLabel, self.subtitleLabel) { container, textContainer, title, subtitle in
-            textContainer.leading == container.leading
-            textContainer.trailing == container.trailing
-            textContainer.centerY == container.centerY
+		NSLayoutConstraint.activate([
+			textContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+			textContainer.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+			textContainer.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
 
-            title.leading == textContainer.leading
-            title.trailing == textContainer.trailing
-            title.top == textContainer.top
+			self.titleLabel.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor),
+			self.titleLabel.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor),
+			self.titleLabel.topAnchor.constraint(equalTo: textContainer.topAnchor),
 
-            subtitle.top == title.bottom + 2
-            subtitle.leading == title.leading
-            subtitle.trailing == title.trailing
-            subtitle.bottom == textContainer.bottom
-        }
+			self.subtitleLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 2),
+			self.subtitleLabel.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+			self.subtitleLabel.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor),
+			self.subtitleLabel.bottomAnchor.constraint(equalTo: textContainer.bottomAnchor),
 
-        constrain(self.contentView, self.startLabel, self.endLabel) { container, start, end in
-            start.leading == container.leading + 2
-            start.bottom == container.bottom
+			self.startLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 2),
+			self.startLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
 
-            end.trailing == container.trailing - 2
-            end.bottom == container.bottom
-        }
+			self.endLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -2),
+			self.endLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+		])
     }
 
     func update(viewModel: LectureViewModel) {

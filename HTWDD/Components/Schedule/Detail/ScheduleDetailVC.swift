@@ -7,13 +7,15 @@
 //
 
 import UIKit
-import Cartography
 
 class ScheduleDetailVC: ViewController {
 
-    private let viewModel: ScheduleDetailContentViewModel
+	// MARK: - Views
 
+    private let viewModel: ScheduleDetailContentViewModel
     private let label = UILabel()
+
+	// MARK: - Init
 
     init(lecture: Lecture) {
         self.viewModel = ScheduleDetailContentViewModel(lecture: lecture)
@@ -24,16 +26,30 @@ class ScheduleDetailVC: ViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+	// MARK: - ViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.label.text = self.viewModel.tag
-        self.view.addSubview(label)
-
-        constrain(self.view, self.label) { container, label in
-            label.edges == container.edgesWithinMargins
-        }
+		self.initialSetup()
     }
+
+	// MARK: - UI
+
+	private func initialSetup() {
+		self.label.text = self.viewModel.title
+		self.label.font = UIFont.preferredFont(forTextStyle: .headline)
+		self.label.numberOfLines = 0
+		self.label.textAlignment = .center
+		self.label.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(label)
+
+		NSLayoutConstraint.activate([
+			self.label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+			self.label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+		])
+	}
+
+	// MARK: - Actions
 
     @objc
     private func tapRecognized(_ sender: UIGestureRecognizer) {

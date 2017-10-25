@@ -89,7 +89,6 @@
 		B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72891E6C86A600D05B6D /* EventPeriod.swift */; };
 		B5BE728C1E6C86B400D05B6D /* EventPeriod_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */; };
 		B5BE728E1E6C886400D05B6D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE728D1E6C886400D05B6D /* Event.swift */; };
-		B5C742301E7FECA000987227 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C7422F1E7FECA000987227 /* Cartography.framework */; };
 		B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */; };
 		B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C721E5F37970083D75E /* CollectionViewController.swift */; };
 		B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
@@ -194,7 +193,6 @@
 		B5BE72891E6C86A600D05B6D /* EventPeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPeriod.swift; sourceTree = "<group>"; };
 		B5BE728B1E6C86B400D05B6D /* EventPeriod_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPeriod_TestCase.swift; sourceTree = "<group>"; };
 		B5BE728D1E6C886400D05B6D /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		B5C7422F1E7FECA000987227 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 		B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMainVC.swift; sourceTree = "<group>"; };
 		B5CD5C721E5F37970083D75E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewModel.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 		B5EA53731E7FDA5E00183E07 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B5EBE3521F6EA20F0073C450 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		B5F58E471E1EAB62006D99AE /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
 		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
@@ -222,7 +219,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C742301E7FECA000987227 /* Cartography.framework in Frameworks */,
 				B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */,
 				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
 				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
@@ -478,9 +474,7 @@
 		B52A9B5A1DDB1B7C00313FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B5C7422F1E7FECA000987227 /* Cartography.framework */,
 				B52DF0D71E7096F30095C854 /* Marshal.framework */,
-				B5F58E471E1EAB62006D99AE /* RxOptional.framework */,
 				B538EF141E1D63EA0031077C /* RxTest.framework */,
 				B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */,
 				B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */,
@@ -749,7 +743,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Marshal.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
 			);
 			name = Carthage;
 			outputPaths = (
