@@ -17,7 +17,10 @@ class GradeMainVC: TableViewController {
 
     override func initialSetup() {
         self.title = Loca.gradesTitle
+		self.tabBarItem.image = UIImage(named: "Grade")
     }
+
+	// MARK: - ViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,9 @@ class GradeMainVC: TableViewController {
         self.reload()
     }
 
-	@objc func reload() {
+	// MARK: - Private
+
+	@objc private func reload() {
 		self.dataSource.load()
 			.take(1)
 			.delay(0.5, scheduler: MainScheduler.instance)
@@ -49,6 +54,8 @@ class GradeMainVC: TableViewController {
 					self?.showAlert(error: err)
 			}).disposed(by: self.rx_disposeBag)
 	}
+
+	// MARK: - Actions
 
     private func showAlert(error: Error) {
         let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error)", preferredStyle: .alert)

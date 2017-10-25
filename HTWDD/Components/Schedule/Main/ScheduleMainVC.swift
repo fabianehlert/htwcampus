@@ -25,6 +25,8 @@ final class ScheduleMainVC: CollectionViewController {
 
     fileprivate var lastSelectedIndexPath: IndexPath?
 
+	// MARK: - Init
+
     init() {
         self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
         super.init()
@@ -38,18 +40,21 @@ final class ScheduleMainVC: CollectionViewController {
     }
 
     private func initialSetup() {
-        let layout = TimetableCollectionViewLayout(dataSource: self)
+		self.title = Loca.scheduleTitle
+		self.tabBarItem.image = UIImage(named: "Class")
+
+		let layout = TimetableCollectionViewLayout(dataSource: self)
         self.collectionView.setCollectionViewLayout(layout, animated: false)
         self.dataSource.collectionView = self.collectionView
         self.collectionView.isDirectionalLockEnabled = true
-    }
+	}
+
+	// MARK: - ViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = Loca.scheduleTitle
-
-        self.register3DTouch()
+		self.register3DTouch()
 
         self.dataSource.register(type: LectureCollectionViewCell.self)
         self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
