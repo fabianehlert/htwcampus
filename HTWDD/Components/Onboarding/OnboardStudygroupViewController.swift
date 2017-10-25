@@ -23,29 +23,21 @@ class OnboardStudygroupViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.setupUI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-	// MARK: - UI
-
-	private func setupUI() {
+	override func initialSetup() {
 		self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
-		// Create Caption Label
+		// --- Title Label ---
 
 		let titleLabel = UILabel()
 		titleLabel.text = "Study group"
+		titleLabel.font = .systemFont(ofSize: 45, weight: .bold)
 		titleLabel.textColor = UIColor.htw.textHeadline
-
-		if #available(iOS 11.0, *) {
-			titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
-		} else {
-			titleLabel.font = .preferredFont(forTextStyle: .headline)
-		}
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
 		let titleContainer = UIView()
@@ -53,16 +45,16 @@ class OnboardStudygroupViewController: ViewController {
 		titleContainer.addSubview(titleLabel)
 		self.view.addSubview(titleContainer)
 
-		// Description Label
+		// --- Description Label ---
 
 		let descriptionLabel = UILabel()
 		descriptionLabel.text = "In order to show you your personal schedule, we need to know what study group you're in."
-		descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
-		descriptionLabel.numberOfLines = 0
+		descriptionLabel.font = .systemFont(ofSize: 17, weight: .medium)
 		descriptionLabel.textColor = UIColor.htw.textBody
+		descriptionLabel.numberOfLines = 0
 		descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-		// Create text fields
+		// --- Text fields ---
 
 		self.yearTextField.configurationType = .year
 		self.yearTextField.font = .systemFont(ofSize: 30, weight: .medium)
@@ -95,7 +87,7 @@ class OnboardStudygroupViewController: ViewController {
 			self.yearTextField,
 			self.majorTextField,
 			self.groupTextField
-		])
+			])
 		textFieldStackView.axis = .horizontal
 		textFieldStackView.distribution = .fillEqually
 		textFieldStackView.spacing = 12
@@ -104,34 +96,35 @@ class OnboardStudygroupViewController: ViewController {
 		let centerStackView = UIStackView(arrangedSubviews: [
 			descriptionLabel,
 			textFieldStackView
-		])
+			])
 		centerStackView.axis = .vertical
 		centerStackView.distribution = .fill
 		centerStackView.spacing = 40
 		centerStackView.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(centerStackView)
 
-		// Continue Button
+		// --- Continue Button ---
 
 		self.continueButton.isEnabled = false
 		self.continueButton.setTitle("Let's go!", for: .normal)
+		self.continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
 		self.continueButton.backgroundColor = UIColor.htw.blue
 		self.continueButton.layer.cornerRadius = 12
-		self.continueButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
 		self.continueButton.translatesAutoresizingMaskIntoConstraints = false
+		self.continueButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
 		self.view.addSubview(self.continueButton)
 
-		// Skip Button
+		// --- Skip Button ---
 
 		let skip = ReactiveButton()
 		skip.setTitle("Not now", for: .normal)
 		skip.setTitleColor(UIColor.htw.blue, for: .normal)
 		skip.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-		skip.addTarget(self, action: #selector(skipBoarding), for: .touchUpInside)
 		skip.translatesAutoresizingMaskIntoConstraints = false
+		skip.addTarget(self, action: #selector(skipBoarding), for: .touchUpInside)
 		titleContainer.addSubview(skip)
 
-		// Constraints
+		// --- Constraints ---
 
 		NSLayoutConstraint.activate([
 			titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -145,7 +138,7 @@ class OnboardStudygroupViewController: ViewController {
 			titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
 
 			centerStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-			centerStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100),
+			centerStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50),
 			centerStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
 
 			textFieldStackView.heightAnchor.constraint(equalToConstant: 60),
@@ -153,7 +146,7 @@ class OnboardStudygroupViewController: ViewController {
 			self.continueButton.heightAnchor.constraint(equalToConstant: 55),
 			self.continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
 			self.continueButton.widthAnchor.constraint(equalTo: centerStackView.widthAnchor)
-		])
+			])
 
 		var top = NSLayoutConstraint()
 		var bottom = NSLayoutConstraint()
@@ -161,12 +154,12 @@ class OnboardStudygroupViewController: ViewController {
 			top = titleContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 12)
 			bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
 		} else {
-			top = titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -20)
+			top = titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 12)
 			bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20)
 		}
 		NSLayoutConstraint.activate([top, bottom])
 
-		// Make first text field active
+		// --- Make first text field active ---
 		self.yearTextField.becomeFirstResponder()
 	}
 

@@ -30,16 +30,14 @@ final class ScheduleMainVC: CollectionViewController {
     init() {
         self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
         super.init()
-        self.initialSetup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
         super.init(coder: aDecoder)
-        self.initialSetup()
     }
 
-    private func initialSetup() {
+	override func initialSetup() {
 		self.title = Loca.scheduleTitle
 		self.tabBarItem.image = UIImage(named: "Class")
 

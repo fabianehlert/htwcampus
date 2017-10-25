@@ -30,12 +30,11 @@ class ScheduleDetailVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.initialSetup()
     }
 
 	// MARK: - UI
 
-	private func initialSetup() {
+	override func initialSetup() {
 		self.label.text = self.viewModel.title
 		self.label.font = UIFont.preferredFont(forTextStyle: .headline)
 		self.label.numberOfLines = 0
