@@ -50,4 +50,8 @@ extension HTWNamespace where Base: UIColor {
 	static var veryLightGrey: UIColor {
 		return UIColor(hex: 0xEFEFEF)
 	}
+
+	static var mediumGrey: UIColor {
+		return UIColor(hex: 0x383838)
+	}
 }
