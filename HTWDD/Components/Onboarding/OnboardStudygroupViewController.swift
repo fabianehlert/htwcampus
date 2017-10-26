@@ -163,6 +163,10 @@ class OnboardStudygroupViewController: ViewController {
 		self.yearTextField.becomeFirstResponder()
 	}
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
 	// MARK: - Actions
 
 	@objc private func continueBoarding() {

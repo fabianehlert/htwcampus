@@ -113,6 +113,10 @@ class OnboardWelcomeViewController: ViewController {
 		NSLayoutConstraint.activate([top, bottom])
 	}
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
 	// MARK: - Actions
 
 	@objc private func continueBoarding() {

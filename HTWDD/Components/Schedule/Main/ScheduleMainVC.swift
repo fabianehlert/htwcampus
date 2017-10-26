@@ -19,7 +19,7 @@ final class ScheduleMainVC: CollectionViewController {
 		}
 	}
 
-	private static let defaultStartDate = Date.from(day: 9, month: 10, year: 2017) ?? Date()
+	private static let defaultStartDate = Date()
 
 	private let dataSource: ScheduleDataSource
 
