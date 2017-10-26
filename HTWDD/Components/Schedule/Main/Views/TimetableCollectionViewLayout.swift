@@ -37,7 +37,7 @@ extension TimetableCollectionViewLayoutDataSource {
         return 24
     }
     var itemMargin: CGFloat {
-        return 16
+        return 8
     }
 }
 

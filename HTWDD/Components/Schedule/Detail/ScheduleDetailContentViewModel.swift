@@ -21,7 +21,7 @@ class ScheduleDetailContentViewModel {
     }
 
     var title: String {
-        return self.lecture.tag ?? self.lecture.name
+        return self.lecture.name
     }
 
 }

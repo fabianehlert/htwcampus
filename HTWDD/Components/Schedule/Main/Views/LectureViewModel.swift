@@ -14,12 +14,16 @@ struct LectureViewModel: ViewModel {
     private let model: Lecture
 
     var title: String {
-        return model.tag ?? model.name
+        return model.name
     }
 
     var subtitle: String {
         return model.type
     }
+
+	var room: String? {
+		return model.rooms.first
+	}
 
     var start: String {
         return model.begin.localizedDescription
