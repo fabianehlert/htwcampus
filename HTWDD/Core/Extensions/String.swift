@@ -13,5 +13,10 @@ extension String {
     var base64: String {
         return Data(self.utf8).base64EncodedString()
     }
+	
+	func rangeOfSubString(_ string: String) -> NSRange? {
+		let range = NSString(string: self).range(of: string)
+		return range.location != NSNotFound ? range : nil
+	}
 
 }
