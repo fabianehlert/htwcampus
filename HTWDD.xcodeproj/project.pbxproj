@@ -28,6 +28,7 @@
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
 		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
+		1FBC0E2E1FA3696800B2C0E1 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC0E2D1FA3696800B2C0E1 /* Localizations.swift */; };
 		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
 		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
@@ -128,6 +129,7 @@
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1FBC0E2D1FA3696800B2C0E1 /* Localizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
 		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				B59FA9961DD09C8400259D7F /* Info.plist */,
 				B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */,
 				B5111E1C1E71ECAD00D68155 /* Loca.swift */,
+				1FBC0E2D1FA3696800B2C0E1 /* Localizations.swift */,
 				B5111E191E71E68F00D68155 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
@@ -613,7 +616,7 @@
 			buildConfigurationList = B59FA9A41DD09C8400259D7F /* Build configuration list for PBXNativeTarget "HTWDD" */;
 			buildPhases = (
 				B52A9B6A1DDB203D00313FC3 /* SwiftLint */,
-				B5111E1E1E71ED4D00D68155 /* Generate Loca */,
+				1FBC0E2C1FA366D800B2C0E1 /* Laurine */,
 				B59FA9831DD09C8300259D7F /* Sources */,
 				B59FA9841DD09C8300259D7F /* Frameworks */,
 				B52A9B5F1DDB1B8000313FC3 /* Carthage */,
@@ -720,19 +723,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B5111E1E1E71ED4D00D68155 /* Generate Loca */ = {
+		1FBC0E2C1FA366D800B2C0E1 /* Laurine */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Loca";
+			name = Laurine;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "`which ruby` scripts/loca.rb $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/en.lproj/Localizable.strings > $SRCROOT$(SRCROOT)/HTWDD/Supporting\\ Files/Loca.swift";
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/../scripts/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Supporting Files/en.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Supporting Files/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi";
 		};
 		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -823,6 +826,7 @@
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
 				B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */,
+				1FBC0E2E1FA3696800B2C0E1 /* Localizations.swift in Sources */,
 				B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */,
 				B556410C1F990CB9006B9B1B /* Colors.swift in Sources */,
 				B5111E201E71F44300D68155 /* View.swift in Sources */,
