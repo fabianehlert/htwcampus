@@ -13,11 +13,11 @@ import Foundation
 
 public struct Loca {
 
-    /// Base translation: Let's go!
-    public static var letsgo: String = NSLocalizedString("letsgo", comment: "")
-
     /// Base translation: Sunday
     public static var sunday: String = NSLocalizedString("sunday", comment: "")
+
+    /// Base translation: Let's go!
+    public static var letsgo: String = NSLocalizedString("letsgo", comment: "")
 
     /// Base translation: Summersemester
     public static var summerSemester: String = NSLocalizedString("summerSemester", comment: "")
@@ -25,26 +25,23 @@ public struct Loca {
     /// Base translation: Saturday
     public static var saturday: String = NSLocalizedString("saturday", comment: "")
 
-    /// Base translation: Continue
-    public static var nextStep: String = NSLocalizedString("nextStep", comment: "")
-
-    /// Base translation: 
-    public static var yo: String = NSLocalizedString("yo", comment: "")
-
     /// Base translation: Thursday
     public static var thursday: String = NSLocalizedString("thursday", comment: "")
+
+    /// Base translation: Continue
+    public static var nextStep: String = NSLocalizedString("nextStep", comment: "")
 
     /// Base translation: Friday
     public static var friday: String = NSLocalizedString("friday", comment: "")
 
-    /// Base translation: Wintersemester
-    public static var winterSemester: String = NSLocalizedString("winterSemester", comment: "")
+    /// Base translation: Tuesday
+    public static var tuesday: String = NSLocalizedString("tuesday", comment: "")
 
     /// Base translation: Monday
     public static var monday: String = NSLocalizedString("monday", comment: "")
 
-    /// Base translation: Tuesday
-    public static var tuesday: String = NSLocalizedString("tuesday", comment: "")
+    /// Base translation: Wintersemester
+    public static var winterSemester: String = NSLocalizedString("winterSemester", comment: "")
 
     /// Base translation: Wednesday
     public static var wednesday: String = NSLocalizedString("wednesday", comment: "")
@@ -67,17 +64,30 @@ public struct Loca {
 
         public struct Welcome {
 
+            /// Base translation: Your schedule shows you all your lectures.
+            public static var ScheduleDescription: String = NSLocalizedString("Onboarding.Welcome.ScheduleDescription", comment: "")
+
             /// Base translation: Welcome to HTW
             public static var Title: String = NSLocalizedString("Onboarding.Welcome.Title", comment: "")
-
-            /// Base translation: View what your professors graded you in your exams.
-            public static var GradesDescription: String = NSLocalizedString("Onboarding.Welcome.GradesDescription", comment: "")
 
             /// Base translation: See what is being served for lunch in the canteens around you.
             public static var CanteenDescription: String = NSLocalizedString("Onboarding.Welcome.CanteenDescription", comment: "")
 
-            /// Base translation: Your schedule shows you all your lectures.
-            public static var ScheduleDescription: String = NSLocalizedString("Onboarding.Welcome.ScheduleDescription", comment: "")
+            /// Base translation: View what your professors graded you in your exams.
+            public static var GradesDescription: String = NSLocalizedString("Onboarding.Welcome.GradesDescription", comment: "")
+
+        }
+
+        public struct Studygroup {
+
+            /// Base translation: Not now
+            public static var notnow: String = NSLocalizedString("Onboarding.Studygroup.notnow", comment: "")
+
+            /// Base translation: Study group
+            public static var title: String = NSLocalizedString("Onboarding.Studygroup.title", comment: "")
+
+            /// Base translation: In order to show you your personal schedule, we need to know what study group you're in.
+            public static var body: String = NSLocalizedString("Onboarding.Studygroup.body", comment: "")
 
         }
     }

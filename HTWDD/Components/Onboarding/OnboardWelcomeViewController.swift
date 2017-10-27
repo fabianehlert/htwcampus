@@ -22,7 +22,7 @@ class OnboardWelcomeViewController: ViewController {
 
 		// --- Title label ---
 		let titleLabel = UILabel()
-		titleLabel.font = .systemFont(ofSize: 45, weight: .bold)
+		titleLabel.font = .systemFont(ofSize: 44, weight: .bold)
 		titleLabel.textAlignment = .left
 		titleLabel.numberOfLines = 2
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -35,8 +35,8 @@ class OnboardStudygroupViewController: ViewController {
 		// --- Title Label ---
 
 		let titleLabel = UILabel()
-		titleLabel.text = "Study group"
-		titleLabel.font = .systemFont(ofSize: 45, weight: .bold)
+		titleLabel.text = Loca.Onboarding.Studygroup.title
+		titleLabel.font = .systemFont(ofSize: 44, weight: .bold)
 		titleLabel.textColor = UIColor.htw.textHeadline
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -48,7 +48,7 @@ class OnboardStudygroupViewController: ViewController {
 		// --- Description Label ---
 
 		let descriptionLabel = UILabel()
-		descriptionLabel.text = "In order to show you your personal schedule, we need to know what study group you're in."
+		descriptionLabel.text = Loca.Onboarding.Studygroup.body
 		descriptionLabel.font = .systemFont(ofSize: 17, weight: .medium)
 		descriptionLabel.textColor = UIColor.htw.textBody
 		descriptionLabel.numberOfLines = 0
@@ -106,7 +106,7 @@ class OnboardStudygroupViewController: ViewController {
 		// --- Continue Button ---
 
 		self.continueButton.isEnabled = false
-		self.continueButton.setTitle("Let's go!", for: .normal)
+		self.continueButton.setTitle(Loca.letsgo, for: .normal)
 		self.continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
 		self.continueButton.backgroundColor = UIColor.htw.blue
 		self.continueButton.layer.cornerRadius = 12
@@ -117,7 +117,7 @@ class OnboardStudygroupViewController: ViewController {
 		// --- Skip Button ---
 
 		let skip = ReactiveButton()
-		skip.setTitle("Not now", for: .normal)
+		skip.setTitle(Loca.Onboarding.Studygroup.notnow, for: .normal)
 		skip.setTitleColor(UIColor.htw.blue, for: .normal)
 		skip.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
 		skip.translatesAutoresizingMaskIntoConstraints = false
