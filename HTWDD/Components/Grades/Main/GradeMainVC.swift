@@ -16,7 +16,7 @@ class GradeMainVC: TableViewController {
     private let refreshControl = UIRefreshControl()
 
     override func initialSetup() {
-        self.title = Loca.gradesTitle
+        self.title = Loca.Grades.title
 		self.tabBarItem.image = UIImage(named: "Grade")
     }
 

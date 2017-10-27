@@ -39,7 +39,7 @@ final class ScheduleMainVC: CollectionViewController {
 
 	override func initialSetup() {
 		// Basic setup
-		self.title = Loca.scheduleTitle
+		self.title = Loca.Schedule.title
 		self.tabBarItem.image = UIImage(named: "Class")
 
 		// CollectionView layout

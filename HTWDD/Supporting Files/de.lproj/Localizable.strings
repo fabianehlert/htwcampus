@@ -1,7 +1,11 @@
-"Onboarding.Welcome.Title"="Willkommen zur\nHTW";
-"Onboarding.Welcome.ScheduleDescription"="";
-"Onboarding.Welcome.CanteenDescription"="";
-"Onboarding.Welcome.GradesDescription"="";
+"Onboarding.Welcome.Title"="Willkommen zur HTW";
+"Onboarding.Welcome.ScheduleDescription"="Hab immer den Überblick, wann Du welche Vorlesung, Übung etc. hast.";
+"Onboarding.Welcome.CanteenDescription"="Was gibt's heute zu Mittag? 🍏🍕🍜";
+"Onboarding.Welcome.GradesDescription"="Wer hat denn da eine 1 bekommen? Bestimmt Du!";
+
+"Schedule.title"="Stundenplan";
+"Canteen.title"="Mensa";
+"Grades.title"="Noten";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
@@ -10,7 +14,9 @@
 "friday"="Freitag";
 "saturday"="Samstag";
 "sunday"="Sonntag";
-"scheduleTitle"="Stundenplan";
-"gradesTitle"="Noten";
+
 "summerSemester"="Sommersemester";
 "winterSemester"="Wintersemester";
+
+"nextStep"="Weiter";
+"letsgo"="Los geht's!";

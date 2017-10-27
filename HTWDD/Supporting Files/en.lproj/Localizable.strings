@@ -1,7 +1,11 @@
-"Onboarding.Welcome.Title"="Welcome to\nHTW";
+"Onboarding.Welcome.Title"="Welcome to HTW";
 "Onboarding.Welcome.ScheduleDescription"="Your schedule shows you all your lectures.";
 "Onboarding.Welcome.CanteenDescription"="See what is being served for lunch in the canteens around you.";
 "Onboarding.Welcome.GradesDescription"="View what your professors graded you in your exams.";
+
+"Schedule.title"="Schedule";
+"Canteen.title"="Canteen";
+"Grades.title"="Grades";
 
 "monday"="Monday";
 "tuesday"="Tuesday";
@@ -10,7 +14,9 @@
 "friday"="Friday";
 "saturday"="Saturday";
 "sunday"="Sunday";
-"scheduleTitle"="Schedule";
-"gradesTitle"="Grades";
+
 "summerSemester"="Summersemester";
 "winterSemester"="Wintersemester";
+
+"nextStep"="Continue";
+"letsgo"="Let's go!";

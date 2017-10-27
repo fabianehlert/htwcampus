@@ -13,6 +13,9 @@ import Foundation
 
 public struct Loca {
 
+    /// Base translation: Let's go!
+    public static var letsgo: String = NSLocalizedString("letsgo", comment: "")
+
     /// Base translation: Sunday
     public static var sunday: String = NSLocalizedString("sunday", comment: "")
 
@@ -22,8 +25,11 @@ public struct Loca {
     /// Base translation: Saturday
     public static var saturday: String = NSLocalizedString("saturday", comment: "")
 
-    /// Base translation: Schedule
-    public static var scheduleTitle: String = NSLocalizedString("scheduleTitle", comment: "")
+    /// Base translation: Continue
+    public static var nextStep: String = NSLocalizedString("nextStep", comment: "")
+
+    /// Base translation: 
+    public static var yo: String = NSLocalizedString("yo", comment: "")
 
     /// Base translation: Thursday
     public static var thursday: String = NSLocalizedString("thursday", comment: "")
@@ -31,8 +37,8 @@ public struct Loca {
     /// Base translation: Friday
     public static var friday: String = NSLocalizedString("friday", comment: "")
 
-    /// Base translation: Grades
-    public static var gradesTitle: String = NSLocalizedString("gradesTitle", comment: "")
+    /// Base translation: Wintersemester
+    public static var winterSemester: String = NSLocalizedString("winterSemester", comment: "")
 
     /// Base translation: Monday
     public static var monday: String = NSLocalizedString("monday", comment: "")
@@ -40,11 +46,22 @@ public struct Loca {
     /// Base translation: Tuesday
     public static var tuesday: String = NSLocalizedString("tuesday", comment: "")
 
-    /// Base translation: Wintersemester
-    public static var winterSemester: String = NSLocalizedString("winterSemester", comment: "")
-
     /// Base translation: Wednesday
     public static var wednesday: String = NSLocalizedString("wednesday", comment: "")
+
+    public struct Canteen {
+
+        /// Base translation: Canteen
+        public static var title: String = NSLocalizedString("Canteen.title", comment: "")
+
+    }
+
+    public struct Grades {
+
+        /// Base translation: Grades
+        public static var title: String = NSLocalizedString("Grades.title", comment: "")
+
+    }
 
     public struct Onboarding {
 
@@ -63,5 +80,12 @@ public struct Loca {
             public static var ScheduleDescription: String = NSLocalizedString("Onboarding.Welcome.ScheduleDescription", comment: "")
 
         }
+    }
+
+    public struct Schedule {
+
+        /// Base translation: Schedule
+        public static var title: String = NSLocalizedString("Schedule.title", comment: "")
+
     }
 }

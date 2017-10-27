@@ -21,16 +21,20 @@ class OnboardWelcomeViewController: ViewController {
 	override func initialSetup() {
 
 		// --- Title label ---
-
 		let titleLabel = UILabel()
 		titleLabel.font = .systemFont(ofSize: 45, weight: .bold)
 		titleLabel.textAlignment = .left
 		titleLabel.numberOfLines = 2
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-		let welcome = NSMutableAttributedString(string: "Welcome to\nHTW")
-		welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.textHeadline, range: NSRange(location: 0, length: 11))
-		welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.orange, range: NSRange(location: 11, length: 3))
+		let w = Loca.Onboarding.Welcome.Title
+		let welcome = NSMutableAttributedString(string: w)
+		welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.textHeadline, range: NSRange(location: 0, length: w.characters.count))
+
+		if let r = w.rangeOfSubString("HTW") {
+			welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.orange, range: r)
+		}
+
 		titleLabel.attributedText = welcome
 
 		let titleContainer = UIView()
@@ -41,9 +45,9 @@ class OnboardWelcomeViewController: ViewController {
 		// --- Description box ---
 
 		let descriptions: [(String, String)] = [
-			("Schedule", "Your schedule shows you all your lectures."),
-			("Canteen", "See what is being served for lunch in the canteens around you."),
-			("Grades", "View what your professors graded you in your exams.")
+			(Loca.Schedule.title, Loca.Onboarding.Welcome.ScheduleDescription),
+			(Loca.Canteen.title, Loca.Onboarding.Welcome.CanteenDescription),
+			(Loca.Grades.title, Loca.Onboarding.Welcome.GradesDescription)
 		]
 		let stackViews: [UIStackView] = descriptions.map { descPair in
 
@@ -74,7 +78,7 @@ class OnboardWelcomeViewController: ViewController {
 		// --- Continue Button ---
 
 		let continueButton = ReactiveButton()
-		continueButton.setTitle("Continue", for: .normal)
+		continueButton.setTitle(Loca.nextStep, for: .normal)
 		continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
 		continueButton.backgroundColor = UIColor.htw.blue
 		continueButton.layer.cornerRadius = 12
@@ -91,6 +95,7 @@ class OnboardWelcomeViewController: ViewController {
 
 			titleLabel.leadingAnchor.constraint(equalTo: titleContainer.leadingAnchor),
 			titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
+			titleLabel.trailingAnchor.constraint(equalTo: titleContainer.trailingAnchor),
 
 			descriptionStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
 			descriptionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
