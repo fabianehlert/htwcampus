@@ -9,9 +9,9 @@
 import Foundation
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-// MARK: - Localizations
+// MARK: - Loca
 
-public struct Localizations {
+public struct Loca {
 
     /// Base translation: Sunday
     public static var sunday: String = NSLocalizedString("sunday", comment: "")

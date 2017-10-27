@@ -33,7 +33,15 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
     }
 
-    private let days = [Loca.monday, Loca.tuesday, Loca.wednesday, Loca.thursday, Loca.friday, Loca.saturday, Loca.sunday]
+    private let days = [
+		Loca.monday,
+		Loca.tuesday,
+		Loca.wednesday,
+		Loca.thursday,
+		Loca.friday,
+		Loca.saturday,
+		Loca.sunday
+	]
 
     private(set) var lectures = [Day: [Lecture]]()
     private var semesterInformations = [SemesterInformation]() {

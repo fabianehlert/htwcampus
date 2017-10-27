@@ -966,7 +966,7 @@ import Foundation
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 // MARK: - Definitions
 
-private var BASE_CLASS_NAME: String = "Localizations"
+private var BASE_CLASS_NAME: String = "Loca"
 private let OBJC_CLASS_PREFIX: String = "_"
 private var OBJC_CUSTOM_SUPERCLASS: String?
 
@@ -1211,7 +1211,7 @@ class Localization {
         writer.writeSwiftImports()
 
         // Generate actual localization structures
-        writer.writeMarkWithName(name: "Localizations")
+        writer.writeMarkWithName(name: "Loca")
         writer.writeCodeStructure(structure: self.swiftStructWithContent(content: self.codifySwift(expandedStructure: self.objectStructure), structName: BASE_CLASS_NAME, contentLevel: 0))
 
         return writer
