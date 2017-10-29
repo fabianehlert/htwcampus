@@ -72,6 +72,9 @@
 		B538EF1A1E1D761E0031077C /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF191E1D761E0031077C /* Course.swift */; };
 		B538EF1C1E1D762E0031077C /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF1B1E1D762E0031077C /* Grade.swift */; };
 		B538EF1E1E1D9E6D0031077C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF1D1E1D9E6D0031077C /* Date.swift */; };
+		B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B601FA62A2600564D6D /* CanteenService.swift */; };
+		B5461B631FA63CED00564D6D /* CanteenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B621FA63CED00564D6D /* CanteenDataSource.swift */; };
+		B5461B661FA63E0C00564D6D /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B651FA63E0C00564D6D /* MealCell.swift */; };
 		B55507101E601AE300C16F5F /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
 		B55507121E601FB400C16F5F /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */; };
@@ -183,6 +186,9 @@
 		B538EF191E1D761E0031077C /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		B538EF1B1E1D762E0031077C /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		B538EF1D1E1D9E6D0031077C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		B5461B601FA62A2600564D6D /* CanteenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenService.swift; sourceTree = "<group>"; };
+		B5461B621FA63CED00564D6D /* CanteenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenDataSource.swift; sourceTree = "<group>"; };
+		B5461B651FA63E0C00564D6D /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -523,6 +529,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		B5461B641FA63E0300564D6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5461B651FA63E0C00564D6D /* MealCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B59FA97E1DD09C8300259D7F = {
 			isa = PBXGroup;
 			children = (
@@ -582,9 +596,12 @@
 		B5B376841FA6176E00FC3A07 /* Canteen */ = {
 			isa = PBXGroup;
 			children = (
+				B5461B641FA63E0300564D6D /* Views */,
 				B5B376871FA6179400FC3A07 /* Models */,
 				B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */,
 				B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */,
+				B5461B621FA63CED00564D6D /* CanteenDataSource.swift */,
+				B5461B601FA62A2600564D6D /* CanteenService.swift */,
 			);
 			path = Canteen;
 			sourceTree = "<group>";
@@ -858,6 +875,7 @@
 				B5F847551F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
+				B5461B631FA63CED00564D6D /* CanteenDataSource.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
@@ -887,11 +905,13 @@
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
+				B5461B661FA63E0C00564D6D /* MealCell.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
 				1FBC0E301FA36C3F00B2C0E1 /* Localizations.swift in Sources */,
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
+				B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,

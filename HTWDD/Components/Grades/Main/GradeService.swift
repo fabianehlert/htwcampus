@@ -34,8 +34,8 @@ class GradeService: Service {
         return Grade.get(network: network, course: course)
     }
 
-    func load(auth: Auth) -> Observable<[Information]> {
-        let network = Network(authenticator: Base(username: auth.username, password: auth.password))
+    func load(parameters: Auth) -> Observable<[Information]> {
+        let network = Network(authenticator: Base(username: parameters.username, password: parameters.password))
 
         return loadCourses(network: network)
             .flatMap { (courses) -> Observable<[Information]> in

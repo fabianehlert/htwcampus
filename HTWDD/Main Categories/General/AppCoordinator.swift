@@ -42,7 +42,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
 		self.window.makeKeyAndVisible()
 
-        self.showOnboarding(animated: false)
+//        self.showOnboarding(animated: false)
 	}
 
 	private func showOnboarding(animated: Bool) {

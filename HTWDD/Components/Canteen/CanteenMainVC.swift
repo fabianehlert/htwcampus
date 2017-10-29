@@ -13,6 +13,18 @@ class CanteenMainVC: TableViewController {
 
     private let refreshControl = UIRefreshControl()
 
+    private lazy var dataSource = CanteenDataSource(context: self.context)
+
+    let context: AppContext
+    init(context: AppContext) {
+        self.context = context
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented.")
+    }
+
     // MARK: - ViewController lifecycle
 
     override func initialSetup() {
@@ -20,6 +32,9 @@ class CanteenMainVC: TableViewController {
 
         self.title = Loca.Canteen.title
         self.tabBarItem.image = #imageLiteral(resourceName: "Hamburger")
+
+        self.dataSource.tableView = self.tableView
+        self.dataSource.register(type: MealCell.self)
     }
 
     override func viewDidLoad() {
@@ -35,17 +50,21 @@ class CanteenMainVC: TableViewController {
         } else {
             self.tableView.addSubview(self.refreshControl)
         }
+
+        self.reload()
     }
 
     @objc private func reload() {
-        dump(Date().byAdding(days: -6).components)
-        Canteen.get(id: .reichenbachstrasse)
-            .debug()
-            .flatMap { $0.getMeals(date: Date().byAdding(days: -6)) }
-            .debug()
-            .subscribe(onNext: { meals in meals.forEach({ print($0.imageUrl?.absoluteString ?? "") }) })
-            .disposed(by: self.rx_disposeBag)
-        self.refreshControl.endRefreshing()
+        self.dataSource
+            .load()
+            .delay(0.5, scheduler: MainScheduler.instance)
+            .subscribe { [weak self] event in
+                switch event {
+                case .completed, .error(_):
+                    self?.refreshControl.endRefreshing()
+                default: break
+                }
+            }.disposed(by: self.rx_disposeBag)
     }
 
 }

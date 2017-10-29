@@ -14,7 +14,7 @@ class CanteenCoordinator: Coordinator {
     }
     var childCoordinators: [Coordinator] = []
 
-    private lazy var canteenMainVC = CanteenMainVC()
+    private lazy var canteenMainVC = CanteenMainVC(context: self.context)
 
     let context: AppContext
     init(context: AppContext) {

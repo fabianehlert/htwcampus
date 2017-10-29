@@ -16,5 +16,6 @@ class AppContext {
 
     let scheduleService = ScheduleService()
     let gradeService = GradeService()
+    let canteenService = CanteenService()
 
 }

@@ -67,7 +67,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             return
         }
 
-		self.service.load(auth: auth)
+		self.service.load(parameters: auth)
 			.observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] information in
 				self?.lectures = information.lectures

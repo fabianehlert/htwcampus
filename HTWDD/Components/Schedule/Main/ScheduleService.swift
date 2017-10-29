@@ -24,8 +24,8 @@ class ScheduleService: Service {
 
     private let network = Network()
 
-    func load(auth: Auth) -> Observable<Information> {
-        let lecturesObservable = Lecture.get(network: self.network, year: auth.year, major: auth.major, group: auth.group)
+    func load(parameters: Auth) -> Observable<Information> {
+        let lecturesObservable = Lecture.get(network: self.network, year: parameters.year, major: parameters.major, group: parameters.group)
             .map(Lecture.groupByDay)
 
         let informationObservable = SemesterInformation.get(network: self.network)

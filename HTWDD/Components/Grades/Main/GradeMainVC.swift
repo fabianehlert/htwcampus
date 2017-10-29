@@ -60,7 +60,6 @@ class GradeMainVC: TableViewController {
 
 	@objc private func reload() {
 		self.dataSource.load()
-			.take(1)
 			.delay(0.5, scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] _ in
 				self?.refreshControl.endRefreshing()

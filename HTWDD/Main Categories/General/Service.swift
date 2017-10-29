@@ -13,5 +13,5 @@ protocol Service {
     associatedtype Authentication
     associatedtype Result
 
-    func load(auth: Authentication) -> Observable<Result>
+    func load(parameters: Authentication) -> Observable<Result>
 }
