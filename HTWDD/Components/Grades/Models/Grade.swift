@@ -32,23 +32,6 @@ struct Grade: Identifiable {
         return network.getArray(url: Grade.url, params: parameters)
     }
 
-    /// Groups and sorts a given array of grades by their semester.
-    ///
-    /// - Parameter grades: the array that should be sorted
-    /// - Returns: array of semesters + their grades, already sorted by semester
-    static func groupAndOrderBySemester(grades: [Grade]) -> [(Semester, [Grade])] {
-
-        var semesterHash = [Semester: [Grade]]()
-
-        for grade in grades {
-            semesterHash[grade.semester, or: []].append(grade)
-        }
-
-        // newest first
-        return semesterHash.sorted {
-            return $0.key > $1.key
-        }
-    }
 }
 
 extension Grade: Unmarshaling {

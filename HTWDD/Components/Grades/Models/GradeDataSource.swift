@@ -10,8 +10,8 @@ import UIKit
 import RxSwift
 
 class GradeDataSource: TableViewDataSource {
-    private let network: Network
-    private var semesters = [(semester: Semester, grades: [Grade])]() {
+    private let service: GradeService
+    private var semesters = [GradeService.Information]() {
         didSet {
             self.tableView?.reloadData()
         }
@@ -29,37 +29,20 @@ class GradeDataSource: TableViewDataSource {
         return self.semesters[index.section].grades[index.row]
     }
 
+    func load() -> Observable<[GradeService.Information]> {
+        return self.service.load().map { [weak self] semesters in
+            self?.semesters = semesters
+            return semesters
+        }
+    }
+
     override func titleFor(section: Int) -> String? {
         let semester = self.semesters[section].semester
         return semester.localized
     }
 
-    private func loadCourses() -> Observable<[Course]> {
-        return Course.get(network: self.network)
-    }
-
-    private func loadGrades(for course: Course) -> Observable<[Grade]> {
-        return Grade.get(network: self.network, course: course)
-    }
-
-    func load() -> Observable<[(Semester, [Grade])]> {
-        return loadCourses()
-            .flatMap { (courses) -> Observable<[(Semester, [Grade])]> in
-                let grades = courses.map(self.loadGrades)
-                return Observable.combineLatest(grades)
-                    .map { Array($0.joined()) }
-                    .map(Grade.groupAndOrderBySemester)
-            }
-            .debug()
-            .observeOn(MainScheduler.instance)
-            .map { [weak self] semesters in
-                self?.semesters = semesters
-                return semesters
-            }
-    }
-
     init(username: String, password: String) {
-        self.network = Network(authenticator: Base(username: username, password: password))
+        self.service = GradeService(username: username, password: password)
         super.init()
     }
 }
