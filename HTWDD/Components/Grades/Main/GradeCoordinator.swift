@@ -17,8 +17,9 @@ class GradeCoordinator: Coordinator {
 
     private lazy var gradeMainViewController = GradeMainVC()
 
-    init() {
-
+    var auth: GradeService.Auth? {
+        set { self.gradeMainViewController.dataSource.auth = newValue }
+        get { return nil }
     }
 
 }

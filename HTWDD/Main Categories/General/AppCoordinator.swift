@@ -38,7 +38,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
 		self.window.makeKeyAndVisible()
 
-		// self.showOnboarding(animated: false)
+        self.showOnboarding(animated: false)
 	}
 
 	private func showOnboarding(animated: Bool) {
@@ -48,6 +48,8 @@ class AppCoordinator: Coordinator {
 			print("Auth 🔑 --> \(String(describing: auth))")
 			if let auth = auth {
 				self?.schedule.auth = auth
+                // TODO: Provide grade authentication as well!
+                self?.grades.auth = .init(username: "", password: "")
 			}
 
 			if let coordinator = coordinator {

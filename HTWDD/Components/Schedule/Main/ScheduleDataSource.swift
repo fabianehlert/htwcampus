@@ -23,7 +23,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
     var auth: ScheduleService.Auth? {
         didSet {
-            self.data = self.calculate()
+            self.load()
         }
     }
 

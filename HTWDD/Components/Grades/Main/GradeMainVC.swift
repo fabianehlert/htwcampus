@@ -11,7 +11,7 @@ import RxSwift
 
 class GradeMainVC: TableViewController {
 
-    let dataSource = GradeDataSource(username: "", password: "")
+    let dataSource = GradeDataSource()
 
     private let refreshControl = UIRefreshControl()
 

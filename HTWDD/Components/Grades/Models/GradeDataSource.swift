@@ -11,7 +11,16 @@ import RxSwift
 
 class GradeDataSource: TableViewDataSource {
 
-    private let auth: GradeService.Auth
+    private var _auth: GradeService.Auth?
+    var auth: GradeService.Auth? {
+        set {
+            self._auth = newValue
+        }
+        get {
+            // don't export sensitive information!
+            return nil
+        }
+    }
     private let service = GradeService()
     private var semesters = [GradeService.Information]() {
         didSet {
@@ -31,10 +40,14 @@ class GradeDataSource: TableViewDataSource {
         return self.semesters[index.section].grades[index.row]
     }
 
-    func load() -> Observable<[GradeService.Information]> {
-        return self.service.load(auth: self.auth).map { [weak self] semesters in
+    func load() -> Observable<()> {
+        guard let auth = self._auth else {
+            Log.info("Can't load grades if no authentication is provided. Abort…")
+            return Observable.just(())
+        }
+
+        return self.service.load(auth: auth).map { [weak self] semesters in
             self?.semesters = semesters
-            return semesters
         }
     }
 
@@ -43,8 +56,4 @@ class GradeDataSource: TableViewDataSource {
         return semester.localized
     }
 
-    init(username: String, password: String) {
-        self.auth = .init(username: username, password: password)
-        super.init()
-    }
 }
