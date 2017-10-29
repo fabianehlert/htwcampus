@@ -26,6 +26,24 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
 
     private lazy var continueButton = ReactiveButton()
 
+    // MARK: - Overwrite functions
+
+    @objc func continueBoarding() {
+        preconditionFailure("Overwrite this  method in your subclass!")
+    }
+
+    @objc func skipBoarding() {
+        self.onFinish?(nil)
+    }
+
+    func shouldReplace(textField: UITextField, newString: String) -> Bool {
+        return true
+    }
+
+    func shouldContinue(textField: UITextField) -> Bool {
+        return false
+    }
+
     // MARK: - ViewController lifecycle
 
     override func initialSetup() {
@@ -65,7 +83,6 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
             $0.font = .systemFont(ofSize: 30, weight: .medium)
             $0.backgroundColor = UIColor.htw.veryLightGrey
             $0.textAlignment = .center
-            $0.keyboardType = .numberPad
             $0.delegate = self
             $0.addTarget(self, action: #selector(self.inputChanges(textField:)), for: .editingChanged)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +130,13 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
 
         // --- Constraints ---
 
+        let stackViewHeight: CGFloat
+        if config.textFieldStackViewAxis == .horizontal {
+            stackViewHeight = 60
+        } else {
+            stackViewHeight = 60.0 * CGFloat(config.textFields.count) + textFieldStackView.spacing * (CGFloat(config.textFields.count) - 1)
+        }
+
         NSLayoutConstraint.activate([
             titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             titleContainer.bottomAnchor.constraint(equalTo: centerStackView.topAnchor),
@@ -128,7 +152,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
             centerStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50),
             centerStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
 
-            textFieldStackView.heightAnchor.constraint(equalToConstant: 60),
+            textFieldStackView.heightAnchor.constraint(equalToConstant: stackViewHeight),
 
             self.continueButton.heightAnchor.constraint(equalToConstant: 55),
             self.continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -151,21 +175,11 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         return .portrait
     }
 
-    @objc func continueBoarding() {
-        preconditionFailure("Overwrite this  method in your subclass!")
+    @objc func inputChanges(textField: TextField) {
+        self.continueButton.isEnabled = self.shouldContinue(textField: textField)
     }
 
-    @objc func skipBoarding() {
-        self.onFinish?(nil)
-    }
-
-    func shouldReplace(textField: UITextField, newString: String) -> Bool {
-        return true
-    }
-
-    func shouldContinue(textField: UITextField) -> Bool {
-        return false
-    }
+    // MARK: - UITextFieldDelegate
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentString = (textField.text ?? "") as NSString
@@ -174,8 +188,12 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         return self.shouldReplace(textField: textField, newString: newString)
     }
 
-    @objc func inputChanges(textField: TextField) {
-        self.continueButton.isEnabled = self.shouldContinue(textField: textField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard textField === self.config?.textFields.last else {
+            return false
+        }
+        self.continueBoarding()
+        return true
     }
 
 }

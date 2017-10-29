@@ -17,12 +17,15 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
     // MARK: - ViewController lifecycle
 
     override func initialSetup() {
+        let textFields = [self.yearTextField, self.majorTextField, self.groupTextField]
         self.config = .init(title: Loca.Onboarding.Studygroup.title,
                             description: Loca.Onboarding.Studygroup.body,
-                            textFields: [self.yearTextField, self.majorTextField, self.groupTextField],
+                            textFields: textFields,
                             textFieldStackViewAxis: UILayoutConstraintAxis.horizontal,
                             notNowText: Loca.Onboarding.Studygroup.notnow,
                             continueButtonText: Loca.nextStep)
+
+        textFields.forEach { $0.keyboardType = .numberPad }
 
         self.yearTextField.configurationType = .year
         self.majorTextField.configurationType = .major
@@ -34,7 +37,7 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         self.yearTextField.becomeFirstResponder()
     }
 
-    // MARK: - Actions
+    // MARK: - Overridden
 
     @objc
     override func continueBoarding() {
