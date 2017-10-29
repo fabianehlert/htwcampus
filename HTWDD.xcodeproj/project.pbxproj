@@ -63,7 +63,6 @@
 		B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF041E1D56D70031077C /* SettingsManager.swift */; };
 		B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF061E1D58690031077C /* NSObject+Rx.swift */; };
 		B538EF0A1E1D5BD10031077C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF091E1D5BD10031077C /* Log.swift */; };
-		B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0B1E1D603D0031077C /* GradeModel.swift */; };
 		B538EF0E1E1D61F80031077C /* SettingsManager_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0D1E1D61F80031077C /* SettingsManager_Tests.swift */; };
 		B538EF101E1D62040031077C /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0F1E1D62040031077C /* UserDefaults.swift */; };
 		B538EF121E1D63EA0031077C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
@@ -169,7 +168,6 @@
 		B538EF041E1D56D70031077C /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B538EF061E1D58690031077C /* NSObject+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		B538EF091E1D5BD10031077C /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		B538EF0B1E1D603D0031077C /* GradeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeModel.swift; sourceTree = "<group>"; };
 		B538EF0D1E1D61F80031077C /* SettingsManager_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager_Tests.swift; sourceTree = "<group>"; };
 		B538EF0F1E1D62040031077C /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		B538EF141E1D63EA0031077C /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 				B538EF191E1D761E0031077C /* Course.swift */,
 				B538EF1B1E1D762E0031077C /* Grade.swift */,
 				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
-				B538EF0B1E1D603D0031077C /* GradeModel.swift */,
 				39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */,
 			);
 			path = Models;
@@ -884,7 +881,6 @@
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
-				B538EF0C1E1D603D0031077C /* GradeModel.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
 				1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */,
@@ -1084,7 +1080,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "23ac1ed9-d5ff-40dd-b6e6-65676b733551";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW App Dev";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1107,7 +1104,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4be22951-7cfe-4d20-b1f6-7e62e809c6ee";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW App Distribution";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

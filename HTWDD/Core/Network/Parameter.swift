@@ -18,7 +18,9 @@ public enum Parameter {
         case .none:
             return nil
         case .url(let dic):
-            return dic.map { k, v -> String in "\(k)=\(v)" }.joined(separator: "&").data(using: .utf8)
+            let parts: [String] = dic.map { k, v -> String in "\(k)=\(v)" }
+            let together: String = parts.joined(separator: "&")
+            return together.data(using: .utf8)
         case .json(let obj):
             return try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
         }
