@@ -14,7 +14,8 @@ class AppCoordinator: Coordinator {
 
 	lazy var childCoordinators: [Coordinator] = [
         self.schedule,
-        self.grades
+        self.grades,
+        self.canteen
     ]
 
 	var rootViewController: UIViewController {
@@ -23,6 +24,7 @@ class AppCoordinator: Coordinator {
 
 	private lazy var schedule = ScheduleCoordinator()
 	private lazy var grades = GradeCoordinator()
+    private lazy var canteen = CanteenCoordinator()
 
 	// MARK: - Init
 
@@ -38,7 +40,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
 		self.window.makeKeyAndVisible()
 
-        self.showOnboarding(animated: false)
+//        self.showOnboarding(animated: false)
 	}
 
 	private func showOnboarding(animated: Bool) {
