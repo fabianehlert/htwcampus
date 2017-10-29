@@ -18,7 +18,7 @@ class CanteenMainVC: TableViewController {
     override func initialSetup() {
         super.initialSetup()
 
-        self.title = "Canteen"
+        self.title = Loca.Canteen.title
         self.tabBarItem.image = #imageLiteral(resourceName: "Hamburger")
     }
 
