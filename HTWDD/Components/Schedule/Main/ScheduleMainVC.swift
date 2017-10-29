@@ -27,8 +27,8 @@ final class ScheduleMainVC: CollectionViewController {
 
 	// MARK: - Init
 
-	init() {
-		self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+    init(context: AppContext) {
+        self.dataSource = ScheduleDataSource(context: context, originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
 		super.init()
 	}
 

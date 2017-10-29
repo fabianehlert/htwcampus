@@ -15,11 +15,16 @@ class GradeCoordinator: Coordinator {
 
     var childCoordinators: [Coordinator] = []
 
-    private lazy var gradeMainViewController = GradeMainVC()
+    private lazy var gradeMainViewController = GradeMainVC(context: self.context)
 
     var auth: GradeService.Auth? {
-        set { self.gradeMainViewController.dataSource.auth = newValue }
+        set { self.gradeMainViewController.auth = newValue }
         get { return nil }
+    }
+
+    let context: AppContext
+    init(context: AppContext) {
+        self.context = context
     }
 
 }

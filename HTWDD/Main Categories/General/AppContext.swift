@@ -14,4 +14,7 @@ class User {
 
 class AppContext {
 
+    let scheduleService = ScheduleService()
+    let gradeService = GradeService()
+
 }

@@ -15,4 +15,10 @@ class CanteenCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
     private lazy var canteenMainVC = CanteenMainVC()
+
+    let context: AppContext
+    init(context: AppContext) {
+        self.context = context
+    }
+
 }

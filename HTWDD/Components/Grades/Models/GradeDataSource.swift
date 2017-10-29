@@ -21,7 +21,12 @@ class GradeDataSource: TableViewDataSource {
             return nil
         }
     }
-    private let service = GradeService()
+    private let service: GradeService
+
+    init(context: AppContext) {
+        self.service = context.gradeService
+    }
+
     private var semesters = [GradeService.Information]() {
         didSet {
             self.tableView?.reloadData()

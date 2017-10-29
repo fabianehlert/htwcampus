@@ -22,9 +22,11 @@ class AppCoordinator: Coordinator {
 		return self.tabBarController
 	}
 
-	private lazy var schedule = ScheduleCoordinator()
-	private lazy var grades = GradeCoordinator()
-    private lazy var canteen = CanteenCoordinator()
+    let appContext = AppContext()
+
+    private lazy var schedule = ScheduleCoordinator(context: self.appContext)
+    private lazy var grades = GradeCoordinator(context: self.appContext)
+    private lazy var canteen = CanteenCoordinator(context: self.appContext)
 
 	// MARK: - Init
 
@@ -40,7 +42,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
 		self.window.makeKeyAndVisible()
 
-//        self.showOnboarding(animated: false)
+        self.showOnboarding(animated: false)
 	}
 
 	private func showOnboarding(animated: Bool) {

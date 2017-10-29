@@ -11,9 +11,24 @@ import RxSwift
 
 class GradeMainVC: TableViewController {
 
-    let dataSource = GradeDataSource()
+    var auth: GradeService.Auth? {
+        set { self.dataSource.auth = newValue }
+        get { return nil }
+    }
+
+    private lazy var dataSource = GradeDataSource(context: self.context)
 
     private let refreshControl = UIRefreshControl()
+
+    let context: AppContext
+    init(context: AppContext) {
+        self.context = context
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func initialSetup() {
         self.title = Loca.Grades.title

@@ -15,7 +15,7 @@ class ScheduleCoordinator: Coordinator {
 
     var childCoordinators: [Coordinator] = []
 
-    private lazy var scheduleMainViewController = ScheduleMainVC()
+    private lazy var scheduleMainViewController = ScheduleMainVC(context: self.context)
 
     var auth: ScheduleService.Auth? {
         didSet {
@@ -23,6 +23,9 @@ class ScheduleCoordinator: Coordinator {
         }
     }
 
-    init() {}
+    let context: AppContext
+    init(context: AppContext) {
+        self.context = context
+    }
 
 }
