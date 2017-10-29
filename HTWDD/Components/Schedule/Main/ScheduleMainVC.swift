@@ -12,7 +12,7 @@ import RxSwift
 final class ScheduleMainVC: CollectionViewController {
 
 	// TODO: This should be injected
-    var auth: ScheduleDataSource.Auth? = ScheduleDataSource.Auth(year: "2016", major: "044", group: "71") {
+    var auth: ScheduleService.Auth? = ScheduleService.Auth(year: "2016", major: "044", group: "71") {
 		didSet {
 			self.dataSource.auth = self.auth
 			self.dataSource.load()

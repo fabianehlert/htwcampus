@@ -21,7 +21,7 @@ class OnboardingCoordinator: Coordinator {
 		return self.navigationController
 	}
 
-	var onFinish: ((OnboardingCoordinator?, ScheduleDataSource.Auth?) -> Void)?
+	var onFinish: ((OnboardingCoordinator?, ScheduleService.Auth?) -> Void)?
 
 	// MARK: - Init
 

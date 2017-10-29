@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class GradeService {
-
+    
     struct Information {
         let semester: Semester
         let grades: [Grade]

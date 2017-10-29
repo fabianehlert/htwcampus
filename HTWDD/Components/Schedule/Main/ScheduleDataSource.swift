@@ -11,12 +11,6 @@ import RxSwift
 
 class ScheduleDataSource: CollectionViewDataSource {
 
-    struct Auth {
-        let year: String
-        let major: String
-        let group: String
-    }
-
     var originDate: Date {
         didSet {
             self.data = self.calculate()
@@ -27,7 +21,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.data = self.calculate()
         }
     }
-    var auth: Auth? {
+    var auth: ScheduleService.Auth? {
         didSet {
             self.data = self.calculate()
         }
@@ -58,9 +52,9 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     private let disposeBag = DisposeBag()
-    private let network = Network()
+    private let service = ScheduleService()
 
-    init(originDate: Date, numberOfDays: Int, auth: Auth?) {
+    init(originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?) {
         self.originDate = originDate
         self.numberOfDays = numberOfDays
         self.auth = auth
@@ -72,22 +66,13 @@ class ScheduleDataSource: CollectionViewDataSource {
             return
         }
 
-		let lecturesObservable = Lecture.get(network: self.network, year: auth.year, major: auth.major, group: auth.group)
-			.map(Lecture.groupByDay)
-
-		let informationObservable = SemesterInformation.get(network: self.network)
-
-		Observable.combineLatest(lecturesObservable, informationObservable) { ($0, $1) }
+		self.service.load(auth: auth)
 			.observeOn(MainScheduler.instance)
-			.subscribe { [weak self] (event) in
-				guard case let .next((lectures, information)) = event else {
-					return
-				}
-
-				self?.lectures = lectures
-				self?.semesterInformations = information
+            .subscribe(onNext: { [weak self] information in
+				self?.lectures = information.lectures
+				self?.semesterInformations = information.semesters
 				self?.data = self?.calculate() ?? []
-			}.disposed(by: self.disposeBag)
+			}).disposed(by: self.disposeBag)
 	}
 
 	func lecture(at indexPath: IndexPath) -> Lecture? {

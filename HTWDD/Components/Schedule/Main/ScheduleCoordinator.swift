@@ -17,7 +17,7 @@ class ScheduleCoordinator: Coordinator {
 
     private lazy var scheduleMainViewController = ScheduleMainVC()
 
-    var auth: ScheduleDataSource.Auth? {
+    var auth: ScheduleService.Auth? {
         didSet {
             self.scheduleMainViewController.auth = self.auth
         }

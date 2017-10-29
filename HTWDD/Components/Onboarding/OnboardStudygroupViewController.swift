@@ -10,7 +10,7 @@ import UIKit
 
 class OnboardStudygroupViewController: ViewController {
 
-	var onContinue: ((OnboardStudygroupViewController, ScheduleDataSource.Auth?) -> Void)?
+	var onContinue: ((OnboardStudygroupViewController, ScheduleService.Auth?) -> Void)?
 	var onSkip: ((OnboardStudygroupViewController) -> Void)?
 
 	private lazy var continueButton = ReactiveButton()
@@ -174,7 +174,7 @@ class OnboardStudygroupViewController: ViewController {
 			let m = self.majorTextField.text,
 			let g = self.groupTextField.text {
 
-			let group = ScheduleDataSource.Auth(year: y, major: m, group: g)
+			let group = ScheduleService.Auth(year: y, major: m, group: g)
 			self.onContinue?(self, group)
 		} else {
 			self.onContinue?(self, nil)
