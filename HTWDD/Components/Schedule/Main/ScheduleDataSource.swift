@@ -27,7 +27,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.data = self.calculate()
         }
     }
-    var auth: Auth {
+    var auth: Auth? {
         didSet {
             self.data = self.calculate()
         }
@@ -60,14 +60,19 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let network = Network()
 
-    init(originDate: Date, numberOfDays: Int, auth: Auth) {
+    init(originDate: Date, numberOfDays: Int, auth: Auth?) {
         self.originDate = originDate
         self.numberOfDays = numberOfDays
         self.auth = auth
     }
 
 	func load() {
-		let lecturesObservable = Lecture.get(network: self.network, year: self.auth.year, major: self.auth.major, group: self.auth.group)
+        guard let auth = self.auth else {
+            Log.info("Can't load schedule if no authentication is provided. Abort…")
+            return
+        }
+
+		let lecturesObservable = Lecture.get(network: self.network, year: auth.year, major: auth.major, group: auth.group)
 			.map(Lecture.groupByDay)
 
 		let informationObservable = SemesterInformation.get(network: self.network)

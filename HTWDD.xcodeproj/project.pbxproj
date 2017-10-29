@@ -93,6 +93,8 @@
 		B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5C721E5F37970083D75E /* CollectionViewController.swift */; };
 		B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
 		B5D3E8361FA5E3620055782D /* GradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8351FA5E3620055782D /* GradeService.swift */; };
+		B5D3E8381FA5E6C10055782D /* GradeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8371FA5E6C10055782D /* GradeCoordinator.swift */; };
+		B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8391FA5E7630055782D /* ScheduleCoordinator.swift */; };
 		B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535A1E7FBA3D00183E07 /* Parameter.swift */; };
 		B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535C1E7FBA4900183E07 /* Authenticator.swift */; };
 		B5EA535F1E7FBB1500183E07 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535E1E7FBB1500183E07 /* String.swift */; };
@@ -197,6 +199,8 @@
 		B5CD5C721E5F37970083D75E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewModel.swift; sourceTree = "<group>"; };
 		B5D3E8351FA5E3620055782D /* GradeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeService.swift; sourceTree = "<group>"; };
+		B5D3E8371FA5E6C10055782D /* GradeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCoordinator.swift; sourceTree = "<group>"; };
+		B5D3E8391FA5E7630055782D /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
 		B5EA535A1E7FBA3D00183E07 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		B5EA535C1E7FBA4900183E07 /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B5EA535E1E7FBB1500183E07 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 			children = (
 				1FC21DCB1F8F9A47003E244F /* Views */,
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
+				B5D3E8371FA5E6C10055782D /* GradeCoordinator.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 				B50EB5041E6B007B0022E40C /* Views */,
 				B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */,
 				B5CD5C701E5F37700083D75E /* ScheduleMainVC.swift */,
+				B5D3E8391FA5E7630055782D /* ScheduleCoordinator.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -833,6 +839,7 @@
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
 				B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
+				B5D3E8381FA5E6C10055782D /* GradeCoordinator.swift in Sources */,
 				B5D3E8361FA5E3620055782D /* GradeService.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
@@ -853,6 +860,7 @@
 				1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
+				B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */,
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
 				B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */,
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,

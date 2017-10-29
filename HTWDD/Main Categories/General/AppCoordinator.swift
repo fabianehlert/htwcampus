@@ -12,26 +12,27 @@ class AppCoordinator: Coordinator {
 	private var window: UIWindow
 	private let tabBarController = TabBarController()
 
-	var childCoordinators: [Coordinator] = []
+	lazy var childCoordinators: [Coordinator] = [
+        self.schedule,
+        self.grades
+    ]
 
 	var rootViewController: UIViewController {
 		return self.tabBarController
 	}
 
-	private var schedule: ScheduleMainVC
-	private var grades: GradeMainVC
+	private lazy var schedule = ScheduleCoordinator()
+	private lazy var grades = GradeCoordinator()
 
 	// MARK: - Init
 
 	init(window: UIWindow) {
 		self.window = window
 
-		self.schedule = ScheduleMainVC()
-		self.grades = GradeMainVC()
-
-		self.tabBarController.setViewControllers([
-			schedule.inNavigationController(),
-			grades.inNavigationController()], animated: false)
+        let viewControllers = self.childCoordinators.map { c in
+            c.rootViewController
+        }
+		self.tabBarController.setViewControllers(viewControllers, animated: false)
 
 		self.window.rootViewController = self.rootViewController
 		self.window.tintColor = UIColor.htw.blue
