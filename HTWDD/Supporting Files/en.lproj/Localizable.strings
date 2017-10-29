@@ -2,9 +2,15 @@
 "Onboarding.Welcome.ScheduleDescription"="Your schedule shows you all your lectures.";
 "Onboarding.Welcome.CanteenDescription"="See what is being served for lunch in the canteens around you.";
 "Onboarding.Welcome.GradesDescription"="View what your professors graded you in your exams.";
+
 "Onboarding.Studygroup.title"="Study group";
 "Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
 "Onboarding.Studygroup.notnow"="Not now";
+
+"Onboarding.UnixLogin.title"="Unix-Login";
+"Onboarding.UnixLogin.body"="Damit wir dir deine Noten anzeigen können, musst du bitte deinen Unix-Login eingeben.";
+"Onboarding.UnixLogin.body"="To be able to show you your grades, please enter your unix-login.";
+"Onboarding.UnixLogin.notnow"="Not now";
 
 "Schedule.title"="Schedule";
 "Canteen.title"="Canteen";

@@ -96,6 +96,7 @@
 		B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8391FA5E7630055782D /* ScheduleCoordinator.swift */; };
 		B5D3E83C1FA5E8D50055782D /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E83B1FA5E8D50055782D /* ScheduleService.swift */; };
 		B5D3E83E1FA5EBBE0055782D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E83D1FA5EBBE0055782D /* Service.swift */; };
+		B5D3E8421FA5FD490055782D /* OnboardUnixLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8411FA5FD490055782D /* OnboardUnixLoginViewController.swift */; };
 		B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535A1E7FBA3D00183E07 /* Parameter.swift */; };
 		B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535C1E7FBA4900183E07 /* Authenticator.swift */; };
 		B5EA535F1E7FBB1500183E07 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535E1E7FBB1500183E07 /* String.swift */; };
@@ -203,6 +204,7 @@
 		B5D3E8391FA5E7630055782D /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
 		B5D3E83B1FA5E8D50055782D /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 		B5D3E83D1FA5EBBE0055782D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B5D3E8411FA5FD490055782D /* OnboardUnixLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardUnixLoginViewController.swift; sourceTree = "<group>"; };
 		B5EA535A1E7FBA3D00183E07 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		B5EA535C1E7FBA4900183E07 /* Authenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B5EA535E1E7FBB1500183E07 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
 				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
 				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
+				B5D3E8411FA5FD490055782D /* OnboardUnixLoginViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				B5EA536D1E7FCE8B00183E07 /* ScheduleDetailVC.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
 				B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */,
+				B5D3E8421FA5FD490055782D /* OnboardUnixLoginViewController.swift in Sources */,
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
 				B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,

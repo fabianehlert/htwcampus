@@ -37,14 +37,14 @@ public struct Loca {
     /// Base translation: Tuesday
     public static var tuesday: String = NSLocalizedString("tuesday", comment: "")
 
+    /// Base translation: Wednesday
+    public static var wednesday: String = NSLocalizedString("wednesday", comment: "")
+
     /// Base translation: Monday
     public static var monday: String = NSLocalizedString("monday", comment: "")
 
     /// Base translation: Wintersemester
     public static var winterSemester: String = NSLocalizedString("winterSemester", comment: "")
-
-    /// Base translation: Wednesday
-    public static var wednesday: String = NSLocalizedString("wednesday", comment: "")
 
     public struct Canteen {
 
@@ -88,6 +88,19 @@ public struct Loca {
 
             /// Base translation: In order to show you your personal schedule, we need to know what study group you're in.
             public static var body: String = NSLocalizedString("Onboarding.Studygroup.body", comment: "")
+
+        }
+
+        public struct UnixLogin {
+
+            /// Base translation: Not now
+            public static var notnow: String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
+
+            /// Base translation: Unix-Login
+            public static var title: String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
+
+            /// Base translation: To be able to show you your grades, please enter your unix-login.
+            public static var body: String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
 
         }
     }

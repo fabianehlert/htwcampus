@@ -21,7 +21,7 @@ class OnboardingCoordinator: Coordinator {
 		return self.navigationController
 	}
 
-	var onFinish: ((OnboardingCoordinator?, ScheduleService.Auth?) -> Void)?
+	var onFinish: ((ScheduleService.Auth?, GradeService.Auth?) -> Void)?
 
 	// MARK: - Init
 
@@ -39,12 +39,17 @@ class OnboardingCoordinator: Coordinator {
 
 	private func showStudyGroupOnboarding() {
 		let studyGroupVC = OnboardStudygroupViewController()
-		studyGroupVC.onContinue = { [weak self] vc, auth in
-			self?.onFinish?(self, auth)
-		}
-		studyGroupVC.onSkip = { [weak self] vc in
-			self?.onFinish?(self, nil)
-		}
+        studyGroupVC.onFinish = { [weak self] auth in
+            self?.showUnixLoginOnboarding(schedule: auth)
+        }
 		self.navigationController.pushViewController(studyGroupVC, animated: true)
 	}
+
+    private func showUnixLoginOnboarding(schedule: ScheduleService.Auth?) {
+        let unixLoginVC = OnboardUnixLoginViewController()
+        unixLoginVC.onFinish = { [weak self] auth in
+            self?.onFinish?(schedule, auth)
+        }
+        self.navigationController.pushViewController(unixLoginVC, animated: true)
+    }
 }

@@ -2,9 +2,14 @@
 "Onboarding.Welcome.ScheduleDescription"="Hab immer den Überblick, wann Du welche Vorlesung, Übung etc. hast.";
 "Onboarding.Welcome.CanteenDescription"="Was gibt's heute zu Mittag? 🍏🍕🍜";
 "Onboarding.Welcome.GradesDescription"="Wer hat denn da eine 1 bekommen? Bestimmt Du!";
+
 "Onboarding.Studygroup.title"="Studiengruppe";
 "Onboarding.Studygroup.body"="Um Dir Deinen persönlichen Stundenplan anzeigen zu können, musst Du uns noch Deine Studiengruppe mitteilen.";
 "Onboarding.Studygroup.notnow"="Später";
+
+"Onboarding.UnixLogin.title"="Unix-Login";
+"Onboarding.UnixLogin.body"="Damit wir dir deine Noten anzeigen können, musst du bitte deinen Unix-Login eingeben.";
+"Onboarding.UnixLogin.notnow"="Später";
 
 "Schedule.title"="Stundenplan";
 "Canteen.title"="Mensa";

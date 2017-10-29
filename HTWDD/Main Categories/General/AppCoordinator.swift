@@ -43,21 +43,20 @@ class AppCoordinator: Coordinator {
 
 	private func showOnboarding(animated: Bool) {
 		let onboarding = OnboardingCoordinator()
-		onboarding.onFinish = { [weak self] coordinator, auth in
+		onboarding.onFinish = { [weak self, weak onboarding] schedule, grade in
 
-			print("Auth 🔑 --> \(String(describing: auth))")
-			if let auth = auth {
-				self?.schedule.auth = auth
-                // TODO: Provide grade authentication as well!
-                self?.grades.auth = .init(username: "", password: "")
-			}
+            print("Schedule 🔑 --> \(String(describing: schedule))")
+            print("Grade    🔑 --> \(String(describing: grade))")
+            self?.schedule.auth = schedule
+            self?.grades.auth = grade
 
-			if let coordinator = coordinator {
-				coordinator.rootViewController.dismiss(animated: true, completion: {
-					self?.removeChildCoordinator(coordinator)
-				})
-			}
+            guard let coordinator = onboarding else {
+                return
+            }
 
+            coordinator.rootViewController.dismiss(animated: true, completion: { [weak self] in
+                self?.removeChildCoordinator(coordinator)
+            })
 		}
 
 		self.addChildCoordinator(onboarding)
