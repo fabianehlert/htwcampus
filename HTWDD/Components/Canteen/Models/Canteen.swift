@@ -15,6 +15,12 @@ struct Canteen {
 
     enum Id: Int {
         case reichenbachstrasse = 80
+
+        var imageId: Int? {
+            switch self {
+            case .reichenbachstrasse: return 9
+            }
+        }
     }
 
     let id: Id
@@ -71,7 +77,9 @@ extension Canteen {
             self.canteen.getMeals(forDay: date, completion: { result in
                 switch result {
                 case .success(let meals):
-                    let mapped = meals.map(Meal.init)
+                    let mapped = meals.map { m in
+                        return Meal(canteen: self.id, date: date, openMensaMeal: m)
+                    }
                     observer.onNext(mapped)
                     observer.onCompleted()
                 case .failure(let err):

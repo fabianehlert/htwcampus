@@ -18,13 +18,31 @@ struct Meal: Identifiable {
     let employeesPrice: Double
     let notes: [String]
 
-    init(_ openMensaMeal: OpenMensaKit.Meal) {
+    let canteen: Canteen.Id
+    let date: Date
+
+    init(canteen: Canteen.Id, date: Date, openMensaMeal: OpenMensaKit.Meal) {
         self.id = openMensaMeal.id
         self.name = openMensaMeal.name
         self.category = openMensaMeal.category
         self.studentsPrice = openMensaMeal.price.students ?? 0
         self.employeesPrice = openMensaMeal.price.employees ?? 0
         self.notes = openMensaMeal.notes
+
+        self.canteen = canteen
+        self.date = date
+    }
+
+    var imageUrl: URL? {
+        guard let imageId = self.canteen.imageId else {
+            return nil
+        }
+        let year = self.date.components.year ?? 0
+        let month = self.date.components.month ?? 0
+
+        let urlString = "https://bilderspeiseplan.studentenwerk-dresden.de/m\(imageId)/\(year)\(month)/thumbs/\(self.id).jpg"
+
+        return URL(string: urlString)
     }
 
 }

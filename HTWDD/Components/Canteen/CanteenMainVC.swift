@@ -38,11 +38,12 @@ class CanteenMainVC: TableViewController {
     }
 
     @objc private func reload() {
+        dump(Date().byAdding(days: -6).components)
         Canteen.get(id: .reichenbachstrasse)
             .debug()
-            .flatMap { $0.getMeals(date: Date().byAdding(days: 1)) }
+            .flatMap { $0.getMeals(date: Date().byAdding(days: -6)) }
             .debug()
-            .subscribe()
+            .subscribe(onNext: { meals in meals.forEach({ print($0.imageUrl?.absoluteString ?? "") }) })
             .disposed(by: self.rx_disposeBag)
         self.refreshControl.endRefreshing()
     }
