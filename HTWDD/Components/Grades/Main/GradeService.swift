@@ -9,8 +9,13 @@
 import Foundation
 import RxSwift
 
-class GradeService {
-    
+class GradeService: Service {
+
+    struct Auth {
+        let username: String
+        let password: String
+    }
+
     struct Information {
         let semester: Semester
         let grades: [Grade]
@@ -18,26 +23,23 @@ class GradeService {
 
     // MARK: - State
     private var semesters = [Information]()
-    private let network: Network
 
-    // MARK: - Initializer
+    // MARK: - Loading
 
-    init(username: String, password: String) {
-        self.network = Network(authenticator: Base(username: username, password: password))
+    private func loadCourses(network: Network) -> Observable<[Course]> {
+        return Course.get(network: network)
     }
 
-    private func loadCourses() -> Observable<[Course]> {
-        return Course.get(network: self.network)
+    private func loadGrades(network: Network, for course: Course) -> Observable<[Grade]> {
+        return Grade.get(network: network, course: course)
     }
 
-    private func loadGrades(for course: Course) -> Observable<[Grade]> {
-        return Grade.get(network: self.network, course: course)
-    }
+    func load(auth: Auth) -> Observable<[Information]> {
+        let network = Network(authenticator: Base(username: auth.username, password: auth.password))
 
-    func load() -> Observable<[Information]> {
-        return loadCourses()
+        return loadCourses(network: network)
             .flatMap { (courses) -> Observable<[Information]> in
-                let grades = courses.map(self.loadGrades)
+                let grades = courses.map { self.loadGrades(network: network, for: $0) }
                 return Observable.combineLatest(grades)
                     .map { Array($0.joined()) }
                     .map(GradeService.groupAndOrderBySemester)

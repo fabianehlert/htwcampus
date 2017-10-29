@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 
 class GradeDataSource: TableViewDataSource {
-    private let service: GradeService
+
+    private let auth: GradeService.Auth
+    private let service = GradeService()
     private var semesters = [GradeService.Information]() {
         didSet {
             self.tableView?.reloadData()
@@ -30,7 +32,7 @@ class GradeDataSource: TableViewDataSource {
     }
 
     func load() -> Observable<[GradeService.Information]> {
-        return self.service.load().map { [weak self] semesters in
+        return self.service.load(auth: self.auth).map { [weak self] semesters in
             self?.semesters = semesters
             return semesters
         }
@@ -42,7 +44,7 @@ class GradeDataSource: TableViewDataSource {
     }
 
     init(username: String, password: String) {
-        self.service = GradeService(username: username, password: password)
+        self.auth = .init(username: username, password: password)
         super.init()
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class ScheduleService {
+class ScheduleService: Service {
 
     struct Auth {
         let year: String
