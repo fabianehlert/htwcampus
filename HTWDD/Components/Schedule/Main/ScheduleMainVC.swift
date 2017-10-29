@@ -69,6 +69,10 @@ final class ScheduleMainVC: CollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.register3DTouch()
+
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
+        doubleTap.numberOfTapsRequired = 2
+        self.collectionView.addGestureRecognizer(doubleTap)
 	}
 
 	// MARK: - Private
@@ -83,6 +87,13 @@ final class ScheduleMainVC: CollectionViewController {
 	fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
 		self.navigationController?.pushViewController(controller, animated: animated)
 	}
+
+    @objc
+    private func jumpToToday() {
+        self.dataSource.originDate = Date()
+        let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
+        self.collectionView.setContentOffset(left, animated: true)
+    }
 }
 
 // MARK: - CollectionViewDelegate
