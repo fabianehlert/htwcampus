@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import OpenMensaKit
 
 class CanteenMainVC: TableViewController {
 
@@ -39,23 +38,13 @@ class CanteenMainVC: TableViewController {
     }
 
     @objc private func reload() {
-
-        Canteen.get(withID: 80) { result in
-            guard let canteen = result.success else {
-                return
-            }
-            print(canteen.address)
-            print(canteen.city)
-            print(canteen.coordinate)
-            canteen.getMeals(forDay: Date().byAdding(days: 1), completion: { result in
-                guard let meals = result.success else {
-                    return
-                }
-                dump(meals)
-                self.refreshControl.endRefreshing()
-            })
-        }
-
+        Canteen.get(id: .reichenbachstrasse)
+            .debug()
+            .flatMap { $0.getMeals(date: Date().byAdding(days: 1)) }
+            .debug()
+            .subscribe()
+            .disposed(by: self.rx_disposeBag)
+        self.refreshControl.endRefreshing()
     }
 
 }

@@ -83,6 +83,11 @@
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */; };
 		B5B376831FA6161D00FC3A07 /* OpenMensaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */; };
+		B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376881FA6179F00FC3A07 /* Meal.swift */; };
+		B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3768A1FA6182800FC3A07 /* Double.swift */; };
+		B5B3768D1FA6192A00FC3A07 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3768C1FA6192A00FC3A07 /* Canteen.swift */; };
+		B5B3768E1FA61A2C00FC3A07 /* CanteenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */; };
+		B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
 		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
@@ -195,6 +200,9 @@
 		B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenMensaKit.framework; path = Carthage/Build/iOS/OpenMensaKit.framework; sourceTree = "<group>"; };
 		B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenCoordinator.swift; sourceTree = "<group>"; };
 		B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenMainVC.swift; sourceTree = "<group>"; };
+		B5B376881FA6179F00FC3A07 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		B5B3768A1FA6182800FC3A07 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		B5B3768C1FA6192A00FC3A07 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
 		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
@@ -445,6 +453,7 @@
 				B538EF1D1E1D9E6D0031077C /* Date.swift */,
 				B55507111E601FB400C16F5F /* DateComponents.swift */,
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
+				B5B3768A1FA6182800FC3A07 /* Double.swift */,
 				B538EF061E1D58690031077C /* NSObject+Rx.swift */,
 				B5BE727A1E6C4CBD00D05B6D /* Observable.swift */,
 				B5EA535E1E7FBB1500183E07 /* String.swift */,
@@ -573,10 +582,20 @@
 		B5B376841FA6176E00FC3A07 /* Canteen */ = {
 			isa = PBXGroup;
 			children = (
+				B5B376871FA6179400FC3A07 /* Models */,
 				B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */,
 				B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */,
 			);
 			path = Canteen;
+			sourceTree = "<group>";
+		};
+		B5B376871FA6179400FC3A07 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5B376881FA6179F00FC3A07 /* Meal.swift */,
+				B5B3768C1FA6192A00FC3A07 /* Canteen.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B5BE72801E6C808700D05B6D /* General */ = {
@@ -829,6 +848,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */,
 				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
 				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
@@ -839,9 +859,12 @@
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
+				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
+				B5B3768E1FA61A2C00FC3A07 /* CanteenCoordinator.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
+				B5B3768D1FA6192A00FC3A07 /* Canteen.swift in Sources */,
 				B50875481ED40BE6004A320E /* TableViewController.swift in Sources */,
 				1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */,
 				1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */,
@@ -874,6 +897,7 @@
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B538EF051E1D56D70031077C /* SettingsManager.swift in Sources */,
 				B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */,
+				B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */,
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
