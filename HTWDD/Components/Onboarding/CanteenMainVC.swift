@@ -19,6 +19,7 @@ class CanteenMainVC: TableViewController {
         super.initialSetup()
 
         self.title = "Canteen"
+        self.tabBarItem.image = #imageLiteral(resourceName: "Hamburger")
     }
 
     override func viewDidLoad() {

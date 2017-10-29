@@ -17,7 +17,7 @@ class GradeMainVC: TableViewController {
 
     override func initialSetup() {
         self.title = Loca.Grades.title
-		self.tabBarItem.image = UIImage(named: "Grade")
+		self.tabBarItem.image = #imageLiteral(resourceName: "Grade")
     }
 
 	// MARK: - ViewController lifecycle

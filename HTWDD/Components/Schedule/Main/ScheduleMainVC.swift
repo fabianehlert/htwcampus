@@ -33,14 +33,13 @@ final class ScheduleMainVC: CollectionViewController {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		self.dataSource = ScheduleDataSource(originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
-		super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
 	}
 
 	override func initialSetup() {
 		// Basic setup
 		self.title = Loca.Schedule.title
-		self.tabBarItem.image = UIImage(named: "Class")
+		self.tabBarItem.image = #imageLiteral(resourceName: "Class")
 
 		// CollectionView layout
 		let layout = TimetableCollectionViewLayout(dataSource: self)
