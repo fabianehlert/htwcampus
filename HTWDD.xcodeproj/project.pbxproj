@@ -81,6 +81,7 @@
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
+		B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
 		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
@@ -189,6 +190,7 @@
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailViewController.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
 		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
 				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
+				B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */,
 				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
 				B5D3E8411FA5FD490055782D /* OnboardUnixLoginViewController.swift */,
 			);
@@ -842,6 +845,7 @@
 				B5EA536D1E7FCE8B00183E07 /* ScheduleDetailVC.swift in Sources */,
 				B538EF1C1E1D762E0031077C /* Grade.swift in Sources */,
 				B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */,
+				B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */,
 				B5D3E8421FA5FD490055782D /* OnboardUnixLoginViewController.swift in Sources */,
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
 				B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */,
