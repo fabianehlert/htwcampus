@@ -82,8 +82,7 @@
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */; };
-		B5B3767F1FA60EED00FC3A07 /* CanteenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767E1FA60EED00FC3A07 /* CanteenCoordinator.swift */; };
-		B5B376811FA60F0C00FC3A07 /* CanteenMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376801FA60F0C00FC3A07 /* CanteenMainVC.swift */; };
+		B5B376831FA6161D00FC3A07 /* OpenMensaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */; };
 		B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE727A1E6C4CBD00D05B6D /* Observable.swift */; };
 		B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
 		B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
@@ -193,8 +192,9 @@
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailViewController.swift; sourceTree = "<group>"; };
-		B5B3767E1FA60EED00FC3A07 /* CanteenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CanteenCoordinator.swift; path = HTWDD/Components/Onboarding/CanteenCoordinator.swift; sourceTree = SOURCE_ROOT; };
-		B5B376801FA60F0C00FC3A07 /* CanteenMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CanteenMainVC.swift; path = HTWDD/Components/Onboarding/CanteenMainVC.swift; sourceTree = SOURCE_ROOT; };
+		B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenMensaKit.framework; path = Carthage/Build/iOS/OpenMensaKit.framework; sourceTree = "<group>"; };
+		B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenCoordinator.swift; sourceTree = "<group>"; };
+		B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenMainVC.swift; sourceTree = "<group>"; };
 		B5BE727A1E6C4CBD00D05B6D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5BE72811E6C809200D05B6D /* SemesterInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterInformation.swift; sourceTree = "<group>"; };
 		B5BE72851E6C83A500D05B6D /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B376831FA6161D00FC3A07 /* OpenMensaKit.framework in Frameworks */,
 				B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */,
 				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
 				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
@@ -288,20 +289,11 @@
 				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B4D1DDB160700313FC3 /* Schedule */,
 				B52A9B4E1DDB165B00313FC3 /* Grades */,
-				1FC21DC61F8F9512003E244F /* Canteen */,
+				B5B376841FA6176E00FC3A07 /* Canteen */,
 				1FC21DC71F8F951B003E244F /* Exams */,
 				1FC21DC81F8F953F003E244F /* Settings */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		1FC21DC61F8F9512003E244F /* Canteen */ = {
-			isa = PBXGroup;
-			children = (
-				B5B3767E1FA60EED00FC3A07 /* CanteenCoordinator.swift */,
-				B5B376801FA60F0C00FC3A07 /* CanteenMainVC.swift */,
-			);
-			path = Canteen;
 			sourceTree = "<group>";
 		};
 		1FC21DC71F8F951B003E244F /* Exams */ = {
@@ -494,6 +486,7 @@
 		B52A9B5A1DDB1B7C00313FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */,
 				B52DF0D71E7096F30095C854 /* Marshal.framework */,
 				B538EF141E1D63EA0031077C /* RxTest.framework */,
 				B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */,
@@ -575,6 +568,15 @@
 				B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B5B376841FA6176E00FC3A07 /* Canteen */ = {
+			isa = PBXGroup;
+			children = (
+				B5B376851FA6176E00FC3A07 /* CanteenCoordinator.swift */,
+				B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */,
+			);
+			path = Canteen;
 			sourceTree = "<group>";
 		};
 		B5BE72801E6C808700D05B6D /* General */ = {
@@ -766,6 +768,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Marshal.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OpenMensaKit.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -839,7 +842,6 @@
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
-				B5B3767F1FA60EED00FC3A07 /* CanteenCoordinator.swift in Sources */,
 				B50875481ED40BE6004A320E /* TableViewController.swift in Sources */,
 				1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */,
 				1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */,
@@ -886,7 +888,6 @@
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
-				B5B376811FA60F0C00FC3A07 /* CanteenMainVC.swift in Sources */,
 				1F2B8A101F99029E00026099 /* TextField.swift in Sources */,
 				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,

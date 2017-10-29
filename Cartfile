@@ -1,2 +1,3 @@
 github "ReactiveX/RxSwift" ~> 4.0
 github "utahiosmac/Marshal" "1.2.4"
+github "kiliankoe/OpenMensaKit"
