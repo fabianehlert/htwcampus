@@ -11,10 +11,18 @@ import RxSwift
 
 class ScheduleService: Service {
 
-    struct Auth {
+    struct Auth: Hashable {
         let year: String
         let major: String
         let group: String
+
+        var hashValue: Int {
+            return self.year.hashValue ^ self.major.hashValue ^ self.group.hashValue
+        }
+
+        static func ==(lhs: ScheduleService.Auth, rhs: ScheduleService.Auth) -> Bool {
+            return lhs.year == rhs.year && lhs.major == rhs.major && lhs.group == rhs.group
+        }
     }
 
     struct Information {
@@ -24,7 +32,13 @@ class ScheduleService: Service {
 
     private let network = Network()
 
+    private var cachedInformation = [Auth: Information]()
+
     func load(parameters: Auth) -> Observable<Information> {
+        if let cached = self.cachedInformation[parameters] {
+            return Observable.just(cached)
+        }
+
         let lecturesObservable = Lecture.get(network: self.network, year: parameters.year, major: parameters.major, group: parameters.group)
             .map(Lecture.groupByDay)
 

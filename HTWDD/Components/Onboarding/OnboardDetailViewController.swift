@@ -189,11 +189,8 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard textField === self.config?.textFields.last else {
-            return false
-        }
-        self.continueBoarding()
-        return true
+        textField.resignFirstResponder()
+        return false
     }
 
 }

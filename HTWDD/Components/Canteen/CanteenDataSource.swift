@@ -23,7 +23,7 @@ class CanteenDataSource: TableViewDataSource {
     func load() -> Observable<()> {
         // TODO: Use correct date here!
         return self.service
-            .load(parameters: .init(id: .reichenbachstrasse, date: Date().byAdding(days: 1)))
+            .load(parameters: .init(id: .reichenbachstrasse, date: Date()))
             .observeOn(MainScheduler.instance)
             .map { [weak self] response in
                 self?.canteen = response.canteen

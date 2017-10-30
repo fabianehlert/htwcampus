@@ -40,7 +40,7 @@ class AppCoordinator: Coordinator {
 
 		self.window.rootViewController = self.rootViewController
 		self.window.tintColor = UIColor.htw.blue
-		self.window.makeKeyAndVisible()
+        self.window.makeKeyAndVisible()
 
 //        self.showOnboarding(animated: false)
 	}
@@ -48,9 +48,6 @@ class AppCoordinator: Coordinator {
 	private func showOnboarding(animated: Bool) {
 		let onboarding = OnboardingCoordinator()
 		onboarding.onFinish = { [weak self, weak onboarding] schedule, grade in
-
-            print("Schedule 🔑 --> \(String(describing: schedule))")
-            print("Grade    🔑 --> \(String(describing: grade))")
             self?.schedule.auth = schedule
             self?.grades.auth = grade
 

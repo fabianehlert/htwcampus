@@ -10,8 +10,8 @@ import RxSwift
 
 /// A Service is a type that can load a result for a given authentication
 protocol Service {
-    associatedtype Authentication
+    associatedtype Parameter
     associatedtype Result
 
-    func load(parameters: Authentication) -> Observable<Result>
+    func load(parameters: Parameter) -> Observable<Result>
 }
