@@ -115,7 +115,10 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         self.continueButton.backgroundColor = UIColor.htw.blue
         self.continueButton.layer.cornerRadius = 12
         self.continueButton.translatesAutoresizingMaskIntoConstraints = false
-        self.continueButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
+        self.continueButton.rx
+            .controlEvent(.touchUpInside)
+            .subscribe({ [weak self] _ in self?.continueBoarding() })
+            .disposed(by: self.rx_disposeBag)
         self.view.addSubview(self.continueButton)
 
         // --- Skip Button ---
@@ -125,7 +128,10 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         skip.setTitleColor(UIColor.htw.blue, for: .normal)
         skip.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         skip.translatesAutoresizingMaskIntoConstraints = false
-        skip.addTarget(self, action: #selector(skipBoarding), for: .touchUpInside)
+        skip.rx
+            .controlEvent(.touchUpInside)
+            .subscribe({ [weak self] _ in self?.skipBoarding() })
+            .disposed(by: self.rx_disposeBag)
         titleContainer.addSubview(skip)
 
         // --- Constraints ---
@@ -157,7 +163,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
             self.continueButton.heightAnchor.constraint(equalToConstant: 55),
             self.continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.continueButton.widthAnchor.constraint(equalTo: centerStackView.widthAnchor)
-            ])
+        ])
 
         var top = NSLayoutConstraint()
         var bottom = NSLayoutConstraint()
