@@ -9,46 +9,87 @@
 import UIKit
 
 class OnboardingCoordinator: Coordinator {
-	var childCoordinators: [Coordinator] = []
+    enum Onboarding: Int {
+        case welcome = 0
+        case studygroup = 1
+        case unixlogin = 2
 
-	private lazy var navigationController: NavigationController = {
-		let navigationController = NavigationController()
-		navigationController.navigationBar.isHidden = true
-		return navigationController
-	}()
+        static let all: [Onboarding] = [.welcome, .studygroup, .unixlogin]
+    }
 
-	var rootViewController: UIViewController {
-		return self.navigationController
-	}
+    var childCoordinators: [Coordinator] = []
 
-	var onFinish: ((ScheduleService.Auth?, GradeService.Auth?) -> Void)?
+    private lazy var navigationController: NavigationController = {
+        let navigationController = NavigationController()
+        navigationController.navigationBar.isHidden = true
+        return navigationController
+    }()
 
-	// MARK: - Init
+    var rootViewController: UIViewController {
+        return self.navigationController
+    }
 
-	init() {
-		self.showWelcomeOnboarding()
-	}
+    class Response {
+        var schedule: ScheduleService.Auth?
+        var grade: GradeService.Auth?
+    }
 
-	private func showWelcomeOnboarding() {
-		let welcome = OnboardWelcomeViewController()
-		welcome.onContinue = { [weak self] vc in
-			self?.showStudyGroupOnboarding()
-		}
-		self.navigationController.viewControllers = [welcome]
-	}
+    var onFinish: ((Response) -> Void)?
 
-	private func showStudyGroupOnboarding() {
-		let studyGroupVC = OnboardStudygroupViewController()
-        studyGroupVC.onFinish = { [weak self] auth in
-            self?.showUnixLoginOnboarding(schedule: auth)
+    // MARK: - Init
+
+    private let onboardings: [Onboarding]
+    init(onboardings: [Onboarding] = Onboarding.all) {
+        self.onboardings = onboardings
+        self.startFlow()
+    }
+
+    private func startFlow() {
+        let functions = self.onboardings.flatMap { self.onboardingFunctions[$0] }
+        let response = Response()
+        self.callFunctions(response: response, functions: functions) { [weak self] in
+            self?.onFinish?(response)
         }
-		self.navigationController.pushViewController(studyGroupVC, animated: true)
-	}
+    }
 
-    private func showUnixLoginOnboarding(schedule: ScheduleService.Auth?) {
+    private func callFunctions(response: Response, functions: [OnboardingFunction], completion: @escaping () -> Void) {
+        guard let first = functions.first else {
+            return completion()
+        }
+        first(response) { [weak self] in
+            self?.callFunctions(response: response, functions: Array(functions.dropFirst()), completion: completion)
+        }
+    }
+
+    typealias OnboardingFunction = (Response, @escaping () -> Void) -> Void
+    lazy var onboardingFunctions: [Onboarding: OnboardingFunction] = [
+        .welcome: self.showWelcomeOnboarding,
+        .studygroup: self.showStudyGroupOnboarding,
+        .unixlogin: self.showUnixLoginOnboarding
+    ]
+
+    private func showWelcomeOnboarding(response: Response, next: @escaping () -> Void) {
+        let welcome = OnboardWelcomeViewController()
+        welcome.onContinue = { vc in
+            next()
+        }
+        self.navigationController.viewControllers = [welcome]
+    }
+
+    private func showStudyGroupOnboarding(response: Response, next: @escaping () -> Void) {
+        let studyGroupVC = OnboardStudygroupViewController()
+        studyGroupVC.onFinish = { auth in
+            response.schedule = auth
+            next()
+        }
+        self.navigationController.pushViewController(studyGroupVC, animated: true)
+    }
+
+    private func showUnixLoginOnboarding(response: Response, next: @escaping () -> Void) {
         let unixLoginVC = OnboardUnixLoginViewController()
-        unixLoginVC.onFinish = { [weak self] auth in
-            self?.onFinish?(schedule, auth)
+        unixLoginVC.onFinish = { auth in
+            response.grade = auth
+            next()
         }
         self.navigationController.pushViewController(unixLoginVC, animated: true)
     }

@@ -65,10 +65,10 @@ class AppCoordinator: Coordinator {
             }
 
             let onboarding = OnboardingCoordinator()
-            onboarding.onFinish = { [weak self, weak onboarding] schedule, grade in
-                self?.injectAuthentication(schedule: schedule, grade: grade)
-                if let grade = grade { self?.persistenceService.save(grade) }
-                if let schedule = schedule { self?.persistenceService.save(schedule) }
+            onboarding.onFinish = { [weak self, weak onboarding] res in
+                self?.injectAuthentication(schedule: res.schedule, grade: res.grade)
+                if let grade = res.grade { self?.persistenceService.save(grade) }
+                if let schedule = res.schedule { self?.persistenceService.save(schedule) }
 
                 guard let coordinator = onboarding else {
                     return
