@@ -1,3 +1,4 @@
 github "ReactiveX/RxSwift" "4.0.0"
 github "kiliankoe/OpenMensaKit" "0.1.0"
+github "kishikawakatsumi/KeychainAccess" "v3.1.0"
 github "utahiosmac/Marshal" "1.2.4"

@@ -11,7 +11,7 @@ import RxSwift
 
 class ScheduleService: Service {
 
-    struct Auth: Hashable {
+    struct Auth: Hashable, Codable {
         let year: String
         let major: String
         let group: String
@@ -44,8 +44,10 @@ class ScheduleService: Service {
 
         let informationObservable = SemesterInformation.get(network: self.network)
 
-        return Observable.combineLatest(lecturesObservable, informationObservable) { l, s in
-            Information(lectures: l, semesters: s)
+        return Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
+            let information = Information(lectures: l, semesters: s)
+            self?.cachedInformation[parameters] = information
+            return information
         }
     }
 

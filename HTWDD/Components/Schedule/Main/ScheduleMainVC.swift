@@ -31,7 +31,7 @@ private enum ScheduleLayoutStyle: Int {
 final class ScheduleMainVC: CollectionViewController {
 
 	// TODO: This should be injected
-    var auth: ScheduleService.Auth? = ScheduleService.Auth(year: "2016", major: "044", group: "71") {
+    var auth: ScheduleService.Auth? {
 		didSet {
 			self.dataSource.auth = self.auth
 			self.dataSource.load()

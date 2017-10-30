@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class AppCoordinator: Coordinator {
 	private var window: UIWindow
@@ -23,10 +24,13 @@ class AppCoordinator: Coordinator {
 	}
 
     let appContext = AppContext()
+    private let persistenceService = PersistenceService()
 
     private lazy var schedule = ScheduleCoordinator(context: self.appContext)
     private lazy var grades = GradeCoordinator(context: self.appContext)
     private lazy var canteen = CanteenCoordinator(context: self.appContext)
+
+    private let disposeBag = DisposeBag()
 
 	// MARK: - Init
 
@@ -42,25 +46,53 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
         self.window.makeKeyAndVisible()
 
-//        self.showOnboarding(animated: false)
+        self.showOnboarding(animated: false)
 	}
 
-	private func showOnboarding(animated: Bool) {
-		let onboarding = OnboardingCoordinator()
-		onboarding.onFinish = { [weak self, weak onboarding] schedule, grade in
-            self?.schedule.auth = schedule
-            self?.grades.auth = grade
+    private func injectAuthentication(schedule: ScheduleService.Auth?, grade: GradeService.Auth?) {
+        self.schedule.auth = schedule
+        self.grades.auth = grade
+    }
 
-            guard let coordinator = onboarding else {
+	private func showOnboarding(animated: Bool) {
+
+        self.loadPersistedAuth { [weak self] schedule, grade in
+
+            // TODO: Maybe we like to inject them seperately
+            if let schedule = schedule, let grade = grade {
+                self?.injectAuthentication(schedule: schedule, grade: grade)
                 return
             }
 
-            coordinator.rootViewController.dismiss(animated: true, completion: { [weak self] in
-                self?.removeChildCoordinator(coordinator)
-            })
-		}
+            let onboarding = OnboardingCoordinator()
+            onboarding.onFinish = { [weak self, weak onboarding] schedule, grade in
+                self?.injectAuthentication(schedule: schedule, grade: grade)
+                if let grade = grade { self?.persistenceService.save(grade) }
+                if let schedule = schedule { self?.persistenceService.save(schedule) }
 
-		self.addChildCoordinator(onboarding)
-		self.rootViewController.present(onboarding.rootViewController, animated: animated, completion: nil)
+                guard let coordinator = onboarding else {
+                    return
+                }
+
+                coordinator.rootViewController.dismiss(animated: true, completion: { [weak self] in
+                    self?.removeChildCoordinator(coordinator)
+                })
+            }
+
+            self?.addChildCoordinator(onboarding)
+            self?.rootViewController.present(onboarding.rootViewController, animated: animated, completion: nil)
+        }
+
 	}
+
+    private func loadPersistedAuth(completion: @escaping (ScheduleService.Auth?, GradeService.Auth?) -> Void) {
+        persistenceService.load()
+            .take(1)
+            .subscribe(onNext: { res in
+                    completion(res.schedule, res.grades)
+            }, onError: { _ in
+                completion(nil, nil)
+            })
+            .disposed(by: self.disposeBag)
+    }
 }
