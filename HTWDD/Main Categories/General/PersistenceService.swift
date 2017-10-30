@@ -26,6 +26,8 @@ class PersistenceService: Service {
 
     private let keychain = Keychain(accessGroup: Const.appGroup)
 
+    // MARK: - Load
+
     func load(parameters: () = ()) -> Observable<Response> {
         let res = Response(schedule: self.load(type: ScheduleService.Auth.self, key: Const.scheduleKey),
                            grades: self.load(type: GradeService.Auth.self, key: Const.gradesKey))
@@ -40,6 +42,21 @@ class PersistenceService: Service {
         }
 
         return try? JSONDecoder().decode(T.self, from: data)
+    }
+
+    // MARK: - Save
+
+    func save(_ schedule: ScheduleService.Auth) {
+        self.save(object: schedule, key: Const.scheduleKey)
+    }
+
+    func save(_ grade: GradeService.Auth) {
+        self.save(object: grade, key: Const.gradesKey)
+    }
+
+    private func save<T: Encodable>(object: T, key: String) {
+        guard let data = try? JSONEncoder().encode(object) else { return }
+        try? self.keychain.set(data, key: key)
     }
 
 }
