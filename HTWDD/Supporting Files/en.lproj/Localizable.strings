@@ -8,11 +8,14 @@
 "Onboarding.Studygroup.notnow"="Not now";
 
 "Onboarding.UnixLogin.title"="Unix-Login";
-"Onboarding.UnixLogin.body"="Damit wir dir deine Noten anzeigen können, musst du bitte deinen Unix-Login eingeben.";
 "Onboarding.UnixLogin.body"="To be able to show you your grades, please enter your unix-login.";
 "Onboarding.UnixLogin.notnow"="Not now";
 
 "Schedule.title"="Schedule";
+"Schedule.Style.week"="Week";
+"Schedule.Style.days"="Days";
+"Schedule.Style.list"="List";
+
 "Canteen.title"="Canteen";
 "Grades.title"="Grades";
 

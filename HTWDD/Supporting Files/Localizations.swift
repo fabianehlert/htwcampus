@@ -110,5 +110,17 @@ public struct Loca {
         /// Base translation: Schedule
         public static var title: String = NSLocalizedString("Schedule.title", comment: "")
 
+        public struct Style {
+
+            /// Base translation: Week
+            public static var week: String = NSLocalizedString("Schedule.Style.week", comment: "")
+
+            /// Base translation: Days
+            public static var days: String = NSLocalizedString("Schedule.Style.days", comment: "")
+
+            /// Base translation: List
+            public static var list: String = NSLocalizedString("Schedule.Style.list", comment: "")
+
+        }
     }
 }
