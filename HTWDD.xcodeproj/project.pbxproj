@@ -77,6 +77,7 @@
 		B5461B661FA63E0C00564D6D /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B651FA63E0C00564D6D /* MealCell.swift */; };
 		B5461B681FA7B4C400564D6D /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B671FA7B4C400564D6D /* PersistenceService.swift */; };
 		B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5461B691FA7B82400564D6D /* KeychainAccess.framework */; };
+		B5461B6D1FA7BBF300564D6D /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */; };
 		B55507101E601AE300C16F5F /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
 		B55507121E601FB400C16F5F /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */; };
@@ -194,6 +195,7 @@
 		B5461B671FA7B4C400564D6D /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		B5461B691FA7B82400564D6D /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		B5461B6B1FA7B88700564D6D /* HTWDD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HTWDD.entitlements; sourceTree = "<group>"; };
+		B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				B52A9B571DDB172300313FC3 /* Settings */,
 				B5EA536F1E7FD24000183E07 /* UI */,
 				B58ECB141F990D5300949F4F /* HTWNamespace.swift */,
+				B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B5D3E8381FA5E6C10055782D /* GradeCoordinator.swift in Sources */,
+				B5461B6D1FA7BBF300564D6D /* GlobalFunctions.swift in Sources */,
 				B5D3E8361FA5E3620055782D /* GradeService.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
