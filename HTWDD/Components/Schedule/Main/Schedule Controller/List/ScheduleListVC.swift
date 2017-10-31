@@ -19,8 +19,8 @@ final class ScheduleListVC: CollectionViewController {
 
 	// MARK: - Init
 
-	init(context: AppContext, auth: ScheduleService.Auth?) {
-		self.dataSource = ScheduleDataSource(context: context, originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+	init(dataSource: ScheduleDataSource) {
+		self.dataSource = dataSource
 		super.init()
 	}
 
@@ -56,6 +56,10 @@ final class ScheduleListVC: CollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.register3DTouch()
+
+		let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
+		doubleTap.numberOfTapsRequired = 2
+		self.collectionView.addGestureRecognizer(doubleTap)
 	}
 
 	// MARK: - Private
@@ -70,12 +74,19 @@ final class ScheduleListVC: CollectionViewController {
 	fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
 		self.navigationController?.pushViewController(controller, animated: animated)
 	}
+
+	@objc
+	private func jumpToToday() {
+		self.dataSource.originDate = Date()
+		let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
+		self.collectionView.setContentOffset(left, animated: true)
+	}
 }
 
 // MARK: - ScheduleListLayoutDataSource
 extension ScheduleListVC: ScheduleListLayoutDataSource {
 	var widthPerDay: CGFloat {
-		let numberOfDays = 7
+		let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 1
 		return self.view.bounds.width / CGFloat(numberOfDays)
 	}
 
@@ -99,6 +110,19 @@ extension ScheduleListVC: ScheduleListLayoutDataSource {
 			return nil
 		}
 		return (item.begin, item.end)
+	}
+}
+
+// MARK: - CollectionViewDelegate
+extension ScheduleListVC {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let item = self.dataSource.lecture(at: indexPath) else {
+			Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
+			return
+		}
+		self.lastSelectedIndexPath = indexPath
+		let detail = ScheduleDetailVC(lecture: item)
+		self.presentDetail(detail, animated: true)
 	}
 }
 

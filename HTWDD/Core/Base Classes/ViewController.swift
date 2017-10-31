@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		self.initialSetup()
+	}
+
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 		self.initialSetup()
@@ -21,7 +26,7 @@ class ViewController: UIViewController {
 	}
 
 	func initialSetup() {
-
+		// Intentionally left empty
 	}
 
     override func viewDidLoad() {

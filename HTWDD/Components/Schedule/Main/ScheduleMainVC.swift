@@ -26,9 +26,17 @@ private enum ScheduleLayoutStyle: Int {
 			return Loca.Schedule.Style.list
 		}
 	}
+
+	static var all: [ScheduleLayoutStyle] {
+		return [.week, .days, .list]
+	}
 }
 
-final class ScheduleMainVC: CollectionViewController {
+final class ScheduleMainVC: ViewController {
+
+	// MARK: - Properties
+
+	static let defaultStartDate = Date()
 
 	// TODO: This should be injected
     var auth: ScheduleService.Auth? {
@@ -38,25 +46,29 @@ final class ScheduleMainVC: CollectionViewController {
 		}
 	}
 
-	static let defaultStartDate = Date()
-
 	private let dataSource: ScheduleDataSource
 
-	fileprivate var lastSelectedIndexPath: IndexPath?
+	private var currentScheduleVC: ViewController?
 
+	// MARK: - UI
+
+	/// Segemented control which lets a user switch between the three different schedule layouts.
 	private lazy var layoutStyleControl: UISegmentedControl = {
-		let control = UISegmentedControl(items: [
-				ScheduleLayoutStyle.week.title,
-				ScheduleLayoutStyle.days.title,
-				ScheduleLayoutStyle.list.title
-			])
+		let control = UISegmentedControl(items: ScheduleLayoutStyle.all.map({ $0.title }))
 		return control
 	}()
+
+	/// View which contains the ScheduleVC for the type selected in the segmented control.
+	private var containerView = View()
 
 	// MARK: - Init
 
     init(context: AppContext) {
-        self.dataSource = ScheduleDataSource(context: context, originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+        self.dataSource = ScheduleDataSource(
+			context: context,
+			originDate: ScheduleMainVC.defaultStartDate,
+			numberOfDays: 150,
+			auth: auth)
 		super.init()
 	}
 
@@ -77,147 +89,83 @@ final class ScheduleMainVC: CollectionViewController {
 			}
 		}.disposed(by: self.rx_disposeBag)
 
+		// Setup `containerView`
+		self.view.addSubview(self.containerView)
+		layoutMatchingEdges(self.containerView, self.view)
+
 		// TODO: Load preferred style from persistence
 		let style = 0
 		self.layoutStyleControl.selectedSegmentIndex = style
 		self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
-
-		// CollectionView layout
-		let layout = TimetableCollectionViewLayout(dataSource: self)
-		self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
-		self.collectionView.isDirectionalLockEnabled = true
-		self.collectionView.setCollectionViewLayout(layout, animated: false)
-
-		// DataSource
-		self.dataSource.collectionView = self.collectionView
-		self.dataSource.register(type: LectureCollectionViewCell.self)
-		self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
-			view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
-		}
-		self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
-			guard let `self` = self else {
-				return
-			}
-			let hour = Int(self.startHour) - 1 + indexPath.row
-			time.timeString = String(hour)
-		}
-		self.dataSource.load()
 	}
 
 	// MARK: - ViewController lifecycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.register3DTouch()
-
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
-        doubleTap.numberOfTapsRequired = 2
-        self.collectionView.addGestureRecognizer(doubleTap)
 	}
 
-	// MARK: - Private
-
-	private func register3DTouch() {
-		guard self.traitCollection.forceTouchCapability == .available else {
-			return
-		}
-		self.registerForPreviewing(with: self, sourceView: self.collectionView)
-	}
-
-	fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
-		self.navigationController?.pushViewController(controller, animated: animated)
-	}
-
-    @objc
-    private func jumpToToday() {
-        self.dataSource.originDate = Date()
-        let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
-        self.collectionView.setContentOffset(left, animated: true)
-    }
+	// MARK: - Layout
 
 	private func switchStyle(to style: ScheduleLayoutStyle?) {
 		guard let style = style else { return }
 
+		if let vc = self.currentScheduleVC {
+			vc.willMove(toParentViewController: nil)
+			vc.view.removeFromSuperview()
+			vc.removeFromParentViewController()
+
+			self.currentScheduleVC = nil
+		}
+
 		switch style {
 		case .week:
-			break
+			self.currentScheduleVC = ScheduleWeekVC(dataSource: self.dataSource)
 		case .days:
-			break
+			self.currentScheduleVC = ScheduleDaysVC(dataSource: self.dataSource)
 		case .list:
-			break
-		}
-	}
-}
-
-// MARK: - CollectionViewDelegate
-extension ScheduleMainVC {
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		guard let item = self.dataSource.lecture(at: indexPath) else {
-			Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
-			return
-		}
-		self.lastSelectedIndexPath = indexPath
-		let detail = ScheduleDetailVC(lecture: item)
-		self.presentDetail(detail, animated: true)
-	}
-}
-
-// MARK: - TimetableCollectionViewLayoutDataSource
-extension ScheduleMainVC: TimetableCollectionViewLayoutDataSource {
-	var widthPerDay: CGFloat {
-		let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 1.5
-		return self.view.bounds.width / CGFloat(numberOfDays)
-	}
-
-	var height: CGFloat {
-		let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
-		let statusBarHeight = UIApplication.shared.statusBarFrame.height
-		let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-		return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
-	}
-
-	var startHour: CGFloat {
-		return 6.5
-	}
-
-	var endHour: CGFloat {
-		return 21
-	}
-
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
-		guard let item = self.dataSource.lecture(at: indexPath) else {
-			return nil
-		}
-		return (item.begin, item.end)
-	}
-}
-
-// MARK: - UIViewControllerPreviewingDelegate
-extension ScheduleMainVC: UIViewControllerPreviewingDelegate {
-	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-		guard
-			let indexPath = self.collectionView.indexPathForItem(at: location),
-			let item = self.dataSource.lecture(at: indexPath)
-			else {
-				return nil
+			self.currentScheduleVC = ScheduleListVC(dataSource: self.dataSource)
 		}
 
-		if let cell = self.collectionView.cellForItem(at: indexPath) {
-			previewingContext.sourceRect = cell.frame
+		self.addChild(self.currentScheduleVC)
+		layoutMatchingEdges(self.currentScheduleVC?.view, self.containerView)
+	}
+
+	private func addChild(_ child: ViewController?) {
+		guard let child = child else { return }
+		self.addChildViewController(child)
+		self.containerView.addSubview(child.view)
+		child.didMove(toParentViewController: self)
+	}
+
+	/**
+		Activates NSLayoutConstraints that keep the first view _filled_ in the second.
+	
+		Common usage
+		```
+		1st view: subView
+		2nd view: main view
+		```
+	*/
+	private let layoutMatchingEdges: (UIView?, UIView) -> Void = {
+		guard let v = $0 else { return }
+		v.translatesAutoresizingMaskIntoConstraints = false
+
+		if #available(iOS 11.0, *) {
+			NSLayoutConstraint.activate([
+				v.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
+				v.topAnchor.constraint(equalTo: $1.safeAreaLayoutGuide.topAnchor),
+				v.trailingAnchor.constraint(equalTo: $1.trailingAnchor),
+				v.bottomAnchor.constraint(equalTo: $1.bottomAnchor)
+			])
+		} else {
+			NSLayoutConstraint.activate([
+				v.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
+				v.topAnchor.constraint(equalTo: $1.topAnchor),
+				v.trailingAnchor.constraint(equalTo: $1.trailingAnchor),
+				v.bottomAnchor.constraint(equalTo: $1.bottomAnchor)
+			])
 		}
-
-		self.lastSelectedIndexPath = indexPath
-		return ScheduleDetailVC(lecture: item)
 	}
 
-	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-		self.presentDetail(viewControllerToCommit, animated: false)
-	}
-}
-
-// MARK: - AnimatedViewControllerTransitionDataSource
-extension ScheduleMainVC: AnimatedViewControllerTransitionDataSource {
-	func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
-		return self.lastSelectedIndexPath.flatMap(self.collectionView.cellForItem(at:))
-	}
 }

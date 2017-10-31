@@ -19,8 +19,8 @@ final class ScheduleWeekVC: CollectionViewController {
 
 	// MARK: - Init
 
-	init(context: AppContext, auth: ScheduleService.Auth?) {
-		self.dataSource = ScheduleDataSource(context: context, originDate: ScheduleMainVC.defaultStartDate, numberOfDays: 20, auth: auth)
+	init(dataSource: ScheduleDataSource) {
+		self.dataSource = dataSource
 		super.init()
 	}
 
@@ -56,6 +56,10 @@ final class ScheduleWeekVC: CollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.register3DTouch()
+
+		let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
+		doubleTap.numberOfTapsRequired = 2
+		self.collectionView.addGestureRecognizer(doubleTap)
 	}
 
 	// MARK: - Private
@@ -69,6 +73,13 @@ final class ScheduleWeekVC: CollectionViewController {
 
 	fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
 		self.navigationController?.pushViewController(controller, animated: animated)
+	}
+
+	@objc
+	private func jumpToToday() {
+		self.dataSource.originDate = Date()
+		let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
+		self.collectionView.setContentOffset(left, animated: true)
 	}
 }
 
@@ -99,6 +110,19 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 			return nil
 		}
 		return (item.begin, item.end)
+	}
+}
+
+// MARK: - CollectionViewDelegate
+extension ScheduleWeekVC {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let item = self.dataSource.lecture(at: indexPath) else {
+			Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
+			return
+		}
+		self.lastSelectedIndexPath = indexPath
+		let detail = ScheduleDetailVC(lecture: item)
+		self.presentDetail(detail, animated: true)
 	}
 }
 
