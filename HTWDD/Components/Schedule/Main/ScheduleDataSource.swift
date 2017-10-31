@@ -54,7 +54,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
 
-    init(context: AppContext, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?) {
+    init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?) {
         self.service = context.scheduleService
         self.originDate = originDate
         self.numberOfDays = numberOfDays

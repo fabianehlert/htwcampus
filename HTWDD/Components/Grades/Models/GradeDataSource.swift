@@ -23,7 +23,7 @@ class GradeDataSource: TableViewDataSource {
     }
     private let service: GradeService
 
-    init(context: AppContext) {
+    init(context: HasGrade) {
         self.service = context.gradeService
     }
 

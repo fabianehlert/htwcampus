@@ -23,8 +23,8 @@ class ScheduleCoordinator: Coordinator {
         }
     }
 
-    let context: AppContext
-    init(context: AppContext) {
+    let context: HasSchedule
+    init(context: HasSchedule) {
         self.context = context
     }
 

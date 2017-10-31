@@ -27,9 +27,7 @@ private enum ScheduleLayoutStyle: Int {
 		}
 	}
 
-	static var all: [ScheduleLayoutStyle] {
-		return [.week, .days, .list]
-	}
+	static let all = [ScheduleLayoutStyle.week, .days, .list]
 }
 
 final class ScheduleMainVC: ViewController {
@@ -38,7 +36,6 @@ final class ScheduleMainVC: ViewController {
 
 	static let defaultStartDate = Date()
 
-	// TODO: This should be injected
     var auth: ScheduleService.Auth? {
 		didSet {
 			self.dataSource.auth = self.auth
@@ -63,7 +60,7 @@ final class ScheduleMainVC: ViewController {
 
 	// MARK: - Init
 
-    init(context: AppContext) {
+    init(context: HasSchedule) {
         self.dataSource = ScheduleDataSource(
 			context: context,
 			originDate: ScheduleMainVC.defaultStartDate,

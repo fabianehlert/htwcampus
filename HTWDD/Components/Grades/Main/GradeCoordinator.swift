@@ -22,8 +22,8 @@ class GradeCoordinator: Coordinator {
         get { return nil }
     }
 
-    let context: AppContext
-    init(context: AppContext) {
+    let context: HasGrade
+    init(context: HasGrade) {
         self.context = context
     }
 

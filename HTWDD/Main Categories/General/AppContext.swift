@@ -12,7 +12,19 @@ class User {
 
 }
 
-class AppContext {
+protocol HasSchedule {
+    var scheduleService: ScheduleService { get }
+}
+
+protocol HasGrade {
+    var gradeService: GradeService { get }
+}
+
+protocol HasCanteen {
+    var canteenService: CanteenService { get }
+}
+
+class AppContext: HasSchedule, HasGrade, HasCanteen {
 
     let scheduleService = ScheduleService()
     let gradeService = GradeService()

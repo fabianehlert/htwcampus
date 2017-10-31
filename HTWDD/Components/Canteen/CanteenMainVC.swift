@@ -15,8 +15,8 @@ class CanteenMainVC: TableViewController {
 
     private lazy var dataSource = CanteenDataSource(context: self.context)
 
-    let context: AppContext
-    init(context: AppContext) {
+    let context: HasCanteen
+    init(context: HasCanteen) {
         self.context = context
         super.init(nibName: nil, bundle: nil)
     }

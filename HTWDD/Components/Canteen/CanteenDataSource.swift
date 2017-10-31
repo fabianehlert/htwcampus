@@ -16,7 +16,7 @@ class CanteenDataSource: TableViewDataSource {
     private let disposeBag = DisposeBag()
 
     let service: CanteenService
-    init(context: AppContext) {
+    init(context: HasCanteen) {
         self.service = context.canteenService
     }
 

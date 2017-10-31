@@ -20,8 +20,8 @@ class GradeMainVC: TableViewController {
 
     private let refreshControl = UIRefreshControl()
 
-    let context: AppContext
-    init(context: AppContext) {
+    let context: HasGrade
+    init(context: HasGrade) {
         self.context = context
         super.init(nibName: nil, bundle: nil)
     }
