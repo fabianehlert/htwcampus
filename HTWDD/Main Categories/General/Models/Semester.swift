@@ -86,13 +86,13 @@ extension Semester: ValueType {
 
         let rawValue = "\(number)"
 
-        guard rawValue.characters.count == 5 else {
-            throw MarshalError.typeMismatch(expected: 5, actual: rawValue.characters.count)
+        guard rawValue.count == 5 else {
+            throw MarshalError.typeMismatch(expected: 5, actual: rawValue.count)
         }
 
         var raw = rawValue
 
-        let rawType = raw.characters.removeLast()
+        let rawType = raw.removeLast()
 
         guard let year = Int(raw) else {
             throw MarshalError.typeMismatch(expected: Int.self, actual: raw)
