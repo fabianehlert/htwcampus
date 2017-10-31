@@ -57,6 +57,7 @@
 		B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E211E71F78700D68155 /* LectureHeaderView.swift */; };
 		B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E231E71F7A200D68155 /* CollectionReusableView.swift */; };
 		B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E271E7206B500D68155 /* LectureTimeView.swift */; };
+		B51DB4911FA918D500B1A811 /* ScheduleBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
@@ -182,6 +183,7 @@
 		B5111E231E71F7A200D68155 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		B5111E261E71FEC100D68155 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E271E7206B500D68155 /* LectureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureTimeView.swift; sourceTree = "<group>"; };
+		B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBaseVC.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				1F7E320C1FA7BB0900CCBDD6 /* Week */,
 				1F7E320D1FA7BB0E00CCBDD6 /* Days */,
 				1F7E320E1FA7BB1200CCBDD6 /* List */,
+				B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */,
 			);
 			path = "Schedule Controller";
 			sourceTree = "<group>";
@@ -978,7 +981,7 @@
 				B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */,
 				B5461B661FA63E0C00564D6D /* MealCell.swift in Sources */,
 				B538EF101E1D62040031077C /* UserDefaults.swift in Sources */,
-				1FBC0E301FA36C3F00B2C0E1 /* Localizations.swift in Sources */,
+				B51DB4911FA918D500B1A811 /* ScheduleBaseVC.swift in Sources */,
 				B5461B681FA7B4C400564D6D /* PersistenceService.swift in Sources */,
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,

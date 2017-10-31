@@ -57,9 +57,9 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		}
 	}
 
-	private(set) weak var dataSource: ScheduleWeekLayoutDataSource?
+	weak var dataSource: ScheduleWeekLayoutDataSource?
 
-	init(dataSource: ScheduleWeekLayoutDataSource) {
+	init(dataSource: ScheduleWeekLayoutDataSource? = nil) {
 		self.dataSource = dataSource
 		super.init()
 		self.register(SeperatorView.self, forDecorationViewOfKind: Const.separation)
