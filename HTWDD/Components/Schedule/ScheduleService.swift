@@ -52,3 +52,9 @@ class ScheduleService: Service {
     }
 
 }
+
+// MARK: - Dependency management
+
+extension ScheduleService: HasSchedule {
+    var scheduleService: ScheduleService { return self }
+}
