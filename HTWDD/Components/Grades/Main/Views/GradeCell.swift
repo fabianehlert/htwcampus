@@ -17,11 +17,11 @@ class GradeCell: TableViewCell {
         static let horizontalMargin: CGFloat = 10
 
         static let collapsedHeight: CGFloat = 60
-        static let expandedHeight: CGFloat = 170
+        static let expandedHeight: CGFloat = 162
 
-        static let markFontSize: CGFloat = 30
-        static let titleFontSize: CGFloat = 20
-        static let detailsFontSize: CGFloat = 18
+        static let markFontSize: CGFloat = 25
+        static let titleFontSize: CGFloat = 18
+        static let detailsFontSize: CGFloat = 16
     }
 
     private lazy var colorView = UIView()
@@ -45,17 +45,17 @@ class GradeCell: TableViewCell {
         self.markView.textColor = UIColor.htw.mediumGrey
         self.markView.font = .systemFont(ofSize: Const.markFontSize, weight: .medium)
 
-        self.titleView.font = .systemFont(ofSize: Const.titleFontSize, weight: .regular)
+        self.titleView.font = .systemFont(ofSize: Const.titleFontSize, weight: .medium)
         self.titleView.textColor = UIColor.htw.darkGrey
-
-        self.formView.font = .systemFont(ofSize: Const.titleFontSize, weight: .regular)
-        self.formView.textColor = UIColor.htw.darkGrey
-        self.formView.textAlignment = .right
 
         self.detailLabels.forEach {
             $0.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
             $0.textColor = UIColor.htw.lightGrey
         }
+
+        self.formView.font = .systemFont(ofSize: Const.titleFontSize, weight: .medium)
+        self.formView.textColor = UIColor.htw.darkGrey
+        self.formView.textAlignment = .right
 
         self.creditsView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
         self.creditsView.textColor = UIColor.htw.lightGrey
