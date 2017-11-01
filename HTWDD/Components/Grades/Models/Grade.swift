@@ -28,6 +28,7 @@ struct Grade: Identifiable {
     let date: Date?
     let mark: Double?
     let note: String?
+    let form: String?
 
     static func get(network: Network, course: Course) -> Observable<[Grade]> {
         let parameters = [
@@ -61,6 +62,7 @@ extension Grade: Unmarshaling {
         self.mark = markRaw.map { $0 / 100 }
 
         self.note = try? object <| "note"
+        self.form = try? object <| "form"
     }
 
 }

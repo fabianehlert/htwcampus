@@ -61,6 +61,7 @@
 		B51DB4911FA918D500B1A811 /* ScheduleBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
+		B524F4061FAA3BFA007DD104 /* GradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
@@ -188,6 +189,7 @@
 		B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBaseVC.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewModel.swift; sourceTree = "<group>"; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
+				B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -866,7 +869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/../scripts/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Supporting Files/en.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Supporting Files/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi";
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/../scripts/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Supporting Files/en.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Supporting Files/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\n#if [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\n#fi";
 		};
 		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -972,6 +975,7 @@
 				B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */,
 				B5D3E8421FA5FD490055782D /* OnboardUnixLoginViewController.swift in Sources */,
 				B50EB4FB1E6ADB340022E40C /* DataSourceProtocols.swift in Sources */,
+				B524F4061FAA3BFA007DD104 /* GradeViewModel.swift in Sources */,
 				B5EA535B1E7FBA3D00183E07 /* Parameter.swift in Sources */,
 				1F7E32101FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift in Sources */,
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
