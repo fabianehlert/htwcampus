@@ -20,6 +20,8 @@ class GradeMainVC: TableViewController {
 
     private let refreshControl = UIRefreshControl()
 
+    private var selectedIndexPath: IndexPath?
+
     let context: HasGrade
     init(context: HasGrade) {
         self.context = context
@@ -75,5 +77,27 @@ class GradeMainVC: TableViewController {
         let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.selectedIndexPath == indexPath {
+            self.selectedIndexPath = nil
+            tableView.reloadRows(at: [indexPath], with: .none)
+            return
+        }
+
+        let currentSelected = self.selectedIndexPath
+        self.selectedIndexPath = indexPath
+        let indexPaths = [indexPath] + (currentSelected.map { [$0] } ?? [])
+        tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.none)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.selectedIndexPath == indexPath {
+            return 120
+        }
+        return 40
     }
 }

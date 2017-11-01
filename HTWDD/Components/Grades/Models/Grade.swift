@@ -12,8 +12,15 @@ import Marshal
 
 struct Grade: Identifiable {
 
+    enum Status: String {
+        case signedUp = "AN"
+        case passed = "BE"
+        case failed = "NB"
+        case ultimatelyFailed = "EN"
+    }
+
     let nr: Int
-    let state: String
+    let state: Status
     let credits: Double
     let text: String
     let semester: Semester

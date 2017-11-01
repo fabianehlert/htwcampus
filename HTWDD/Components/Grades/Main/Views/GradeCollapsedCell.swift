@@ -9,34 +9,63 @@
 import UIKit
 
 class GradeCollapsedCell: TableViewCell {
-    var title: String? {
-        get {
-            return label.text
-        }
-        set {
-            label.text = newValue
-        }
+
+    private enum Const {
+        static let verticalMargin: CGFloat = 8
+        static let horizontalMargin: CGFloat = 8
     }
 
-    private let label = UILabel()
+    private lazy var colorView = UIView()
+    private lazy var titleView = UILabel()
+    private lazy var gradeView = UILabel()
 
     override func initialSetup() {
-        self.label.frame = self.contentView.bounds
-        self.label.textAlignment = .center
-        self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.label.numberOfLines = 0
-        self.label.font = UIFont.systemFont(ofSize: 10)
-        self.contentView.addSubview(self.label)
+        super.initialSetup()
+
+        self.gradeView.textAlignment = .right
+        self.gradeView.textColor = .darkGray
+
+        self.selectionStyle = .none
+
+        [self.colorView, self.titleView, self.gradeView].forEach {
+            self.contentView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        NSLayoutConstraint.activate([
+            // grade view
+            self.gradeView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.horizontalMargin),
+            self.gradeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.verticalMargin),
+            self.gradeView.widthAnchor.constraint(equalToConstant: 60),
+
+            // Color view
+            self.colorView.leadingAnchor.constraint(equalTo: self.gradeView.trailingAnchor, constant: Const.horizontalMargin),
+            self.colorView.topAnchor.constraint(equalTo: self.gradeView.topAnchor),
+            self.colorView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.verticalMargin),
+            self.colorView.widthAnchor.constraint(equalToConstant: 5),
+
+            // titleView
+            self.titleView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
+            self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.horizontalMargin),
+            self.titleView.topAnchor.constraint(equalTo: self.colorView.topAnchor)
+            ])
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.colorView.layer.cornerRadius = 2
     }
 }
 
-extension GradeCell: Cell {
+extension GradeCollapsedCell: Cell {
     func update(viewModel: GradeViewModel) {
-        self.title = viewModel.grade.text + " - \(viewModel.grade.mark ?? 0)"
+        self.colorView.backgroundColor = viewModel.grade.state == .passed ? UIColor.green : .red
+        self.titleView.text = viewModel.grade.text
+        self.gradeView.text = viewModel.grade.mark?.description
     }
 }
 
-struct GradeCollapsedCellModel: ViewModel {
+struct GradeViewModel: ViewModel {
     let grade: Grade
 
     init(model: Grade) {
