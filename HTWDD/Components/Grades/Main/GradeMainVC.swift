@@ -53,8 +53,14 @@ class GradeMainVC: TableViewController {
             self.tableView.addSubview(self.refreshControl)
         }
 
+        self.tableView.separatorStyle = .none
+
         self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: GradeCell.self)
+        self.dataSource.register(type: GradeCell.self) { [weak self] cell, _, indexPath in
+            if self?.selectedIndexPath == indexPath {
+                cell.updatedExpanded(true)
+            }
+        }
         self.reload()
     }
 
@@ -92,6 +98,12 @@ class GradeMainVC: TableViewController {
         self.selectedIndexPath = indexPath
         let indexPaths = [indexPath] + (currentSelected.map { [$0] } ?? [])
         tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.none)
+
+        let oldCell = currentSelected.flatMap(tableView.cellForRow) as? GradeCell
+        oldCell?.updatedExpanded(false)
+
+        let newCell = tableView.cellForRow(at: indexPath) as? GradeCell
+        newCell?.updatedExpanded(true)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,4 +112,14 @@ class GradeMainVC: TableViewController {
         }
         return GradeCell.Const.collapsedHeight
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let semester = self.dataSource.semester(for: section)
+        return GradeHeaderView(text: semester.localized)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+
 }

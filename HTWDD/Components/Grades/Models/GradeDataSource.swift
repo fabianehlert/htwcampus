@@ -53,15 +53,13 @@ class GradeDataSource: TableViewDataSource {
 
         return self.service
             .load(parameters: auth)
-            .debug()
             .map { [weak self] semesters in
             self?.semesters = semesters
         }
     }
 
-    override func titleFor(section: Int) -> String? {
-        let semester = self.semesters[section].semester
-        return semester.localized
+    func semester(`for` section: Int) -> Semester {
+        return self.semesters[section].semester
     }
 
 }

@@ -33,3 +33,9 @@
 
 "nextStep"="Continue";
 "letsgo"="Let's go!";
+
+"Grades.detail.mark" = "%.1f";
+"Grades.detail.credits" = "%.0f credits";
+"Grades.detail.tries" = "%d. try";
+"Grades.detail.noDate" = "No date";
+"Grades.detail.noNote" = "No notes";

@@ -12,24 +12,24 @@ import XCTest
 class Grade_Tests: XCTestCase {
 
     func test_equality() {
-        var g1 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
-        var g2 = Grade(nr: 1, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        var g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
+        var g2 = Grade(nr: 1, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
         XCTAssertNotEqual(g1, g2)
 
-        g1 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
-        g2 = Grade(nr: 0, state: "", credits: 2.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
+        g2 = Grade(nr: 0, state: .passed, credits: 2.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
         XCTAssertNotEqual(g1, g2)
 
-        g1 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
-        g2 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 2), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
+        g2 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 2), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
         XCTAssertNotEqual(g1, g2)
 
-        g1 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
-        g2 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 1, note: nil)
+        g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
+        g2 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 1, note: nil, form: "")
         XCTAssertNotEqual(g1, g2)
 
-        g1 = Grade(nr: 0, state: "abc", credits: 1.0, text: "text", semester: Semester.summer(year: 1), numberOfTry: 3, date: Date(timeIntervalSince1970: 0), mark: 0, note: "a note")
-        g2 = Grade(nr: 0, state: "", credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil)
+        g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "text", semester: Semester.summer(year: 1), numberOfTry: 3, date: Date(timeIntervalSince1970: 0), mark: 0, note: "a note", form: "")
+        g2 = Grade(nr: 0, state: .failed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
         XCTAssertEqual(g1, g2)
 
     }
