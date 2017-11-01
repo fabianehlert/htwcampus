@@ -22,7 +22,7 @@ class GradeHeaderView: UITableViewHeaderFooterView {
 
         self.label.font = .systemFont(ofSize: 20, weight: .semibold)
         self.label.textColor = UIColor.htw.mediumGrey
-        self.backgroundColor = .clear
+        self.label.backgroundColor = UIColor.htw.veryLightGrey
     }
 
     required init?(coder aDecoder: NSCoder) {

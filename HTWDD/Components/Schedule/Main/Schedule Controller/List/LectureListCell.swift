@@ -50,7 +50,7 @@ class LectureListCell: CollectionViewCell, Cell {
 
 	let titleLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 20, weight: .medium)
+		label.font = .systemFont(ofSize: 18, weight: .medium)
 		label.textColor = UIColor.htw.textHeadline
 		label.textAlignment = .left
 		label.numberOfLines = 2
@@ -61,7 +61,7 @@ class LectureListCell: CollectionViewCell, Cell {
 
 	let roomLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 16, weight: .medium)
+		label.font = .systemFont(ofSize: 14, weight: .medium)
 		label.textColor = UIColor.htw.textBody
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class LectureListCell: CollectionViewCell, Cell {
 
 	let timeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 16, weight: .medium)
+		label.font = .systemFont(ofSize: 14, weight: .medium)
 		label.textColor = UIColor.htw.blue
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false

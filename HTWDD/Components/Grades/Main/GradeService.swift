@@ -77,13 +77,7 @@ class GradeService: Service {
 
         for (semester, grades) in semesterHash {
             semesterHash[semester] = grades.sorted(by: { g1, g2 in
-                guard let date1 = g1.date else {
-                    return false
-                }
-                guard let date2 = g2.date else {
-                    return true
-                }
-                return date1 > date2
+                return g1.text < g2.text
             })
         }
 
