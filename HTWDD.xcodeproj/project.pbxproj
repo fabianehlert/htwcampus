@@ -27,9 +27,7 @@
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
 		1F7E32091FA7B84000CCBDD6 /* ScheduleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */; };
-		1F7E320B1FA7B87900CCBDD6 /* ScheduleDaysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E320A1FA7B87900CCBDD6 /* ScheduleDaysVC.swift */; };
 		1F7E32101FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */; };
-		1F7E32121FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32111FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift */; };
 		1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* ReactiveButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
@@ -155,9 +153,7 @@
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
 		1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVC.swift; sourceTree = "<group>"; };
-		1F7E320A1FA7B87900CCBDD6 /* ScheduleDaysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysVC.swift; sourceTree = "<group>"; };
 		1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekLayout.swift; sourceTree = "<group>"; };
-		1F7E32111FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysLayout.swift; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -317,15 +313,6 @@
 			path = Week;
 			sourceTree = "<group>";
 		};
-		1F7E320D1FA7BB0E00CCBDD6 /* Days */ = {
-			isa = PBXGroup;
-			children = (
-				1F7E320A1FA7B87900CCBDD6 /* ScheduleDaysVC.swift */,
-				1F7E32111FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift */,
-			);
-			path = Days;
-			sourceTree = "<group>";
-		};
 		1F7E320E1FA7BB1200CCBDD6 /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +327,6 @@
 			children = (
 				B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */,
 				1F7E320C1FA7BB0900CCBDD6 /* Week */,
-				1F7E320D1FA7BB0E00CCBDD6 /* Days */,
 				1F7E320E1FA7BB1200CCBDD6 /* List */,
 			);
 			path = "Schedule Controller";
@@ -987,7 +973,6 @@
 				B5461B681FA7B4C400564D6D /* PersistenceService.swift in Sources */,
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
-				1F7E32121FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
 				B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,
@@ -1010,7 +995,6 @@
 				B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */,
 				B516D8221FA9A47000551556 /* UIView.swift in Sources */,
 				B56957881FAA3F7F00CE2318 /* GradeHeaderView.swift in Sources */,
-				1F7E320B1FA7B87900CCBDD6 /* ScheduleDaysVC.swift in Sources */,
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,

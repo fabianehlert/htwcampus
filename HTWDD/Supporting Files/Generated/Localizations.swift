@@ -146,9 +146,6 @@ public struct Loca {
 
         public struct Style {
 
-            /// Base translation: Days
-            public static var days : String = NSLocalizedString("Schedule.Style.days", comment: "")
-
             /// Base translation: Week
             public static var week : String = NSLocalizedString("Schedule.Style.week", comment: "")
 
