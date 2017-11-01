@@ -59,6 +59,47 @@ class ScheduleDetailVC: ViewController {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
+	
+	private lazy var beginLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 18, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
+		label.numberOfLines = 1
+		label.textAlignment = .left
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
+	private lazy var endLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 18, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
+		label.numberOfLines = 1
+		label.textAlignment = .left
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
+	private lazy var weekLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 18, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
+		label.numberOfLines = 1
+		label.textAlignment = .left
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
+	private lazy var dayLabel: UILabel = {
+		let label = UILabel()
+		label.font = .systemFont(ofSize: 18, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
+		label.numberOfLines = 1
+		label.textAlignment = .left
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+
 
 	// MARK: - Init
 
@@ -203,6 +244,19 @@ class ScheduleDetailVC: ViewController {
 					equalToConstant: 2)
 			])
 		}
+		
+		self.beginLabel.text = self.viewModel.begin
+		self.endLabel.text = self.viewModel.end
+		
+		self.view.addSubview(self.beginLabel)
+		self.view.addSubview(self.endLabel)
+		
+		NSLayoutConstraint.activate([
+			self.beginLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
+			self.beginLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 40),
+			self.endLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
+			self.endLabel.topAnchor.constraint(equalTo: self.beginLabel.bottomAnchor, constant: 4)
+		])
 	}
 	
 	// MARK: - Actions
