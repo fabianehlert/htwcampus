@@ -96,3 +96,11 @@ extension ScheduleListVC: ScheduleDataSourceDelegate {
     }
 
 }
+
+extension ScheduleListVC: TabbarChildViewController {
+
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.scrollToToday(animated: true)
+    }
+
+}

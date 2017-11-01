@@ -177,3 +177,13 @@ final class ScheduleMainVC: ViewController {
 	}
 
 }
+
+extension ScheduleMainVC: TabbarChildViewController {
+
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        if let child = self.currentScheduleVC as? TabbarChildViewController {
+            child.tabbarControllerDidSelectAlreadyActiveChild()
+        }
+    }
+
+}
