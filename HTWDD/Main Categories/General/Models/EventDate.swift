@@ -68,12 +68,12 @@ extension EventDate: ValueType {
 
         let newDate = EventDate(day: parts[2], month: parts[1], year: parts[0])
 
-        guard (1...12).contains(newDate.month) else {
+        guard Set(1...12).contains(newDate.month) else {
             throw MarshalError.typeMismatch(expected: (1...12), actual: newDate.month)
         }
 
         // it would maybe make sense to check this dependend on the month
-        guard (1...31).contains(newDate.day) else {
+        guard Set(1...31).contains(newDate.day) else {
             throw MarshalError.typeMismatch(expected: (1...31), actual: newDate.day)
         }
         return newDate

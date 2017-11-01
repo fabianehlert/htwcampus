@@ -24,7 +24,7 @@ class SettingsManager_Tests: XCTestCase {
     func test_save_empty() {
         let s = SettingsManager()
         XCTAssertNil(UserDefaults.standard.object(forKey: "HTW_Settings_Key"))
-        try! s.save()
+        s.save()
         let saved = UserDefaults.standard.object(forKey: "HTW_Settings_Key")
         XCTAssertNotNil(UserDefaults.standard.object(forKey: "HTW_Settings_Key"))
 
@@ -48,7 +48,7 @@ class SettingsManager_Tests: XCTestCase {
         s.sNumber.value = testNumber
         XCTAssertNotNil(s.sNumber.value, "value should be saved")
 
-        try! s.save()
+        s.save()
         XCTAssertNotNil(s.sNumber.value, "value should not be changed")
         XCTAssertEqual(s.sNumber.value, testNumber)
 

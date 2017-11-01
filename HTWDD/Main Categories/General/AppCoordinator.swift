@@ -36,7 +36,7 @@ class AppCoordinator: Coordinator {
 
 	init(window: UIWindow) {
 		self.window = window
-
+        
         let viewControllers = self.childCoordinators.map { c in
             c.rootViewController
         }
