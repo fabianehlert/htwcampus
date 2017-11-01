@@ -50,16 +50,6 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
     }
 
-    private let days = [
-		Loca.monday,
-		Loca.tuesday,
-		Loca.wednesday,
-		Loca.thursday,
-		Loca.friday,
-		Loca.saturday,
-		Loca.sunday
-	]
-
     private(set) var lectures = [Day: [Lecture]]()
     private var semesterInformations = [SemesterInformation]() {
         didSet {
@@ -117,11 +107,9 @@ class ScheduleDataSource: CollectionViewDataSource {
         return self.data[indexPath.section].lectures[indexPath.row]
     }
 
-    func dayInformation(indexPath: IndexPath) -> (day: Day, date: Date, loca: String) {
+    func dayInformation(indexPath: IndexPath) -> (day: Day, date: Date) {
         let dataPart = self.data[indexPath.section]
-        let index = dataPart.day.rawValue
-        let loca = self.days[index]
-        return (dataPart.day, dataPart.date, loca)
+        return (dataPart.day, dataPart.date)
     }
 
     private func calculate() -> [Data] {

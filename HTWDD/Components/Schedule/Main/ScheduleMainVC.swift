@@ -13,21 +13,18 @@ import RxCocoa
 private enum ScheduleLayoutStyle: Int {
 	case
     list = 0,
-    days = 1,
-	week = 2
+	week = 1
 
 	var title: String {
 		switch self {
 		case .week:
 			return Loca.Schedule.Style.week
-		case .days:
-			return Loca.Schedule.Style.days
 		case .list:
 			return Loca.Schedule.Style.list
 		}
 	}
 
-	static let all = [ScheduleLayoutStyle.list, .days, .week]
+	static let all = [ScheduleLayoutStyle.list, .week]
 }
 
 final class ScheduleMainVC: ViewController {
@@ -120,8 +117,6 @@ final class ScheduleMainVC: ViewController {
             switch style {
             case .week:
                 newController = ScheduleWeekVC(configuration: self.dataSourceConfiguration)
-            case .days:
-                newController = ScheduleDaysVC(configuration: self.dataSourceConfiguration)
             case .list:
                 newController = ScheduleListVC(configuration: self.dataSourceConfiguration)
             }

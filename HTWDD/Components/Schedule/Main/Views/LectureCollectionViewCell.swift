@@ -31,27 +31,18 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
-		label.textAlignment = .left
-		label.numberOfLines = 2
-		label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .medium)
-		label.textColor = UIColor.htw.textBody
-		label.textAlignment = .left
+		label.textAlignment = .center
+		label.numberOfLines = 1
+		label.lineBreakMode = .byCharWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
 	let roomLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 15, weight: .medium)
+		label.font = .systemFont(ofSize: 12, weight: .medium)
 		label.textColor = UIColor.htw.textBody
-		label.textAlignment = .left
+		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -69,28 +60,23 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         self.layer.shadowOpacity = Const.shadowOpacity
 
 		self.contentView.addSubview(self.titleLabel)
-		self.contentView.addSubview(self.subtitleLabel)
+		self.contentView.addSubview(self.roomLabel)
 
-		let margin: CGFloat = 8
+		let margin: CGFloat = 4
 		NSLayoutConstraint.activate([
 			self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: margin),
 			self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: margin),
 			self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin),
 
-			self.subtitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: margin),
-			self.subtitleLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 2),
-			self.subtitleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin)
+			self.roomLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: margin),
+			self.roomLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 2),
+			self.roomLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin)
 		])
     }
 
     func update(viewModel: LectureViewModel) {
         self.titleLabel.text = viewModel.title
-
-		if let room = viewModel.room {
-			self.subtitleLabel.text = "\(viewModel.subtitle) • \(room)"
-		} else {
-			self.subtitleLabel.text = viewModel.subtitle
-		}
+        self.roomLabel.text = viewModel.room
     }
 
     override func layoutSubviews() {

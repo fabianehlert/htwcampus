@@ -31,13 +31,13 @@ extension ScheduleWeekLayoutDataSource {
 		return 100
 	}
 	var startHour: CGFloat {
-		return 0
+		return 6
 	}
 	var endHour: CGFloat {
-		return 24
+		return 20
 	}
 	var itemMargin: CGFloat {
-		return 8
+		return 1
 	}
 }
 
