@@ -1,5 +1,5 @@
 //
-//  GradeCollapsedCell.swift
+//  GradeCell.swift
 //  HTWDD
 //
 //  Created by Kilian Költzsch on 12.04.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeCollapsedCell: TableViewCell {
+class GradeCell: TableViewCell {
 
     enum Const {
         static let verticalMargin: CGFloat = 15
@@ -65,7 +65,7 @@ class GradeCollapsedCell: TableViewCell {
     }
 }
 
-extension GradeCollapsedCell: Cell {
+extension GradeCell: Cell {
     func update(viewModel: GradeViewModel) {
         self.colorView.backgroundColor = viewModel.grade.state == .passed ? UIColor.green : .red
         self.titleView.text = viewModel.grade.text

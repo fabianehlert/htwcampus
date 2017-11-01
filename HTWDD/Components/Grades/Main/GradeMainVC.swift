@@ -54,7 +54,7 @@ class GradeMainVC: TableViewController {
         }
 
         self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: GradeCollapsedCell.self)
+        self.dataSource.register(type: GradeCell.self)
         self.reload()
     }
 
@@ -96,8 +96,8 @@ class GradeMainVC: TableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.selectedIndexPath == indexPath {
-            return GradeCollapsedCell.Const.expandedHeight
+            return GradeCell.Const.expandedHeight
         }
-        return GradeCollapsedCell.Const.collapsedHeight
+        return GradeCell.Const.collapsedHeight
     }
 }
