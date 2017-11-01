@@ -157,7 +157,7 @@ open class CommandLine {
      */
     open var maxFlagDescriptionWidth: Int {
         if _maxFlagDescriptionWidth == 0 {
-            _maxFlagDescriptionWidth = _options.map { $0.flagDescription.characters.count }.sorted().first ?? 0
+            _maxFlagDescriptionWidth = _options.map { $0.flagDescription.count }.sorted().first ?? 0
         }
 
         return _maxFlagDescriptionWidth
@@ -335,7 +335,7 @@ open class CommandLine {
             }
 
             let skipChars = arg.hasPrefix(LongOptionPrefix) ?
-                LongOptionPrefix.characters.count : ShortOptionPrefix.characters.count
+                LongOptionPrefix.count : ShortOptionPrefix.count
 
             let flagWithArg = arg[arg.index(arg.startIndex, offsetBy: skipChars)..<arg.endIndex]
 
@@ -367,10 +367,10 @@ open class CommandLine {
             }
 
             /* Flags that do not take any arguments can be concatenated */
-            let flagLength = flag.characters.count
+            let flagLength = flag.count
             if !flagMatched && !arg.hasPrefix(LongOptionPrefix) {
 
-                let flagCharactersEnumerator = flag.characters.enumerated()
+                let flagCharactersEnumerator = flag.enumerated()
                 for (i, c) in flagCharactersEnumerator {
                     for option in _options where option.flagMatch(String(c)) {
                         /* Values are allowed at the end of the concatenated flags, e.g.
@@ -533,7 +533,7 @@ open class Option {
 
     internal init(_ shortFlag: String?, _ longFlag: String?, _ required: Bool, _ helpMessage: String) {
         if let sf = shortFlag {
-            assert(sf.characters.count == 1, "Short flag must be a single character")
+            assert(sf.count == 1, "Short flag must be a single character")
             assert(Int(sf) == nil && Double(sf) == nil, "Short flag cannot be a numeric value")
         }
 
@@ -835,9 +835,9 @@ internal extension String {
         let decimalPoint = self._localDecimalPoint()
 
         #if swift(>=3.0)
-            let charactersEnumerator = self.characters.enumerated()
+            let charactersEnumerator = self.enumerated()
         #else
-            let charactersEnumerator = self.characters.enumerated()
+            let charactersEnumerator = self.enumerated()
         #endif
         for (i, c) in charactersEnumerator {
             if i == 0 && c == "-" {
@@ -864,7 +864,7 @@ internal extension String {
 
         let doubleCharacteristic = Double(Int(characteristic)!)
         return (doubleCharacteristic +
-            Double(Int(mantissa)!) / pow(Double(10), Double(mantissa.characters.count - 1))) *
+            Double(Int(mantissa)!) / pow(Double(10), Double(mantissa.count - 1))) *
             (isNegative ? -1 : 1)
     }
 
@@ -881,7 +881,7 @@ internal extension String {
         var numSplits = 0
 
         var curIdx = self.startIndex
-        for i in self.characters.indices {
+        for i in self.indices {
             let c = self[i]
             if c == by && (maxSplits == 0 || numSplits < maxSplits) {
                 let str = String(self[curIdx..<i])
@@ -909,7 +909,7 @@ internal extension String {
      */
     func padded(toWidth width: Int, with padChar: Character = " ") -> String {
         var s = self
-        var currentLength = self.characters.count
+        var currentLength = self.count
 
         while currentLength < width {
             s.append(padChar)
@@ -937,7 +937,7 @@ internal extension String {
         var currentLineWidth = 0
 
         for word in self.split(by: splitBy) {
-            let wordLength = word.characters.count
+            let wordLength = word.count
 
             if currentLineWidth + wordLength + 1 > width {
                 /* Word length is greater than line length, can't wrap */
@@ -1025,7 +1025,7 @@ private extension NSMutableDictionary {
 
         // Create path components separated by delimiter (. by default) and get key for root object
 		// filter empty path components, these can be caused by delimiter at beginning/end, or multiple consecutive delimiters in the middle
-        let pathComponents: Array<String> = primaryKeypath.components(separatedBy: baseDelimiter).filter({ $0.characters.count > 0 })
+        let pathComponents: Array<String> = primaryKeypath.components(separatedBy: baseDelimiter).filter({ $0.count > 0 })
         primaryKeypath = pathComponents.joined(separator: baseDelimiter)
         let rootKey: String = pathComponents[0]
 
@@ -1122,7 +1122,7 @@ private extension String {
 
     func isFirstLetterDigit() -> Bool {
 
-        guard let c: Character = self.characters.first else {
+        guard let c: Character = self.first else {
             return false
         }
 
