@@ -23,6 +23,11 @@ class GradeCell: TableViewCell {
     private lazy var titleView = UILabel()
     private lazy var gradeView = UILabel()
 
+    private lazy var creditsView = UILabel()
+    private lazy var triesView = UILabel()
+    private lazy var dateView = UILabel()
+    private lazy var noteView = UILabel()
+
     override func initialSetup() {
         super.initialSetup()
 
@@ -34,7 +39,7 @@ class GradeCell: TableViewCell {
 
         self.selectionStyle = .none
 
-        [self.colorView, self.titleView, self.gradeView].forEach {
+        [self.colorView, self.titleView, self.gradeView, self.creditsView, self.triesView, self.dateView, self.noteView].forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
