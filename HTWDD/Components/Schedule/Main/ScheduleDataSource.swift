@@ -154,7 +154,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             return Data(day: day, date: date, lectures: l)
         }
         if self.filterEmptySections {
-            all = all.filter { !$0.lectures.isEmpty }
+            all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty }
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })
