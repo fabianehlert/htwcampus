@@ -57,12 +57,15 @@ class ScheduleBaseVC: CollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.register3DTouch()
 
         let todayButton = UIBarButtonItem(title: Loca.Schedule.today, style: .plain, target: self, action: #selector(jumpToToday))
         self.navigationItem.rightBarButtonItem = todayButton
 
         self.dataSource.load()
+
+		DispatchQueue.main.async {
+			self.register3DTouch()
+		}
     }
 
     // MARK: - Private
