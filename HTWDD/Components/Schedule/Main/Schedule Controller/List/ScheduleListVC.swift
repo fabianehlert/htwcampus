@@ -12,7 +12,7 @@ import RxSwift
 final class ScheduleListVC: ScheduleBaseVC {
 
     enum Const {
-        static let horizontalMargin: CGFloat = 8
+        static let horizontalMargin: CGFloat = 12
     }
 
 	// MARK: - Init
@@ -35,8 +35,15 @@ final class ScheduleListVC: ScheduleBaseVC {
         super.initialSetup()
 
 		self.collectionView.isDirectionalLockEnabled = true
-        self.dataSource.delegate = self
+
+		self.dataSource.register(type: LectureListCell.self)
+		self.dataSource.delegate = self
     }
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.horizontalMargin), height: 100)
+	}
 
     override func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
         let dateString = date.string(format: "dd.MM")
@@ -67,12 +74,14 @@ final class ScheduleListVC: ScheduleBaseVC {
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 30)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
     }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//		let w = self.view.width - Const.horizontalMargin*2
+//        return CGSize(width: w, height: w/2)
+//    }
 
 }
 

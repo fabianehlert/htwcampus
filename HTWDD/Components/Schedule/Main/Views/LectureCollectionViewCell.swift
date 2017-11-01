@@ -100,6 +100,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 
 }
 
+// MARK: - Highlightable
 extension LectureCollectionViewCell: Highlightable {
 
     func highlight(animated: Bool) {
