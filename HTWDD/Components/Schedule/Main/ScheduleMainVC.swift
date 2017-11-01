@@ -88,17 +88,17 @@ final class ScheduleMainVC: ViewController {
 		// Setup `containerView`
 		self.view.addSubview(self.containerView)
 		layoutMatchingEdges(self.containerView, self.view)
-
-		// TODO: Load preferred style from persistence
-		let style = 0
-		self.layoutStyleControl.selectedSegmentIndex = style
-		self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
 	}
 
 	// MARK: - ViewController lifecycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+        // TODO: Load preferred style from persistence
+        let style = 0
+        self.layoutStyleControl.selectedSegmentIndex = style
+        self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
 	}
 
 	// MARK: - Layout

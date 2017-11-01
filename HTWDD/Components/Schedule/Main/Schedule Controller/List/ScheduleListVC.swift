@@ -11,6 +11,10 @@ import RxSwift
 
 final class ScheduleListVC: ScheduleBaseVC {
 
+    enum Const {
+        static let horizontalMargin: CGFloat = 8
+    }
+
 	// MARK: - Init
 
     private let collectionViewLayout = UICollectionViewFlowLayout()
@@ -35,11 +39,11 @@ final class ScheduleListVC: ScheduleBaseVC {
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.width, height: 30)
+        return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 30)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.width - 8*2, height: 60)
+        return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
     }
 
 }

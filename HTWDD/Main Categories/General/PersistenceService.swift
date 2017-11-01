@@ -59,4 +59,23 @@ class PersistenceService: Service {
         try? self.keychain.set(data, key: key)
     }
 
+    // MARK: - Remove
+
+    func clear() {
+        self.removeGrade()
+        self.removeSchedule()
+    }
+
+    func removeSchedule() {
+        self.remove(key: Const.scheduleKey)
+    }
+
+    func removeGrade() {
+        self.remove(key: Const.gradesKey)
+    }
+
+    private func remove(key: String) {
+        try? self.keychain.remove(key)
+    }
+
 }
