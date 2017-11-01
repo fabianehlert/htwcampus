@@ -24,7 +24,7 @@ class LectureHeaderView: CollectionReusableView, Identifiable {
 	// MARK: - Init
 
     override func initialSetup() {
-        self.backgroundColor = UIColor.htw.veryLightGrey
+        self.backgroundColor = .clear
 
 		self.label.frame = self.bounds
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
