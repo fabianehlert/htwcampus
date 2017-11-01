@@ -17,7 +17,18 @@ class ScheduleDetailContentViewModel {
 	}
 	
 	var type: String {
-		return self.lecture.type
+		let t = self.lecture.type
+		
+		// TODO: Localise. And it's also kinda hacky.
+		if t.hasPrefix("V") {
+			return "Vorlesung"
+		} else if t.hasPrefix("P") {
+			return "Praktikum"
+		} else if t.hasPrefix("Ü") {
+			return "Übung"
+		}
+		
+		return t
 	}
 	
 	var tag: String {
