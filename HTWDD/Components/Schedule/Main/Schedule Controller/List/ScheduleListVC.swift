@@ -38,6 +38,11 @@ final class ScheduleListVC: ScheduleBaseVC {
         self.dataSource.delegate = self
     }
 
+    override func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
+        let dateString = date.string(format: "dd.MM")
+        return "\(weekdayLoca) - \(dateString)"
+    }
+
     override func jumpToToday() {
         self.scrollToToday(animated: true)
     }
@@ -56,7 +61,6 @@ final class ScheduleListVC: ScheduleBaseVC {
         let contentInsetY = self.collectionView.contentInset.top
         let sectionInsetY = self.collectionViewLayout.sectionInset.top
         self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY - contentInsetY - sectionInsetY), animated: animated)
-
     }
 }
 

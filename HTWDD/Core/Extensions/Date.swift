@@ -36,6 +36,10 @@ extension Date {
         return Calendar.current.date(from: c)
     }
 
+    func string(format: String) -> String {
+        return dateFormatter(format: format).string(from: self)
+    }
+
     func byAdding(days n: TimeInterval) -> Date {
         return self.addingTimeInterval(n.days)
     }

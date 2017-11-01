@@ -117,9 +117,11 @@ class ScheduleDataSource: CollectionViewDataSource {
         return self.data[indexPath.section].lectures[indexPath.row]
     }
 
-    func dayName(indexPath: IndexPath) -> String {
-        let index = self.data[indexPath.section].day.rawValue
-        return self.days[index]
+    func dayInformation(indexPath: IndexPath) -> (day: Day, date: Date, loca: String) {
+        let dataPart = self.data[indexPath.section]
+        let index = dataPart.day.rawValue
+        let loca = self.days[index]
+        return (dataPart.day, dataPart.date, loca)
     }
 
     private func calculate() -> [Data] {

@@ -40,7 +40,9 @@ class ScheduleBaseVC: CollectionViewController {
         self.dataSource.collectionView = self.collectionView
         self.dataSource.register(type: LectureCollectionViewCell.self)
         self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            view.title = self?.dataSource.dayName(indexPath: indexPath) ?? ""
+            guard let `self` = self else { return }
+            let info = self.dataSource.dayInformation(indexPath: indexPath)
+            view.title = self.headerText(day: info.day, date: info.date, weekdayLoca: info.loca)
         }
         self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
             guard let `self` = self else {
@@ -80,6 +82,10 @@ class ScheduleBaseVC: CollectionViewController {
     func jumpToToday() {
         let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
         self.collectionView.setContentOffset(left, animated: true)
+    }
+
+    func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
+        return weekdayLoca
     }
 
 }
