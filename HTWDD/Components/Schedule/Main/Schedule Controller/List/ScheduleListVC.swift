@@ -49,7 +49,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 	}
 
     override func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
-        let dateString = date.string(format: "dd.MM")
+        let dateString = date.string(format: "d.MMMM")
         return "\(weekdayLoca) - \(dateString)"
     }
 
