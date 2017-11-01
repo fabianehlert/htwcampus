@@ -25,7 +25,9 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 
 	init(configuration: ScheduleDataSource.Configuration) {
         let layout = ScheduleWeekLayout()
-        super.init(configuration: configuration, layout: layout, startHour: 6.5)
+        var config = configuration
+        config.originDate = Date().beginOfWeek
+        super.init(configuration: config, layout: layout, startHour: 6.5)
         layout.dataSource = self
 	}
 
@@ -57,7 +59,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 // MARK: - ScheduleWeekLayoutDataSource
 extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 	var widthPerDay: CGFloat {
-		let numberOfDays = 7
+		let numberOfDays = 6
 		return self.view.bounds.width / CGFloat(numberOfDays)
 	}
 
@@ -76,4 +78,10 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		}
 		return (item.begin, item.end)
 	}
+}
+
+extension ScheduleWeekVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.jumpToToday()
+    }
 }

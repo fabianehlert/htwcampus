@@ -43,6 +43,10 @@ extension Date {
     func byAdding(days n: TimeInterval) -> Date {
         return self.addingTimeInterval(n.days)
     }
+    
+    var beginOfWeek: Date {
+        return self.byAdding(days: -1 * TimeInterval(self.weekday.rawValue))
+    }
 
     var weekday: Day {
         guard let rawDay = self.components.weekday else {
