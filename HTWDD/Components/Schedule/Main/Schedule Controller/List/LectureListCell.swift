@@ -127,7 +127,7 @@ class LectureListCell: CollectionViewCell, Cell {
 
 	func update(viewModel: LectureViewModel) {
 		self.typeLabel.text = viewModel.subtitle.uppercased()
-		self.titleLabel.text = viewModel.title
+		self.titleLabel.text = viewModel.longTitle
 		self.roomLabel.text = viewModel.room
 		self.timeLabel.text = viewModel.timeString
 	}

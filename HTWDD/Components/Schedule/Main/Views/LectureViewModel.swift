@@ -11,13 +11,15 @@ import Foundation
 extension Lecture: Identifiable {}
 
 struct LectureViewModel: ViewModel {
-    let title: String
+    let shortTitle: String
+    let longTitle: String
     let subtitle: String
 	let room: String?
     let timeString: String
 
     init(model: Lecture) {
-        self.title = model.tag ?? model.name
+        self.shortTitle = model.tag ?? model.name
+        self.longTitle = model.name
         self.subtitle = model.type
         self.room = model.rooms.first
         let begin = Loca.Schedule.Cell.time(model.begin.hour ?? 0, model.begin.minute ?? 0)

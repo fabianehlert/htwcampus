@@ -40,6 +40,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 //			let width = self.view.htw.safeWidth() - 2*Const.horizontalMargin
 //			cell.updateWidth(width)
 		}
+        self.dataSource.register(type: FreeDayListCell.self)
 		self.dataSource.delegate = self
     }
 

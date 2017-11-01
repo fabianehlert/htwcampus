@@ -24,13 +24,15 @@ class ScheduleDataSource: CollectionViewDataSource {
         var numberOfDays: Int?
         var auth: ScheduleService.Auth?
         var shouldFilterEmptySections: Bool
+        var addFreeDays: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool) {
+        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool) {
             self.context = context
             self.originDate = originDate
             self.numberOfDays = numberOfDays
             self.auth = auth
             self.shouldFilterEmptySections = shouldFilterEmptySections
+            self.addFreeDays = addFreeDays
         }
     }
 
@@ -62,6 +64,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         let day: Day
         let date: Date
         let lectures: [Lecture]
+        let freeDays: [Event]
     }
 
     private var data = [Data]() {
@@ -104,7 +107,11 @@ class ScheduleDataSource: CollectionViewDataSource {
 	}
 
 	func lecture(at indexPath: IndexPath) -> Lecture? {
-        return self.data[indexPath.section].lectures[indexPath.row]
+        return self.data[safe: indexPath.section]?.lectures[safe: indexPath.row]
+    }
+    
+    func freeDay(at indexPath: IndexPath) -> Event? {
+        return self.data[safe: indexPath.section]?.freeDays[safe: indexPath.row]
     }
 
     func dayInformation(indexPath: IndexPath) -> (day: Day, date: Date) {
@@ -128,11 +135,11 @@ class ScheduleDataSource: CollectionViewDataSource {
             let day = date.weekday
 
             guard semesterInformation.lecturesContains(date: date) else {
-                return Data(day: day, date: date, lectures: [])
+                return Data(day: day, date: date, lectures: [], freeDays: [])
             }
 
-            guard !semesterInformation.freeDaysContains(date: date) else {
-                return Data(day: day, date: date, lectures: [])
+            if let freeDay = semesterInformation.freeDayContains(date: date) {
+                return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
             }
 
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
@@ -141,10 +148,10 @@ class ScheduleDataSource: CollectionViewDataSource {
                 let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
                 return weekEvenOddValidation && weekOnlyValidation
             }
-            return Data(day: day, date: date, lectures: l)
+            return Data(day: day, date: date, lectures: l, freeDays: [])
         }
         if self.filterEmptySections {
-            all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty }
+            all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })
@@ -155,7 +162,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     // MARK: CollectionViewDataSource methods
 
     override func item(at index: IndexPath) -> Identifiable? {
-        return self.lecture(at: index)
+        return self.lecture(at: index) ?? self.freeDay(at: index)
     }
 
     override func numberOfSections() -> Int {
@@ -163,7 +170,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     override func numberOfItems(in section: Int) -> Int {
-        return self.data[safe: section]?.lectures.count ?? 0
+        return self.data[safe: section].map { max($0.lectures.count, $0.freeDays.count) } ?? 0
     }
 
 }
