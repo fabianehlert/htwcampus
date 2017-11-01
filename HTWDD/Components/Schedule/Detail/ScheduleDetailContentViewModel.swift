@@ -33,11 +33,11 @@ class ScheduleDetailContentViewModel {
 	}
 	
 	var begin: String? {
-		return self.lecture.begin.date?.string(format: "HH:mm")
+		return Loca.Schedule.Cell.time(self.lecture.begin.hour ?? 0, self.lecture.begin.minute ?? 0)
 	}
 	
 	var end: String? {
-		return self.lecture.end.date?.string(format: "HH:mm")
+		return Loca.Schedule.Cell.time(self.lecture.end.hour ?? 0, self.lecture.end.minute ?? 0)
 	}
 	
 	var professor: String? {
