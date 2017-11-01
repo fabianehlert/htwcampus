@@ -138,14 +138,14 @@ class ScheduleDetailVC: ViewController {
 				self.nameLabel.topAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: Const.margin),
 				self.nameLabel.trailingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: Const.margin),
+					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin),
 				
 				self.professorLabel.leadingAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
 				self.professorLabel.topAnchor.constraint(
 					equalTo: self.nameLabel.bottomAnchor),
 				self.professorLabel.trailingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: Const.margin)
+					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin)
 			])
 		} else {
 			
