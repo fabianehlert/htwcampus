@@ -125,8 +125,7 @@ class GradeCell: TableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.detailLabels
-            .forEach { $0.isHidden = true }
+        self.updatedExpanded(false)
     }
 
     func updatedExpanded(_ expanded: Bool) {

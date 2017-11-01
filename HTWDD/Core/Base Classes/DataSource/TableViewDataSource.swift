@@ -35,13 +35,13 @@ class TableViewDataSource: NSObject {
         }
     }
 
-    fileprivate enum Const {
+    private enum Const {
         static let errorIdentifier = "Error"
     }
 
     // item, cell, indexPath
-    fileprivate typealias Configuration = (Any, UITableViewCell, IndexPath) -> Void
-    fileprivate var configurations = [String: Configuration]()
+    private typealias Configuration = (Any, UITableViewCell, IndexPath) -> Void
+    private var configurations = [String: Configuration]()
 
     func register<CellType: UITableViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = { _, _, _ in }) where CellType: Cell {
         assert(self.tableView != nil)
@@ -92,10 +92,6 @@ extension TableViewDataSource: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.errorIdentifier, for: indexPath) as! ErrorTableCell
         cell.error = error
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.titleFor(section: section)
     }
 
 }

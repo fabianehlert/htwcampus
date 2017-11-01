@@ -56,7 +56,11 @@ class GradeMainVC: TableViewController {
         self.tableView.separatorStyle = .none
 
         self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: GradeCell.self)
+        self.dataSource.register(type: GradeCell.self) { [weak self] cell, _, indexPath in
+            if self?.selectedIndexPath == indexPath {
+                cell.updatedExpanded(true)
+            }
+        }
         self.reload()
     }
 
@@ -108,4 +112,14 @@ class GradeMainVC: TableViewController {
         }
         return GradeCell.Const.collapsedHeight
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let semester = self.dataSource.semester(for: section)
+        return GradeHeaderView(text: semester.localized)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+
 }
