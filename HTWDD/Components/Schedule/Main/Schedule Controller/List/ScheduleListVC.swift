@@ -77,12 +77,6 @@ extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//		let w = self.view.width - Const.horizontalMargin*2
-//        return CGSize(width: w, height: w/2)
-//    }
-
 }
 
 extension ScheduleListVC: ScheduleDataSourceDelegate {
