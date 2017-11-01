@@ -75,7 +75,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
     }
 
     func update(viewModel: LectureViewModel) {
-        self.titleLabel.text = viewModel.title
+        self.titleLabel.text = viewModel.shortTitle
         self.roomLabel.text = viewModel.room
     }
 
