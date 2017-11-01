@@ -52,7 +52,7 @@ class GradeMainVC: TableViewController {
         }
 
         self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: GradeCell.self)
+        self.dataSource.register(type: GradeCollapsedCell.self)
         self.reload()
     }
 

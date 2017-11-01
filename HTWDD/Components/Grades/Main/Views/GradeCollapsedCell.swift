@@ -1,5 +1,5 @@
 //
-//  GradeCell.swift
+//  GradeCollapsedCell.swift
 //  HTWDD
 //
 //  Created by Kilian Költzsch on 12.04.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeCell: TableViewCell {
+class GradeCollapsedCell: TableViewCell {
     var title: String? {
         get {
             return label.text
@@ -36,7 +36,7 @@ extension GradeCell: Cell {
     }
 }
 
-struct GradeViewModel: ViewModel {
+struct GradeCollapsedCellModel: ViewModel {
     let grade: Grade
 
     init(model: Grade) {
