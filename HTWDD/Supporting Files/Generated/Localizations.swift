@@ -159,7 +159,7 @@ public struct Loca {
 
         public struct Cell {
 
-            /// Base translation: %.2d:%02d
+            /// Base translation: %02d:%02d
             public static func time(_ value1 : Int, _ value2 : Int) -> String {
                 return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
             }
