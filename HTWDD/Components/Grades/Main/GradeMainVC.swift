@@ -96,8 +96,8 @@ class GradeMainVC: TableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.selectedIndexPath == indexPath {
-            return 120
+            return GradeCollapsedCell.Const.expandedHeight
         }
-        return 40
+        return GradeCollapsedCell.Const.collapsedHeight
     }
 }
