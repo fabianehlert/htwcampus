@@ -27,3 +27,9 @@ class CanteenService: Service {
     }
 
 }
+
+// MARK: - Dependency management
+
+extension CanteenService: HasCanteen {
+    var canteenService: CanteenService { return self }
+}

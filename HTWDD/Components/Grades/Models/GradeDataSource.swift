@@ -51,7 +51,10 @@ class GradeDataSource: TableViewDataSource {
             return Observable.just(())
         }
 
-        return self.service.load(parameters: auth).map { [weak self] semesters in
+        return self.service
+            .load(parameters: auth)
+            .debug()
+            .map { [weak self] semesters in
             self?.semesters = semesters
         }
     }

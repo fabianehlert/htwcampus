@@ -36,7 +36,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 		self.collectionView.isDirectionalLockEnabled = true
 
-		self.dataSource.register(type: LectureListCell.self)
+        self.dataSource.register(type: LectureListCell.self)
 		self.dataSource.delegate = self
     }
 

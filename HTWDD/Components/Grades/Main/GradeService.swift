@@ -82,3 +82,9 @@ class GradeService: Service {
     }
 
 }
+
+// MARK: - Dependency management
+
+extension GradeService: HasGrade {
+    var gradeService: GradeService { return self }
+}
