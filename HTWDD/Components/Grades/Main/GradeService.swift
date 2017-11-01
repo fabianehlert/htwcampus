@@ -75,6 +75,18 @@ class GradeService: Service {
             semesterHash[grade.semester, or: []].append(grade)
         }
 
+        for (semester, grades) in semesterHash {
+            semesterHash[semester] = grades.sorted(by: { g1, g2 in
+                guard let date1 = g1.date else {
+                    return false
+                }
+                guard let date2 = g2.date else {
+                    return true
+                }
+                return date1 > date2
+            })
+        }
+
         // newest first
         return semesterHash.sorted {
             return $0.key > $1.key
