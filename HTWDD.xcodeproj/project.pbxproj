@@ -29,7 +29,6 @@
 		1F7E320B1FA7B87900CCBDD6 /* ScheduleDaysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E320A1FA7B87900CCBDD6 /* ScheduleDaysVC.swift */; };
 		1F7E32101FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */; };
 		1F7E32121FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32111FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift */; };
-		1F7E32141FA7BB4F00CCBDD6 /* ScheduleListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32131FA7BB4F00CCBDD6 /* ScheduleListLayout.swift */; };
 		1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* ReactiveButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
@@ -155,7 +154,6 @@
 		1F7E320A1FA7B87900CCBDD6 /* ScheduleDaysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysVC.swift; sourceTree = "<group>"; };
 		1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekLayout.swift; sourceTree = "<group>"; };
 		1F7E32111FA7BB4700CCBDD6 /* ScheduleDaysLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysLayout.swift; sourceTree = "<group>"; };
-		1F7E32131FA7BB4F00CCBDD6 /* ScheduleListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListLayout.swift; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */,
-				1F7E32131FA7BB4F00CCBDD6 /* ScheduleListLayout.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -953,7 +950,6 @@
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
-				1F7E32141FA7BB4F00CCBDD6 /* ScheduleListLayout.swift in Sources */,
 				B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */,
 				B5B3768E1FA61A2C00FC3A07 /* CanteenCoordinator.swift in Sources */,
 				B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */,
