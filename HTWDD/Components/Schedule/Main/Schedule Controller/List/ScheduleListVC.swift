@@ -13,10 +13,12 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	// MARK: - Init
 
-	init(dataSource: ScheduleDataSource) {
-		let layout = ScheduleListLayout()
-		super.init(dataSource: dataSource, layout: layout, startHour: 6.5)
-        layout.dataSource = self
+    private let collectionViewLayout = UICollectionViewFlowLayout()
+
+	init(configuration: ScheduleDataSource.Configuration) {
+        var config = configuration
+        config.shouldFilterEmptySections = true
+		super.init(configuration: configuration, layout: self.collectionViewLayout, startHour: 6.5)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -30,28 +32,14 @@ final class ScheduleListVC: ScheduleBaseVC {
     }
 }
 
-// MARK: - ScheduleListLayoutDataSource
-extension ScheduleListVC: ScheduleListLayoutDataSource {
-	var widthPerDay: CGFloat {
-		let numberOfDays = UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) ? 7 : 1
-		return self.view.bounds.width / CGFloat(numberOfDays)
-	}
+extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
-	var height: CGFloat {
-		let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
-		let statusBarHeight = UIApplication.shared.statusBarFrame.height
-		let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-		return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
-	}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.width, height: 30)
+    }
 
-	var endHour: CGFloat {
-		return 21
-	}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.width - 8*2, height: 60)
+    }
 
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
-		guard let item = self.dataSource.lecture(at: indexPath) else {
-			return nil
-		}
-		return (item.begin, item.end)
-	}
 }

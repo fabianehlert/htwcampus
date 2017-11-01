@@ -13,9 +13,9 @@ final class ScheduleDaysVC: ScheduleBaseVC {
 
 	// MARK: - Init
 
-	init(dataSource: ScheduleDataSource) {
+	init(configuration: ScheduleDataSource.Configuration) {
 		let layout = ScheduleDaysLayout()
-		super.init(dataSource: dataSource, layout: layout, startHour: 6.5)
+		super.init(configuration: configuration, layout: layout, startHour: 6.5)
         layout.dataSource = self
 	}
 

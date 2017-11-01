@@ -16,8 +16,13 @@ class ScheduleBaseVC: CollectionViewController {
 
     let startHour: CGFloat
 
-    init(dataSource: ScheduleDataSource, layout: UICollectionViewLayout, startHour: CGFloat) {
-        self.dataSource = dataSource
+    var auth: ScheduleService.Auth? {
+        get { return nil }
+        set { self.dataSource.auth = newValue }
+    }
+
+    init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout, startHour: CGFloat) {
+        self.dataSource = ScheduleDataSource(configuration: configuration)
         self.startHour = startHour
         super.init(layout: layout)
     }
@@ -44,7 +49,6 @@ class ScheduleBaseVC: CollectionViewController {
             let hour = Int(self.startHour) - 1 + indexPath.row
             time.timeString = String(hour)
         }
-        self.dataSource.load()
     }
 
     // MARK: - ViewController lifecycle
@@ -56,6 +60,8 @@ class ScheduleBaseVC: CollectionViewController {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
         doubleTap.numberOfTapsRequired = 2
         self.collectionView.addGestureRecognizer(doubleTap)
+
+        self.dataSource.load()
     }
 
     // MARK: - Private

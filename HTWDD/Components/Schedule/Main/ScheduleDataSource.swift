@@ -11,6 +11,22 @@ import RxSwift
 
 class ScheduleDataSource: CollectionViewDataSource {
 
+    struct Configuration {
+        let context: HasSchedule
+        let originDate: Date
+        let numberOfDays: Int
+        var auth: ScheduleService.Auth?
+        var shouldFilterEmptySections: Bool
+
+        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool = false) {
+            self.context = context
+            self.originDate = originDate
+            self.numberOfDays = numberOfDays
+            self.auth = auth
+            self.shouldFilterEmptySections = shouldFilterEmptySections
+        }
+    }
+
     var originDate: Date {
         didSet {
             self.data = self.calculate()
@@ -26,6 +42,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.load()
         }
     }
+    let shouldFilterEmptySections: Bool
 
     private let days = [
 		Loca.monday,
@@ -54,11 +71,12 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
 
-    init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?) {
-        self.service = context.scheduleService
-        self.originDate = originDate
-        self.numberOfDays = numberOfDays
-        self.auth = auth
+    init(configuration: Configuration) {
+        self.service = configuration.context.scheduleService
+        self.originDate = configuration.originDate
+        self.numberOfDays = configuration.numberOfDays
+        self.auth = configuration.auth
+        self.shouldFilterEmptySections = configuration.shouldFilterEmptySections
     }
 
 	func load() {
@@ -94,7 +112,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         let originDay = self.originDate.weekday
         let startWeek = self.originDate.weekNumber
 
-        let a: [[Lecture]] = sections.map { section in
+        var lectures: [[Lecture]] = sections.map { section in
             let date = self.originDate.byAdding(days: TimeInterval(section))
 
             guard semesterInformation.lecturesContains(date: date) else {
@@ -112,7 +130,10 @@ class ScheduleDataSource: CollectionViewDataSource {
                 return weekEvenOddValidation && weekOnlyValidation
             }
         }
-        return a
+        if self.shouldFilterEmptySections {
+            lectures = lectures.filter { !$0.isEmpty }
+        }
+        return lectures
     }
 
     // MARK: CollectionViewDataSource methods

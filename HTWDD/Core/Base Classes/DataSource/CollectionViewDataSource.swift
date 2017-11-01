@@ -9,7 +9,7 @@
 import UIKit
 
 enum SupplementaryKind: String {
-    case header
+    case header = "UICollectionElementKindSectionHeader"
     case description
 }
 

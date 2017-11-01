@@ -12,9 +12,9 @@ import RxCocoa
 
 private enum ScheduleLayoutStyle: Int {
 	case
-	week = 0,
-	days = 1,
-	list = 2
+    list = 0,
+    days = 1,
+	week = 2
 
 	var title: String {
 		switch self {
@@ -27,7 +27,7 @@ private enum ScheduleLayoutStyle: Int {
 		}
 	}
 
-	static let all = [ScheduleLayoutStyle.week, .days, .list]
+	static let all = [ScheduleLayoutStyle.list, .days, .week]
 }
 
 final class ScheduleMainVC: ViewController {
@@ -38,22 +38,21 @@ final class ScheduleMainVC: ViewController {
 
     var auth: ScheduleService.Auth? {
 		didSet {
-			self.dataSource.auth = self.auth
-			self.dataSource.load()
+            self.dataSourceConfiguration.auth = self.auth
+            self.cachedStyles.forEach({ _, controller in controller.auth = self.auth })
 		}
 	}
 
-	private let dataSource: ScheduleDataSource
+	private var dataSourceConfiguration: ScheduleDataSource.Configuration
 
-	private var currentScheduleVC: ViewController?
+	private var currentScheduleVC: ScheduleBaseVC?
+
+    private var cachedStyles = [ScheduleLayoutStyle: ScheduleBaseVC]()
 
 	// MARK: - UI
 
 	/// Segemented control which lets a user switch between the three different schedule layouts.
-	private lazy var layoutStyleControl: UISegmentedControl = {
-		let control = UISegmentedControl(items: ScheduleLayoutStyle.all.map({ $0.title }))
-		return control
-	}()
+	private lazy var layoutStyleControl = UISegmentedControl(items: ScheduleLayoutStyle.all.map({ $0.title }))
 
 	/// View which contains the ScheduleVC for the type selected in the segmented control.
 	private var containerView = View()
@@ -61,11 +60,11 @@ final class ScheduleMainVC: ViewController {
 	// MARK: - Init
 
     init(context: HasSchedule) {
-        self.dataSource = ScheduleDataSource(
+        self.dataSourceConfiguration = ScheduleDataSource.Configuration(
 			context: context,
 			originDate: ScheduleMainVC.defaultStartDate,
 			numberOfDays: 150,
-			auth: auth)
+			auth: self.auth)
 		super.init()
 	}
 
@@ -111,18 +110,23 @@ final class ScheduleMainVC: ViewController {
 			vc.willMove(toParentViewController: nil)
 			vc.view.removeFromSuperview()
 			vc.removeFromParentViewController()
-
-			self.currentScheduleVC = nil
 		}
 
-		switch style {
-		case .week:
-			self.currentScheduleVC = ScheduleWeekVC(dataSource: self.dataSource)
-		case .days:
-			self.currentScheduleVC = ScheduleDaysVC(dataSource: self.dataSource)
-		case .list:
-			self.currentScheduleVC = ScheduleListVC(dataSource: self.dataSource)
-		}
+        if let cached = self.cachedStyles[style] {
+            self.currentScheduleVC = cached
+        } else {
+            let newController: ScheduleBaseVC
+            switch style {
+            case .week:
+                newController = ScheduleWeekVC(configuration: self.dataSourceConfiguration)
+            case .days:
+                newController = ScheduleDaysVC(configuration: self.dataSourceConfiguration)
+            case .list:
+                newController = ScheduleListVC(configuration: self.dataSourceConfiguration)
+            }
+            self.cachedStyles[style] = newController
+            self.currentScheduleVC = newController
+        }
 
 		self.addChild(self.currentScheduleVC)
 		layoutMatchingEdges(self.currentScheduleVC?.view, self.containerView)
