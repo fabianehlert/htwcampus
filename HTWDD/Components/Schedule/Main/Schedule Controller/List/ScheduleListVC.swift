@@ -36,7 +36,10 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 		self.collectionView.isDirectionalLockEnabled = true
 
-        self.dataSource.register(type: LectureListCell.self)
+		self.dataSource.register(type: LectureListCell.self) { cell, _, _ in
+			let width = self.view.htw.safeWidth() - 2*Const.horizontalMargin
+			cell.updateWidth(width)
+		}
 		self.dataSource.delegate = self
     }
 
