@@ -147,6 +147,8 @@ class ScheduleDataSource: CollectionViewDataSource {
                 let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
                 let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
                 return weekEvenOddValidation && weekOnlyValidation
+                }.sorted { l1, l2 in
+                    return l1.begin < l2.begin
             }
             return Data(day: day, date: date, lectures: l, freeDays: [])
         }
