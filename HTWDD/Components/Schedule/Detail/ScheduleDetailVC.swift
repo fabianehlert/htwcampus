@@ -33,7 +33,8 @@ class ScheduleDetailVC: ViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 18, weight: .medium)
 		label.textColor = UIColor.htw.textHeadline
-		label.numberOfLines = 1
+		label.numberOfLines = 2
+		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -127,7 +128,7 @@ class ScheduleDetailVC: ViewController {
 				typeContainer.heightAnchor.constraint(
 					equalTo: self.typeLabel.heightAnchor, constant: 10),
 				typeContainer.widthAnchor.constraint(
-					equalTo: self.typeLabel.widthAnchor, constant: 14)
+					equalTo: self.typeLabel.widthAnchor, constant: 16)
 			])
 		} else {
 			NSLayoutConstraint.activate([
@@ -138,7 +139,7 @@ class ScheduleDetailVC: ViewController {
 				typeContainer.heightAnchor.constraint(
 					equalTo: self.typeLabel.heightAnchor, constant: 10),
 				typeContainer.widthAnchor.constraint(
-					equalTo: self.typeLabel.widthAnchor, constant: 14)
+					equalTo: self.typeLabel.widthAnchor, constant: 16)
 			])
 		}
 		
@@ -164,7 +165,7 @@ class ScheduleDetailVC: ViewController {
 			roomContainer.heightAnchor.constraint(
 				equalTo: self.roomLabel.heightAnchor, constant: 10),
 			roomContainer.widthAnchor.constraint(
-				equalTo: self.roomLabel.widthAnchor, constant: 14)
+				equalTo: self.roomLabel.widthAnchor, constant: 16)
 		])
 		
 		NSLayoutConstraint.activate([
