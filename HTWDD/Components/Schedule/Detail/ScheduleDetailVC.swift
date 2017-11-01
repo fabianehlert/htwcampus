@@ -22,7 +22,7 @@ class ScheduleDetailVC: ViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 24, weight: .semibold)
 		label.textColor = UIColor.htw.textHeadline
-		label.numberOfLines = 2
+		label.numberOfLines = 3
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
