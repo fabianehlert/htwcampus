@@ -29,6 +29,8 @@ class LectureListCell: CollectionViewCell, Cell {
 
 	// MARK: - UI
 
+	var widthConstraint = NSLayoutConstraint()
+
 	let colorView: UIView = {
 		let view = UIView()
 		view.backgroundColor = UIColor(red: 0.76, green: 0.09, blue: 0.09, alpha: 1.0)
@@ -94,8 +96,10 @@ class LectureListCell: CollectionViewCell, Cell {
 		self.contentView.addSubview(self.roomLabel)
 		self.contentView.addSubview(self.timeLabel)
 
+		self.widthConstraint = self.contentView.widthAnchor.constraint(equalToConstant: 351)
+
 		NSLayoutConstraint.activate([
-			self.contentView.widthAnchor.constraint(equalToConstant: 351),
+			self.widthConstraint,
 
 			self.colorView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
 			self.colorView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
@@ -128,16 +132,14 @@ class LectureListCell: CollectionViewCell, Cell {
 		self.timeLabel.text = "\(viewModel.start) – \(viewModel.end)"
 	}
 
+	func updateWidth(_ width: CGFloat) {
+		self.widthConstraint.constant = width
+		layoutIfNeeded()
+	}
+
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-	}
-
-	override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-
-		layoutAttributes.frame.size = self.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-
-		return layoutAttributes
 	}
 
 }
