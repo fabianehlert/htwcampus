@@ -37,7 +37,7 @@ extension ScheduleWeekLayoutDataSource {
 		return 20
 	}
 	var itemMargin: CGFloat {
-		return 2
+		return 1
 	}
 }
 

@@ -43,13 +43,6 @@ class ScheduleBaseVC: CollectionViewController {
             let info = self.dataSource.dayInformation(indexPath: indexPath)
             view.title = self.headerText(day: info.day, date: info.date, weekdayLoca: info.loca)
         }
-        self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
-            guard let `self` = self else {
-                return
-            }
-            let hour = Int(self.startHour) - 1 + indexPath.row
-            time.timeString = String(hour)
-        }
     }
 
     // MARK: - ViewController lifecycle

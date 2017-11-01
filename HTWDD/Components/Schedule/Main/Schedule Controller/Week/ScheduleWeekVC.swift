@@ -28,6 +28,13 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         self.collectionView.isDirectionalLockEnabled = true
         
         self.dataSource.register(type: LectureCollectionViewCell.self)
+        self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
+            guard let `self` = self else {
+                return
+            }
+            let hour = Int(self.startHour) - 1 + indexPath.row
+            time.timeString = String(hour)
+        }
 	}
 
 }
