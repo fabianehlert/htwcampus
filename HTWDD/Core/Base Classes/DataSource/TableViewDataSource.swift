@@ -43,13 +43,15 @@ class TableViewDataSource: NSObject {
     fileprivate typealias Configuration = (Any, UITableViewCell, IndexPath) -> Void
     fileprivate var configurations = [String: Configuration]()
 
-    func register<CellType: UITableViewCell>(type: CellType.Type) where CellType: Cell {
+    func register<CellType: UITableViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = { _, _, _ in }) where CellType: Cell {
         assert(self.tableView != nil)
         let identifier = type.ViewModelType.ModelType.identifier
         self.tableView?.register(type, forCellReuseIdentifier: identifier)
 
         self.configurations[identifier] = { model, cell, indexPath in
-            (cell as! CellType).update(viewModel: CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType))
+            let viewModel = CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType)
+            (cell as! CellType).update(viewModel: viewModel)
+            configure(cell as! CellType, viewModel, indexPath)
         }
     }
 

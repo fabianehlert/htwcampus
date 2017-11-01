@@ -48,14 +48,16 @@ class CollectionViewDataSource: NSObject {
     fileprivate var supplementaryConfigurations = [String: SupplementaryViewConfiguration]()
     fileprivate var supplementaryKinds = [SupplementaryKind: String]()
 
-    func register<CellType: UICollectionViewCell>(type: CellType.Type) where CellType: Cell {
+    func register<CellType: UICollectionViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = {_, _, _ in }) where CellType: Cell {
 
         assert(self.collectionView != nil)
         let identifier = type.ViewModelType.ModelType.identifier
         self.collectionView?.register(type, forCellWithReuseIdentifier: identifier)
 
         self.configurations[identifier] = { model, cell, indexPath in
-            (cell as! CellType).update(viewModel: CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType))
+            let viewModel = CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType)
+            (cell as! CellType).update(viewModel: viewModel)
+            configure(cell as! CellType, viewModel, indexPath)
         }
     }
 
