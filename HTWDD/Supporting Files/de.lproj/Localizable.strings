@@ -16,6 +16,7 @@
 "Schedule.Style.week"="Woche";
 "Schedule.Style.days"="Tage";
 "Schedule.Style.list"="Liste";
+"Schedule.Cell.time" = "%02d:%02d";
 
 "Canteen.title"="Mensa";
 "Grades.title"="Noten";

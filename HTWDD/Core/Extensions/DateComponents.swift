@@ -31,11 +31,6 @@ extension DateComponents {
                CGFloat(self.second ?? 0)
     }
 
-    var localizedDescription: String {
-        // TODO: localize!
-        return "\(self.hour ?? 0):\(self.minute ?? 0)"
-    }
-
 }
 
 extension DateComponents: ValueType {

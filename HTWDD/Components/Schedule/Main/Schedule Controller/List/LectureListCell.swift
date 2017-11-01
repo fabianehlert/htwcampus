@@ -129,7 +129,7 @@ class LectureListCell: CollectionViewCell, Cell {
 		self.typeLabel.text = viewModel.subtitle.uppercased()
 		self.titleLabel.text = viewModel.title
 		self.roomLabel.text = viewModel.room
-		self.timeLabel.text = "\(viewModel.start) – \(viewModel.end)"
+		self.timeLabel.text = viewModel.timeString
 	}
 
 	override func layoutSubviews() {
