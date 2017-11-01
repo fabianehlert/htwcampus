@@ -32,8 +32,8 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
 		label.textAlignment = .left
-		label.numberOfLines = 2
-		label.lineBreakMode = .byWordWrapping
+		label.numberOfLines = 1
+		label.lineBreakMode = .byCharWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

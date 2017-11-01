@@ -26,6 +26,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 	override func initialSetup() {
         super.initialSetup()
         self.collectionView.isDirectionalLockEnabled = true
+        
+        self.dataSource.register(type: LectureCollectionViewCell.self)
 	}
 
 }
@@ -38,14 +40,12 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 	}
 
 	var height: CGFloat {
-		let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
-		let statusBarHeight = UIApplication.shared.statusBarFrame.height
-		let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-		return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
+		let navbarHeight = self.navigationController?.navigationBar.bottom ?? 0
+		return self.collectionView.bounds.height - navbarHeight
 	}
 
 	var endHour: CGFloat {
-		return 21
+		return 21.3
 	}
 
 	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {

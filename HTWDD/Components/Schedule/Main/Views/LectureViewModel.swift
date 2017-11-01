@@ -17,7 +17,7 @@ struct LectureViewModel: ViewModel {
     let timeString: String
 
     init(model: Lecture) {
-        self.title = model.name
+        self.title = model.tag ?? model.name
         self.subtitle = model.type
         self.room = model.rooms.first
         let begin = Loca.Schedule.Cell.time(model.begin.hour ?? 0, model.begin.minute ?? 0)
