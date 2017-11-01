@@ -45,6 +45,7 @@ class FreeDayListCell: CollectionViewCell, Cell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.backgroundColor = .white
+        self.contentView.backgroundColor = .white
         self.contentView.layer.cornerRadius = 2
         self.contentView.clipsToBounds = true
         
