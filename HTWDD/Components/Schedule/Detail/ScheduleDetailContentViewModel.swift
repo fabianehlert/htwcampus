@@ -32,12 +32,12 @@ class ScheduleDetailContentViewModel {
 		return self.lecture.rooms
 	}
 	
-	var begin: DateComponents {
-		return self.lecture.begin
+	var begin: String? {
+		return self.lecture.begin.date?.string(format: "HH:mm")
 	}
 	
-	var end: DateComponents {
-		return self.lecture.end
+	var end: String? {
+		return self.lecture.end.date?.string(format: "HH:mm")
 	}
 	
 	var professor: String? {
