@@ -64,7 +64,8 @@ final class ScheduleMainVC: ViewController {
 			context: context,
 			originDate: ScheduleMainVC.defaultStartDate,
 			numberOfDays: 150,
-			auth: self.auth)
+			auth: self.auth,
+            shouldFilterEmptySections: false)
 		super.init()
 	}
 

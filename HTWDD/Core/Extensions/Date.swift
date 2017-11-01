@@ -69,4 +69,11 @@ extension Date {
         return components.day ?? 0
     }
 
+    func sameDayAs(other day: Date) -> Bool {
+        let cal = Calendar.current
+        let other = cal.dateComponents([.day, .month, .year], from: day)
+        let mine = cal.dateComponents([.day, .month, .year], from: self)
+        return mine == other
+    }
+
 }

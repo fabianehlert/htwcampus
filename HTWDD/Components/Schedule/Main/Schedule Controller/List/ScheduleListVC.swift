@@ -23,6 +23,7 @@ final class ScheduleListVC: ScheduleBaseVC {
         var config = configuration
         config.originDate = nil
         config.numberOfDays = nil
+        config.shouldFilterEmptySections = true
 		super.init(configuration: config, layout: self.collectionViewLayout, startHour: 6.5)
 	}
 
@@ -42,7 +43,9 @@ final class ScheduleListVC: ScheduleBaseVC {
     }
 
     private func scrollToToday(animated: Bool) {
-        let indexPath = self.dataSource.indexPathOfToday()
+        guard let indexPath = self.dataSource.indexPathOfToday else {
+            return
+        }
 
         guard self.collectionView.numberOfSections >= indexPath.section else {
             return
