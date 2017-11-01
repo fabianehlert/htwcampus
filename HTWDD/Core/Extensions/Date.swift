@@ -52,7 +52,7 @@ extension Date {
     }
 
     var weekNumber: Int {
-        let c = Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
+        let c = Calendar.current.dateComponents(in: TimeZone.current, from: self)
         guard let week = c.weekOfYear else {
             fatalError("Expected date to have a week number.")
         }
@@ -60,7 +60,13 @@ extension Date {
     }
 
     var components: DateComponents {
-        return Calendar(identifier: .gregorian).dateComponents(in: TimeZone.autoupdatingCurrent, from: self)
+        return Calendar.current.dateComponents(in: TimeZone.current, from: self)
+    }
+
+    func daysSince(other day: Date) -> Int {
+        let cal = Calendar.current
+        let components = cal.dateComponents([.day], from: day, to: self)
+        return components.day ?? 0
     }
 
 }

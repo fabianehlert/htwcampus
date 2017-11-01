@@ -46,8 +46,9 @@ extension EventDate {
     }
 
     var date: Date {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = DateComponents(calendar: calendar, timeZone: TimeZone.autoupdatingCurrent, year: self.year, month: self.month, day: self.day)
+        let calendar = Calendar.current
+        // hour 12 to get rid of summer/winter time issues -> is always in the middle of the day
+        let components = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: self.year, month: self.month, day: self.day, hour: 12)
         return calendar.date(from: components)!
     }
 
