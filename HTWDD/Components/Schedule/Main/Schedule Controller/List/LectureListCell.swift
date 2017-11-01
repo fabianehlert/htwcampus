@@ -35,14 +35,14 @@ class LectureListCell: CollectionViewCell, Cell {
 		let view = UIView()
 		view.backgroundColor = UIColor(red: 0.76, green: 0.09, blue: 0.09, alpha: 1.0)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.layer.cornerRadius = 2
+		view.layer.cornerRadius = 3
 		return view
 	}()
 
 	let typeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 16, weight: .medium)
-		label.textColor = UIColor.htw.textBody
+		label.font = .systemFont(ofSize: 14, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -71,7 +71,7 @@ class LectureListCell: CollectionViewCell, Cell {
 	let timeLabel: UILabel = {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
-		label.textColor = UIColor.htw.textBody
+		label.textColor = UIColor.htw.blue
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -130,11 +130,6 @@ class LectureListCell: CollectionViewCell, Cell {
 		self.titleLabel.text = viewModel.title
 		self.roomLabel.text = viewModel.room
 		self.timeLabel.text = "\(viewModel.start) – \(viewModel.end)"
-	}
-
-	func updateWidth(_ width: CGFloat) {
-		self.widthConstraint.constant = width
-		layoutIfNeeded()
 	}
 
 	override func layoutSubviews() {
