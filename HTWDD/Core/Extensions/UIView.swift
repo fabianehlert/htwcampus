@@ -41,3 +41,14 @@ extension UIView {
     }
 
 }
+
+extension HTWNamespace where Base: UIView {
+	func safeWidth() -> CGFloat {
+		var width = self.base.width
+		if #available(iOS 11.0, *) {
+			let insets = self.base.safeAreaInsets
+			width = width - (insets.left + insets.right)
+		}
+		return width
+	}
+}
