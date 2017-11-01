@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
+		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
 		1F7E32091FA7B84000CCBDD6 /* ScheduleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */; };
@@ -148,6 +149,7 @@
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1F54EE431FAA063B00415813 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
 		1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVC.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */,
+				1F54EE431FAA063B00415813 /* LectureListCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				B5CD5C711E5F37700083D75E /* ScheduleMainVC.swift in Sources */,
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
+				1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */,
 				1F2B8A101F99029E00026099 /* TextField.swift in Sources */,
 				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
