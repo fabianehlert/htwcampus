@@ -9,30 +9,35 @@
 import UIKit
 import RxSwift
 
+protocol ScheduleDataSourceDelegate: class {
+    func scheduleDataSourceHasFinishedLoading()
+    func scheduleDataSourceHasUpdated()
+}
+
 class ScheduleDataSource: CollectionViewDataSource {
 
     struct Configuration {
         let context: HasSchedule
-        let originDate: Date
-        let numberOfDays: Int
+        /// if nil -> start of semester will be taken
+        var originDate: Date?
+        /// if nil -> whole period of semester will be taken
+        var numberOfDays: Int?
         var auth: ScheduleService.Auth?
-        var shouldFilterEmptySections: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool = false) {
+        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?) {
             self.context = context
             self.originDate = originDate
             self.numberOfDays = numberOfDays
             self.auth = auth
-            self.shouldFilterEmptySections = shouldFilterEmptySections
         }
     }
 
-    var originDate: Date {
+    var originDate: Date? {
         didSet {
             self.data = self.calculate()
         }
     }
-    var numberOfDays: Int {
+    var numberOfDays: Int? {
         didSet {
             self.data = self.calculate()
         }
@@ -42,7 +47,6 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.load()
         }
     }
-    let shouldFilterEmptySections: Bool
 
     private let days = [
 		Loca.monday,
@@ -57,26 +61,28 @@ class ScheduleDataSource: CollectionViewDataSource {
     private(set) var lectures = [Day: [Lecture]]()
     private var semesterInformations = [SemesterInformation]() {
         didSet {
-            self.semesterInformation = SemesterInformation.information(date: self.originDate, input: self.semesterInformations)
+            self.semesterInformation = SemesterInformation.information(date: Date(), input: self.semesterInformations)
         }
     }
     private var semesterInformation: SemesterInformation?
 
-    private var data = [[Lecture]]() {
+    private var data = [(day: Day, lectures: [Lecture])]() {
         didSet {
             self.invalidate()
+            self.delegate?.scheduleDataSourceHasUpdated()
         }
     }
 
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
 
+    weak var delegate: ScheduleDataSourceDelegate?
+
     init(configuration: Configuration) {
         self.service = configuration.context.scheduleService
         self.originDate = configuration.originDate
         self.numberOfDays = configuration.numberOfDays
         self.auth = configuration.auth
-        self.shouldFilterEmptySections = configuration.shouldFilterEmptySections
     }
 
 	func load() {
@@ -91,47 +97,49 @@ class ScheduleDataSource: CollectionViewDataSource {
 				self?.lectures = information.lectures
 				self?.semesterInformations = information.semesters
 				self?.data = self?.calculate() ?? []
+                self?.delegate?.scheduleDataSourceHasFinishedLoading()
 			}).disposed(by: self.disposeBag)
 	}
 
 	func lecture(at indexPath: IndexPath) -> Lecture? {
-        return self.data[indexPath.section][indexPath.row]
+        return self.data[indexPath.section].lectures[indexPath.row]
     }
 
     func dayName(indexPath: IndexPath) -> String {
-        let index = (self.originDate.weekday.rawValue + indexPath.section) % self.days.count
+        let index = self.data[indexPath.section].day.rawValue
         return self.days[index]
     }
 
-    private func calculate() -> [[Lecture]] {
+    private func calculate() -> [(day: Day, lectures: [Lecture])] {
         guard let semesterInformation = self.semesterInformation, !self.lectures.isEmpty else {
             return []
         }
 
-        let sections = 0..<self.numberOfSections()
-        let originDay = self.originDate.weekday
-        let startWeek = self.originDate.weekNumber
+        let originDate = self.originDate ?? semesterInformation.period.begin.date
 
-        var lectures: [[Lecture]] = sections.map { section in
-            let date = self.originDate.byAdding(days: TimeInterval(section))
+        let sections = 0..<self.numberOfSections()
+        let originDay = originDate.weekday
+        let startWeek = originDate.weekNumber
+
+        let lectures: [(Day, [Lecture])] = sections.map { section in
+            let date = originDate.byAdding(days: TimeInterval(section))
+            let day = date.weekday
 
             guard semesterInformation.lecturesContains(date: date) else {
-                return []
+                return (day, [])
             }
 
             guard !semesterInformation.freeDaysContains(date: date) else {
-                return []
+                return (day, [])
             }
 
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
-            return (self.lectures[originDay.dayByAdding(days: section)] ?? []).filter { lecture in
+            let l = (self.lectures[originDay.dayByAdding(days: section)] ?? []).filter { lecture in
                 let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
                 let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
                 return weekEvenOddValidation && weekOnlyValidation
             }
-        }
-        if self.shouldFilterEmptySections {
-            lectures = lectures.filter { !$0.isEmpty }
+            return (day, l)
         }
         return lectures
     }
@@ -143,10 +151,20 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
     override func numberOfSections() -> Int {
-        return self.numberOfDays
+        return self.numberOfDays ?? self.semesterInformation?.period.lengthInDays ?? 0
     }
 
     override func numberOfItems(in section: Int) -> Int {
-        return self.data[safe: section]?.count ?? 0
+        return self.data[safe: section]?.lectures.count ?? 0
     }
+
+    // MARK: - Helpers
+
+    func indexPathOfToday() -> IndexPath {
+        let now = Date()
+        let begin = self.originDate ?? self.semesterInformation?.period.begin.date ?? Date()
+        let diff = now.daysSince(other: begin) + 1
+        return IndexPath(item: 0, section: diff)
+    }
+
 }

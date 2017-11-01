@@ -12,6 +12,7 @@
 "Onboarding.UnixLogin.notnow"="Später";
 
 "Schedule.title"="Stundenplan";
+"Schedule.today"="Heute";
 "Schedule.Style.week"="Woche";
 "Schedule.Style.days"="Tage";
 "Schedule.Style.list"="Liste";

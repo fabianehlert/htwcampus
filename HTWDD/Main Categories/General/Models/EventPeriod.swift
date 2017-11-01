@@ -28,6 +28,10 @@ struct EventPeriod: Hashable {
     func contains(date: EventDate) -> Bool {
         return (begin.date...end.date).contains(date.date)
     }
+
+    var lengthInDays: Int {
+        return self.end.date.daysSince(other: self.begin.date)
+    }
 }
 
 extension EventPeriod: Unmarshaling {

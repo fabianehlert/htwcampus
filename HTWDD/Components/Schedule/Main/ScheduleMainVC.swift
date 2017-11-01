@@ -137,7 +137,13 @@ final class ScheduleMainVC: ViewController {
 		self.addChildViewController(child)
 		self.containerView.addSubview(child.view)
 		child.didMove(toParentViewController: self)
+        self.updateBarButtonItems(navigationItem: child.navigationItem)
 	}
+
+    private func updateBarButtonItems(navigationItem: UINavigationItem) {
+        self.navigationItem.leftBarButtonItems = navigationItem.leftBarButtonItems
+        self.navigationItem.rightBarButtonItems = navigationItem.rightBarButtonItems
+    }
 
 	/**
 		Activates NSLayoutConstraints that keep the first view _filled_ in the second.

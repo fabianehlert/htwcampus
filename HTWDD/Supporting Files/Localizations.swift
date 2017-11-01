@@ -107,6 +107,9 @@ public struct Loca {
 
     public struct Schedule {
 
+        /// Base translation: Today
+        public static var today: String = NSLocalizedString("Schedule.today", comment: "")
+
         /// Base translation: Schedule
         public static var title: String = NSLocalizedString("Schedule.title", comment: "")
 

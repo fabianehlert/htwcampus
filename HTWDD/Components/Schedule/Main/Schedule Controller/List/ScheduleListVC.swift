@@ -21,8 +21,9 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
-        config.shouldFilterEmptySections = true
-		super.init(configuration: configuration, layout: self.collectionViewLayout, startHour: 6.5)
+        config.originDate = nil
+        config.numberOfDays = nil
+		super.init(configuration: config, layout: self.collectionViewLayout, startHour: 6.5)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -33,6 +34,26 @@ final class ScheduleListVC: ScheduleBaseVC {
         super.initialSetup()
 
 		self.collectionView.isDirectionalLockEnabled = true
+        self.dataSource.delegate = self
+    }
+
+    override func jumpToToday() {
+        self.scrollToToday(animated: true)
+    }
+
+    private func scrollToToday(animated: Bool) {
+        let indexPath = self.dataSource.indexPathOfToday()
+
+        guard self.collectionView.numberOfSections >= indexPath.section else {
+            return
+        }
+
+        // scroll to header
+        let offsetY = self.collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath)?.frame.origin.y ?? 0
+        let contentInsetY = self.collectionView.contentInset.top
+        let sectionInsetY = self.collectionViewLayout.sectionInset.top
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY - contentInsetY - sectionInsetY), animated: animated)
+
     }
 }
 
@@ -44,6 +65,21 @@ extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
+    }
+
+}
+
+extension ScheduleListVC: ScheduleDataSourceDelegate {
+
+    func scheduleDataSourceHasFinishedLoading() {
+        // we explicitly need to wait for the next run loop
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
+    }
+
+    func scheduleDataSourceHasUpdated() {
+
     }
 
 }

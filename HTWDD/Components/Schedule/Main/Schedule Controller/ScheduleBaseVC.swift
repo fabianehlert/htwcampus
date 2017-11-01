@@ -57,9 +57,8 @@ class ScheduleBaseVC: CollectionViewController {
         super.viewDidLoad()
         self.register3DTouch()
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(jumpToToday))
-        doubleTap.numberOfTapsRequired = 2
-        self.collectionView.addGestureRecognizer(doubleTap)
+        let todayButton = UIBarButtonItem(title: Loca.Schedule.today, style: .plain, target: self, action: #selector(jumpToToday))
+        self.navigationItem.rightBarButtonItem = todayButton
 
         self.dataSource.load()
     }
@@ -78,8 +77,7 @@ class ScheduleBaseVC: CollectionViewController {
     }
 
     @objc
-    private func jumpToToday() {
-        self.dataSource.originDate = Date()
+    func jumpToToday() {
         let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
         self.collectionView.setContentOffset(left, animated: true)
     }
