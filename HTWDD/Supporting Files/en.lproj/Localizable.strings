@@ -28,6 +28,14 @@
 "saturday"="Saturday";
 "sunday"="Sunday";
 
+"monday_short"="Mo";
+"tuesday_short"="Tue";
+"wednesday_short"="Wed";
+"thursday_short"="Thu";
+"friday_short"="Fr";
+"saturday_short"="Sat";
+"sunday_short"="Sun";
+
 "summerSemester"="Summersemester";
 "winterSemester"="Wintersemester";
 

@@ -11,6 +11,16 @@ import RxSwift
 
 final class ScheduleWeekVC: ScheduleBaseVC {
 
+    private let days = [
+        Loca.monday_short,
+        Loca.tuesday_short,
+        Loca.wednesday_short,
+        Loca.thursday_short,
+        Loca.friday_short,
+        Loca.saturday_short,
+        Loca.sunday_short
+    ]
+    
 	// MARK: - Init
 
 	init(configuration: ScheduleDataSource.Configuration) {
@@ -36,6 +46,11 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             time.timeString = String(hour)
         }
 	}
+    
+    override func headerText(day: Day, date: Date) -> String {
+        let index = day.rawValue
+        return self.days[index]
+    }
 
 }
 

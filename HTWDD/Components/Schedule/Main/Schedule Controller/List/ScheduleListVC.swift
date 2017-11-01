@@ -48,7 +48,8 @@ final class ScheduleListVC: ScheduleBaseVC {
 		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.horizontalMargin), height: 100)
 	}
 
-    override func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
+    override func headerText(day: Day, date: Date) -> String {
+        let weekdayLoca = super.headerText(day: day, date: date)
         let dateString = date.string(format: "d.MMMM")
         return "\(weekdayLoca) - \(dateString)"
     }

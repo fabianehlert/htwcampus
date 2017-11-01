@@ -31,7 +31,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
-		label.textAlignment = .left
+		label.textAlignment = .center
 		label.numberOfLines = 1
 		label.lineBreakMode = .byCharWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +42,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 12, weight: .medium)
 		label.textColor = UIColor.htw.textBody
-		label.textAlignment = .left
+		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()

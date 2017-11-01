@@ -20,6 +20,16 @@ class ScheduleBaseVC: CollectionViewController {
         get { return nil }
         set { self.dataSource.auth = newValue }
     }
+    
+    private let days = [
+        Loca.monday,
+        Loca.tuesday,
+        Loca.wednesday,
+        Loca.thursday,
+        Loca.friday,
+        Loca.saturday,
+        Loca.sunday
+    ]
 
     init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout, startHour: CGFloat) {
         self.dataSource = ScheduleDataSource(configuration: configuration)
@@ -41,7 +51,7 @@ class ScheduleBaseVC: CollectionViewController {
         self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
             guard let `self` = self else { return }
             let info = self.dataSource.dayInformation(indexPath: indexPath)
-            view.title = self.headerText(day: info.day, date: info.date, weekdayLoca: info.loca)
+            view.title = self.headerText(day: info.day, date: info.date)
         }
     }
 
@@ -79,8 +89,9 @@ class ScheduleBaseVC: CollectionViewController {
         self.collectionView.setContentOffset(left, animated: true)
     }
 
-    func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
-        return weekdayLoca
+    func headerText(day: Day, date: Date) -> String {
+        let index = day.rawValue
+        return self.days[index]
     }
 
 }
