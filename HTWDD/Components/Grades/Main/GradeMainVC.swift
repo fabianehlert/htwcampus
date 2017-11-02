@@ -96,16 +96,25 @@ class GradeMainVC: CollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        func animate(block: @escaping () -> Void) {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.beginFromCurrentState, .curveEaseInOut], animations: block, completion: nil)
+        }
+        
         if self.selectedIndexPath == indexPath {
             self.selectedIndexPath = nil
-            collectionView.reloadItems(at: [indexPath])
+            animate {
+                collectionView.reloadItems(at: [indexPath])
+            }
             return
         }
         
         let currentSelected = self.selectedIndexPath
         self.selectedIndexPath = indexPath
         let indexPaths = [indexPath] + (currentSelected.map { [$0] } ?? [])
-        collectionView.reloadItems(at: indexPaths)
+        animate {
+            collectionView.reloadItems(at: indexPaths)
+        }
         
         let oldCell = currentSelected.flatMap(collectionView.cellForItem) as? GradeCell
         oldCell?.updatedExpanded(false)
@@ -134,4 +143,10 @@ extension GradeMainVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: self.view.width - Const.margin*2, height: 60)
     }
     
+}
+
+extension GradeMainVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.view.htw.safeAreaInsets.top), animated: true)
+    }
 }
