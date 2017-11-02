@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Marshal
 
-struct SemesterInformation {
+struct SemesterInformation: Codable {
 
     let semester: Semester
     var year: Int {
@@ -60,6 +60,12 @@ struct SemesterInformation {
             }
         }
         return nil
+    }
+}
+
+extension SemesterInformation: Equatable {
+    static func ==(lhs: SemesterInformation, rhs: SemesterInformation) -> Bool {
+        return lhs.semester == rhs.semester
     }
 }
 

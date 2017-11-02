@@ -25,9 +25,33 @@ class ScheduleService: Service {
         }
     }
 
-    struct Information {
+    struct Information: Codable, Equatable {
         let lectures: [Day: [Lecture]]
         let semesters: [SemesterInformation]
+        
+        init(lectures: [Day: [Lecture]], semesters: [SemesterInformation]) {
+            self.lectures = lectures
+            self.semesters = semesters
+        }
+        
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.lectures = try values.decode(CodableDictionary.self, forKey: .lectures).decoded
+            self.semesters = try values.decode([SemesterInformation.self], forKey: .semesters)
+        }
+        
+        static func ==(lhs: Information, rhs: Information) -> Bool {
+            guard lhs.lectures.count == rhs.lectures.count else {
+                return false
+            }
+            let allSame = lhs.lectures.reduce(true) { p, n -> Bool in
+                guard let rhsHas = rhs.lectures[n.key] else {
+                    return false
+                }
+                return p && rhsHas == n.value
+            }
+            return allSame && lhs.semesters == rhs.semesters
+        }
     }
 
     private let network = Network()
@@ -48,7 +72,11 @@ class ScheduleService: Service {
             let information = Information(lectures: l, semesters: s)
             self?.cachedInformation[parameters] = information
             return information
-        }
+        }.distinctUntilChanged()
+    }
+    
+    private func loadFromCache() -> Information {
+        
     }
 
 }
