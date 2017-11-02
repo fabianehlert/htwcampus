@@ -86,6 +86,7 @@
 		B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5461B691FA7B82400564D6D /* KeychainAccess.framework */; };
 		B5461B6D1FA7BBF300564D6D /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */; };
 		B54642DD1FAA842100735589 /* FreeDayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54642DC1FAA842100735589 /* FreeDayListCell.swift */; };
+		B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */; };
 		B55507101E601AE300C16F5F /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
 		B55507121E601FB400C16F5F /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		B55507141E60246E00C16F5F /* TimetableCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */; };
@@ -213,6 +214,7 @@
 		B5461B6B1FA7B88700564D6D /* HTWDD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HTWDD.entitlements; sourceTree = "<group>"; };
 		B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		B54642DC1FAA842100735589 /* FreeDayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeDayListCell.swift; sourceTree = "<group>"; };
+		B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatCollectionViewCell.swift; sourceTree = "<group>"; };
 		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				B50EB4FC1E6ADB410022E40C /* DataSource */,
 				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
+				B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */,
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
 				B50875471ED40BE6004A320E /* TableViewController.swift */,
@@ -992,6 +995,7 @@
 				B5D3E83C1FA5E8D50055782D /* ScheduleService.swift in Sources */,
 				1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
+				B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				B5D3E83E1FA5EBBE0055782D /* Service.swift in Sources */,
 				B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */,
