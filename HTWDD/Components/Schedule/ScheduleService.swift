@@ -71,6 +71,8 @@ class ScheduleService: Service {
     private let network = Network()
 
     private var cachedInformation = [Auth: Information]()
+    
+    private let persistenceService = PersistenceService()
 
     func load(parameters: Auth) -> Observable<Information> {
         if let cached = self.cachedInformation[parameters] {
@@ -82,32 +84,14 @@ class ScheduleService: Service {
 
         let informationObservable = SemesterInformation.get(network: self.network)
         
-        let cached = self.loadFromCache()
+        let cached = self.persistenceService.loadScheduleCache()
         let internetLoading: Observable<Information> = Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
             let information = Information(lectures: l, semesters: s)
             self?.cachedInformation[parameters] = information
-            self?.saveToCache(info: information)
+            self?.persistenceService.save(information)
             return information
         }
         return Observable.merge(cached, internetLoading).distinctUntilChanged()
-    }
-    
-    private func loadFromCache() -> Observable<Information> {
-        guard let data = UserDefaults.standard.data(forKey: Const.lectureCacheKey) else {
-            return Observable.empty()
-        }
-        guard let info = try? JSONDecoder().decode(Information.self, from: data) else {
-            return Observable.empty()
-        }
-        return Observable.just(info)
-    }
-    
-    private func saveToCache(info: Information) {
-        guard let data = try? JSONEncoder().encode(info) else {
-            Log.error("Tried to save \(info) to cache, but json encoding failed.")
-            return
-        }
-        UserDefaults.standard.set(data, forKey: Const.lectureCacheKey)
     }
 
 }
