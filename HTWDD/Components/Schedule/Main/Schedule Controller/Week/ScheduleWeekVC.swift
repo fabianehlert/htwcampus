@@ -78,6 +78,10 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		}
 		return (item.begin, item.end)
 	}
+    
+    var todayIndexPath: IndexPath? {
+        return self.dataSource.indexPathOfToday
+    }
 }
 
 extension ScheduleWeekVC: TabbarChildViewController {

@@ -14,6 +14,14 @@ private class SeperatorView: CollectionReusableView {
 	}
 }
 
+private class IndicatorView: CollectionReusableView {
+    override func initialSetup() {
+        self.backgroundColor = UIColor.clear
+        self.layer.borderColor = UIColor.htw.lightGrey.cgColor
+        self.layer.borderWidth = 1
+    }
+}
+
 protocol ScheduleWeekLayoutDataSource: class {
 	// MARK: required methods
 	var height: CGFloat { get }
@@ -24,6 +32,8 @@ protocol ScheduleWeekLayoutDataSource: class {
 	var startHour: CGFloat { get }
 	var endHour: CGFloat { get }
 	var itemMargin: CGFloat { get }
+    
+    var todayIndexPath: IndexPath? { get }
 }
 
 extension ScheduleWeekLayoutDataSource {
@@ -48,12 +58,14 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		static let timeWidth: CGFloat = 50
 
 		static let separation = "separation"
+        static let indicator = "indicator"
 
 		enum Z {
 			static let seperator = 0
-			static let lectures = 1
-			static let header = 2
-			static let times = 3
+            static let indicator = 1
+			static let lectures = 2
+			static let header = 3
+			static let times = 4
 		}
 	}
 
@@ -63,6 +75,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		self.dataSource = dataSource
 		super.init()
 		self.register(SeperatorView.self, forDecorationViewOfKind: Const.separation)
+        self.register(IndicatorView.self, forDecorationViewOfKind: Const.indicator)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -108,8 +121,11 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let decorations = self.indexPathsForDecorationViews(rect: rect).flatMap {
 			return self.layoutAttributesForDecorationView(ofKind: Const.separation, at: $0)
 		}
+        let todayIndicator = self.indexPathsForTodayIndicator(rect: rect).flatMap {
+            return self.layoutAttributesForDecorationView(ofKind: Const.indicator, at: $0)
+        }
 
-		return itemAttributes + headerAttributes + timeAttributes + decorations
+		return itemAttributes + headerAttributes + timeAttributes + decorations + todayIndicator
 	}
 
 	override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -162,12 +178,24 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 	override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
 
 		let attr = UICollectionViewLayoutAttributes(forDecorationViewOfKind: elementKind, with: indexPath)
-		attr.frame.origin.x = 0
-		let height = self.heightPerHour
-		attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight
-		attr.frame.size.width = self.collectionViewContentSize.width
-		attr.frame.size.height = 0.5
-		attr.zIndex = Const.Z.seperator
+        
+        if elementKind == Const.separation {
+            attr.frame.origin.x = 0
+            let height = self.heightPerHour
+            attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight
+            attr.frame.size.width = self.collectionViewContentSize.width
+            attr.frame.size.height = 0.5
+            attr.zIndex = Const.Z.seperator
+        } else if elementKind == Const.indicator {
+            guard let dataSource = self.dataSource else {
+                return attr
+            }
+            attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + Const.timeWidth
+            attr.frame.origin.y = 0
+            attr.frame.size.height = dataSource.height + Const.headerHeight
+            attr.frame.size.width = dataSource.widthPerDay
+            attr.zIndex = Const.Z.indicator
+        }
 
 		return attr
 	}
@@ -210,6 +238,13 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let endHour = Int(dataSource.endHour)
 		return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
 	}
+    
+    private func indexPathsForTodayIndicator(rect: CGRect) -> [IndexPath] {
+        guard let today = self.dataSource?.todayIndexPath else {
+            return []
+        }
+        return [today]
+    }
 
 	private func indexPathsForItemsInRect(rect: CGRect) -> [IndexPath] {
 
