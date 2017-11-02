@@ -45,7 +45,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
                 return
             }
             let hour = Int(self.startHour) - 1 + indexPath.row
-            time.timeString = String(hour)
+            time.hour = hour
         }
 	}
     
