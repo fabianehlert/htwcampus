@@ -27,10 +27,23 @@ class CollectionViewController: ViewController {
 
         self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
         self.collectionView.frame = self.view.bounds
-        self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
+        
+        NSLayoutConstraint.activate([
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
 
         self.collectionView.delegate = self
+    }
+    
+    func itemWidth(collectionView: UICollectionView) -> CGFloat {
+        let sectionInsets = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout).map { $0.sectionInset.left + $0.sectionInset.right } ?? 0
+        let width = collectionView.width - collectionView.contentInset.left - collectionView.contentInset.right - sectionInsets
+        return min(width, 500)
     }
 
 }

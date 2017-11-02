@@ -26,7 +26,7 @@ class GradeMainVC: CollectionViewController {
 
     private var selectedIndexPath: IndexPath?
 
-    private let layout = UICollectionViewFlowLayout()
+    private let layout = CollectionViewFlowLayout()
     
     let context: HasGrade
     init(context: HasGrade) {
@@ -39,6 +39,7 @@ class GradeMainVC: CollectionViewController {
     }
 
     override func initialSetup() {
+        super.initialSetup()
         self.title = Loca.Grades.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Grade")
     }
@@ -47,6 +48,11 @@ class GradeMainVC: CollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin,
+                                                        left: Const.margin,
+                                                        bottom: Const.margin,
+                                                        right: Const.margin)
 
         self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
 
@@ -128,7 +134,7 @@ class GradeMainVC: CollectionViewController {
 extension GradeMainVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.width - Const.margin * 2
+        let width = self.itemWidth(collectionView: collectionView)
         let height: CGFloat
         if self.selectedIndexPath == indexPath {
             height = GradeCell.Const.expandedHeight
@@ -140,7 +146,7 @@ extension GradeMainVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.width - Const.margin*2, height: 60)
+        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
     }
     
 }

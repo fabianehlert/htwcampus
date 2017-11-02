@@ -12,12 +12,12 @@ import RxSwift
 final class ScheduleListVC: ScheduleBaseVC {
 
     enum Const {
-        static let horizontalMargin: CGFloat = 12
+        static let margin: CGFloat = 12
     }
 
 	// MARK: - Init
 
-    private let collectionViewLayout = UICollectionViewFlowLayout()
+    private let collectionViewLayout = CollectionViewFlowLayout()
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
@@ -46,7 +46,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.horizontalMargin), height: 100)
+		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.margin), height: 100)
 	}
 
     override func headerText(day: Day, date: Date) -> String {
@@ -79,7 +79,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
+        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
     }
 
 }

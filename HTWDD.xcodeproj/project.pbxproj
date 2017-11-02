@@ -60,6 +60,7 @@
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B524F4061FAA3BFA007DD104 /* GradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */; };
 		B529EDE81FAB7F40000C1677 /* CodableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */; };
+		B529EDEA1FABA41C000C1677 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */; };
 		B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
@@ -187,6 +188,7 @@
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewModel.swift; sourceTree = "<group>"; };
 		B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableDictionary.swift; sourceTree = "<group>"; };
+		B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B52A9B581DDB173600313FC3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				B50EB4FC1E6ADB410022E40C /* DataSource */,
 				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
+				B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */,
 				B56957871FAA3F7F00CE2318 /* GradeHeaderView.swift */,
 				B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */,
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
@@ -990,6 +993,7 @@
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
+				B529EDEA1FABA41C000C1677 /* CollectionViewFlowLayout.swift in Sources */,
 				B5D3E83E1FA5EBBE0055782D /* Service.swift in Sources */,
 				B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */,
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
