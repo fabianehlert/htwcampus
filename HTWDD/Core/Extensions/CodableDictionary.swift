@@ -11,9 +11,9 @@ import Foundation
 // Copied from https://stackoverflow.com/questions/44725202/swift-4-decodable-dictionary-with-enum-as-key
 struct CodableDictionary<Key: Hashable, Value: Codable>: Codable where Key: CodingKey {
     
-    let decoded: [Key: Value]
+    let decoded: [Key: [Value]]
     
-    init(_ decoded: [Key: Value]) {
+    init(_ decoded: [Key: [Value]]) {
         self.decoded = decoded
     }
     
@@ -22,7 +22,7 @@ struct CodableDictionary<Key: Hashable, Value: Codable>: Codable where Key: Codi
         
         decoded = Dictionary(uniqueKeysWithValues:
             try container.allKeys.lazy.map {
-                (key: $0, value: try container.decode(Value.self, forKey: $0))
+                (key: $0, value: try container.decode([Value].self, forKey: $0))
             }
         )
     }

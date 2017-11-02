@@ -34,10 +34,20 @@ class ScheduleService: Service {
             self.semesters = semesters
         }
         
+        private enum CodingKeys : CodingKey {
+            case lectures, semesters
+        }
+        
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             self.lectures = try values.decode(CodableDictionary.self, forKey: .lectures).decoded
-            self.semesters = try values.decode([SemesterInformation.self], forKey: .semesters)
+            self.semesters = try values.decode([SemesterInformation].self, forKey: .semesters)
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(CodableDictionary(self.lectures), forKey: .lectures)
+            try container.encode(self.semesters, forKey: .semesters)
         }
         
         static func ==(lhs: Information, rhs: Information) -> Bool {
@@ -67,16 +77,33 @@ class ScheduleService: Service {
             .map(Lecture.groupByDay)
 
         let informationObservable = SemesterInformation.get(network: self.network)
-
-        return Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
+        
+        let cached = self.loadFromCache()
+        let internetLoading: Observable<Information> = Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
             let information = Information(lectures: l, semesters: s)
             self?.cachedInformation[parameters] = information
+            self?.saveToCache(info: information)
             return information
-        }.distinctUntilChanged()
+        }
+        return Observable.merge(cached, internetLoading).distinctUntilChanged()
     }
     
-    private func loadFromCache() -> Information {
-        
+    private func loadFromCache() -> Observable<Information> {
+        guard let data = UserDefaults.standard.data(forKey: "SavedSchedule") else {
+            return Observable.empty()
+        }
+        guard let info = try? JSONDecoder().decode(Information.self, from: data) else {
+            return Observable.empty()
+        }
+        return Observable.just(info)
+    }
+    
+    private func saveToCache(info: Information) {
+        guard let data = try? JSONEncoder().encode(info) else {
+            Log.error("Tried to save \(info) to cache, but json encoding failed.")
+            return
+        }
+        UserDefaults.standard.set(data, forKey: "SavedSchedule")
     }
 
 }
