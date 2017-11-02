@@ -259,6 +259,10 @@ class ScheduleDetailVC: ViewController {
 		])
 	}
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 	// MARK: - Actions
 	
 	@objc

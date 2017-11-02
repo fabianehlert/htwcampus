@@ -172,6 +172,9 @@ final class ScheduleMainVC: ViewController {
 		}
 	}
 
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 }
 
 extension ScheduleMainVC: TabbarChildViewController {

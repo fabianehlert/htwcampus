@@ -55,7 +55,8 @@ class GradeMainVC: CollectionViewController {
                                                         right: Const.margin)
 
         self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
-
+		self.refreshControl.tintColor = .white
+		
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .automatic
@@ -128,6 +129,10 @@ class GradeMainVC: CollectionViewController {
         let newCell = collectionView.cellForItem(at: indexPath) as? GradeCell
         newCell?.updatedExpanded(true)
     }
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 
 }
 

@@ -46,7 +46,9 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
         self.window.makeKeyAndVisible()
 
-        self.showOnboarding(animated: false)
+		self.stylizeUI()
+		
+        self.showOnboarding(animated: false)		
 	}
 
     private func injectAuthentication(schedule: ScheduleService.Auth?, grade: GradeService.Auth?) {
@@ -95,4 +97,13 @@ class AppCoordinator: Coordinator {
             })
             .disposed(by: self.disposeBag)
     }
+	
+	// MARK: - UI Apperance
+	
+	private func stylizeUI() {
+		UINavigationBar.appearance().tintColor = .white
+		UINavigationBar.appearance().barTintColor = UIColor.htw.blue
+		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+		if #available(iOS 11.0, *) { UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] }
+	}
 }

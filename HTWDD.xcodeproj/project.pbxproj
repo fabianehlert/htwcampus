@@ -383,9 +383,9 @@
 			isa = PBXGroup;
 			children = (
 				B5D3E8351FA5E3620055782D /* GradeService.swift */,
-				1FC21DCB1F8F9A47003E244F /* Views */,
 				B52133B81DEF0DB100955D29 /* GradeMainVC.swift */,
 				B5D3E8371FA5E6C10055782D /* GradeCoordinator.swift */,
+				1FC21DCB1F8F9A47003E244F /* Views */,
 			);
 			path = Main;
 			sourceTree = "<group>";
