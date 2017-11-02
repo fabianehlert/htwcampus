@@ -52,7 +52,6 @@
 		B50EB5021E6AFFA20022E40C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB5011E6AFFA20022E40C /* Day.swift */; };
 		B5111E171E71E68F00D68155 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
 		B5111E201E71F44300D68155 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1F1E71F44300D68155 /* View.swift */; };
-		B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E211E71F78700D68155 /* LectureHeaderView.swift */; };
 		B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E231E71F7A200D68155 /* CollectionReusableView.swift */; };
 		B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E271E7206B500D68155 /* LectureTimeView.swift */; };
 		B516D8221FA9A47000551556 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516D8211FA9A47000551556 /* UIView.swift */; };
@@ -180,7 +179,6 @@
 		B50EB5011E6AFFA20022E40C /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B5111E1A1E71E69100D68155 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E1F1E71F44300D68155 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		B5111E211E71F78700D68155 /* LectureHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureHeaderView.swift; sourceTree = "<group>"; };
 		B5111E231E71F7A200D68155 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		B5111E261E71FEC100D68155 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5111E271E7206B500D68155 /* LectureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureTimeView.swift; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 			children = (
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
 				B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */,
-				B56957871FAA3F7F00CE2318 /* GradeHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -448,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				B50EB4FD1E6ADC0C0022E40C /* LectureCollectionViewCell.swift */,
-				B5111E211E71F78700D68155 /* LectureHeaderView.swift */,
 				B5111E271E7206B500D68155 /* LectureTimeView.swift */,
 				B55507131E60246E00C16F5F /* TimetableCollectionViewLayout.swift */,
 				B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */,
@@ -540,6 +536,7 @@
 				B50EB4FC1E6ADB410022E40C /* DataSource */,
 				B5111E231E71F7A200D68155 /* CollectionReusableView.swift */,
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
+				B56957871FAA3F7F00CE2318 /* GradeHeaderView.swift */,
 				B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */,
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
@@ -931,7 +928,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */,
-				B5111E221E71F78700D68155 /* LectureHeaderView.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
 				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,

@@ -46,7 +46,7 @@ class ScheduleBaseVC: CollectionViewController {
 
         // DataSource
         self.dataSource.collectionView = self.collectionView
-        self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
             guard let `self` = self else { return }
             let info = self.dataSource.dayInformation(indexPath: indexPath)
             view.title = self.headerText(day: info.day, date: info.date)

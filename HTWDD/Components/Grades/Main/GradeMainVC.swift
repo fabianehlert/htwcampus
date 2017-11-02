@@ -65,6 +65,10 @@ class GradeMainVC: CollectionViewController {
                 cell.updatedExpanded(true)
             }
         }
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            let semesterTitle = self?.dataSource.semester(for: indexPath.section).localized
+            view.title = semesterTitle
+        }
         self.reload()
     }
 
@@ -124,6 +128,10 @@ extension GradeMainVC: UICollectionViewDelegateFlowLayout {
         }
         
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.width - Const.margin*2, height: 60)
     }
     
 }
