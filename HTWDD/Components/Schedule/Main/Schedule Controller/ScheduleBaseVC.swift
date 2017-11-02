@@ -44,8 +44,6 @@ class ScheduleBaseVC: CollectionViewController {
     override func initialSetup() {
         super.initialSetup()
 
-        self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
-
         // DataSource
         self.dataSource.collectionView = self.collectionView
         self.dataSource.registerSupplementary(LectureHeaderView.self, kind: .header) { [weak self] view, indexPath in

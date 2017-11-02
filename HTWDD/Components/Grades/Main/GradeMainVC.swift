@@ -9,8 +9,12 @@
 import UIKit
 import RxSwift
 
-class GradeMainVC: TableViewController {
+class GradeMainVC: CollectionViewController {
 
+    enum Const {
+        static let margin: CGFloat = 10
+    }
+    
     var auth: GradeService.Auth? {
         set { self.dataSource.auth = newValue }
         get { return nil }
@@ -22,10 +26,12 @@ class GradeMainVC: TableViewController {
 
     private var selectedIndexPath: IndexPath?
 
+    private let layout = UICollectionViewFlowLayout()
+    
     let context: HasGrade
     init(context: HasGrade) {
         self.context = context
-        super.init(nibName: nil, bundle: nil)
+        super.init(layout: self.layout)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -48,14 +54,12 @@ class GradeMainVC: TableViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .automatic
 
-            self.tableView.refreshControl = self.refreshControl
+            self.collectionView.refreshControl = self.refreshControl
         } else {
-            self.tableView.addSubview(self.refreshControl)
+            self.collectionView.addSubview(self.refreshControl)
         }
 
-        self.tableView.separatorStyle = .none
-
-        self.dataSource.tableView = self.tableView
+        self.dataSource.collectionView = self.collectionView
         self.dataSource.register(type: GradeCell.self) { [weak self] cell, _, indexPath in
             if self?.selectedIndexPath == indexPath {
                 cell.updatedExpanded(true)
@@ -85,41 +89,41 @@ class GradeMainVC: TableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    // MARK: - UITableViewDelegate
+    // MARK: - UICollectionViewDelegate
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.selectedIndexPath == indexPath {
             self.selectedIndexPath = nil
-            tableView.reloadRows(at: [indexPath], with: .none)
+            collectionView.reloadItems(at: [indexPath])
             return
         }
-
+        
         let currentSelected = self.selectedIndexPath
         self.selectedIndexPath = indexPath
         let indexPaths = [indexPath] + (currentSelected.map { [$0] } ?? [])
-        tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.none)
-
-        let oldCell = currentSelected.flatMap(tableView.cellForRow) as? GradeCell
+        collectionView.reloadItems(at: indexPaths)
+        
+        let oldCell = currentSelected.flatMap(collectionView.cellForItem) as? GradeCell
         oldCell?.updatedExpanded(false)
-
-        let newCell = tableView.cellForRow(at: indexPath) as? GradeCell
+        
+        let newCell = collectionView.cellForItem(at: indexPath) as? GradeCell
         newCell?.updatedExpanded(true)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+}
+
+extension GradeMainVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.width - Const.margin * 2
+        let height: CGFloat
         if self.selectedIndexPath == indexPath {
-            return GradeCell.Const.expandedHeight
+            height = GradeCell.Const.expandedHeight
+        } else {
+            height = GradeCell.Const.collapsedHeight
         }
-        return GradeCell.Const.collapsedHeight
+        
+        return CGSize(width: width, height: height)
     }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let semester = self.dataSource.semester(for: section)
-        return GradeHeaderView(text: semester.localized)
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
-    }
-
+    
 }

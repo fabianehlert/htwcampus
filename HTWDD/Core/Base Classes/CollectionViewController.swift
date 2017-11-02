@@ -25,6 +25,7 @@ class CollectionViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
         self.collectionView.frame = self.view.bounds
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.collectionView)
