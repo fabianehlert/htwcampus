@@ -143,8 +143,8 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
 		attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + Const.timeWidth
 
-		attr.frame.origin.y = (t.begin.time / 3600 - dataSource.startHour) * self.heightPerHour + margin + Const.headerHeight
-		attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2 // * margin
+		attr.frame.origin.y = (t.begin.time / 3600 - round(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
+		attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2
 		attr.frame.size.width = dataSource.widthPerDay - 2 * margin
 		attr.zIndex = Const.Z.lectures
 
