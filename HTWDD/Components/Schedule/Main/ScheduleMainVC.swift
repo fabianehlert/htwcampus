@@ -11,9 +11,7 @@ import RxSwift
 import RxCocoa
 
 private enum ScheduleLayoutStyle: Int {
-	case
-    list = 0,
-	week = 1
+	case list = 0, week = 1
 
 	var title: String {
 		switch self {
@@ -25,6 +23,8 @@ private enum ScheduleLayoutStyle: Int {
 	}
 
 	static let all = [ScheduleLayoutStyle.list, .week]
+    
+    static let cachingKey = "\(ScheduleLayoutStyle.self)_cache"
 }
 
 final class ScheduleMainVC: ViewController {
@@ -94,8 +94,7 @@ final class ScheduleMainVC: ViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        // TODO: Load preferred style from persistence
-        let style = 0
+        let style = UserDefaults.standard.integer(forKey: ScheduleLayoutStyle.cachingKey)
         self.layoutStyleControl.selectedSegmentIndex = style
         self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
 	}
@@ -104,6 +103,7 @@ final class ScheduleMainVC: ViewController {
 
 	private func switchStyle(to style: ScheduleLayoutStyle?) {
 		guard let style = style else { return }
+        UserDefaults.standard.set(style.rawValue, forKey: ScheduleLayoutStyle.cachingKey)
 
 		if let vc = self.currentScheduleVC {
 			vc.willMove(toParentViewController: nil)

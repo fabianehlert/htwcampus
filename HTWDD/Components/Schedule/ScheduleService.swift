@@ -11,6 +11,10 @@ import RxSwift
 
 class ScheduleService: Service {
 
+    enum Const {
+        static let lectureCacheKey = "lectureCacheKey"
+    }
+    
     struct Auth: Hashable, Codable {
         let year: String
         let major: String
@@ -89,7 +93,7 @@ class ScheduleService: Service {
     }
     
     private func loadFromCache() -> Observable<Information> {
-        guard let data = UserDefaults.standard.data(forKey: "SavedSchedule") else {
+        guard let data = UserDefaults.standard.data(forKey: Const.lectureCacheKey) else {
             return Observable.empty()
         }
         guard let info = try? JSONDecoder().decode(Information.self, from: data) else {
@@ -103,7 +107,7 @@ class ScheduleService: Service {
             Log.error("Tried to save \(info) to cache, but json encoding failed.")
             return
         }
-        UserDefaults.standard.set(data, forKey: "SavedSchedule")
+        UserDefaults.standard.set(data, forKey: Const.lectureCacheKey)
     }
 
 }
