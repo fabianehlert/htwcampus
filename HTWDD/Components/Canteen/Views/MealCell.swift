@@ -28,7 +28,7 @@ class MealCell: TableViewCell, Cell {
     }
 
     func update(viewModel: MealViewModel) {
-        self.label.text = viewModel.meal.name
+        self.label.text = viewModel.meal.title
     }
 
 }
