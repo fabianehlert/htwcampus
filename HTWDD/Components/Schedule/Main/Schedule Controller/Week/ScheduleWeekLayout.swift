@@ -53,7 +53,7 @@ extension ScheduleWeekLayoutDataSource {
 
 class ScheduleWeekLayout: UICollectionViewLayout {
 
-	private enum Const {
+	enum Const {
 		static let headerHeight: CGFloat = 40
 		static let timeWidth: CGFloat = 50
 
