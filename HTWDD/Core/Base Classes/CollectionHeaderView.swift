@@ -21,6 +21,17 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         }
     }
     
+    var titleInset: CGFloat = 15 {
+        didSet {
+            self.leading.constant = titleInset + self.htw.safeAreaInsets.left
+            self.trailing.constant = titleInset + self.htw.safeAreaInsets.right
+            self.layoutIfNeeded()
+        }
+    }
+    
+    private var leading = NSLayoutConstraint()
+    private var trailing = NSLayoutConstraint()
+    
     // MARK: - Init
     
     override func initialSetup() {
@@ -30,12 +41,15 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         self.label.textAlignment = .left
 		self.label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.label)
-		
-		NSLayoutConstraint.activate([
-			self.label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 21 + self.htw.safeAreaInsets.left),
-			self.label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-			self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 21 + self.htw.safeAreaInsets.right)
-		])
-	}
 
+        self.leading = self.label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: titleInset + self.htw.safeAreaInsets.left)
+        self.trailing = self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: titleInset + self.htw.safeAreaInsets.right)
+        
+        NSLayoutConstraint.activate([
+            self.leading,
+            self.label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            self.trailing
+        ])
+	}
+    
 }

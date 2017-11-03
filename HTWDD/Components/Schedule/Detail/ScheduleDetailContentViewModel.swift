@@ -52,6 +52,13 @@ class ScheduleDetailContentViewModel {
 	}
 	
 	var professor: String? {
+        if let prof = self.lecture.professor {
+            if prof.hasSuffix(", ") {
+                return String(prof.dropLast(2))
+            } else {
+                return prof
+            }
+        }
 		return self.lecture.professor
 	}
 	

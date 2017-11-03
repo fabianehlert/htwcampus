@@ -14,7 +14,7 @@ class FlatCollectionViewCell: CollectionViewCell {
         static let color = UIColor.white
         static let highlightedColor = UIColor.white
         
-        static let highlightedScale: CGFloat = 0.99
+        static let highlightedScale: CGFloat = 0.97
         
         static let shadowRadius: CGFloat = 5
         static let highlightedShadowRadius: CGFloat = 1

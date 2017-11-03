@@ -8,7 +8,7 @@
 
 import UIKit.UIColor
 
-private extension UIColor {
+extension UIColor {
 
     convenience init(hex: UInt, alpha: CGFloat = 1.0) {
         self.init(
@@ -52,7 +52,7 @@ extension HTWNamespace where Base: UIColor {
 	}
 
     static var lightGrey: UIColor {
-        return UIColor(hex: 0x757474)
+        return UIColor(hex: 0x7F7F7F)
     }
 
     static var mediumGrey: UIColor {
@@ -61,5 +61,9 @@ extension HTWNamespace where Base: UIColor {
 
     static var darkGrey: UIColor {
         return UIColor(hex: 0x474747)
+    }
+    
+    static var white: UIColor {
+        return UIColor(hex: 0xFFFFFF)
     }
 }
