@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HeightCalculator {
+    func height(`for` width: CGFloat) -> CGFloat
+}
+
 class CollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {

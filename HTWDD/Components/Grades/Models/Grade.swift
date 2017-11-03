@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 import Marshal
 
-struct Grade: Identifiable {
+struct Grade: Codable, Identifiable {
 
-    enum Status: String {
+    enum Status: String, Codable {
         case signedUp = "AN"
         case passed = "BE"
         case failed = "NB"

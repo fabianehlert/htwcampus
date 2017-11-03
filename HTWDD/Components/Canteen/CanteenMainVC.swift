@@ -31,7 +31,7 @@ class CanteenMainVC: TableViewController {
         super.initialSetup()
 
         self.title = Loca.Canteen.title
-        self.tabBarItem.image = #imageLiteral(resourceName: "Hamburger")
+        self.tabBarItem.image = #imageLiteral(resourceName: "Canteen")
 
         self.dataSource.tableView = self.tableView
         self.dataSource.register(type: MealCell.self)
@@ -41,7 +41,8 @@ class CanteenMainVC: TableViewController {
         super.viewDidLoad()
 
         self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
-
+		self.refreshControl.tintColor = .white
+		
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .automatic
@@ -66,5 +67,9 @@ class CanteenMainVC: TableViewController {
                 }
             }.disposed(by: self.rx_disposeBag)
     }
+
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 
 }

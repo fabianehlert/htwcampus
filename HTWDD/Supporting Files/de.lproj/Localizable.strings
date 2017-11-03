@@ -14,7 +14,6 @@
 "Schedule.title"="Stundenplan";
 "Schedule.today"="Heute";
 "Schedule.Style.week"="Woche";
-"Schedule.Style.days"="Tage";
 "Schedule.Style.list"="Liste";
 "Schedule.Cell.time" = "%02d:%02d";
 
@@ -28,6 +27,14 @@
 "friday"="Freitag";
 "saturday"="Samstag";
 "sunday"="Sonntag";
+
+"monday_short"="Mo";
+"tuesday_short"="Di";
+"wednesday_short"="Mi";
+"thursday_short"="Do";
+"friday_short"="Fr";
+"saturday_short"="Sa";
+"sunday_short"="So";
 
 "summerSemester"="Sommersemester";
 "winterSemester"="Wintersemester";

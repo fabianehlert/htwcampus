@@ -107,3 +107,22 @@ extension Semester: ValueType {
     }
 
 }
+
+extension Semester: Codable {
+    func encode(to encoder: Encoder) throws {
+        let semesterNumber: Int
+        switch self {
+        case .summer(_): semesterNumber = 1
+        case .winter(_): semesterNumber = 2
+        }
+        var container = encoder.singleValueContainer()
+        try container.encode(self.year*10 + semesterNumber)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let number = try decoder.singleValueContainer().decode(Int.self)
+        self = try Semester.value(from: number)
+    }
+    
+    
+}

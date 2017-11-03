@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Week: Int {
+enum Week: Int, Codable {
     case all = 0, odd, even
 
     func validate(weekNumber: Int) -> Bool {

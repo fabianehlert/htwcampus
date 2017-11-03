@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class GradeDataSource: TableViewDataSource {
+class GradeDataSource: CollectionViewDataSource {
 
     private var _auth: GradeService.Auth?
     var auth: GradeService.Auth? {
@@ -29,11 +29,11 @@ class GradeDataSource: TableViewDataSource {
 
     private var semesters = [GradeService.Information]() {
         didSet {
-            self.tableView?.reloadData()
+            self.collectionView?.reloadData()
         }
     }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.semesters.count
     }
 

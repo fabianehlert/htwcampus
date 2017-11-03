@@ -47,3 +47,35 @@ extension DateComponents: ValueType {
     }
 
 }
+
+extension DateComponents: Comparable {
+    public static func <(lhs: DateComponents, rhs: DateComponents) -> Bool {
+        if let y1 = lhs.year, let y2 = rhs.year, y1 != y2 {
+            return y1 < y2
+        }
+        
+        if let y1 = lhs.month, let y2 = rhs.month, y1 != y2 {
+            return y1 < y2
+        }
+        
+        if let y1 = lhs.day, let y2 = rhs.day, y1 != y2 {
+            return y1 < y2
+        }
+        
+        if let y1 = lhs.hour, let y2 = rhs.hour, y1 != y2 {
+            return y1 < y2
+        }
+        
+        if let y1 = lhs.minute, let y2 = rhs.minute, y1 != y2 {
+            return y1 < y2
+        }
+        
+        if let y1 = lhs.second, let y2 = rhs.second, y1 != y2 {
+            return y1 < y2
+        }
+        
+        return true
+    }
+    
+    
+}

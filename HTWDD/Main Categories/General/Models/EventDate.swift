@@ -9,7 +9,7 @@
 import Foundation
 import Marshal
 
-struct EventDate: Hashable {
+struct EventDate: Codable, Hashable {
 
     let day: Int
     let month: Int

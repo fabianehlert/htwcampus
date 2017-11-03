@@ -10,6 +10,10 @@ import UIKit
 
 class NavigationController: UINavigationController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.viewControllers.last?.preferredStatusBarStyle ?? .default
+    }
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return self.viewControllers.last?.supportedInterfaceOrientations ?? .allButUpsideDown
     }

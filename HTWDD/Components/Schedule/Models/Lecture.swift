@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Marshal
 
-struct Lecture {
+struct Lecture: Codable {
 
     let rooms: [String]
     let weeks: Set<Int>?
@@ -41,6 +41,12 @@ struct Lecture {
         }
 
         return dayHash
+    }
+}
+
+extension Lecture: Equatable {
+    static func ==(lhs: Lecture, rhs: Lecture) -> Bool {
+        return lhs.begin == rhs.begin && lhs.end == rhs.end && lhs.tag == rhs.tag && lhs.name == rhs.name && lhs.professor == rhs.professor
     }
 }
 

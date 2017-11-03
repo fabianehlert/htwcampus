@@ -12,12 +12,12 @@ import RxSwift
 final class ScheduleListVC: ScheduleBaseVC {
 
     enum Const {
-        static let horizontalMargin: CGFloat = 12
+        static let margin: CGFloat = 12
     }
 
 	// MARK: - Init
 
-    private let collectionViewLayout = UICollectionViewFlowLayout()
+    private let collectionViewLayout = CollectionViewFlowLayout()
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
@@ -33,23 +33,36 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	override func initialSetup() {
         super.initialSetup()
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
 
 		self.collectionView.isDirectionalLockEnabled = true
 
-		self.dataSource.register(type: LectureListCell.self) { _, _, _ in
-//			let width = self.view.htw.safeWidth() - 2*Const.horizontalMargin
-//			cell.updateWidth(width)
-		}
+		self.dataSource.register(type: LectureListCell.self)
+        self.dataSource.register(type: FreeDayListCell.self)
+        
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            let info = self?.dataSource.dayInformation(indexPath: indexPath)
+            let date = NSAttributedString(string: info?.date.string(format: "d. MMMM").uppercased() ?? "",
+                                          attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 14, weight: .semibold)])
+            let separator = NSAttributedString(string: "\n")
+            let day = NSAttributedString(string: info?.date.string(format: "EEEE") ?? "",
+                                         attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 26, weight: .bold)])
+
+            let attributedTitle = NSMutableAttributedString()
+            attributedTitle.append(date)
+            attributedTitle.append(separator)
+            attributedTitle.append(day)
+            
+            view.attributedTitle = attributedTitle
+        }
+
 		self.dataSource.delegate = self
     }
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.horizontalMargin), height: 100)
-	}
-
-    override func headerText(day: Day, date: Date, weekdayLoca: String) -> String {
-        let dateString = date.string(format: "dd.MM")
+    override func headerText(day: Day, date: Date) -> String {
+        let weekdayLoca = super.headerText(day: day, date: date)
+        let dateString = date.string(format: "d. MMMM")
         return "\(weekdayLoca) - \(dateString)"
     }
 
@@ -72,12 +85,21 @@ final class ScheduleListVC: ScheduleBaseVC {
         let sectionInsetY = self.collectionViewLayout.sectionInset.top
         self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY - contentInsetY - sectionInsetY), animated: animated)
     }
+    
 }
 
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.width - Const.horizontalMargin*2, height: 60)
+        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 90)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.itemWidth(collectionView: collectionView)
+        
+        let cell = self.dataSource.configuredSizingCell(collectionView: collectionView, indexPath: indexPath) as? HeightCalculator
+        let height = cell?.height(for: width) ?? 100
+        return CGSize(width: width, height: height)
     }
 
 }

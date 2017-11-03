@@ -12,13 +12,9 @@ class LectureTimeView: CollectionReusableView, Identifiable {
 
 	private let label = UILabel()
 
-    var timeString: String? {
-        get {
-            return self.label.text
-        }
-        set {
-			// TODO: properly generate array consisting of hours of the day.
-			self.label.text = newValue?.appending(":00")
+    var hour: Int? {
+        didSet {
+            self.label.text = self.hour.map { Loca.Schedule.Cell.time($0, 0) }
         }
     }
 

@@ -177,6 +177,10 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         NSLayoutConstraint.activate([top, bottom])
     }
 
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .default
+	}
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }

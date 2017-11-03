@@ -118,6 +118,10 @@ class OnboardWelcomeViewController: ViewController {
 		NSLayoutConstraint.activate([top, bottom])
 	}
 
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .default
+	}
+	
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }

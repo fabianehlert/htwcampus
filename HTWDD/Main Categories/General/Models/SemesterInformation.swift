@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Marshal
 
-struct SemesterInformation {
+struct SemesterInformation: Codable {
 
     let semester: Semester
     var year: Int {
@@ -49,17 +49,23 @@ struct SemesterInformation {
         return self.lectures.contains(date: eventDate)
     }
 
-    func freeDaysContains(date: Date) -> Bool {
+    func freeDayContains(date: Date) -> Event? {
         guard let eventDate = EventDate(date: date) else {
-            return false
+            return nil
         }
 
         for d in self.freeDays {
             if d.period.contains(date: eventDate) {
-                return true
+                return d
             }
         }
-        return false
+        return nil
+    }
+}
+
+extension SemesterInformation: Equatable {
+    static func ==(lhs: SemesterInformation, rhs: SemesterInformation) -> Bool {
+        return lhs.semester == rhs.semester
     }
 }
 

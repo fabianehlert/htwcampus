@@ -9,8 +9,12 @@
 import UIKit
 import RxSwift
 
-class GradeMainVC: TableViewController {
+class GradeMainVC: CollectionViewController {
 
+    enum Const {
+        static let margin: CGFloat = 10
+    }
+    
     var auth: GradeService.Auth? {
         set { self.dataSource.auth = newValue }
         get { return nil }
@@ -22,10 +26,12 @@ class GradeMainVC: TableViewController {
 
     private var selectedIndexPath: IndexPath?
 
+    private let layout = CollectionViewFlowLayout()
+    
     let context: HasGrade
     init(context: HasGrade) {
         self.context = context
-        super.init(nibName: nil, bundle: nil)
+        super.init(layout: self.layout)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,6 +39,7 @@ class GradeMainVC: TableViewController {
     }
 
     override func initialSetup() {
+        super.initialSetup()
         self.title = Loca.Grades.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Grade")
     }
@@ -41,25 +48,35 @@ class GradeMainVC: TableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin,
+                                                        left: Const.margin,
+                                                        bottom: Const.margin,
+                                                        right: Const.margin)
 
         self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
-
+		self.refreshControl.tintColor = .white
+		
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .automatic
 
-            self.tableView.refreshControl = self.refreshControl
+            self.collectionView.refreshControl = self.refreshControl
         } else {
-            self.tableView.addSubview(self.refreshControl)
+            self.collectionView.addSubview(self.refreshControl)
         }
 
-        self.tableView.separatorStyle = .none
-
-        self.dataSource.tableView = self.tableView
+        self.dataSource.collectionView = self.collectionView
         self.dataSource.register(type: GradeCell.self) { [weak self] cell, _, indexPath in
             if self?.selectedIndexPath == indexPath {
                 cell.updatedExpanded(true)
             }
+        }
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            let semesterTitle = self?.dataSource.semester(for: indexPath.section).localized
+            let attributedTitle = NSAttributedString(string: semesterTitle ?? "",
+                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
+            view.attributedTitle = attributedTitle
         }
         self.reload()
     }
@@ -85,41 +102,64 @@ class GradeMainVC: TableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    // MARK: - UITableViewDelegate
+    // MARK: - UICollectionViewDelegate
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        func animate(block: @escaping () -> Void) {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.beginFromCurrentState, .curveEaseInOut], animations: block, completion: nil)
+        }
+        
         if self.selectedIndexPath == indexPath {
             self.selectedIndexPath = nil
-            tableView.reloadRows(at: [indexPath], with: .none)
+            animate {
+                collectionView.reloadItems(at: [indexPath])
+            }
             return
         }
-
+        
         let currentSelected = self.selectedIndexPath
         self.selectedIndexPath = indexPath
         let indexPaths = [indexPath] + (currentSelected.map { [$0] } ?? [])
-        tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.none)
-
-        let oldCell = currentSelected.flatMap(tableView.cellForRow) as? GradeCell
+        animate {
+            collectionView.reloadItems(at: indexPaths)
+        }
+        
+        let oldCell = currentSelected.flatMap(collectionView.cellForItem) as? GradeCell
         oldCell?.updatedExpanded(false)
-
-        let newCell = tableView.cellForRow(at: indexPath) as? GradeCell
+        
+        let newCell = collectionView.cellForItem(at: indexPath) as? GradeCell
         newCell?.updatedExpanded(true)
     }
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+}
+
+extension GradeMainVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.itemWidth(collectionView: collectionView)
+        let height: CGFloat
         if self.selectedIndexPath == indexPath {
-            return GradeCell.Const.expandedHeight
+            height = GradeCell.Const.expandedHeight
+        } else {
+            height = GradeCell.Const.collapsedHeight
         }
-        return GradeCell.Const.collapsedHeight
+        
+        return CGSize(width: width, height: height)
     }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let semester = self.dataSource.semester(for: section)
-        return GradeHeaderView(text: semester.localized)
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
     }
+    
+}
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+extension GradeMainVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.view.htw.safeAreaInsets.top), animated: true)
     }
-
 }

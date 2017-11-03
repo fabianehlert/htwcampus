@@ -11,23 +11,20 @@ import RxSwift
 import RxCocoa
 
 private enum ScheduleLayoutStyle: Int {
-	case
-    list = 0,
-    days = 1,
-	week = 2
+	case list = 0, week = 1
 
 	var title: String {
 		switch self {
 		case .week:
 			return Loca.Schedule.Style.week
-		case .days:
-			return Loca.Schedule.Style.days
 		case .list:
 			return Loca.Schedule.Style.list
 		}
 	}
 
-	static let all = [ScheduleLayoutStyle.list, .days, .week]
+	static let all = [ScheduleLayoutStyle.list, .week]
+    
+    static let cachingKey = "\(ScheduleLayoutStyle.self)_cache"
 }
 
 final class ScheduleMainVC: ViewController {
@@ -65,7 +62,8 @@ final class ScheduleMainVC: ViewController {
 			originDate: ScheduleMainVC.defaultStartDate,
 			numberOfDays: 150,
 			auth: self.auth,
-            shouldFilterEmptySections: false)
+            shouldFilterEmptySections: false,
+            addFreeDays: false)
 		super.init()
 	}
 
@@ -96,8 +94,7 @@ final class ScheduleMainVC: ViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        // TODO: Load preferred style from persistence
-        let style = 0
+        let style = UserDefaults.standard.integer(forKey: ScheduleLayoutStyle.cachingKey)
         self.layoutStyleControl.selectedSegmentIndex = style
         self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
 	}
@@ -106,6 +103,7 @@ final class ScheduleMainVC: ViewController {
 
 	private func switchStyle(to style: ScheduleLayoutStyle?) {
 		guard let style = style else { return }
+        UserDefaults.standard.set(style.rawValue, forKey: ScheduleLayoutStyle.cachingKey)
 
 		if let vc = self.currentScheduleVC {
 			vc.willMove(toParentViewController: nil)
@@ -120,8 +118,6 @@ final class ScheduleMainVC: ViewController {
             switch style {
             case .week:
                 newController = ScheduleWeekVC(configuration: self.dataSourceConfiguration)
-            case .days:
-                newController = ScheduleDaysVC(configuration: self.dataSourceConfiguration)
             case .list:
                 newController = ScheduleListVC(configuration: self.dataSourceConfiguration)
             }
@@ -176,6 +172,9 @@ final class ScheduleMainVC: ViewController {
 		}
 	}
 
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 }
 
 extension ScheduleMainVC: TabbarChildViewController {

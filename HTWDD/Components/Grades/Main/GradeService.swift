@@ -11,6 +11,10 @@ import RxSwift
 
 class GradeService: Service {
 
+    enum Const {
+        static let gradesCacheKey = "gradesCacheKey"
+    }
+    
     struct Auth: Hashable, Codable {
         let username: String
         let password: String
@@ -24,13 +28,18 @@ class GradeService: Service {
         }
     }
 
-    struct Information {
+    struct Information: Codable, Equatable {
         let semester: Semester
         let grades: [Grade]
+        
+        static func ==(lhs: Information, rhs: Information) -> Bool {
+            return lhs.semester == rhs.semester && lhs.grades == rhs.grades
+        }
     }
 
     // MARK: - State
     private var cachedInformation = [Auth: [Information]]()
+    private let persistenceService = PersistenceService()
 
     // MARK: - Loading
 
@@ -49,16 +58,21 @@ class GradeService: Service {
 
         let network = Network(authenticator: Base(username: parameters.username, password: parameters.password))
 
-        return loadCourses(network: network)
+        let loadFromNetwork = loadCourses(network: network)
             .flatMap { (courses) -> Observable<[Information]> in
                 let grades = courses.map { self.loadGrades(network: network, for: $0) }
                 return Observable.combineLatest(grades)
                     .map { Array($0.joined()) }
                     .map(GradeService.groupAndOrderBySemester)
             }
+        let loadFromCache = self.persistenceService.loadGradesCache()
+        
+        return Observable.merge(loadFromNetwork, loadFromCache)
+            .distinctUntilChanged(==)
             .observeOn(MainScheduler.instance)
             .map { [weak self] semesters in
                 self?.cachedInformation[parameters] = semesters
+                self?.persistenceService.save(semesters)
                 return semesters
         }
     }
@@ -77,13 +91,7 @@ class GradeService: Service {
 
         for (semester, grades) in semesterHash {
             semesterHash[semester] = grades.sorted(by: { g1, g2 in
-                guard let date1 = g1.date else {
-                    return false
-                }
-                guard let date2 = g2.date else {
-                    return true
-                }
-                return date1 > date2
+                return g1.text < g2.text
             })
         }
 

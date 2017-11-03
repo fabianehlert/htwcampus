@@ -17,6 +17,9 @@ class PersistenceService: Service {
 
         static let scheduleKey = "htw-dresden.schedule.auth"
         static let gradesKey = "htw-dresden.grades.auth"
+        
+        static let scheduleCacheKey = "htw-dresden.schedule.cache"
+        static let gradesCacheKey = "htw-dresden.grades.cache"
     }
 
     struct Response {
@@ -43,6 +46,20 @@ class PersistenceService: Service {
 
         return try? JSONDecoder().decode(T.self, from: data)
     }
+    
+    func loadScheduleCache() -> Observable<ScheduleService.Information> {
+        guard let saved = self.load(type: ScheduleService.Information.self, key: Const.scheduleCacheKey) else {
+            return Observable.empty()
+        }
+        return Observable.just(saved)
+    }
+    
+    func loadGradesCache() -> Observable<[GradeService.Information]> {
+        guard let saved = self.load(type: [GradeService.Information].self, key: Const.gradesCacheKey) else {
+            return Observable.empty()
+        }
+        return Observable.just(saved)
+    }
 
     // MARK: - Save
 
@@ -53,9 +70,22 @@ class PersistenceService: Service {
     func save(_ grade: GradeService.Auth) {
         self.save(object: grade, key: Const.gradesKey)
     }
+    
+    func save(_ grades: [GradeService.Information]) {
+        self.save(objects: grades, key: Const.gradesCacheKey)
+    }
+    
+    func save(_ lectures: ScheduleService.Information) {
+        self.save(object: lectures, key: Const.scheduleCacheKey)
+    }
 
     private func save<T: Encodable>(object: T, key: String) {
         guard let data = try? JSONEncoder().encode(object) else { return }
+        try? self.keychain.set(data, key: key)
+    }
+    
+    private func save<T: Encodable>(objects: [T], key: String) {
+        guard let data = try? JSONEncoder().encode(objects) else { return }
         try? self.keychain.set(data, key: key)
     }
 
@@ -72,6 +102,14 @@ class PersistenceService: Service {
 
     func removeGrade() {
         self.remove(key: Const.gradesKey)
+    }
+    
+    func removeScheduleCache() {
+        self.remove(key: Const.scheduleCacheKey)
+    }
+    
+    func removeGradesCache() {
+        self.remove(key: Const.gradesCacheKey)
     }
 
     private func remove(key: String) {

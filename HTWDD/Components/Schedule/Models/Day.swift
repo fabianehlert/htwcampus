@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Day: Int {
+enum Day: Int, Codable, CodingKey {
     case monday = 0, tuesday, wednesday, thursday, friday, saturday, sunday
 
     enum Error: Swift.Error {

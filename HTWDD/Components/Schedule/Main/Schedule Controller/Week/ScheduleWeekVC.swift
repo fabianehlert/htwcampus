@@ -11,11 +11,23 @@ import RxSwift
 
 final class ScheduleWeekVC: ScheduleBaseVC {
 
+    private let days = [
+        Loca.monday_short,
+        Loca.tuesday_short,
+        Loca.wednesday_short,
+        Loca.thursday_short,
+        Loca.friday_short,
+        Loca.saturday_short,
+        Loca.sunday_short
+    ]
+    
 	// MARK: - Init
 
 	init(configuration: ScheduleDataSource.Configuration) {
         let layout = ScheduleWeekLayout()
-        super.init(configuration: configuration, layout: layout, startHour: 6.5)
+        var config = configuration
+        config.originDate = Date().beginOfWeek
+        super.init(configuration: config, layout: layout, startHour: 6.5)
         layout.dataSource = self
 	}
 
@@ -26,26 +38,38 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 	override func initialSetup() {
         super.initialSetup()
         self.collectionView.isDirectionalLockEnabled = true
+        
+        self.dataSource.register(type: LectureCollectionViewCell.self)
+        self.dataSource.registerSupplementary(LectureTimeView.self, kind: .description) { [weak self] time, indexPath in
+            guard let `self` = self else {
+                return
+            }
+            let hour = Int(self.startHour) - 1 + indexPath.row
+            time.hour = hour
+        }
 	}
+    
+    override func headerText(day: Day, date: Date) -> String {
+        let index = day.rawValue
+        return self.days[index]
+    }
 
 }
 
 // MARK: - ScheduleWeekLayoutDataSource
 extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 	var widthPerDay: CGFloat {
-		let numberOfDays = 7
+		let numberOfDays = 6
 		return self.view.bounds.width / CGFloat(numberOfDays)
 	}
 
 	var height: CGFloat {
-		let navbarHeight = self.navigationController?.navigationBar.bounds.height ?? 0
-		let statusBarHeight = UIApplication.shared.statusBarFrame.height
-		let tabbarHeight = self.tabBarController?.tabBar.bounds.size.height ?? 0
-		return self.collectionView.bounds.height - navbarHeight - statusBarHeight - tabbarHeight - 25.0
+		let navbarHeight = self.navigationController?.navigationBar.bottom ?? 0
+		return self.collectionView.bounds.height - navbarHeight
 	}
 
 	var endHour: CGFloat {
-		return 21
+		return 21.3
 	}
 
 	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
@@ -54,4 +78,14 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		}
 		return (item.begin, item.end)
 	}
+    
+    var todayIndexPath: IndexPath? {
+        return self.dataSource.indexPathOfToday
+    }
+}
+
+extension ScheduleWeekVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.jumpToToday()
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeCell: TableViewCell {
+class GradeCell: FlatCollectionViewCell {
 
     enum Const {
         static let verticalMargin: CGFloat = 15
@@ -68,8 +68,6 @@ class GradeCell: TableViewCell {
 
         self.noteView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
         self.noteView.textColor = UIColor.htw.lightGrey
-
-        self.selectionStyle = .none
 
         self.prepareForReuse()
 
