@@ -48,6 +48,8 @@ class CollectionViewDataSource: NSObject {
     fileprivate var supplementaryConfigurations = [String: SupplementaryViewConfiguration]()
     fileprivate var supplementaryKinds = [SupplementaryKind: String]()
 
+    private var sizingCells = [String: UICollectionViewCell]()
+    
     func register<CellType: UICollectionViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = {_, _, _ in }) where CellType: Cell {
 
         assert(self.collectionView != nil)
@@ -59,6 +61,7 @@ class CollectionViewDataSource: NSObject {
             (cell as! CellType).update(viewModel: viewModel)
             configure(cell as! CellType, viewModel, indexPath)
         }
+        self.sizingCells[identifier] = CellType()
     }
 
     func registerSupplementary<S: CollectionReusableView>(_ supplementary: S.Type, kind: SupplementaryKind, config: @escaping (S, IndexPath) -> Void) where S: Identifiable {
@@ -76,6 +79,23 @@ class CollectionViewDataSource: NSObject {
 
     func invalidate() {
         self.collectionView?.reloadData()
+    }
+    
+    func configuredSizingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let model = self.item(at: indexPath) else {
+            return errorCell(collectionView: collectionView, indexPath: indexPath, error: "nil model")
+        }
+        
+        let identifier = model.identifier
+        
+        guard let config = self.configurations[identifier] else {
+            return errorCell(collectionView: collectionView, indexPath: indexPath, error: "not configured (\(identifier))")
+        }
+        
+        let cell = self.sizingCells[identifier]!
+        config(model, cell, indexPath)
+        return cell
     }
 
 }

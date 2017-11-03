@@ -69,8 +69,6 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 
 	override func initialSetup() {
         super.initialSetup()
-        
-		self.contentView.translatesAutoresizingMaskIntoConstraints = false
 
 		self.contentView.addSubview(self.colorView)
 		self.contentView.addSubview(self.typeLabel)
@@ -78,10 +76,7 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 		self.contentView.addSubview(self.roomLabel)
 		self.contentView.addSubview(self.timeLabel)
 
-		self.widthConstraint = self.contentView.widthAnchor.constraint(equalToConstant: 351)
-
 		NSLayoutConstraint.activate([
-			self.widthConstraint,
 
 			self.colorView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
 			self.colorView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
@@ -113,5 +108,5 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 		self.roomLabel.text = viewModel.room
 		self.timeLabel.text = viewModel.timeString
 	}
-
+    
 }

@@ -42,8 +42,14 @@ class CollectionViewController: ViewController {
     
     func itemWidth(collectionView: UICollectionView) -> CGFloat {
         let sectionInsets = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout).map { $0.sectionInset.left + $0.sectionInset.right } ?? 0
-        let width = collectionView.width - collectionView.contentInset.left - collectionView.contentInset.right - sectionInsets
-        return min(width, 500)
+        let baseWidth: CGFloat
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            baseWidth = min(collectionView.width, collectionView.height)
+        } else {
+            baseWidth = collectionView.width
+        }
+        let width = baseWidth - collectionView.contentInset.left - collectionView.contentInset.right - sectionInsets
+        return width
     }
 
 }

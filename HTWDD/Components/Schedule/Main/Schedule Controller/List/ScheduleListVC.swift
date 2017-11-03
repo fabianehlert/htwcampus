@@ -33,10 +33,12 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	override func initialSetup() {
         super.initialSetup()
+        
+        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
 
 		self.collectionView.isDirectionalLockEnabled = true
 
-		self.dataSource.register(type: LectureListCell.self) { _, _, _ in }
+		self.dataSource.register(type: LectureListCell.self)
         self.dataSource.register(type: FreeDayListCell.self)
         
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
@@ -58,10 +60,11 @@ final class ScheduleListVC: ScheduleBaseVC {
 		self.dataSource.delegate = self
     }
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.margin), height: 100)
-	}
+    override func headerText(day: Day, date: Date) -> String {
+        let weekdayLoca = super.headerText(day: day, date: date)
+        let dateString = date.string(format: "d. MMMM")
+        return "\(weekdayLoca) - \(dateString)"
+    }
 
     override func jumpToToday() {
         self.scrollToToday(animated: true)
@@ -82,12 +85,27 @@ final class ScheduleListVC: ScheduleBaseVC {
         let sectionInsetY = self.collectionViewLayout.sectionInset.top
         self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY - contentInsetY - sectionInsetY), animated: animated)
     }
+    
 }
 
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.itemWidth(collectionView: collectionView), height: 90)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.itemWidth(collectionView: collectionView)
+        
+        let cell = self.dataSource.configuredSizingCell(collectionView: collectionView, indexPath: indexPath)
+        let widthConstraint = cell.contentView.widthAnchor.constraint(equalToConstant: width)
+        let before = cell.contentView.translatesAutoresizingMaskIntoConstraints
+        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addConstraint(widthConstraint)
+        let height = cell.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        cell.removeConstraint(widthConstraint)
+        cell.contentView.translatesAutoresizingMaskIntoConstraints = before
+        return CGSize(width: width, height: height)
     }
 
 }
