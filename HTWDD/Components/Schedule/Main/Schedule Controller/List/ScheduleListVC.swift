@@ -55,7 +55,7 @@ final class ScheduleListVC: ScheduleBaseVC {
             attributedTitle.append(day)
             
             view.attributedTitle = attributedTitle
-            view.titleInset = 12
+            view.titleInset = Const.margin
         }
 
 		self.dataSource.delegate = self
