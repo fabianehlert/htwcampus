@@ -46,7 +46,7 @@ extension Canteen {
 
     func getMeals() -> Observable<[Meal]> {
         // FIXME: Replace with self-hosted URL
-        let escapedID = self.id.rawValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let escapedID = self.id.rawValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self.id.rawValue
         let request = URLRequest(url: URL(string: "http://lucas-vogel.de/mensa2/backend/?mensaId=\(escapedID)")!)
         return URLSession.shared.rx.data(request: request)
             .map { try JSONDecoder().decode([Meal].self, from: $0) }
