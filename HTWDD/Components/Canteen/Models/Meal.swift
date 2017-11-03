@@ -21,8 +21,8 @@ struct Meal: Identifiable, Decodable {
     let type: String
     let counter: String
     let information: [String]
-    let additives: [String: String]
-    let allergens: [String: String]
+//    let additives: [String: String] // These two are supported, but cannot currently be decoded due to a bug. Will be fixed soon^^
+//    let allergens: [String: String]
     let furtherNotes: [String]
 
     private enum CodingKeys: String, CodingKey {
@@ -35,8 +35,8 @@ struct Meal: Identifiable, Decodable {
         case type = "mealType"
         case counter = "mealCounter"
         case information = "informations"
-        case additives
-        case allergens
+//        case additives
+//        case allergens
         case furtherNotes
     }
 }
