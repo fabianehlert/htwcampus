@@ -74,7 +74,9 @@ class GradeMainVC: CollectionViewController {
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
             let semesterTitle = self?.dataSource.semester(for: indexPath.section).localized
-            view.title = semesterTitle
+            let attributedTitle = NSAttributedString(string: semesterTitle ?? "",
+                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
+            view.attributedTitle = attributedTitle
         }
         self.reload()
     }

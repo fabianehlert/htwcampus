@@ -36,11 +36,25 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 		self.collectionView.isDirectionalLockEnabled = true
 
-		self.dataSource.register(type: LectureListCell.self) { _, _, _ in
-//			let width = self.view.htw.safeWidth() - 2*Const.horizontalMargin
-//			cell.updateWidth(width)
-		}
+		self.dataSource.register(type: LectureListCell.self) { _, _, _ in }
         self.dataSource.register(type: FreeDayListCell.self)
+        
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            let info = self?.dataSource.dayInformation(indexPath: indexPath)
+            let date = NSAttributedString(string: info?.date.string(format: "d. MMMM").uppercased() ?? "",
+                                          attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 14, weight: .semibold)])
+            let separator = NSAttributedString(string: "\n")
+            let day = NSAttributedString(string: info?.date.string(format: "EEEE") ?? "",
+                                         attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 26, weight: .bold)])
+
+            let attributedTitle = NSMutableAttributedString()
+            attributedTitle.append(date)
+            attributedTitle.append(separator)
+            attributedTitle.append(day)
+            
+            view.attributedTitle = attributedTitle
+        }
+
 		self.dataSource.delegate = self
     }
 
@@ -48,12 +62,6 @@ final class ScheduleListVC: ScheduleBaseVC {
 		super.viewDidLoad()
 		self.collectionViewLayout.estimatedItemSize = CGSize(width: self.view.width - (2*Const.margin), height: 100)
 	}
-
-    override func headerText(day: Day, date: Date) -> String {
-        let weekdayLoca = super.headerText(day: day, date: date)
-        let dateString = date.string(format: "d. MMMM")
-        return "\(weekdayLoca) - \(dateString)"
-    }
 
     override func jumpToToday() {
         self.scrollToToday(animated: true)
@@ -79,7 +87,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
+        return CGSize(width: self.itemWidth(collectionView: collectionView), height: 90)
     }
 
 }
