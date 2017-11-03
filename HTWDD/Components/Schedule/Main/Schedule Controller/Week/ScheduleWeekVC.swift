@@ -22,13 +22,14 @@ final class ScheduleWeekVC: ScheduleBaseVC {
     ]
     
 	// MARK: - Init
-
+    
 	init(configuration: ScheduleDataSource.Configuration) {
         let layout = ScheduleWeekLayout()
         var config = configuration
-        config.originDate = Date().beginOfWeek
+        config.originDate = nil
         super.init(configuration: config, layout: layout, startHour: 6.5)
         layout.dataSource = self
+        self.dataSource.delegate = self
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -54,6 +55,28 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         return self.days[index]
     }
 
+    override func jumpToToday() {
+        self.scrollToToday(animated: true)
+    }
+    
+    private func scrollToToday(animated: Bool) {
+        guard let semesterInformation = self.dataSource.semesterInformation else {
+            return
+        }
+        
+        let semesterBegin = semesterInformation.period.begin.date
+        let daysUntilStartOfWeek = Date().beginOfWeek.daysSince(other: semesterBegin)
+        let indexPath = IndexPath(item: 0, section: daysUntilStartOfWeek)
+        
+        guard self.collectionView.numberOfSections >= indexPath.section else {
+            return
+        }
+        
+        // scroll to item
+        self.collectionView.scrollToItem(at: indexPath, at: .left, animated: animated)
+        self.collectionView.contentOffset.x -= ScheduleWeekLayout.Const.timeWidth + self.itemMargin
+    }
+    
 }
 
 // MARK: - ScheduleWeekLayoutDataSource
@@ -82,6 +105,21 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
     var todayIndexPath: IndexPath? {
         return self.dataSource.indexPathOfToday
     }
+}
+
+extension ScheduleWeekVC: ScheduleDataSourceDelegate {
+    
+    func scheduleDataSourceHasFinishedLoading() {
+        // we explicitly need to wait for the next run loop
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
+    }
+    
+    func scheduleDataSourceHasUpdated() {
+        
+    }
+    
 }
 
 extension ScheduleWeekVC: TabbarChildViewController {

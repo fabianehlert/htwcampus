@@ -58,7 +58,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.semesterInformation = SemesterInformation.information(date: Date(), input: self.semesterInformations)
         }
     }
-    private var semesterInformation: SemesterInformation?
+    private(set) var semesterInformation: SemesterInformation?
 
     struct Data {
         let day: Day
