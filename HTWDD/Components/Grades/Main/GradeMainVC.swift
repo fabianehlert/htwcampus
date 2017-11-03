@@ -160,6 +160,6 @@ extension GradeMainVC: UICollectionViewDelegateFlowLayout {
 
 extension GradeMainVC: TabbarChildViewController {
     func tabbarControllerDidSelectAlreadyActiveChild() {
-        self.collectionView.setContentOffset(CGPoint(x: 0, y: -self.view.htw.safeAreaInsets.top), animated: true)
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: -self.view.htw.safeAreaInsets.top), animated: true)
     }
 }
