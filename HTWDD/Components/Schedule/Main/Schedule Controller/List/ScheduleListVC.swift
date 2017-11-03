@@ -97,8 +97,7 @@ extension ScheduleListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)
         
-        let cell = self.dataSource.configuredSizingCell(collectionView: collectionView, indexPath: indexPath) as? HeightCalculator
-        let height = cell?.height(for: width) ?? 100
+        let height = self.dataSource.height(width: width, indexPath: indexPath) ?? 100
         return CGSize(width: width, height: height)
     }
 

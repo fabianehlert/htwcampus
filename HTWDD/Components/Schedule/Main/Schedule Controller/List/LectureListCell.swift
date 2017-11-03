@@ -96,20 +96,27 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.updateLayout(width: self.contentView.width)
+    }
+    
 	func update(viewModel: LectureViewModel) {
 		self.typeLabel.text = viewModel.subtitle.uppercased()
 		self.titleLabel.text = viewModel.longTitle
 		self.roomLabel.text = viewModel.room
 		self.timeLabel.text = viewModel.timeString
-        
-        self.updateLayout(width: self.contentView.width)
 	}
     
 }
 
 extension LectureListCell: HeightCalculator {
-    func height(`for` width: CGFloat) -> CGFloat {
-        self.updateLayout(width: width)
-        return self.colorView.height + Const.margin*2
+    
+    static func height(for width: CGFloat, viewModel: LectureViewModel) -> CGFloat {
+        let cell = LectureListCell()
+        cell.update(viewModel: viewModel)
+        cell.updateLayout(width: width)
+        return cell.colorView.height + Const.margin*2
     }
+    
 }
