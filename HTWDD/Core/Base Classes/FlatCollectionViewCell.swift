@@ -14,20 +14,20 @@ class FlatCollectionViewCell: CollectionViewCell {
         static let color = UIColor.white
         static let highlightedColor = UIColor.white
         
-        static let highlightedScale: CGFloat = 0.97
+        static let highlightedScale: CGFloat = 0.95
         
-        static let shadowRadius: CGFloat = 3
+        static let shadowRadius: CGFloat = 5
         static let highlightedShadowRadius: CGFloat = 1
         
-        static let shadowOpacity: Float = 0.12
-        static let highlightedShadowOpacity: Float = 0.3
+        static let shadowOpacity: Float = 0.15
+        static let highlightedShadowOpacity: Float = 0.15
     }
     
     override func initialSetup() {
         super.initialSetup()
         
         self.contentView.backgroundColor = Const.color
-        self.contentView.layer.cornerRadius = 2
+        self.contentView.layer.cornerRadius = 6
         self.contentView.clipsToBounds = true
         
         self.layer.shadowColor = UIColor.black.cgColor
@@ -58,7 +58,7 @@ extension FlatCollectionViewCell: Highlightable {
         if !animated {
             animations()
         } else {
-            let duration = 0.08
+            let duration = 0.12
             
             let shadowRadiusAnimation = CABasicAnimation(keyPath: "shadowRadius")
             shadowRadiusAnimation.fromValue = Const.shadowRadius
