@@ -116,6 +116,10 @@ class ScheduleDetailVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.presentingViewController != nil {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Loca.back, style: .done, target: self, action: #selector(dismissOrPopViewController))
+        }
     }
 
 	// MARK: - UI

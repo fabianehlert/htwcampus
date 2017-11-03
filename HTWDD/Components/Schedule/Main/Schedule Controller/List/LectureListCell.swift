@@ -119,7 +119,8 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         let labelsStart = Const.margin * 3 + self.beginLabel.width + self.colorView.width
         let labelsWidth = width - labelsStart - Const.margin
         func sizeForLabel(label: UILabel) -> CGSize {
-            return label.sizeThatFits(CGSize(width: labelsWidth, height: CGFloat.greatestFiniteMagnitude))
+            let height = label.sizeThatFits(CGSize(width: labelsWidth, height: CGFloat.greatestFiniteMagnitude)).height
+            return CGSize(width: labelsWidth, height: height)
         }
         
         self.titleLabel.frame = CGRect(origin: CGPoint(x: labelsStart, y: Const.margin),
@@ -141,6 +142,11 @@ class LectureListCell: FlatCollectionViewCell, Cell {
                                       width: 6, height: (self.typeContainer.bottom - self.titleLabel.top) + 3)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.updateLayout(width: self.contentView.width)
+    }
+    
 	func update(viewModel: LectureViewModel) {
         self.beginLabel.text = viewModel.begin
         self.endLabel.text = viewModel.end
@@ -148,17 +154,20 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         self.professorLabel.text = viewModel.professor
         self.typeLabel.text = viewModel.subtitle
 		self.roomLabel.text = viewModel.room
+		self.timeLabel.text = viewModel.timeString
         
         self.roomContainer.alpha = viewModel.room != nil ? 1 : 0
-        
-        self.updateLayout(width: self.contentView.width)
 	}
     
 }
 
 extension LectureListCell: HeightCalculator {
-    func height(`for` width: CGFloat) -> CGFloat {
-        self.updateLayout(width: width)
-        return self.colorView.height + Const.margin*2
+    
+    static func height(for width: CGFloat, viewModel: LectureViewModel) -> CGFloat {
+        let cell = LectureListCell()
+        cell.update(viewModel: viewModel)
+        cell.updateLayout(width: width)
+        return cell.colorView.height + Const.margin*2
     }
+    
 }

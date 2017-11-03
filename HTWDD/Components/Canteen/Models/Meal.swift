@@ -7,42 +7,36 @@
 //
 
 import Foundation
-import OpenMensaKit
 
-struct Meal: Identifiable {
+struct Meal: Identifiable, Decodable {
+    let title: String
+    let canteen: String
 
-    let id: Int
-    let name: String
-    let category: String
-    let studentsPrice: Double
-    let employeesPrice: Double
-    let notes: [String]
+    let url: URL
+    let imageURL: URL?
 
-    let canteen: Canteen.Id
-    let date: Date
+    let studentPrice: Double?
+    let employeePrice: Double?
 
-    init(canteen: Canteen.Id, date: Date, openMensaMeal: OpenMensaKit.Meal) {
-        self.id = openMensaMeal.id
-        self.name = openMensaMeal.name
-        self.category = openMensaMeal.category
-        self.studentsPrice = openMensaMeal.price.students ?? 0
-        self.employeesPrice = openMensaMeal.price.employees ?? 0
-        self.notes = openMensaMeal.notes
+    let type: String
+    let counter: String
+    let information: [String]
+//    let additives: [String: String] // These two are supported, but cannot currently be decoded due to a bug. Will be fixed soon^^
+//    let allergens: [String: String]
+    let furtherNotes: [String]
 
-        self.canteen = canteen
-        self.date = date
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case canteen = "mensa"
+        case url = "link"
+        case imageURL = "image"
+        case studentPrice
+        case employeePrice
+        case type = "mealType"
+        case counter = "mealCounter"
+        case information = "informations"
+//        case additives
+//        case allergens
+        case furtherNotes
     }
-
-    var imageUrl: URL? {
-        guard let imageId = self.canteen.imageId else {
-            return nil
-        }
-        let year = self.date.components.year ?? 0
-        let month = self.date.components.month ?? 0
-
-        let urlString = "https://bilderspeiseplan.studentenwerk-dresden.de/m\(imageId)/\(year)\(month)/thumbs/\(self.id).jpg"
-
-        return URL(string: urlString)
-    }
-
 }

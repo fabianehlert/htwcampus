@@ -47,21 +47,37 @@ class CollectionViewDataSource: NSObject {
     fileprivate typealias SupplementaryViewConfiguration = (UICollectionReusableView, IndexPath) -> Void
     fileprivate var supplementaryConfigurations = [String: SupplementaryViewConfiguration]()
     fileprivate var supplementaryKinds = [SupplementaryKind: String]()
-
-    private var sizingCells = [String: UICollectionViewCell]()
+    
+    private typealias HeightCalculation = (Any, CGFloat) -> CGFloat
+    private var heightCalculations = [String: HeightCalculation]()
+    
+    func register<CellType: UICollectionViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = {_, _, _ in }) where CellType: HeightCalculator {
+        assert(self.collectionView != nil)
+        
+        let identifier = type.ViewModelType.ModelType.identifier
+        self.heightCalculations[identifier] = { model, width in
+            let viewModel = CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType)
+            return CellType.height(for: width, viewModel: viewModel)
+        }
+        return self.registerCell(type: type, configure: configure)
+    }
     
     func register<CellType: UICollectionViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void = {_, _, _ in }) where CellType: Cell {
 
         assert(self.collectionView != nil)
+        
+        self.registerCell(type: type, configure: configure)
+    }
+    
+    private func registerCell<CellType: UICollectionViewCell>(type: CellType.Type, configure: @escaping (CellType, CellType.ViewModelType, IndexPath) -> Void) where CellType: Cell {
         let identifier = type.ViewModelType.ModelType.identifier
         self.collectionView?.register(type, forCellWithReuseIdentifier: identifier)
-
+        
         self.configurations[identifier] = { model, cell, indexPath in
             let viewModel = CellType.ViewModelType(model: model as! CellType.ViewModelType.ModelType)
             (cell as! CellType).update(viewModel: viewModel)
             configure(cell as! CellType, viewModel, indexPath)
         }
-        self.sizingCells[identifier] = CellType()
     }
 
     func registerSupplementary<S: CollectionReusableView>(_ supplementary: S.Type, kind: SupplementaryKind, config: @escaping (S, IndexPath) -> Void) where S: Identifiable {
@@ -81,21 +97,16 @@ class CollectionViewDataSource: NSObject {
         self.collectionView?.reloadData()
     }
     
-    func configuredSizingCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        
+    func height(width: CGFloat, indexPath: IndexPath) -> CGFloat? {
         guard let model = self.item(at: indexPath) else {
-            return errorCell(collectionView: collectionView, indexPath: indexPath, error: "nil model")
+            return nil
         }
         
         let identifier = model.identifier
-        
-        guard let config = self.configurations[identifier] else {
-            return errorCell(collectionView: collectionView, indexPath: indexPath, error: "not configured (\(identifier))")
+        guard let heightBlock = self.heightCalculations[identifier] else {
+            return nil
         }
-        
-        let cell = self.sizingCells[identifier]!
-        config(model, cell, indexPath)
-        return cell
+        return heightBlock(model, width)
     }
 
 }

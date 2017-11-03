@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol HeightCalculator {
-    func height(`for` width: CGFloat) -> CGFloat
+protocol HeightCalculator: Cell {
+    static func height(`for` width: CGFloat, viewModel: ViewModelType) -> CGFloat
 }
 
 class CollectionViewCell: UICollectionViewCell {

@@ -19,10 +19,12 @@ class CanteenService: Service {
     typealias CanteenInformation = (canteen: Canteen, meals: [Meal])
 
     func load(parameters: Parameters) -> Observable<CanteenInformation> {
-        return Canteen.get(id: parameters.id).flatMap { canteen -> Observable<CanteenInformation> in
-            let canteenObservable = Observable.just(canteen)
-            let meals = canteen.getMeals(date: parameters.date)
-            return Observable.combineLatest(canteenObservable, meals) { (canteen: $0, meals: $1) }
+        do {
+            let canteen = try Canteen.with(id: parameters.id)
+            let meals = canteen.getMeals()
+            return Observable.combineLatest(Observable.just(canteen), meals) { (canteen: $0, meals: $1) }
+        } catch {
+            return Observable.error(error)
         }
     }
 
