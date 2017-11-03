@@ -129,15 +129,8 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         self.professorLabel.frame = CGRect(origin: CGPoint(x: labelsStart, y: self.titleLabel.bottom + innerMargin),
                                            size: sizeForLabel(label: self.professorLabel))
         
-        self.typeLabel.frame = CGRect(origin: CGPoint(x: labelsStart, y: self.professorLabel.bottom + (innerMargin*3)),
-                                      size: CGSize(width: self.typeLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
-        
-        self.roomLabel.frame = CGRect(origin: CGPoint(x: self.typeLabel.right + (innerMargin*3), y: self.professorLabel.bottom + (innerMargin*3)),
-                                      size: CGSize(width: self.roomLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
-
-        self.typeContainer.frame = CGRect(origin: CGPoint(x: self.typeLabel.left, y: self.typeLabel.top), size: self.typeLabel.frame.size)
-        self.roomContainer.frame = CGRect(origin: CGPoint(x: self.roomLabel.left, y: self.roomLabel.top), size: self.roomLabel.frame.size)
-        
+		self.updateBadges(innerMargin: innerMargin, labelsStart: labelsStart)
+		
         self.colorView.frame = CGRect(x: self.beginLabel.right + Const.margin, y: Const.margin,
                                       width: 6, height: (self.typeContainer.bottom - self.titleLabel.top) + 3)
     }
@@ -156,6 +149,21 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 		self.roomLabel.text = viewModel.room
 		
         self.roomContainer.alpha = viewModel.room != nil ? 1 : 0
+		
+		let innerMargin: CGFloat = 2
+		let labelsStart = Const.margin * 3 + self.beginLabel.width + self.colorView.width
+		self.updateBadges(innerMargin: innerMargin, labelsStart: labelsStart)
+	}
+	
+	private func updateBadges(innerMargin: CGFloat, labelsStart: CGFloat) {
+		self.typeLabel.frame = CGRect(origin: CGPoint(x: labelsStart, y: self.professorLabel.bottom + (innerMargin*3)),
+									  size: CGSize(width: self.typeLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
+		
+		self.roomLabel.frame = CGRect(origin: CGPoint(x: self.typeLabel.right + (innerMargin*3), y: self.professorLabel.bottom + (innerMargin*3)),
+									  size: CGSize(width: self.roomLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
+		
+		self.typeContainer.frame = CGRect(origin: CGPoint(x: self.typeLabel.left, y: self.typeLabel.top), size: self.typeLabel.frame.size)
+		self.roomContainer.frame = CGRect(origin: CGPoint(x: self.roomLabel.left, y: self.roomLabel.top), size: self.roomLabel.frame.size)
 	}
     
 }
