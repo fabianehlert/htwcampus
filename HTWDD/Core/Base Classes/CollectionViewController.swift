@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionViewController: ViewController {
 
-    var collectionView: UICollectionView
+    let collectionView: UICollectionView
 
     init(layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
         self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)

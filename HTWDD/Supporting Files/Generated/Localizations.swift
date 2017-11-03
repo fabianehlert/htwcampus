@@ -55,17 +55,20 @@ public struct Loca {
     /// Base translation: Tuesday
     public static var tuesday : String = NSLocalizedString("tuesday", comment: "")
 
+    /// Base translation: Back
+    public static var back : String = NSLocalizedString("back", comment: "")
+
     /// Base translation: Sat
     public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
-
-    /// Base translation: Fr
-    public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
 
     /// Base translation: Monday
     public static var monday : String = NSLocalizedString("monday", comment: "")
 
     /// Base translation: Wintersemester
     public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
+
+    /// Base translation: Fr
+    public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
 
     /// Base translation: Wednesday
     public static var wednesday : String = NSLocalizedString("wednesday", comment: "")

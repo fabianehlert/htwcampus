@@ -78,7 +78,13 @@ class ScheduleBaseVC: CollectionViewController {
     }
 
     fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
-        self.navigationController?.pushViewController(controller, animated: animated)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let nc = controller.inNavigationController()
+            nc.modalPresentationStyle = .formSheet
+            self.present(nc, animated: animated, completion: nil)
+        } else {
+            self.navigationController?.pushViewController(controller, animated: animated)
+        }
     }
 
     @objc

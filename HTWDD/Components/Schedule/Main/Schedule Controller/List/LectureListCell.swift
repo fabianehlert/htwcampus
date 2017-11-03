@@ -77,7 +77,8 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         
         let labelsWidth = width - Const.margin * 3 - self.colorView.width
         func sizeForLabel(label: UILabel) -> CGSize {
-            return label.sizeThatFits(CGSize(width: labelsWidth, height: CGFloat.greatestFiniteMagnitude))
+            let height = label.sizeThatFits(CGSize(width: labelsWidth, height: CGFloat.greatestFiniteMagnitude)).height
+            return CGSize(width: labelsWidth, height: height)
         }
         
         self.typeLabel.frame = CGRect(origin: CGPoint(x: self.colorView.right + Const.margin, y: self.colorView.top),

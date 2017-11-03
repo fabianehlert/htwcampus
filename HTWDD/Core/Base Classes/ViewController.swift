@@ -33,5 +33,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
+    
+    @objc
+    func dismissOrPopViewController() {
+        if let presenting = self.presentingViewController {
+            presenting.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 
 }
