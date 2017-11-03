@@ -98,7 +98,6 @@
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */; };
-		B5B376831FA6161D00FC3A07 /* OpenMensaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */; };
 		B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376881FA6179F00FC3A07 /* Meal.swift */; };
 		B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3768A1FA6182800FC3A07 /* Double.swift */; };
 		B5B3768D1FA6192A00FC3A07 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3768C1FA6192A00FC3A07 /* Canteen.swift */; };
@@ -276,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */,
-				B5B376831FA6161D00FC3A07 /* OpenMensaKit.framework in Frameworks */,
 				B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */,
 				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
 				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
@@ -890,7 +888,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Marshal.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/OpenMensaKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = Carthage;
