@@ -31,7 +31,7 @@ struct Canteen {
     enum Id: String {
         case reichenbachstrasse = "mensa_reichenbachstraße"
 
-        var imageId: Int? {
+        var imageId: Int {
             switch self {
             case .reichenbachstrasse: return 9
             }
