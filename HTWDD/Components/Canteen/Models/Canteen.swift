@@ -8,13 +8,28 @@
 
 import Foundation
 import CoreLocation
-import OpenMensaKit
 import RxSwift
 
 struct Canteen {
+    let name: String
+    let id: Id
+    let coordinate: CLLocationCoordinate2D?
 
-    enum Id: Int {
-        case reichenbachstrasse = 80
+    static let reichenbachstrasse = Canteen(name: "Mensa Reichenbachstraße",
+                                            id: .reichenbachstrasse,
+                                            coordinate: CLLocationCoordinate2D(latitude: 51.0342243,
+                                                                               longitude: 13.7318803))
+    static let all = [reichenbachstrasse]
+
+    static func with(id: Id) throws -> Canteen {
+        guard let canteen = all.filter({ $0.id == id }).first else {
+            throw Canteen.Error.incompatibleCanteen(id: id)
+        }
+        return canteen
+    }
+
+    enum Id: String {
+        case reichenbachstrasse = "mensa_reichenbachstraße"
 
         var imageId: Int? {
             switch self {
@@ -22,73 +37,18 @@ struct Canteen {
             }
         }
     }
-
-    let id: Id
-    let name: String
-    let address: String
-    let coordinate: CLLocationCoordinate2D?
-
-    private let canteen: OpenMensaKit.Canteen
-
-    init?(_ openMensaCanteen: OpenMensaKit.Canteen) {
-        guard let id = Id(rawValue: openMensaCanteen.id) else {
-            return nil
-        }
-        self.id = id
-        self.name = openMensaCanteen.name
-        self.address = openMensaCanteen.address
-        self.coordinate = openMensaCanteen.coordinate
-
-        self.canteen = openMensaCanteen
-    }
-
 }
 
 extension Canteen {
-
     enum Error: Swift.Error {
-        case incompatibleCanteen(id: Int)
+        case incompatibleCanteen(id: Canteen.Id)
     }
 
-    static func get(id: Id) -> Observable<Canteen> {
-        return Observable.create { observer in
-
-            OpenMensaKit.Canteen.get(withID: id.rawValue) { result in
-                switch result {
-                case .success(let canteen):
-                    guard let c = Canteen(canteen) else {
-                        observer.onError(Error.incompatibleCanteen(id: canteen.id))
-                        return
-                    }
-                    observer.onNext(c)
-                    observer.onCompleted()
-                case .failure(let err):
-                    observer.onError(err)
-                }
-            }
-
-            return Disposables.create()
-        }
+    func getMeals() -> Observable<[Meal]> {
+        // FIXME: Replace with self-hosted URL
+        let escapedID = self.id.rawValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let request = URLRequest(url: URL(string: "http://lucas-vogel.de/mensa2/backend/?mensaId=\(escapedID)")!)
+        return URLSession.shared.rx.data(request: request)
+            .map { try JSONDecoder().decode([Meal].self, from: $0) }
     }
-
-    func getMeals(date: Date) -> Observable<[Meal]> {
-        return Observable.create { observer in
-
-            self.canteen.getMeals(forDay: date, completion: { result in
-                switch result {
-                case .success(let meals):
-                    let mapped = meals.map { m in
-                        return Meal(canteen: self.id, date: date, openMensaMeal: m)
-                    }
-                    observer.onNext(mapped)
-                    observer.onCompleted()
-                case .failure(let err):
-                    observer.onError(err)
-                }
-            })
-
-            return Disposables.create()
-        }
-    }
-
 }
