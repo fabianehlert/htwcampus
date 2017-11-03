@@ -22,7 +22,7 @@ struct Canteen {
     static let all = [reichenbachstrasse]
 
     static func with(id: Id) throws -> Canteen {
-        guard let canteen = all.filter({ $0.id == id }).first else {
+        guard let canteen = all.first(where: { $0.id == id }) else {
             throw Canteen.Error.incompatibleCanteen(id: id)
         }
         return canteen
