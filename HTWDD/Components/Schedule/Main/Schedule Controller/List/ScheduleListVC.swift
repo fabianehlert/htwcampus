@@ -82,9 +82,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 
         // scroll to header
         let offsetY = self.collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath)?.frame.origin.y ?? 0
-        let contentInsetY = self.collectionView.contentInset.top
-        let sectionInsetY = self.collectionViewLayout.sectionInset.top
-        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY - contentInsetY - sectionInsetY), animated: animated)
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY), animated: animated)
     }
     
 }
