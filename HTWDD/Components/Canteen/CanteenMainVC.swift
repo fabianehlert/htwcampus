@@ -31,7 +31,7 @@ class CanteenMainVC: TableViewController {
         super.initialSetup()
 
         self.title = Loca.Canteen.title
-        self.tabBarItem.image = #imageLiteral(resourceName: "Hamburger")
+        self.tabBarItem.image = #imageLiteral(resourceName: "Canteen")
 
         self.dataSource.tableView = self.tableView
         self.dataSource.register(type: MealCell.self)
