@@ -24,10 +24,15 @@ protocol HasCanteen {
     var canteenService: CanteenService { get }
 }
 
-class AppContext: HasSchedule, HasGrade, HasCanteen {
+protocol HasExams {
+    var examService: ExamsService { get }
+}
+
+class AppContext: HasSchedule, HasGrade, HasCanteen, HasExams {
 
     let scheduleService = ScheduleService()
     let gradeService = GradeService()
     let canteenService = CanteenService()
+    let examService = ExamsService()
 
 }

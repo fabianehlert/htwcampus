@@ -120,6 +120,13 @@ public struct Loca {
         }
     }
 
+    public struct Exams {
+
+        /// Base translation: Exams
+        public static var title : String = NSLocalizedString("Exams.title", comment: "")
+
+    }
+
     public struct Schedule {
 
         /// Base translation: Schedule
