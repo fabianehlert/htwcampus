@@ -150,7 +150,17 @@ class ScheduleDataSource: CollectionViewDataSource {
                 }.sorted { l1, l2 in
                     return l1.begin < l2.begin
             }
-            return Data(day: day, date: date, lectures: l, freeDays: [])
+            let freeDays: [Event]
+            if l.isEmpty && date.sameDayAs(other: Date()) {
+                if let eventDate = EventDate(date: Date()) {
+                    freeDays = [Event(name: Loca.Schedule.freeDay, period: EventPeriod(begin: eventDate, end: eventDate))]
+                } else {
+                    freeDays = []
+                }
+            } else {
+                freeDays = []
+            }
+            return Data(day: day, date: date, lectures: l, freeDays: freeDays)
         }
         if self.filterEmptySections {
             all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
