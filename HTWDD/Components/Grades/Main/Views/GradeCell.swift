@@ -50,7 +50,7 @@ class GradeCell: FlatCollectionViewCell {
 
         self.detailLabels.forEach {
             $0.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
-            $0.textColor = UIColor.htw.lightGrey
+            $0.textColor = UIColor.htw.grey
         }
 
         self.formView.font = .systemFont(ofSize: Const.titleFontSize, weight: .medium)
@@ -58,16 +58,16 @@ class GradeCell: FlatCollectionViewCell {
         self.formView.textAlignment = .right
 
         self.creditsView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
-        self.creditsView.textColor = UIColor.htw.lightGrey
+        self.creditsView.textColor = UIColor.htw.grey
 
         self.triesView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
-        self.triesView.textColor = UIColor.htw.lightGrey
+        self.triesView.textColor = UIColor.htw.grey
 
         self.dateView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
-        self.dateView.textColor = UIColor.htw.lightGrey
+        self.dateView.textColor = UIColor.htw.grey
 
         self.noteView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
-        self.noteView.textColor = UIColor.htw.lightGrey
+        self.noteView.textColor = UIColor.htw.grey
 
         self.prepareForReuse()
 
