@@ -135,6 +135,9 @@ public struct Loca {
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
 
+        /// Base translation: Enjoy your free day!
+        public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
+
 
         public struct Style {
 
