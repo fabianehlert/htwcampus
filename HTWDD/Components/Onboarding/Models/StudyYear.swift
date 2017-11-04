@@ -9,25 +9,45 @@
 import Foundation
 import RxSwift
 
-struct StudyYear: Codable {
+struct StudyYear: Decodable {
     
     let studyYear: Int
     let studyCourses: [StudyCourse]
     
-    static func get(network: Network) -> Observable<StudyYear> {
-        return network.get(url: "https://rubu2.rz.htw-dresden.de/API/v0/studyGroups.php")
+    static func get(network: Network) -> Observable<[StudyYear]> {
+        return network.getArray(url: "https://rubu2.rz.htw-dresden.de/API/v0/studyGroups.php")
     }
 }
 
-struct StudyCourse: Codable {
+struct StudyCourse: Decodable {
     
     let studyCourse: String
     let name: String
     let studyGroups: [StudyGroup]
     
+    private enum CodingKeys: String, CodingKey {
+        case studyCourse
+        case name
+        case studyGroups
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let number = try? container.decode(Int.self, forKey: .studyCourse) {
+            self.studyCourse = string(length: 3, number: number)
+        } else if let str = try? container.decode(String.self, forKey: .studyCourse) {
+            self.studyCourse = str
+        } else {
+            throw NSError()
+        }
+        
+        self.name = try container.decode(String.self, forKey: .name)
+        self.studyGroups = try container.decode([StudyGroup].self, forKey: .studyGroups)
+    }
+    
 }
 
-struct StudyGroup: Codable {
+struct StudyGroup: Decodable {
     enum Degree {
         case bachelor, diplom, master
         init?(grade: Int) {
@@ -42,8 +62,38 @@ struct StudyGroup: Codable {
     
     let studyGroup: String
     let name: String
-    let grade: Int
-    var degree: Degree? {
-        return Degree(grade: self.grade)
+    let degree: Degree
+    
+    private enum CodingKeys: String, CodingKey {
+        case studyGroup
+        case name
+        case grade
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: StudyGroup.CodingKeys.self)
+        if let number = try? container.decode(Int.self, forKey: .studyGroup) {
+            self.studyGroup = string(length: 2, number: number)
+        } else if let str = try? container.decode(String.self, forKey: .studyGroup) {
+            self.studyGroup = str
+        } else {
+            throw NSError()
+        }
+        
+        self.name = try container.decode(String.self, forKey: .name)
+        let grade = try container.decode(Int.self, forKey: .grade)
+        guard let degree = Degree(grade: grade) else {
+            throw NSError()
+        }
+        self.degree = degree
+    }
+    
+}
+
+private func string(length: Int, number: Int) -> String {
+    var str = number.description
+    while str.count < 2 {
+        str = "0" + str
+    }
+    return str
 }
