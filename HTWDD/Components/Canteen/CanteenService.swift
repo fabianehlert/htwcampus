@@ -18,10 +18,12 @@ class CanteenService: Service {
 
     typealias CanteenInformation = (canteen: Canteen, meals: [Meal])
 
+    private let network = Network()
+    
     func load(parameters: Parameters) -> Observable<CanteenInformation> {
         do {
             let canteen = try Canteen.with(id: parameters.id)
-            let meals = canteen.getMeals()
+            let meals = canteen.getMeals(network: self.network)
             return Observable.combineLatest(Observable.just(canteen), meals) { (canteen: $0, meals: $1) }
         } catch {
             return Observable.error(error)

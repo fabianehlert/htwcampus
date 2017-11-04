@@ -17,6 +17,7 @@
 "Schedule.Style.list"="List";
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
+"Schedule.freeDay"="Enjoy your free day!";
 
 "Canteen.title"="Canteen";
 "Exams.title"="Exams";

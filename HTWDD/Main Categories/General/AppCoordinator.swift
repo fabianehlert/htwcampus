@@ -92,7 +92,7 @@ class AppCoordinator: Coordinator {
 	}
 
     private func loadPersistedAuth(completion: @escaping (ScheduleService.Auth?, GradeService.Auth?) -> Void) {
-        persistenceService.load()
+        self.persistenceService.load()
             .take(1)
             .subscribe(onNext: { res in
                     completion(res.schedule, res.grades)

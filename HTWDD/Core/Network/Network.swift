@@ -34,18 +34,27 @@ public class Network {
 
     // MARK: - GET
 
-    private func get(url: String, params: [String: String]) -> Observable<Any> {
-
-        let p: [String] = params.map { $0.key + "=" + $0.value }
+    private func escapedQuery(_ string: String) -> String {
+        return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? string
+    }
+    
+    private func request(url: String, params: [String: String]) -> Observable<URLRequest> {
+        let p: [String] = params.map { self.escapedQuery($0.key) + "=" + self.escapedQuery($0.value) }
         let joinedParameters = p.joined(separator: "&")
         let urlString = url + "?" + joinedParameters
         guard let url = URL(string: urlString) else {
             return Observable.error(Error.invalidURL(urlString))
         }
-
+        
         var req = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         self.authenticator?.authenticate(request: &req)
-        return URLSession.shared.rx.json(request: req).map { $0 as Any }
+        return Observable.just(req)
+    }
+    
+    private func get(url: String, params: [String: String]) -> Observable<Any> {
+        return self.request(url: url, params: params).flatMap { req in
+            return URLSession.shared.rx.json(request: req).map { $0 as Any }
+        }
     }
 
     /// get a single object as response.
@@ -54,8 +63,21 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: optional parameters to add to the url
     /// - Returns: Observable containing the loaded object
-    public func get<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
+    @available(*, deprecated)
+    public func getM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
         return get(url: url, params: params).map(self.mapSingleObject)
+    }
+    
+    /// get a single object as response.
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: optional parameters to add to the url
+    /// - Returns: Observable containing the loaded object
+    public func get<T: Decodable>(url: String, params: [String: String] = [:]) -> Observable<T> {
+        return self.request(url: url, params: params).flatMap { req in
+            return URLSession.shared.rx.data(request: req).map({ try JSONDecoder().decode(T.self, from: $0) })
+        }
     }
 
     /// get an array of objects as response
@@ -64,8 +86,21 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: optional parameters to add to the url
     /// - Returns: Observable containing the loaded objects
-    public func getArray<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
+    @available(*, deprecated)
+    public func getArrayM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
         return get(url: url, params: params).map(self.mapArray)
+    }
+    
+    /// get an array of objects as response
+    ///
+    /// - Parameters:
+    ///   - url: url to load the object from
+    ///   - params: optional parameters to add to the url
+    /// - Returns: Observable containing the loaded objects
+    public func getArray<T: Decodable>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
+        return self.request(url: url, params: params).flatMap { req in
+            return URLSession.shared.rx.data(request: req).map({ try JSONDecoder().decode([T].self, from: $0) })
+        }
     }
 
     // MARK: - POST
