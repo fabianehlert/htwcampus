@@ -17,4 +17,9 @@ extension Array {
         return self[index]
     }
 
+	func pickOne() -> Iterator.Element {
+		let i = Int(arc4random() % UInt32(self.count))
+		return self[i]
+	}
+
 }
