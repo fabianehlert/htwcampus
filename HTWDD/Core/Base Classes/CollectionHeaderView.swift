@@ -24,7 +24,7 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
     var titleInset: CGFloat = 15 {
         didSet {
             self.leading.constant = titleInset + self.htw.safeAreaInsets.left
-            self.trailing.constant = titleInset + self.htw.safeAreaInsets.right
+            self.trailing.constant = -(titleInset + self.htw.safeAreaInsets.right)
             self.layoutIfNeeded()
         }
     }
@@ -43,7 +43,7 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         self.addSubview(self.label)
 
         self.leading = self.label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: titleInset + self.htw.safeAreaInsets.left)
-        self.trailing = self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: titleInset + self.htw.safeAreaInsets.right)
+        self.trailing = self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(titleInset + self.htw.safeAreaInsets.right))
         
         NSLayoutConstraint.activate([
             self.leading,
