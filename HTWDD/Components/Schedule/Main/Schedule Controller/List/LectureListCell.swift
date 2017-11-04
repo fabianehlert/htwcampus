@@ -35,7 +35,8 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 
 	let colorView: UIView = {
 		let view = UIView()
-		view.backgroundColor = UIColor(red: 0.76, green: 0.09, blue: 0.09, alpha: 1.0)
+		let random = Int(arc4random() % UInt32(UIColor.htw.scheduleColors.count))
+		view.backgroundColor = UIColor.htw.scheduleColors[random]
 		view.layer.cornerRadius = 2
 		return view
 	}()
