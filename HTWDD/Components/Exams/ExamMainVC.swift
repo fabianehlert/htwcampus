@@ -17,6 +17,8 @@ class ExamMainVC: ViewController {
 		self.tabBarItem.image = #imageLiteral(resourceName: "Exams")
     }
 	
+	// MARK: - ViewController lifecycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -36,4 +38,5 @@ class ExamMainVC: ViewController {
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
+	
 }
