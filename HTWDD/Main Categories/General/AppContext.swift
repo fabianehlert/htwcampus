@@ -16,6 +16,10 @@ protocol HasSchedule {
     var scheduleService: ScheduleService { get }
 }
 
+protocol HasExams {
+	var examService: ExamsService { get }
+}
+
 protocol HasGrade {
     var gradeService: GradeService { get }
 }
@@ -24,15 +28,16 @@ protocol HasCanteen {
     var canteenService: CanteenService { get }
 }
 
-protocol HasExams {
-    var examService: ExamsService { get }
+protocol HasSettings {
+	var settingsService: SettingsService { get }
 }
 
-class AppContext: HasSchedule, HasGrade, HasCanteen, HasExams {
+class AppContext: HasSchedule, HasGrade, HasCanteen, HasExams, HasSettings {
 
     let scheduleService = ScheduleService()
-    let gradeService = GradeService()
+	let examService = ExamsService()
+	let gradeService = GradeService()
     let canteenService = CanteenService()
-    let examService = ExamsService()
-
+	let settingsService = SettingsService()
+	
 }

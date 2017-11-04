@@ -18,8 +18,8 @@
 "Schedule.Cell.time" = "%02d:%02d";
 
 "Canteen.title"="Canteen";
-"Grades.title"="Grades";
 "Exams.title"="Exams";
+"Settings.title"="Settings";
 
 "monday"="Monday";
 "tuesday"="Tuesday";
@@ -44,6 +44,7 @@
 "nextStep"="Continue";
 "letsgo"="Let's go!";
 
+"Grades.title"="Grades";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f credits";
 "Grades.detail.tries" = "%d. try";

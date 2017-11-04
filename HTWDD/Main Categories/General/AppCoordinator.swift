@@ -17,7 +17,8 @@ class AppCoordinator: Coordinator {
         self.schedule,
 		self.exams,
         self.grades,
-        self.canteen
+        self.canteen,
+		self.settings
     ]
 
 	var rootViewController: UIViewController {
@@ -31,6 +32,7 @@ class AppCoordinator: Coordinator {
 	private lazy var exams = ExamsCoordinator(context: self.appContext)
 	private lazy var grades = GradeCoordinator(context: self.appContext)
     private lazy var canteen = CanteenCoordinator(context: self.appContext)
+	private lazy var settings = SettingsCoordinator(context: self.appContext)
 
     private let disposeBag = DisposeBag()
 

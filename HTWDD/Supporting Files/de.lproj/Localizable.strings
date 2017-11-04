@@ -18,8 +18,8 @@
 "Schedule.Cell.time" = "%02d:%02d";
 
 "Canteen.title"="Mensa";
-"Grades.title"="Noten";
 "Exams.title"="Prüfungen";
+"Settings.title"="Einstellungen";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
@@ -44,6 +44,7 @@
 "nextStep"="Weiter";
 "letsgo"="Los geht's!";
 
+"Grades.title"="Noten";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f Credits";
 "Grades.detail.tries" = "%d. Versuch";

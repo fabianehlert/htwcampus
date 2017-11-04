@@ -28,6 +28,9 @@ public struct Loca {
     /// Base translation: Thursday
     public static var thursday : String = NSLocalizedString("thursday", comment: "")
 
+    /// Base translation: Wednesday
+    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
+
     /// Base translation: Mo
     public static var monday_short : String = NSLocalizedString("monday_short", comment: "")
 
@@ -69,9 +72,6 @@ public struct Loca {
 
     /// Base translation: Fr
     public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
-
-    /// Base translation: Wednesday
-    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
 
 
     public struct Onboarding {
@@ -192,6 +192,13 @@ public struct Loca {
 
         /// Base translation: Canteen
         public static var title : String = NSLocalizedString("Canteen.title", comment: "")
+
+    }
+
+    public struct Settings {
+
+        /// Base translation: Settings
+        public static var title : String = NSLocalizedString("Settings.title", comment: "")
 
     }
 }
