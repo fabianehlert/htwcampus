@@ -11,7 +11,8 @@ import UIKit
 class ScheduleDetailVC: ViewController {
 
 	enum Const {
-		static let margin: CGFloat = 15
+		static let margin: CGFloat = 20
+		static let separator: CGFloat = 2
 	}
 	
 	private let viewModel: ScheduleDetailContentViewModel
@@ -20,7 +21,7 @@ class ScheduleDetailVC: ViewController {
 
 	private lazy var nameLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 24, weight: .semibold)
+		label.font = .systemFont(ofSize: 30, weight: .bold)
 		label.textColor = UIColor.htw.textHeadline
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
@@ -31,8 +32,8 @@ class ScheduleDetailVC: ViewController {
 
 	private lazy var professorLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 18, weight: .medium)
-		label.textColor = UIColor.htw.textHeadline
+		label.font = .systemFont(ofSize: 17, weight: .medium)
+		label.textColor = UIColor.htw.mediumGrey
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
@@ -42,8 +43,8 @@ class ScheduleDetailVC: ViewController {
 	
 	private lazy var typeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 14, weight: .medium)
-		label.textColor = .white
+		label.font = .systemFont(ofSize: 18, weight: .semibold)
+		label.textColor = UIColor.htw.textHeadline
 		label.numberOfLines = 1
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,54 +53,23 @@ class ScheduleDetailVC: ViewController {
 
 	private lazy var roomLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 14, weight: .medium)
-		label.textColor = .white
+		label.font = .systemFont(ofSize: 18, weight: .semibold)
+		label.textColor = UIColor.htw.textHeadline
 		label.numberOfLines = 1
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
-	private lazy var beginLabel: UILabel = {
+	private lazy var timeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 18, weight: .medium)
-		label.textColor = UIColor.htw.mediumGrey
+		label.font = .systemFont(ofSize: 22, weight: .semibold)
+		label.textColor = UIColor.htw.textHeadline
 		label.numberOfLines = 1
 		label.textAlignment = .left
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-
-	private lazy var endLabel: UILabel = {
-		let label = UILabel()
-		label.font = .systemFont(ofSize: 18, weight: .medium)
-		label.textColor = UIColor.htw.mediumGrey
-		label.numberOfLines = 1
-		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-	
-	private lazy var weekLabel: UILabel = {
-		let label = UILabel()
-		label.font = .systemFont(ofSize: 18, weight: .medium)
-		label.textColor = UIColor.htw.mediumGrey
-		label.numberOfLines = 1
-		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-
-	private lazy var dayLabel: UILabel = {
-		let label = UILabel()
-		label.font = .systemFont(ofSize: 18, weight: .medium)
-		label.textColor = UIColor.htw.mediumGrey
-		label.numberOfLines = 1
-		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-
 
 	// MARK: - Init
 
@@ -128,7 +98,7 @@ class ScheduleDetailVC: ViewController {
 		self.nameLabel.text = self.viewModel.title
 		self.professorLabel.text = self.viewModel.professor
 		self.typeLabel.text = self.viewModel.type
-		self.roomLabel.text = self.viewModel.rooms.first ?? "No room"
+		self.roomLabel.text = self.viewModel.rooms.first ?? Loca.Schedule.noRoom
 
 		self.view.addSubview(self.nameLabel)
 		self.view.addSubview(self.professorLabel)
@@ -147,18 +117,81 @@ class ScheduleDetailVC: ViewController {
 				self.professorLabel.leadingAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
 				self.professorLabel.topAnchor.constraint(
-					equalTo: self.nameLabel.bottomAnchor),
+					equalTo: self.nameLabel.bottomAnchor, constant: 4),
 				self.professorLabel.trailingAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin)
 			])
 		} else {
-			
+			NSLayoutConstraint.activate([
+				self.nameLabel.leadingAnchor.constraint(
+					equalTo: self.view.leadingAnchor, constant: Const.margin),
+				self.nameLabel.topAnchor.constraint(
+					equalTo: self.view.topAnchor, constant: Const.margin),
+				self.nameLabel.trailingAnchor.constraint(
+					equalTo: self.view.trailingAnchor, constant: -Const.margin),
+				
+				self.professorLabel.leadingAnchor.constraint(
+					equalTo: self.view.leadingAnchor, constant: Const.margin),
+				self.professorLabel.topAnchor.constraint(
+					equalTo: self.nameLabel.bottomAnchor),
+				self.professorLabel.trailingAnchor.constraint(
+					equalTo: self.view.trailingAnchor, constant: -Const.margin)
+			])
+		}
+		
+		// --
+		
+		let separator = UIView()
+		separator.backgroundColor = UIColor.htw.lightGrey
+		separator.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(separator)
+		
+		if #available(iOS 11.0, *) {
+			NSLayoutConstraint.activate([
+				separator.leadingAnchor.constraint(
+					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+				separator.topAnchor.constraint(
+					equalTo: professorLabel.bottomAnchor, constant: 15),
+				separator.trailingAnchor.constraint(
+					equalTo: self.view.trailingAnchor),
+				separator.heightAnchor.constraint(
+					equalToConstant: Const.separator)
+				])
+		} else {
+			NSLayoutConstraint.activate([
+				separator.leadingAnchor.constraint(
+					equalTo: self.view.leadingAnchor, constant: Const.margin),
+				separator.topAnchor.constraint(
+					equalTo: professorLabel.bottomAnchor, constant: 15),
+				separator.trailingAnchor.constraint(
+					equalTo: self.view.trailingAnchor),
+				separator.heightAnchor.constraint(
+					equalToConstant: Const.separator)
+				])
+		}
+		
+		// --
+		
+		self.timeLabel.text = self.viewModel.time
+		
+		self.view.addSubview(self.timeLabel)
+		
+		if #available(iOS 11.0, *) {
+			NSLayoutConstraint.activate([
+				self.timeLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+				self.timeLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 15),
+			])
+		} else {
+			NSLayoutConstraint.activate([
+				self.timeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
+				self.timeLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 15),
+			])
 		}
 		
 		// --
 		
 		let typeContainer = UIView()
-		typeContainer.backgroundColor = UIColor.htw.blue
+		typeContainer.backgroundColor = UIColor(hex: 0xE8E8E8)
 		typeContainer.layer.cornerRadius = 6
 		typeContainer.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(typeContainer)
@@ -169,7 +202,7 @@ class ScheduleDetailVC: ViewController {
 				typeContainer.leadingAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
 				typeContainer.topAnchor.constraint(
-					equalTo: self.professorLabel.bottomAnchor, constant: 10),
+					equalTo: self.timeLabel.bottomAnchor, constant: 10),
 				typeContainer.heightAnchor.constraint(
 					equalTo: self.typeLabel.heightAnchor, constant: 10),
 				typeContainer.widthAnchor.constraint(
@@ -180,7 +213,7 @@ class ScheduleDetailVC: ViewController {
 				typeContainer.leadingAnchor.constraint(
 					equalTo: self.view.leadingAnchor, constant: Const.margin),
 				typeContainer.topAnchor.constraint(
-					equalTo: self.professorLabel.bottomAnchor, constant: 10),
+					equalTo: self.timeLabel.bottomAnchor, constant: 10),
 				typeContainer.heightAnchor.constraint(
 					equalTo: self.typeLabel.heightAnchor, constant: 10),
 				typeContainer.widthAnchor.constraint(
@@ -196,7 +229,7 @@ class ScheduleDetailVC: ViewController {
 		// --
 
 		let roomContainer = UIView()
-		roomContainer.backgroundColor = UIColor.htw.orange
+		roomContainer.backgroundColor = UIColor(hex: 0xCFCFCF)
 		roomContainer.layer.cornerRadius = 6
 		roomContainer.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(roomContainer)
@@ -206,7 +239,7 @@ class ScheduleDetailVC: ViewController {
 			roomContainer.leadingAnchor.constraint(
 				equalTo: typeContainer.trailingAnchor, constant: 8),
 			roomContainer.topAnchor.constraint(
-				equalTo: self.professorLabel.bottomAnchor, constant: 10),
+				equalTo: self.timeLabel.bottomAnchor, constant: 10),
 			roomContainer.heightAnchor.constraint(
 				equalTo: self.roomLabel.heightAnchor, constant: 10),
 			roomContainer.widthAnchor.constraint(
@@ -220,47 +253,34 @@ class ScheduleDetailVC: ViewController {
 		
 		// --
 		
-		let separator = UIView()
-		separator.backgroundColor = UIColor.htw.veryLightGrey
-		separator.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addSubview(separator)
-
+		let bottomSeparator = UIView()
+		bottomSeparator.backgroundColor = UIColor.htw.lightGrey
+		bottomSeparator.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(bottomSeparator)
+		
 		if #available(iOS 11.0, *) {
 			NSLayoutConstraint.activate([
-				separator.leadingAnchor.constraint(
+				bottomSeparator.leadingAnchor.constraint(
 					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
-				separator.topAnchor.constraint(
-					equalTo: typeContainer.bottomAnchor, constant: 10),
-				separator.trailingAnchor.constraint(
+				bottomSeparator.topAnchor.constraint(
+					equalTo: typeContainer.bottomAnchor, constant: 15),
+				bottomSeparator.trailingAnchor.constraint(
 					equalTo: self.view.trailingAnchor),
-				separator.heightAnchor.constraint(
-					equalToConstant: 2)
+				bottomSeparator.heightAnchor.constraint(
+					equalToConstant: Const.separator)
 			])
 		} else {
 			NSLayoutConstraint.activate([
-				separator.leadingAnchor.constraint(
+				bottomSeparator.leadingAnchor.constraint(
 					equalTo: self.view.leadingAnchor, constant: Const.margin),
-				separator.topAnchor.constraint(
-					equalTo: self.typeLabel.bottomAnchor, constant: Const.margin),
-				separator.trailingAnchor.constraint(
+				bottomSeparator.topAnchor.constraint(
+					equalTo: typeContainer.bottomAnchor, constant: 15),
+				bottomSeparator.trailingAnchor.constraint(
 					equalTo: self.view.trailingAnchor),
-				separator.heightAnchor.constraint(
-					equalToConstant: 2)
+				bottomSeparator.heightAnchor.constraint(
+					equalToConstant: Const.separator)
 			])
 		}
-		
-		self.beginLabel.text = self.viewModel.begin
-		self.endLabel.text = self.viewModel.end
-		
-		self.view.addSubview(self.beginLabel)
-		self.view.addSubview(self.endLabel)
-		
-		NSLayoutConstraint.activate([
-			self.beginLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
-			self.beginLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 40),
-			self.endLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
-			self.endLabel.topAnchor.constraint(equalTo: self.beginLabel.bottomAnchor, constant: 4)
-		])
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {

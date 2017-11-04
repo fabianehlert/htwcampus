@@ -43,11 +43,15 @@ class ScheduleDetailContentViewModel {
 		return self.lecture.rooms
 	}
 	
-	var begin: String? {
+	var time: String {
+		return "\(self.begin) – \(self.end)"
+	}
+	
+	var begin: String {
 		return Loca.Schedule.Cell.time(self.lecture.begin.hour ?? 0, self.lecture.begin.minute ?? 0)
 	}
 	
-	var end: String? {
+	var end: String {
 		return Loca.Schedule.Cell.time(self.lecture.end.hour ?? 0, self.lecture.end.minute ?? 0)
 	}
 	
