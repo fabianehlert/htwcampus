@@ -361,9 +361,9 @@
 			children = (
 				1F77AD181F8FA5A600351A73 /* Onboarding */,
 				B52A9B4D1DDB160700313FC3 /* Schedule */,
+				1FC21DC71F8F951B003E244F /* Exams */,
 				B52A9B4E1DDB165B00313FC3 /* Grades */,
 				B5B376841FA6176E00FC3A07 /* Canteen */,
-				1FC21DC71F8F951B003E244F /* Exams */,
 				1FC21DC81F8F953F003E244F /* Settings */,
 			);
 			path = Components;

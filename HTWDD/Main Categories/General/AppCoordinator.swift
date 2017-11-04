@@ -15,8 +15,8 @@ class AppCoordinator: Coordinator {
 
 	lazy var childCoordinators: [Coordinator] = [
         self.schedule,
+		self.exams,
         self.grades,
-        self.exams,
         self.canteen
     ]
 
@@ -28,9 +28,9 @@ class AppCoordinator: Coordinator {
     private let persistenceService = PersistenceService()
 
     private lazy var schedule = ScheduleCoordinator(context: self.appContext)
-    private lazy var grades = GradeCoordinator(context: self.appContext)
+	private lazy var exams = ExamsCoordinator(context: self.appContext)
+	private lazy var grades = GradeCoordinator(context: self.appContext)
     private lazy var canteen = CanteenCoordinator(context: self.appContext)
-    private lazy var exams = ExamsCoordinator(context: self.appContext)
 
     private let disposeBag = DisposeBag()
 
