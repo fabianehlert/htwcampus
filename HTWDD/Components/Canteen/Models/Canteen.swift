@@ -44,11 +44,7 @@ extension Canteen {
         case incompatibleCanteen(id: Canteen.Id)
     }
 
-    func getMeals() -> Observable<[Meal]> {
-        // FIXME: Replace with self-hosted URL
-        let escapedID = self.id.rawValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self.id.rawValue
-        let request = URLRequest(url: URL(string: "http://lucas-vogel.de/mensa2/backend/?mensaId=\(escapedID)")!)
-        return URLSession.shared.rx.data(request: request)
-            .map { try JSONDecoder().decode([Meal].self, from: $0) }
+    func getMeals(network: Network) -> Observable<[Meal]> {
+        return network.getArray(url: "http://lucas-vogel.de/mensa2/backend", params: ["mensaId": self.id.rawValue])
     }
 }

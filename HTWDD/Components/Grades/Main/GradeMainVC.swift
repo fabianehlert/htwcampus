@@ -97,7 +97,7 @@ class GradeMainVC: CollectionViewController {
 	// MARK: - Actions
 
     private func showAlert(error: Error) {
-        let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Fehler", message: "Some failure in loading: \(error.localizedDescription)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

@@ -94,6 +94,8 @@ class PersistenceService: Service {
     func clear() {
         self.removeGrade()
         self.removeSchedule()
+        self.removeGradesCache()
+        self.removeScheduleCache()
     }
 
     func removeSchedule() {
