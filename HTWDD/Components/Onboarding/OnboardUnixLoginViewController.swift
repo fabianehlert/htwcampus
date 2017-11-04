@@ -21,8 +21,8 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
     override func initialSetup() {
         self.config = .init(title: Loca.Onboarding.UnixLogin.title,
                             description: Loca.Onboarding.UnixLogin.body,
-                            textFields: [self.usernameTextField, self.passwordTextField],
-                            textFieldStackViewAxis: UILayoutConstraintAxis.vertical,
+                            contentViews: [self.usernameTextField, self.passwordTextField],
+                            contentViewsStackViewAxis: UILayoutConstraintAxis.vertical,
                             notNowText: Loca.Onboarding.UnixLogin.notnow,
                             continueButtonText: Loca.letsgo)
 

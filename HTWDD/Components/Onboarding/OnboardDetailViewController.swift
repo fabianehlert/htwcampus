@@ -15,8 +15,8 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
     struct Config {
         var title: String
         var description: String
-        var textFields: [TextField]
-        var textFieldStackViewAxis: UILayoutConstraintAxis
+        var contentViews: [UIView]
+        var contentViewsStackViewAxis: UILayoutConstraintAxis
         var notNowText: String
         var continueButtonText: String
     }
@@ -79,20 +79,23 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
 
         // --- Text fields ---
 
-        let configureTextField: (UITextField) -> Void = {
-            $0.font = .systemFont(ofSize: 30, weight: .medium)
-            $0.backgroundColor = UIColor.htw.veryLightGrey
-            $0.textAlignment = .center
-            $0.delegate = self
-            $0.addTarget(self, action: #selector(self.inputChanges(textField:)), for: .editingChanged)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+        let configureTextField: (UIView) -> Void = {
+            guard let textField = $0 as? UITextField else {
+                return
+            }
+            textField.font = .systemFont(ofSize: 30, weight: .medium)
+            textField.backgroundColor = UIColor.htw.veryLightGrey
+            textField.textAlignment = .center
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(self.inputChanges(textField:)), for: .editingChanged)
+            textField.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        config.textFields
+        config.contentViews
             .forEach(configureTextField)
 
-        let textFieldStackView = UIStackView(arrangedSubviews: config.textFields)
-        textFieldStackView.axis = config.textFieldStackViewAxis
+        let textFieldStackView = UIStackView(arrangedSubviews: config.contentViews)
+        textFieldStackView.axis = config.contentViewsStackViewAxis
         textFieldStackView.distribution = .fillEqually
         textFieldStackView.spacing = 12
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -137,10 +140,10 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         // --- Constraints ---
 
         let stackViewHeight: CGFloat
-        if config.textFieldStackViewAxis == .horizontal {
+        if config.contentViewsStackViewAxis == .horizontal {
             stackViewHeight = 60
         } else {
-            stackViewHeight = 60.0 * CGFloat(config.textFields.count) + textFieldStackView.spacing * (CGFloat(config.textFields.count) - 1)
+            stackViewHeight = 60.0 * CGFloat(config.contentViews.count) + textFieldStackView.spacing * (CGFloat(config.contentViews.count) - 1)
         }
 
         NSLayoutConstraint.activate([
