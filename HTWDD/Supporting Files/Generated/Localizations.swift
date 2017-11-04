@@ -129,13 +129,14 @@ public struct Loca {
 
     public struct Schedule {
 
-        /// Base translation: Schedule
-        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
         /// Base translation: No room
         public static var noRoom : String = NSLocalizedString("Schedule.noRoom", comment: "")
 
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
+
+        /// Base translation: Schedule
+        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
 
         /// Base translation: Enjoy your free day!
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
