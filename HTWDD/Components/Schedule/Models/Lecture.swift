@@ -30,7 +30,7 @@ struct Lecture: Codable {
             "StgGrp": group
         ]
 
-        return network.getArray(url: Lecture.url, params: parameters)
+        return network.getArrayM(url: Lecture.url, params: parameters)
     }
 
     static func groupByDay(lectures: [Lecture]) -> [Day: [Lecture]] {
