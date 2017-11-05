@@ -23,5 +23,11 @@ extension UserDefaults {
             return false
         }
     }
+	
+}
 
+extension UserDefaults {
+	static var htw: UserDefaults? {
+		return UserDefaults(suiteName: accessGroupID)
+	}
 }

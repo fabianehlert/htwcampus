@@ -8,6 +8,8 @@
 
 import Foundation
 
+let accessGroupID = "3E4PGPNR47.group.htw-dresden.ios"
+
 extension String {
 
     var base64: String {
