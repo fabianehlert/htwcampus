@@ -16,16 +16,21 @@ class ScheduleService: Service {
     }
     
     struct Auth: Hashable, Codable {
+        enum Degree: String, Codable {
+            case bachelor, diplom, master
+        }
+        
         let year: String
         let major: String
         let group: String
+        let degree: Degree
 
         var hashValue: Int {
-            return self.year.hashValue ^ self.major.hashValue ^ self.group.hashValue
+            return self.year.hashValue ^ self.major.hashValue ^ self.group.hashValue ^ self.degree.rawValue.hashValue
         }
 
         static func ==(lhs: ScheduleService.Auth, rhs: ScheduleService.Auth) -> Bool {
-            return lhs.year == rhs.year && lhs.major == rhs.major && lhs.group == rhs.group
+            return lhs.year == rhs.year && lhs.major == rhs.major && lhs.group == rhs.group && lhs.degree == rhs.degree
         }
     }
 

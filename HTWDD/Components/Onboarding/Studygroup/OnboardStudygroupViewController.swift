@@ -184,13 +184,21 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         guard
             let y = currentState.year?.studyYear.description,
             let m = currentState.major?.studyCourse,
-            let g = currentState.group?.studyGroup
+            let g = currentState.group?.studyGroup,
+            let d = currentState.group?.degree
         else {
                 self.onFinish?(nil)
                 return
         }
 
-        let group = ScheduleService.Auth(year: y, major: m, group: g)
+        let degree: ScheduleService.Auth.Degree
+        switch d {
+        case .bachelor: degree = .bachelor
+        case .diplom: degree = .diplom
+        case .master: degree = .master
+        }
+        
+        let group = ScheduleService.Auth(year: y, major: m, group: g, degree: degree)
         self.onFinish?(group)
     }
 
