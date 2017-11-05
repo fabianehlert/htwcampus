@@ -7,6 +7,10 @@
 "Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
 "Onboarding.Studygroup.notnow"="Not now";
 
+"Onboading.Studygroup.year"="Year";
+"Onboading.Studygroup.major"="Major";
+"Onboading.Studygroup.group"="Group";
+
 "Onboarding.UnixLogin.title"="Unix-Login";
 "Onboarding.UnixLogin.body"="To be able to show you your grades, please enter your unix-login.";
 "Onboarding.UnixLogin.notnow"="Not now";
