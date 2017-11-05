@@ -7,9 +7,13 @@
 "Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
 "Onboarding.Studygroup.notnow"="Not now";
 
-"Onboading.Studygroup.year"="Year";
-"Onboading.Studygroup.major"="Major";
-"Onboading.Studygroup.group"="Group";
+"Onboarding.Studygroup.year"="Year";
+"Onboarding.Studygroup.major"="Major";
+"Onboarding.Studygroup.group"="Group";
+
+"Onboarding.Studygroup.degree.bachelor"="Bachelor";
+"Onboarding.Studygroup.degree.diplom"="Diplom";
+"Onboarding.Studygroup.degree.master"="Master";
 
 "Onboarding.UnixLogin.title"="Unix-Login";
 "Onboarding.UnixLogin.body"="To be able to show you your grades, please enter your unix-login.";

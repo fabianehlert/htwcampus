@@ -16,7 +16,7 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         var majors: [StudyCourse]? {
             guard
                 let year = self.year,
-                let studyYear = self.years?.first(where: { $0.studyYear == year })
+                let studyYear = self.years?.first(where: { $0.studyYear == year.studyYear })
             else {
                 return nil
             }
@@ -32,9 +32,9 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
             return studyMajor.studyGroups
         }
         
-        var year: Int? {
+        var year: StudyYear? {
             didSet {
-                if oldValue != year {
+                if oldValue?.studyYear != year?.studyYear {
                     self.major = nil
                     self.group = nil
                 }
@@ -106,17 +106,17 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
             .disposed(by: self.disposeBag)
         
         stateObservable
-            .map({ $0.year?.description ?? Loca.Onboading.Studygroup.year })
+            .map({ $0.year?.studyYear.description ?? Loca.Onboarding.Studygroup.year })
             .bind(to: self.yearButton.rx.title())
             .disposed(by: self.disposeBag)
         
         stateObservable
-            .map({ $0.major ?? Loca.Onboading.Studygroup.major })
+            .map({ $0.major ?? Loca.Onboarding.Studygroup.major })
             .bind(to: self.majorButton.rx.title())
             .disposed(by: self.disposeBag)
         
         stateObservable
-            .map({ $0.group ?? Loca.Onboading.Studygroup.group })
+            .map({ $0.group ?? Loca.Onboarding.Studygroup.group })
             .bind(to: self.groupButton.rx.title())
             .disposed(by: self.disposeBag)
         
@@ -137,11 +137,17 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         // TODO: Change this!
         self.yearButton.rx
             .controlEvent(.touchUpInside)
-            .map({ _ in 16 })
-            .subscribe(onNext: { year in
-                self.state.value.year = year
+            .flatMap({ [weak self] _ -> Observable<StudyYear> in
+                guard let `self` = self, let years = self.state.value.years else {
+                    return Observable.empty()
+                }
+                return OnboardStudygroupSelectionController.show(controller: self, data: years)
+            })
+            .subscribe(onNext: { [weak self] studyYear in
+                self?.state.value.year = studyYear
             })
             .disposed(by: self.disposeBag)
+        
         
         self.majorButton.rx
             .controlEvent(.touchUpInside)

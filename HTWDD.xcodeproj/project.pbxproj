@@ -135,6 +135,9 @@
 		B5EF95761FADB3B6006BC7D1 /* ExamMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95751FADB3B6006BC7D1 /* ExamMainVC.swift */; };
 		B5EF95781FADB40C006BC7D1 /* ExamsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95771FADB40C006BC7D1 /* ExamsService.swift */; };
 		B5EF957B1FADC5B8006BC7D1 /* StudyYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF957A1FADC5B8006BC7D1 /* StudyYear.swift */; };
+		B5EF957E1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF957D1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift */; };
+		B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */; };
+		B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
@@ -273,6 +276,9 @@
 		B5EF95751FADB3B6006BC7D1 /* ExamMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamMainVC.swift; sourceTree = "<group>"; };
 		B5EF95771FADB40C006BC7D1 /* ExamsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsService.swift; sourceTree = "<group>"; };
 		B5EF957A1FADC5B8006BC7D1 /* StudyYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyYear.swift; sourceTree = "<group>"; };
+		B5EF957D1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupSelectionController.swift; sourceTree = "<group>"; };
+		B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStudygroupSelectionYearCell.swift; sourceTree = "<group>"; };
+		B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBasicCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
 		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
@@ -312,9 +318,8 @@
 				1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */,
 				1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */,
 				B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */,
-				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
+				B5EF957C1FAF4B6A006BC7D1 /* Studygroup */,
 				B5D3E8411FA5FD490055782D /* OnboardUnixLoginViewController.swift */,
-				B5EF95791FADC57D006BC7D1 /* Models */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				B50EB4F61E6AD42D0022E40C /* CollectionViewDataSource.swift */,
+				B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */,
 				39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */,
 				B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */,
 				B50EB4F81E6ADADC0022E40C /* ErrorViews.swift */,
@@ -764,6 +770,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B5EF957C1FAF4B6A006BC7D1 /* Studygroup */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF95791FADC57D006BC7D1 /* Models */,
+				1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */,
+				B5EF957D1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift */,
+				B5EF957F1FAF4D73006BC7D1 /* Cells */,
+			);
+			path = Studygroup;
+			sourceTree = "<group>";
+		};
+		B5EF957F1FAF4D73006BC7D1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -955,9 +980,11 @@
 			files = (
 				B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
+				B5EF957E1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift in Sources */,
 				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
 				B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */,
+				B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
 				B5F847551F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
@@ -1049,6 +1076,7 @@
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
+				B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
 				1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */,

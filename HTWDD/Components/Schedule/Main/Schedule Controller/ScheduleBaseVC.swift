@@ -102,7 +102,7 @@ class ScheduleBaseVC: CollectionViewController {
 
 // MARK: - CollectionViewDelegate
 extension ScheduleBaseVC {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = self.dataSource.lecture(at: indexPath) else {
             Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
             return

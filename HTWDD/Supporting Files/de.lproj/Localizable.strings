@@ -7,9 +7,13 @@
 "Onboarding.Studygroup.body"="Um Dir Deinen persönlichen Stundenplan anzeigen zu können, musst Du uns noch Deine Studiengruppe mitteilen.";
 "Onboarding.Studygroup.notnow"="Später";
 
-"Onboading.Studygroup.year"="Jahr";
-"Onboading.Studygroup.major"="Fach";
-"Onboading.Studygroup.group"="Gruppe";
+"Onboarding.Studygroup.year"="Jahr";
+"Onboarding.Studygroup.major"="Fach";
+"Onboarding.Studygroup.group"="Gruppe";
+
+"Onboarding.Studygroup.degree.bachelor"="Bachelor";
+"Onboarding.Studygroup.degree.diplom"="Diplom";
+"Onboarding.Studygroup.degree.master"="Master";
 
 "Onboarding.UnixLogin.title"="Unix-Login";
 "Onboarding.UnixLogin.body"="Damit wir dir deine Noten anzeigen können, musst du bitte deinen Unix-Login eingeben.";

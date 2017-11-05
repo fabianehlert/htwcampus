@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-struct StudyYear: Decodable {
+struct StudyYear: Decodable, Identifiable {
     
     let studyYear: Int
     let studyCourses: [StudyCourse]
@@ -19,7 +19,7 @@ struct StudyYear: Decodable {
     }
 }
 
-struct StudyCourse: Decodable {
+struct StudyCourse: Decodable, Identifiable {
     
     let studyCourse: String
     let name: String
@@ -41,7 +41,7 @@ struct StudyCourse: Decodable {
     
 }
 
-struct StudyGroup: Decodable {
+struct StudyGroup: Decodable, Identifiable {
     enum Degree {
         case bachelor, diplom, master
         init?(grade: Int) {
