@@ -33,13 +33,7 @@ struct StudyCourse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        if let number = try? container.decode(Int.self, forKey: .studyCourse) {
-            self.studyCourse = string(length: 3, number: number)
-        } else if let str = try? container.decode(String.self, forKey: .studyCourse) {
-            self.studyCourse = str
-        } else {
-            throw NSError()
-        }
+        self.studyCourse = try container.decode(String.self, forKey: .studyCourse)
         
         self.name = try container.decode(String.self, forKey: .name)
         self.studyGroups = try container.decode([StudyGroup].self, forKey: .studyGroups)
@@ -72,15 +66,10 @@ struct StudyGroup: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: StudyGroup.CodingKeys.self)
-        if let number = try? container.decode(Int.self, forKey: .studyGroup) {
-            self.studyGroup = string(length: 2, number: number)
-        } else if let str = try? container.decode(String.self, forKey: .studyGroup) {
-            self.studyGroup = str
-        } else {
-            throw NSError()
-        }
         
+        self.studyGroup = try container.decode(String.self, forKey: .studyGroup)
         self.name = try container.decode(String.self, forKey: .name)
+            
         let grade = try container.decode(Int.self, forKey: .grade)
         guard let degree = Degree(grade: grade) else {
             throw NSError()
