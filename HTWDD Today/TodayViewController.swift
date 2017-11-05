@@ -9,26 +9,38 @@
 import UIKit
 import NotificationCenter
 
-class TodayViewController: UIViewController, NCWidgetProviding {
-        
+class TodayViewController: ViewController {
+	
+	// MARK: - ViewController lifecycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
+		
+		self.view.backgroundColor = .clear
+		
+		self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded // (self.challenges.count < 3) ? .compact : .expanded
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
-        completionHandler(NCUpdateResult.newData)
-    }
-    
+	
+	override func initialSetup() {
+		super.initialSetup()
+	}
+	
+}
+
+// MARK: - NCWidgetProviding
+extension TodayViewController: NCWidgetProviding {
+	func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+		completionHandler(NCUpdateResult.newData)
+	}
+	
+	func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+		let compactSize = self.extensionContext?.widgetMaximumSize(for: .compact) ?? CGSize.zero
+		switch activeDisplayMode {
+		case .compact:
+			self.preferredContentSize = compactSize
+		case .expanded:
+			self.preferredContentSize = CGSize(width: compactSize.width, height: compactSize.height * 2)
+			// self.preferredContentSize = (self.challenges.count < 3) ? compactSize : CGSize(width: compactSize.width, height: compactSize.height * 2)
+		}
+	}
 }

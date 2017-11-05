@@ -28,6 +28,7 @@
 		1F4BD53A1FAFAA68007E0817 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0F1E1D62040031077C /* UserDefaults.swift */; };
 		1F4BD53C1FAFABDD007E0817 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535E1E7FBB1500183E07 /* String.swift */; };
 		1F4BD53E1FAFAD63007E0817 /* HTWNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58ECB141F990D5300949F4F /* HTWNamespace.swift */; };
+		1F4BD53F1FAFAFF4007E0817 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
@@ -1097,6 +1098,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F4BD53F1FAFAFF4007E0817 /* ViewController.swift in Sources */,
 				1F4BD53C1FAFABDD007E0817 /* String.swift in Sources */,
 				1F4BD53E1FAFAD63007E0817 /* HTWNamespace.swift in Sources */,
 				1F4BD53A1FAFAA68007E0817 /* UserDefaults.swift in Sources */,
