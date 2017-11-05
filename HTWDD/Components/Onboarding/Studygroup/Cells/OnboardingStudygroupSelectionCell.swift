@@ -32,27 +32,42 @@ struct StudyGroupViewModel: ViewModel {
     
     init(model: StudyGroup) {
         self.title = model.name
-        let degree: String
-        switch model.degree {
-        case .bachelor: degree = Loca.Onboarding.Studygroup.degree.bachelor
-        case .diplom: degree = Loca.Onboarding.Studygroup.degree.diplom
-        case .master: degree = Loca.Onboarding.Studygroup.degree.master
-        }
-        self.subtitle = "\(model.studyGroup) - \(degree)"
+        self.subtitle = model.studyGroup
     }
 }
 
 class OnboardingStudygroupSelectionCell: FlatCollectionViewCell {
-    let titleLabel = UILabel()
-    let subtitleLabel = UILabel()
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = UIColor.htw.textHeadline
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.textColor = UIColor.htw.mediumGrey
+        label.textAlignment = .center
+        return label
+    }()
     
     override func initialSetup() {
         super.initialSetup()
         
         let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel])
-        stackView.frame = self.contentView.bounds
-        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            stackView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor)
+            ])
     }
 }
 

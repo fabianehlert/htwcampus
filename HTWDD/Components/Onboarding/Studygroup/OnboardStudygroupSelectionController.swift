@@ -10,16 +10,17 @@ import UIKit
 import RxSwift
 
 private enum Const {
-    static let collectionViewHeight: CGFloat = 300
+    static let collectionViewHeight: CGFloat = 216 // keyboard height
     static let margin: CGFloat = 15
 }
 
-class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewController, UIGestureRecognizerDelegate {
+class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewController, AnimatedViewControllerTransitionAnimator {
     
     // MARK: - Properties
     
     private let layout = CollectionViewFlowLayout()
     private let dataSource: GenericBasicCollectionViewDataSource<Data>
+    private let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private let selection: (Data?) -> Void
     
     // MARK: - Init
@@ -44,7 +45,8 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
                 }
                 return observer.onNext(item)
             }
-            controller.modalPresentationStyle = .overCurrentContext
+            selectionController.modalPresentationStyle = .overCurrentContext
+            selectionController.transition = AnimatedViewControllerTransition(duration: 0.4, back: controller, front: selectionController)
             controller.present(selectionController, animated: true, completion: nil)
             return Disposables.create {
                 selectionController.dismiss(animated: true, completion: nil)
@@ -53,6 +55,14 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     }
     
     // MARK: - View Controller Lifecyle
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
     
     override func initialSetup() {
         super.initialSetup()
@@ -67,51 +77,50 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
         super.viewDidLoad()
         
         self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - Const.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
-        self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: 60)
+        self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: 80)
         self.collectionView.backgroundColor = .clear
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.backgroundColor = .clear
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(visualEffectView)
-        self.view.sendSubview(toBack: visualEffectView)
+        self.visualEffectView.isUserInteractionEnabled = true
+        self.collectionView.backgroundView = self.visualEffectView
         
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            
-            visualEffectView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            visualEffectView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            visualEffectView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            visualEffectView.topAnchor.constraint(equalTo: self.view.topAnchor)
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
             ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel))
-        tapGesture.delegate = self
-        self.collectionView.addGestureRecognizer(tapGesture)
+        self.visualEffectView.addGestureRecognizer(tapGesture)
     }
     
     @objc
     func cancel(gesture: UITapGestureRecognizer) {
-        self.dismiss(animated: true, completion: {
-            self.selection(nil)
-        })
+        self.selection(nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.dataSource.data(at: indexPath)
-        self.dismiss(animated: true, completion: {
-            self.selection(item)
-        })
+        self.selection(item)
+        self.dismiss(animated: true, completion: nil)
     }
-
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        print(type(of: gestureRecognizer.view))
-        print(gestureRecognizer.location(in: self.collectionView))
+    
+    func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
         
-        return false
+        self.visualEffectView.effect = direction == .present ? nil : UIBlurEffect(style: .extraLight)
+        let startY = (self.view.height - Const.collectionViewHeight) * -1
+        self.collectionView.contentOffset.y = direction == .present ? startY - Const.collectionViewHeight : startY
+        
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
+            
+            self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
+            self.collectionView.contentOffset.y = direction == .present ? startY : startY - Const.collectionViewHeight
+            
+        }, completion: completion)
+        
     }
     
 }

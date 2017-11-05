@@ -136,7 +136,7 @@
 		B5EF95781FADB40C006BC7D1 /* ExamsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95771FADB40C006BC7D1 /* ExamsService.swift */; };
 		B5EF957B1FADC5B8006BC7D1 /* StudyYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF957A1FADC5B8006BC7D1 /* StudyYear.swift */; };
 		B5EF957E1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF957D1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift */; };
-		B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */; };
+		B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift */; };
 		B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
@@ -277,7 +277,7 @@
 		B5EF95771FADB40C006BC7D1 /* ExamsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsService.swift; sourceTree = "<group>"; };
 		B5EF957A1FADC5B8006BC7D1 /* StudyYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyYear.swift; sourceTree = "<group>"; };
 		B5EF957D1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupSelectionController.swift; sourceTree = "<group>"; };
-		B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStudygroupSelectionYearCell.swift; sourceTree = "<group>"; };
+		B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStudygroupSelectionCell.swift; sourceTree = "<group>"; };
 		B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBasicCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
@@ -784,7 +784,7 @@
 		B5EF957F1FAF4D73006BC7D1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift */,
+				B5EF95801FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1076,7 +1076,7 @@
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
-				B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionYearCell.swift in Sources */,
+				B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
 				1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */,

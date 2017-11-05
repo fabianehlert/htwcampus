@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleService.Auth> {
+class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleService.Auth>, AnimatedViewControllerTransitionDataSource {
 
     private struct State {
         var years: [StudyYear]?
@@ -25,7 +25,7 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         var groups: [StudyGroup]? {
             guard
                 let major = self.major,
-                let studyMajor = self.majors?.first(where: { $0.studyCourse == major })
+                let studyMajor = self.majors?.first(where: { $0.studyCourse == major.studyCourse })
                 else {
                     return nil
             }
@@ -40,14 +40,14 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
                 }
             }
         }
-        var major: String? {
+        var major: StudyCourse? {
             didSet {
-                if oldValue != major {
+                if oldValue?.studyCourse != major?.studyCourse {
                     self.group = nil
                 }
             }
         }
-        var group: String?
+        var group: StudyGroup?
         
         var completed: Bool {
             return self.year != nil && self.major != nil && self.group != nil
@@ -111,12 +111,12 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
             .disposed(by: self.disposeBag)
         
         stateObservable
-            .map({ $0.major ?? Loca.Onboarding.Studygroup.major })
+            .map({ $0.major?.studyCourse ?? Loca.Onboarding.Studygroup.major })
             .bind(to: self.majorButton.rx.title())
             .disposed(by: self.disposeBag)
         
         stateObservable
-            .map({ $0.group ?? Loca.Onboarding.Studygroup.group })
+            .map({ $0.group?.studyGroup ?? Loca.Onboarding.Studygroup.group })
             .bind(to: self.groupButton.rx.title())
             .disposed(by: self.disposeBag)
         
@@ -151,7 +151,12 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         
         self.majorButton.rx
             .controlEvent(.touchUpInside)
-            .map({ _ in "044" })
+            .flatMap({ [weak self] _ -> Observable<StudyCourse> in
+                guard let `self` = self, let majors = self.state.value.majors else {
+                    return Observable.empty()
+                }
+                return OnboardStudygroupSelectionController.show(controller: self, data: majors)
+            })
             .subscribe(onNext: { major in
                 self.state.value.major = major
             })
@@ -159,7 +164,12 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         
         self.groupButton.rx
             .controlEvent(.touchUpInside)
-            .map({ _ in "71" })
+            .flatMap({ [weak self] _ -> Observable<StudyGroup> in
+                guard let `self` = self, let groups = self.state.value.groups else {
+                    return Observable.empty()
+                }
+                return OnboardStudygroupSelectionController.show(controller: self, data: groups)
+            })
             .subscribe(onNext: { group in
                 self.state.value.group = group
             })
@@ -172,20 +182,20 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
     override func continueBoarding() {
         let currentState = self.state.value
         guard
-            let y = currentState.year,
-            let m = currentState.major,
-            let g = currentState.group
+            let y = currentState.year?.studyYear.description,
+            let m = currentState.major?.studyCourse,
+            let g = currentState.group?.studyGroup
         else {
                 self.onFinish?(nil)
                 return
         }
 
-        let group = ScheduleService.Auth(year: "\(y)", major: m, group: g)
+        let group = ScheduleService.Auth(year: y, major: m, group: g)
         self.onFinish?(group)
     }
 
     override func shouldContinue() -> Bool {
         return self.state.value.completed
     }
-
+    
 }
