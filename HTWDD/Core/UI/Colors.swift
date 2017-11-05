@@ -51,7 +51,11 @@ extension HTWNamespace where Base: UIColor {
 		return UIColor(hex: 0xF7F7F7)
 	}
 
-    static var lightGrey: UIColor {
+	static var lightGrey: UIColor {
+		return UIColor(hex: 0xE7E7E7)
+	}
+	
+    static var grey: UIColor {
         return UIColor(hex: 0x7F7F7F)
     }
 
@@ -66,4 +70,22 @@ extension HTWNamespace where Base: UIColor {
     static var white: UIColor {
         return UIColor(hex: 0xFFFFFF)
     }
+	
+	static var scheduleColors: [UIColor] {
+		let colors = [
+			UIColor(hex: 0xC21717),
+			UIColor(hex: 0xf39c12),
+			UIColor(hex: 0x8e44ad),
+			UIColor(hex: 0x27ae60),
+			UIColor(hex: 0xe74c3c),
+			UIColor(hex: 0x3498db),
+			UIColor(hex: 0xF0C987),
+			UIColor(hex: 0x9097C0),
+			UIColor(hex: 0xf1c40f),
+			UIColor(hex: 0x2c3e50),
+			UIColor(hex: 0xc0392b),
+			UIColor(hex: 0xE8C1C5)
+		]
+		return colors
+	}
 }

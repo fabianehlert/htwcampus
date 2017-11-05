@@ -16,6 +16,7 @@
 "Schedule.Style.week"="Woche";
 "Schedule.Style.list"="Liste";
 "Schedule.Cell.time" = "%02d:%02d";
+"Schedule.noRoom"="Kein Raum";
 "Schedule.freeDay"="Genieß deinen freien Tag!";
 
 "Canteen.title"="Mensa";
