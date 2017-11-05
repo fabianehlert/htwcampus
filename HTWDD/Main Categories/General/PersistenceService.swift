@@ -20,6 +20,7 @@ class PersistenceService: Service {
         
         static let scheduleCacheKey = "htw-dresden.schedule.cache"
         static let gradesCacheKey = "htw-dresden.grades.cache"
+        static let examsCacheKey = "htw-dresden.exams.cache"
     }
 
     struct Response {
@@ -60,6 +61,13 @@ class PersistenceService: Service {
         }
         return Observable.just(saved)
     }
+    
+    func loadExamsCache() -> Observable<ExamsService.Information> {
+        guard let saved = self.load(type: ExamsService.Information.self, key: Const.examsCacheKey) else {
+            return Observable.empty()
+        }
+        return Observable.just(saved)
+    }
 
     // MARK: - Save
 
@@ -77,6 +85,10 @@ class PersistenceService: Service {
     
     func save(_ lectures: ScheduleService.Information) {
         self.save(object: lectures, key: Const.scheduleCacheKey)
+    }
+    
+    func save(_ exams: ExamsService.Information) {
+        self.save(object: exams, key: Const.examsCacheKey)
     }
 
     private func save<T: Encodable>(object: T, key: String) {
@@ -108,6 +120,10 @@ class PersistenceService: Service {
     
     func removeScheduleCache() {
         self.remove(key: Const.scheduleCacheKey)
+    }
+    
+    func removeExamsCache() {
+        self.remove(key: Const.examsCacheKey)
     }
     
     func removeGradesCache() {

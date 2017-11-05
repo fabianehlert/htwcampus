@@ -71,8 +71,6 @@ extension SemesterInformation: Equatable {
 
 extension SemesterInformation: Unmarshaling {
 
-    
-    
     static let url = "https://www2.htw-dresden.de/~app/API/semesterplan.json"
 
     init(object: MarshaledObject) throws {

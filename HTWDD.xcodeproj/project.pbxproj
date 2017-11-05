@@ -140,6 +140,8 @@
 		B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */; };
 		B5EF95851FAF7C8A006BC7D1 /* GenericBasicTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95841FAF7C8A006BC7D1 /* GenericBasicTableViewDataSource.swift */; };
 		B5EF95871FAF84C8006BC7D1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95861FAF84C8006BC7D1 /* SettingsCell.swift */; };
+		B5EF958A1FAF875B006BC7D1 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95891FAF875B006BC7D1 /* Exam.swift */; };
+		B5EF958C1FAF8A9E006BC7D1 /* ExamDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF958B1FAF8A9E006BC7D1 /* ExamDataSource.swift */; };
 		B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
@@ -283,6 +285,8 @@
 		B5EF95821FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBasicCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B5EF95841FAF7C8A006BC7D1 /* GenericBasicTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBasicTableViewDataSource.swift; sourceTree = "<group>"; };
 		B5EF95861FAF84C8006BC7D1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		B5EF95891FAF875B006BC7D1 /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
+		B5EF958B1FAF8A9E006BC7D1 /* ExamDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamDataSource.swift; sourceTree = "<group>"; };
 		B5F58E451E1EA7C8006D99AE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
 		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
@@ -390,8 +394,10 @@
 		1FC21DC71F8F951B003E244F /* Exams */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF95881FAF8752006BC7D1 /* Model */,
 				B5EF95731FADB389006BC7D1 /* ExamsCoordinator.swift */,
 				B5EF95751FADB3B6006BC7D1 /* ExamMainVC.swift */,
+				B5EF958B1FAF8A9E006BC7D1 /* ExamDataSource.swift */,
 				B5EF95771FADB40C006BC7D1 /* ExamsService.swift */,
 			);
 			path = Exams;
@@ -795,6 +801,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		B5EF95881FAF8752006BC7D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF95891FAF875B006BC7D1 /* Exam.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -991,6 +1005,7 @@
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
 				B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */,
 				B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */,
+				B5EF958C1FAF8A9E006BC7D1 /* ExamDataSource.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
 				B5F847551F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
@@ -1040,6 +1055,7 @@
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5EF95761FADB3B6006BC7D1 /* ExamMainVC.swift in Sources */,
+				B5EF958A1FAF875B006BC7D1 /* Exam.swift in Sources */,
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
 				B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,

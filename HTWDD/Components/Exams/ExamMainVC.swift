@@ -21,7 +21,7 @@ class ExamMainVC: ViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
 //		self.refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
 //		self.refreshControl.tintColor = .white
 		
@@ -33,6 +33,7 @@ class ExamMainVC: ViewController {
 		} else {
 			// self.collectionView.addSubview(self.refreshControl)
 		}
+        
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
