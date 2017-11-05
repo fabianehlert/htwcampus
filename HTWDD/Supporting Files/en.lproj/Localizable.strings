@@ -31,6 +31,9 @@
 "Exams.title"="Exams";
 "Settings.title"="Settings";
 
+"Settings.items.deleteAll"="Delete all stored data";
+"Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored data from this app?";
+
 "monday"="Monday";
 "tuesday"="Tuesday";
 "wednesday"="Wednesday";
@@ -51,8 +54,11 @@
 "winterSemester"="Wintersemester";
 
 "close"="Close";
+"cancel"="Cancel";
 "nextStep"="Continue";
 "letsgo"="Let's go!";
+"attention"="Attention";
+"yes"="Yes";
 
 "Grades.title"="Grades";
 "Grades.detail.mark" = "%.1f";

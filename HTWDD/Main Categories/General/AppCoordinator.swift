@@ -32,7 +32,7 @@ class AppCoordinator: Coordinator {
 	private lazy var exams = ExamsCoordinator(context: self.appContext)
 	private lazy var grades = GradeCoordinator(context: self.appContext)
     private lazy var canteen = CanteenCoordinator(context: self.appContext)
-	private lazy var settings = SettingsCoordinator(context: self.appContext)
+    private lazy var settings = SettingsCoordinator(context: self.appContext, delegate: self)
 
     private let disposeBag = DisposeBag()
 
@@ -110,4 +110,15 @@ class AppCoordinator: Coordinator {
 		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
 		if #available(iOS 11.0, *) { UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] }
 	}
+}
+
+extension AppCoordinator: SettingsCoordinatorDelegate {
+    
+    func deleteAllData() {
+        self.persistenceService.clear()
+        self.schedule.auth = nil
+        self.grades.auth = nil
+        self.showOnboarding(animated: true)
+    }
+    
 }

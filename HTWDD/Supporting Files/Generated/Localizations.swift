@@ -16,11 +16,17 @@ import Foundation
 
 public struct Loca {
 
-    /// Base translation: Continue
-    public static var nextStep : String = NSLocalizedString("nextStep", comment: "")
-
     /// Base translation: Saturday
     public static var saturday : String = NSLocalizedString("saturday", comment: "")
+
+    /// Base translation: Wednesday
+    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
+
+    /// Base translation: Wintersemester
+    public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
+
+    /// Base translation: Continue
+    public static var nextStep : String = NSLocalizedString("nextStep", comment: "")
 
     /// Base translation: Friday
     public static var friday : String = NSLocalizedString("friday", comment: "")
@@ -28,8 +34,8 @@ public struct Loca {
     /// Base translation: Thursday
     public static var thursday : String = NSLocalizedString("thursday", comment: "")
 
-    /// Base translation: Wednesday
-    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
+    /// Base translation: Sat
+    public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
 
     /// Base translation: Mo
     public static var monday_short : String = NSLocalizedString("monday_short", comment: "")
@@ -46,11 +52,17 @@ public struct Loca {
     /// Base translation: Sunday
     public static var sunday : String = NSLocalizedString("sunday", comment: "")
 
-    /// Base translation: Summersemester
-    public static var summerSemester : String = NSLocalizedString("summerSemester", comment: "")
+    /// Base translation: Yes
+    public static var yes : String = NSLocalizedString("yes", comment: "")
+
+    /// Base translation: Attention
+    public static var attention : String = NSLocalizedString("attention", comment: "")
 
     /// Base translation: Tue
     public static var tuesday_short : String = NSLocalizedString("tuesday_short", comment: "")
+
+    /// Base translation: Summersemester
+    public static var summerSemester : String = NSLocalizedString("summerSemester", comment: "")
 
     /// Base translation: Let's go!
     public static var letsgo : String = NSLocalizedString("letsgo", comment: "")
@@ -61,17 +73,14 @@ public struct Loca {
     /// Base translation: Tuesday
     public static var tuesday : String = NSLocalizedString("tuesday", comment: "")
 
-    /// Base translation: Sat
-    public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
-
-    /// Base translation: Monday
-    public static var monday : String = NSLocalizedString("monday", comment: "")
-
-    /// Base translation: Wintersemester
-    public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
+    /// Base translation: Cancel
+    public static var cancel : String = NSLocalizedString("cancel", comment: "")
 
     /// Base translation: Fr
     public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
+
+    /// Base translation: Monday
+    public static var monday : String = NSLocalizedString("monday", comment: "")
 
 
     public struct Onboarding {
@@ -79,11 +88,11 @@ public struct Loca {
 
         public struct Welcome {
 
-            /// Base translation: Welcome to HTW
-            public static var Title : String = NSLocalizedString("Onboarding.Welcome.Title", comment: "")
-
             /// Base translation: View what your professors graded you in your exams.
             public static var GradesDescription : String = NSLocalizedString("Onboarding.Welcome.GradesDescription", comment: "")
+
+            /// Base translation: Welcome to HTW
+            public static var Title : String = NSLocalizedString("Onboarding.Welcome.Title", comment: "")
 
             /// Base translation: See what is being served for lunch in the canteens around you.
             public static var CanteenDescription : String = NSLocalizedString("Onboarding.Welcome.CanteenDescription", comment: "")
@@ -95,11 +104,11 @@ public struct Loca {
 
         public struct Studygroup {
 
-            /// Base translation: Major
-            public static var major : String = NSLocalizedString("Onboarding.Studygroup.major", comment: "")
-
             /// Base translation: Not now
             public static var notnow : String = NSLocalizedString("Onboarding.Studygroup.notnow", comment: "")
+
+            /// Base translation: Major
+            public static var major : String = NSLocalizedString("Onboarding.Studygroup.major", comment: "")
 
             /// Base translation: Study group
             public static var title : String = NSLocalizedString("Onboarding.Studygroup.title", comment: "")
@@ -130,23 +139,16 @@ public struct Loca {
 
         public struct UnixLogin {
 
-            /// Base translation: Unix-Login
-            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
-
             /// Base translation: Not now
             public static var notnow : String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
+
+            /// Base translation: Unix-Login
+            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
 
             /// Base translation: To be able to show you your grades, please enter your unix-login.
             public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
 
         }
-    }
-
-    public struct Exams {
-
-        /// Base translation: Exams
-        public static var title : String = NSLocalizedString("Exams.title", comment: "")
-
     }
 
     public struct Schedule {
@@ -216,6 +218,13 @@ public struct Loca {
         }
     }
 
+    public struct Exams {
+
+        /// Base translation: Exams
+        public static var title : String = NSLocalizedString("Exams.title", comment: "")
+
+    }
+
     public struct Canteen {
 
         /// Base translation: Canteen
@@ -228,5 +237,15 @@ public struct Loca {
         /// Base translation: Settings
         public static var title : String = NSLocalizedString("Settings.title", comment: "")
 
+
+        public struct items {
+
+            /// Base translation: Do you really want to delete all stored data from this app?
+            public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
+
+            /// Base translation: Delete all stored data
+            public static var deleteAll : String = NSLocalizedString("Settings.items.deleteAll", comment: "")
+
+        }
     }
 }

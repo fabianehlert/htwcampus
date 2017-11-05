@@ -48,6 +48,10 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
     var auth: ScheduleService.Auth? {
         didSet {
+            guard self.auth != nil else {
+                self.data = []
+                return
+            }
             self.load()
         }
     }

@@ -11,7 +11,15 @@ import RxSwift
 
 class GradeDataSource: CollectionViewDataSource {
 
-    private var _auth: GradeService.Auth?
+    private var _auth: GradeService.Auth? {
+        didSet {
+            guard self._auth != nil else {
+                self.semesters = []
+                return
+            }
+            self.load().subscribe().disposed(by: self.rx_disposeBag)
+        }
+    }
     var auth: GradeService.Auth? {
         set {
             self._auth = newValue
@@ -45,16 +53,25 @@ class GradeDataSource: CollectionViewDataSource {
         return self.semesters[index.section].grades[index.row]
     }
 
+    @discardableResult
     func load() -> Observable<()> {
         guard let auth = self._auth else {
             Log.info("Can't load grades if no authentication is provided. Abort…")
             return Observable.just(())
         }
 
-        return self.service
-            .load(parameters: auth)
-            .map { [weak self] semesters in
-            self?.semesters = semesters
+        return Observable.create { observer in
+            let disposable = self.service
+                .load(parameters: auth)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] semesters in
+                    self?.semesters = semesters
+                    observer.onNext(())
+                    observer.onCompleted()
+            })
+            return Disposables.create {
+                disposable.dispose()
+            }
         }
     }
 

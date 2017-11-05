@@ -31,6 +31,9 @@
 "Exams.title"="Prüfungen";
 "Settings.title"="Einstellungen";
 
+"Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
+"Settings.items.deleteAllConfirmationText"="Möchtest du wirklich alle gespeicherten Daten aus dieser App löschen?";
+
 "monday"="Montag";
 "tuesday"="Dienstag";
 "wednesday"="Mittwoch";
@@ -51,8 +54,11 @@
 "winterSemester"="Wintersemester";
 
 "close"="Schließen";
+"cancel"="Abbrechen";
 "nextStep"="Weiter";
 "letsgo"="Los geht's!";
+"attention"="Achtung";
+"yes"="Ja";
 
 "Grades.title"="Noten";
 "Grades.detail.mark" = "%.1f";

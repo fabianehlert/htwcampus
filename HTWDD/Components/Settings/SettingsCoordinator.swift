@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SettingsCoordinatorDelegate: class {
+    func deleteAllData()
+}
+
 class SettingsCoordinator: Coordinator {
 	
 	var rootViewController: UIViewController {
@@ -16,10 +20,23 @@ class SettingsCoordinator: Coordinator {
 	
 	var childCoordinators = [Coordinator]()
 	
-	private lazy var settingsController = SettingsMainVC()
+    private lazy var settingsController: SettingsMainVC = {
+        let vc = SettingsMainVC()
+        vc.delegate = self
+        return vc
+    }()
 	
+    weak var delegate: SettingsCoordinatorDelegate?
+    
 	let context: HasSettings
-	init(context: HasSettings) {
+    init(context: HasSettings, delegate: SettingsCoordinatorDelegate) {
 		self.context = context
+        self.delegate = delegate
 	}
+}
+
+extension SettingsCoordinator: SettingsMainVCDelegate {
+    func deleteAllData() {
+        self.delegate?.deleteAllData()
+    }
 }
