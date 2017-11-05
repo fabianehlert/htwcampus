@@ -18,7 +18,7 @@ class CanteenMainVC: TableViewController {
     let context: HasCanteen
     init(context: HasCanteen) {
         self.context = context
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .grouped)
     }
 
     required init?(coder aDecoder: NSCoder) {

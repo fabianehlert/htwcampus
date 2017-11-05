@@ -8,16 +8,6 @@
 
 import UIKit
 
-struct SettingsItem: Identifiable {
-    let title: String
-    let action: () -> ()
-    
-    init(title: String, action: @escaping @autoclosure () -> ()) {
-        self.title = title
-        self.action = action
-    }
-}
-
 protocol SettingsMainVCDelegate: class {
     func deleteAllData()
 }
@@ -32,6 +22,14 @@ class SettingsMainVC: TableViewController {
     
     weak var delegate: SettingsMainVCDelegate?
     
+    init() {
+        super.init(style: .grouped)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 	override func initialSetup() {
 		super.initialSetup()
         
@@ -39,6 +37,7 @@ class SettingsMainVC: TableViewController {
 		self.tabBarItem.image = #imageLiteral(resourceName: "Settings")
         
         self.dataSource.tableView = self.tableView
+        self.dataSource.register(type: SettingsCell.self)
 	}
 	
 	// MARK: - ViewController lifecycle

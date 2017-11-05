@@ -9,9 +9,19 @@
 import UIKit
 
 class TableViewController: ViewController {
+    
+    let tableView: UITableView
 
-    let tableView = UITableView()
-
+    init(style: UITableViewStyle = .plain) {
+        self.tableView = UITableView(frame: .zero, style: style)
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.tableView = UITableView(frame: .zero, style: .plain)
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
