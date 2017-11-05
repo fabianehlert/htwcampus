@@ -24,6 +24,7 @@
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
 		1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD52F1FAFA58F007E0817 /* Today.storyboard */; };
+		1F4BD5361FAFA895007E0817 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD5381FAFA895007E0817 /* InfoPlist.strings */; };
 		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
@@ -189,6 +190,8 @@
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F4BD52F1FAFA58F007E0817 /* Today.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
+		1F4BD5371FAFA895007E0817 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F4BD5391FAFA898007E0817 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F54EE431FAA063B00415813 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
@@ -207,7 +210,6 @@
 		1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HTWDD Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		1FED52B91FAFA1C000260D5B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		1FED52BC1FAFA1C000260D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		1FED52BE1FAFA1C000260D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				1FED52B91FAFA1C000260D5B /* TodayViewController.swift */,
 				1F4BD52F1FAFA58F007E0817 /* Today.storyboard */,
 				1FED52BE1FAFA1C000260D5B /* Info.plist */,
+				1F4BD5381FAFA895007E0817 /* InfoPlist.strings */,
 			);
 			path = "HTWDD Today";
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */,
+				1F4BD5361FAFA895007E0817 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1233,6 +1237,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1F4BD5381FAFA895007E0817 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F4BD5371FAFA895007E0817 /* en */,
+				1F4BD5391FAFA898007E0817 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		B5111E191E71E68F00D68155 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
