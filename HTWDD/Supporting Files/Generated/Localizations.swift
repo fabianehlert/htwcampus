@@ -95,15 +95,37 @@ public struct Loca {
 
         public struct Studygroup {
 
-            /// Base translation: Study group
-            public static var title : String = NSLocalizedString("Onboarding.Studygroup.title", comment: "")
+            /// Base translation: Major
+            public static var major : String = NSLocalizedString("Onboarding.Studygroup.major", comment: "")
 
             /// Base translation: Not now
             public static var notnow : String = NSLocalizedString("Onboarding.Studygroup.notnow", comment: "")
 
+            /// Base translation: Study group
+            public static var title : String = NSLocalizedString("Onboarding.Studygroup.title", comment: "")
+
+            /// Base translation: Year
+            public static var year : String = NSLocalizedString("Onboarding.Studygroup.year", comment: "")
+
+            /// Base translation: Group
+            public static var group : String = NSLocalizedString("Onboarding.Studygroup.group", comment: "")
+
             /// Base translation: In order to show you your personal schedule, we need to know what study group you're in.
             public static var body : String = NSLocalizedString("Onboarding.Studygroup.body", comment: "")
 
+
+            public struct degree {
+
+                /// Base translation: Bachelor
+                public static var bachelor : String = NSLocalizedString("Onboarding.Studygroup.degree.bachelor", comment: "")
+
+                /// Base translation: Diplom
+                public static var diplom : String = NSLocalizedString("Onboarding.Studygroup.degree.diplom", comment: "")
+
+                /// Base translation: Master
+                public static var master : String = NSLocalizedString("Onboarding.Studygroup.degree.master", comment: "")
+
+            }
         }
 
         public struct UnixLogin {

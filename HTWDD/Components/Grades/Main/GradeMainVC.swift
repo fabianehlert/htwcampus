@@ -104,7 +104,7 @@ class GradeMainVC: CollectionViewController {
 
     // MARK: - UICollectionViewDelegate
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         func animate(block: @escaping () -> Void) {
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.beginFromCurrentState, .curveEaseInOut], animations: block, completion: nil)
@@ -138,7 +138,7 @@ class GradeMainVC: CollectionViewController {
 
 }
 
-extension GradeMainVC: UICollectionViewDelegateFlowLayout {
+extension GradeMainVC {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)

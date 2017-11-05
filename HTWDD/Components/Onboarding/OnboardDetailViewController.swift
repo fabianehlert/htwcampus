@@ -40,8 +40,12 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         return true
     }
 
-    func shouldContinue(textField: UITextField) -> Bool {
+    func shouldContinue() -> Bool {
         return false
+    }
+    
+    func checkState() {
+        self.continueButton.isEnabled = self.shouldContinue()
     }
 
     // MARK: - ViewController lifecycle
@@ -189,7 +193,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
     }
 
     @objc func inputChanges(textField: TextField) {
-        self.continueButton.isEnabled = self.shouldContinue(textField: textField)
+        self.checkState()
     }
 
     // MARK: - UITextFieldDelegate

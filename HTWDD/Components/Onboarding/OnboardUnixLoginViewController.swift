@@ -50,7 +50,7 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
         self.onFinish?(auth)
     }
 
-    override func shouldContinue(textField: UITextField) -> Bool {
+    override func shouldContinue() -> Bool {
         let sNumberCount = (self.usernameTextField.text?.count ?? 0) - 1
         let s = sNumberCount > Const.minSNumberLength && sNumberCount < Const.maxSNumberLength
         let p = (self.passwordTextField.text?.count ?? 0) > 0

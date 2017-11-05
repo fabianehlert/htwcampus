@@ -12,6 +12,12 @@ protocol AnimatedViewControllerTransitionDataSource: class {
     func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView?
 }
 
+extension AnimatedViewControllerTransitionDataSource {
+    func viewForTransition(_ transition: AnimatedViewControllerTransition) -> UIView? {
+        return nil
+    }
+}
+
 protocol AnimatedViewControllerTransitionAnimator: class {
     func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void)
 }
