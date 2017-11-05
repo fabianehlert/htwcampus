@@ -19,6 +19,19 @@ extension UIColor {
         )
     }
 
+	func hex() -> UInt {
+		var r: CGFloat = 0
+		var g: CGFloat = 0
+		var b: CGFloat = 0
+		
+		self.getRed(&r, green: &g, blue: &b, alpha: nil)
+		
+		let rh: UInt = UInt(r * 255)
+		let gh: UInt = UInt(g * 255)
+		let bh: UInt = UInt(b * 255)
+		
+		return (rh << 16) + (gh << 8) + bh
+	}
 }
 
 extension HTWNamespace where Base: UIColor {

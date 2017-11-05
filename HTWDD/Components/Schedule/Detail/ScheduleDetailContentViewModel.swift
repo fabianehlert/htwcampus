@@ -16,6 +16,10 @@ class ScheduleDetailContentViewModel {
 		self.lecture = lecture
 	}
 	
+	var color: UInt {
+		return self.lecture.color
+	}
+	
 	var type: String {
 		let t = self.lecture.type
 		

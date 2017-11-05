@@ -43,7 +43,7 @@ class ScheduleDetailVC: ViewController {
 	
 	let colorView: UIView = {
 		let view = UIView()
-		view.backgroundColor = UIColor.htw.scheduleColors.pickOne()
+		view.backgroundColor = UIColor.htw.orange
 		view.layer.cornerRadius = 2
 		view.translatesAutoresizingMaskIntoConstraints = false
 		return view
@@ -103,6 +103,8 @@ class ScheduleDetailVC: ViewController {
 	// MARK: - UI
 
 	override func initialSetup() {
+		self.colorView.backgroundColor = UIColor(hex: self.viewModel.color)
+		
 		self.nameLabel.text = self.viewModel.title
 		self.professorLabel.text = self.viewModel.professor
 		self.typeLabel.text = self.viewModel.type
