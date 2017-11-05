@@ -8,10 +8,4 @@
 
 import UIKit
 
-class CollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
-    
-}
+class CollectionViewFlowLayout: UICollectionViewFlowLayout {}
