@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
+		1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD52F1FAFA58F007E0817 /* Today.storyboard */; };
 		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
@@ -40,7 +41,6 @@
 		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
 		1FED52B71FAFA1C000260D5B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */; };
 		1FED52BA1FAFA1C000260D5B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED52B91FAFA1C000260D5B /* TodayViewController.swift */; };
-		1FED52BD1FAFA1C000260D5B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */; };
 		1FED52C11FAFA1C000260D5B /* HTWDD Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
@@ -188,6 +188,7 @@
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1F4BD52F1FAFA58F007E0817 /* Today.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
 		1F54EE431FAA063B00415813 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
@@ -495,7 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				1FED52B91FAFA1C000260D5B /* TodayViewController.swift */,
-				1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */,
+				1F4BD52F1FAFA58F007E0817 /* Today.storyboard */,
 				1FED52BE1FAFA1C000260D5B /* Info.plist */,
 			);
 			path = "HTWDD Today";
@@ -987,7 +988,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FED52BD1FAFA1C000260D5B /* MainInterface.storyboard in Resources */,
+				1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,14 +1233,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FED52BC1FAFA1C000260D5B /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
 		B5111E191E71E68F00D68155 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
