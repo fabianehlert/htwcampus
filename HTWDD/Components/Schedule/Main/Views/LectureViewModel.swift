@@ -11,7 +11,9 @@ import Foundation
 extension Lecture: Identifiable {}
 
 struct LectureViewModel: ViewModel {
-    let shortTitle: String
+	let color: UInt
+	
+	let shortTitle: String
     let longTitle: String
     let subtitle: String
     
@@ -23,6 +25,8 @@ struct LectureViewModel: ViewModel {
 	let room: String?
 
     init(model: Lecture) {
+		self.color = model.color
+		
         self.shortTitle = model.tag ?? model.name
         self.longTitle = model.name
         

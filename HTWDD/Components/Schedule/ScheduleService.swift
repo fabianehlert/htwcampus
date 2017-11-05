@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 
 class ScheduleService: Service {
@@ -99,6 +100,25 @@ class ScheduleService: Service {
         return Observable.merge(cached, internetLoading).distinctUntilChanged()
     }
 
+	// MARK: - Lecture Colors
+	
+	static let lectureColorsKey = "lectureColorsInformation"
+	
+	static func assignColors(lectures: [Lecture]) {
+		var colors = [Int: UInt]()
+		
+		lectures.forEach { l in
+			if !colors.keys.contains(l.name.hashValue) {
+				let index = Array(colors.keys).index(of: l.name.hashValue) ?? colors.count
+				colors[l.name.hashValue] = UIColor.htw.scheduleColors[index].hex()
+			}
+		}
+		
+		let archive = NSKeyedArchiver.archivedData(withRootObject: colors)
+		
+		UserDefaults.standard.set(archive, forKey: ScheduleService.lectureColorsKey)
+		UserDefaults.standard.synchronize()
+	}
 }
 
 // MARK: - Dependency management

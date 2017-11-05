@@ -69,12 +69,20 @@ extension Lecture: Unmarshaling {
         self.type = try object <| "type"
         self.week = try object <| "week"
 
-        let weeksString: String? = try? object <| "weeksOnly"
-        if let weeks = weeksString?.components(separatedBy: ";").flatMap({ Int($0) }), !weeks.isEmpty {
-            self.weeks = Set(weeks)
-        } else {
-            self.weeks = nil
-        }
+        let weeksOnly: [Int]? = try? object <| "weeksOnly"
+        self.weeks = weeksOnly.map(Set.init)
     }
+
+}
+
+extension Lecture {
+	
+	var color: UInt {
+		if let data = UserDefaults.standard.data(forKey: ScheduleService.lectureColorsKey),
+			let colors = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Int: UInt] {
+			return colors[self.name.hashValue] ?? 0
+		}
+		return 0
+	}
 
 }

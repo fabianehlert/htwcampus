@@ -35,7 +35,7 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 
 	let colorView: UIView = {
 		let view = UIView()
-		view.backgroundColor = UIColor.htw.scheduleColors.pickOne()
+		view.backgroundColor = UIColor.htw.orange
 		view.layer.cornerRadius = 2
 		return view
 	}()
@@ -141,6 +141,8 @@ class LectureListCell: FlatCollectionViewCell, Cell {
     }
     
 	func update(viewModel: LectureViewModel) {
+		self.colorView.backgroundColor = UIColor(hex: viewModel.color)
+		
         self.beginLabel.text = viewModel.begin
         self.endLabel.text = viewModel.end
 		self.titleLabel.text = viewModel.longTitle
