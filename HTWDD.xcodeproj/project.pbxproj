@@ -38,6 +38,10 @@
 		1FCE29311FA7C0F300A66654 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE29301FA7C0F200A66654 /* Localizations.swift */; };
 		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
 		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
+		1FED52B71FAFA1C000260D5B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */; };
+		1FED52BA1FAFA1C000260D5B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED52B91FAFA1C000260D5B /* TodayViewController.swift */; };
+		1FED52BD1FAFA1C000260D5B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */; };
+		1FED52C11FAFA1C000260D5B /* HTWDD Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */; };
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
@@ -151,6 +155,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1FED52BF1FAFA1C000260D5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59FA97F1DD09C8300259D7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FED52B41FAFA1C000260D5B;
+			remoteInfo = "HTWDD Today";
+		};
 		B59FA99C1DD09C8400259D7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B59FA97F1DD09C8300259D7F /* Project object */;
@@ -159,6 +170,20 @@
 			remoteInfo = HTWDD;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1FED52C51FAFA1C000260D5B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1FED52C11FAFA1C000260D5B /* HTWDD Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
@@ -178,6 +203,11 @@
 		1FCE29301FA7C0F200A66654 /* Localizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
 		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HTWDD Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		1FED52B91FAFA1C000260D5B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		1FED52BC1FAFA1C000260D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		1FED52BE1FAFA1C000260D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39FB08481E9E52B5001CC2F5 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
@@ -296,6 +326,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1FED52B21FAFA1C000260D5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED52B71FAFA1C000260D5B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B59FA9841DD09C8300259D7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +491,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		1FED52B81FAFA1C000260D5B /* HTWDD Today */ = {
+			isa = PBXGroup;
+			children = (
+				1FED52B91FAFA1C000260D5B /* TodayViewController.swift */,
+				1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */,
+				1FED52BE1FAFA1C000260D5B /* Info.plist */,
+			);
+			path = "HTWDD Today";
+			sourceTree = "<group>";
+		};
 		B50EB4FC1E6ADB410022E40C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +653,7 @@
 				B538EF141E1D63EA0031077C /* RxTest.framework */,
 				B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */,
 				B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */,
+				1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -649,6 +698,7 @@
 			children = (
 				B52A9B5A1DDB1B7C00313FC3 /* Frameworks */,
 				B59FA9891DD09C8400259D7F /* HTWDD */,
+				1FED52B81FAFA1C000260D5B /* HTWDD Today */,
 				B59FA99E1DD09C8400259D7F /* HTWDDTests */,
 				B59FA9881DD09C8400259D7F /* Products */,
 				B50EB4F21E6AC25D0022E40C /* htw.gpx */,
@@ -660,6 +710,7 @@
 			children = (
 				B59FA9871DD09C8400259D7F /* HTWDD.app */,
 				B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */,
+				1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -812,6 +863,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1FED52B41FAFA1C000260D5B /* HTWDD Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FED52C41FAFA1C000260D5B /* Build configuration list for PBXNativeTarget "HTWDD Today" */;
+			buildPhases = (
+				1FED52B11FAFA1C000260D5B /* Sources */,
+				1FED52B21FAFA1C000260D5B /* Frameworks */,
+				1FED52B31FAFA1C000260D5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HTWDD Today";
+			productName = "HTWDD Today";
+			productReference = 1FED52B51FAFA1C000260D5B /* HTWDD Today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B59FA9861DD09C8300259D7F /* HTWDD */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59FA9A41DD09C8400259D7F /* Build configuration list for PBXNativeTarget "HTWDD" */;
@@ -821,10 +889,12 @@
 				B59FA9841DD09C8300259D7F /* Frameworks */,
 				B52A9B5F1DDB1B8000313FC3 /* Carthage */,
 				B59FA9851DD09C8300259D7F /* Resources */,
+				1FED52C51FAFA1C000260D5B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1FED52C01FAFA1C000260D5B /* PBXTargetDependency */,
 			);
 			name = HTWDD;
 			productName = HTWDD;
@@ -856,10 +926,14 @@
 		B59FA97F1DD09C8300259D7F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "HTW Dresden";
 				TargetAttributes = {
+					1FED52B41FAFA1C000260D5B = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Manual;
+					};
 					B52A9B651DDB1E7C00313FC3 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 2URYCAZR48;
@@ -900,6 +974,7 @@
 			projectRoot = "";
 			targets = (
 				B59FA9861DD09C8300259D7F /* HTWDD */,
+				1FED52B41FAFA1C000260D5B /* HTWDD Today */,
 				B59FA99A1DD09C8400259D7F /* HTWDDTests */,
 				B52A9B651DDB1E7C00313FC3 /* HTWDD Generate */,
 			);
@@ -907,6 +982,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1FED52B31FAFA1C000260D5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED52BD1FAFA1C000260D5B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B59FA9851DD09C8300259D7F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -994,6 +1077,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1FED52B11FAFA1C000260D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED52BA1FAFA1C000260D5B /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B59FA9831DD09C8300259D7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1127,6 +1218,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1FED52C01FAFA1C000260D5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1FED52B41FAFA1C000260D5B /* HTWDD Today */;
+			targetProxy = 1FED52BF1FAFA1C000260D5B /* PBXContainerItemProxy */;
+		};
 		B59FA99D1DD09C8400259D7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B59FA9861DD09C8300259D7F /* HTWDD */;
@@ -1135,6 +1231,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1FED52BB1FAFA1C000260D5B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FED52BC1FAFA1C000260D5B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B5111E191E71E68F00D68155 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1157,6 +1261,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1FED52C21FAFA1C000260D5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HTWDD Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDD-Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1FED52C31FAFA1C000260D5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HTWDD Today/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDD-Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B52A9B671DDB1E7C00313FC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1285,8 +1433,10 @@
 		B59FA9A51DD09C8400259D7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1309,8 +1459,10 @@
 		B59FA9A61DD09C8400259D7F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1377,6 +1529,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1FED52C41FAFA1C000260D5B /* Build configuration list for PBXNativeTarget "HTWDD Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FED52C21FAFA1C000260D5B /* Debug */,
+				1FED52C31FAFA1C000260D5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
