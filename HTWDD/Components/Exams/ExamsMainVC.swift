@@ -27,6 +27,8 @@ class ExamsMainVC: CollectionViewController {
         super.init()
         self.dataSource.collectionView = self.collectionView
         self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        
+        self.dataSource.register(type: ExamsCell.self)
     }
     
     required init?(coder aDecoder: NSCoder) {
