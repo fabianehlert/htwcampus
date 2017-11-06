@@ -151,6 +151,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         }
 
         NSLayoutConstraint.activate([
+            titleContainer.topAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.topAnchor, constant: 12),
             titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             titleContainer.bottomAnchor.constraint(equalTo: centerStackView.topAnchor),
             titleContainer.widthAnchor.constraint(equalTo: centerStackView.widthAnchor),
@@ -169,19 +170,9 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
 
             self.continueButton.heightAnchor.constraint(equalToConstant: 55),
             self.continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.continueButton.widthAnchor.constraint(equalTo: centerStackView.widthAnchor)
+            self.continueButton.widthAnchor.constraint(equalTo: centerStackView.widthAnchor),
+            self.continueButton.bottomAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
-
-        var top = NSLayoutConstraint()
-        var bottom = NSLayoutConstraint()
-        if #available(iOS 11.0, *) {
-            top = titleContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 12)
-            bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        } else {
-            top = titleContainer.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 12)
-            bottom = self.continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20)
-        }
-        NSLayoutConstraint.activate([top, bottom])
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
