@@ -98,7 +98,7 @@ class CanteenMainVC: CollectionViewController {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)
-        return CGSize(width: width, height: 120)
+        return CGSize(width: width, height: 140)
     }
     
 }

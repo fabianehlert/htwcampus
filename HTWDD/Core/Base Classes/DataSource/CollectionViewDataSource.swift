@@ -48,6 +48,9 @@ class CollectionViewDataSource: NSObject {
     fileprivate var supplementaryConfigurations = [String: SupplementaryViewConfiguration]()
     fileprivate var supplementaryKinds = [SupplementaryKind: String]()
     
+    private typealias Action = (Any, IndexPath) -> Void
+    private var actions = [String: Action]()
+    
     private typealias HeightCalculation = (Any, CGFloat) -> CGFloat
     private var heightCalculations = [String: HeightCalculation]()
     
@@ -91,6 +94,25 @@ class CollectionViewDataSource: NSObject {
         self.supplementaryConfigurations[identifier] = { view, indexPath in
             config(view as! S, indexPath)
         }
+    }
+    
+    func registerAction<CellType: UICollectionViewCell>(cell: CellType.Type, action: @escaping (CellType.ViewModelType.ModelType, IndexPath) -> Void) where CellType: Cell {
+        assert(self.collectionView != nil)
+        
+        let identifier = CellType.ViewModelType.ModelType.identifier
+        self.actions[identifier] = { model, indexPath in
+            action(model as! CellType.ViewModelType.ModelType, indexPath)
+        }
+    }
+    
+    func runAction(at indexPath: IndexPath) {
+        guard let model = self.item(at: indexPath) else {
+            return
+        }
+        guard let action = self.actions[model.identifier] else {
+            return
+        }
+        action(model, indexPath)
     }
 
     func invalidate() {
