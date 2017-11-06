@@ -61,7 +61,6 @@ class ExamDataSource: CollectionViewDataSource {
         
         self.service
             .load(parameters: auth)
-            .debug()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] information in
                 self?.data = information.exams

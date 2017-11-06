@@ -17,7 +17,7 @@ class GradeDataSource: CollectionViewDataSource {
                 self.semesters = []
                 return
             }
-            self.load().subscribe().disposed(by: self.rx_disposeBag)
+            self.load()
         }
     }
     var auth: GradeService.Auth? {
@@ -30,7 +30,14 @@ class GradeDataSource: CollectionViewDataSource {
         }
     }
     private let service: GradeService
-
+    private let disposeBag = DisposeBag()
+    private let loadingCount = Variable(0)
+    
+    lazy var loading = self.loadingCount
+        .asObservable()
+        .map({ $0 > 0 })
+        .observeOn(MainScheduler.instance)
+    
     init(context: HasGrade) {
         self.service = context.gradeService
     }
@@ -53,26 +60,23 @@ class GradeDataSource: CollectionViewDataSource {
         return self.semesters[index.section].grades[index.row]
     }
 
-    @discardableResult
-    func load() -> Observable<()> {
+    func load() {
         guard let auth = self._auth else {
             Log.info("Can't load grades if no authentication is provided. Abort…")
-            return Observable.just(())
+            return
         }
+        self.loadingCount.value += 1
 
-        return Observable.create { observer in
-            let disposable = self.service
-                .load(parameters: auth)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { [weak self] semesters in
+        self.service
+            .load(parameters: auth)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] semesters in
                     self?.semesters = semesters
-                    observer.onNext(())
-                    observer.onCompleted()
-            })
-            return Disposables.create {
-                disposable.dispose()
-            }
-        }
+                    self?.loadingCount.value -= 1
+                }, onError: { [weak self] _ in
+                    self?.loadingCount.value -= 1
+                })
+            .disposed(by: self.disposeBag)
     }
 
     func semester(`for` section: Int) -> Semester {

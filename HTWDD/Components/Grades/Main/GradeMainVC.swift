@@ -78,6 +78,17 @@ class GradeMainVC: CollectionViewController {
                                                      attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
             view.attributedTitle = attributedTitle
         }
+        
+        self.dataSource.loading
+        .delay(0.5, scheduler: MainScheduler.instance)
+        .subscribe(onNext: { [weak self] value in
+            if value {
+                self?.refreshControl.beginRefreshing()
+            } else {
+                self?.refreshControl.endRefreshing()
+            }
+        }).disposed(by: self.rx_disposeBag)
+        
         self.reload()
     }
 
@@ -85,13 +96,6 @@ class GradeMainVC: CollectionViewController {
 
 	@objc private func reload() {
 		self.dataSource.load()
-			.delay(0.5, scheduler: MainScheduler.instance)
-			.subscribe(onNext: { [weak self] _ in
-				self?.refreshControl.endRefreshing()
-				}, onError: { [weak self] err in
-					self?.refreshControl.endRefreshing()
-					self?.showAlert(error: err)
-			}).disposed(by: self.rx_disposeBag)
 	}
 
 	// MARK: - Actions

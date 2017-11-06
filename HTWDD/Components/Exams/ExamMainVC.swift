@@ -92,3 +92,9 @@ extension ExamMainVC {
         return CGSize(width: width, height: 80)
     }
 }
+
+extension ExamMainVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: -self.view.htw.safeAreaInsets.top), animated: true)
+    }
+}
