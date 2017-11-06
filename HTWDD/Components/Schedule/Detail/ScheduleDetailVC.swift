@@ -15,7 +15,7 @@ class ScheduleDetailVC: ViewController {
 		static let separator: CGFloat = 2
 	}
 	
-	private let viewModel: ScheduleDetailContentViewModel
+	private let viewModel: LectureViewModel
 	
 	// MARK: - Views
 
@@ -82,7 +82,7 @@ class ScheduleDetailVC: ViewController {
 	// MARK: - Init
 
     init(lecture: Lecture) {
-        self.viewModel = ScheduleDetailContentViewModel(lecture: lecture)
+        self.viewModel = LectureViewModel(model: lecture)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -105,49 +105,31 @@ class ScheduleDetailVC: ViewController {
 	override func initialSetup() {
 		self.colorView.backgroundColor = UIColor(hex: self.viewModel.color)
 		
-		self.nameLabel.text = self.viewModel.title
+		self.nameLabel.text = self.viewModel.longTitle
 		self.professorLabel.text = self.viewModel.professor
 		self.typeLabel.text = self.viewModel.type
-		self.roomLabel.text = self.viewModel.rooms.first ?? Loca.Schedule.noRoom
+		self.roomLabel.text = self.viewModel.room
 
 		self.view.addSubview(self.nameLabel)
 		self.view.addSubview(self.professorLabel)
 
 		// --
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				self.nameLabel.leadingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
-				self.nameLabel.topAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: Const.margin),
-				self.nameLabel.trailingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin),
-				
-				self.professorLabel.leadingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
-				self.professorLabel.topAnchor.constraint(
-					equalTo: self.nameLabel.bottomAnchor, constant: 4),
-				self.professorLabel.trailingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				self.nameLabel.leadingAnchor.constraint(
-					equalTo: self.view.leadingAnchor, constant: Const.margin),
-				self.nameLabel.topAnchor.constraint(
-					equalTo: self.view.topAnchor, constant: Const.margin),
-				self.nameLabel.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor, constant: -Const.margin),
-				
-				self.professorLabel.leadingAnchor.constraint(
-					equalTo: self.view.leadingAnchor, constant: Const.margin),
-				self.professorLabel.topAnchor.constraint(
-					equalTo: self.nameLabel.bottomAnchor),
-				self.professorLabel.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor, constant: -Const.margin)
-			])
-		}
+        NSLayoutConstraint.activate([
+            self.nameLabel.leadingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+            self.nameLabel.topAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.topAnchor, constant: Const.margin),
+            self.nameLabel.trailingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin),
+            
+            self.professorLabel.leadingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+            self.professorLabel.topAnchor.constraint(
+                equalTo: self.nameLabel.bottomAnchor, constant: 4),
+            self.professorLabel.trailingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin)
+        ])
 		
 		// --
 		
@@ -156,29 +138,16 @@ class ScheduleDetailVC: ViewController {
 		separator.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(separator)
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				separator.leadingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
-				separator.topAnchor.constraint(
-					equalTo: professorLabel.bottomAnchor, constant: 15),
-				separator.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor),
-				separator.heightAnchor.constraint(
-					equalToConstant: Const.separator)
-				])
-		} else {
-			NSLayoutConstraint.activate([
-				separator.leadingAnchor.constraint(
-					equalTo: self.view.leadingAnchor, constant: Const.margin),
-				separator.topAnchor.constraint(
-					equalTo: professorLabel.bottomAnchor, constant: 15),
-				separator.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor),
-				separator.heightAnchor.constraint(
-					equalToConstant: Const.separator)
-				])
-		}
+        NSLayoutConstraint.activate([
+            separator.leadingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+            separator.topAnchor.constraint(
+                equalTo: professorLabel.bottomAnchor, constant: 15),
+            separator.trailingAnchor.constraint(
+                equalTo: self.view.trailingAnchor),
+            separator.heightAnchor.constraint(
+                equalToConstant: Const.separator)
+            ])
 		
 		// --
 		
@@ -249,46 +218,23 @@ class ScheduleDetailVC: ViewController {
 		bottomSeparator.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(bottomSeparator)
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				bottomSeparator.leadingAnchor.constraint(
-					equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
-				bottomSeparator.topAnchor.constraint(
-					equalTo: typeContainer.bottomAnchor, constant: 20),
-				bottomSeparator.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor),
-				bottomSeparator.heightAnchor.constraint(
-					equalToConstant: Const.separator)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				bottomSeparator.leadingAnchor.constraint(
-					equalTo: self.view.leadingAnchor, constant: Const.margin),
-				bottomSeparator.topAnchor.constraint(
-					equalTo: typeContainer.bottomAnchor, constant: 20),
-				bottomSeparator.trailingAnchor.constraint(
-					equalTo: self.view.trailingAnchor),
-				bottomSeparator.heightAnchor.constraint(
-					equalToConstant: Const.separator)
-			])
-		}
+        NSLayoutConstraint.activate([
+            bottomSeparator.leadingAnchor.constraint(
+                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+            bottomSeparator.topAnchor.constraint(
+                equalTo: typeContainer.bottomAnchor, constant: 20),
+            bottomSeparator.trailingAnchor.constraint(
+                equalTo: self.view.trailingAnchor),
+            bottomSeparator.heightAnchor.constraint(
+                equalToConstant: Const.separator)
+        ])
 		
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				self.colorView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin + 10),
-				self.colorView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 15),
-				self.colorView.bottomAnchor.constraint(equalTo: bottomSeparator.topAnchor, constant: -15),
-				self.colorView.widthAnchor.constraint(equalToConstant: 4)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				self.colorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin + 10),
-				self.colorView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 15),
-				self.colorView.bottomAnchor.constraint(equalTo: bottomSeparator.topAnchor, constant: -15),
-				self.colorView.widthAnchor.constraint(equalToConstant: 4)
-			])
-		}
-
+        NSLayoutConstraint.activate([
+            self.colorView.leadingAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin + 10),
+            self.colorView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 15),
+            self.colorView.bottomAnchor.constraint(equalTo: bottomSeparator.topAnchor, constant: -15),
+            self.colorView.widthAnchor.constraint(equalToConstant: 4)
+        ])
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {

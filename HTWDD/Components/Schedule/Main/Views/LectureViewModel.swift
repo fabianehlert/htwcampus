@@ -15,12 +15,16 @@ struct LectureViewModel: ViewModel {
 	
 	let shortTitle: String
     let longTitle: String
-    let subtitle: String
+    let type: String
+    let tag: String
     
     let begin: String
     let end: String
+    let time: String
 
-    var professor: String?
+    let professor: String?
+    let day: Day
+    let week: Week
 
 	let room: String?
 
@@ -32,17 +36,28 @@ struct LectureViewModel: ViewModel {
         
         self.begin = Loca.Schedule.Cell.time(model.begin.hour ?? 0, model.begin.minute ?? 0)
         self.end = Loca.Schedule.Cell.time(model.end.hour ?? 0, model.end.minute ?? 0)
+        self.time = "\(self.begin) – \(self.end)"
 
-        self.professor = nil
         if let prof = model.professor {
             if prof.hasSuffix(", ") {
                 self.professor = String(prof.dropLast(2))
             } else {
                 self.professor = prof
             }
+        } else {
+            self.professor = nil
         }
         
-        self.room = model.rooms.first
+        self.day = model.day
+        self.week = model.week
+        
+        if model.rooms.isEmpty {
+            self.room = Loca.Schedule.noRoom
+        } else if model.rooms.count == 1 {
+            self.room = model.rooms.first
+        } else {
+            self.room = model.rooms.joined(separator: " ")
+        }
 		
 		// TODO: Localise. And it's also kinda hacky.
 		var t = model.type
@@ -54,6 +69,7 @@ struct LectureViewModel: ViewModel {
 			t = "Übung"
 		}
 		
-		self.subtitle = t
+		self.type = t
+        self.tag = model.tag ?? ""
     }
 }

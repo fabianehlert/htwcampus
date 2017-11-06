@@ -104,6 +104,9 @@
 		B556410C1F990CB9006B9B1B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556410B1F990CB8006B9B1B /* Colors.swift */; };
 		B56957881FAA3F7F00CE2318 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56957871FAA3F7F00CE2318 /* CollectionHeaderView.swift */; };
 		B58ECB151F990D5300949F4F /* HTWNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58ECB141F990D5300949F4F /* HTWNamespace.swift */; };
+		B59879BC1FB0E87900320091 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BB1FB0E87900320091 /* LayoutGuide.swift */; };
+		B59879BE1FB0F52000320091 /* CanteenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */; };
+		B59879C01FB0F67800320091 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BF1FB0F67800320091 /* BadgeLabel.swift */; };
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
@@ -156,7 +159,6 @@
 		B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */; };
 		B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
 		B5F58E4F1E1EB172006D99AE /* Semester_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */; };
-		B5F847551F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F847541F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift */; };
 		B5FCAE611E62EAEF00E35DDB /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAE601E62EAEF00E35DDB /* Array.swift */; };
 /* End PBXBuildFile section */
 
@@ -274,6 +276,9 @@
 		B556410B1F990CB8006B9B1B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B56957871FAA3F7F00CE2318 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		B58ECB141F990D5300949F4F /* HTWNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWNamespace.swift; sourceTree = "<group>"; };
+		B59879BB1FB0E87900320091 /* LayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
+		B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenDetailViewController.swift; sourceTree = "<group>"; };
+		B59879BF1FB0F67800320091 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59FA9911DD09C8400259D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -331,7 +336,6 @@
 		B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade_Tests.swift; sourceTree = "<group>"; };
 		B5F58E4C1E1EB15A006D99AE /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		B5F58E4E1E1EB172006D99AE /* Semester_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester_Tests.swift; sourceTree = "<group>"; };
-		B5F847541F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailContentViewModel.swift; sourceTree = "<group>"; };
 		B5FCAE601E62EAEF00E35DDB /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +418,7 @@
 			children = (
 				1F8874881F8FB07300EE6492 /* ReactiveButton.swift */,
 				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
+				B59879BF1FB0F67800320091 /* BadgeLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,6 +779,7 @@
 				B5B376861FA6176E00FC3A07 /* CanteenMainVC.swift */,
 				B5461B621FA63CED00564D6D /* CanteenDataSource.swift */,
 				B5461B601FA62A2600564D6D /* CanteenService.swift */,
+				B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */,
 			);
 			path = Canteen;
 			sourceTree = "<group>";
@@ -815,7 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				B5EA536B1E7FCE8B00183E07 /* ScheduleDetailVC.swift */,
-				B5F847541F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -826,6 +831,7 @@
 				1F8874871F8FB04500EE6492 /* Views */,
 				B5EA53701E7FD24800183E07 /* Transitions */,
 				B556410B1F990CB8006B9B1B /* Colors.swift */,
+				B59879BB1FB0E87900320091 /* LayoutGuide.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1113,8 +1119,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59879C01FB0F67800320091 /* BadgeLabel.swift in Sources */,
 				B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
+				B59879BE1FB0F52000320091 /* CanteenDetailViewController.swift in Sources */,
 				B5EF957E1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift in Sources */,
 				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
 				B5EA535F1E7FBB1500183E07 /* String.swift in Sources */,
@@ -1122,7 +1130,6 @@
 				B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */,
 				B5EF958C1FAF8A9E006BC7D1 /* ExamsDataSource.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
-				B5F847551F7F5E0800A31C2A /* ScheduleDetailContentViewModel.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B5461B631FA63CED00564D6D /* CanteenDataSource.swift in Sources */,
@@ -1196,6 +1203,7 @@
 				39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */,
 				1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */,
 				B5EA535D1E7FBA4900183E07 /* Authenticator.swift in Sources */,
+				B59879BC1FB0E87900320091 /* LayoutGuide.swift in Sources */,
 				B5EF31F71FB059F600C848AF /* ExamsCell.swift in Sources */,
 				B516D8221FA9A47000551556 /* UIView.swift in Sources */,
 				B56957881FAA3F7F00CE2318 /* CollectionHeaderView.swift in Sources */,

@@ -49,4 +49,10 @@ extension HTWNamespace where Base: UIView {
         }
         return .zero
 	}
+    var safeAreaLayoutGuide: LayoutGuide {
+        if #available(iOS 11.0, *) {
+            return self.base.safeAreaLayoutGuide
+        }
+        return self.base
+    }
 }

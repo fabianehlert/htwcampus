@@ -155,21 +155,12 @@ final class ScheduleMainVC: ViewController {
 		guard let v = $0 else { return }
 		v.translatesAutoresizingMaskIntoConstraints = false
 
-		if #available(iOS 11.0, *) {
-			NSLayoutConstraint.activate([
-				v.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
-				v.topAnchor.constraint(equalTo: $1.safeAreaLayoutGuide.topAnchor),
-				v.trailingAnchor.constraint(equalTo: $1.trailingAnchor),
-				v.bottomAnchor.constraint(equalTo: $1.bottomAnchor)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				v.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
-				v.topAnchor.constraint(equalTo: $1.topAnchor),
-				v.trailingAnchor.constraint(equalTo: $1.trailingAnchor),
-				v.bottomAnchor.constraint(equalTo: $1.bottomAnchor)
-			])
-		}
+        NSLayoutConstraint.activate([
+            v.leadingAnchor.constraint(equalTo: $1.leadingAnchor),
+            v.topAnchor.constraint(equalTo: $1.htw.safeAreaLayoutGuide.topAnchor),
+            v.trailingAnchor.constraint(equalTo: $1.trailingAnchor),
+            v.bottomAnchor.constraint(equalTo: $1.bottomAnchor)
+        ])
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {

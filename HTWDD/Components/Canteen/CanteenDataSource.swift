@@ -9,40 +9,58 @@
 import Foundation
 import RxSwift
 
-class CanteenDataSource: TableViewDataSource {
+class CanteenDataSource: CollectionViewDataSource {
 
     private var canteen: Canteen?
-    private var meals = [Meal]()
+    private var meals = [Meal]() {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
     private let disposeBag = DisposeBag()
+    private let loadingCount = Variable(0)
+    
+    lazy var loading = self.loadingCount
+        .asObservable()
+        .map({ $0 > 0 })
+        .observeOn(MainScheduler.instance)
 
     let service: CanteenService
-    init(context: HasCanteen) {
+    private(set) var date: Date
+    init(context: HasCanteen, date: Date = .init()) {
         self.service = context.canteenService
+        self.date = date
     }
 
-    func load() -> Observable<()> {
-        // TODO: Use correct date here!
-        return self.service
-            .load(parameters: .init(id: .reichenbachstrasse, date: Date()))
+    func load() {
+        self.loadingCount.value += 1
+        
+        self.date = Date()
+        
+        self.service
+            .load(parameters: .init(id: .reichenbachstrasse, date: self.date))
             .observeOn(MainScheduler.instance)
-            .map { [weak self] response in
-                self?.canteen = response.canteen
-                self?.meals = response.meals
-                self?.tableView?.reloadData()
-            }
+            .subscribe(onNext: { [weak self] response in
+                    self?.canteen = response.canteen
+                    self?.meals = response.meals
+                    self?.loadingCount.value -= 1
+                }, onError: { [weak self] _ in
+                    self?.loadingCount.value -= 1
+            })
+            .disposed(by: self.disposeBag)
     }
 
-    // MARK: TableViewDataSource
-
-    override func numberOfSections() -> Int {
-        return self.canteen != nil ? 1 : 0
-    }
-
-    override func titleFor(section: Int) -> String? {
+    func titleFor(section: Int) -> String? {
         guard section == 0 else {
             return nil
         }
         return self.canteen?.name
+    }
+    
+    // MARK: TableViewDataSource
+
+    override func numberOfSections() -> Int {
+        return self.canteen != nil ? 1 : 0
     }
 
     override func numberOfItems(in section: Int) -> Int {
