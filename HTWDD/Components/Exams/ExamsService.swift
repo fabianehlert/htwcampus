@@ -41,7 +41,7 @@ class ExamsService: Service {
 }
 
 extension ExamsService: HasExams {
-    var examService: ExamsService {
+    var examsService: ExamsService {
         return self
     }
 }

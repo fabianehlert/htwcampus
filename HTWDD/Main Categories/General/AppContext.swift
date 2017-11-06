@@ -17,7 +17,7 @@ protocol HasSchedule {
 }
 
 protocol HasExams {
-	var examService: ExamsService { get }
+	var examsService: ExamsService { get }
 }
 
 protocol HasGrade {
@@ -35,7 +35,7 @@ protocol HasSettings {
 class AppContext: HasSchedule, HasGrade, HasCanteen, HasExams, HasSettings {
 
     let scheduleService = ScheduleService()
-	let examService = ExamsService()
+	let examsService = ExamsService()
 	let gradeService = GradeService()
     let canteenService = CanteenService()
 	let settingsService = SettingsService()

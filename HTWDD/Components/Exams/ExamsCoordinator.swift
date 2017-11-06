@@ -16,7 +16,13 @@ class ExamsCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     
-    private lazy var examController = ExamMainVC()
+    private lazy var examController = ExamMainVC(context: self.context)
+    
+    var auth: ScheduleService.Auth? {
+        didSet {
+            self.examController.auth = self.auth
+        }
+    }
     
     let context: HasExams
     init(context: HasExams) {

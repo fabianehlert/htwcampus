@@ -57,6 +57,7 @@ class AppCoordinator: Coordinator {
 
     private func injectAuthentication(schedule: ScheduleService.Auth?, grade: GradeService.Auth?) {
         self.schedule.auth = schedule
+        self.exams.auth = schedule
         self.grades.auth = grade
     }
 
@@ -117,6 +118,7 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
     func deleteAllData() {
         self.persistenceService.clear()
         self.schedule.auth = nil
+        self.exams.auth = nil
         self.grades.auth = nil
         self.showOnboarding(animated: true)
     }
