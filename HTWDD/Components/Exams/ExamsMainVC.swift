@@ -1,5 +1,5 @@
 //
-//  ExamMainVC.swift
+//  ExamsMainVC.swift
 //  HTWDD
 //
 //  Created by Benjamin Herzog on 04.11.17.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class ExamMainVC: CollectionViewController {
+class ExamsMainVC: CollectionViewController {
     
     enum Const {
         static let margin: CGFloat = 15
@@ -21,9 +21,9 @@ class ExamMainVC: CollectionViewController {
         }
     }
     
-    private let dataSource: ExamDataSource
+    private let dataSource: ExamsDataSource
     init(context: HasExams) {
-        self.dataSource = ExamDataSource(context: context)
+        self.dataSource = ExamsDataSource(context: context)
         super.init()
         self.dataSource.collectionView = self.collectionView
         self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
@@ -86,14 +86,14 @@ class ExamMainVC: CollectionViewController {
 	
 }
 
-extension ExamMainVC {
+extension ExamsMainVC {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)
         return CGSize(width: width, height: 80)
     }
 }
 
-extension ExamMainVC: TabbarChildViewController {
+extension ExamsMainVC: TabbarChildViewController {
     func tabbarControllerDidSelectAlreadyActiveChild() {
         self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: -self.view.htw.safeAreaInsets.top), animated: true)
     }

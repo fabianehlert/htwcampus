@@ -1,5 +1,5 @@
 //
-//  ExamDataSource.swift
+//  ExamsDataSource.swift
 //  HTWDD
 //
 //  Created by Benjamin Herzog on 05.11.17.
@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class ExamDataSource: CollectionViewDataSource {
+class ExamsDataSource: CollectionViewDataSource {
     
     private var data = [Exam]() {
         didSet {
