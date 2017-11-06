@@ -147,7 +147,7 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         self.endLabel.text = viewModel.end
 		self.titleLabel.text = viewModel.longTitle
         self.professorLabel.text = viewModel.professor
-        self.typeLabel.text = viewModel.subtitle
+        self.typeLabel.text = viewModel.type
 		self.roomLabel.text = viewModel.room
 		
         self.roomContainer.alpha = viewModel.room != nil ? 1 : 0
