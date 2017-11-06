@@ -91,6 +91,10 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let height = self.collectionViewContentSize.height - Const.headerHeight
 		return height / (end - start)
 	}
+    
+    func xPosition(ofSection section: Int) -> CGFloat {
+        return CGFloat(section) * (self.dataSource?.widthPerDay ?? 0) + Const.timeWidth
+    }
 
 	override var collectionViewContentSize: CGSize {
 

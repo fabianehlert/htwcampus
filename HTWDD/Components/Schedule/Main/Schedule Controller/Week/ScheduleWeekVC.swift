@@ -23,8 +23,9 @@ final class ScheduleWeekVC: ScheduleBaseVC {
     
 	// MARK: - Init
     
+    private let layout = ScheduleWeekLayout()
+    
 	init(configuration: ScheduleDataSource.Configuration) {
-        let layout = ScheduleWeekLayout()
         var config = configuration
         config.originDate = nil
         super.init(configuration: config, layout: layout, startHour: 6.5)
@@ -73,8 +74,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         }
         
         // scroll to item
-        self.collectionView.scrollToItem(at: indexPath, at: .left, animated: animated)
-        self.collectionView.contentOffset.x -= ScheduleWeekLayout.Const.timeWidth + self.itemMargin
+        let xPos = self.layout.xPosition(ofSection: daysUntilStartOfWeek)
+        self.collectionView.setContentOffset(CGPoint(x: xPos, y: self.collectionView.contentOffset.y), animated: animated)
     }
     
 }
