@@ -15,7 +15,7 @@ struct MealViewModel: ViewModel {
     }
 }
 
-class MealCell: TableViewCell, Cell {
+class MealCell: FlatCollectionViewCell, Cell {
 
     lazy var label = UILabel()
 
