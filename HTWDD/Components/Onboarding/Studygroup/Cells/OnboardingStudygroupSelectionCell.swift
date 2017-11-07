@@ -39,7 +39,7 @@ struct StudyGroupViewModel: ViewModel {
 class OnboardingStudygroupSelectionCell: FlatCollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
         label.textAlignment = .center
         label.numberOfLines = 2
@@ -48,7 +48,7 @@ class OnboardingStudygroupSelectionCell: FlatCollectionViewCell {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.font = .systemFont(ofSize: 18, weight: .regular)
         label.textColor = UIColor.htw.mediumGrey
         label.textAlignment = .center
         return label

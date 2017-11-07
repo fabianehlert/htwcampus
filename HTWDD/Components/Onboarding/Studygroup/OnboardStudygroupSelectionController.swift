@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 private enum Const {
-    static let collectionViewHeight: CGFloat = 216 // keyboard height
+    static let collectionViewHeight: CGFloat = 500
     static let margin: CGFloat = 15
 }
 
@@ -81,6 +81,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
         self.collectionView.backgroundColor = .clear
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .clear
+		self.view.alpha = 0
         
         self.visualEffectView.isUserInteractionEnabled = true
         self.collectionView.backgroundView = self.visualEffectView
@@ -109,15 +110,14 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     }
     
     func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
-        
         self.visualEffectView.effect = direction == .present ? nil : UIBlurEffect(style: .extraLight)
         let startY = (self.view.height - Const.collectionViewHeight) * -1
-        self.collectionView.contentOffset.y = direction == .present ? startY - Const.collectionViewHeight : startY
+        self.collectionView.contentOffset.y = direction == .present ? startY - 150 : startY
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
-            
             self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
-            self.collectionView.contentOffset.y = direction == .present ? startY : startY - Const.collectionViewHeight
+			self.view.alpha = direction == .present ? 1 : 0
+            self.collectionView.contentOffset.y = direction == .present ? startY : startY - 150
             
         }, completion: completion)
         
