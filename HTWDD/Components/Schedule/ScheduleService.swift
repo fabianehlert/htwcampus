@@ -110,7 +110,7 @@ class ScheduleService: Service {
 		lectures.forEach { l in
 			if !colors.keys.contains(l.name.hashValue) {
 				let index = Array(colors.keys).index(of: l.name.hashValue) ?? colors.count
-				colors[l.name.hashValue] = UIColor.htw.scheduleColors[index].hex()
+				colors[l.name.hashValue] = UIColor.htw.scheduleColors[index % UIColor.htw.scheduleColors.count].hex()
 			}
 		}
 		
