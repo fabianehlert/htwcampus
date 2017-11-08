@@ -58,33 +58,19 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         return label
     }()
 
-    let typeContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: 0xE8E8E8)
-        view.layer.cornerRadius = 3
-        return view
-    }()
-    
-    let roomContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: 0xCFCFCF)
-        view.layer.cornerRadius = 3
-        return view
-    }()
-
-    let typeLabel: UILabel = {
-        let label = UILabel()
+    let typeLabel: BadgeLabel = {
+        let label = BadgeLabel()
+		label.backgroundColor = UIColor(hex: 0xE8E8E8)
         label.font = .systemFont(ofSize: 13, weight: .semibold)
         label.textColor = UIColor.htw.textHeadline
-        label.textAlignment = .center
         return label
     }()
 
-	let roomLabel: UILabel = {
-		let label = UILabel()
+	let roomLabel: BadgeLabel = {
+		let label = BadgeLabel()
+		label.backgroundColor = UIColor(hex: 0xCFCFCF)
 		label.font = .systemFont(ofSize: 13, weight: .semibold)
 		label.textColor = UIColor.htw.textHeadline
-		label.textAlignment = .center
 		return label
 	}()
 
@@ -98,8 +84,6 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         self.contentView.addSubview(self.colorView)
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.professorLabel)
-        self.contentView.addSubview(self.typeContainer)
-        self.contentView.addSubview(self.roomContainer)
         self.contentView.addSubview(self.typeLabel)
         self.contentView.addSubview(self.roomLabel)
 	}
@@ -132,7 +116,7 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 		self.updateBadges(innerMargin: innerMargin, labelsStart: labelsStart)
 		
         self.colorView.frame = CGRect(x: self.beginLabel.right + Const.margin, y: Const.margin,
-                                      width: 4, height: (self.typeContainer.bottom - self.titleLabel.top) + 3)
+                                      width: 4, height: (self.typeLabel.bottom - self.titleLabel.top) + 3)
     }
     
     override func layoutSubviews() {
@@ -150,7 +134,7 @@ class LectureListCell: FlatCollectionViewCell, Cell {
         self.typeLabel.text = viewModel.type
 		self.roomLabel.text = viewModel.room
 		
-        self.roomContainer.alpha = viewModel.room != nil ? 1 : 0
+        self.roomLabel.alpha = viewModel.room != nil ? 1 : 0
 		
 		let innerMargin: CGFloat = 2
 		let labelsStart = Const.margin * 3 + self.beginLabel.width + self.colorView.width
@@ -159,13 +143,11 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 	
 	private func updateBadges(innerMargin: CGFloat, labelsStart: CGFloat) {
 		self.typeLabel.frame = CGRect(origin: CGPoint(x: labelsStart, y: self.professorLabel.bottom + (innerMargin*3)),
-									  size: CGSize(width: self.typeLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
+									  size: CGSize(width: self.typeLabel.intrinsicContentSize.width, height: 19))
 		
+		let roomWidth = min(self.contentView.width - labelsStart - Const.margin - self.typeLabel.width - (innerMargin*3), self.roomLabel.intrinsicContentSize.width)
 		self.roomLabel.frame = CGRect(origin: CGPoint(x: self.typeLabel.right + (innerMargin*3), y: self.professorLabel.bottom + (innerMargin*3)),
-									  size: CGSize(width: self.roomLabel.intrinsicContentSize.width + (4*innerMargin), height: 19))
-		
-		self.typeContainer.frame = CGRect(origin: CGPoint(x: self.typeLabel.left, y: self.typeLabel.top), size: self.typeLabel.frame.size)
-		self.roomContainer.frame = CGRect(origin: CGPoint(x: self.roomLabel.left, y: self.roomLabel.top), size: self.roomLabel.frame.size)
+									  size: CGSize(width: roomWidth, height: 19))
 	}
     
 }

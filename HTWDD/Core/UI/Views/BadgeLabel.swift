@@ -22,13 +22,13 @@ class BadgeLabel: UILabel {
     
     override var intrinsicContentSize: CGSize {
         let sup = super.intrinsicContentSize
-        let innerMargin = sup.height / 5
-        return CGSize(width: sup.width + innerMargin * 4, height: sup.height + innerMargin * 2)
+		let innerMargin: CGFloat = 2
+        return CGSize(width: sup.width + innerMargin * 6, height: sup.height + innerMargin * 2)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = min(self.height, self.width) / 2
+        self.layer.cornerRadius = 3
     }
     
 }

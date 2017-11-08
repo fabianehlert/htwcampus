@@ -56,9 +56,9 @@ struct LectureViewModel: ViewModel {
         } else if model.rooms.count == 1 {
             self.room = model.rooms.first
         } else {
-            self.room = model.rooms.joined(separator: " ")
+            self.room = model.rooms.joined(separator: ", ")
         }
-		
+				
 		// TODO: Localise. And it's also kinda hacky.
 		var t = model.type
 		if t.hasPrefix("V") {
