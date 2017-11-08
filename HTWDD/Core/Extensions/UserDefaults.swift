@@ -17,7 +17,7 @@ extension UserDefaults {
     /// - Returns: true if defaults were saved before, false if not
     @discardableResult func clear() -> Bool {
         if let bundle = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundle)
+            UserDefaults.htw?.removePersistentDomain(forName: bundle)
             return true
         } else {
             return false

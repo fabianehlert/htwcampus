@@ -78,7 +78,7 @@ extension Lecture: Unmarshaling {
 extension Lecture {
 	
 	var color: UInt {
-		if let data = UserDefaults.standard.data(forKey: ScheduleService.lectureColorsKey),
+		if let data = UserDefaults.htw?.data(forKey: ScheduleService.lectureColorsKey),
 			let colors = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Int: UInt] {
 			return colors[self.name.hashValue] ?? 0
 		}

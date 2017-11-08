@@ -116,8 +116,8 @@ class ScheduleService: Service {
 		
 		let archive = NSKeyedArchiver.archivedData(withRootObject: colors)
 		
-		UserDefaults.standard.set(archive, forKey: ScheduleService.lectureColorsKey)
-		UserDefaults.standard.synchronize()
+		UserDefaults.htw?.set(archive, forKey: ScheduleService.lectureColorsKey)
+		UserDefaults.htw?.synchronize()
 	}
 }
 
