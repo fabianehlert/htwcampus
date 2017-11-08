@@ -40,6 +40,40 @@
 		1F8E20C31FB34D6500347DB6 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52DF0D71E7096F30095C854 /* Marshal.framework */; };
 		1F8E20C41FB34D6A00347DB6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		1F8E20C51FB34D6E00347DB6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
+		1F8E20C71FB34E6200347DB6 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B671FA7B4C400564D6D /* PersistenceService.swift */; };
+		1F8E20C81FB34E6D00347DB6 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E83B1FA5E8D50055782D /* ScheduleService.swift */; };
+		1F8E20C91FB34E6F00347DB6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E83D1FA5EBBE0055782D /* Service.swift */; };
+		1F8E20CA1FB34E7300347DB6 /* GradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D3E8351FA5E3620055782D /* GradeService.swift */; };
+		1F8E20CB1FB34E9000347DB6 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF1B1E1D762E0031077C /* Grade.swift */; };
+		1F8E20CC1FB34E9700347DB6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF171E1D6AEF0031077C /* Network.swift */; };
+		1F8E20CD1FB34E9C00347DB6 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E4C1E1EB15A006D99AE /* Semester.swift */; };
+		1F8E20CE1FB34EAA00347DB6 /* SemesterInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72811E6C809200D05B6D /* SemesterInformation.swift */; };
+		1F8E20CF1FB34EB000347DB6 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
+		1F8E20D01FB34EC200347DB6 /* DataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4FA1E6ADB340022E40C /* DataSourceProtocols.swift */; };
+		1F8E20D11FB34EC800347DB6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF191E1D761E0031077C /* Course.swift */; };
+		1F8E20D21FB34ECF00347DB6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF1D1E1D9E6D0031077C /* Date.swift */; };
+		1F8E20D31FB34ED400347DB6 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535C1E7FBA4900183E07 /* Authenticator.swift */; };
+		1F8E20D41FB34EDA00347DB6 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBE3521F6EA20F0073C450 /* AppContext.swift */; };
+		1F8E20D51FB34EE100347DB6 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA535A1E7FBA3D00183E07 /* Parameter.swift */; };
+		1F8E20D61FB34EE500347DB6 /* ExamsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95771FADB40C006BC7D1 /* ExamsService.swift */; };
+		1F8E20D71FB34EEE00347DB6 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */; };
+		1F8E20D81FB34EF700347DB6 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95891FAF875B006BC7D1 /* Exam.swift */; };
+		1F8E20D91FB34EFD00347DB6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB5011E6AFFA20022E40C /* Day.swift */; };
+		1F8E20DA1FB34F0B00347DB6 /* EventPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72891E6C86A600D05B6D /* EventPeriod.swift */; };
+		1F8E20DB1FB34F1000347DB6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE728D1E6C886400D05B6D /* Event.swift */; };
+		1F8E20DC1FB34F1900347DB6 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0D91E70A8870095C854 /* Week.swift */; };
+		1F8E20DD1FB34F4E00347DB6 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE72851E6C83A500D05B6D /* EventDate.swift */; };
+		1F8E20DE1FB34F5700347DB6 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE29301FA7C0F200A66654 /* Localizations.swift */; };
+		1F8E20DF1FB34F7400347DB6 /* CanteenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B601FA62A2600564D6D /* CanteenService.swift */; };
+		1F8E20E01FB34F7900347DB6 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */; };
+		1F8E20E11FB34F8400347DB6 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3768C1FA6192A00FC3A07 /* Canteen.swift */; };
+		1F8E20E21FB34F8E00347DB6 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376881FA6179F00FC3A07 /* Meal.swift */; };
+		1F8E20E31FB34F9D00347DB6 /* CodableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */; };
+		1F8E20E41FB34FAD00347DB6 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */; };
+		1F8E20E51FB34FB300347DB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556410B1F990CB8006B9B1B /* Colors.swift */; };
+		1F8E20E61FB34FC300347DB6 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAE601E62EAEF00E35DDB /* Array.swift */; };
+		1F8E20E71FB3502E00347DB6 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F58E451E1EA7C8006D99AE /* Dictionary.swift */; };
+		1F8E20E81FB3507800347DB6 /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */; };
 		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
@@ -1134,11 +1168,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8E20D71FB34EEE00347DB6 /* GlobalFunctions.swift in Sources */,
+				1F8E20E51FB34FB300347DB6 /* Colors.swift in Sources */,
+				1F8E20D61FB34EE500347DB6 /* ExamsService.swift in Sources */,
+				1F8E20D91FB34EFD00347DB6 /* Day.swift in Sources */,
 				1F4BD53F1FAFAFF4007E0817 /* ViewController.swift in Sources */,
+				1F8E20E21FB34F8E00347DB6 /* Meal.swift in Sources */,
+				1F8E20E01FB34F7900347DB6 /* SettingsService.swift in Sources */,
+				1F8E20CD1FB34E9C00347DB6 /* Semester.swift in Sources */,
+				1F8E20E11FB34F8400347DB6 /* Canteen.swift in Sources */,
+				1F8E20DC1FB34F1900347DB6 /* Week.swift in Sources */,
+				1F8E20DD1FB34F4E00347DB6 /* EventDate.swift in Sources */,
+				1F8E20C91FB34E6F00347DB6 /* Service.swift in Sources */,
+				1F8E20DF1FB34F7400347DB6 /* CanteenService.swift in Sources */,
+				1F8E20C71FB34E6200347DB6 /* PersistenceService.swift in Sources */,
+				1F8E20CF1FB34EB000347DB6 /* Lecture.swift in Sources */,
+				1F8E20CB1FB34E9000347DB6 /* Grade.swift in Sources */,
+				1F8E20D21FB34ECF00347DB6 /* Date.swift in Sources */,
 				1F4BD53C1FAFABDD007E0817 /* String.swift in Sources */,
+				1F8E20CC1FB34E9700347DB6 /* Network.swift in Sources */,
+				1F8E20E61FB34FC300347DB6 /* Array.swift in Sources */,
+				1F8E20DB1FB34F1000347DB6 /* Event.swift in Sources */,
+				1F8E20E71FB3502E00347DB6 /* Dictionary.swift in Sources */,
+				1F8E20D11FB34EC800347DB6 /* Course.swift in Sources */,
+				1F8E20D01FB34EC200347DB6 /* DataSourceProtocols.swift in Sources */,
+				1F8E20E41FB34FAD00347DB6 /* TimeInterval.swift in Sources */,
+				1F8E20D51FB34EE100347DB6 /* Parameter.swift in Sources */,
+				1F8E20DE1FB34F5700347DB6 /* Localizations.swift in Sources */,
+				1F8E20DA1FB34F0B00347DB6 /* EventPeriod.swift in Sources */,
+				1F8E20E31FB34F9D00347DB6 /* CodableDictionary.swift in Sources */,
 				1F4BD53E1FAFAD63007E0817 /* HTWNamespace.swift in Sources */,
+				1F8E20E81FB3507800347DB6 /* DateComponents.swift in Sources */,
+				1F8E20CE1FB34EAA00347DB6 /* SemesterInformation.swift in Sources */,
+				1F8E20D41FB34EDA00347DB6 /* AppContext.swift in Sources */,
+				1F8E20C81FB34E6D00347DB6 /* ScheduleService.swift in Sources */,
+				1F8E20D81FB34EF700347DB6 /* Exam.swift in Sources */,
 				1F4BD53A1FAFAA68007E0817 /* UserDefaults.swift in Sources */,
+				1F8E20CA1FB34E7300347DB6 /* GradeService.swift in Sources */,
 				1FED52BA1FAFA1C000260D5B /* TodayViewController.swift in Sources */,
+				1F8E20D31FB34ED400347DB6 /* Authenticator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
