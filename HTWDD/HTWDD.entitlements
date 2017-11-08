@@ -8,7 +8,7 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>3E4PGPNR47.de.htw-dresden.ios</string>
+		<string>3E4PGPNR47.keychain-group</string>
 	</array>
 </dict>
 </plist>

@@ -13,7 +13,8 @@ import KeychainAccess
 class PersistenceService: Service {
 
     private enum Const {
-		static let accessGroup = "3E4PGPNR47.de.htw-dresden.ios"
+        static let service = "de.htw-dresden.ios"
+		static let accessGroup = "3E4PGPNR47.keychain-group"
 		
         static let scheduleKey = "htw-dresden.schedule.auth"
         static let gradesKey = "htw-dresden.grades.auth"
@@ -28,7 +29,7 @@ class PersistenceService: Service {
         var grades: GradeService.Auth?
     }
 
-    private let keychain = Keychain(accessGroup: Const.accessGroup)
+    private let keychain = Keychain(service: Const.service, accessGroup: Const.accessGroup)
 
     // MARK: - Load
 
