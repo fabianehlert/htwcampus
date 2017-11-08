@@ -13,7 +13,7 @@ import KeychainAccess
 class PersistenceService: Service {
 
     private enum Const {
-		static let accessGroup = "group.htw-dresden.ios"
+		static let accessGroup = "3E4PGPNR47.de.htw-dresden.ios"
 		
         static let scheduleKey = "htw-dresden.schedule.auth"
         static let gradesKey = "htw-dresden.grades.auth"
