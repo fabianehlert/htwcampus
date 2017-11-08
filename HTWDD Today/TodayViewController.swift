@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import RxSwift
 import NotificationCenter
 
 class TodayViewController: ViewController {
+	
+	private let disposeBag = DisposeBag()
+	private let persistenceService = PersistenceService()
+
+	@IBOutlet private weak var titleLabel: UILabel?
 	
 	// MARK: - ViewController lifecycle
 	
@@ -17,12 +23,24 @@ class TodayViewController: ViewController {
         super.viewDidLoad()
 		
 		self.view.backgroundColor = .clear
-		
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded // (self.challenges.count < 3) ? .compact : .expanded
+		
+		self.titleLabel?.text = "...loading..."
+		
+		self.loadPersistedAuth { [weak self] auth, _ in
+			self?.titleLabel?.text = auth?.major ?? "Nothing here..."
+		}
     }
 	
-	override func initialSetup() {
-		super.initialSetup()
+	private func loadPersistedAuth(completion: @escaping (ScheduleService.Auth?, GradeService.Auth?) -> Void) {
+		self.persistenceService.load()
+			.take(1)
+			.subscribe(onNext: { res in
+				completion(res.schedule, res.grades)
+			}, onError: { _ in
+				completion(nil, nil)
+			})
+			.disposed(by: self.disposeBag)
 	}
 	
 }

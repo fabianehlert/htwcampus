@@ -39,6 +39,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="110"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="hOt-d5-G95" id="PGs-EH-tYI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-mC-cdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
