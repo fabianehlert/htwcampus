@@ -8,8 +8,6 @@
 
 import Foundation
 
-let accessGroupID = "3E4PGPNR47.group.htw-dresden.ios"
-
 extension String {
 
     var base64: String {
@@ -21,4 +19,8 @@ extension String {
 		return range.location != NSNotFound ? range : nil
 	}
 
+}
+
+enum Constants {
+	static let groupID = "3E4PGPNR47.group.htw-dresden.ios"
 }

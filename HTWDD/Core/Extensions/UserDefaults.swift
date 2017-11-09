@@ -28,6 +28,6 @@ extension UserDefaults {
 
 extension UserDefaults {
 	static var htw: UserDefaults? {
-		return UserDefaults(suiteName: accessGroupID)
+		return UserDefaults(suiteName: Constants.groupID)
 	}
 }
