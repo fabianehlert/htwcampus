@@ -20,7 +20,7 @@ class NoResultsView: View {
 	private lazy var label: UILabel = {
 		let l = UILabel()
 		l.font = .systemFont(ofSize: 30, weight: .medium)
-		l.textColor = UIColor.htw.mediumGrey
+		l.textColor = .gray
 		l.textAlignment = .center
 		l.translatesAutoresizingMaskIntoConstraints = false
 		return l
