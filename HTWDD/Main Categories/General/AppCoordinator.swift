@@ -65,8 +65,8 @@ class AppCoordinator: Coordinator {
 
         self.loadPersistedAuth { [weak self] schedule, grade in
 
-            // TODO: Maybe we like to inject them seperately
-            if let schedule = schedule, let grade = grade {
+            // If one of them has already been saved
+            if schedule != nil || grade != nil {
                 self?.injectAuthentication(schedule: schedule, grade: grade)
                 return
             }
