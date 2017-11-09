@@ -84,6 +84,8 @@
 		1FC1BDD21FADDF11007F9D06 /* SettingsMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */; };
 		1FC1BDD41FADDF1C007F9D06 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */; };
 		1FCE29311FA7C0F300A66654 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE29301FA7C0F200A66654 /* Localizations.swift */; };
+		1FD757601FB4D1BD007F9CA1 /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
+		1FD757611FB4D72D007F9CA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
 		1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */; };
 		1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE108051F8FF7A1002B8E69 /* Regex.swift */; };
 		1FED52B71FAFA1C000260D5B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED52B61FAFA1C000260D5B /* NotificationCenter.framework */; };
@@ -1059,6 +1061,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */,
+				1FD757611FB4D72D007F9CA1 /* Localizable.strings in Resources */,
 				1F1491B61FB456F70011B114 /* Assets.xcassets in Resources */,
 				1F4BD5361FAFA895007E0817 /* InfoPlist.strings in Resources */,
 			);
@@ -1176,6 +1179,7 @@
 				1F8E20D71FB34EEE00347DB6 /* GlobalFunctions.swift in Sources */,
 				1F8E20E51FB34FB300347DB6 /* Colors.swift in Sources */,
 				1F8E20D61FB34EE500347DB6 /* ExamsService.swift in Sources */,
+				1FD757601FB4D1BD007F9CA1 /* LectureViewModel.swift in Sources */,
 				1F8E20D91FB34EFD00347DB6 /* Day.swift in Sources */,
 				1F4BD53F1FAFAFF4007E0817 /* ViewController.swift in Sources */,
 				1F8E20E21FB34F8E00347DB6 /* Meal.swift in Sources */,
