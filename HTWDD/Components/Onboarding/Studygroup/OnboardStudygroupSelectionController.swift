@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 private enum Const {
-    static let collectionViewHeight: CGFloat = 500
+    static let collectionViewHeight: CGFloat = 520
     static let margin: CGFloat = 15
 }
 
