@@ -449,8 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */,
-				1F7E320C1FA7BB0900CCBDD6 /* Week */,
 				1F7E320E1FA7BB1200CCBDD6 /* List */,
+				1F7E320C1FA7BB0900CCBDD6 /* Week */,
 			);
 			path = "Schedule Controller";
 			sourceTree = "<group>";
@@ -638,7 +638,6 @@
 				B52A9B551DDB170000313FC3 /* Extensions */,
 				B538EF081E1D5BC60031077C /* Logging */,
 				B538EF161E1D6ACD0031077C /* Network */,
-				B52A9B571DDB172300313FC3 /* Settings */,
 				B5EA536F1E7FD24000183E07 /* UI */,
 				B58ECB141F990D5300949F4F /* HTWNamespace.swift */,
 				B5461B6C1FA7BBF300564D6D /* GlobalFunctions.swift */,
@@ -695,13 +694,6 @@
 				1F2B8A0F1F99029E00026099 /* TextField.swift */,
 			);
 			path = "Base Classes";
-			sourceTree = "<group>";
-		};
-		B52A9B571DDB172300313FC3 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		B52A9B5A1DDB1B7C00313FC3 /* Frameworks */ = {
