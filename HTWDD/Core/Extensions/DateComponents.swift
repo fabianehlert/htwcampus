@@ -30,6 +30,35 @@ extension DateComponents {
                CGFloat(self.minute ?? 0) * 60 +
                CGFloat(self.second ?? 0)
     }
+    
+    var eventDate: EventDate? {
+        guard let day = self.day, let month = self.month, let year = self.year else {
+            return nil
+        }
+        return EventDate(day: day, month: month, year: year)
+    }
+    
+    /// Checks if self hour and minute is between start and end's hour and minute
+    func timeBetween(start: DateComponents, end: DateComponents) -> Bool {
+        guard
+            let sHour = self.hour, let sMinute = self.minute,
+            let stHour = start.hour, let stMinute = start.minute,
+            let eHour = end.hour, let eMinute = end.minute
+        else {
+            return false
+        }
+        return sHour >= stHour && sHour <= eHour && sMinute >= stMinute && sMinute <= eMinute
+    }
+    
+    func isBefore(other: DateComponents) -> Bool {
+        guard
+            let sHour = self.hour, let sMinute = self.minute,
+            let oHour = other.hour, let oMinute = other.minute
+            else {
+                return false
+        }
+        return sHour <= oHour && sMinute <= oMinute
+    }
 
 }
 

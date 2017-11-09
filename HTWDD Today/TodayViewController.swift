@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import NotificationCenter
 
 class TodayViewController: ViewController {
@@ -15,7 +16,7 @@ class TodayViewController: ViewController {
 	private let disposeBag = DisposeBag()
 	private let persistenceService = PersistenceService()
 
-	@IBOutlet private weak var titleLabel: UILabel?
+	@IBOutlet private weak var titleLabel: UILabel!
 	
 	// MARK: - ViewController lifecycle
 	
@@ -27,22 +28,63 @@ class TodayViewController: ViewController {
 		
 		self.titleLabel?.text = "...loading..."
 		
-		self.loadPersistedAuth { [weak self] auth, _ in
-			self?.titleLabel?.text = auth?.major ?? "Nothing here..."
-		}
+		self.loadActiveLecture()
+            .map { lecture in
+                return lecture?.name ?? "Could not find a lecture"
+            }
+            .bind(to: self.titleLabel.rx.text)
+            .disposed(by: self.disposeBag)
     }
 	
-	private func loadPersistedAuth(completion: @escaping (ScheduleService.Auth?, GradeService.Auth?) -> Void) {
-		self.persistenceService.load()
-			.take(1)
-			.subscribe(onNext: { res in
-				completion(res.schedule, res.grades)
-			}, onError: { _ in
-				completion(nil, nil)
-			})
-			.disposed(by: self.disposeBag)
+	private func loadActiveLecture() -> Observable<Lecture?> {
+        
+        let originDate = Date()
+        let weekDay = originDate.weekday
+        let weekNumber = originDate.weekNumber
+        
+        func currentLecture(lectures: [Lecture]) -> Lecture? {
+            let components = Date().components
+            // sort lectures from late to early
+            let sortedLectures = lectures.sorted(by: { $0.begin > $1.begin })
+            var currentLecture: Lecture? = nil
+            for l in sortedLectures {
+                if components.timeBetween(start: l.begin, end: l.end) {
+                    return l
+                }
+                if l.end.isBefore(other: components) {
+                    return currentLecture
+                }
+                currentLecture = l
+            }
+            return currentLecture
+        }
+        
+        func filterLecturesForToday(semester: SemesterInformation, lectures: [Lecture]) -> [Lecture] {
+            guard semester.lecturesContains(date: originDate) else {
+                return []
+            }
+            
+            if semester.freeDayContains(date: originDate) != nil {
+                return []
+            }
+            
+            return lectures.filter { lecture in
+                let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
+                let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
+                return weekEvenOddValidation && weekOnlyValidation
+            }
+        }
+        
+		return self.persistenceService.loadScheduleCache()
+            .map { information in
+                guard let currentSemester = SemesterInformation.information(date: originDate, input: information.semesters) else {
+                    return nil
+                }
+                let filtered = filterLecturesForToday(semester: currentSemester, lectures: information.lectures[weekDay] ?? [])
+                return currentLecture(lectures: filtered)
+        }
 	}
-	
+    
 }
 
 // MARK: - NCWidgetProviding
