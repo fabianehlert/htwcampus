@@ -76,6 +76,11 @@ final class ScheduleListVC: ScheduleBaseVC {
 			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
 			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
 		])
+		
+		self.dataSource.empty
+		.subscribe(onNext: { [weak self] value in
+			self?.noResultsView.alpha = value ? 0 : 1
+		}).disposed(by: self.rx_disposeBag)
     }
 
     override func headerText(day: Day, date: Date) -> String {

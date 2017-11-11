@@ -50,6 +50,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         didSet {
             guard self.auth != nil else {
                 self.data = []
+				self.lecturesCount.value = 0
                 return
             }
             self.load()
@@ -93,6 +94,13 @@ class ScheduleDataSource: CollectionViewDataSource {
         .map({ $0 > 0 })
         .observeOn(MainScheduler.instance)
     
+	private let lecturesCount = Variable(0)
+
+	lazy var empty = self.lecturesCount
+		.asObservable()
+		.map({ $0 != 0 })
+		.observeOn(MainScheduler.instance)
+	
     init(configuration: Configuration) {
         self.service = configuration.context.scheduleService
         self.originDate = configuration.originDate
@@ -104,21 +112,23 @@ class ScheduleDataSource: CollectionViewDataSource {
 	func load() {
         guard let auth = self.auth else {
             Log.info("Can't load schedule if no authentication is provided. Abort…")
-            return
+			self.lecturesCount.value = 0
+			return
         }
         self.loadingCount.value += 1
 
 		self.service.load(parameters: auth)
 			.observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] information in
-                    self?.lectures = information.lectures
-                    self?.semesterInformations = information.semesters
-                    self?.data = self?.calculate() ?? []
-                    self?.delegate?.scheduleDataSourceHasFinishedLoading()
-                    self?.loadingCount.value -= 1
-                }, onError: { [weak self] _ in
-                    self?.loadingCount.value -= 1
-                }).disposed(by: self.disposeBag)
+			.subscribe(onNext: { [weak self] information in
+				self?.lectures = information.lectures
+				self?.semesterInformations = information.semesters
+				self?.data = self?.calculate() ?? []
+				self?.delegate?.scheduleDataSourceHasFinishedLoading()
+				self?.loadingCount.value -= 1
+				self?.lecturesCount.value = information.lectures.count
+				}, onError: { [weak self] _ in
+					self?.loadingCount.value -= 1
+			}).disposed(by: self.disposeBag)
 	}
 
 	func lecture(at indexPath: IndexPath) -> Lecture? {
