@@ -78,8 +78,8 @@ final class ScheduleListVC: ScheduleBaseVC {
 		])
 		
 		self.dataSource.empty
-			.subscribe(onNext: { [weak self] value in
-				self?.noResultsView.alpha = value ? 0 : 1
+			.subscribe(onNext: { [weak self] empty in
+				self?.noResultsView.alpha = empty ? 1 : 0
 			}).disposed(by: self.rx_disposeBag)
     }
 

@@ -98,7 +98,7 @@ class ScheduleDataSource: CollectionViewDataSource {
 
 	lazy var empty = self.lecturesCount
 		.asObservable()
-		.map({ $0 != 0 })
+		.map({ $0 == 0 })
 		.observeOn(MainScheduler.instance)
 	
     init(configuration: Configuration) {
