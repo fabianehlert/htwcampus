@@ -22,6 +22,17 @@ class ExamsMainVC: CollectionViewController {
     }
     
     private let dataSource: ExamsDataSource
+	
+	private lazy var noResultsView: NoResultsView = {
+		let v = NoResultsView(frame: .zero,
+							  message: "No lectures",
+							  image: nil)
+		v.translatesAutoresizingMaskIntoConstraints = false
+		return v
+	}()
+
+	// MARK: - Init
+	
     init(context: HasExams) {
         self.dataSource = ExamsDataSource(context: context)
         super.init()
@@ -40,6 +51,15 @@ class ExamsMainVC: CollectionViewController {
         
         self.title = Loca.Exams.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Exams")
+		
+		self.noResultsView.alpha = 0
+		self.view.addSubview(self.noResultsView)
+		
+		NSLayoutConstraint.activate([
+			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
+			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
+			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+		])
     }
 	
 	// MARK: - ViewController lifecycle

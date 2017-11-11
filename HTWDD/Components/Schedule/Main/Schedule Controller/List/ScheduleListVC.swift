@@ -15,9 +15,17 @@ final class ScheduleListVC: ScheduleBaseVC {
         static let margin: CGFloat = 12
     }
 
-	// MARK: - Init
-
     private let collectionViewLayout = CollectionViewFlowLayout()
+	
+	private lazy var noResultsView: NoResultsView = {
+		let v = NoResultsView(frame: .zero,
+							  message: "No lectures",
+							  image: nil)
+		v.translatesAutoresizingMaskIntoConstraints = false
+		return v
+	}()
+
+	// MARK: - Init
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
@@ -59,6 +67,15 @@ final class ScheduleListVC: ScheduleBaseVC {
         }
 
 		self.dataSource.delegate = self
+		
+		self.noResultsView.alpha = 0
+		self.view.addSubview(self.noResultsView)
+		
+		NSLayoutConstraint.activate([
+			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
+			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
+			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+		])
     }
 
     override func headerText(day: Day, date: Date) -> String {
