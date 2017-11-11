@@ -78,9 +78,9 @@ final class ScheduleListVC: ScheduleBaseVC {
 		])
 		
 		self.dataSource.empty
-		.subscribe(onNext: { [weak self] value in
-			self?.noResultsView.alpha = value ? 0 : 1
-		}).disposed(by: self.rx_disposeBag)
+			.subscribe(onNext: { [weak self] value in
+				self?.noResultsView.alpha = value ? 0 : 1
+			}).disposed(by: self.rx_disposeBag)
     }
 
     override func headerText(day: Day, date: Date) -> String {

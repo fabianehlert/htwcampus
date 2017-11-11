@@ -58,7 +58,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             time.hour = hour
         }
 		
-		self.noResultsView.alpha = 0
+
 		self.view.addSubview(self.noResultsView)
 		
 		NSLayoutConstraint.activate([
@@ -66,6 +66,11 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
 			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
 		])
+		
+		self.dataSource.empty
+			.subscribe(onNext: { [weak self] value in
+				self?.noResultsView.alpha = value ? 0 : 1
+			}).disposed(by: self.rx_disposeBag)
 	}
     
     override func headerText(day: Day, date: Date) -> String {
