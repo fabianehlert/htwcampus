@@ -10,6 +10,7 @@ import UIKit
 
 struct MealViewModel: ViewModel {
     let title: String
+    let mensa: String
     let price: String?
     let counter: String
     
@@ -17,6 +18,7 @@ struct MealViewModel: ViewModel {
     let imageUrl: URL?
     init(model: Meal) {
         self.title = model.title
+        self.mensa = model.canteen
         self.price = model.studentPrice?.htw.currencyString
         if model.counter.isEmpty {
             self.counter = Loca.Canteen.noCounter
@@ -41,6 +43,7 @@ class MealCell: FlatCollectionViewCell, Cell {
         static let titleFontSize: CGFloat = 18
     }
     
+    private lazy var imageView = UIImageView()
     private lazy var badgeView = BadgeLabel()
     private lazy var colorView = UIView()
     private lazy var titleView = UILabel()
@@ -48,6 +51,9 @@ class MealCell: FlatCollectionViewCell, Cell {
 
     override func initialSetup() {
         super.initialSetup()
+        
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
         
         self.badgeView.backgroundColor = UIColor.htw.mediumGrey
         self.badgeView.textColor = UIColor.white
@@ -63,14 +69,20 @@ class MealCell: FlatCollectionViewCell, Cell {
         self.titleView.numberOfLines = 0
         self.titleView.textColor = UIColor.htw.darkGrey
 
-        [self.badgeView, self.colorView, self.titleView, self.priceView].forEach {
+        [self.imageView, self.badgeView, self.colorView, self.titleView, self.priceView].forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
+            // image view
+            self.imageView.topAnchor.constraint(equalTo: self.priceView.topAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.horizontalMargin),
+            self.imageView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
+            self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: 8/5),
+            
             // badge view
-            self.badgeView.topAnchor.constraint(equalTo: self.priceView.topAnchor),
+            self.badgeView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.innerItemMargin),
             self.badgeView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
             
             // titleView
@@ -99,6 +111,7 @@ class MealCell: FlatCollectionViewCell, Cell {
     }
 
     func update(viewModel: MealViewModel) {
+        self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Exams"))
         self.titleView.text = viewModel.title
         self.priceView.text = viewModel.price
         self.badgeView.text = viewModel.counter
