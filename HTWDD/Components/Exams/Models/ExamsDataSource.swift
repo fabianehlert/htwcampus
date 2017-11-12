@@ -53,11 +53,12 @@ class ExamsDataSource: CollectionViewDataSource {
                             .observeOn(MainScheduler.instance)
     
     func load() {
+        self.loadingCount.value += 1
         guard let auth = self.auth else {
             Log.error("Can't load exams without authentication!")
+            self.loadingCount.value -= 1
             return
         }
-        self.loadingCount.value += 1
         
         self.service
             .load(parameters: auth)

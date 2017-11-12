@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CollectionViewController: ViewController {
 
@@ -31,6 +33,22 @@ class CollectionViewController: ViewController {
         self.view.addSubview(self.collectionView)
 
         self.collectionView.delegate = self
+        
+        if let config = self.noResultsViewConfiguration() {
+            let view = NoResultsView(config: config)
+            view.isHidden = true
+            self.collectionView.backgroundView = view
+            
+            self.collectionView.rx
+                .observe(CGSize.self, "contentSize")
+                .subscribe { [weak view, weak self] _ in
+                    guard let `self` = self else {
+                        return
+                    }
+                    view?.isHidden = self.collectionView.numberOfSections > 0 && self.collectionView.numberOfItems(inSection: 0) > 0
+                }
+                .disposed(by: self.rx_disposeBag)
+        }
     }
     
     func itemWidth(collectionView: UICollectionView) -> CGFloat {
@@ -48,6 +66,11 @@ class CollectionViewController: ViewController {
         coordinator.animate(alongsideTransition: { context in
             self.collectionView.collectionViewLayout.invalidateLayout()
         }, completion: nil)
+    }
+    
+    /// override this function to configure the empty view!
+    open func noResultsViewConfiguration() -> NoResultsView.Configuration? {
+        return nil
     }
 
 }
@@ -70,6 +93,7 @@ extension CollectionViewController: UICollectionViewDelegate {
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+
 }
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {}

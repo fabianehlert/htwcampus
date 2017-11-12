@@ -21,14 +21,6 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         Loca.sunday_short
     ]
 	
-	private lazy var noResultsView: NoResultsView = {
-		let v = NoResultsView(frame: .zero,
-							  message: "No lectures",
-							  image: nil)
-		v.translatesAutoresizingMaskIntoConstraints = false
-		return v
-	}()
-	
 	private let layout = ScheduleWeekLayout()
 
 	// MARK: - Init
@@ -57,20 +49,6 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             let hour = Int(self.startHour) - 1 + indexPath.row
             time.hour = hour
         }
-		
-
-		self.view.addSubview(self.noResultsView)
-		
-		NSLayoutConstraint.activate([
-			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-		])
-		
-		self.dataSource.empty
-			.subscribe(onNext: { [weak self] empty in
-				self?.noResultsView.alpha = empty ? 1 : 0
-			}).disposed(by: self.rx_disposeBag)
 	}
     
     override func headerText(day: Day, date: Date) -> String {

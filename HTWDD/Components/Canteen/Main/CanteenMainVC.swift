@@ -17,14 +17,6 @@ class CanteenMainVC: CollectionViewController {
     
     private let refreshControl = UIRefreshControl()
 
-	private lazy var noResultsView: NoResultsView = {
-		let v = NoResultsView(frame: .zero,
-							  message: "No lectures",
-							  image: nil)
-		v.translatesAutoresizingMaskIntoConstraints = false
-		return v
-	}()
-
 	private lazy var dataSource = CanteenDataSource(context: self.context)
 
     let context: HasCanteen
@@ -48,15 +40,6 @@ class CanteenMainVC: CollectionViewController {
 
         self.title = Loca.Canteen.title
         self.tabBarItem.image = #imageLiteral(resourceName: "Canteen")
-
-		self.noResultsView.alpha = 0
-		self.view.addSubview(self.noResultsView)
-		
-		NSLayoutConstraint.activate([
-			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
-			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
-			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-		])
 
         self.dataSource.collectionView = self.collectionView
         self.dataSource.register(type: MealCell.self)
@@ -104,6 +87,10 @@ class CanteenMainVC: CollectionViewController {
         self.reload()
     }
 
+    override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
+        return .init(title: Loca.Canteen.noResults.title, message: Loca.Canteen.noResults.message, image: #imageLiteral(resourceName: "Exams"))
+    }
+    
     @objc private func reload() {
         self.dataSource.load()
     }

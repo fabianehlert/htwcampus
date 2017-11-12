@@ -26,9 +26,17 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day!";
+"Schedule.noResults.title"="Oops";
+"Schedule.noResults.message"="I can't find any lectures for you. Are the saved information correct?";
 
 "Canteen.title"="Canteen";
+"Canteen.noResults.title"="Mh 🤔";
+"Canteen.noResults.message"="I can't find any meals for today. Could it be that today is a free day?";
+
 "Exams.title"="Exams";
+"Exams.noResults.title"="Oops";
+"Exams.noResults.message"="I can't find any exams for you. Are the saved information correct?";
+
 "Settings.title"="Settings";
 
 "Settings.items.deleteAll"="Delete all stored data";
@@ -66,3 +74,5 @@
 "Grades.detail.tries" = "%d. try";
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
+"Grades.noResults.title"="Oops";
+"Grades.noResults.message"="I can't find any grades for you. Are the saved information correct?";

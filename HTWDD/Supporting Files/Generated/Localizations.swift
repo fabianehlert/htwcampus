@@ -159,12 +159,31 @@ public struct Loca {
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
 
-        /// Base translation: Schedule
-        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
-
         /// Base translation: Enjoy your free day!
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
+        /// Base translation: Schedule
+        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
+
+
+        public struct Cell {
+
+            /// Base translation: %02d:%02d
+            public static func time(_ value1 : Int, _ value2 : Int) -> String {
+                return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
+            }
+
+        }
+
+        public struct noResults {
+
+            /// Base translation: Oops
+            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
+
+            /// Base translation: I can't find any lectures for you. Are the saved information correct?
+            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
+
+        }
 
         public struct Style {
 
@@ -175,15 +194,6 @@ public struct Loca {
             public static var list : String = NSLocalizedString("Schedule.Style.list", comment: "")
 
         }
-
-        public struct Cell {
-
-            /// Base translation: %02d:%02d
-            public static func time(_ value1 : Int, _ value2 : Int) -> String {
-                return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
-            }
-
-        }
     }
 
     public struct Grades {
@@ -191,6 +201,16 @@ public struct Loca {
         /// Base translation: Grades
         public static var title : String = NSLocalizedString("Grades.title", comment: "")
 
+
+        public struct noResults {
+
+            /// Base translation: Oops
+            public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+
+            /// Base translation: I can't find any grades for you. Are the saved information correct?
+            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
+
+        }
 
         public struct detail {
 
@@ -223,6 +243,16 @@ public struct Loca {
         /// Base translation: Exams
         public static var title : String = NSLocalizedString("Exams.title", comment: "")
 
+
+        public struct noResults {
+
+            /// Base translation: I can't find any exams for you. Are the saved information correct?
+            public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
+
+            /// Base translation: Oops
+            public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
+
+        }
     }
 
     public struct Canteen {
@@ -230,6 +260,16 @@ public struct Loca {
         /// Base translation: Canteen
         public static var title : String = NSLocalizedString("Canteen.title", comment: "")
 
+
+        public struct noResults {
+
+            /// Base translation: Mh 🤔
+            public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
+
+            /// Base translation: I can't find any meals for today. Could it be that today is a free day?
+            public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
+
+        }
     }
 
     public struct Settings {

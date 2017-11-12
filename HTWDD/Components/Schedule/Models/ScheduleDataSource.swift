@@ -50,7 +50,6 @@ class ScheduleDataSource: CollectionViewDataSource {
         didSet {
             guard self.auth != nil else {
                 self.data = []
-				self.lecturesCount.value = 0
                 return
             }
             self.load()
@@ -93,13 +92,6 @@ class ScheduleDataSource: CollectionViewDataSource {
         .asObservable()
         .map({ $0 > 0 })
         .observeOn(MainScheduler.instance)
-    
-	private let lecturesCount = Variable(0)
-
-	lazy var empty = self.lecturesCount
-		.asObservable()
-		.map({ $0 == 0 })
-		.observeOn(MainScheduler.instance)
 	
     init(configuration: Configuration) {
         self.service = configuration.context.scheduleService
@@ -110,12 +102,12 @@ class ScheduleDataSource: CollectionViewDataSource {
     }
 
 	func load() {
+        self.loadingCount.value += 1
         guard let auth = self.auth else {
             Log.info("Can't load schedule if no authentication is provided. Abort…")
-			self.lecturesCount.value = 0
+			self.loadingCount.value -= 1
 			return
         }
-        self.loadingCount.value += 1
 
 		self.service.load(parameters: auth)
 			.observeOn(MainScheduler.instance)
@@ -125,7 +117,6 @@ class ScheduleDataSource: CollectionViewDataSource {
 				self?.data = self?.calculate() ?? []
 				self?.delegate?.scheduleDataSourceHasFinishedLoading()
 				self?.loadingCount.value -= 1
-				self?.lecturesCount.value = information.lectures.count
 				}, onError: { [weak self] _ in
 					self?.loadingCount.value -= 1
 			}).disposed(by: self.disposeBag)

@@ -24,14 +24,6 @@ class GradeMainVC: CollectionViewController {
 
     private let refreshControl = UIRefreshControl()
 
-	private lazy var noResultsView: NoResultsView = {
-		let v = NoResultsView(frame: .zero,
-							  message: "No lectures",
-							  image: nil)
-		v.translatesAutoresizingMaskIntoConstraints = false
-		return v
-	}()
-
     private var selectedIndexPath: IndexPath?
 
     private let layout = CollectionViewFlowLayout()
@@ -53,15 +45,6 @@ class GradeMainVC: CollectionViewController {
         super.initialSetup()
         self.title = Loca.Grades.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Grade")
-		
-		self.noResultsView.alpha = 0
-		self.view.addSubview(self.noResultsView)
-		
-		NSLayoutConstraint.activate([
-			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
-			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
-			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-		])
     }
 
 	// MARK: - ViewController lifecycle
@@ -110,6 +93,10 @@ class GradeMainVC: CollectionViewController {
         }).disposed(by: self.rx_disposeBag)
         
         self.reload()
+    }
+    
+    override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
+        return .init(title: Loca.Grades.noResults.title, message: Loca.Grades.noResults.message, image: #imageLiteral(resourceName: "Exams"))
     }
 
 	// MARK: - Private

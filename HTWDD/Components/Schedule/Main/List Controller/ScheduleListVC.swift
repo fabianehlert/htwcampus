@@ -16,14 +16,6 @@ final class ScheduleListVC: ScheduleBaseVC {
     }
 
     private let collectionViewLayout = CollectionViewFlowLayout()
-	
-	private lazy var noResultsView: NoResultsView = {
-		let v = NoResultsView(frame: .zero,
-							  message: "No lectures",
-							  image: nil)
-		v.translatesAutoresizingMaskIntoConstraints = false
-		return v
-	}()
 
 	// MARK: - Init
 
@@ -67,20 +59,6 @@ final class ScheduleListVC: ScheduleBaseVC {
         }
 
 		self.dataSource.delegate = self
-		
-		self.noResultsView.alpha = 0
-		self.view.addSubview(self.noResultsView)
-		
-		NSLayoutConstraint.activate([
-			self.noResultsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Const.margin),
-			self.noResultsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Const.margin),
-			self.noResultsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-		])
-		
-		self.dataSource.empty
-			.subscribe(onNext: { [weak self] empty in
-				self?.noResultsView.alpha = empty ? 1 : 0
-			}).disposed(by: self.rx_disposeBag)
     }
 
     override func headerText(day: Day, date: Date) -> String {
