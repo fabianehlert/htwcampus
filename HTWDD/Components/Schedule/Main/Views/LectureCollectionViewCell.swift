@@ -65,14 +65,25 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 		self.contentView.addSubview(self.roomLabel)
 
 		let margin: CGFloat = 4
+        let topSpace = UILayoutGuide()
+        let bottomSpace = UILayoutGuide()
+        self.contentView.addLayoutGuide(topSpace)
+        self.contentView.addLayoutGuide(bottomSpace)
+        
 		NSLayoutConstraint.activate([
+            topSpace.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            topSpace.heightAnchor.constraint(equalTo: bottomSpace.heightAnchor),
+            
 			self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: margin),
-			self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: margin),
+			self.titleLabel.topAnchor.constraint(equalTo: topSpace.bottomAnchor),
 			self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin),
 
 			self.roomLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: margin),
-			self.roomLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 2),
-			self.roomLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin)
+			self.roomLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
+			self.roomLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin),
+            self.roomLabel.bottomAnchor.constraint(equalTo: bottomSpace.topAnchor),
+            
+            bottomSpace.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
 		])
     }
 

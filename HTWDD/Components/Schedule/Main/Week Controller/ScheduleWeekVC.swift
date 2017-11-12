@@ -91,8 +91,8 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 	}
 
 	var height: CGFloat {
-		let navbarHeight = self.navigationController?.navigationBar.bottom ?? 0
-		return self.collectionView.bounds.height - navbarHeight
+		let insets = self.collectionView.contentInset
+		return self.collectionView.bounds.height - insets.top - insets.bottom
 	}
 
 	var endHour: CGFloat {

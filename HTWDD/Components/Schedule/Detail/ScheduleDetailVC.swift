@@ -114,21 +114,23 @@ class ScheduleDetailVC: ViewController {
 		self.view.addSubview(self.professorLabel)
 
 		// --
+        
+        let layoutGuide = self.view.htw.safeAreaLayoutGuide
 		
         NSLayoutConstraint.activate([
             self.nameLabel.leadingAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+                equalTo: layoutGuide.leadingAnchor, constant: Const.margin),
             self.nameLabel.topAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.topAnchor, constant: Const.margin),
+                equalTo: layoutGuide.topAnchor, constant: Const.margin),
             self.nameLabel.trailingAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin),
+                equalTo: layoutGuide.trailingAnchor, constant: -Const.margin),
             
             self.professorLabel.leadingAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+                equalTo: layoutGuide.leadingAnchor, constant: Const.margin),
             self.professorLabel.topAnchor.constraint(
                 equalTo: self.nameLabel.bottomAnchor, constant: 4),
             self.professorLabel.trailingAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.trailingAnchor, constant: -Const.margin)
+                equalTo: layoutGuide.trailingAnchor, constant: -Const.margin)
         ])
 		
 		// --
@@ -140,7 +142,7 @@ class ScheduleDetailVC: ViewController {
 		
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(
-                equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor, constant: Const.margin),
+                equalTo: layoutGuide.leadingAnchor, constant: Const.margin),
             separator.topAnchor.constraint(
                 equalTo: professorLabel.bottomAnchor, constant: 15),
             separator.trailingAnchor.constraint(

@@ -21,7 +21,7 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         }
     }
     
-    var titleInset: CGFloat = 15 {
+    var titleInset: CGFloat = 12 {
         didSet {
             self.leading.constant = titleInset + self.htw.safeAreaInsets.left
             self.trailing.constant = -(titleInset + self.htw.safeAreaInsets.right)
