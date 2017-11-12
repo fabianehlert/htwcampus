@@ -101,3 +101,11 @@ class MealCell: FlatCollectionViewCell, Cell {
     }
 
 }
+
+extension MealCell: HeightCalculator {
+    static func height(for width: CGFloat, viewModel: MealViewModel) -> CGFloat {
+        let cell = MealCell()
+        cell.update(viewModel: viewModel)
+        return cell.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow).height
+    }
+}
