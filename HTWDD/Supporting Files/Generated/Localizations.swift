@@ -257,6 +257,9 @@ public struct Loca {
 
     public struct Canteen {
 
+        /// Base translation: unknown
+        public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
+
         /// Base translation: Canteen
         public static var title : String = NSLocalizedString("Canteen.title", comment: "")
 

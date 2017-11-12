@@ -18,7 +18,11 @@ struct MealViewModel: ViewModel {
     init(model: Meal) {
         self.title = model.title
         self.price = model.studentPrice?.htw.currencyString
-        self.counter = model.counter
+        if model.counter.isEmpty {
+            self.counter = Loca.Canteen.noCounter
+        } else {
+            self.counter = model.counter
+        }
         
         self.detailUrl = model.url
         self.imageUrl = model.imageURL
@@ -56,8 +60,7 @@ class MealCell: FlatCollectionViewCell, Cell {
         self.priceView.font = .systemFont(ofSize: Const.markFontSize, weight: .medium)
         
         self.titleView.font = .systemFont(ofSize: Const.titleFontSize, weight: .medium)
-        self.titleView.numberOfLines = 4
-        self.titleView.lineBreakMode = .byWordWrapping
+        self.titleView.numberOfLines = 0
         self.titleView.textColor = UIColor.htw.darkGrey
 
         [self.badgeView, self.colorView, self.titleView, self.priceView].forEach {
@@ -74,8 +77,9 @@ class MealCell: FlatCollectionViewCell, Cell {
             self.titleView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
             self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.horizontalMargin),
             self.titleView.topAnchor.constraint(equalTo: self.badgeView.bottomAnchor, constant: Const.innerItemMargin),
+            self.titleView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.verticalMargin),
             
-            // grade view
+            // price view
             self.priceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.horizontalMargin),
             self.priceView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.verticalMargin),
             self.priceView.widthAnchor.constraint(equalToConstant: 80),
@@ -106,6 +110,9 @@ extension MealCell: HeightCalculator {
     static func height(for width: CGFloat, viewModel: MealViewModel) -> CGFloat {
         let cell = MealCell()
         cell.update(viewModel: viewModel)
-        return cell.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow).height
+        let size = cell.contentView.systemLayoutSizeFitting(CGSize(width: width, height: 0),
+                                                            withHorizontalFittingPriority: .required,
+                                                            verticalFittingPriority: .fittingSizeLevel)
+        return size.height
     }
 }

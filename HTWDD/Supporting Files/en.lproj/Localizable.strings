@@ -30,6 +30,7 @@
 "Schedule.noResults.message"="I can't find any lectures for you. Are the saved information correct?";
 
 "Canteen.title"="Canteen";
+"Canteen.noCounter"="unknown";
 "Canteen.noResults.title"="Mh 🤔";
 "Canteen.noResults.message"="I can't find any meals for today. Could it be that today is a free day?";
 

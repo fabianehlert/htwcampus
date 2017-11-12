@@ -30,6 +30,7 @@
 "Schedule.noResults.message"="Ich kann keine Stunden für dich finden. Sind die gespeicherten Informationen korrekt?";
 
 "Canteen.title"="Mensa";
+"Canteen.noCounter"="unbekannt";
 "Canteen.noResults.title"="Mh 🤔";
 "Canteen.noResults.message"="Ich kann für heute keine Speisen finden. Kann es sein, dass heute ein freier Tag ist?";
 
