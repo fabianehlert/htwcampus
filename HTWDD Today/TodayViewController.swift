@@ -15,7 +15,7 @@ class TodayViewController: ViewController {
 	
 	// - Private Properties
 	
-	private var lecture: Lecture? {
+	private var lecture: AppLecture? {
 		didSet {
             if self.lecture != nil {
                 self.updateUI()
@@ -81,22 +81,22 @@ class TodayViewController: ViewController {
 	
 	// MARK: - Private
 	
-	private func loadActiveLecture() -> Observable<Lecture?> {
+	private func loadActiveLecture() -> Observable<AppLecture?> {
 		
 		let originDate = Date()
 		let weekDay = originDate.weekday
 		let weekNumber = originDate.weekNumber
 		
-		func currentLecture(lectures: [Lecture]) -> Lecture? {
+		func currentLecture(lectures: [AppLecture]) -> AppLecture? {
 			let components = Date().components
 			// sort lectures from late to early
-			let sortedLectures = lectures.sorted(by: { $0.begin > $1.begin })
-			var currentLecture: Lecture? = nil
+			let sortedLectures = lectures.sorted(by: { $0.lecture.begin > $1.lecture.begin })
+			var currentLecture: AppLecture? = nil
 			for l in sortedLectures {
-				if components.timeBetween(start: l.begin, end: l.end) {
+				if components.timeBetween(start: l.lecture.begin, end: l.lecture.end) {
 					return l
 				}
-				if l.end.isBefore(other: components) {
+				if l.lecture.end.isBefore(other: components) {
 					return currentLecture
 				}
 				currentLecture = l
@@ -104,7 +104,7 @@ class TodayViewController: ViewController {
 			return currentLecture
 		}
 		
-		func filterLecturesForToday(semester: SemesterInformation, lectures: [Lecture]) -> [Lecture] {
+		func filterLecturesForToday(semester: SemesterInformation, lectures: [AppLecture]) -> [AppLecture] {
 			guard semester.lecturesContains(date: originDate) else {
 				return []
 			}
@@ -114,8 +114,8 @@ class TodayViewController: ViewController {
 			}
 			
 			return lectures.filter { lecture in
-				let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
-				let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
+				let weekEvenOddValidation = lecture.lecture.week.validate(weekNumber: weekNumber)
+				let weekOnlyValidation = lecture.lecture.weeks?.contains(weekNumber) ?? true
 				return weekEvenOddValidation && weekOnlyValidation
 			}
 		}

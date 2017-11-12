@@ -36,12 +36,21 @@ class ScheduleService: Service {
     }
 
     struct Information: Codable, Equatable {
-        let lectures: [Day: [Lecture]]
+        let lectures: [Day: [AppLecture]]
         let semesters: [SemesterInformation]
         
-        init(lectures: [Day: [Lecture]], semesters: [SemesterInformation]) {
-            self.lectures = lectures
+        init(lectures: [Day: [Lecture]], semesters: [SemesterInformation], colors: inout [Int: UInt]) {
+            self.lectures = lectures.mapValues({ Information.injectDomainLogic(lectures: $0, colors: &colors) })
             self.semesters = semesters
+        }
+        
+        private static func injectDomainLogic(lectures: [Lecture], colors: inout [Int: UInt]) -> [AppLecture] {
+            return lectures.enumerated().map { index, l in
+                let color = colors[l.name.hashValue, default: UIColor.htw.scheduleColors[index % UIColor.htw.scheduleColors.count].hex()]
+                colors[l.name.hashValue] = color
+                // TODO: Inject hidden as well!
+                return AppLecture(lecture: l, color: color, hidden: false)
+            }
         }
         
         private enum CodingKeys : CodingKey {
@@ -87,12 +96,14 @@ class ScheduleService: Service {
 
         let lecturesObservable = Lecture.get(network: self.network, year: parameters.year, major: parameters.major, group: parameters.group)
             .map(Lecture.groupByDay)
+        var colors = self.loadColors()
 
         let informationObservable = SemesterInformation.get(network: self.network)
         
         let cached = self.persistenceService.loadScheduleCache()
         let internetLoading: Observable<Information> = Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
-            let information = Information(lectures: l, semesters: s)
+            let information = Information(lectures: l, semesters: s, colors: &colors)
+            self?.saveColors(colors)
             self?.cachedInformation[parameters] = information
             self?.persistenceService.save(information)
             return information
@@ -104,21 +115,23 @@ class ScheduleService: Service {
 	
 	static let lectureColorsKey = "lectureColorsInformation"
 	
-	static func assignColors(lectures: [Lecture]) {
-		var colors = [Int: UInt]()
-		
-		lectures.forEach { l in
-			if !colors.keys.contains(l.name.hashValue) {
-				let index = Array(colors.keys).index(of: l.name.hashValue) ?? colors.count
-				colors[l.name.hashValue] = UIColor.htw.scheduleColors[index % UIColor.htw.scheduleColors.count].hex()
-			}
-		}
-		
-		let archive = NSKeyedArchiver.archivedData(withRootObject: colors)
-		
-		UserDefaults.htw?.set(archive, forKey: ScheduleService.lectureColorsKey)
-		UserDefaults.htw?.synchronize()
-	}
+    private func loadColors() -> [Int: UInt] {
+        guard
+            let data = UserDefaults.htw?.data(forKey: ScheduleService.lectureColorsKey),
+            let colors = try? JSONDecoder().decode([Int: UInt].self, from: data)
+        else {
+            return [:]
+        }
+        return colors
+    }
+    
+    private func saveColors(_ colors: [Int: UInt]) {
+        guard let data = try? JSONEncoder().encode(colors) else {
+            return
+        }
+        UserDefaults.htw?.set(data, forKey: ScheduleService.lectureColorsKey)
+    }
+    
 }
 
 // MARK: - Dependency management

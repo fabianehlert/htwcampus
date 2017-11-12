@@ -81,7 +81,7 @@ class ScheduleDetailVC: ViewController {
 
 	// MARK: - Init
 
-    init(lecture: Lecture) {
+    init(lecture: AppLecture) {
         self.viewModel = LectureViewModel(model: lecture)
         super.init(nibName: nil, bundle: nil)
     }

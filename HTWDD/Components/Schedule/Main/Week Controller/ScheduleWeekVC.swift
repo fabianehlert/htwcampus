@@ -122,7 +122,7 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		guard let item = self.dataSource.lecture(at: indexPath) else {
 			return nil
 		}
-		return (item.begin, item.end)
+		return (item.lecture.begin, item.lecture.end)
 	}
     
     var todayIndexPath: IndexPath? {

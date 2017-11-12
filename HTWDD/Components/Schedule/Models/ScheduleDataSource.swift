@@ -57,7 +57,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
     }
 
-    private(set) var lectures = [Day: [Lecture]]()
+    private(set) var lectures = [Day: [AppLecture]]()
     private var semesterInformations = [SemesterInformation]() {
         didSet {
             self.semesterInformation = SemesterInformation.information(date: Date(), input: self.semesterInformations)
@@ -68,7 +68,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     struct Data {
         let day: Day
         let date: Date
-        let lectures: [Lecture]
+        let lectures: [AppLecture]
         let freeDays: [Event]
     }
 
@@ -131,7 +131,7 @@ class ScheduleDataSource: CollectionViewDataSource {
 			}).disposed(by: self.disposeBag)
 	}
 
-	func lecture(at indexPath: IndexPath) -> Lecture? {
+	func lecture(at indexPath: IndexPath) -> AppLecture? {
         return self.data[safe: indexPath.section]?.lectures[safe: indexPath.row]
     }
     
@@ -169,11 +169,11 @@ class ScheduleDataSource: CollectionViewDataSource {
 
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
             let l = (self.lectures[originDay.dayByAdding(days: section)] ?? []).filter { lecture in
-                let weekEvenOddValidation = lecture.week.validate(weekNumber: weekNumber)
-                let weekOnlyValidation = lecture.weeks?.contains(weekNumber) ?? true
+                let weekEvenOddValidation = lecture.lecture.week.validate(weekNumber: weekNumber)
+                let weekOnlyValidation = lecture.lecture.weeks?.contains(weekNumber) ?? true
                 return weekEvenOddValidation && weekOnlyValidation
                 }.sorted { l1, l2 in
-                    return l1.begin < l2.begin
+                    return l1.lecture.begin < l2.lecture.begin
             }
             let freeDays: [Event]
             if l.isEmpty && date.sameDayAs(other: Date()) {
@@ -193,9 +193,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })
             .map({ IndexPath(item: 0, section: $0) })
-		
-		ScheduleService.assignColors(lectures: all.flatMap({ $0.lectures }))
-		
+				
         return all
     }
 

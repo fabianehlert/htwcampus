@@ -28,8 +28,10 @@ struct LectureViewModel: ViewModel {
 
 	let room: String?
 
-    init(model: Lecture) {
-		self.color = model.color
+    init(model appLecture: AppLecture) {
+        let model = appLecture.lecture
+        
+		self.color = appLecture.color
 		
         self.shortTitle = model.tag ?? model.name
         self.longTitle = model.name
