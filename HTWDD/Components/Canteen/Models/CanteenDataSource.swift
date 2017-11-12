@@ -11,12 +11,12 @@ import RxSwift
 
 class CanteenDataSource: CollectionViewDataSource {
 
-    private var canteen: Canteen?
-    private var meals = [Meal]() {
+    private var data = [CanteenService.Information]() {
         didSet {
             self.collectionView?.reloadData()
         }
     }
+    
     private let disposeBag = DisposeBag()
     private let loadingCount = Variable(0)
     
@@ -41,8 +41,7 @@ class CanteenDataSource: CollectionViewDataSource {
             .load(parameters: .init(id: .reichenbachstrasse, date: self.date))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
-                    self?.canteen = response.canteen
-                    self?.meals = response.meals
+                    self?.data = response
                     self?.loadingCount.value -= 1
                 }, onError: { [weak self] _ in
                     self?.loadingCount.value -= 1
@@ -54,21 +53,21 @@ class CanteenDataSource: CollectionViewDataSource {
         guard section == 0 else {
             return nil
         }
-        return self.canteen?.name
+        return self.data[section].canteen.name
     }
     
     // MARK: TableViewDataSource
 
     override func numberOfSections() -> Int {
-        return self.canteen != nil ? 1 : 0
+        return self.data.count
     }
 
     override func numberOfItems(in section: Int) -> Int {
-        return self.meals.count
+        return self.data[section].meals.count
     }
 
     override func item(at index: IndexPath) -> Identifiable? {
-        return self.meals[safe: index.row]
+        return self.data[safe: index.section]?.meals[safe: index.item]
     }
 
 }

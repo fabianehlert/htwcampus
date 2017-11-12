@@ -16,15 +16,23 @@ class CanteenService: Service {
         let date: Date
     }
 
-    typealias CanteenInformation = (canteen: Canteen, meals: [Meal])
+    struct Information {
+        let canteen: Canteen
+        let meals: [Meal]
+    }
 
     private let network = Network()
     
-    func load(parameters: Parameters) -> Observable<CanteenInformation> {
+    func load(parameters: Parameters) -> Observable<[Information]> {
         do {
             let canteen = try Canteen.with(id: parameters.id)
             let meals = canteen.getMeals(network: self.network)
-            return Observable.combineLatest(Observable.just(canteen), meals) { (canteen: $0, meals: $1) }
+            return meals.map { meals in
+                guard !meals.isEmpty else {
+                    return []
+                }
+                return [Information(canteen: canteen, meals: meals)]
+            }
         } catch {
             return Observable.error(error)
         }
