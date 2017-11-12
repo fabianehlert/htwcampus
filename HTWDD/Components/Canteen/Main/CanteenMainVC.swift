@@ -56,6 +56,12 @@ class CanteenMainVC: CollectionViewController {
             
             view.attributedTitle = attributedTitle
         }
+        
+        self.dataSource.registerAction(cell: MealCell.self) { [weak self] meal, indexPath in
+            let vm = MealViewModel(model: meal)
+            let dc = CanteenDetailViewController(viewModel: vm)
+            self?.presentDetail(dc, animated: true)
+        }
     }
 
     override func viewDidLoad() {
@@ -85,6 +91,10 @@ class CanteenMainVC: CollectionViewController {
             .disposed(by: self.rx_disposeBag)
         
         self.reload()
+        
+        DispatchQueue.main.async {
+            self.register3DTouch()
+        }
     }
 
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
@@ -99,6 +109,25 @@ class CanteenMainVC: CollectionViewController {
 		return .lightContent
 	}
     
+    private func register3DTouch() {
+        guard self.traitCollection.forceTouchCapability == .available else {
+            return
+        }
+        self.registerForPreviewing(with: self, sourceView: self.collectionView)
+    }
+    
+    fileprivate func presentDetail(_ controller: UIViewController, animated: Bool) {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let nc = controller.inNavigationController()
+            nc.modalPresentationStyle = .formSheet
+            self.present(nc, animated: animated, completion: nil)
+        } else {
+            self.navigationController?.pushViewController(controller, animated: animated)
+        }
+    }
+    
+    // MARK: - UICollectionViewDelegate(FlowLayout) stuff
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: 0, height: 60)
     }
@@ -109,4 +138,30 @@ class CanteenMainVC: CollectionViewController {
         return CGSize(width: width, height: height)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dataSource.runAction(at: indexPath)
+    }
+    
+}
+
+// MARK: - UIViewControllerPreviewingDelegate
+extension CanteenMainVC: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: location),
+            let item = self.dataSource.item(at: indexPath) as? Meal
+        else {
+                return nil
+        }
+        
+        if let cell = self.collectionView.cellForItem(at: indexPath) {
+            previewingContext.sourceRect = cell.frame
+        }
+        
+        return CanteenDetailViewController(viewModel: MealViewModel(model: item))
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.presentDetail(viewControllerToCommit, animated: false)
+    }
 }

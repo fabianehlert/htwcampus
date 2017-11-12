@@ -115,6 +115,7 @@
 		B51DB4911FA918D500B1A811 /* ScheduleBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */; };
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
+		B52329011FB890B5000C4F44 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52329001FB890B5000C4F44 /* ImageLoader.swift */; };
 		B524F4061FAA3BFA007DD104 /* GradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */; };
 		B529EDE81FAB7F40000C1677 /* CodableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */; };
 		B529EDEA1FABA41C000C1677 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */; };
@@ -291,6 +292,7 @@
 		B51DB4901FA918D500B1A811 /* ScheduleBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleBaseVC.swift; sourceTree = "<group>"; };
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		B52329001FB890B5000C4F44 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewModel.swift; sourceTree = "<group>"; };
 		B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableDictionary.swift; sourceTree = "<group>"; };
 		B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 			children = (
 				B5EA535C1E7FBA4900183E07 /* Authenticator.swift */,
 				B5EA53621E7FBC3E00183E07 /* Authenticator_TestCase.swift */,
+				B52329001FB890B5000C4F44 /* ImageLoader.swift */,
 				B538EF171E1D6AEF0031077C /* Network.swift */,
 				B5EA535A1E7FBA3D00183E07 /* Parameter.swift */,
 			);
@@ -1311,6 +1314,7 @@
 				1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */,
 				B538EF0A1E1D5BD10031077C /* Log.swift in Sources */,
 				B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */,
+				B52329011FB890B5000C4F44 /* ImageLoader.swift in Sources */,
 				B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */,
 				1FC1BDD21FADDF11007F9D06 /* SettingsMainVC.swift in Sources */,
 				B5CE29001F77FA3500A2B77D /* LectureViewModel.swift in Sources */,
