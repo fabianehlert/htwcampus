@@ -177,7 +177,7 @@ public struct Loca {
 
         public struct noResults {
 
-            /// Base translation: Uh-ph!
+            /// Base translation: No plan...
             public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
 
             /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
@@ -204,10 +204,10 @@ public struct Loca {
 
         public struct noResults {
 
-            /// Base translation: Oops
+            /// Base translation: No grades
             public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
 
-            /// Base translation: I can't find any grades for you. Have you entered your credentials correctly?
+            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
             public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
 
         }
@@ -249,7 +249,7 @@ public struct Loca {
             /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
             public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
 
-            /// Base translation: Oops!
+            /// Base translation: No exams
             public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
 
         }
@@ -266,7 +266,7 @@ public struct Loca {
 
         public struct noResults {
 
-            /// Base translation: Mh 🤔
+            /// Base translation: No food
             public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
 
             /// Base translation: I can't find any meals for today. Maybe today is a free day?

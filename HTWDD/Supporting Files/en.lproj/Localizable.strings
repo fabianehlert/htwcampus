@@ -26,17 +26,17 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day!";
-"Schedule.noResults.title"="Uh-ph!";
-"Schedule.noResults.message"="I can't find any lectures for you. Have you entered your credentials correctly?";
+"Schedule.noResults.title"="No plan...";
+"Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 
 "Canteen.title"="Canteen";
 "Canteen.noCounter"="unknown";
-"Canteen.noResults.title"="Mh 🤔";
+"Canteen.noResults.title"="No food";
 "Canteen.noResults.message"="I can't find any meals for today.\nMaybe today is a free day?";
 
 "Exams.title"="Exams";
-"Exams.noResults.title"="Oops!";
-"Exams.noResults.message"="I can't find any exams for you. Have you entered your credentials correctly?";
+"Exams.noResults.title"="No exams";
+"Exams.noResults.message"="I can't find any exams for you.\nHave you entered your credentials correctly?";
 
 "Settings.title"="Settings";
 
@@ -75,5 +75,5 @@
 "Grades.detail.tries" = "%d. try";
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
-"Grades.noResults.title"="Oops";
-"Grades.noResults.message"="I can't find any grades for you. Have you entered your credentials correctly?";
+"Grades.noResults.title"="No grades";
+"Grades.noResults.message"="I can't find any of your grades.\nHave you entered your credentials correctly?";

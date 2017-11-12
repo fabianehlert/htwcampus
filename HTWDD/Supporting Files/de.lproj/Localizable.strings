@@ -26,17 +26,17 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="Kein Raum";
 "Schedule.freeDay"="Genieß Deinen freien Tag!";
-"Schedule.noResults.title"="Hoppla...";
-"Schedule.noResults.message"="Ich kann keine Stunden für Dich finden. Ist Deine Studiengruppe korrekt?";
+"Schedule.noResults.title"="Kein Plan...";
+"Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
 
 "Canteen.title"="Mensa";
 "Canteen.noCounter"="Unbekannt";
-"Canteen.noResults.title"="Mh 🤔";
-"Canteen.noResults.message"="Ich kann für heute keine Speisen finden.\nVielleicht ist heute frei?";
+"Canteen.noResults.title"="Kein Essen";
+"Canteen.noResults.message"="Heute gibt's nichts zu essen.\nVielleicht ist heute frei?";
 
 "Exams.title"="Prüfungen";
-"Exams.noResults.title"="Ups!";
-"Exams.noResults.message"="Ich kann leider keine Prüfungen finden. Sind Deine Zugangsdaten korrekt?";
+"Exams.noResults.title"="Keine Prüfungen";
+"Exams.noResults.message"="Ich kann leider keine Prüfungen für Dich finden.\nSind Deine Zugangsdaten korrekt?";
 
 "Settings.title"="Einstellungen";
 
@@ -75,5 +75,5 @@
 "Grades.detail.tries" = "%d. Versuch";
 "Grades.detail.noDate" = "Kein Datum";
 "Grades.detail.noNote" = "Keine Bemerkungen";
-"Grades.noResults.title"="Ups!";
-"Grades.noResults.message"="Ich kann leider keine Noten von Dir finden. Sind Deine Zugangsdaten korrekt?";
+"Grades.noResults.title"="Keine Noten";
+"Grades.noResults.message"="Ich kann leider keine Noten von Dir finden.\nSind Deine Zugangsdaten korrekt?";
