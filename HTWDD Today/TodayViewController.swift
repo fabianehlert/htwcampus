@@ -17,7 +17,11 @@ class TodayViewController: ViewController {
 	
 	private var lecture: Lecture? {
 		didSet {
-			self.updateUI()
+            if self.lecture != nil {
+                self.updateUI()
+            } else {
+                self.showEmptyMessage()
+            }
 		}
 	}
 	
@@ -42,17 +46,7 @@ class TodayViewController: ViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		// TODO: Remove before flight
-		// Replace with a valid lecture name and see if defaults are available.
-		let name = "Betriebssysteme 1"
-		if let data = UserDefaults.htw?.data(forKey: ScheduleService.lectureColorsKey),
-			let colors = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Int: UInt] {
-			print("Lecture color: \(colors[name.hashValue])")
-		} else {
-			print("No Color data available.")
-		}
-		
+        
 		self.view.backgroundColor = .clear
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact // (self.challenges.count < 3) ? .compact : .expanded
 		
@@ -82,6 +76,7 @@ class TodayViewController: ViewController {
 	
 	private func showEmptyMessage() {
 		// TODO: Empty message
+        Log.info("No lectures today! Update the UI accordingly!")
 	}
 	
 	// MARK: - Private

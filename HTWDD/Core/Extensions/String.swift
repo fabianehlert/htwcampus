@@ -22,5 +22,5 @@ extension String {
 }
 
 enum Constants {
-	static let groupID = "3E4PGPNR47.group.htw-dresden.ios"
+	static let groupID = "group.htw-dresden.ios"
 }
