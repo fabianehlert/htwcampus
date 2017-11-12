@@ -34,7 +34,7 @@ class ExamsDataSource: CollectionViewDataSource {
     }
     
     override func numberOfSections() -> Int {
-        return 1
+        return self.data.isEmpty ? 0 : 1
     }
     
     override func numberOfItems(in section: Int) -> Int {

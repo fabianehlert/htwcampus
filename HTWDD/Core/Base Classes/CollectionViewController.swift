@@ -45,7 +45,7 @@ class CollectionViewController: ViewController {
                     guard let `self` = self else {
                         return
                     }
-                    view?.isHidden = self.collectionView.numberOfSections > 0 && self.collectionView.numberOfItems(inSection: 0) > 0
+                    view?.isHidden = self.collectionView.numberOfSections > 0
                 }
                 .disposed(by: self.rx_disposeBag)
         }
