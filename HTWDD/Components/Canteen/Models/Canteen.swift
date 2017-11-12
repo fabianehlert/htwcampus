@@ -19,7 +19,13 @@ struct Canteen {
                                             id: .reichenbachstrasse,
                                             coordinate: CLLocationCoordinate2D(latitude: 51.0342243,
                                                                                longitude: 13.7318803))
-    static let all = [reichenbachstrasse]
+    
+    static let siedepunkt = Canteen(name: "Mensa Siedepunkt",
+                                    id: .siedepunkt,
+                                    coordinate: CLLocationCoordinate2D(latitude: 51.0295216,
+                                                                       longitude: 13.7375996))
+    
+    static let all = [reichenbachstrasse, siedepunkt]
 
     static func with(id: Id) throws -> Canteen {
         guard let canteen = all.first(where: { $0.id == id }) else {
@@ -30,12 +36,7 @@ struct Canteen {
 
     enum Id: String {
         case reichenbachstrasse = "mensa_reichenbachstraße"
-
-        var imageId: Int {
-            switch self {
-            case .reichenbachstrasse: return 9
-            }
-        }
+        case siedepunkt = "mensa_siedepunkt"
     }
 }
 
