@@ -52,12 +52,12 @@
 "sunday"="Sunday";
 
 "monday_short"="Mo";
-"tuesday_short"="Tue";
-"wednesday_short"="Wed";
-"thursday_short"="Thu";
+"tuesday_short"="Tu";
+"wednesday_short"="We";
+"thursday_short"="Th";
 "friday_short"="Fr";
-"saturday_short"="Sat";
-"sunday_short"="Sun";
+"saturday_short"="Sa";
+"sunday_short"="Su";
 
 "summerSemester"="Summer semester";
 "winterSemester"="Winter semester";

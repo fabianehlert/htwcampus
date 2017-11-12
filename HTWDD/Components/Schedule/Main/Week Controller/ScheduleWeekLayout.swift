@@ -55,7 +55,6 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 	enum Const {
 		static let headerHeight: CGFloat = 40
-		static let timeWidth: CGFloat = 50
 
 		static let separation = "separation"
         static let indicator = "indicator"
@@ -65,7 +64,8 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             static let indicator = 1
 			static let lectures = 2
 			static let header = 3
-			static let times = 4
+            static let background = 4
+			static let times = 5
 		}
 	}
 
@@ -93,7 +93,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 	}
     
     func xPosition(ofSection section: Int) -> CGFloat {
-        return CGFloat(section) * (self.dataSource?.widthPerDay ?? 0) + Const.timeWidth
+        return CGFloat(section) * (self.dataSource?.widthPerDay ?? 0)
     }
 
 	override var collectionViewContentSize: CGSize {
@@ -107,7 +107,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 		let height = dataSource.height
 		let sections = collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0
-		let width = CGFloat(sections) * dataSource.widthPerDay + Const.timeWidth
+		let width = CGFloat(sections) * dataSource.widthPerDay + dataSource.widthPerDay
 
 		return CGSize(width: width, height: height)
 	}
@@ -122,6 +122,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let timeAttributes = self.indexPathsForTimeViews(in: rect).flatMap {
 			return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: $0)
 		}
+        let timeBackground: [UICollectionViewLayoutAttributes] = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.background.rawValue, at: .init()).map({[$0]}) ?? []
 		let decorations = self.indexPathsForDecorationViews(rect: rect).flatMap {
 			return self.layoutAttributesForDecorationView(ofKind: Const.separation, at: $0)
 		}
@@ -133,7 +134,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             return []
         }
 
-		return itemAttributes + headerAttributes + timeAttributes + decorations + todayIndicator
+		return itemAttributes + headerAttributes + timeAttributes + decorations + todayIndicator + timeBackground
 	}
 
 	override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -149,7 +150,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let margin = dataSource.itemMargin
 
 		let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-		attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + Const.timeWidth
+		attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + dataSource.widthPerDay
 
 		attr.frame.origin.y = (t.begin.time / 3600 - round(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
 		attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2
@@ -166,7 +167,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 		let attr = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
 		if elementKind == SupplementaryKind.header.rawValue {
-			attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + Const.timeWidth
+			attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + dataSource.widthPerDay
 			attr.frame.origin.y = 0
 			attr.frame.size.height = Const.headerHeight
 			attr.frame.size.width = dataSource.widthPerDay
@@ -176,9 +177,16 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 			attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
 			attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight - height / 2
 			attr.frame.size.height = height
-			attr.frame.size.width = Const.timeWidth
+			attr.frame.size.width = dataSource.widthPerDay
 			attr.zIndex = Const.Z.times
-		}
+        } else if elementKind == SupplementaryKind.background.rawValue {
+            let height = self.collectionViewContentSize.height
+            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
+            attr.frame.origin.y = 0
+            attr.frame.size.height = height
+            attr.frame.size.width = dataSource.widthPerDay
+            attr.zIndex = Const.Z.background
+        }
 
 		return attr
 	}
@@ -198,7 +206,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             guard let dataSource = self.dataSource else {
                 return attr
             }
-            attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + Const.timeWidth
+            attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + dataSource.widthPerDay
             attr.frame.origin.y = 0
             attr.frame.size.height = dataSource.height + Const.headerHeight
             attr.frame.size.width = dataSource.widthPerDay

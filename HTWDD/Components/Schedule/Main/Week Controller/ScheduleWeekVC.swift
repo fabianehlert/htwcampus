@@ -49,6 +49,9 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             let hour = Int(self.startHour) - 1 + indexPath.row
             time.hour = hour
         }
+        self.dataSource.registerSupplementary(CollectionBackgroundView.self, kind: .background) { [weak self] background, _ in
+            background.backgroundColor = self?.collectionView.backgroundColor
+        }
 	}
     
     override func headerText(day: Day, date: Date) -> String {

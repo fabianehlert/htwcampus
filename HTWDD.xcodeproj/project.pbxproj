@@ -116,6 +116,7 @@
 		B52133B91DEF0DB100955D29 /* GradeMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133B81DEF0DB100955D29 /* GradeMainVC.swift */; };
 		B52133BB1DEF0E2200955D29 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */; };
 		B52329011FB890B5000C4F44 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52329001FB890B5000C4F44 /* ImageLoader.swift */; };
+		B52329031FB8A029000C4F44 /* CollectionBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52329021FB8A029000C4F44 /* CollectionBackgroundView.swift */; };
 		B524F4061FAA3BFA007DD104 /* GradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */; };
 		B529EDE81FAB7F40000C1677 /* CodableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */; };
 		B529EDEA1FABA41C000C1677 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */; };
@@ -293,6 +294,7 @@
 		B52133B81DEF0DB100955D29 /* GradeMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeMainVC.swift; sourceTree = "<group>"; };
 		B52133BA1DEF0E2200955D29 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B52329001FB890B5000C4F44 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		B52329021FB8A029000C4F44 /* CollectionBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBackgroundView.swift; sourceTree = "<group>"; };
 		B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewModel.swift; sourceTree = "<group>"; };
 		B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableDictionary.swift; sourceTree = "<group>"; };
 		B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				B50EB4FF1E6ADC720022E40C /* CollectionViewCell.swift */,
 				B529EDE91FABA41C000C1677 /* CollectionViewFlowLayout.swift */,
 				B56957871FAA3F7F00CE2318 /* CollectionHeaderView.swift */,
+				B52329021FB8A029000C4F44 /* CollectionBackgroundView.swift */,
 				B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */,
 				39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */,
 				B5CD5C721E5F37970083D75E /* CollectionViewController.swift */,
@@ -1304,6 +1307,7 @@
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B5461B631FA63CED00564D6D /* CanteenDataSource.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
+				B52329031FB8A029000C4F44 /* CollectionBackgroundView.swift in Sources */,
 				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
 				B5B3768E1FA61A2C00FC3A07 /* CanteenCoordinator.swift in Sources */,

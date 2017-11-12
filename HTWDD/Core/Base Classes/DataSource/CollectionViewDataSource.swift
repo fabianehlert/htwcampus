@@ -11,6 +11,7 @@ import UIKit
 enum SupplementaryKind: String {
     case header = "UICollectionElementKindSectionHeader"
     case description
+    case background
 }
 
 class CollectionViewDataSource: NSObject {

@@ -51,13 +51,15 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 
     override func initialSetup() {
 		self.contentView.backgroundColor = .white
-        self.contentView.layer.cornerRadius = 2
+        self.contentView.layer.cornerRadius = 3
         self.contentView.clipsToBounds = true
 
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = Const.shadowRadius
         self.layer.shadowOpacity = Const.shadowOpacity
+        
+        self.contentView.layer.borderWidth = 2
 
 		self.contentView.addSubview(self.titleLabel)
 		self.contentView.addSubview(self.roomLabel)
@@ -77,6 +79,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
     func update(viewModel: LectureViewModel) {
         self.titleLabel.text = viewModel.shortTitle
         self.roomLabel.text = viewModel.room
+        self.contentView.layer.borderColor = UIColor(hex: viewModel.color).cgColor
     }
 
     override func layoutSubviews() {
