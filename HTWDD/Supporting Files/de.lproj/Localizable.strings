@@ -15,8 +15,8 @@
 "Onboarding.Studygroup.degree.diplom"="Diplom";
 "Onboarding.Studygroup.degree.master"="Master";
 
-"Onboarding.UnixLogin.title"="Unix-Login";
-"Onboarding.UnixLogin.body"="Damit wir dir deine Noten anzeigen können, musst du bitte deinen Unix-Login eingeben.";
+"Onboarding.UnixLogin.title"="Anmelden";
+"Onboarding.UnixLogin.body"="Damit wir Dir Deine Noten anzeigen können, musst Du Dich mit Deinen Zugangsdaten anmelden.";
 "Onboarding.UnixLogin.notnow"="Später";
 
 "Schedule.title"="Stundenplan";
@@ -25,23 +25,23 @@
 "Schedule.Style.list"="Liste";
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="Kein Raum";
-"Schedule.freeDay"="Genieß deinen freien Tag!";
-"Schedule.noResults.title"="Ups";
-"Schedule.noResults.message"="Ich kann keine Stunden für dich finden. Sind die gespeicherten Informationen korrekt?";
+"Schedule.freeDay"="Genieß Deinen freien Tag!";
+"Schedule.noResults.title"="Hoppla...";
+"Schedule.noResults.message"="Ich kann keine Stunden für Dich finden. Ist Deine Studiengruppe korrekt?";
 
 "Canteen.title"="Mensa";
-"Canteen.noCounter"="unbekannt";
+"Canteen.noCounter"="Unbekannt";
 "Canteen.noResults.title"="Mh 🤔";
-"Canteen.noResults.message"="Ich kann für heute keine Speisen finden. Kann es sein, dass heute ein freier Tag ist?";
+"Canteen.noResults.message"="Ich kann für heute keine Speisen finden.\nVielleicht ist heute frei?";
 
 "Exams.title"="Prüfungen";
-"Exams.noResults.title"="Ups";
-"Exams.noResults.message"="Ich kann leider keine Prüfungen finden. Sie die gespeicherten Informationen korrekt?";
+"Exams.noResults.title"="Ups!";
+"Exams.noResults.message"="Ich kann leider keine Prüfungen finden. Sind Deine Zugangsdaten korrekt?";
 
 "Settings.title"="Einstellungen";
 
 "Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
-"Settings.items.deleteAllConfirmationText"="Möchtest du wirklich alle gespeicherten Daten aus dieser App löschen?";
+"Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
@@ -75,5 +75,5 @@
 "Grades.detail.tries" = "%d. Versuch";
 "Grades.detail.noDate" = "Kein Datum";
 "Grades.detail.noNote" = "Keine Bemerkungen";
-"Grades.noResults.title"="Ups";
-"Grades.noResults.message"="Ich kann leider keine Noten von dir finden. Sie die gespeicherten Informationen korrekt?";
+"Grades.noResults.title"="Ups!";
+"Grades.noResults.message"="Ich kann leider keine Noten von Dir finden. Sind Deine Zugangsdaten korrekt?";

@@ -22,7 +22,7 @@ public struct Loca {
     /// Base translation: Wednesday
     public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
 
-    /// Base translation: Wintersemester
+    /// Base translation: Winter semester
     public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
 
     /// Base translation: Continue
@@ -61,7 +61,7 @@ public struct Loca {
     /// Base translation: Tue
     public static var tuesday_short : String = NSLocalizedString("tuesday_short", comment: "")
 
-    /// Base translation: Summersemester
+    /// Base translation: Summer semester
     public static var summerSemester : String = NSLocalizedString("summerSemester", comment: "")
 
     /// Base translation: Let's go!
@@ -128,7 +128,7 @@ public struct Loca {
                 /// Base translation: Bachelor
                 public static var bachelor : String = NSLocalizedString("Onboarding.Studygroup.degree.bachelor", comment: "")
 
-                /// Base translation: Diplom
+                /// Base translation: Diploma
                 public static var diplom : String = NSLocalizedString("Onboarding.Studygroup.degree.diplom", comment: "")
 
                 /// Base translation: Master
@@ -142,10 +142,10 @@ public struct Loca {
             /// Base translation: Not now
             public static var notnow : String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
 
-            /// Base translation: Unix-Login
+            /// Base translation: Login
             public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
 
-            /// Base translation: To be able to show you your grades, please enter your unix-login.
+            /// Base translation: To be able to view your grades, you have to login using your HTW credentials.
             public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
 
         }
@@ -177,10 +177,10 @@ public struct Loca {
 
         public struct noResults {
 
-            /// Base translation: Oops
+            /// Base translation: Uh-ph!
             public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
 
-            /// Base translation: I can't find any lectures for you. Are the saved information correct?
+            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
             public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
 
         }
@@ -207,7 +207,7 @@ public struct Loca {
             /// Base translation: Oops
             public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
 
-            /// Base translation: I can't find any grades for you. Are the saved information correct?
+            /// Base translation: I can't find any grades for you. Have you entered your credentials correctly?
             public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
 
         }
@@ -246,10 +246,10 @@ public struct Loca {
 
         public struct noResults {
 
-            /// Base translation: I can't find any exams for you. Are the saved information correct?
+            /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
             public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
 
-            /// Base translation: Oops
+            /// Base translation: Oops!
             public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
 
         }
@@ -269,7 +269,7 @@ public struct Loca {
             /// Base translation: Mh 🤔
             public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
 
-            /// Base translation: I can't find any meals for today. Could it be that today is a free day?
+            /// Base translation: I can't find any meals for today. Maybe today is a free day?
             public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
 
         }
@@ -283,7 +283,7 @@ public struct Loca {
 
         public struct items {
 
-            /// Base translation: Do you really want to delete all stored data from this app?
+            /// Base translation: Do you really want to delete all stored in the HTW app?
             public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
 
             /// Base translation: Delete all stored data

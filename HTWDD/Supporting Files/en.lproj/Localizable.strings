@@ -12,11 +12,11 @@
 "Onboarding.Studygroup.group"="Group";
 
 "Onboarding.Studygroup.degree.bachelor"="Bachelor";
-"Onboarding.Studygroup.degree.diplom"="Diplom";
+"Onboarding.Studygroup.degree.diplom"="Diploma";
 "Onboarding.Studygroup.degree.master"="Master";
 
-"Onboarding.UnixLogin.title"="Unix-Login";
-"Onboarding.UnixLogin.body"="To be able to show you your grades, please enter your unix-login.";
+"Onboarding.UnixLogin.title"="Login";
+"Onboarding.UnixLogin.body"="To be able to view your grades, you have to login using your HTW credentials.";
 "Onboarding.UnixLogin.notnow"="Not now";
 
 "Schedule.title"="Schedule";
@@ -26,22 +26,22 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day!";
-"Schedule.noResults.title"="Oops";
-"Schedule.noResults.message"="I can't find any lectures for you. Are the saved information correct?";
+"Schedule.noResults.title"="Uh-ph!";
+"Schedule.noResults.message"="I can't find any lectures for you. Have you entered your credentials correctly?";
 
 "Canteen.title"="Canteen";
 "Canteen.noCounter"="unknown";
 "Canteen.noResults.title"="Mh 🤔";
-"Canteen.noResults.message"="I can't find any meals for today. Could it be that today is a free day?";
+"Canteen.noResults.message"="I can't find any meals for today.\nMaybe today is a free day?";
 
 "Exams.title"="Exams";
-"Exams.noResults.title"="Oops";
-"Exams.noResults.message"="I can't find any exams for you. Are the saved information correct?";
+"Exams.noResults.title"="Oops!";
+"Exams.noResults.message"="I can't find any exams for you. Have you entered your credentials correctly?";
 
 "Settings.title"="Settings";
 
 "Settings.items.deleteAll"="Delete all stored data";
-"Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored data from this app?";
+"Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
 
 "monday"="Monday";
 "tuesday"="Tuesday";
@@ -59,8 +59,8 @@
 "saturday_short"="Sat";
 "sunday_short"="Sun";
 
-"summerSemester"="Summersemester";
-"winterSemester"="Wintersemester";
+"summerSemester"="Summer semester";
+"winterSemester"="Winter semester";
 
 "close"="Close";
 "cancel"="Cancel";
@@ -76,4 +76,4 @@
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
 "Grades.noResults.title"="Oops";
-"Grades.noResults.message"="I can't find any grades for you. Are the saved information correct?";
+"Grades.noResults.message"="I can't find any grades for you. Have you entered your credentials correctly?";
