@@ -96,7 +96,7 @@ class GradeMainVC: CollectionViewController {
     }
     
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
-        return .init(title: Loca.Grades.noResults.title, message: Loca.Grades.noResults.message, image: #imageLiteral(resourceName: "Exams"))
+        return .init(title: Loca.Grades.noResults.title, message: Loca.Grades.noResults.message, image: nil)
     }
 
 	// MARK: - Private

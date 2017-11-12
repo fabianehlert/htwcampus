@@ -69,7 +69,7 @@ class ScheduleBaseVC: CollectionViewController {
     }
 
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
-        return .init(title: Loca.Schedule.noResults.title, message: Loca.Schedule.noResults.message, image: #imageLiteral(resourceName: "Exams"))
+        return .init(title: Loca.Schedule.noResults.title, message: Loca.Schedule.noResults.message, image: nil)
     }
     
     // MARK: - Private

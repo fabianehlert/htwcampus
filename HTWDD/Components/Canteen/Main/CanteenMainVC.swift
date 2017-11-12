@@ -88,7 +88,7 @@ class CanteenMainVC: CollectionViewController {
     }
 
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
-        return .init(title: Loca.Canteen.noResults.title, message: Loca.Canteen.noResults.message, image: #imageLiteral(resourceName: "Exams"))
+        return .init(title: Loca.Canteen.noResults.title, message: Loca.Canteen.noResults.message, image: nil)
     }
     
     @objc private func reload() {

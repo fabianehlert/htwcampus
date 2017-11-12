@@ -81,7 +81,7 @@ class ExamsMainVC: CollectionViewController {
 	}
     
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
-        return .init(title: Loca.Exams.noResults.title, message: Loca.Exams.noResults.message, image: #imageLiteral(resourceName: "Exams"))
+        return .init(title: Loca.Exams.noResults.title, message: Loca.Exams.noResults.message, image: nil)
     }
     
     @objc

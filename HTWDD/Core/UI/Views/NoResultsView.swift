@@ -24,7 +24,7 @@ class NoResultsView: View {
 	
     private let titleLabel: UILabel = {
         let l = UILabel()
-        l.font = .systemFont(ofSize: 26, weight: .semibold)
+        l.font = .systemFont(ofSize: 30, weight: .semibold)
         l.textColor = .gray
         l.textAlignment = .center
         l.numberOfLines = 0
@@ -34,7 +34,7 @@ class NoResultsView: View {
     
 	private let messageLabel: UILabel = {
 		let l = UILabel()
-		l.font = .systemFont(ofSize: 16, weight: .regular)
+		l.font = .systemFont(ofSize: 15, weight: .medium)
 		l.textColor = .gray
 		l.textAlignment = .center
         l.numberOfLines = 0
@@ -70,10 +70,10 @@ class NoResultsView: View {
 	}
 	
 	override func initialSetup() {
-		let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.imageView, self.messageLabel])
+		let stackView = UIStackView(arrangedSubviews: [self.imageView, self.titleLabel, self.messageLabel])
 		stackView.alignment = .center
 		stackView.axis = .vertical
-		stackView.spacing = 10
+		stackView.spacing = 2
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(stackView)
 		
