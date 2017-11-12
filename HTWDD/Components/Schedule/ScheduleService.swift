@@ -11,10 +11,6 @@ import UIKit
 import RxSwift
 
 class ScheduleService: Service {
-
-    enum Const {
-        static let lectureCacheKey = "lectureCacheKey"
-    }
     
     struct Auth: Hashable, Codable {
         enum Degree: String, Codable {
@@ -40,14 +36,20 @@ class ScheduleService: Service {
         let semesters: [SemesterInformation]
         
         init(lectures: [Day: [Lecture]], semesters: [SemesterInformation], colors: inout [Int: UInt]) {
-            self.lectures = lectures.mapValues({ Information.injectDomainLogic(lectures: $0, colors: &colors) })
+            var counter = 0
+            self.lectures = lectures.mapValues({ Information.injectDomainLogic(lectures: $0, counter: &counter, colors: &colors) })
             self.semesters = semesters
         }
         
-        private static func injectDomainLogic(lectures: [Lecture], colors: inout [Int: UInt]) -> [AppLecture] {
-            return lectures.enumerated().map { index, l in
-                let color = colors[l.name.hashValue, default: UIColor.htw.scheduleColors[index % UIColor.htw.scheduleColors.count].hex()]
-                colors[l.name.hashValue] = color
+        private static func injectDomainLogic(lectures: [Lecture], counter: inout Int, colors: inout [Int: UInt]) -> [AppLecture] {
+            return lectures.map { l in
+                let hash = l.name.hashValue
+                let savedColor = colors[hash]
+                let color = savedColor ?? UIColor.htw.scheduleColors[counter % UIColor.htw.scheduleColors.count].hex()
+                if savedColor == nil {
+                    counter += 1
+                    colors[hash] = color
+                }
                 // TODO: Inject hidden as well!
                 return AppLecture(lecture: l, color: color, hidden: false)
             }
@@ -116,20 +118,11 @@ class ScheduleService: Service {
 	static let lectureColorsKey = "lectureColorsInformation"
 	
     private func loadColors() -> [Int: UInt] {
-        guard
-            let data = UserDefaults.htw?.data(forKey: ScheduleService.lectureColorsKey),
-            let colors = try? JSONDecoder().decode([Int: UInt].self, from: data)
-        else {
-            return [:]
-        }
-        return colors
+        return self.persistenceService.loadScheduleColors()
     }
     
     private func saveColors(_ colors: [Int: UInt]) {
-        guard let data = try? JSONEncoder().encode(colors) else {
-            return
-        }
-        UserDefaults.htw?.set(data, forKey: ScheduleService.lectureColorsKey)
+        self.persistenceService.save(colors)
     }
     
 }

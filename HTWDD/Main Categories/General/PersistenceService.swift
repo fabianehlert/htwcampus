@@ -17,6 +17,7 @@ class PersistenceService: Service {
 		static let accessGroup = "3E4PGPNR47.keychain-group"
 		
         static let scheduleKey = "htw-dresden.schedule.auth"
+        static let scheduleColorsKey = "htw-dresden.schedule.colors"
         static let gradesKey = "htw-dresden.grades.auth"
         
         static let scheduleCacheKey = "htw-dresden.schedule.cache"
@@ -49,6 +50,10 @@ class PersistenceService: Service {
         return try? JSONDecoder().decode(T.self, from: data)
     }
     
+    func loadScheduleColors() -> [Int: UInt] {
+        return self.load(type: [Int: UInt].self, key: Const.scheduleColorsKey) ?? [:]
+    }
+    
     func loadScheduleCache() -> Observable<ScheduleService.Information> {
         guard let saved = self.load(type: ScheduleService.Information.self, key: Const.scheduleCacheKey) else {
             return Observable.empty()
@@ -74,6 +79,10 @@ class PersistenceService: Service {
 
     func save(_ schedule: ScheduleService.Auth) {
         self.save(object: schedule, key: Const.scheduleKey)
+    }
+    
+    func save(_ colors: [Int: UInt]) {
+        self.save(object: colors, key: Const.scheduleColorsKey)
     }
 
     func save(_ grade: GradeService.Auth) {
@@ -107,12 +116,17 @@ class PersistenceService: Service {
     func clear() {
         self.removeGrade()
         self.removeSchedule()
+        self.removeScheduleColors()
         self.removeGradesCache()
         self.removeScheduleCache()
     }
 
     func removeSchedule() {
         self.remove(key: Const.scheduleKey)
+    }
+    
+    func removeScheduleColors() {
+        self.remove(key: Const.scheduleColorsKey)
     }
 
     func removeGrade() {
