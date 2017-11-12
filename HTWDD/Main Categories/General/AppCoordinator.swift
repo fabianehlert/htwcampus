@@ -49,8 +49,6 @@ class AppCoordinator: Coordinator {
 		self.window.rootViewController = self.rootViewController
 		self.window.tintColor = UIColor.htw.blue
         self.window.makeKeyAndVisible()
-
-		self.stylizeUI()
 		
         self.showOnboarding(animated: false)		
 	}
@@ -103,14 +101,6 @@ class AppCoordinator: Coordinator {
             .disposed(by: self.disposeBag)
     }
 	
-	// MARK: - UI Apperance
-	
-	private func stylizeUI() {
-		UINavigationBar.appearance().tintColor = .white
-		UINavigationBar.appearance().barTintColor = UIColor.htw.blue
-		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-		if #available(iOS 11.0, *) { UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] }
-	}
 }
 
 extension AppCoordinator: SettingsCoordinatorDelegate {

@@ -26,7 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.appCoordinator = AppCoordinator(window: window)
 		self.window = window
 
+		self.stylizeUI()
+		
         return true
     }
+
+	// MARK: - UI Apperance
+	
+	private func stylizeUI() {
+		UIRefreshControl.appearance().tintColor = .white
+		UINavigationBar.appearance().tintColor = .white
+		UINavigationBar.appearance().barTintColor = UIColor.htw.blue
+		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+		if #available(iOS 11.0, *) { UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white] }
+	}
 
 }
