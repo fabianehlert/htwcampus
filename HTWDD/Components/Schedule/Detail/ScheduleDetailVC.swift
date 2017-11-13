@@ -121,7 +121,7 @@ class ScheduleDetailVC: ViewController {
             self.nameLabel.leadingAnchor.constraint(
                 equalTo: layoutGuide.leadingAnchor, constant: Const.margin),
             self.nameLabel.topAnchor.constraint(
-                equalTo: layoutGuide.topAnchor, constant: Const.margin),
+                equalTo: self.topLayoutGuide.bottomAnchor, constant: Const.margin),
             self.nameLabel.trailingAnchor.constraint(
                 equalTo: layoutGuide.trailingAnchor, constant: -Const.margin),
             
