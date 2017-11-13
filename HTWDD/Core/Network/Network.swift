@@ -63,7 +63,7 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: optional parameters to add to the url
     /// - Returns: Observable containing the loaded object
-    @available(*, deprecated)
+    @available(*, deprecated, message: "Please update to Codable to get rid of Marshal")
     public func getM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
         return get(url: url, params: params).map(self.mapSingleObject)
     }
@@ -86,7 +86,7 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: optional parameters to add to the url
     /// - Returns: Observable containing the loaded objects
-    @available(*, deprecated)
+    @available(*, deprecated, message: "Please update to Codable to get rid of Marshal")
     public func getArrayM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
         return get(url: url, params: params).map(self.mapArray)
     }
