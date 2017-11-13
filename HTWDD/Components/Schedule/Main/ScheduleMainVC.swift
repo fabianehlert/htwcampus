@@ -94,7 +94,7 @@ final class ScheduleMainVC: ViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        let style = UserDefaults.htw?.integer(forKey: ScheduleLayoutStyle.cachingKey)
+        let style = UserDefaults.standard.integer(forKey: ScheduleLayoutStyle.cachingKey)
         self.layoutStyleControl.selectedSegmentIndex = style ?? 0
         self.switchStyle(to: ScheduleLayoutStyle(rawValue: style ?? 0))
 	}
@@ -103,7 +103,7 @@ final class ScheduleMainVC: ViewController {
 
 	private func switchStyle(to style: ScheduleLayoutStyle?) {
 		guard let style = style else { return }
-        UserDefaults.htw?.set(style.rawValue, forKey: ScheduleLayoutStyle.cachingKey)
+        UserDefaults.standard.set(style.rawValue, forKey: ScheduleLayoutStyle.cachingKey)
 
 		if let vc = self.currentScheduleVC {
 			vc.willMove(toParentViewController: nil)

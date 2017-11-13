@@ -17,17 +17,11 @@ extension UserDefaults {
     /// - Returns: true if defaults were saved before, false if not
     @discardableResult func clear() -> Bool {
         if let bundle = Bundle.main.bundleIdentifier {
-            UserDefaults.htw?.removePersistentDomain(forName: bundle)
+            UserDefaults.standard.removePersistentDomain(forName: bundle)
             return true
         } else {
             return false
         }
     }
 	
-}
-
-extension UserDefaults {
-	static var htw: UserDefaults? {
-		return UserDefaults(suiteName: Constants.groupID)
-	}
 }
