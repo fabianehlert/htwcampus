@@ -95,8 +95,8 @@ final class ScheduleMainVC: ViewController {
 		super.viewDidLoad()
 
         let style = UserDefaults.standard.integer(forKey: ScheduleLayoutStyle.cachingKey)
-        self.layoutStyleControl.selectedSegmentIndex = style ?? 0
-        self.switchStyle(to: ScheduleLayoutStyle(rawValue: style ?? 0))
+        self.layoutStyleControl.selectedSegmentIndex = style
+        self.switchStyle(to: ScheduleLayoutStyle(rawValue: style))
 	}
 
 	// MARK: - Layout
