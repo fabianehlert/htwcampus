@@ -134,7 +134,6 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
             self?.dismissOrPopViewController()
         }).disposed(by: self.disposeBag)
         
-        // TODO: Change this!
         self.yearButton.rx
             .controlEvent(.touchUpInside)
             .flatMap({ [weak self] _ -> Observable<StudyYear> in

@@ -142,7 +142,7 @@ class ScheduleDataSource: CollectionViewDataSource {
 
         let originDate = self.originDate ?? semesterInformation.period.begin.date
 
-        let sections = 0..<(self.numberOfDays ?? self.semesterInformation?.period.lengthInDays ?? 0)
+        let sections = 0..<(self.numberOfDays ?? semesterInformation.period.lengthInDays)
         let originDay = originDate.weekday
         let startWeek = originDate.weekNumber
 
