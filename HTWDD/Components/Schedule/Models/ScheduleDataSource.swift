@@ -77,7 +77,6 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     private var data = [Data]() {
         didSet {
-            self.invalidate()
             self.delegate?.scheduleDataSourceHasUpdated()
         }
     }
@@ -122,13 +121,18 @@ class ScheduleDataSource: CollectionViewDataSource {
 			.subscribe(onNext: { [weak self] information in
 				self?.lectures = information.lectures
 				self?.semesterInformations = information.semesters
-				self?.data = self?.calculate() ?? []
+                self?.invalidate()
 				self?.delegate?.scheduleDataSourceHasFinishedLoading()
 				self?.loadingCount.value -= 1
 				}, onError: { [weak self] _ in
 					self?.loadingCount.value -= 1
 			}).disposed(by: self.disposeBag)
 	}
+    
+    override func invalidate() {
+        self.data = self.calculate()
+        super.invalidate()
+    }
 
 	func lecture(at indexPath: IndexPath) -> AppLecture? {
         return self.data[safe: indexPath.section]?.lectures[safe: indexPath.row]
