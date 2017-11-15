@@ -54,7 +54,7 @@ extension ScheduleWeekLayoutDataSource {
 class ScheduleWeekLayout: UICollectionViewLayout {
 
 	enum Const {
-		static let headerHeight: CGFloat = 40
+		static let headerHeight: CGFloat = 48
 
 		static let separation = "separation"
         static let indicator = "indicator"

@@ -45,26 +45,14 @@ final class ScheduleListVC: ScheduleBaseVC {
             let info = self?.dataSource.dayInformation(indexPath: indexPath)
             let date = NSAttributedString(string: info?.date.string(format: "d. MMMM").uppercased() ?? "",
                                           attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 14, weight: .semibold)])
-            let separator = NSAttributedString(string: "\n")
             let day = NSAttributedString(string: info?.date.string(format: "EEEE") ?? "",
                                          attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 26, weight: .bold)])
 
-            let attributedTitle = NSMutableAttributedString()
-            attributedTitle.append(date)
-            attributedTitle.append(separator)
-            attributedTitle.append(day)
-            
-            view.attributedTitle = attributedTitle
+            view.attributedTitle = date + "\n" + day
             view.titleInset = Const.margin
         }
 
 		self.dataSource.delegate = self
-    }
-
-    override func headerText(day: Day, date: Date) -> String {
-        let weekdayLoca = super.headerText(day: day, date: date)
-        let dateString = date.string(format: "d. MMMM")
-        return "\(weekdayLoca) - \(dateString)"
     }
 
     override func jumpToToday() {
@@ -80,9 +68,11 @@ final class ScheduleListVC: ScheduleBaseVC {
             return
         }
 
-        // scroll to header
-        let offsetY = self.collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath)?.frame.origin.y ?? 0
-        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY), animated: animated)
+        DispatchQueue.main.async {
+            // scroll to header
+            let offsetY = self.collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath)?.frame.origin.y ?? 0
+            self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY), animated: animated)
+        }
     }
     
 }

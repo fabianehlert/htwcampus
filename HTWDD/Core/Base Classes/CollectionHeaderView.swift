@@ -12,6 +12,12 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
 
     private let label = UILabel()
 
+    var textAlignment: NSTextAlignment = .left {
+        didSet {
+            self.label.textAlignment = textAlignment
+        }
+    }
+    
     var attributedTitle: NSAttributedString? {
         get {
             return self.label.attributedText
@@ -38,7 +44,7 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         self.backgroundColor = .clear
         
         self.label.numberOfLines = 0
-        self.label.textAlignment = .left
+        self.label.textAlignment = self.textAlignment
 		self.label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.label)
 

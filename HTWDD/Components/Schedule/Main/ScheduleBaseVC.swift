@@ -20,16 +20,6 @@ class ScheduleBaseVC: CollectionViewController {
         get { return nil }
         set { self.dataSource.auth = newValue }
     }
-    
-    private let days = [
-        Loca.monday,
-        Loca.tuesday,
-        Loca.wednesday,
-        Loca.thursday,
-        Loca.friday,
-        Loca.saturday,
-        Loca.sunday
-    ]
 
     init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout, startHour: CGFloat) {
         self.dataSource = ScheduleDataSource(configuration: configuration)
@@ -46,11 +36,6 @@ class ScheduleBaseVC: CollectionViewController {
 
         // DataSource
         self.dataSource.collectionView = self.collectionView
-        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            guard let `self` = self else { return }
-            let info = self.dataSource.dayInformation(indexPath: indexPath)
-            view.attributedTitle = NSAttributedString(string: self.headerText(day: info.day, date: info.date))
-        }
     }
 
     // MARK: - ViewController lifecycle
@@ -95,11 +80,6 @@ class ScheduleBaseVC: CollectionViewController {
     func jumpToToday() {
         let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
         self.collectionView.setContentOffset(left, animated: true)
-    }
-
-    func headerText(day: Day, date: Date) -> String {
-        let index = day.rawValue
-        return self.days[index]
     }
 
 }

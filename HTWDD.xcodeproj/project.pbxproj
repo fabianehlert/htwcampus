@@ -188,6 +188,7 @@
 		B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53711E7FD25C00183E07 /* AnimatedViewControllerTransition.swift */; };
 		B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA53731E7FDA5E00183E07 /* UIViewController.swift */; };
 		B5EBE3531F6EA20F0073C450 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBE3521F6EA20F0073C450 /* AppContext.swift */; };
+		B5ECABA01FBCCFE80017B8F4 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ECAB9F1FBCCFE80017B8F4 /* NSAttributedString.swift */; };
 		B5EF31F71FB059F600C848AF /* ExamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF31F61FB059F600C848AF /* ExamsCell.swift */; };
 		B5EF95741FADB389006BC7D1 /* ExamsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95731FADB389006BC7D1 /* ExamsCoordinator.swift */; };
 		B5EF95761FADB3B6006BC7D1 /* ExamsMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF95751FADB3B6006BC7D1 /* ExamsMainVC.swift */; };
@@ -370,6 +371,7 @@
 		B5EA53711E7FD25C00183E07 /* AnimatedViewControllerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedViewControllerTransition.swift; sourceTree = "<group>"; };
 		B5EA53731E7FDA5E00183E07 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B5EBE3521F6EA20F0073C450 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		B5ECAB9F1FBCCFE80017B8F4 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		B5EF31F61FB059F600C848AF /* ExamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsCell.swift; sourceTree = "<group>"; };
 		B5EF95731FADB389006BC7D1 /* ExamsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsCoordinator.swift; sourceTree = "<group>"; };
 		B5EF95751FADB3B6006BC7D1 /* ExamsMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsMainVC.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				B55507111E601FB400C16F5F /* DateComponents.swift */,
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
 				B5B3768A1FA6182800FC3A07 /* Double.swift */,
+				B5ECAB9F1FBCCFE80017B8F4 /* NSAttributedString.swift */,
 				B538EF061E1D58690031077C /* NSObject+Rx.swift */,
 				B5BE727A1E6C4CBD00D05B6D /* Observable.swift */,
 				B5EA535E1E7FBB1500183E07 /* String.swift */,
@@ -1348,6 +1351,7 @@
 				B51DB4911FA918D500B1A811 /* ScheduleBaseVC.swift in Sources */,
 				B529EDE81FAB7F40000C1677 /* CodableDictionary.swift in Sources */,
 				B5461B681FA7B4C400564D6D /* PersistenceService.swift in Sources */,
+				B5ECABA01FBCCFE80017B8F4 /* NSAttributedString.swift in Sources */,
 				1FE108031F8FDAF5002B8E69 /* StudygroupTextField.swift in Sources */,
 				B50EB5021E6AFFA20022E40C /* Day.swift in Sources */,
 				B5EF95761FADB3B6006BC7D1 /* ExamsMainVC.swift in Sources */,

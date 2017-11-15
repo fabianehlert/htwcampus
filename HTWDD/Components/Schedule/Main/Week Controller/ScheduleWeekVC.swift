@@ -54,12 +54,15 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         self.dataSource.registerSupplementary(CollectionBackgroundView.self, kind: .background) { [weak self] background, _ in
             background.backgroundColor = self?.collectionView.backgroundColor
         }
+        self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
+            guard let `self` = self else { return }
+            let info = self.dataSource.dayInformation(indexPath: indexPath)
+            view.textAlignment = .center
+            let day = NSAttributedString(string: info.date.string(format: "E"), attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)])
+            let date = NSAttributedString(string: info.date.string(format: "dd.MM."), attributes: [.font: UIFont.systemFont(ofSize: 12, weight: .light)])
+            view.attributedTitle = day + "\n" + date
+        }
 	}
-    
-    override func headerText(day: Day, date: Date) -> String {
-        let index = day.rawValue
-        return self.days[index]
-    }
 
     override func jumpToToday() {
         self.scrollToToday(animated: true)
@@ -71,7 +74,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         }
         
         // Begin of week (monday)
-        let section = today.section - Date().weekday.rawValue
+        let (day, _) = self.dataSource.dayInformation(indexPath: today)
+        let section = today.section - day.rawValue
         
         guard self.collectionView.numberOfSections >= section else {
             return
