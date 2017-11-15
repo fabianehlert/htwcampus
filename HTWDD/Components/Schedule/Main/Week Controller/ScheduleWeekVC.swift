@@ -28,6 +28,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
         config.originDate = nil
+        config.stripBeginningFreeDays = true
         super.init(configuration: config, layout: layout, startHour: 6.5)
         layout.dataSource = self
         self.dataSource.delegate = self
@@ -64,20 +65,19 @@ final class ScheduleWeekVC: ScheduleBaseVC {
     }
     
     private func scrollToToday(animated: Bool) {
-        guard let semesterInformation = self.dataSource.semesterInformation else {
+        guard let today = self.dataSource.indexPathOfToday else {
             return
         }
         
-        let semesterBegin = semesterInformation.period.begin.date
-        let daysUntilStartOfWeek = Date().beginOfWeek.daysSince(other: semesterBegin)
-        let indexPath = IndexPath(item: 0, section: daysUntilStartOfWeek)
+        // Begin of week (monday)
+        let section = today.section - Date().weekday.rawValue
         
-        guard self.collectionView.numberOfSections >= indexPath.section else {
+        guard self.collectionView.numberOfSections >= section else {
             return
         }
         
         // scroll to item
-        let xPos = self.layout.xPosition(ofSection: daysUntilStartOfWeek)
+        let xPos = self.layout.xPosition(ofSection: section)
         self.collectionView.setContentOffset(CGPoint(x: xPos, y: self.collectionView.contentOffset.y), animated: animated)
     }
     
@@ -91,8 +91,8 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 	}
 
 	var height: CGFloat {
-		let insets = self.collectionView.contentInset
-		return self.collectionView.bounds.height - insets.top - insets.bottom
+        let height = (self.tabBarController?.tabBar.top).map { $0 - (self.navigationController?.navigationBar.bottom ?? 0) }
+		return height ?? self.collectionView.height
 	}
 
 	var endHour: CGFloat {

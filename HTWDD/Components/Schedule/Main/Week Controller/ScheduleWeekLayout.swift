@@ -129,10 +129,6 @@ class ScheduleWeekLayout: UICollectionViewLayout {
         let todayIndicator = self.indexPathsForTodayIndicator(rect: rect).flatMap {
             return self.layoutAttributesForDecorationView(ofKind: Const.indicator, at: $0)
         }
-        
-        guard itemAttributes.count > 0 else {
-            return []
-        }
 
 		return itemAttributes + headerAttributes + timeAttributes + decorations + todayIndicator + timeBackground
 	}

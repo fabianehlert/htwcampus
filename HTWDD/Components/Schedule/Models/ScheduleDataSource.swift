@@ -25,14 +25,16 @@ class ScheduleDataSource: CollectionViewDataSource {
         var auth: ScheduleService.Auth?
         var shouldFilterEmptySections: Bool
         var addFreeDays: Bool
+        var stripBeginningFreeDays: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool) {
+        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, stripBeginningFreeDays: Bool) {
             self.context = context
             self.originDate = originDate
             self.numberOfDays = numberOfDays
             self.auth = auth
             self.shouldFilterEmptySections = shouldFilterEmptySections
             self.addFreeDays = addFreeDays
+            self.stripBeginningFreeDays = stripBeginningFreeDays
         }
     }
 
@@ -81,6 +83,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
     private let filterEmptySections: Bool
+    private let stripEmptySections: Bool // strips them from beginning
 
     weak var delegate: ScheduleDataSourceDelegate?
 
@@ -99,6 +102,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.numberOfDays = configuration.numberOfDays
         self.auth = configuration.auth
         self.filterEmptySections = configuration.shouldFilterEmptySections
+        self.stripEmptySections = configuration.stripBeginningFreeDays
     }
 
 	func load() {
@@ -180,6 +184,9 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
         if self.filterEmptySections {
             all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
+        }
+        if self.stripEmptySections {
+            all = all.removing(while: { $0.lectures.isEmpty && $0.freeDays.isEmpty })
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })

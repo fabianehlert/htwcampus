@@ -21,5 +21,12 @@ extension Array {
 		let i = Int(arc4random() % UInt32(self.count))
 		return self[i]
 	}
+    
+    func removing(while condition: (Element) -> Bool) -> [Element] {
+        guard let firstIndex = self.index(where: { !condition($0) }) else {
+            return []
+        }
+        return Array(self[firstIndex...])
+    }
 
 }
