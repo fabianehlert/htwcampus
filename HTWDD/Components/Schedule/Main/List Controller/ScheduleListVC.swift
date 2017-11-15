@@ -31,8 +31,8 @@ final class ScheduleListVC: ScheduleBaseVC {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func initialSetup() {
+        super.initialSetup()
         
         self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
 

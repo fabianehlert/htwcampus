@@ -16,7 +16,10 @@ class OnboardWelcomeViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+
+	override func initialSetup() {
+
 		// --- Title label ---
 		let titleLabel = UILabel()
 		titleLabel.font = .systemFont(ofSize: 44, weight: .bold)

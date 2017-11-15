@@ -39,9 +39,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+	override func initialSetup() {
+        super.initialSetup()
         self.collectionView.isDirectionalLockEnabled = true
         
         self.dataSource.register(type: LectureCollectionViewCell.self)

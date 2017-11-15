@@ -73,26 +73,28 @@ final class ScheduleMainVC: ViewController {
         fatalError("init(coder:) has not been implemented")
 	}
 
+	override func initialSetup() {
+		// Basic setup
+		self.title = Loca.Schedule.title
+		self.tabBarItem.image = #imageLiteral(resourceName: "Class")
+
+		// Layout Style Segmented Control
+		self.navigationItem.titleView = self.layoutStyleControl
+		self.layoutStyleControl.rx.controlEvent(.valueChanged).subscribe { [weak self] _ in
+			if let i = self?.layoutStyleControl.selectedSegmentIndex {
+				self?.switchStyle(to: ScheduleLayoutStyle(rawValue: i))
+			}
+		}.disposed(by: self.rx_disposeBag)
+
+		// Setup `containerView`
+		self.view.addSubview(self.containerView)
+		layoutMatchingEdges(self.containerView, self.view)
+	}
+
 	// MARK: - ViewController lifecycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
-        // Basic setup
-        self.title = Loca.Schedule.title
-        self.tabBarItem.image = #imageLiteral(resourceName: "Class")
-        
-        // Layout Style Segmented Control
-        self.navigationItem.titleView = self.layoutStyleControl
-        self.layoutStyleControl.rx.controlEvent(.valueChanged).subscribe { [weak self] _ in
-            if let i = self?.layoutStyleControl.selectedSegmentIndex {
-                self?.switchStyle(to: ScheduleLayoutStyle(rawValue: i))
-            }
-            }.disposed(by: self.rx_disposeBag)
-        
-        // Setup `containerView`
-        self.view.addSubview(self.containerView)
-        layoutMatchingEdges(self.containerView, self.view)
 
         let style = UserDefaults.standard.integer(forKey: ScheduleLayoutStyle.cachingKey)
         self.layoutStyleControl.selectedSegmentIndex = style

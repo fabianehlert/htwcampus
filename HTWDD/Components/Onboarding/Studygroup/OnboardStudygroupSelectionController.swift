@@ -64,13 +64,17 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
         return .portrait
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func initialSetup() {
+        super.initialSetup()
         
         self.dataSource.collectionView = self.collectionView
         self.dataSource.register(type: OnboardingStudygroupSelectionYearCell.self)
         self.dataSource.register(type: OnboardingStudygroupSelectionCourseCell.self)
         self.dataSource.register(type: OnboardingStudygroupSelectionGroupCell.self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - Const.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
         self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: 80)
