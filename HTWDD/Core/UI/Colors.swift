@@ -39,7 +39,7 @@ extension HTWNamespace where Base: UIColor {
     static var blue: UIColor {
         return UIColor(hex: 0x004d98)
     }
-
+	
     static var orange: UIColor {
         return UIColor(hex: 0xF1A13D)
     }
@@ -47,6 +47,14 @@ extension HTWNamespace where Base: UIColor {
     static var green: UIColor {
         return UIColor(hex: 0x2ecc71)
     }
+	
+	static var red: UIColor {
+		return UIColor(hex: 0xC21717)
+	}
+	
+	static var yellow: UIColor {
+		return UIColor(hex: 0xf1c40f)
+	}
 
     static var textBody: UIColor {
         return UIColor(hex: 0x7F7F7F)
@@ -95,13 +103,13 @@ extension HTWNamespace where Base: UIColor {
 			UIColor(hex: 0x8e44ad),
 			UIColor(hex: 0x27ae60),
 			UIColor(hex: 0xe74c3c),
-			UIColor(hex: 0x3498db),
 			UIColor(hex: 0xF0C987),
+			UIColor(hex: 0x3498db),
+			UIColor(hex: 0x2ecc71),
 			UIColor(hex: 0x9097C0),
 			UIColor(hex: 0xf1c40f),
 			UIColor(hex: 0x2c3e50),
-			UIColor(hex: 0xc0392b),
-			UIColor(hex: 0xE8C1C5)
+			UIColor(hex: 0xc0392b)
 		]
 		return colors
 	}
