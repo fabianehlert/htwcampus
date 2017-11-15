@@ -98,11 +98,7 @@ class ScheduleDetailVC: ViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Loca.close, style: .done, target: self, action: #selector(dismissOrPopViewController))
         }
-    }
-
-	// MARK: - UI
-
-	override func initialSetup() {
+        
 		self.colorView.backgroundColor = UIColor(hex: self.viewModel.color)
 		
 		self.nameLabel.text = self.viewModel.longTitle

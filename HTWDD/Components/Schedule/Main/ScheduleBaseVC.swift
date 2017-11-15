@@ -31,18 +31,14 @@ class ScheduleBaseVC: CollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func initialSetup() {
-        super.initialSetup()
-
-        // DataSource
-        self.dataSource.collectionView = self.collectionView
-    }
-
     // MARK: - ViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // DataSource
+        self.dataSource.collectionView = self.collectionView
+        
         let todayButton = UIBarButtonItem(title: Loca.Schedule.today, style: .plain, target: self, action: #selector(jumpToToday))
         self.navigationItem.rightBarButtonItem = todayButton
 
