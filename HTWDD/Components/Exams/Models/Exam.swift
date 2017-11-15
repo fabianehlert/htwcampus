@@ -27,15 +27,6 @@ struct Exam: Codable, Identifiable, Equatable {
         case examiner = "Examiner"
         case rooms = "Rooms"
     }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.type = try container.decode(ExamType.self, forKey: .type)
-        self.branch = try container.decode(String.self, forKey: .branch)
-        self.examiner = try container.decode(String.self, forKey: .examiner)
-        self.rooms = try container.decode([String].self, forKey: .rooms)
-    }
 
     static func ==(lhs: Exam, rhs: Exam) -> Bool {
         return lhs.title == rhs.title && lhs.type == rhs.type && lhs.branch == rhs.branch && lhs.examiner == rhs.examiner && lhs.rooms == rhs.rooms
@@ -55,7 +46,7 @@ struct Exam: Codable, Identifiable, Equatable {
             "Stg": auth.major,
             "AbSc": absc,
             "StgNr": auth.group
-            ])
+        ])
     }
 
 }
