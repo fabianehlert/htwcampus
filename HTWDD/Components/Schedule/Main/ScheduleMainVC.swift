@@ -64,7 +64,8 @@ final class ScheduleMainVC: ViewController {
 			auth: self.auth,
             shouldFilterEmptySections: false,
             addFreeDays: false,
-            stripBeginningFreeDays: false)
+            stripBeginningFreeDays: false,
+            removeWeekend: false)
 		super.init()
 	}
 

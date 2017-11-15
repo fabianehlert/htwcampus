@@ -26,8 +26,9 @@ class ScheduleDataSource: CollectionViewDataSource {
         var shouldFilterEmptySections: Bool
         var addFreeDays: Bool
         var stripBeginningFreeDays: Bool
+        var removeWeekend: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, stripBeginningFreeDays: Bool) {
+        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, stripBeginningFreeDays: Bool, removeWeekend: Bool) {
             self.context = context
             self.originDate = originDate
             self.numberOfDays = numberOfDays
@@ -35,6 +36,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             self.shouldFilterEmptySections = shouldFilterEmptySections
             self.addFreeDays = addFreeDays
             self.stripBeginningFreeDays = stripBeginningFreeDays
+            self.removeWeekend = removeWeekend
         }
     }
 
@@ -84,6 +86,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let service: ScheduleService
     private let filterEmptySections: Bool
     private let stripEmptySections: Bool // strips them from beginning
+    private let removeWeekend: Bool
 
     weak var delegate: ScheduleDataSourceDelegate?
 
@@ -103,6 +106,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.auth = configuration.auth
         self.filterEmptySections = configuration.shouldFilterEmptySections
         self.stripEmptySections = configuration.stripBeginningFreeDays
+        self.removeWeekend = configuration.removeWeekend
     }
 
 	func load() {
@@ -187,6 +191,9 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
         if self.stripEmptySections {
             all = all.removing(while: { $0.lectures.isEmpty && $0.freeDays.isEmpty })
+        }
+        if self.removeWeekend {
+            all = all.filter({ $0.day != .saturday && $0.day != .sunday })
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })

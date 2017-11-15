@@ -29,6 +29,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         var config = configuration
         config.originDate = nil
         config.stripBeginningFreeDays = true
+        config.removeWeekend = true
         super.init(configuration: config, layout: layout, startHour: 6.5)
         layout.dataSource = self
         self.dataSource.delegate = self
