@@ -16,9 +16,10 @@ private class SeperatorView: CollectionReusableView {
 
 private class IndicatorView: CollectionReusableView {
     override func initialSetup() {
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.htw.white
         self.layer.borderColor = UIColor.htw.grey.cgColor
         self.layer.borderWidth = 1
+        self.layer.cornerRadius = 3
     }
 }
 

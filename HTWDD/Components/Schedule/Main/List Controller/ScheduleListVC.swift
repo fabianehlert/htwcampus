@@ -96,7 +96,9 @@ extension ScheduleListVC: ScheduleDataSourceDelegate {
 
     func scheduleDataSourceHasFinishedLoading() {
         // we explicitly need to wait for the next run loop
-        self.scrollToToday(animated: false)
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
     }
 
     func scheduleDataSourceHasUpdated() {
