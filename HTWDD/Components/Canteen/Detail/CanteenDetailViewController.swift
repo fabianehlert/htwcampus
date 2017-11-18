@@ -56,5 +56,9 @@ class CanteenDetailViewController: ViewController {
         self.title = viewModel.mensa
         self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Exams"))
     }
-    
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 }
