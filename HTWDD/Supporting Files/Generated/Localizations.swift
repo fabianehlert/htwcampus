@@ -205,13 +205,19 @@ public struct Loca {
         public static var title : String = NSLocalizedString("Grades.title", comment: "")
 
 
-        public struct noResults {
+        public struct status {
 
-            /// Base translation: No grades
-            public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+            /// Base translation: passed
+            public static var passed : String = NSLocalizedString("Grades.status.passed", comment: "")
 
-            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
+            /// Base translation: failed
+            public static var failed : String = NSLocalizedString("Grades.status.failed", comment: "")
+
+            /// Base translation: ultimately failed
+            public static var ultimatelyFailed : String = NSLocalizedString("Grades.status.ultimatelyFailed", comment: "")
+
+            /// Base translation: signed up
+            public static var signedUp : String = NSLocalizedString("Grades.status.signedUp", comment: "")
 
         }
 
@@ -237,6 +243,16 @@ public struct Loca {
             public static func credits(_ value1 : Double) -> String {
                 return String(format: NSLocalizedString("Grades.detail.credits", comment: ""), value1)
             }
+
+        }
+
+        public struct noResults {
+
+            /// Base translation: No grades
+            public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+
+            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
 
         }
     }
