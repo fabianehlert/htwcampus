@@ -31,6 +31,24 @@ class GradeService: Service {
     struct Information: Codable, Equatable {
         let semester: Semester
         let grades: [Grade]
+        let average: Double
+        
+        init(semester: Semester, grades: [Grade]) {
+            self.semester = semester
+            self.grades = grades
+            
+            let reduced = self.grades.reduce((mark: 0.0,credits: 0.0), { r, e in
+                guard let mark = e.mark else {
+                    return r
+                }
+                return (r.0 + mark * e.credits, r.1 + e.credits)
+            })
+            if reduced.credits > 0 {
+                self.average = reduced.mark / reduced.credits
+            } else {
+                self.average = 0
+            }
+        }
         
         static func ==(lhs: Information, rhs: Information) -> Bool {
             return lhs.semester == rhs.semester && lhs.grades == rhs.grades
@@ -68,7 +86,7 @@ class GradeService: Service {
         let loadFromCache = self.persistenceService.loadGradesCache()
         
         return Observable.merge(loadFromNetwork, loadFromCache)
-            .distinctUntilChanged(==)
+//            .distinctUntilChanged(==)
             .observeOn(MainScheduler.instance)
             .map { [weak self] semesters in
                 self?.cachedInformation[parameters] = semesters

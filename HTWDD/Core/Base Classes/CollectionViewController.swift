@@ -12,6 +12,8 @@ import RxCocoa
 
 class CollectionViewController: ViewController {
 
+    private var noResultsView: UIView?
+    
     let collectionView: UICollectionView
 
     init(layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
@@ -36,6 +38,7 @@ class CollectionViewController: ViewController {
         
         if let config = self.noResultsViewConfiguration() {
             let view = NoResultsView(config: config)
+            self.noResultsView = view
             view.isHidden = true
             self.collectionView.backgroundView = view
             
@@ -49,6 +52,15 @@ class CollectionViewController: ViewController {
                 }
                 .disposed(by: self.rx_disposeBag)
         }
+    }
+    
+    func setLoading(_ loading: Bool) {
+        guard loading && self.collectionView.numberOfSections <= 0 else {
+            self.collectionView.backgroundView = self.noResultsView
+            return
+        }
+        let loadingView = LoadingView()
+        self.collectionView.backgroundView = loadingView
     }
     
     func itemWidth(collectionView: UICollectionView) -> CGFloat {

@@ -43,6 +43,9 @@ public struct Loca {
     /// Base translation: We
     public static var wednesday_short : String = NSLocalizedString("wednesday_short", comment: "")
 
+    /// Base translation: Loading…
+    public static var loading : String = NSLocalizedString("loading", comment: "")
+
     /// Base translation: Close
     public static var close : String = NSLocalizedString("close", comment: "")
 
@@ -201,14 +204,25 @@ public struct Loca {
         /// Base translation: Grades
         public static var title : String = NSLocalizedString("Grades.title", comment: "")
 
+        /// Base translation: (Ø %.2f)
+        public static func average(_ value1 : Double) -> String {
+            return String(format: NSLocalizedString("Grades.average", comment: ""), value1)
+        }
 
-        public struct noResults {
 
-            /// Base translation: No grades
-            public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+        public struct status {
 
-            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
+            /// Base translation: passed
+            public static var passed : String = NSLocalizedString("Grades.status.passed", comment: "")
+
+            /// Base translation: failed
+            public static var failed : String = NSLocalizedString("Grades.status.failed", comment: "")
+
+            /// Base translation: ultimately failed
+            public static var ultimatelyFailed : String = NSLocalizedString("Grades.status.ultimatelyFailed", comment: "")
+
+            /// Base translation: signed up
+            public static var signedUp : String = NSLocalizedString("Grades.status.signedUp", comment: "")
 
         }
 
@@ -234,6 +248,16 @@ public struct Loca {
             public static func credits(_ value1 : Double) -> String {
                 return String(format: NSLocalizedString("Grades.detail.credits", comment: ""), value1)
             }
+
+        }
+
+        public struct noResults {
+
+            /// Base translation: No grades
+            public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+
+            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
 
         }
     }

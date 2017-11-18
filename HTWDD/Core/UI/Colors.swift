@@ -93,7 +93,7 @@ extension HTWNamespace where Base: UIColor {
     }
     
     static var white: UIColor {
-        return UIColor(hex: 0xFFFFFF)
+        return UIColor.white
     }
 	
 	static var scheduleColors: [UIColor] {

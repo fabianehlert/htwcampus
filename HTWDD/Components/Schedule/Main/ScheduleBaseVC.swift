@@ -14,16 +14,13 @@ class ScheduleBaseVC: CollectionViewController {
 
     private var lastSelectedIndexPath: IndexPath?
 
-    let startHour: CGFloat
-
     var auth: ScheduleService.Auth? {
         get { return nil }
         set { self.dataSource.auth = newValue }
     }
 
-    init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout, startHour: CGFloat) {
+    init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout) {
         self.dataSource = ScheduleDataSource(configuration: configuration)
-        self.startHour = startHour
         super.init(layout: layout)
     }
 
@@ -96,7 +93,7 @@ class ScheduleBaseVC: CollectionViewController {
 extension ScheduleBaseVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = self.dataSource.lecture(at: indexPath) else {
-            Log.error("Expected to get a lecture for indexPath \(indexPath), but got nothing from dataSource..")
+            // might be a free day
             return
         }
         self.lastSelectedIndexPath = indexPath

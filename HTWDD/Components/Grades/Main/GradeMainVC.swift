@@ -76,21 +76,33 @@ class GradeMainVC: CollectionViewController {
             }
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            let semesterTitle = self?.dataSource.semester(for: indexPath.section).localized
-            let attributedTitle = NSAttributedString(string: semesterTitle ?? "",
+            let information = self?.dataSource.information(for: indexPath.section)
+            let semesterTitle = information?.semester.localized
+            let attributedTitle = NSAttributedString(string: (semesterTitle ?? ""),
                                                      attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
-            view.attributedTitle = attributedTitle
+            let averageTitle = NSAttributedString(string: Loca.Grades.average(information?.average ?? 0),
+                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 20, weight: .light)])
+            view.attributedTitle = attributedTitle + averageTitle
         }
         
-        self.dataSource.loading
-        .delay(0.5, scheduler: MainScheduler.instance)
-        .subscribe(onNext: { [weak self] value in
-            if value {
+        let loading = self.dataSource.loading.filter { $0 == true }
+        let notLoading = self.dataSource.loading.filter { $0 != true }
+        
+        loading
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.beginRefreshing()
-            } else {
+                self?.setLoading(true)
+            })
+            .disposed(by: self.rx_disposeBag)
+        
+        notLoading
+            .delay(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.endRefreshing()
-            }
-        }).disposed(by: self.rx_disposeBag)
+                self?.setLoading(false)
+            })
+            .disposed(by: self.rx_disposeBag)
         
         self.reload()
     }

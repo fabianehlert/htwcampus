@@ -79,14 +79,22 @@ class CanteenMainVC: CollectionViewController {
             self.collectionView.addSubview(self.refreshControl)
         }
 
-        self.dataSource.loading
+        let loading = self.dataSource.loading.filter { $0 == true }
+        let notLoading = self.dataSource.loading.filter { $0 != true }
+        
+        loading
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshControl.beginRefreshing()
+                self?.setLoading(true)
+            })
+            .disposed(by: self.rx_disposeBag)
+        
+        notLoading
             .delay(0.5, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                if value {
-                    self?.refreshControl.beginRefreshing()
-                } else {
-                    self?.refreshControl.endRefreshing()
-                }
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+                self?.setLoading(false)
             })
             .disposed(by: self.rx_disposeBag)
         

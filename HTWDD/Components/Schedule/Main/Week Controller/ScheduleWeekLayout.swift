@@ -16,21 +16,22 @@ private class SeperatorView: CollectionReusableView {
 
 private class IndicatorView: CollectionReusableView {
     override func initialSetup() {
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.htw.white
         self.layer.borderColor = UIColor.htw.grey.cgColor
         self.layer.borderWidth = 1
+        self.layer.cornerRadius = 3
     }
 }
 
 protocol ScheduleWeekLayoutDataSource: class {
 	// MARK: required methods
 	var height: CGFloat { get }
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents, length: Int)?
 
 	// Mark: optional, have standard implementation
 	var widthPerDay: CGFloat { get }
-	var startHour: CGFloat { get }
-	var endHour: CGFloat { get }
+	var startHour: Int { get }
+	var endHour: Int { get }
 	var itemMargin: CGFloat { get }
     
     var todayIndexPath: IndexPath? { get }
@@ -40,11 +41,11 @@ extension ScheduleWeekLayoutDataSource {
 	var widthPerDay: CGFloat {
 		return 100
 	}
-	var startHour: CGFloat {
-		return 6
+	var startHour: Int {
+		return 7
 	}
-	var endHour: CGFloat {
-		return 20
+	var endHour: Int {
+		return 21
 	}
 	var itemMargin: CGFloat {
 		return 1
@@ -58,6 +59,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 		static let separation = "separation"
         static let indicator = "indicator"
+        static let background = "timeBackground"
 
 		enum Z {
 			static let seperator = 0
@@ -70,12 +72,14 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 	}
 
 	weak var dataSource: ScheduleWeekLayoutDataSource?
+    private var cache = [UICollectionViewLayoutAttributes]()
 
 	init(dataSource: ScheduleWeekLayoutDataSource? = nil) {
 		self.dataSource = dataSource
 		super.init()
 		self.register(SeperatorView.self, forDecorationViewOfKind: Const.separation)
         self.register(IndicatorView.self, forDecorationViewOfKind: Const.indicator)
+        self.register(CollectionBackgroundView.self, forDecorationViewOfKind: Const.background)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -89,7 +93,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let start = dataSource.startHour
 		let end = dataSource.endHour
 		let height = self.collectionViewContentSize.height - Const.headerHeight
-		return height / (end - start)
+		return height / CGFloat(end - start)
 	}
     
     func xPosition(ofSection section: Int) -> CGFloat {
@@ -111,26 +115,57 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 		return CGSize(width: width, height: height)
 	}
+    
+    override func prepare() {
+        self.cache = []
+        
+        guard let collectionView = self.collectionView, let dataSource = self.dataSource else {
+            return
+        }
+        
+        let sections = collectionView.numberOfSections
+        
+        guard sections > 0 else {
+            return
+        }
+        
+        for section in 0..<sections {
+            for row in 0..<collectionView.numberOfItems(inSection: section) {
+                
+                // items
+                if let attr = self.layoutAttributesForItem(at: IndexPath(item: row, section: section)) {
+                    self.cache.append(attr)
+                }
+                
+            }
+            
+            // header
+            if let attr = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.header.rawValue, at: IndexPath(item: 0, section: section)) {
+                self.cache.append(attr)
+            }
+        }
+        
+        // today
+        if let today = dataSource.todayIndexPath, let attr = self.layoutAttributesForDecorationView(ofKind: Const.indicator, at: today) {
+            self.cache.append(attr)
+        }
+        
+        // times
+        for row in 0...(Int(dataSource.endHour) - Int(dataSource.startHour) - 1) {
+            // time
+            if let attr = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: IndexPath(item: row, section: 0)) {
+                self.cache.append(attr)
+            }
+        }
+        
+        // time background
+        if let attr = self.layoutAttributesForDecorationView(ofKind: Const.background, at: .init()) {
+            self.cache.append(attr)
+        }
+    }
 
 	override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-		let itemIndexPaths = self.indexPathsForItemsInRect(rect: rect)
-
-		let itemAttributes = itemIndexPaths.flatMap(self.layoutAttributesForItem(at:))
-		let headerAttributes = self.indexPathsForHeaderViews(in: rect).flatMap {
-			return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.header.rawValue, at: $0)
-		}
-		let timeAttributes = self.indexPathsForTimeViews(in: rect).flatMap {
-			return self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: $0)
-		}
-        let timeBackground: [UICollectionViewLayoutAttributes] = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.background.rawValue, at: .init()).map({[$0]}) ?? []
-		let decorations = self.indexPathsForDecorationViews(rect: rect).flatMap {
-			return self.layoutAttributesForDecorationView(ofKind: Const.separation, at: $0)
-		}
-        let todayIndicator = self.indexPathsForTodayIndicator(rect: rect).flatMap {
-            return self.layoutAttributesForDecorationView(ofKind: Const.indicator, at: $0)
-        }
-
-		return itemAttributes + headerAttributes + timeAttributes + decorations + todayIndicator + timeBackground
+        return self.cache.filter { $0.frame.intersects(rect) }
 	}
 
 	override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -148,9 +183,9 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
 		attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + dataSource.widthPerDay
 
-		attr.frame.origin.y = (t.begin.time / 3600 - round(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
+		attr.frame.origin.y = (t.begin.time / 3600 - CGFloat(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
 		attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2
-		attr.frame.size.width = dataSource.widthPerDay - 2 * margin
+		attr.frame.size.width = dataSource.widthPerDay * CGFloat(t.length) - 2 * margin
 		attr.zIndex = Const.Z.lectures
 
 		return attr
@@ -171,17 +206,10 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		} else if elementKind == SupplementaryKind.description.rawValue {
 			let height = self.heightPerHour
 			attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
-			attr.frame.origin.y = CGFloat(indexPath.row - 1) * height + Const.headerHeight - height / 2
+			attr.frame.origin.y = CGFloat(indexPath.row) * height + Const.headerHeight - height / 2
 			attr.frame.size.height = height
 			attr.frame.size.width = dataSource.widthPerDay
 			attr.zIndex = Const.Z.times
-        } else if elementKind == SupplementaryKind.background.rawValue {
-            let height = self.collectionViewContentSize.height
-            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
-            attr.frame.origin.y = 0
-            attr.frame.size.height = height
-            attr.frame.size.width = dataSource.widthPerDay
-            attr.zIndex = Const.Z.background
         }
 
 		return attr
@@ -207,82 +235,19 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             attr.frame.size.height = dataSource.height + Const.headerHeight
             attr.frame.size.width = dataSource.widthPerDay
             attr.zIndex = Const.Z.indicator
+        } else if elementKind == Const.background {
+            let height = self.collectionViewContentSize.height
+            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
+            attr.frame.origin.y = 0
+            attr.frame.size.height = height
+            attr.frame.size.width = dataSource?.widthPerDay ?? 0
+            attr.zIndex = Const.Z.background
         }
 
 		return attr
 	}
 
-	private func indexPathsForHeaderViews(in rect: CGRect) -> [IndexPath] {
-		guard
-			let collectionView = self.collectionView,
-			let dataSource = self.dataSource
-			else {
-				return []
-		}
-
-		let start = max(Int(floor(rect.origin.x / dataSource.widthPerDay)), 0)
-		let sections = (collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0)
-		let end = max(Int(ceil((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
-
-		return (min(start, sections)..<min(end, sections)).map { IndexPath(item: 0, section: $0) }
-	}
-
-	private func indexPathsForTimeViews(in rect: CGRect) -> [IndexPath] {
-
-		guard let dataSource = self.dataSource else {
-			return []
-		}
-
-		let startHour = Int(dataSource.startHour)
-		let endHour = Int(dataSource.endHour)
-
-		return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
-	}
-
-	private func indexPathsForDecorationViews(rect: CGRect) -> [IndexPath] {
-		// return []
-		// maybe we want to have the separators back
-		guard let dataSource = self.dataSource else {
-			return []
-		}
-
-		let startHour = Int(dataSource.startHour)
-		let endHour = Int(dataSource.endHour)
-		return (0...(endHour-startHour)).map { IndexPath(item: $0 + 1, section: 0) }
-	}
-    
-    private func indexPathsForTodayIndicator(rect: CGRect) -> [IndexPath] {
-        guard let today = self.dataSource?.todayIndexPath else {
-            return []
-        }
-        return [today]
-    }
-
-	private func indexPathsForItemsInRect(rect: CGRect) -> [IndexPath] {
-
-		guard
-			let collectionView = self.collectionView,
-			let dataSource = self.dataSource
-        else {
-				return []
-		}
-
-		var indexPaths = [IndexPath]()
-
-		let start = max(Int(floor(rect.origin.x / dataSource.widthPerDay)), 0)
-		let sections = (collectionView.dataSource?.numberOfSections?(in: collectionView) ?? 0)
-		let end = max(Int(ceil((rect.origin.x + rect.size.width ) / dataSource.widthPerDay)), 0)
-
-		for section in min(start, sections)..<min(end, sections) {
-			let itemCount = Int(collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: section) ?? 0)
-			indexPaths += (0..<itemCount)
-				.map { IndexPath(item: $0, section: section) }
-		}
-
-		return indexPaths
-	}
-
-	override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
 		return true
 	}
 

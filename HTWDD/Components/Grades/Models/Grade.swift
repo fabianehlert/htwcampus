@@ -17,6 +17,15 @@ struct Grade: Codable, Identifiable {
         case passed = "BE"
         case failed = "NB"
         case ultimatelyFailed = "EN"
+        
+        var localizedDescription: String {
+            switch self {
+            case .signedUp: return Loca.Grades.status.signedUp
+            case .passed: return Loca.Grades.status.passed
+            case .failed: return Loca.Grades.status.failed
+            case .ultimatelyFailed: return Loca.Grades.status.ultimatelyFailed
+            }
+        }
     }
 
     let nr: Int
@@ -74,6 +83,7 @@ extension Grade: Equatable {
             && lhs.mark == rhs.mark
             && lhs.credits == rhs.credits
             && lhs.semester == rhs.semester
+            && lhs.state == rhs.state
     }
 
 }

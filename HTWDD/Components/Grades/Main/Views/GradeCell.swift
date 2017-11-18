@@ -17,7 +17,7 @@ class GradeCell: FlatCollectionViewCell {
         static let horizontalMargin: CGFloat = 10
 
         static let collapsedHeight: CGFloat = 60
-        static let expandedHeight: CGFloat = 162
+        static let expandedHeight: CGFloat = 182
 
         static let markFontSize: CGFloat = 25
         static let titleFontSize: CGFloat = 18
@@ -33,9 +33,10 @@ class GradeCell: FlatCollectionViewCell {
     private lazy var triesView = UILabel()
     private lazy var dateView = UILabel()
     private lazy var noteView = UILabel()
+    private lazy var stateLabel = UILabel()
 
     private var detailLabels: [UILabel] {
-        return [self.formView, self.creditsView, self.triesView, self.dateView, self.noteView]
+        return [self.formView, self.creditsView, self.triesView, self.dateView, self.noteView, self.stateLabel]
     }
 
     override func initialSetup() {
@@ -68,10 +69,13 @@ class GradeCell: FlatCollectionViewCell {
 
         self.noteView.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
         self.noteView.textColor = UIColor.htw.grey
+        
+        self.stateLabel.font = .systemFont(ofSize: Const.detailsFontSize, weight: .light)
+        self.stateLabel.textColor = UIColor.htw.grey
 
         self.prepareForReuse()
 
-        [self.colorView, self.titleView, self.markView, self.formView, self.creditsView, self.triesView, self.dateView, self.noteView].forEach {
+        [self.colorView, self.titleView, self.markView, self.formView, self.creditsView, self.triesView, self.dateView, self.stateLabel, self.noteView].forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -109,9 +113,13 @@ class GradeCell: FlatCollectionViewCell {
             self.dateView.leadingAnchor.constraint(equalTo: self.creditsView.leadingAnchor),
             self.dateView.topAnchor.constraint(equalTo: self.triesView.bottomAnchor, constant: Const.verticalInnerItemMargin),
 
+            // state
+            self.stateLabel.leadingAnchor.constraint(equalTo: self.creditsView.leadingAnchor),
+            self.stateLabel.topAnchor.constraint(equalTo: self.dateView.bottomAnchor, constant: Const.verticalInnerItemMargin),
+            
             // note
             self.noteView.leadingAnchor.constraint(equalTo: self.creditsView.leadingAnchor),
-            self.noteView.topAnchor.constraint(equalTo: self.dateView.bottomAnchor, constant: Const.verticalInnerItemMargin),
+            self.noteView.topAnchor.constraint(equalTo: self.stateLabel.bottomAnchor, constant: Const.verticalInnerItemMargin),
             self.noteView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.verticalMargin)
             ])
     }
@@ -142,5 +150,6 @@ extension GradeCell: Cell {
         self.triesView.text = viewModel.tries
         self.dateView.text = viewModel.date
         self.noteView.text = viewModel.note
+        self.stateLabel.text = viewModel.state
     }
 }

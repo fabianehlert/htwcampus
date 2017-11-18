@@ -18,9 +18,21 @@ struct GradeViewModel: ViewModel {
     let tries: String
     let date: String
     let note: String
+    let state: String
 
     init(model: Grade) {
-        self.color = model.state == .passed ? UIColor.green : .red
+        let color: UIColor
+        switch model.state {
+        case .passed:
+            color = UIColor.htw.green
+        case .failed:
+            color = UIColor.htw.martianRed
+        case .signedUp:
+            color = UIColor.htw.blue
+        case .ultimatelyFailed:
+            color = UIColor.htw.red
+        }
+        self.color = color
         self.title = model.text
         self.mark = model.mark.map(Loca.Grades.detail.mark)
         self.form = model.form
@@ -28,5 +40,6 @@ struct GradeViewModel: ViewModel {
         self.tries = Loca.Grades.detail.tries(model.numberOfTry)
         self.date = model.date?.string(format: "dd.MM.yyyy") ?? Loca.Grades.detail.noDate
         self.note = model.note ?? Loca.Grades.detail.noNote
+        self.state = model.state.localizedDescription
     }
 }

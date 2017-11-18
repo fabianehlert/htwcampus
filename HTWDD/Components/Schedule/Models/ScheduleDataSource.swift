@@ -18,38 +18,20 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     struct Configuration {
         let context: HasSchedule
-        /// if nil -> start of semester will be taken
-        var originDate: Date?
-        /// if nil -> whole period of semester will be taken
-        var numberOfDays: Int?
         var auth: ScheduleService.Auth?
         var shouldFilterEmptySections: Bool
         var addFreeDays: Bool
-        var stripBeginningFreeDays: Bool
-        var removeWeekend: Bool
+        var splitFreeDaysInDays: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, stripBeginningFreeDays: Bool, removeWeekend: Bool) {
+        init(context: HasSchedule, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, splitFreeDaysInDays: Bool) {
             self.context = context
-            self.originDate = originDate
-            self.numberOfDays = numberOfDays
             self.auth = auth
             self.shouldFilterEmptySections = shouldFilterEmptySections
             self.addFreeDays = addFreeDays
-            self.stripBeginningFreeDays = stripBeginningFreeDays
-            self.removeWeekend = removeWeekend
+            self.splitFreeDaysInDays = splitFreeDaysInDays
         }
     }
 
-    var originDate: Date? {
-        didSet {
-            self.data = self.calculate()
-        }
-    }
-    var numberOfDays: Int? {
-        didSet {
-            self.data = self.calculate()
-        }
-    }
     var auth: ScheduleService.Auth? {
         didSet {
             guard self.auth != nil else {
@@ -84,8 +66,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
     private let filterEmptySections: Bool
-    private let stripEmptySections: Bool // strips them from beginning
-    private let removeWeekend: Bool
+    private let splitFreeDaysInDays: Bool
 
     weak var delegate: ScheduleDataSourceDelegate?
 
@@ -100,12 +81,9 @@ class ScheduleDataSource: CollectionViewDataSource {
 	
     init(configuration: Configuration) {
         self.service = configuration.context.scheduleService
-        self.originDate = configuration.originDate
-        self.numberOfDays = configuration.numberOfDays
         self.auth = configuration.auth
         self.filterEmptySections = configuration.shouldFilterEmptySections
-        self.stripEmptySections = configuration.stripBeginningFreeDays
-        self.removeWeekend = configuration.removeWeekend
+        self.splitFreeDaysInDays = configuration.splitFreeDaysInDays
     }
 
 	func load() {
@@ -152,9 +130,9 @@ class ScheduleDataSource: CollectionViewDataSource {
             return []
         }
 
-        let originDate = self.originDate ?? semesterInformation.period.begin.date
+        let originDate = semesterInformation.period.begin.date
 
-        let sections = 0..<(self.numberOfDays ?? semesterInformation.period.lengthInDays)
+        let sections = 0..<semesterInformation.period.lengthInDays
         let originDay = originDate.weekday
         let startWeek = originDate.weekNumber
 
@@ -167,7 +145,13 @@ class ScheduleDataSource: CollectionViewDataSource {
             }
 
             if let freeDay = semesterInformation.freeDayContains(date: date) {
-                return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                if self.splitFreeDaysInDays {
+                    return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                } else if freeDay.period.begin.date.sameDayAs(other: date) {
+                    return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                } else {
+                    return Data(day: day, date: date, lectures: [], freeDays: [])
+                }
             }
 
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)
@@ -192,12 +176,6 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
         if self.filterEmptySections {
             all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
-        }
-        if self.stripEmptySections {
-            all = all.removing(while: { $0.lectures.isEmpty && $0.freeDays.isEmpty })
-        }
-        if self.removeWeekend {
-            all = all.filter({ $0.day != .saturday && $0.day != .sunday })
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })

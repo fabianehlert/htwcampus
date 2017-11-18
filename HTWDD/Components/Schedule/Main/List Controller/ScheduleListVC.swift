@@ -21,10 +21,8 @@ final class ScheduleListVC: ScheduleBaseVC {
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
-        config.originDate = nil
-        config.numberOfDays = nil
         config.shouldFilterEmptySections = true
-		super.init(configuration: config, layout: self.collectionViewLayout, startHour: 6.5)
+		super.init(configuration: config, layout: self.collectionViewLayout)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -96,7 +94,9 @@ extension ScheduleListVC: ScheduleDataSourceDelegate {
 
     func scheduleDataSourceHasFinishedLoading() {
         // we explicitly need to wait for the next run loop
-        self.scrollToToday(animated: false)
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
     }
 
     func scheduleDataSourceHasUpdated() {

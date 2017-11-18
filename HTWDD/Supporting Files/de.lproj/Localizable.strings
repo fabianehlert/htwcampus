@@ -68,12 +68,18 @@
 "letsgo"="Los geht's!";
 "attention"="Achtung";
 "yes"="Ja";
+"loading"="Lade…";
 
 "Grades.title"="Noten";
+"Grades.average" = "(Ø %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f Credits";
 "Grades.detail.tries" = "%d. Versuch";
 "Grades.detail.noDate" = "Kein Datum";
 "Grades.detail.noNote" = "Keine Bemerkungen";
+"Grades.status.signedUp" = "angemeldet";
+"Grades.status.passed" = "bestanden";
+"Grades.status.failed" = "durchgefallen";
+"Grades.status.ultimatelyFailed" = "letztmalig durchgefallen";
 "Grades.noResults.title"="Keine Noten";
 "Grades.noResults.message"="Ich kann leider keine Noten von Dir finden.\nSind Deine Zugangsdaten korrekt?";

@@ -27,10 +27,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
-        config.originDate = nil
-        config.stripBeginningFreeDays = true
-        config.removeWeekend = true
-        super.init(configuration: config, layout: layout, startHour: 6.5)
+        config.splitFreeDaysInDays = false
+        super.init(configuration: config, layout: layout)
         layout.dataSource = self
         self.dataSource.delegate = self
 	}
@@ -48,11 +46,11 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             guard let `self` = self else {
                 return
             }
-            let hour = Int(self.startHour) - 1 + indexPath.row
+            let hour = self.startHour + indexPath.row
             time.hour = hour
         }
-        self.dataSource.registerSupplementary(CollectionBackgroundView.self, kind: .background) { [weak self] background, _ in
-            background.backgroundColor = self?.collectionView.backgroundColor
+        self.dataSource.register(type: FreeDayListCell.self) { cell, _, _ in
+            cell.label.transform = CGAffineTransform.identity.rotated(by: CGFloat.pi * 1.5)
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
             guard let `self` = self else { return }
@@ -100,15 +98,14 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		return height ?? self.collectionView.height
 	}
 
-	var endHour: CGFloat {
-		return 21.3
-	}
-
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
-		guard let item = self.dataSource.lecture(at: indexPath) else {
-			return nil
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents, length: Int)? {
+		if let item = self.dataSource.lecture(at: indexPath) {
+			return (item.lecture.begin, item.lecture.end, 1)
 		}
-		return (item.lecture.begin, item.lecture.end)
+        if let freeDay = self.dataSource.freeDay(at: indexPath) {
+            return (DateComponents(hour: Int(self.startHour)), DateComponents(hour: Int(self.endHour)), freeDay.period.lengthInDays + 1)
+        }
+        return nil
 	}
     
     var todayIndexPath: IndexPath? {
@@ -120,7 +117,9 @@ extension ScheduleWeekVC: ScheduleDataSourceDelegate {
     
     func scheduleDataSourceHasFinishedLoading() {
         // we explicitly need to wait for the next run loop
-        self.scrollToToday(animated: false)
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
     }
     
     func scheduleDataSourceHasUpdated() {
