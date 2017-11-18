@@ -39,8 +39,8 @@ class TodayViewController: ViewController {
 	}
 	@IBOutlet private weak var titleLabel: UILabel!
 	@IBOutlet private weak var professorLabel: UILabel!
-	@IBOutlet private weak var typeLabel: UILabel!
-	@IBOutlet private weak var roomLabel: UILabel!
+	@IBOutlet private weak var typeLabel: BadgeLabel!
+	@IBOutlet private weak var roomLabel: BadgeLabel!
 	
 	// MARK: - ViewController lifecycle
 	

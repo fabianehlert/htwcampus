@@ -84,6 +84,7 @@
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
 		1FC1BDD21FADDF11007F9D06 /* SettingsMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */; };
 		1FC1BDD41FADDF1C007F9D06 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */; };
+		1FC730F51FC0F4F2005A04D6 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BF1FB0F67800320091 /* BadgeLabel.swift */; };
 		1FCE29311FA7C0F300A66654 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE29301FA7C0F200A66654 /* Localizations.swift */; };
 		1FD757601FB4D1BD007F9CA1 /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
 		1FD757611FB4D72D007F9CA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5111E191E71E68F00D68155 /* Localizable.strings */; };
@@ -1270,6 +1271,7 @@
 				1FA5893A1FB7360A008EE474 /* GlobalFunctions.swift in Sources */,
 				1F8E20E71FB3502E00347DB6 /* Dictionary.swift in Sources */,
 				1F8E20D11FB34EC800347DB6 /* Course.swift in Sources */,
+				1FC730F51FC0F4F2005A04D6 /* BadgeLabel.swift in Sources */,
 				1F8E20D01FB34EC200347DB6 /* DataSourceProtocols.swift in Sources */,
 				1F8E20E41FB34FAD00347DB6 /* TimeInterval.swift in Sources */,
 				1F8E20D51FB34EE100347DB6 /* Parameter.swift in Sources */,
