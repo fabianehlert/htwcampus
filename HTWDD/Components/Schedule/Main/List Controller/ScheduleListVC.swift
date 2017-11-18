@@ -22,7 +22,7 @@ final class ScheduleListVC: ScheduleBaseVC {
 	init(configuration: ScheduleDataSource.Configuration) {
         var config = configuration
         config.shouldFilterEmptySections = true
-		super.init(configuration: config, layout: self.collectionViewLayout, startHour: 6.5)
+		super.init(configuration: config, layout: self.collectionViewLayout)
 	}
 
 	required init?(coder aDecoder: NSCoder) {

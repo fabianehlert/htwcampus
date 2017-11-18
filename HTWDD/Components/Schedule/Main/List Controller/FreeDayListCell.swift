@@ -23,7 +23,7 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
         static let margin: CGFloat = 10
     }
     
-    private let label = UILabel()
+    let label = UILabel()
     
     override func initialSetup() {
         super.initialSetup()
@@ -31,23 +31,14 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
         self.label.textAlignment = .center
         self.label.textColor = Const.textColor
         
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.backgroundColor = .white
         
         self.contentView.addSubview(self.label)
         
-        // TODO: inject this!
-        let widthConstraint = self.contentView.widthAnchor.constraint(equalToConstant: 351)
-        
         NSLayoutConstraint.activate([
-            widthConstraint,
-            
-            self.label.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
-            self.label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
-            self.label.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
-            self.label.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.margin),
-            self.label.heightAnchor.constraint(greaterThanOrEqualToConstant: 80)
+            self.label.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
             ])
     }
     

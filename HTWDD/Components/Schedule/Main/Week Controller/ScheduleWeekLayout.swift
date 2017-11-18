@@ -26,12 +26,12 @@ private class IndicatorView: CollectionReusableView {
 protocol ScheduleWeekLayoutDataSource: class {
 	// MARK: required methods
 	var height: CGFloat { get }
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)?
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents, length: Int)?
 
 	// Mark: optional, have standard implementation
 	var widthPerDay: CGFloat { get }
-	var startHour: CGFloat { get }
-	var endHour: CGFloat { get }
+	var startHour: Int { get }
+	var endHour: Int { get }
 	var itemMargin: CGFloat { get }
     
     var todayIndexPath: IndexPath? { get }
@@ -41,11 +41,11 @@ extension ScheduleWeekLayoutDataSource {
 	var widthPerDay: CGFloat {
 		return 100
 	}
-	var startHour: CGFloat {
-		return 6
+	var startHour: Int {
+		return 7
 	}
-	var endHour: CGFloat {
-		return 20
+	var endHour: Int {
+		return 21
 	}
 	var itemMargin: CGFloat {
 		return 1
@@ -93,7 +93,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let start = dataSource.startHour
 		let end = dataSource.endHour
 		let height = self.collectionViewContentSize.height - Const.headerHeight
-		return height / (end - start)
+		return height / CGFloat(end - start)
 	}
     
     func xPosition(ofSection section: Int) -> CGFloat {
@@ -150,7 +150,8 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             self.cache.append(attr)
         }
         
-        for row in 0..<(Int(dataSource.endHour)-Int(dataSource.startHour)) {
+        // times
+        for row in 0...(Int(dataSource.endHour) - Int(dataSource.startHour) - 1) {
             // time
             if let attr = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.description.rawValue, at: IndexPath(item: row, section: 0)) {
                 self.cache.append(attr)
@@ -182,9 +183,9 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		let attr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
 		attr.frame.origin.x = CGFloat(indexPath.section) * dataSource.widthPerDay + margin + dataSource.widthPerDay
 
-		attr.frame.origin.y = (t.begin.time / 3600 - round(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
+		attr.frame.origin.y = (t.begin.time / 3600 - CGFloat(dataSource.startHour)) * self.heightPerHour + Const.headerHeight
 		attr.frame.size.height = (t.end.time - t.begin.time) / 3600 * self.heightPerHour - 2
-		attr.frame.size.width = dataSource.widthPerDay - 2 * margin
+		attr.frame.size.width = dataSource.widthPerDay * CGFloat(t.length) - 2 * margin
 		attr.zIndex = Const.Z.lectures
 
 		return attr

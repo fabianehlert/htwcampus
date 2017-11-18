@@ -21,12 +21,14 @@ class ScheduleDataSource: CollectionViewDataSource {
         var auth: ScheduleService.Auth?
         var shouldFilterEmptySections: Bool
         var addFreeDays: Bool
+        var splitFreeDaysInDays: Bool
 
-        init(context: HasSchedule, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool) {
+        init(context: HasSchedule, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, splitFreeDaysInDays: Bool) {
             self.context = context
             self.auth = auth
             self.shouldFilterEmptySections = shouldFilterEmptySections
             self.addFreeDays = addFreeDays
+            self.splitFreeDaysInDays = splitFreeDaysInDays
         }
     }
 
@@ -64,6 +66,7 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
     private let filterEmptySections: Bool
+    private let splitFreeDaysInDays: Bool
 
     weak var delegate: ScheduleDataSourceDelegate?
 
@@ -80,6 +83,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.service = configuration.context.scheduleService
         self.auth = configuration.auth
         self.filterEmptySections = configuration.shouldFilterEmptySections
+        self.splitFreeDaysInDays = configuration.splitFreeDaysInDays
     }
 
 	func load() {
@@ -141,7 +145,13 @@ class ScheduleDataSource: CollectionViewDataSource {
             }
 
             if let freeDay = semesterInformation.freeDayContains(date: date) {
-                return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                if self.splitFreeDaysInDays {
+                    return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                } else if freeDay.period.begin.date.sameDayAs(other: date) {
+                    return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
+                } else {
+                    return Data(day: day, date: date, lectures: [], freeDays: [])
+                }
             }
 
             let weekNumber = originDay.weekNumber(starting: startWeek, addingDays: section)

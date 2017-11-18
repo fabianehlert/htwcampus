@@ -26,7 +26,9 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 	// MARK: - Init
 
 	init(configuration: ScheduleDataSource.Configuration) {
-        super.init(configuration: configuration, layout: layout, startHour: 6.5)
+        var config = configuration
+        config.splitFreeDaysInDays = false
+        super.init(configuration: config, layout: layout)
         layout.dataSource = self
         self.dataSource.delegate = self
 	}
@@ -44,8 +46,11 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             guard let `self` = self else {
                 return
             }
-            let hour = Int(self.startHour) - 1 + indexPath.row
+            let hour = self.startHour + indexPath.row
             time.hour = hour
+        }
+        self.dataSource.register(type: FreeDayListCell.self) { cell, _, _ in
+            cell.label.transform = CGAffineTransform.identity.rotated(by: CGFloat.pi * 1.5)
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
             guard let `self` = self else { return }
@@ -93,15 +98,14 @@ extension ScheduleWeekVC: ScheduleWeekLayoutDataSource {
 		return height ?? self.collectionView.height
 	}
 
-	var endHour: CGFloat {
-		return 21.3
-	}
-
-	func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents)? {
-		guard let item = self.dataSource.lecture(at: indexPath) else {
-			return nil
+    func dateComponentsForItem(at indexPath: IndexPath) -> (begin: DateComponents, end: DateComponents, length: Int)? {
+		if let item = self.dataSource.lecture(at: indexPath) {
+			return (item.lecture.begin, item.lecture.end, 1)
 		}
-		return (item.lecture.begin, item.lecture.end)
+        if let freeDay = self.dataSource.freeDay(at: indexPath) {
+            return (DateComponents(hour: Int(self.startHour)), DateComponents(hour: Int(self.endHour)), freeDay.period.lengthInDays + 1)
+        }
+        return nil
 	}
     
     var todayIndexPath: IndexPath? {
