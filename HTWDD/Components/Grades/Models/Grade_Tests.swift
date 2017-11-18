@@ -29,7 +29,7 @@ class Grade_Tests: XCTestCase {
         XCTAssertNotEqual(g1, g2)
 
         g1 = Grade(nr: 0, state: .passed, credits: 1.0, text: "text", semester: Semester.summer(year: 1), numberOfTry: 3, date: Date(timeIntervalSince1970: 0), mark: 0, note: "a note", form: "")
-        g2 = Grade(nr: 0, state: .failed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
+        g2 = Grade(nr: 0, state: .passed, credits: 1.0, text: "", semester: Semester.summer(year: 1), numberOfTry: 0, date: Date(), mark: 0, note: nil, form: "")
         XCTAssertEqual(g1, g2)
 
     }
