@@ -18,38 +18,18 @@ class ScheduleDataSource: CollectionViewDataSource {
 
     struct Configuration {
         let context: HasSchedule
-        /// if nil -> start of semester will be taken
-        var originDate: Date?
-        /// if nil -> whole period of semester will be taken
-        var numberOfDays: Int?
         var auth: ScheduleService.Auth?
         var shouldFilterEmptySections: Bool
         var addFreeDays: Bool
-        var stripBeginningFreeDays: Bool
-        var removeWeekend: Bool
 
-        init(context: HasSchedule, originDate: Date, numberOfDays: Int, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool, stripBeginningFreeDays: Bool, removeWeekend: Bool) {
+        init(context: HasSchedule, auth: ScheduleService.Auth?, shouldFilterEmptySections: Bool, addFreeDays: Bool) {
             self.context = context
-            self.originDate = originDate
-            self.numberOfDays = numberOfDays
             self.auth = auth
             self.shouldFilterEmptySections = shouldFilterEmptySections
             self.addFreeDays = addFreeDays
-            self.stripBeginningFreeDays = stripBeginningFreeDays
-            self.removeWeekend = removeWeekend
         }
     }
 
-    var originDate: Date? {
-        didSet {
-            self.data = self.calculate()
-        }
-    }
-    var numberOfDays: Int? {
-        didSet {
-            self.data = self.calculate()
-        }
-    }
     var auth: ScheduleService.Auth? {
         didSet {
             guard self.auth != nil else {
@@ -84,8 +64,6 @@ class ScheduleDataSource: CollectionViewDataSource {
     private let disposeBag = DisposeBag()
     private let service: ScheduleService
     private let filterEmptySections: Bool
-    private let stripEmptySections: Bool // strips them from beginning
-    private let removeWeekend: Bool
 
     weak var delegate: ScheduleDataSourceDelegate?
 
@@ -100,12 +78,8 @@ class ScheduleDataSource: CollectionViewDataSource {
 	
     init(configuration: Configuration) {
         self.service = configuration.context.scheduleService
-        self.originDate = configuration.originDate
-        self.numberOfDays = configuration.numberOfDays
         self.auth = configuration.auth
         self.filterEmptySections = configuration.shouldFilterEmptySections
-        self.stripEmptySections = configuration.stripBeginningFreeDays
-        self.removeWeekend = configuration.removeWeekend
     }
 
 	func load() {
@@ -152,14 +126,15 @@ class ScheduleDataSource: CollectionViewDataSource {
             return []
         }
 
-        let originDate = self.originDate ?? semesterInformation.period.begin.date
+        let originDate = semesterInformation.period.begin.date
 
-        let sections = 0..<(self.numberOfDays ?? semesterInformation.period.lengthInDays)
+        let sections = 0..<semesterInformation.period.lengthInDays
         let originDay = originDate.weekday
         let startWeek = originDate.weekNumber
 
         var all: [Data] = sections.map { section in
             let date = originDate.byAdding(days: TimeInterval(section))
+            print("> ", date.string(format: "dd.MM.yyyy"))
             let day = date.weekday
 
             guard semesterInformation.lecturesContains(date: date) else {
@@ -192,12 +167,6 @@ class ScheduleDataSource: CollectionViewDataSource {
         }
         if self.filterEmptySections {
             all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
-        }
-        if self.stripEmptySections {
-            all = all.removing(while: { $0.lectures.isEmpty && $0.freeDays.isEmpty })
-        }
-        if self.removeWeekend {
-            all = all.filter({ $0.day != .saturday && $0.day != .sunday })
         }
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })

@@ -26,10 +26,7 @@ final class ScheduleWeekVC: ScheduleBaseVC {
 	// MARK: - Init
 
 	init(configuration: ScheduleDataSource.Configuration) {
-        var config = configuration
-        config.originDate = nil
-        config.stripBeginningFreeDays = true
-        super.init(configuration: config, layout: layout, startHour: 6.5)
+        super.init(configuration: configuration, layout: layout, startHour: 6.5)
         layout.dataSource = self
         self.dataSource.delegate = self
 	}

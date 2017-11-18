@@ -31,8 +31,6 @@ final class ScheduleMainVC: ViewController {
 
 	// MARK: - Properties
 
-	static let defaultStartDate = Date()
-
     var auth: ScheduleService.Auth? {
 		didSet {
             self.dataSourceConfiguration.auth = self.auth
@@ -59,13 +57,9 @@ final class ScheduleMainVC: ViewController {
     init(context: HasSchedule) {
         self.dataSourceConfiguration = ScheduleDataSource.Configuration(
 			context: context,
-			originDate: ScheduleMainVC.defaultStartDate,
-			numberOfDays: 150,
 			auth: self.auth,
             shouldFilterEmptySections: false,
-            addFreeDays: false,
-            stripBeginningFreeDays: false,
-            removeWeekend: false)
+            addFreeDays: false)
 		super.init()
 	}
 
