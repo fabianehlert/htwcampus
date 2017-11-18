@@ -134,7 +134,6 @@ class ScheduleDataSource: CollectionViewDataSource {
 
         var all: [Data] = sections.map { section in
             let date = originDate.byAdding(days: TimeInterval(section))
-            print("> ", date.string(format: "dd.MM.yyyy"))
             let day = date.weekday
 
             guard semesterInformation.lecturesContains(date: date) else {
