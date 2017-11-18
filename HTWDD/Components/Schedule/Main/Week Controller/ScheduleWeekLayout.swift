@@ -59,6 +59,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 
 		static let separation = "separation"
         static let indicator = "indicator"
+        static let background = "timeBackground"
 
 		enum Z {
 			static let seperator = 0
@@ -78,6 +79,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 		super.init()
 		self.register(SeperatorView.self, forDecorationViewOfKind: Const.separation)
         self.register(IndicatorView.self, forDecorationViewOfKind: Const.indicator)
+        self.register(CollectionBackgroundView.self, forDecorationViewOfKind: Const.background)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -156,7 +158,7 @@ class ScheduleWeekLayout: UICollectionViewLayout {
         }
         
         // time background
-        if let attr = self.layoutAttributesForSupplementaryView(ofKind: SupplementaryKind.background.rawValue, at: .init()) {
+        if let attr = self.layoutAttributesForDecorationView(ofKind: Const.background, at: .init()) {
             self.cache.append(attr)
         }
     }
@@ -207,13 +209,6 @@ class ScheduleWeekLayout: UICollectionViewLayout {
 			attr.frame.size.height = height
 			attr.frame.size.width = dataSource.widthPerDay
 			attr.zIndex = Const.Z.times
-        } else if elementKind == SupplementaryKind.background.rawValue {
-            let height = self.collectionViewContentSize.height
-            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
-            attr.frame.origin.y = 0
-            attr.frame.size.height = height
-            attr.frame.size.width = dataSource.widthPerDay
-            attr.zIndex = Const.Z.background
         }
 
 		return attr
@@ -239,6 +234,13 @@ class ScheduleWeekLayout: UICollectionViewLayout {
             attr.frame.size.height = dataSource.height + Const.headerHeight
             attr.frame.size.width = dataSource.widthPerDay
             attr.zIndex = Const.Z.indicator
+        } else if elementKind == Const.background {
+            let height = self.collectionViewContentSize.height
+            attr.frame.origin.x = self.collectionView?.contentOffset.x ?? 0
+            attr.frame.origin.y = 0
+            attr.frame.size.height = height
+            attr.frame.size.width = dataSource?.widthPerDay ?? 0
+            attr.zIndex = Const.Z.background
         }
 
 		return attr

@@ -8,4 +8,10 @@
 
 import UIKit
 
-class CollectionBackgroundView: CollectionReusableView, Identifiable {}
+class CollectionBackgroundView: CollectionReusableView, Identifiable {
+    override func initialSetup() {
+        super.initialSetup()
+        
+        self.backgroundColor = UIColor.htw.veryLightGrey
+    }
+}
