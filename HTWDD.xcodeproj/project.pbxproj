@@ -530,10 +530,10 @@
 		1F8874871F8FB04500EE6492 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F8874881F8FB07300EE6492 /* ReactiveButton.swift */,
-				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
 				B59879BF1FB0F67800320091 /* BadgeLabel.swift */,
 				1F1491B21FB450A10011B114 /* NoResultsView.swift */,
+				1F8874881F8FB07300EE6492 /* ReactiveButton.swift */,
+				1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
