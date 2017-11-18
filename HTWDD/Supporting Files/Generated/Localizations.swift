@@ -204,6 +204,11 @@ public struct Loca {
         /// Base translation: Grades
         public static var title : String = NSLocalizedString("Grades.title", comment: "")
 
+        /// Base translation: (Ø %.2f)
+        public static func average(_ value1 : Double) -> String {
+            return String(format: NSLocalizedString("Grades.average", comment: ""), value1)
+        }
+
 
         public struct status {
 

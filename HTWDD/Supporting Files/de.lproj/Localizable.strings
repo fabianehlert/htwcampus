@@ -71,6 +71,7 @@
 "loading"="Lade…";
 
 "Grades.title"="Noten";
+"Grades.average" = "(Ø %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f Credits";
 "Grades.detail.tries" = "%d. Versuch";

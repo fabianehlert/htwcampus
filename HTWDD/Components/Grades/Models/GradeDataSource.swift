@@ -80,8 +80,8 @@ class GradeDataSource: CollectionViewDataSource {
             .disposed(by: self.disposeBag)
     }
 
-    func semester(`for` section: Int) -> Semester {
-        return self.semesters[section].semester
+    func information(`for` section: Int) -> GradeService.Information {
+        return self.semesters[section]
     }
 
 }

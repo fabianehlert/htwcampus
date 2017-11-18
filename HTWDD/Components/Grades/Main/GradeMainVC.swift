@@ -76,10 +76,13 @@ class GradeMainVC: CollectionViewController {
             }
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            let semesterTitle = self?.dataSource.semester(for: indexPath.section).localized
-            let attributedTitle = NSAttributedString(string: semesterTitle ?? "",
+            let information = self?.dataSource.information(for: indexPath.section)
+            let semesterTitle = information?.semester.localized
+            let attributedTitle = NSAttributedString(string: (semesterTitle ?? ""),
                                                      attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
-            view.attributedTitle = attributedTitle
+            let averageTitle = NSAttributedString(string: Loca.Grades.average(information?.average ?? 0),
+                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 20, weight: .light)])
+            view.attributedTitle = attributedTitle + averageTitle
         }
         
         let loading = self.dataSource.loading.filter { $0 == true }
