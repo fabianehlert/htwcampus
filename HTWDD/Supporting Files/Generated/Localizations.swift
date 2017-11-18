@@ -43,6 +43,9 @@ public struct Loca {
     /// Base translation: We
     public static var wednesday_short : String = NSLocalizedString("wednesday_short", comment: "")
 
+    /// Base translation: Loading…
+    public static var loading : String = NSLocalizedString("loading", comment: "")
+
     /// Base translation: Close
     public static var close : String = NSLocalizedString("close", comment: "")
 

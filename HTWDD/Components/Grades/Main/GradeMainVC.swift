@@ -82,15 +82,24 @@ class GradeMainVC: CollectionViewController {
             view.attributedTitle = attributedTitle
         }
         
-        self.dataSource.loading
-        .delay(0.5, scheduler: MainScheduler.instance)
-        .subscribe(onNext: { [weak self] value in
-            if value {
+        let loading = self.dataSource.loading.filter { $0 == true }
+        let notLoading = self.dataSource.loading.filter { $0 != true }
+        
+        loading
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.beginRefreshing()
-            } else {
+                self?.setLoading(true)
+            })
+            .disposed(by: self.rx_disposeBag)
+        
+        notLoading
+            .delay(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.endRefreshing()
-            }
-        }).disposed(by: self.rx_disposeBag)
+                self?.setLoading(false)
+            })
+            .disposed(by: self.rx_disposeBag)
         
         self.reload()
     }

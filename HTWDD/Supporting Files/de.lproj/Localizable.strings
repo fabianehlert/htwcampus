@@ -68,6 +68,7 @@
 "letsgo"="Los geht's!";
 "attention"="Achtung";
 "yes"="Ja";
+"loading"="Lade…";
 
 "Grades.title"="Noten";
 "Grades.detail.mark" = "%.1f";

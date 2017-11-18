@@ -68,6 +68,7 @@
 "letsgo"="Let's go!";
 "attention"="Attention";
 "yes"="Yes";
+"loading"="Loading…";
 
 "Grades.title"="Grades";
 "Grades.detail.mark" = "%.1f";
