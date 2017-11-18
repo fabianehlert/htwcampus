@@ -34,18 +34,16 @@ struct MealViewModel: ViewModel {
 class MealCell: FlatCollectionViewCell, Cell {
 
     enum Const {
-        static let horizontalMargin: CGFloat = 10
+		static let height: CGFloat = 122
+		static let imageWidth: CGFloat = 100
+		
+		static let innerItemMargin: CGFloat = 8
         static let verticalMargin: CGFloat = 15
-        static let innerItemMargin: CGFloat = 4
         static let colorViewHorizontalMargin: CGFloat = 10
-        
-        static let markFontSize: CGFloat = 20
-        static let titleFontSize: CGFloat = 18
     }
     
     private lazy var imageView = UIImageView()
     private lazy var badgeView = BadgeLabel()
-    private lazy var colorView = UIView()
     private lazy var titleView = UILabel()
     private lazy var priceView = UILabel()
 
@@ -54,62 +52,58 @@ class MealCell: FlatCollectionViewCell, Cell {
         
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
-        
-        self.badgeView.backgroundColor = UIColor.htw.mediumGrey
-        self.badgeView.textColor = UIColor.white
-        self.badgeView.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        
-        self.colorView.backgroundColor = UIColor.htw.green
+		
+		self.priceView.font = .systemFont(ofSize: 13, weight: .medium)
+		self.priceView.textColor = UIColor.htw.textHeadline
+		self.priceView.textAlignment = .right
+		self.priceView.backgroundColor = .white
+		self.priceView.alpha = 0.8
 
-        self.priceView.textAlignment = .right
-        self.priceView.textColor = UIColor.htw.mediumGrey
-        self.priceView.font = .systemFont(ofSize: Const.markFontSize, weight: .medium)
-        
-        self.titleView.font = .systemFont(ofSize: Const.titleFontSize, weight: .medium)
-        self.titleView.numberOfLines = 0
-        self.titleView.textColor = UIColor.htw.darkGrey
+		self.badgeView.font = .systemFont(ofSize: 13, weight: .semibold)
+        self.badgeView.textColor = UIColor.htw.textHeadline
+		self.badgeView.backgroundColor = UIColor.htw.lightGrey
 
-        [self.imageView, self.badgeView, self.colorView, self.titleView, self.priceView].forEach {
+		self.titleView.font = .systemFont(ofSize: 16, weight: .medium)
+		self.titleView.textColor = UIColor.htw.textHeadline
+		self.titleView.numberOfLines = 0
+
+		let views: [UIView] = [self.imageView, self.badgeView, self.titleView, self.priceView]
+        views.forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            // image view
-            self.imageView.topAnchor.constraint(equalTo: self.priceView.topAnchor),
-            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.horizontalMargin),
-            self.imageView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
-            self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: 8/5),
-            
-            // badge view
-            self.badgeView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.innerItemMargin),
-            self.badgeView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
-            
-            // titleView
-            self.titleView.leadingAnchor.constraint(equalTo: self.colorView.trailingAnchor, constant: Const.horizontalMargin),
-            self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.horizontalMargin),
-            self.titleView.topAnchor.constraint(equalTo: self.badgeView.bottomAnchor, constant: Const.innerItemMargin),
-            self.titleView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.verticalMargin),
-            
-            // price view
-            self.priceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.horizontalMargin),
-            self.priceView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.verticalMargin),
-            self.priceView.widthAnchor.constraint(equalToConstant: 80),
-            self.priceView.heightAnchor.constraint(equalToConstant: 30),
-            
-            // Color view
-            self.colorView.leadingAnchor.constraint(equalTo: self.priceView.trailingAnchor, constant: Const.horizontalMargin),
-            self.colorView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.colorViewHorizontalMargin),
-            self.colorView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.colorViewHorizontalMargin),
-            self.colorView.widthAnchor.constraint(equalToConstant: 5),
+			self.contentView.heightAnchor.constraint(equalToConstant: Const.height),
+			
+			// imageView
+			self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+			self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+			self.imageView.widthAnchor.constraint(equalToConstant: Const.imageWidth),
+			
+			// priceView
+			self.priceView.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor),
+			self.priceView.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: -Const.innerItemMargin),
+
+			// badgeView (station)
+			self.badgeView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
+			self.badgeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin),
+			
+			// titleView
+			self.titleView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
+			self.titleView.topAnchor.constraint(equalTo: self.badgeView.bottomAnchor, constant: Const.innerItemMargin),
+			self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.innerItemMargin),
+			self.titleView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -Const.innerItemMargin)
         ])
+		
+		// TODO:
     }
-    
+	
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.colorView.layer.cornerRadius = 2
-    }
-
+	}
+	
     func update(viewModel: MealViewModel) {
         self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Exams"))
         self.titleView.text = viewModel.title
@@ -120,12 +114,12 @@ class MealCell: FlatCollectionViewCell, Cell {
 }
 
 extension MealCell: HeightCalculator {
-    static func height(for width: CGFloat, viewModel: MealViewModel) -> CGFloat {
-        let cell = MealCell()
-        cell.update(viewModel: viewModel)
-        let size = cell.contentView.systemLayoutSizeFitting(CGSize(width: width, height: 0),
-                                                            withHorizontalFittingPriority: .required,
-                                                            verticalFittingPriority: .fittingSizeLevel)
-        return size.height
-    }
+	static func height(for width: CGFloat, viewModel: MealViewModel) -> CGFloat {
+		let cell = MealCell()
+		cell.update(viewModel: viewModel)
+		let size = cell.contentView.systemLayoutSizeFitting(CGSize(width: width, height: 0),
+															withHorizontalFittingPriority: .required,
+															verticalFittingPriority: .fittingSizeLevel)
+		return size.height
+	}
 }
