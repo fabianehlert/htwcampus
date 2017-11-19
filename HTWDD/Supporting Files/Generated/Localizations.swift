@@ -281,11 +281,14 @@ public struct Loca {
 
     public struct Canteen {
 
+        /// Base translation: Canteen
+        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
+
         /// Base translation: Counter not known
         public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
 
-        /// Base translation: Canteen
-        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
+        /// Base translation: Canteens
+        public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
 
 
         public struct noResults {

@@ -38,7 +38,7 @@ class CanteenMainVC: CollectionViewController {
     override func initialSetup() {
         super.initialSetup()
 
-        self.title = Loca.Canteen.title
+        self.title = Loca.Canteen.pluralTitle
         self.tabBarItem.image = #imageLiteral(resourceName: "Canteen")
 
         self.dataSource.collectionView = self.collectionView

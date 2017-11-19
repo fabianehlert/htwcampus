@@ -30,6 +30,7 @@
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
 
 "Canteen.title"="Mensa";
+"Canteen.pluralTitle"="Mensen";
 "Canteen.noCounter"="Ausgabeort nicht bekannt";
 "Canteen.noResults.title"="Kein Essen";
 "Canteen.noResults.message"="Heute gibt's nichts zu essen.";
