@@ -94,6 +94,11 @@ extension ScheduleBaseVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = self.dataSource.lecture(at: indexPath) else {
             // might be a free day
+			if let cell = collectionView.cellForItem(at: indexPath) as? FreeDayListCell {
+				if cell.label.text == Loca.Schedule.freeDay {
+					self.tabBarController?.view.emitConfetti(duration: 4)
+				}
+			}
             return
         }
         self.lastSelectedIndexPath = indexPath
