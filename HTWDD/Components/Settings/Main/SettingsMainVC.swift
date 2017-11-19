@@ -11,11 +11,18 @@ import UIKit
 protocol SettingsMainVCDelegate: class {
     func deleteAllData()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
+    func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
 }
 
 class SettingsMainVC: TableViewController {
 	
     var scheduleAuth: ScheduleService.Auth? {
+        didSet {
+            self.reset()
+        }
+    }
+    
+    var gradesAuth: GradeService.Auth? {
         didSet {
             self.reset()
         }
@@ -28,7 +35,10 @@ class SettingsMainVC: TableViewController {
             [
                 SettingsItem(title: Loca.Settings.items.setSchedule.title,
                              subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
-                             action: self.showScheduleOnboarding())
+                             action: self.showScheduleOnboarding()),
+                SettingsItem(title: Loca.Settings.items.setGrades.title,
+                             subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
+                             action: self.showGradeOnboarding())
             ],[
                 SettingsItem(title: Loca.Settings.items.deleteAll,
                              action: self.showConfirmationAlert(title: Loca.attention,
@@ -68,6 +78,12 @@ class SettingsMainVC: TableViewController {
     private func showScheduleOnboarding() {
         self.delegate?.triggerScheduleOnboarding(completion: { [weak self] auth in
             self?.scheduleAuth = auth
+        })
+    }
+    
+    private func showGradeOnboarding() {
+        self.delegate?.triggerGradeOnboarding(completion: { [weak self] auth in
+            self?.gradesAuth = auth
         })
     }
     

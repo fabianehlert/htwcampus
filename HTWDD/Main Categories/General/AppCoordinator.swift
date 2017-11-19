@@ -58,6 +58,7 @@ class AppCoordinator: Coordinator {
         self.exams.auth = schedule
         self.grades.auth = grade
         self.settings.scheduleAuth = schedule
+        self.settings.gradeAuth = grade
     }
 
 	private func showOnboarding(animated: Bool) {
@@ -115,17 +116,32 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
     }
     
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void) {
-        let onboarding = OnboardingCoordinator(onboardings: [.studygroup])
-        onboarding.onFinish = { [weak self, weak onboarding] response in
-            defer {
-                onboarding?.rootViewController.dismiss(animated: true, completion: nil)
-            }
-            guard let auth = response.schedule else {
+        self.triggerOnboarding(.studygroup) { [weak self] schedule, _ in
+            guard let auth = schedule else {
                 return
             }
             self?.schedule.auth = auth
             self?.persistenceService.save(auth)
             completion(auth)
+        }
+    }
+    
+    func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void) {
+        self.triggerOnboarding(.unixlogin) { [weak self] _, auth in
+            guard let auth = auth else {
+                return
+            }
+            self?.grades.auth = auth
+            self?.persistenceService.save(auth)
+            completion(auth)
+        }
+    }
+    
+    private func triggerOnboarding(_ onboarding: OnboardingCoordinator.Onboarding, completion: @escaping (ScheduleService.Auth?, GradeService.Auth?) -> Void) {
+        let onboarding = OnboardingCoordinator(onboardings: [onboarding])
+        onboarding.onFinish = { [weak onboarding] response in
+            completion(response.schedule, response.grade)
+            onboarding?.rootViewController.dismiss(animated: true, completion: nil)
         }
         self.addChildCoordinator(onboarding)
         self.rootViewController.present(onboarding.rootViewController, animated: true, completion: nil)
