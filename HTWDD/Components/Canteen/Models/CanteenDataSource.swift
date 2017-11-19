@@ -38,7 +38,7 @@ class CanteenDataSource: CollectionViewDataSource {
         self.date = Date()
         
         self.service
-            .load(parameters: .init(id: .reichenbachstrasse, date: self.date))
+            .load(parameters: .init(ids: Canteen.Id.all))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
                     self?.data = response
@@ -50,9 +50,6 @@ class CanteenDataSource: CollectionViewDataSource {
     }
 
     func titleFor(section: Int) -> String? {
-        guard section == 0 else {
-            return nil
-        }
         return self.data[section].canteen.name
     }
     
