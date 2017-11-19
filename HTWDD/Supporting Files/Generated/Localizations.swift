@@ -293,7 +293,7 @@ public struct Loca {
             /// Base translation: No food
             public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
 
-            /// Base translation: I can't find any meals for today. Maybe today is a free day?
+            /// Base translation: I can't find any meals for today.
             public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
 
         }

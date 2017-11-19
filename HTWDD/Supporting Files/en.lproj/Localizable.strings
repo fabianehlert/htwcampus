@@ -32,7 +32,7 @@
 "Canteen.title"="Canteen";
 "Canteen.noCounter"="Counter not known";
 "Canteen.noResults.title"="No food";
-"Canteen.noResults.message"="I can't find any meals for today.\nMaybe today is a free day?";
+"Canteen.noResults.message"="I can't find any meals for today.";
 
 "Exams.title"="Exams";
 "Exams.noResults.title"="No exams";

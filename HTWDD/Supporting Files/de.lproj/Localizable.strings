@@ -32,7 +32,7 @@
 "Canteen.title"="Mensa";
 "Canteen.noCounter"="Ausgabeort nicht bekannt";
 "Canteen.noResults.title"="Kein Essen";
-"Canteen.noResults.message"="Heute gibt's nichts zu essen.\nVielleicht ist heute frei?";
+"Canteen.noResults.message"="Heute gibt's nichts zu essen.";
 
 "Exams.title"="Prüfungen";
 "Exams.noResults.title"="Keine Prüfungen";
