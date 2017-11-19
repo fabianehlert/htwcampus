@@ -44,6 +44,10 @@
 "Exams.noResults.title"="Keine Prüfungen";
 "Exams.noResults.message"="Ich kann leider keine Prüfungen für Dich finden.\nSind Deine Zugangsdaten korrekt?";
 
+"Exams.ExamType.written"="Schriftlich";
+"Exams.ExamType.oral"="Mündlich";
+"Exams.ExamType.apl"="APL";
+
 "Settings.title"="Einstellungen";
 
 "Settings.items.setSchedule.title"="Studiengruppe ändern";

@@ -12,6 +12,17 @@ import RxSwift
 struct Exam: Codable, Identifiable, Equatable {
     enum ExamType: String, Codable {
         case s = "SP", m = "MP", a = "APL"
+		
+		var displayName: String {
+			switch self {
+			case .s:
+				return Loca.Exams.ExamType.written
+			case .m:
+				return Loca.Exams.ExamType.oral
+			case .a:
+				return Loca.Exams.ExamType.apl
+			}
+		}
     }
     
     let title: String

@@ -281,6 +281,19 @@ public struct Loca {
         public static var title : String = NSLocalizedString("Exams.title", comment: "")
 
 
+        public struct ExamType {
+
+            /// Base translation: APL
+            public static var apl : String = NSLocalizedString("Exams.ExamType.apl", comment: "")
+
+            /// Base translation: Oral
+            public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
+
+            /// Base translation: Written
+            public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
+
+        }
+
         public struct noResults {
 
             /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
