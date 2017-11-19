@@ -92,18 +92,17 @@ struct Canteen {
     enum Id: String {
         case reichenbachstrasse = "mensa_reichenbachstraße"
         case siedepunkt = "mensa_siedepunkt"
-        
-        case zeltschloesschen
-        case alteMensa
-        case wuEins
-        case bioMensaUboot
-        case mensaBruehl
-        case stimmGabel
-        case johannStadt
-        case paluccaSchule
-        case sport
-        case mensologie
-        case kreuzGymnasium
+        case zeltschloesschen = "zeltschloesschen"
+        case alteMensa = "alte_mensa"
+        case wuEins = "mensa_wueins"
+        case bioMensaUboot = "biomensa_u_boot"
+        case mensaBruehl = "mensa_bruehl"
+        case stimmGabel = "mensa_stimm_gabel"
+        case johannStadt = "mensa_johannstadt"
+        case paluccaSchule = "mensa_palucca_hochschule"
+        case sport = "mensa_sport"
+        case mensologie = "mensologie"
+        case kreuzGymnasium = "mensa_kreuzgymnasium"
         
         static let all: [Id] = [.reichenbachstrasse, .siedepunkt, .zeltschloesschen, .alteMensa, .wuEins, .bioMensaUboot, .mensaBruehl, .stimmGabel, .johannStadt, .paluccaSchule, .sport, .mensologie, .kreuzGymnasium]
     }
