@@ -91,7 +91,6 @@ class GradeMainVC: CollectionViewController {
         loading
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self?.refreshControl.beginRefreshing()
                 self?.setLoading(true)
             })
             .disposed(by: self.rx_disposeBag)
