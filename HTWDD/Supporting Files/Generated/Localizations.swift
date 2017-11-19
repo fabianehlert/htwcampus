@@ -162,7 +162,7 @@ public struct Loca {
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
 
-        /// Base translation: Enjoy your free day!
+        /// Base translation: Enjoy your free day! 🎉
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
         /// Base translation: Schedule
@@ -190,17 +190,14 @@ public struct Loca {
 
         public struct LectureType {
 
-            /// Base translation: Block
-            public static var block : String = NSLocalizedString("Schedule.LectureType.block", comment: "")
-
             /// Base translation: Lecture
             public static var lecture : String = NSLocalizedString("Schedule.LectureType.lecture", comment: "")
 
-            /// Base translation: Practical
-            public static var practical : String = NSLocalizedString("Schedule.LectureType.practical", comment: "")
-
             /// Base translation: Exercise
             public static var exercise : String = NSLocalizedString("Schedule.LectureType.exercise", comment: "")
+
+            /// Base translation: Practical
+            public static var practical : String = NSLocalizedString("Schedule.LectureType.practical", comment: "")
 
         }
 
