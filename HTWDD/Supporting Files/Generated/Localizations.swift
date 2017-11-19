@@ -293,7 +293,7 @@ public struct Loca {
 
         public struct Meal {
 
-            /// Base translation: More informationen
+            /// Base translation: More information
             public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
 
         }
