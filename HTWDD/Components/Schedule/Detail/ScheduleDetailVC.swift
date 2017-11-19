@@ -106,7 +106,7 @@ class ScheduleDetailVC: ViewController {
 		
 		self.nameLabel.text = self.viewModel.longTitle
 		self.professorLabel.text = self.viewModel.professor
-		self.typeLabel.text = self.viewModel.type
+		self.typeLabel.text = self.viewModel.rawType
 		self.roomLabel.text = self.viewModel.room
 
         let views = [self.nameLabel, self.professorLabel]

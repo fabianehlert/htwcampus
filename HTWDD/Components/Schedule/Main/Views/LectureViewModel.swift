@@ -16,6 +16,7 @@ struct LectureViewModel: ViewModel {
 	let shortTitle: String
     let longTitle: String
     let type: String
+	let rawType: String
     let tag: String
     
     let begin: String
@@ -60,9 +61,9 @@ struct LectureViewModel: ViewModel {
         } else {
             self.room = model.rooms.joined(separator: ", ")
         }
-		
+
 		self.type = LectureViewModel.determineType(model.type)
-		
+		self.rawType = model.type
         self.tag = model.tag ?? ""
     }
 	
