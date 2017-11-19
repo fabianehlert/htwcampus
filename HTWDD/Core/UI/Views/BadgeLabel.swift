@@ -10,6 +10,11 @@ import UIKit.UILabel
 
 class BadgeLabel: UILabel {
     
+    var cornerRadius: CGFloat = 3
+    var roundedCorners: UIRectCorner = .allCorners
+    
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true
@@ -30,7 +35,14 @@ class BadgeLabel: UILabel {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = 3
+        
+        let path = UIBezierPath(roundedRect: self.bounds,
+                                byRoundingCorners: self.roundedCorners,
+                                cornerRadii: CGSize(width: self.cornerRadius, height: self.cornerRadius))
+        let layer = CAShapeLayer()
+        layer.frame = self.bounds
+        layer.path = path.cgPath
+        self.layer.mask = layer
     }
     
 }
