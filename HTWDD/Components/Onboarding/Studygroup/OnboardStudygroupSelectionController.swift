@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 private enum Const {
-    static let collectionViewHeight: CGFloat = 520
+    static let itemHeight: CGFloat = 80
     static let margin: CGFloat = 15
 }
 
@@ -73,11 +73,15 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
         self.dataSource.register(type: OnboardingStudygroupSelectionGroupCell.self)
     }
     
+    private var collectionViewHeight: CGFloat {
+        return min(520.0, CGFloat(self.dataSource.numberOfItems(in: 0)) * (Const.margin + Const.itemHeight) + Const.margin)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - Const.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
-        self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: 80)
+        self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - self.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: Const.itemHeight)
         self.collectionView.backgroundColor = .clear
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .clear
@@ -111,7 +115,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     
     func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
         self.visualEffectView.effect = direction == .present ? nil : UIBlurEffect(style: .extraLight)
-        let startY = (self.view.height - Const.collectionViewHeight) * -1
+        let startY = (self.view.height - self.collectionViewHeight) * -1
         self.collectionView.contentOffset.y = direction == .present ? startY - 150 : startY
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
