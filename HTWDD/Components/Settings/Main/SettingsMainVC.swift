@@ -112,5 +112,6 @@ class SettingsMainVC: TableViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = self.dataSource.data(at: indexPath)
         item.action()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
