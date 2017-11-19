@@ -121,6 +121,7 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
                 return
             }
             self?.schedule.auth = auth
+            self?.exams.auth = auth
             self?.persistenceService.save(auth)
             completion(auth)
         }
