@@ -281,7 +281,7 @@ public struct Loca {
 
     public struct Canteen {
 
-        /// Base translation: unknown
+        /// Base translation: Counter not known
         public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
 
         /// Base translation: Canteen
