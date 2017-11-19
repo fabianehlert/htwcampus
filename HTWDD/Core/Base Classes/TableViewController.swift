@@ -25,7 +25,7 @@ class TableViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.backgroundColor = .white
+        self.tableView.backgroundColor = UIColor.htw.veryLightGrey
         self.tableView.frame = self.view.bounds
         self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.tableView)
