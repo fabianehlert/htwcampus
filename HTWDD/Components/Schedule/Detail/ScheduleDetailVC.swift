@@ -26,7 +26,6 @@ class ScheduleDetailVC: ViewController {
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 
@@ -37,7 +36,6 @@ class ScheduleDetailVC: ViewController {
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
@@ -49,6 +47,7 @@ class ScheduleDetailVC: ViewController {
 		return view
 	}()
 	
+    // TODO: Replace with `BadgeLabel`
 	private lazy var typeLabel: UILabel = {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -110,8 +109,11 @@ class ScheduleDetailVC: ViewController {
 		self.typeLabel.text = self.viewModel.type
 		self.roomLabel.text = self.viewModel.room
 
-		self.view.addSubview(self.nameLabel)
-		self.view.addSubview(self.professorLabel)
+        let views = [self.nameLabel, self.professorLabel]
+        views.forEach({
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview($0)
+        })
 
 		// --
         
