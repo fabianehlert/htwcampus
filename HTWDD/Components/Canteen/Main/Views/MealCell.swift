@@ -16,16 +16,12 @@ struct MealViewModel: ViewModel {
     
     let detailUrl: URL
     let imageUrl: URL?
+    
     init(model: Meal) {
         self.title = model.title
         self.mensa = model.canteen
         self.price = model.studentPrice?.htw.currencyString
-        if model.counter.isEmpty {
-            self.counter = Loca.Canteen.noCounter
-        } else {
-            self.counter = model.counter
-        }
-        
+        self.counter = model.counter
         self.detailUrl = model.url
         self.imageUrl = model.imageURL
     }
@@ -34,7 +30,6 @@ struct MealViewModel: ViewModel {
 class MealCell: FlatCollectionViewCell, Cell {
 
     enum Const {
-		static let height: CGFloat = 122
 		static let imageWidth: CGFloat = 100
 		
 		static let innerItemMargin: CGFloat = 8
@@ -42,10 +37,20 @@ class MealCell: FlatCollectionViewCell, Cell {
         static let colorViewHorizontalMargin: CGFloat = 10
     }
     
+    private lazy var badgeZeroHeightConstraint: NSLayoutConstraint = {
+        let c = self.badgeView.heightAnchor.constraint(equalToConstant: 0)
+        c.isActive = false
+        return c
+    }()
+    private lazy var badgeTopConstraint: NSLayoutConstraint = {
+        let c = self.badgeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin)
+        return c
+    }()
+    
     private lazy var imageView = UIImageView()
     private lazy var badgeView = BadgeLabel()
     private lazy var titleView = UILabel()
-    private lazy var priceView = UILabel()
+    private lazy var priceView = BadgeLabel()
 
     override func initialSetup() {
         super.initialSetup()
@@ -53,11 +58,10 @@ class MealCell: FlatCollectionViewCell, Cell {
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
 		
-		self.priceView.font = .systemFont(ofSize: 13, weight: .medium)
+		self.priceView.font = .systemFont(ofSize: 13, weight: .semibold)
 		self.priceView.textColor = UIColor.htw.textHeadline
-		self.priceView.textAlignment = .right
 		self.priceView.backgroundColor = .white
-		self.priceView.alpha = 0.8
+        self.priceView.roundedCorners = [.topRight, .bottomRight]
 
 		self.badgeView.font = .systemFont(ofSize: 13, weight: .semibold)
         self.badgeView.textColor = UIColor.htw.textHeadline
@@ -67,15 +71,13 @@ class MealCell: FlatCollectionViewCell, Cell {
 		self.titleView.textColor = UIColor.htw.textHeadline
 		self.titleView.numberOfLines = 0
 
-		let views: [UIView] = [self.imageView, self.badgeView, self.titleView, self.priceView]
+		let views: [UIView] = [self.imageView, self.priceView, self.badgeView, self.titleView]
         views.forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-			self.contentView.heightAnchor.constraint(equalToConstant: Const.height),
-			
 			// imageView
 			self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
@@ -88,16 +90,14 @@ class MealCell: FlatCollectionViewCell, Cell {
 
 			// badgeView (station)
 			self.badgeView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
-			self.badgeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin),
+			self.badgeTopConstraint,
 			
 			// titleView
 			self.titleView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
-			self.titleView.topAnchor.constraint(equalTo: self.badgeView.bottomAnchor, constant: Const.innerItemMargin),
+            self.titleView.topAnchor.constraint(equalTo: self.badgeView.bottomAnchor, constant: 4),
 			self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.innerItemMargin),
 			self.titleView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -Const.innerItemMargin)
         ])
-		
-		// TODO:
     }
 	
     override func layoutSubviews() {
@@ -105,21 +105,15 @@ class MealCell: FlatCollectionViewCell, Cell {
 	}
 	
     func update(viewModel: MealViewModel) {
-        self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Exams"))
+        self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
         self.titleView.text = viewModel.title
         self.priceView.text = viewModel.price
         self.badgeView.text = viewModel.counter
+        
+        self.badgeZeroHeightConstraint.isActive = viewModel.counter.isEmpty ? true : false
+        self.badgeTopConstraint.constant = viewModel.counter.isEmpty ? 0 : Const.innerItemMargin
+        
+        self.contentView.layoutIfNeeded()
     }
 
-}
-
-extension MealCell: HeightCalculator {
-	static func height(for width: CGFloat, viewModel: MealViewModel) -> CGFloat {
-		let cell = MealCell()
-		cell.update(viewModel: viewModel)
-		let size = cell.contentView.systemLayoutSizeFitting(CGSize(width: width, height: 0),
-															withHorizontalFittingPriority: .required,
-															verticalFittingPriority: .fittingSizeLevel)
-		return size.height
-	}
 }
