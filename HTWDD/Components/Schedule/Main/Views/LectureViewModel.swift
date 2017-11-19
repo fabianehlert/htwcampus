@@ -60,18 +60,20 @@ struct LectureViewModel: ViewModel {
         } else {
             self.room = model.rooms.joined(separator: ", ")
         }
-				
-		// TODO: Localise. And it's also kinda hacky.
-		var t = model.type
-		if t.hasPrefix("V") {
-			t = "Vorlesung"
-		} else if t.hasPrefix("P") {
-			t = "Praktikum"
-		} else if t.hasPrefix("Ü") {
-			t = "Übung"
-		}
 		
-		self.type = t
+		self.type = LectureViewModel.determineType(model.type)
+		
         self.tag = model.tag ?? ""
     }
+	
+	static func determineType(_ type: String) -> String {
+		if type.hasPrefix("V") {
+			return Loca.Schedule.LectureType.lecture
+		} else if type.hasPrefix("Ü") {
+			return Loca.Schedule.LectureType.exercise
+		} else if type.hasPrefix("P") {
+			return Loca.Schedule.LectureType.practical
+		}
+		return type
+	}
 }
