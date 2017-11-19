@@ -34,6 +34,7 @@
 "Canteen.noCounter"="Counter not known";
 "Canteen.noResults.title"="No food";
 "Canteen.noResults.message"="I can't find any meals for today.";
+"Canteen.Meal.more"="More informationen";
 
 "Exams.title"="Exams";
 "Exams.noResults.title"="No exams";

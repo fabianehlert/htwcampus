@@ -291,6 +291,13 @@ public struct Loca {
         public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
 
 
+        public struct Meal {
+
+            /// Base translation: More informationen
+            public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
+
+        }
+
         public struct noResults {
 
             /// Base translation: No food

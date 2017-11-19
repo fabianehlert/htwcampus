@@ -34,6 +34,7 @@
 "Canteen.noCounter"="Ausgabeort nicht bekannt";
 "Canteen.noResults.title"="Kein Essen";
 "Canteen.noResults.message"="Heute gibt's nichts zu essen.";
+"Canteen.Meal.more"="Mehr Informationen";
 
 "Exams.title"="Prüfungen";
 "Exams.noResults.title"="Keine Prüfungen";
