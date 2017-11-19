@@ -29,6 +29,11 @@
 "Schedule.noResults.title"="Kein Plan...";
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
 
+"Schedule.LectureType.lecture"="Vorlesung";
+"Schedule.LectureType.practical"="Praktikum";
+"Schedule.LectureType.exercise"="Übung";
+"Schedule.LectureType.block"="Block";
+
 "Canteen.title"="Mensa";
 "Canteen.pluralTitle"="Mensen";
 "Canteen.noCounter"="Ausgabeort nicht bekannt";

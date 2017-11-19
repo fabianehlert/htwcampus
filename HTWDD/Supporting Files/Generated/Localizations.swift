@@ -178,16 +178,6 @@ public struct Loca {
 
         }
 
-        public struct noResults {
-
-            /// Base translation: No plan...
-            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
-
-            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
-
-        }
-
         public struct Style {
 
             /// Base translation: Week
@@ -195,6 +185,32 @@ public struct Loca {
 
             /// Base translation: List
             public static var list : String = NSLocalizedString("Schedule.Style.list", comment: "")
+
+        }
+
+        public struct LectureType {
+
+            /// Base translation: Block
+            public static var block : String = NSLocalizedString("Schedule.LectureType.block", comment: "")
+
+            /// Base translation: Lecture
+            public static var lecture : String = NSLocalizedString("Schedule.LectureType.lecture", comment: "")
+
+            /// Base translation: Practical
+            public static var practical : String = NSLocalizedString("Schedule.LectureType.practical", comment: "")
+
+            /// Base translation: Exercise
+            public static var exercise : String = NSLocalizedString("Schedule.LectureType.exercise", comment: "")
+
+        }
+
+        public struct noResults {
+
+            /// Base translation: No plan...
+            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
+
+            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
 
         }
     }

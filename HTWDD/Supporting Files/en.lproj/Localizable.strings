@@ -29,6 +29,11 @@
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 
+"Schedule.LectureType.lecture"="Lecture";
+"Schedule.LectureType.practical"="Practical";
+"Schedule.LectureType.exercise"="Exercise";
+"Schedule.LectureType.block"="Block";
+
 "Canteen.title"="Canteen";
 "Canteen.pluralTitle"="Canteens";
 "Canteen.noCounter"="Counter not known";
