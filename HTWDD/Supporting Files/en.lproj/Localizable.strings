@@ -44,6 +44,9 @@
 "Exams.noResults.title"="No exams";
 "Exams.noResults.message"="I can't find any exams for you.\nHave you entered your credentials correctly?";
 
+"Exams.examiner"="Examiner: %@";
+"Exams.branch"="Branch: %@";
+
 "Exams.ExamType.written"="Written";
 "Exams.ExamType.oral"="Oral";
 "Exams.ExamType.apl"="APL";

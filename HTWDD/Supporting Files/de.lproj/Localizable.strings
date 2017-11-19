@@ -44,6 +44,9 @@
 "Exams.noResults.title"="Keine Prüfungen";
 "Exams.noResults.message"="Ich kann leider keine Prüfungen für Dich finden.\nSind Deine Zugangsdaten korrekt?";
 
+"Exams.examiner"="Prüfer: %@";
+"Exams.branch"="Zweig: %@";
+
 "Exams.ExamType.written"="Schriftlich";
 "Exams.ExamType.oral"="Mündlich";
 "Exams.ExamType.apl"="APL";

@@ -280,6 +280,26 @@ public struct Loca {
         /// Base translation: Exams
         public static var title : String = NSLocalizedString("Exams.title", comment: "")
 
+        /// Base translation: Branch: %@
+        public static func branch(_ value1 : String) -> String {
+            return String(format: NSLocalizedString("Exams.branch", comment: ""), value1)
+        }
+
+        /// Base translation: Examiner: %@
+        public static func examiner(_ value1 : String) -> String {
+            return String(format: NSLocalizedString("Exams.examiner", comment: ""), value1)
+        }
+
+
+        public struct noResults {
+
+            /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
+
+            /// Base translation: No exams
+            public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
+
+        }
 
         public struct ExamType {
 
@@ -291,16 +311,6 @@ public struct Loca {
 
             /// Base translation: Written
             public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
-
-        }
-
-        public struct noResults {
-
-            /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
-
-            /// Base translation: No exams
-            public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
 
         }
     }
