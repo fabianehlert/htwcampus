@@ -10,15 +10,33 @@ import UIKit
 
 protocol SettingsMainVCDelegate: class {
     func deleteAllData()
+    func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
 }
 
 class SettingsMainVC: TableViewController {
 	
+    var scheduleAuth: ScheduleService.Auth? {
+        didSet {
+            self.reset()
+        }
+    }
+    
     private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
     
-    private lazy var settings: [SettingsItem] = [
-        SettingsItem(title: Loca.Settings.items.deleteAll, action: self.showConfirmationAlert(title: Loca.attention, message: Loca.Settings.items.deleteAllConfirmationText, actionTitle: Loca.yes, action: { [weak self] in self?.delegate?.deleteAllData() }))
-    ]
+    private var settings: [[SettingsItem]] {
+        return [
+            [
+                SettingsItem(title: Loca.Settings.items.setSchedule.title,
+                             subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
+                             action: self.showScheduleOnboarding())
+            ],[
+                SettingsItem(title: Loca.Settings.items.deleteAll,
+                             action: self.showConfirmationAlert(title: Loca.attention,
+                                                                message: Loca.Settings.items.deleteAllConfirmationText,
+                                                                actionTitle: Loca.yes,
+                                                                action: { [weak self] in self?.delegate?.deleteAllData() })),
+            ]]
+    }
     
     weak var delegate: SettingsMainVCDelegate?
     
@@ -40,6 +58,19 @@ class SettingsMainVC: TableViewController {
         self.dataSource.register(type: SettingsCell.self)
 	}
 	
+    private func reset() {
+        self.dataSource = GenericBasicTableViewDataSource(data: self.settings)
+        self.dataSource.tableView = self.tableView
+        self.dataSource.register(type: SettingsCell.self)
+        self.dataSource.invalidate()
+    }
+    
+    private func showScheduleOnboarding() {
+        self.delegate?.triggerScheduleOnboarding(completion: { [weak self] auth in
+            self?.scheduleAuth = auth
+        })
+    }
+    
 	// MARK: - ViewController lifecycle
 	
 	override func viewDidLoad() {

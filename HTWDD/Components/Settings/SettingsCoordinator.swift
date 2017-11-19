@@ -10,10 +10,17 @@ import UIKit
 
 protocol SettingsCoordinatorDelegate: class {
     func deleteAllData()
+    func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
 }
 
 class SettingsCoordinator: Coordinator {
 	
+    var scheduleAuth: ScheduleService.Auth? {
+        didSet {
+            self.settingsController.scheduleAuth = self.scheduleAuth
+        }
+    }
+    
 	var rootViewController: UIViewController {
 		return self.settingsController.inNavigationController()
 	}
@@ -38,5 +45,9 @@ class SettingsCoordinator: Coordinator {
 extension SettingsCoordinator: SettingsMainVCDelegate {
     func deleteAllData() {
         self.delegate?.deleteAllData()
+    }
+    
+    func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void) {
+        self.delegate?.triggerScheduleOnboarding(completion: completion)
     }
 }

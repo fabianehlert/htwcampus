@@ -10,18 +10,22 @@ import UIKit
 
 struct SettingsItem: Identifiable {
     let title: String
+    let subtitle: String?
     let action: () -> ()
     
-    init(title: String, action: @escaping @autoclosure () -> ()) {
+    init(title: String, subtitle: String? = nil, action: @escaping @autoclosure () -> ()) {
         self.title = title
+        self.subtitle = subtitle
         self.action = action
     }
 }
 
 struct SettingsItemViewModel: ViewModel {
     let title: String
+    let subtitle: String?
     init(model: SettingsItem) {
         self.title = model.title
+        self.subtitle = model.subtitle
     }
 }
 
@@ -31,29 +35,17 @@ class SettingsCell: TableViewCell, Cell {
         static let margin: CGFloat = 15
     }
     
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = UIColor.htw.mediumGrey
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+    }
     
-    override func initialSetup() {
-        super.initialSetup()
-        
-        self.contentView.addSubview(self.titleLabel)
-        
-        NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
-            self.titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
-            ])
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func update(viewModel: SettingsItemViewModel) {
-        self.titleLabel.text = viewModel.title
+        self.textLabel?.text = viewModel.title
+        self.detailTextLabel?.text = viewModel.subtitle
     }
     
 }

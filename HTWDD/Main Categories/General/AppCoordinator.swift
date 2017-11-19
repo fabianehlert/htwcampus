@@ -57,6 +57,7 @@ class AppCoordinator: Coordinator {
         self.schedule.auth = schedule
         self.exams.auth = schedule
         self.grades.auth = grade
+        self.settings.scheduleAuth = schedule
     }
 
 	private func showOnboarding(animated: Bool) {
@@ -94,7 +95,7 @@ class AppCoordinator: Coordinator {
         self.persistenceService.load()
             .take(1)
             .subscribe(onNext: { res in
-                    completion(res.schedule, res.grades)
+                completion(res.schedule, res.grades)
             }, onError: { _ in
                 completion(nil, nil)
             })
@@ -111,6 +112,23 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
         self.exams.auth = nil
         self.grades.auth = nil
         self.showOnboarding(animated: true)
+    }
+    
+    func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void) {
+        let onboarding = OnboardingCoordinator(onboardings: [.studygroup])
+        onboarding.onFinish = { [weak self, weak onboarding] response in
+            defer {
+                onboarding?.rootViewController.dismiss(animated: true, completion: nil)
+            }
+            guard let auth = response.schedule else {
+                return
+            }
+            self?.schedule.auth = auth
+            self?.persistenceService.save(auth)
+            completion(auth)
+        }
+        self.addChildCoordinator(onboarding)
+        self.rootViewController.present(onboarding.rootViewController, animated: true, completion: nil)
     }
     
 }

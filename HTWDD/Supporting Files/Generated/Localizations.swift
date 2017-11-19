@@ -307,12 +307,24 @@ public struct Loca {
 
         public struct items {
 
-            /// Base translation: Do you really want to delete all stored in the HTW app?
-            public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
-
             /// Base translation: Delete all stored data
             public static var deleteAll : String = NSLocalizedString("Settings.items.deleteAll", comment: "")
 
+            /// Base translation: Do you really want to delete all stored in the HTW app?
+            public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
+
+
+            public struct setSchedule {
+
+                /// Base translation: Change studygroup
+                public static var title : String = NSLocalizedString("Settings.items.setSchedule.title", comment: "")
+
+                /// Base translation: (%@/%@/%@)
+                public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
+                    return String(format: NSLocalizedString("Settings.items.setSchedule.subtitle", comment: ""), value1, value2, value3)
+                }
+
+            }
         }
     }
 }

@@ -10,22 +10,22 @@ import Foundation
 
 class GenericBasicTableViewDataSource<Data: Identifiable>: TableViewDataSource {
     
-    private let data: [Data]
-    init(data: [Data]) {
+    private let data: [[Data]]
+    init(data: [[Data]]) {
         self.data = data
         super.init()
     }
     
     override func numberOfSections() -> Int {
-        return 1
-    }
-    
-    override func numberOfItems(in section: Int) -> Int {
         return self.data.count
     }
     
+    override func numberOfItems(in section: Int) -> Int {
+        return self.data[section].count
+    }
+    
     override func item(at index: IndexPath) -> Identifiable? {
-        return self.data[index.item]
+        return self.data[index.section][index.item]
     }
     
     func data(at indexPath: IndexPath) -> Data {
