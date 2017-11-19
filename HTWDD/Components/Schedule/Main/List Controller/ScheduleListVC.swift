@@ -65,12 +65,9 @@ final class ScheduleListVC: ScheduleBaseVC {
         guard self.collectionView.numberOfSections >= indexPath.section else {
             return
         }
-
-        DispatchQueue.main.async {
-            // scroll to header
-            let offsetY = self.collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionElementKindSectionHeader, at: indexPath)?.frame.origin.y ?? 0
-            self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: offsetY), animated: animated)
-        }
+        
+        // scroll to item
+        self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
     }
     
 }
@@ -93,10 +90,7 @@ extension ScheduleListVC {
 extension ScheduleListVC: ScheduleDataSourceDelegate {
 
     func scheduleDataSourceHasFinishedLoading() {
-        // we explicitly need to wait for the next run loop
-        DispatchQueue.main.async {
-            self.scrollToToday(animated: false)
-        }
+        self.scrollToToday(animated: false)
     }
 
     func scheduleDataSourceHasUpdated() {

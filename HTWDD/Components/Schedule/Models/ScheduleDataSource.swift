@@ -36,6 +36,10 @@ class ScheduleDataSource: CollectionViewDataSource {
         didSet {
             guard self.auth != nil else {
                 self.data = []
+                self.semesterInformation = nil
+                self.semesterInformations = []
+                self.lectures = [:]
+                self.invalidate()
                 return
             }
             self.load()

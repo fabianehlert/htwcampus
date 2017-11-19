@@ -15,8 +15,9 @@ class ScheduleBaseVC: CollectionViewController {
     private var lastSelectedIndexPath: IndexPath?
 
     var auth: ScheduleService.Auth? {
-        get { return nil }
-        set { self.dataSource.auth = newValue }
+        didSet {
+            self.dataSource.auth = self.auth
+        }
     }
 
     init(configuration: ScheduleDataSource.Configuration, layout: UICollectionViewLayout) {
