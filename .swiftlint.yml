@@ -1,0 +1,4 @@
+excluded:
+  - Carthage
+  - HTWDD/Supporting\ Files/Localizations.swift
+line_length: 180

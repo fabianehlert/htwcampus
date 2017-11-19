@@ -14,11 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        baseInitialization()
+
         self.window = UIWindow()
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = ScheduleMainVC().inNavigationController()
         self.window?.makeKeyAndVisible()
         return true
     }
 
-}
+    private func baseInitialization() {
+        SettingsManager.shared.loadInitial()
+    }
 
+}

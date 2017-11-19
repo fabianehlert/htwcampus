@@ -10,4 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		self.initialSetup()
+	}
+
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		self.initialSetup()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		self.initialSetup()
+	}
+
+	func initialSetup() {
+		// Intentionally left empty
+	}
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+    
+    @objc
+    func dismissOrPopViewController() {
+        if let presenting = self.presentingViewController {
+            presenting.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+
 }

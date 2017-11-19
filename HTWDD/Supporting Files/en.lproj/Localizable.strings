@@ -1,0 +1,102 @@
+"Onboarding.Welcome.Title"="Welcome to HTW";
+"Onboarding.Welcome.ScheduleDescription"="Your schedule shows you all your lectures.";
+"Onboarding.Welcome.CanteenDescription"="See what is being served for lunch in the canteens around you.";
+"Onboarding.Welcome.GradesDescription"="View what your professors graded you in your exams.";
+
+"Onboarding.Studygroup.title"="Study group";
+"Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
+"Onboarding.Studygroup.notnow"="Not now";
+
+"Onboarding.Studygroup.year"="Year";
+"Onboarding.Studygroup.major"="Major";
+"Onboarding.Studygroup.group"="Group";
+
+"Onboarding.Studygroup.degree.bachelor"="Bachelor";
+"Onboarding.Studygroup.degree.diplom"="Diploma";
+"Onboarding.Studygroup.degree.master"="Master";
+
+"Onboarding.UnixLogin.title"="Login";
+"Onboarding.UnixLogin.body"="To be able to view your grades, you have to login using your HTW credentials.";
+"Onboarding.UnixLogin.notnow"="Not now";
+
+"Schedule.title"="Schedule";
+"Schedule.today"="Today";
+"Schedule.Style.week"="Week";
+"Schedule.Style.list"="List";
+"Schedule.Cell.time" = "%02d:%02d";
+"Schedule.noRoom"="No room";
+"Schedule.freeDay"="Enjoy your free day! 🎉";
+"Schedule.noResults.title"="No plan...";
+"Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
+
+"Schedule.LectureType.lecture"="Lecture";
+"Schedule.LectureType.practical"="Practical";
+"Schedule.LectureType.exercise"="Exercise";
+
+"Canteen.title"="Canteen";
+"Canteen.pluralTitle"="Canteens";
+"Canteen.noCounter"="Counter not known";
+"Canteen.noResults.title"="No food";
+"Canteen.noResults.message"="I can't find any meals for today.";
+"Canteen.Meal.more"="More information";
+
+"Exams.title"="Exams";
+"Exams.noResults.title"="No exams";
+"Exams.noResults.message"="I can't find any exams for you.\nHave you entered your credentials correctly?";
+
+"Exams.examiner"="Examiner: %@";
+"Exams.branch"="Branch: %@";
+
+"Exams.ExamType.written"="Written";
+"Exams.ExamType.oral"="Oral";
+"Exams.ExamType.apl"="APL";
+
+"Settings.title"="Settings";
+
+"Settings.items.setSchedule.title"="Change studygroup";
+"Settings.items.setSchedule.subtitle"="(%@/%@/%@)";
+"Settings.items.setGrades.title"="Change datacenter credentials";
+"Settings.items.setGrades.subtitle"="(%@)";
+"Settings.items.deleteAll"="Delete all stored data";
+"Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
+
+"monday"="Monday";
+"tuesday"="Tuesday";
+"wednesday"="Wednesday";
+"thursday"="Thursday";
+"friday"="Friday";
+"saturday"="Saturday";
+"sunday"="Sunday";
+
+"monday_short"="Mo";
+"tuesday_short"="Tu";
+"wednesday_short"="We";
+"thursday_short"="Th";
+"friday_short"="Fr";
+"saturday_short"="Sa";
+"sunday_short"="Su";
+
+"summerSemester"="Summer semester";
+"winterSemester"="Winter semester";
+
+"close"="Close";
+"cancel"="Cancel";
+"nextStep"="Continue";
+"letsgo"="Let's go!";
+"attention"="Attention";
+"yes"="Yes";
+"loading"="Loading…";
+
+"Grades.title"="Grades";
+"Grades.average" = "(Ø %.2f)";
+"Grades.detail.mark" = "%.1f";
+"Grades.detail.credits" = "%.0f credits";
+"Grades.detail.tries" = "%d. try";
+"Grades.detail.noDate" = "No date";
+"Grades.detail.noNote" = "No notes";
+"Grades.status.signedUp" = "signed up";
+"Grades.status.passed" = "passed";
+"Grades.status.failed" = "failed";
+"Grades.status.ultimatelyFailed" = "ultimately failed";
+"Grades.noResults.title"="No grades";
+"Grades.noResults.message"="I can't find any of your grades.\nHave you entered your credentials correctly?";
