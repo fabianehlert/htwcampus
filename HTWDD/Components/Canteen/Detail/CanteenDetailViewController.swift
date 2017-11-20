@@ -23,6 +23,7 @@ class CanteenDetailViewController: ViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+		imageView.clipsToBounds = true
         return imageView
     }()
     
