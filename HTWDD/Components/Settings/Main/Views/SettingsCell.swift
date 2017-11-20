@@ -37,6 +37,7 @@ class SettingsCell: TableViewCell, Cell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+		self.accessoryType = .disclosureIndicator
     }
     
     required init?(coder aDecoder: NSCoder) {
