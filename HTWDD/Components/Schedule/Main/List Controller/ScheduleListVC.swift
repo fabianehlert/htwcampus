@@ -32,7 +32,10 @@ final class ScheduleListVC: ScheduleBaseVC {
 	override func initialSetup() {
         super.initialSetup()
         
-        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
 
 		self.collectionView.isDirectionalLockEnabled = true
 

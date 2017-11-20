@@ -12,7 +12,7 @@ import RxSwift
 class CanteenMainVC: CollectionViewController {
 
     enum Const {
-        static let margin: CGFloat = 15
+        static let margin: CGFloat = 12
     }
     
     private let refreshControl = UIRefreshControl()
@@ -26,7 +26,10 @@ class CanteenMainVC: CollectionViewController {
     init(context: HasCanteen) {
         self.context = context
         super.init()
-        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +58,7 @@ class CanteenMainVC: CollectionViewController {
             attributedTitle.append(title)
             
             view.attributedTitle = attributedTitle
+			view.titleInset = Const.margin
         }
         
         self.dataSource.registerAction(cell: MealCell.self) { [weak self] meal, indexPath in
@@ -136,7 +140,7 @@ class CanteenMainVC: CollectionViewController {
     // MARK: - UICollectionViewDelegate(FlowLayout) stuff
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 0, height: 60)
+        return CGSize(width: 0, height: 90)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
