@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol SettingsCoordinatorDelegate: class {
     func deleteAllData()
@@ -61,4 +62,16 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void) {
         self.delegate?.triggerGradeOnboarding(completion: completion)
     }
+	
+	func showLicenses() {
+		
+	}
+	
+	func showGitHub() {
+		let safariVC = SFSafariViewController(url: URL(string: "https://github.com/HTWDD/htwcampus")!)
+		if #available(iOS 10.0, *) {
+			safariVC.preferredControlTintColor = UIColor.htw.blue
+		}
+		self.rootViewController.present(safariVC, animated: true, completion: nil)
+	}
 }

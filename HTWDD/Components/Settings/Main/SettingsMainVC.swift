@@ -12,6 +12,9 @@ protocol SettingsMainVCDelegate: class {
     func deleteAllData()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
+	
+	func showLicenses()
+	func showGitHub()
 }
 
 class SettingsMainVC: TableViewController {
@@ -29,24 +32,32 @@ class SettingsMainVC: TableViewController {
     }
     
     private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
-    
-    private var settings: [[SettingsItem]] {
-        return [
-            [
-                SettingsItem(title: Loca.Settings.items.setSchedule.title,
-                             subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
-                             action: self.showScheduleOnboarding()),
-                SettingsItem(title: Loca.Settings.items.setGrades.title,
-                             subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
-                             action: self.showGradeOnboarding())
-            ],[
-                SettingsItem(title: Loca.Settings.items.deleteAll,
-                             action: self.showConfirmationAlert(title: Loca.attention,
-                                                                message: Loca.Settings.items.deleteAllConfirmationText,
-                                                                actionTitle: Loca.yes,
-                                                                action: { [weak self] in self?.delegate?.deleteAllData() })),
-            ]]
-    }
+	
+	private var settings: [[SettingsItem]] {
+		return [
+			[
+				SettingsItem(title: Loca.Settings.items.setSchedule.title,
+							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
+							 action: self.showScheduleOnboarding()),
+				SettingsItem(title: Loca.Settings.items.setGrades.title,
+							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
+							 action: self.showGradeOnboarding())
+			],
+			[
+				SettingsItem(title: "Lizenzen", action: self.showLicenses())
+			],
+			[
+				SettingsItem(title: "HTW auf GitHub", action: self.showGitHub())
+			],
+			[
+				SettingsItem(title: Loca.Settings.items.deleteAll,
+							 action: self.showConfirmationAlert(title: Loca.attention,
+																message: Loca.Settings.items.deleteAllConfirmationText,
+																actionTitle: Loca.yes,
+																action: { [weak self] in self?.delegate?.deleteAllData() })),
+			]
+		]
+	}
     
     weak var delegate: SettingsMainVCDelegate?
     
@@ -66,6 +77,8 @@ class SettingsMainVC: TableViewController {
         
         self.dataSource.tableView = self.tableView
         self.dataSource.register(type: SettingsCell.self)
+		
+		self.tableView.separatorColor = UIColor.htw.lightGrey
 	}
 	
     private func reset() {
@@ -86,7 +99,15 @@ class SettingsMainVC: TableViewController {
             self?.gradesAuth = auth
         })
     }
-    
+	
+	private func showLicenses() {
+		self.delegate?.showLicenses()
+	}
+	
+	private func showGitHub() {
+		self.delegate?.showGitHub()
+	}
+	
 	// MARK: - ViewController lifecycle
 	
 	override func viewDidLoad() {
