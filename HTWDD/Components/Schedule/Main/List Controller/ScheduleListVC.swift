@@ -93,7 +93,9 @@ extension ScheduleListVC {
 extension ScheduleListVC: ScheduleDataSourceDelegate {
 
     func scheduleDataSourceHasFinishedLoading() {
-        self.scrollToToday(animated: false)
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
     }
 
     func scheduleDataSourceHasUpdated() {
