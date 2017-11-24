@@ -82,6 +82,8 @@ class CanteenMainVC: CollectionViewController {
         } else {
             self.collectionView.addSubview(self.refreshControl)
         }
+        
+        self.reload()
 
         let loading = self.dataSource.loading.filter { $0 == true }
         let notLoading = self.dataSource.loading.filter { $0 != true }
@@ -94,14 +96,12 @@ class CanteenMainVC: CollectionViewController {
             .disposed(by: self.rx_disposeBag)
         
         notLoading
-            .delay(0.5, scheduler: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.endRefreshing()
                 self?.setLoading(false)
             })
             .disposed(by: self.rx_disposeBag)
-        
-        self.reload()
         
         DispatchQueue.main.async {
             self.register3DTouch()
@@ -174,5 +174,11 @@ extension CanteenMainVC: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         self.presentDetail(viewControllerToCommit, animated: false)
+    }
+}
+
+extension CanteenMainVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: -self.view.htw.safeAreaInsets.top), animated: true)
     }
 }
