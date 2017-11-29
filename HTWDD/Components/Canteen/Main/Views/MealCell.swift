@@ -105,7 +105,7 @@ class MealCell: FlatCollectionViewCell, Cell {
 	}
 	
     func update(viewModel: MealViewModel) {
-        self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Canteen"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
+        self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Meal-Placeholder"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
         self.titleView.text = viewModel.title
         self.priceView.text = viewModel.price
         self.badgeView.text = viewModel.counter
