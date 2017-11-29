@@ -50,7 +50,7 @@ class SettingsCoordinator: Coordinator {
 	}
 }
 
-extension SettingsCoordinator: SettingsMainVCDelegate {
+extension SettingsCoordinator: SettingsMainVCDelegate {	
     func deleteAllData() {
         self.delegate?.deleteAllData()
     }
@@ -63,8 +63,11 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
         self.delegate?.triggerGradeOnboarding(completion: completion)
     }
 	
-	func showLicenses() {
-		
+	func showLicense(name: String) {
+		let webVC = WebViewController(fileName: name)
+		if let root = self.rootViewController as? NavigationController {
+			root.pushViewController(webVC, animated: true)
+		}
 	}
 	
 	func showGitHub() {

@@ -13,7 +13,7 @@ protocol SettingsMainVCDelegate: class {
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
 	
-	func showLicenses()
+	func showLicense(name: String)
 	func showGitHub()
 }
 
@@ -44,7 +44,9 @@ class SettingsMainVC: TableViewController {
 							 action: self.showGradeOnboarding())
 			],
 			[
-				SettingsItem(title: "Lizenzen", action: self.showLicenses())
+				SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
+				SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
+				SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
 			],
 			[
 				SettingsItem(title: "HTW auf GitHub", action: self.showGitHub())
@@ -100,8 +102,8 @@ class SettingsMainVC: TableViewController {
         })
     }
 	
-	private func showLicenses() {
-		self.delegate?.showLicenses()
+	private func showLicense(name: String) {
+		self.delegate?.showLicense(name: name)
 	}
 	
 	private func showGitHub() {

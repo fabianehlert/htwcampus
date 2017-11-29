@@ -14,8 +14,6 @@ class WebViewController: ViewController {
 	private var fileName: String
 	private var webView: WKWebView
 	
-	@IBOutlet private weak var topView: UIView!
-	
 	// MARK: - Init
 	
 	init(fileName: String) {
@@ -33,8 +31,11 @@ class WebViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		self.navigationController?.isNavigationBarHidden = true
-		self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+//		self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+		
+		if #available(iOS 11.0, *) {
+			self.navigationItem.largeTitleDisplayMode = .never
+		}
 		
 		self.webView.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(self.webView)
@@ -42,7 +43,7 @@ class WebViewController: ViewController {
 		let guide = self.view.htw.safeAreaLayoutGuide
 		NSLayoutConstraint.activate([
 			self.webView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-			self.webView.topAnchor.constraint(equalTo: self.topView.bottomAnchor),
+			self.webView.topAnchor.constraint(equalTo: guide.topAnchor),
 			self.webView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
 			self.webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
 		])
@@ -68,6 +69,12 @@ class WebViewController: ViewController {
 		self.dismissOrPopViewController()
 	}
 
+	// MARK: -
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 }
 
 extension HTWNamespace where Base: WKWebViewConfiguration {
