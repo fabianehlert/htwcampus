@@ -19,23 +19,23 @@ public struct Loca {
     /// Base translation: Saturday
     public static var saturday : String = NSLocalizedString("saturday", comment: "")
 
-    /// Base translation: Wednesday
-    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
-
-    /// Base translation: Winter semester
-    public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
-
-    /// Base translation: Continue
-    public static var nextStep : String = NSLocalizedString("nextStep", comment: "")
-
     /// Base translation: Friday
     public static var friday : String = NSLocalizedString("friday", comment: "")
+
+    /// Base translation: Wednesday
+    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
 
     /// Base translation: Thursday
     public static var thursday : String = NSLocalizedString("thursday", comment: "")
 
-    /// Base translation: Sa
-    public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
+    /// Base translation: Cancel
+    public static var cancel : String = NSLocalizedString("cancel", comment: "")
+
+    /// Base translation: Continue
+    public static var nextStep : String = NSLocalizedString("nextStep", comment: "")
+
+    /// Base translation: Fr
+    public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
 
     /// Base translation: Mo
     public static var monday_short : String = NSLocalizedString("monday_short", comment: "")
@@ -58,14 +58,14 @@ public struct Loca {
     /// Base translation: Yes
     public static var yes : String = NSLocalizedString("yes", comment: "")
 
-    /// Base translation: Attention
-    public static var attention : String = NSLocalizedString("attention", comment: "")
+    /// Base translation: Summer semester
+    public static var summerSemester : String = NSLocalizedString("summerSemester", comment: "")
 
     /// Base translation: Tu
     public static var tuesday_short : String = NSLocalizedString("tuesday_short", comment: "")
 
-    /// Base translation: Summer semester
-    public static var summerSemester : String = NSLocalizedString("summerSemester", comment: "")
+    /// Base translation: Attention
+    public static var attention : String = NSLocalizedString("attention", comment: "")
 
     /// Base translation: Let's go!
     public static var letsgo : String = NSLocalizedString("letsgo", comment: "")
@@ -76,14 +76,14 @@ public struct Loca {
     /// Base translation: Tuesday
     public static var tuesday : String = NSLocalizedString("tuesday", comment: "")
 
-    /// Base translation: Cancel
-    public static var cancel : String = NSLocalizedString("cancel", comment: "")
-
-    /// Base translation: Fr
-    public static var friday_short : String = NSLocalizedString("friday_short", comment: "")
+    /// Base translation: Sa
+    public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
 
     /// Base translation: Monday
     public static var monday : String = NSLocalizedString("monday", comment: "")
+
+    /// Base translation: Winter semester
+    public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
 
 
     public struct Onboarding {
@@ -102,6 +102,19 @@ public struct Loca {
 
             /// Base translation: Your schedule shows you all your lectures.
             public static var ScheduleDescription : String = NSLocalizedString("Onboarding.Welcome.ScheduleDescription", comment: "")
+
+        }
+
+        public struct UnixLogin {
+
+            /// Base translation: Login
+            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
+
+            /// Base translation: Not now
+            public static var notnow : String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
+
+            /// Base translation: To be able to view your grades, you have to login using your HTW credentials.
+            public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
 
         }
 
@@ -138,19 +151,6 @@ public struct Loca {
                 public static var master : String = NSLocalizedString("Onboarding.Studygroup.degree.master", comment: "")
 
             }
-        }
-
-        public struct UnixLogin {
-
-            /// Base translation: Not now
-            public static var notnow : String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
-
-            /// Base translation: Login
-            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
-
-            /// Base translation: To be able to view your grades, you have to login using your HTW credentials.
-            public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
-
         }
     }
 
@@ -190,11 +190,11 @@ public struct Loca {
 
         public struct LectureType {
 
-            /// Base translation: Lecture
-            public static var lecture : String = NSLocalizedString("Schedule.LectureType.lecture", comment: "")
-
             /// Base translation: Exercise
             public static var exercise : String = NSLocalizedString("Schedule.LectureType.exercise", comment: "")
+
+            /// Base translation: Lecture
+            public static var lecture : String = NSLocalizedString("Schedule.LectureType.lecture", comment: "")
 
             /// Base translation: Practical
             public static var practical : String = NSLocalizedString("Schedule.LectureType.practical", comment: "")
@@ -203,11 +203,18 @@ public struct Loca {
 
         public struct noResults {
 
+            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
+
             /// Base translation: No plan...
             public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
 
-            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
+        }
+
+        public struct NextLecture {
+
+            /// Base translation: No more lectures today! 🚲🌴
+            public static var unavailable : String = NSLocalizedString("Schedule.NextLecture.unavailable", comment: "")
 
         }
     }
@@ -266,11 +273,41 @@ public struct Loca {
 
         public struct noResults {
 
+            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
+
             /// Base translation: No grades
             public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
 
-            /// Base translation: I can't find any of your grades. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Grades.noResults.message", comment: "")
+        }
+    }
+
+    public struct Canteen {
+
+        /// Base translation: Canteens
+        public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
+
+        /// Base translation: Canteen
+        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
+
+        /// Base translation: Counter not known
+        public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
+
+
+        public struct noResults {
+
+            /// Base translation: I can't find any meals for today.
+            public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
+
+            /// Base translation: No food
+            public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
+
+        }
+
+        public struct Meal {
+
+            /// Base translation: More information
+            public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
 
         }
     }
@@ -303,44 +340,14 @@ public struct Loca {
 
         public struct ExamType {
 
+            /// Base translation: Written
+            public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
+
             /// Base translation: APL
             public static var apl : String = NSLocalizedString("Exams.ExamType.apl", comment: "")
 
             /// Base translation: Oral
             public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
-
-            /// Base translation: Written
-            public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
-
-        }
-    }
-
-    public struct Canteen {
-
-        /// Base translation: Canteen
-        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
-
-        /// Base translation: Counter not known
-        public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
-
-        /// Base translation: Canteens
-        public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
-
-
-        public struct Meal {
-
-            /// Base translation: More information
-            public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
-
-        }
-
-        public struct noResults {
-
-            /// Base translation: No food
-            public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
-
-            /// Base translation: I can't find any meals for today.
-            public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
 
         }
     }
@@ -374,13 +381,13 @@ public struct Loca {
 
             public struct setGrades {
 
-                /// Base translation: Change datacenter credentials
-                public static var title : String = NSLocalizedString("Settings.items.setGrades.title", comment: "")
-
                 /// Base translation: (%@)
                 public static func subtitle(_ value1 : String) -> String {
                     return String(format: NSLocalizedString("Settings.items.setGrades.subtitle", comment: ""), value1)
                 }
+
+                /// Base translation: Change datacenter credentials
+                public static var title : String = NSLocalizedString("Settings.items.setGrades.title", comment: "")
 
             }
         }

@@ -20,7 +20,7 @@ class TodayViewController: ViewController {
             if self.lecture != nil {
                 self.updateUI()
             } else {
-                self.showEmptyMessage()
+                self.updateEmptyMessage(hidden: false)
             }
 		}
 	}
@@ -29,6 +29,10 @@ class TodayViewController: ViewController {
 	private let persistenceService = PersistenceService()
 	
 	// -- Outlets
+	
+	@IBOutlet private weak var noLectureLabel: UILabel!
+	
+	@IBOutlet private weak var containerView: UIView!
 	
 	@IBOutlet private weak var beginLabel: UILabel!
 	@IBOutlet private weak var endLabel: UILabel!
@@ -46,9 +50,9 @@ class TodayViewController: ViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
+				
 		self.view.backgroundColor = .clear
-		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact // (self.challenges.count < 3) ? .compact : .expanded
+		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
 		
 		self.loadActiveLecture()
 			.subscribe(onNext: { [weak self] l in
@@ -60,9 +64,11 @@ class TodayViewController: ViewController {
 	
 	private func updateUI() {
 		guard let lecture = self.lecture else {
-			self.showEmptyMessage()
+			self.updateEmptyMessage(hidden: false)
 			return
 		}
+		
+		self.updateEmptyMessage(hidden: true)
 		
 		let viewModel = LectureViewModel(model: lecture)
 		self.beginLabel.text = viewModel.begin
@@ -74,9 +80,10 @@ class TodayViewController: ViewController {
 		self.roomLabel.text = viewModel.room
 	}
 	
-	private func showEmptyMessage() {
-		// TODO: Empty message
-        Log.info("No lectures today! Update the UI accordingly!")
+	private func updateEmptyMessage(hidden: Bool) {
+		self.noLectureLabel.text = Loca.Schedule.NextLecture.unavailable
+		self.noLectureLabel.isHidden = hidden
+		self.containerView.isHidden = !hidden
 	}
 	
 	// MARK: - Private
@@ -145,7 +152,6 @@ extension TodayViewController: NCWidgetProviding {
 			self.preferredContentSize = compactSize
 		case .expanded:
 			self.preferredContentSize = CGSize(width: compactSize.width, height: compactSize.height * 2)
-			// self.preferredContentSize = (self.challenges.count < 3) ? compactSize : CGSize(width: compactSize.width, height: compactSize.height * 2)
 		}
 	}
 }

@@ -28,6 +28,7 @@
 "Schedule.freeDay"="Genieß Deinen freien Tag! 🎉";
 "Schedule.noResults.title"="Kein Plan...";
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
+"Schedule.NextLecture.unavailable"="Keine Stunden mehr für heute! 🚲🌴";
 
 "Schedule.LectureType.lecture"="Vorlesung";
 "Schedule.LectureType.practical"="Praktikum";
