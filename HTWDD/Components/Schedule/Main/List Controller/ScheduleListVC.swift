@@ -70,7 +70,11 @@ final class ScheduleListVC: ScheduleBaseVC {
         }
         
         // scroll to item
-        self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
+		if let attributes = self.collectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
+			self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: attributes.frame.origin.y), animated: animated)
+		} else {
+			self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
+		}
     }
     
 }
