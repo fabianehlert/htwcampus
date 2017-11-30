@@ -25,6 +25,8 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         static let highlightedShadowOpacity: Float = 0.3
     }
 
+	var isHighlightable: Bool = true
+	
 	// MARK: - UI
 
     let titleLabel: UILabel = {
@@ -104,6 +106,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 extension LectureCollectionViewCell: Highlightable {
 
     func highlight(animated: Bool) {
+		guard isHighlightable else { return }
         let animations: () -> Void = {
             self.contentView.backgroundColor = Const.highlightedColor
             self.transform = CGAffineTransform.identity.scaledBy(x: Const.highlightedScale, y: Const.highlightedScale)
@@ -133,6 +136,7 @@ extension LectureCollectionViewCell: Highlightable {
     }
 
     func unhighlight(animated: Bool) {
+		guard isHighlightable else { return }
         let animations: () -> Void = {
             self.contentView.backgroundColor = Const.color
             self.transform = CGAffineTransform.identity
