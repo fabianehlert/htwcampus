@@ -102,6 +102,8 @@ class ScheduleDetailVC: ViewController {
 	// MARK: - UI
 
 	override func initialSetup() {
+		self.title = self.viewModel.shortTitle
+		
 		self.colorView.backgroundColor = UIColor(hex: self.viewModel.color)
 		
 		self.nameLabel.text = self.viewModel.longTitle
