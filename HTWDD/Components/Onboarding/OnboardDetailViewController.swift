@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate {
+class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate, KeyboardPresentationHandler {
 
     var onFinish: ((Product?) -> Void)?
 
@@ -24,8 +24,25 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
     /// Set this config before calling super.initialSetup!
     var config: Config?
 
+	private lazy var containerView = UIView()
+	private lazy var titleContainer = UIView()
+	private lazy var centerStackView = UIStackView()
     private lazy var continueButton = ReactiveButton()
 
+	private lazy var topConstraint: NSLayoutConstraint = {
+		return self.containerView.topAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.topAnchor, constant: 0)
+	}()
+	private lazy var bottomConstraint: NSLayoutConstraint = {
+		return self.containerView.bottomAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+	}()
+	
+	private lazy var titleTopConstraint: NSLayoutConstraint = {
+		return self.titleContainer.topAnchor.constraint(equalTo: self.containerView.htw.safeAreaLayoutGuide.topAnchor, constant: 60)
+	}()
+	private lazy var continueButtonTopConstraint: NSLayoutConstraint = {
+		return self.continueButton.topAnchor.constraint(equalTo: self.centerStackView.bottomAnchor, constant: 12)
+	}()
+	
     // MARK: - Overwrite functions
 
     @objc func continueBoarding() {
@@ -52,13 +69,24 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
 
     override func initialSetup() {
         super.initialSetup()
-
+		
         guard let config = self.config else {
             preconditionFailure("Tried to use OnboardDetailViewController without config. Abort!")
         }
 
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
+		// --- Container ---
+		
+		self.containerView.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(self.containerView)
+		NSLayoutConstraint.activate([
+			self.containerView.leadingAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor),
+			self.topConstraint,
+			self.containerView.trailingAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.trailingAnchor),
+			self.bottomConstraint
+		])
+		
         // --- Title Label ---
 
         let titleLabel = UILabel()
@@ -67,10 +95,9 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         titleLabel.textColor = UIColor.htw.textHeadline
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        let titleContainer = UIView()
-        titleContainer.translatesAutoresizingMaskIntoConstraints = false
-        titleContainer.addSubview(titleLabel)
-        self.view.addSubview(titleContainer)
+        self.titleContainer.translatesAutoresizingMaskIntoConstraints = false
+        self.titleContainer.addSubview(titleLabel)
+        self.containerView.addSubview(self.titleContainer)
 
         // --- Description Label ---
 
@@ -104,15 +131,15 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         textFieldStackView.spacing = 12
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        let centerStackView = UIStackView(arrangedSubviews: [
+        self.centerStackView = UIStackView(arrangedSubviews: [
             descriptionLabel,
             textFieldStackView
-            ])
-        centerStackView.axis = .vertical
-        centerStackView.distribution = .fill
-        centerStackView.spacing = 40
-        centerStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(centerStackView)
+		])
+        self.centerStackView.axis = .vertical
+        self.centerStackView.distribution = .fill
+        self.centerStackView.spacing = 40
+        self.centerStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.containerView.addSubview(self.centerStackView)
 
         // --- Continue Button ---
 
@@ -126,7 +153,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
             .controlEvent(.touchUpInside)
             .subscribe({ [weak self] _ in self?.continueBoarding() })
             .disposed(by: self.rx_disposeBag)
-        self.view.addSubview(self.continueButton)
+        self.containerView.addSubview(self.continueButton)
 
         // --- Skip Button ---
 
@@ -139,7 +166,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
             .controlEvent(.touchUpInside)
             .subscribe({ [weak self] _ in self?.skipBoarding() })
             .disposed(by: self.rx_disposeBag)
-        titleContainer.addSubview(skip)
+        self.containerView.addSubview(skip)
 
         // --- Constraints ---
 
@@ -151,28 +178,30 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         }
 
         NSLayoutConstraint.activate([
-            titleContainer.topAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.topAnchor, constant: 12),
-            titleContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            titleContainer.bottomAnchor.constraint(equalTo: centerStackView.topAnchor),
-            titleContainer.widthAnchor.constraint(equalTo: centerStackView.widthAnchor),
+            self.titleTopConstraint,
+            self.titleContainer.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+            self.titleContainer.widthAnchor.constraint(equalTo: self.centerStackView.widthAnchor),
+			self.titleContainer.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 1),
 
-            skip.topAnchor.constraint(equalTo: titleContainer.topAnchor),
-            skip.trailingAnchor.constraint(equalTo: titleContainer.trailingAnchor),
+			titleLabel.centerXAnchor.constraint(equalTo: self.titleContainer.centerXAnchor),
+			titleLabel.centerYAnchor.constraint(equalTo: self.titleContainer.centerYAnchor),
 
-            titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
+			skip.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 10),
+			skip.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -20),
 
-            centerStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            centerStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50),
-            centerStackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            self.centerStackView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+			self.centerStackView.topAnchor.constraint(equalTo: self.titleContainer.bottomAnchor, constant: 40),
+            self.centerStackView.widthAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 0.8),
 
             textFieldStackView.heightAnchor.constraint(equalToConstant: stackViewHeight),
 
             self.continueButton.heightAnchor.constraint(equalToConstant: 55),
-            self.continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.continueButton.widthAnchor.constraint(equalTo: centerStackView.widthAnchor),
-            self.continueButton.bottomAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            self.continueButton.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+            self.continueButton.widthAnchor.constraint(equalTo: self.centerStackView.widthAnchor),
+            self.continueButton.bottomAnchor.constraint(equalTo: self.containerView.htw.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
+		
+		self.registerForKeyboardNotifications()
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -200,5 +229,34 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate 
         textField.resignFirstResponder()
         return false
     }
+
+	// MARK: - KeyboardPresentationHandler
+	
+	@objc
+	func keyboardWillShow(_ notification: Notification) {
+		self.animateWithKeyboardNotification(notification, layout: { frame in
+			print(frame)
+			self.bottomConstraint.constant = -frame.height
+			self.topConstraint.constant = -frame.height
+			
+			self.titleTopConstraint.isActive = false
+			self.continueButtonTopConstraint.isActive = true
+		}) {
+			self.view.layoutIfNeeded()
+		}
+	}
+	
+	@objc
+	func keyboardWillHide(_ notification: Notification) {
+		self.animateWithKeyboardNotification(notification, layout: { frame in
+			self.bottomConstraint.constant = 0
+			self.topConstraint.constant = 0
+			
+			self.titleTopConstraint.isActive = true
+			self.continueButtonTopConstraint.isActive = false
+		}) {
+			self.view.layoutIfNeeded()
+		}
+	}
 
 }
