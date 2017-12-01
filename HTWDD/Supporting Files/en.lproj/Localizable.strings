@@ -60,6 +60,10 @@
 "Settings.items.setGrades.subtitle"="(%@)";
 "Settings.items.deleteAll"="Delete all stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
+"Settings.sections.authentication"="Your information";
+"Settings.sections.openSource"="Open-Source";
+"Settings.sections.weAreOpenSource"="We are Open Source!";
+"Settings.sections.deleteAll"="Deletion";
 
 "monday"="Monday";
 "tuesday"="Tuesday";

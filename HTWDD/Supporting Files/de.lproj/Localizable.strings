@@ -60,6 +60,10 @@
 "Settings.items.setGrades.subtitle"="(%@)";
 "Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
 "Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";
+"Settings.sections.authentication"="Deine Angaben";
+"Settings.sections.openSource"="Open-Source";
+"Settings.sections.weAreOpenSource"="Wir sind Open Source!";
+"Settings.sections.deleteAll"="Löschung";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
