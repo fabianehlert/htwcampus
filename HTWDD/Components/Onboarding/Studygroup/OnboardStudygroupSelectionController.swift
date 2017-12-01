@@ -25,7 +25,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
 	
 	@available(iOS 10.0, *)
 	private lazy var animator: UIViewPropertyAnimator = {
-		let a = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
+		let a = UIViewPropertyAnimator(duration: 0.4, curve: .linear, animations: {
 			self.visualEffectView.effect = UIBlurEffect(style: .light)
 		})
 		return a
@@ -153,6 +153,14 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
 			self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .light) : nil
 		}
 		
+		if direction == .present {
+			if #available(iOS 10.0, *) {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+					self.animator.pauseAnimation()
+				}
+			}
+		}
+
 		UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [.curveEaseIn], animations: {
 			self.collectionView.alpha = direction == .present ? 1 : 0
 			self.collectionView.contentOffset.y += direction == .present ? 150 : -150
