@@ -145,7 +145,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
 
         self.continueButton.isEnabled = false
         self.continueButton.setTitle(config.continueButtonText, for: .normal)
-        self.continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+        self.continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         self.continueButton.backgroundColor = UIColor.htw.blue
         self.continueButton.layer.cornerRadius = 12
         self.continueButton.translatesAutoresizingMaskIntoConstraints = false

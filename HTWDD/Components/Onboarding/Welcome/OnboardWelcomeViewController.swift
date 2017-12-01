@@ -79,7 +79,7 @@ class OnboardWelcomeViewController: ViewController {
 
 		let continueButton = ReactiveButton()
 		continueButton.setTitle(Loca.nextStep, for: .normal)
-		continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+		continueButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
 		continueButton.backgroundColor = UIColor.htw.blue
 		continueButton.layer.cornerRadius = 12
 		continueButton.translatesAutoresizingMaskIntoConstraints = false

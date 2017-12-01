@@ -68,7 +68,7 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         let configureButton: (ReactiveButton) -> Void = {
             $0.isEnabled = false
             $0.setTitle("config.continueButtonText", for: .normal)
-            $0.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+            $0.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
             $0.backgroundColor = UIColor.htw.blue
             $0.layer.cornerRadius = 12
         }
