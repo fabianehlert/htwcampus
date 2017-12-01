@@ -2,8 +2,8 @@
 //  KeyboardPresentationHandler.swift
 //  HTWDD
 //
-//  Created by Fabian Ehlert on 01.12.17.
-//  Copyright © 2017 HTW Dresden. All rights reserved.
+//  Shamelessly copied from Florian Schliep (https://twitter.com/floschliep)
+//  Copyright © Florian Schliep
 //
 
 import UIKit
