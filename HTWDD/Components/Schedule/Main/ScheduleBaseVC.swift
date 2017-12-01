@@ -49,14 +49,6 @@ class ScheduleBaseVC: CollectionViewController {
 		DispatchQueue.main.async {
 			self.register3DTouch()
 		}
-        
-        NotificationCenter.default.rx
-            .notification(.UIApplicationWillEnterForeground)
-            .subscribe(onNext: { [weak self] _ in
-                self?.dataSource.invalidate()
-                self?.jumpToToday()
-            })
-            .disposed(by: self.rx_disposeBag)
     }
 
     override func noResultsViewConfiguration() -> NoResultsView.Configuration? {
