@@ -26,7 +26,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
 	@available(iOS 10.0, *)
 	private lazy var animator: UIViewPropertyAnimator = {
 		let a = UIViewPropertyAnimator(duration: 0.4, curve: .linear, animations: {
-			self.visualEffectView.effect = UIBlurEffect(style: .light)
+			self.visualEffectView.effect = UIBlurEffect(style: .extraLight)
 		})
 		return a
 	}()
@@ -150,7 +150,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
 			self.animator.isReversed = direction == .dismiss
 			self.animator.startAnimation()
 		} else {
-			self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .light) : nil
+			self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
 		}
 		
 		if direction == .present {
