@@ -372,7 +372,7 @@ public struct Loca {
                 /// Base translation: Change studygroup
                 public static var title : String = NSLocalizedString("Settings.items.setSchedule.title", comment: "")
 
-                /// Base translation: (%@/%@/%@)
+                /// Base translation: %@/%@/%@
                 public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
                     return String(format: NSLocalizedString("Settings.items.setSchedule.subtitle", comment: ""), value1, value2, value3)
                 }
@@ -381,7 +381,7 @@ public struct Loca {
 
             public struct setGrades {
 
-                /// Base translation: (%@)
+                /// Base translation: %@
                 public static func subtitle(_ value1 : String) -> String {
                     return String(format: NSLocalizedString("Settings.items.setGrades.subtitle", comment: ""), value1)
                 }

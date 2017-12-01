@@ -55,9 +55,9 @@
 "Settings.title"="Settings";
 
 "Settings.items.setSchedule.title"="Change studygroup";
-"Settings.items.setSchedule.subtitle"="(%@/%@/%@)";
+"Settings.items.setSchedule.subtitle"="%@/%@/%@";
 "Settings.items.setGrades.title"="Change datacenter credentials";
-"Settings.items.setGrades.subtitle"="(%@)";
+"Settings.items.setGrades.subtitle"="%@";
 "Settings.items.deleteAll"="Delete all stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
 
