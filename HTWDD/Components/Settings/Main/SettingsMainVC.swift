@@ -33,31 +33,31 @@ class SettingsMainVC: TableViewController {
     
     private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
 	
-	private var settings: [[SettingsItem]] {
+	private var settings: [(String, [SettingsItem])] {
 		return [
-			[
+			(Loca.Settings.sections.authentication, [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
 							 action: self.showScheduleOnboarding()),
 				SettingsItem(title: Loca.Settings.items.setGrades.title,
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
 							 action: self.showGradeOnboarding())
-			],
-			[
+			]),
+			(Loca.Settings.sections.openSource, [
 				SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
 				SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
 				SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
-			],
-			[
+			]),
+            (Loca.Settings.sections.weAreOpenSource, [
 				SettingsItem(title: "HTW auf GitHub", action: self.showGitHub())
-			],
-			[
+			]),
+			(Loca.Settings.sections.deleteAll, [
 				SettingsItem(title: Loca.Settings.items.deleteAll,
 							 action: self.showConfirmationAlert(title: Loca.attention,
 																message: Loca.Settings.items.deleteAllConfirmationText,
 																actionTitle: Loca.yes,
 																action: { [weak self] in self?.delegate?.deleteAllData() })),
-			]
+			])
 		]
 	}
     

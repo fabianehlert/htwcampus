@@ -391,5 +391,21 @@ public struct Loca {
 
             }
         }
+
+        public struct sections {
+
+            /// Base translation: Open-Source
+            public static var openSource : String = NSLocalizedString("Settings.sections.openSource", comment: "")
+
+            /// Base translation: Your information
+            public static var authentication : String = NSLocalizedString("Settings.sections.authentication", comment: "")
+
+            /// Base translation: We are Open Source!
+            public static var weAreOpenSource : String = NSLocalizedString("Settings.sections.weAreOpenSource", comment: "")
+
+            /// Base translation: Deletion
+            public static var deleteAll : String = NSLocalizedString("Settings.sections.deleteAll", comment: "")
+
+        }
     }
 }
