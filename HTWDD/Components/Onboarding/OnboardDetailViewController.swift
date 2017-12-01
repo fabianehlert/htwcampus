@@ -235,7 +235,6 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
 	@objc
 	func keyboardWillShow(_ notification: Notification) {
 		self.animateWithKeyboardNotification(notification, layout: { frame in
-			print(frame)
 			self.bottomConstraint.constant = -frame.height
 			self.topConstraint.constant = -frame.height
 			
