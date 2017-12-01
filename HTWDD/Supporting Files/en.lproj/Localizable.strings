@@ -4,7 +4,7 @@
 "Onboarding.Welcome.GradesDescription"="View what your professors graded you in your exams.";
 
 "Onboarding.Studygroup.title"="Study group";
-"Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
+"Onboarding.Studygroup.body"="Select your enrollment year, major and study group here.\nThis information is necessary in order to show you your schedule.";
 "Onboarding.Studygroup.notnow"="Not now";
 
 "Onboarding.Studygroup.year"="Year";

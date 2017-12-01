@@ -135,7 +135,7 @@ public struct Loca {
             /// Base translation: Group
             public static var group : String = NSLocalizedString("Onboarding.Studygroup.group", comment: "")
 
-            /// Base translation: In order to show you your personal schedule, we need to know what study group you're in.
+            /// Base translation: Select your enrollment year, major and study group here. This information is necessary in order to show you your schedule.
             public static var body : String = NSLocalizedString("Onboarding.Studygroup.body", comment: "")
 
 
