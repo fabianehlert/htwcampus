@@ -24,6 +24,8 @@ class CanteenDetailViewController: ViewController {
 	
 	private lazy var scrollView: UIScrollView = {
 		let scrollView = UIScrollView()
+		scrollView.alwaysBounceVertical = true
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		return scrollView
 	}()
 	
@@ -32,7 +34,7 @@ class CanteenDetailViewController: ViewController {
 		view.layer.shadowColor = UIColor.black.cgColor
 		view.layer.shadowOffset = .zero
 		view.layer.shadowRadius = 12
-		view.layer.shadowOpacity = 0.3
+		view.layer.shadowOpacity = 0.25
 		view.clipsToBounds = false
 		return view
 	}()
@@ -93,19 +95,31 @@ class CanteenDetailViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Loca.close, style: .done, target: self, action: #selector(dismissOrPopViewController))
-        }
 		
-		let layoutGuide = self.view.htw.safeAreaLayoutGuide
+		self.setupUI()
+        self.update(viewModel: self.viewModel)
+    }
+	
+    override func initialSetup() {
+        super.initialSetup()
 
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: Loca.close, style: .done, target: self, action: #selector(dismissOrPopViewController))
+		}
+
+		if #available(iOS 11.0, *) {
+			self.navigationItem.largeTitleDisplayMode = .never
+		}
+    }
+	
+	// MARK: - UI
+
+	private func setupUI() {
 		// ScrollView
 		
-		self.scrollView.alwaysBounceVertical = true
-		self.scrollView.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(self.scrollView)
 		
+		let layoutGuide = self.view.htw.safeAreaLayoutGuide
 		NSLayoutConstraint.activate([
 			self.scrollView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
 			self.scrollView.topAnchor.constraint(equalTo: layoutGuide.topAnchor),
@@ -127,54 +141,42 @@ class CanteenDetailViewController: ViewController {
 		
 		// SubViews
 		
-		let subviews: [UIView] = [self.imageContainerView, self.counterLabel, self.priceLabel, self.nameLabel, self.moreButton]
-        subviews.forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.scrollView.addSubview($0)
-        }
-
-        self.moreButton.addTarget(self, action: #selector(openMealWebsite), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
+		[self.imageContainerView, self.counterLabel, self.priceLabel, self.nameLabel, self.moreButton].forEach {
+			$0.translatesAutoresizingMaskIntoConstraints = false
+			self.scrollView.addSubview($0)
+		}
+		
+		self.moreButton.addTarget(self, action: #selector(openMealWebsite), for: .touchUpInside)
+		
+		NSLayoutConstraint.activate([
 			self.imageView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-            self.imageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: Const.margin),
-            self.imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor, multiplier: 1 / Const.imageAspectRatio),
+			self.imageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: Const.margin),
+			self.imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor, multiplier: 1 / Const.imageAspectRatio),
 			self.imageView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 1, constant: -(2*Const.margin)),
 			
-            self.counterLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-            self.counterLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
+			self.counterLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+			self.counterLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
 			
 			self.priceLabel.leadingAnchor.constraint(equalTo: self.counterLabel.trailingAnchor, constant: Const.spacing),
 			self.priceLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
 			self.priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.scrollView.trailingAnchor, constant: -Const.margin),
 			self.priceLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: Const.priceMinWidth),
-
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-            self.nameLabel.topAnchor.constraint(equalTo: self.counterLabel.bottomAnchor, constant: Const.spacing),
-            self.nameLabel.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin),
-            self.nameLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.moreButton.topAnchor),
+			
+			self.nameLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+			self.nameLabel.topAnchor.constraint(equalTo: self.counterLabel.bottomAnchor, constant: Const.spacing),
+			self.nameLabel.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin),
+			self.nameLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.moreButton.topAnchor),
 			self.nameLabel.widthAnchor.constraint(equalTo: self.imageView.widthAnchor),
 			
-            self.moreButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+			self.moreButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
 			self.moreButton.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: Const.margin),
 			self.moreButton.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin),
-            self.moreButton.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -Const.margin),
-            self.moreButton.heightAnchor.constraint(equalToConstant: 40),
+			self.moreButton.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -Const.margin),
+			self.moreButton.heightAnchor.constraint(equalToConstant: 40),
 			self.moreButton.widthAnchor.constraint(equalTo: self.imageView.widthAnchor)
-        ])
-        
-        self.update(viewModel: self.viewModel)
-    }
-    
-    // MARK: - UI
-    
-    override func initialSetup() {
-        super.initialSetup()
-        if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = .never
-        }
-    }
-    
+		])
+	}
+	
     private func update(viewModel: MealViewModel) {
         self.title = viewModel.mensa
         self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Meal-Placeholder"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
