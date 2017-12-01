@@ -31,7 +31,6 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
         self.usernameTextField.text = "s"
         self.usernameTextField.keyboardType = .numberPad
         self.passwordTextField.isSecureTextEntry = true
-        self.usernameTextField.becomeFirstResponder()
     }
 
     // MARK: - Actions
