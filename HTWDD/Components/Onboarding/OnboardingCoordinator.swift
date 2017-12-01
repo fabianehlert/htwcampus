@@ -73,7 +73,7 @@ class OnboardingCoordinator: Coordinator {
         welcome.onContinue = { vc in
             next()
         }
-        self.navigationController.viewControllers = [welcome]
+        self.navigationController.pushViewController(welcome, animated: true)
     }
 
     private func showStudyGroupOnboarding(response: Response, next: @escaping () -> Void) {
