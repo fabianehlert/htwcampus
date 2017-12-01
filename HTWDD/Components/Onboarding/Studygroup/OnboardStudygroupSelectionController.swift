@@ -79,8 +79,12 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - self.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
+		
+		self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
+
         self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: Const.itemHeight)
         self.collectionView.backgroundColor = .clear
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -95,12 +99,22 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
-            ])
-        
+		])
+		
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel))
         self.visualEffectView.addGestureRecognizer(tapGesture)
     }
-    
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		let top = (self.view.height - self.collectionView.contentSize.height - (self.view.htw.safeAreaInsets.bottom + 54))
+		self.collectionView.contentInset = UIEdgeInsets(top: max(44, top),
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
+	}
+	
     @objc
     func cancel(gesture: UITapGestureRecognizer) {
         self.selection(nil)
@@ -118,7 +132,7 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
         let startY = (self.view.height - self.collectionViewHeight) * -1
         self.collectionView.contentOffset.y = direction == .present ? startY - 150 : startY
         
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseIn], animations: {
             self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
 			self.view.alpha = direction == .present ? 1 : 0
             self.collectionView.contentOffset.y = direction == .present ? startY : startY - 150
