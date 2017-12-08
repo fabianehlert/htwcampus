@@ -116,7 +116,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
             }
             textField.font = .systemFont(ofSize: 30, weight: .medium)
             textField.backgroundColor = UIColor.htw.veryLightGrey
-            textField.textAlignment = .center
+            textField.textAlignment = .left
             textField.delegate = self
             textField.addTarget(self, action: #selector(self.inputChanges(textField:)), for: .editingChanged)
             textField.translatesAutoresizingMaskIntoConstraints = false
