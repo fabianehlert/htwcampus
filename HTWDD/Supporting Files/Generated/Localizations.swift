@@ -107,14 +107,20 @@ public struct Loca {
 
         public struct UnixLogin {
 
-            /// Base translation: Login
-            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
+            /// Base translation: To be able to view your grades, you have to login using your HTW credentials.
+            public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
 
             /// Base translation: Not now
             public static var notnow : String = NSLocalizedString("Onboarding.UnixLogin.notnow", comment: "")
 
-            /// Base translation: To be able to view your grades, you have to login using your HTW credentials.
-            public static var body : String = NSLocalizedString("Onboarding.UnixLogin.body", comment: "")
+            /// Base translation: Login
+            public static var title : String = NSLocalizedString("Onboarding.UnixLogin.title", comment: "")
+
+            /// Base translation: S-Number
+            public static var sPlaceholder : String = NSLocalizedString("Onboarding.UnixLogin.sPlaceholder", comment: "")
+
+            /// Base translation: Password
+            public static var passwordPlaceholder : String = NSLocalizedString("Onboarding.UnixLogin.passwordPlaceholder", comment: "")
 
         }
 

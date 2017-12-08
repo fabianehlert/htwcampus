@@ -18,6 +18,8 @@
 "Onboarding.UnixLogin.title"="Anmelden";
 "Onboarding.UnixLogin.body"="Damit wir Dir Deine Noten anzeigen können, musst Du Dich mit Deinen Zugangsdaten anmelden.";
 "Onboarding.UnixLogin.notnow"="Später";
+"Onboarding.UnixLogin.sPlaceholder"="S-Nummer";
+"Onboarding.UnixLogin.passwordPlaceholder"="Passwort";
 
 "Schedule.title"="Stundenplan";
 "Schedule.today"="Heute";

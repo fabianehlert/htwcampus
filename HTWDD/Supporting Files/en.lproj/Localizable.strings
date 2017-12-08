@@ -18,6 +18,8 @@
 "Onboarding.UnixLogin.title"="Login";
 "Onboarding.UnixLogin.body"="To be able to view your grades, you have to login using your HTW credentials.";
 "Onboarding.UnixLogin.notnow"="Not now";
+"Onboarding.UnixLogin.sPlaceholder"="S-Number";
+"Onboarding.UnixLogin.passwordPlaceholder"="Password";
 
 "Schedule.title"="Schedule";
 "Schedule.today"="Today";
