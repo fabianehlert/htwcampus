@@ -363,6 +363,9 @@ public struct Loca {
         /// Base translation: Settings
         public static var title : String = NSLocalizedString("Settings.title", comment: "")
 
+        /// Base translation: Developed in Dresden ❤️
+        public static var credits : String = NSLocalizedString("Settings.credits", comment: "")
+
 
         public struct items {
 
