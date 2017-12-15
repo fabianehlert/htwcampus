@@ -35,7 +35,7 @@ class SettingsMainVC: TableViewController {
 	
 	private var settings: [(String, [SettingsItem])] {
 		return [
-			(Loca.Settings.sections.authentication, [
+			("", [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
 							 action: self.showScheduleOnboarding()),
@@ -43,14 +43,14 @@ class SettingsMainVC: TableViewController {
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
 							 action: self.showGradeOnboarding())
 			]),
-			(Loca.Settings.sections.openSource, [
-				SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
-				SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
-				SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
-			]),
             (Loca.Settings.sections.weAreOpenSource, [
-				SettingsItem(title: "HTW auf GitHub", action: self.showGitHub())
+				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
 			]),
+            (Loca.Settings.sections.openSource, [
+                SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
+                SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
+                SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
+            ]),
 			(Loca.Settings.sections.deleteAll, [
 				SettingsItem(title: Loca.Settings.items.deleteAll,
 							 action: self.showConfirmationAlert(title: Loca.attention,
