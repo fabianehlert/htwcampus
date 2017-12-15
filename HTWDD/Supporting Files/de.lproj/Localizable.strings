@@ -65,6 +65,10 @@
 "Settings.sections.authentication"="Deine Angaben";
 "Settings.sections.openSource"="Open Source Lizenzen";
 "Settings.sections.weAreOpenSource"="Wir sind Open Source!";
+"Settings.sections.contact"="Kontakt";
+"Settings.items.mail"="Mail an Entwickler schreiben";
+"Settings.items.mail.fallback.title"="Mailadresse kopiert!";
+"Settings.items.mail.fallback.message"="Es sieht so aus, als würdest du die Mail App von Apple nicht verwenden. Deshalb haben wir die Kontaktadresse für dich kopiert.";
 "Settings.items.github"="HTW iOS auf GitHub";
 "Settings.sections.deleteAll"="Löschung";
 "Settings.credits"="Entwickelt in Dresden ❤️";
@@ -88,6 +92,7 @@
 "summerSemester"="Sommersemester";
 "winterSemester"="Wintersemester";
 
+"ok"="Okay";
 "close"="Schließen";
 "cancel"="Abbrechen";
 "nextStep"="Weiter";

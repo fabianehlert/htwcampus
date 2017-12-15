@@ -65,6 +65,10 @@
 "Settings.sections.authentication"="Your information";
 "Settings.sections.openSource"="Open-source licenses";
 "Settings.sections.weAreOpenSource"="We are Open Source!";
+"Settings.sections.contact"="Contact";
+"Settings.items.mail"="Write mail to developer";
+"Settings.items.mail.fallback.title"="Mail address copied!";
+"Settings.items.mail.fallback.message"="It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.";
 "Settings.items.github"="HTW iOS on GitHub";
 "Settings.sections.deleteAll"="Deletion";
 "Settings.credits"="Developed in Dresden ❤️";
@@ -88,6 +92,7 @@
 "summerSemester"="Summer semester";
 "winterSemester"="Winter semester";
 
+"ok"="OK";
 "close"="Close";
 "cancel"="Cancel";
 "nextStep"="Continue";
