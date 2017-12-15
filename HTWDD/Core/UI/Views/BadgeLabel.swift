@@ -28,6 +28,7 @@ class BadgeLabel: UILabel {
     }
     
     override var intrinsicContentSize: CGSize {
+		if self.text == nil || self.text == "" { return .zero }
         let sup = super.intrinsicContentSize
 		let innerMargin: CGFloat = 2
         return CGSize(width: sup.width + innerMargin * 6, height: sup.height + innerMargin * 2)

@@ -56,9 +56,13 @@ class MealCell: FlatCollectionViewCell, Cell {
 
 		self.titleView.font = .systemFont(ofSize: 16, weight: .medium)
 		self.titleView.textColor = UIColor.htw.textHeadline
-		self.titleView.numberOfLines = 0
+		self.titleView.numberOfLines = 4
 		
-		let views: [UIView] = [self.imageView, self.counterView, self.priceView, self.titleView]
+        let stackView = UIStackView(arrangedSubviews: [self.counterView, self.priceView])
+        stackView.axis = .horizontal
+        stackView.spacing = Const.innerItemMargin
+        
+		let views: [UIView] = [self.imageView, stackView, self.titleView]
         views.forEach {
             self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -71,19 +75,15 @@ class MealCell: FlatCollectionViewCell, Cell {
 			self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
 			self.imageView.widthAnchor.constraint(equalToConstant: Const.imageWidth),
 
-			// Counter BadgeLabel
-			self.counterView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
-			self.counterView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin),
-			
-			// Price BadgeLabel
-			self.priceView.leadingAnchor.constraint(equalTo: self.counterView.trailingAnchor, constant: (Const.innerItemMargin / 2)),
-			self.priceView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin),
-			self.priceView.trailingAnchor.constraint(lessThanOrEqualTo: self.contentView.trailingAnchor, constant: -Const.innerItemMargin),
+            // Counter and price stack view
+            stackView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
+            stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.innerItemMargin),
+            stackView.trailingAnchor.constraint(lessThanOrEqualTo: self.contentView.trailingAnchor, constant: -Const.innerItemMargin),
 			self.priceView.widthAnchor.constraint(greaterThanOrEqualToConstant: Const.priceMinWidth),
 			
 			// Title Label
 			self.titleView.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Const.innerItemMargin),
-            self.titleView.topAnchor.constraint(equalTo: self.counterView.bottomAnchor, constant: 4),
+            self.titleView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 4),
 			self.titleView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.innerItemMargin),
 			self.titleView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -Const.innerItemMargin)
         ])
@@ -96,9 +96,12 @@ class MealCell: FlatCollectionViewCell, Cell {
     func update(viewModel: MealViewModel) {
         self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Meal-Placeholder"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
         self.titleView.text = viewModel.title
+        
         self.counterView.text = viewModel.counter
+        self.counterView.isHidden = viewModel.counter == ""
+        
 		self.priceView.text = viewModel.price
-		self.priceView.isHidden = viewModel.price == nil
+		self.priceView.isHidden = viewModel.price == nil || viewModel.price == ""
 		
         self.contentView.layoutIfNeeded()
     }

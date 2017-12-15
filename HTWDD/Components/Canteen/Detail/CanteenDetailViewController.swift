@@ -46,7 +46,7 @@ class CanteenDetailViewController: ViewController {
 		imageView.clipsToBounds = true
         return imageView
     }()
-	
+    
     private lazy var counterLabel: BadgeLabel = {
         let label = BadgeLabel()
         label.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -140,8 +140,12 @@ class CanteenDetailViewController: ViewController {
 		])
 		
 		// SubViews
+        
+        let stackView = UIStackView(arrangedSubviews: [self.counterLabel, self.priceLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = Const.spacing
 		
-		[self.imageContainerView, self.counterLabel, self.priceLabel, self.nameLabel, self.moreButton].forEach {
+		[self.imageContainerView, stackView, self.nameLabel, self.moreButton].forEach {
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.scrollView.addSubview($0)
 		}
@@ -154,16 +158,13 @@ class CanteenDetailViewController: ViewController {
 			self.imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor, multiplier: 1 / Const.imageAspectRatio),
 			self.imageView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 1, constant: -(2*Const.margin)),
 			
-			self.counterLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-			self.counterLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
-			
-			self.priceLabel.leadingAnchor.constraint(equalTo: self.counterLabel.trailingAnchor, constant: Const.spacing),
-			self.priceLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
-			self.priceLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.scrollView.trailingAnchor, constant: -Const.margin),
+            stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+            stackView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Const.margin),
+			stackView.trailingAnchor.constraint(lessThanOrEqualTo: self.scrollView.trailingAnchor, constant: -Const.margin),
 			self.priceLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: Const.priceMinWidth),
 			
 			self.nameLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-			self.nameLabel.topAnchor.constraint(equalTo: self.counterLabel.bottomAnchor, constant: Const.spacing),
+			self.nameLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Const.spacing),
 			self.nameLabel.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin),
 			self.nameLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.moreButton.topAnchor),
 			self.nameLabel.widthAnchor.constraint(equalTo: self.imageView.widthAnchor),
@@ -180,10 +181,13 @@ class CanteenDetailViewController: ViewController {
     private func update(viewModel: MealViewModel) {
         self.title = viewModel.mensa
         self.imageView.htw.loadImage(url: viewModel.imageUrl, loading: #imageLiteral(resourceName: "Meal-Placeholder"), fallback: #imageLiteral(resourceName: "Meal-Placeholder"))
-        self.priceLabel.text = viewModel.price
-        self.counterLabel.text = viewModel.counter
         self.nameLabel.text = viewModel.title
-		self.priceLabel.isHidden = viewModel.price == nil
+        
+        self.counterLabel.text = viewModel.counter
+        self.counterLabel.isHidden = viewModel.counter == ""
+        
+        self.priceLabel.text = viewModel.price
+        self.priceLabel.isHidden =  viewModel.price == nil || viewModel.price == ""
 		
         self.view.layoutIfNeeded()
     }
