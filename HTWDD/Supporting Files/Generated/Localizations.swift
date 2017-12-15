@@ -384,8 +384,14 @@ public struct Loca {
 
             public struct mail {
 
+                /// Base translation: Write mail to developer
+                public static var title : String = NSLocalizedString("Settings.items.mail.title", comment: "")
+
 
                 public struct fallback {
+
+                    /// Base translation: It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.
+                    public static var message : String = NSLocalizedString("Settings.items.mail.fallback.message", comment: "")
 
                     /// Base translation: Mail address copied!
                     public static var title : String = NSLocalizedString("Settings.items.mail.fallback.title", comment: "")
