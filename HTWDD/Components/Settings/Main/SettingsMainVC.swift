@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 protocol SettingsMainVCDelegate: class {
     func deleteAllData()
@@ -15,6 +16,7 @@ protocol SettingsMainVCDelegate: class {
 	
 	func showLicense(name: String)
 	func showGitHub()
+    func composeMail()
 }
 
 class SettingsMainVC: TableViewController {
@@ -46,6 +48,9 @@ class SettingsMainVC: TableViewController {
             (Loca.Settings.sections.weAreOpenSource, [
 				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
 			]),
+            (Loca.Settings.sections.contact, [
+                SettingsItem(title: Loca.Settings.items.mail.title, action: self.composeMail())
+            ]),
             (Loca.Settings.sections.openSource, [
                 SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
                 SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
@@ -137,6 +142,10 @@ class SettingsMainVC: TableViewController {
 		self.delegate?.showGitHub()
 	}
 	
+    private func composeMail() {
+        self.delegate?.composeMail()
+    }
+    
 	// MARK: - ViewController lifecycle
 	
 	override func viewDidLoad() {
@@ -167,4 +176,10 @@ class SettingsMainVC: TableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+}
+
+extension SettingsMainVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
