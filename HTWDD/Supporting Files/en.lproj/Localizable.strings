@@ -63,8 +63,9 @@
 "Settings.items.deleteAll"="Delete all stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
 "Settings.sections.authentication"="Your information";
-"Settings.sections.openSource"="Open-Source";
+"Settings.sections.openSource"="Open-source licenses";
 "Settings.sections.weAreOpenSource"="We are Open Source!";
+"Settings.items.github"="HTW iOS on GitHub";
 "Settings.sections.deleteAll"="Deletion";
 "Settings.credits"="Developed in Dresden ❤️";
 
