@@ -61,6 +61,33 @@ class SettingsMainVC: TableViewController {
 		]
 	}
     
+    private lazy var footerView: UIView = {
+        let h: CGFloat = 100
+        
+        let love = NSAttributedString(string: Loca.Settings.credits,
+                                      attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium),
+                                                   .foregroundColor: UIColor.htw.grey])
+        let version = NSAttributedString(string: String(format: "\n%@ (%@)", Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String, Bundle.main.infoDictionary!["CFBundleVersion"] as! String),
+                                         attributes: [.font: UIFont.systemFont(ofSize: 12, weight: .medium),
+                                                      .foregroundColor: UIColor.htw.grey])
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        
+        let text = NSMutableAttributedString()
+        text.append(love)
+        text.append(version)
+        text.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.length))
+        
+        let loveLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.width, height: h))
+        loveLabel.attributedText = text
+        loveLabel.numberOfLines = 2
+        loveLabel.textAlignment = .center
+        loveLabel.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin, .flexibleTopMargin, .flexibleWidth, .flexibleHeight]
+
+        return loveLabel
+    }()
+    
     weak var delegate: SettingsMainVCDelegate?
     
     init() {
@@ -119,6 +146,8 @@ class SettingsMainVC: TableViewController {
 			self.navigationController?.navigationBar.prefersLargeTitles = true
 			self.navigationItem.largeTitleDisplayMode = .automatic
 		}
+
+        self.tableView.tableFooterView = self.footerView
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -137,4 +166,5 @@ class SettingsMainVC: TableViewController {
         item.action()
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
 }
