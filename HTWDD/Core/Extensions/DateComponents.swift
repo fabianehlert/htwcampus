@@ -59,6 +59,14 @@ extension DateComponents {
         }
         return sHour <= oHour && sMinute <= oMinute
     }
+    
+    func minus(hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> DateComponents {
+        var copy = self
+        copy.hour = copy.hour ?? 0 - hours
+        copy.minute = copy.minute ?? 0 - minutes
+        copy.second = copy.second ?? 0 - seconds
+        return copy
+    }
 
 }
 
