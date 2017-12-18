@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
+		1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */; };
 		1F1491B31FB450A10011B114 /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1491B21FB450A10011B114 /* NoResultsView.swift */; };
 		1F1491B41FB450A10011B114 /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1491B21FB450A10011B114 /* NoResultsView.swift */; };
 		1F1491B51FB451110011B114 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1F1E71F44300D68155 /* View.swift */; };
@@ -259,6 +260,7 @@
 
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "HTW-Impressum.html"; sourceTree = "<group>"; };
 		1F1491B21FB450A10011B114 /* NoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F36DA541FC323A600BD9B4A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			children = (
 				1F36DA571FC323AF00BD9B4A /* Licenses */,
 				1F74531E1FC1D76D00BC0087 /* confetti.png */,
+				1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 			files = (
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
 				1F36DA5C1FC3244E00BD9B4A /* KeychainAccess-license.html in Resources */,
+				1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */,
 				1F3A7AC21FDA8DD100369420 /* 1Password.xcassets in Resources */,
 				1F36DA5D1FC3244E00BD9B4A /* Marshal-license.html in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
