@@ -103,7 +103,7 @@ class ExamsMainVC: CollectionViewController {
 extension ExamsMainVC {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)
-        return CGSize(width: width, height: 108)
+        return CGSize(width: width, height: 130)
     }
 }
 
