@@ -23,5 +23,10 @@ extension UserDefaults {
             return false
         }
     }
+    
+    func saveAppVersion() {
+        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        self.set(appVersion, forKey: "HTW_APP_VERSION")
+    }
 	
 }
