@@ -323,17 +323,17 @@ public struct Loca {
 
     public struct Exams {
 
+        /// Base translation: Examiner: %@
+        public static func examiner(_ value1 : String) -> String {
+            return String(format: NSLocalizedString("Exams.examiner", comment: ""), value1)
+        }
+
         /// Base translation: Exams
         public static var title : String = NSLocalizedString("Exams.title", comment: "")
 
         /// Base translation: Branch: %@
         public static func branch(_ value1 : String) -> String {
             return String(format: NSLocalizedString("Exams.branch", comment: ""), value1)
-        }
-
-        /// Base translation: Examiner: %@
-        public static func examiner(_ value1 : String) -> String {
-            return String(format: NSLocalizedString("Exams.examiner", comment: ""), value1)
         }
 
 
@@ -344,6 +344,15 @@ public struct Loca {
 
             /// Base translation: No exams
             public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
+
+        }
+
+        public struct Cell {
+
+            /// Base translation: %@ – %@
+            public static func time(_ value1 : String, _ value2 : String) -> String {
+                return String(format: NSLocalizedString("Exams.Cell.time", comment: ""), value1, value2)
+            }
 
         }
 

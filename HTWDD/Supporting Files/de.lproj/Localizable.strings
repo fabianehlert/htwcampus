@@ -47,6 +47,8 @@
 "Exams.noResults.title"="Keine Prüfungen";
 "Exams.noResults.message"="Ich kann leider keine Prüfungen für Dich finden.\nSind Deine Zugangsdaten korrekt?";
 
+"Exams.Cell.time"="%@ – %@";
+
 "Exams.examiner"="Prüfer: %@";
 "Exams.branch"="Zweig: %@";
 

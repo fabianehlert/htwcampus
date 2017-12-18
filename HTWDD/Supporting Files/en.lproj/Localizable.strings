@@ -47,6 +47,8 @@
 "Exams.noResults.title"="No exams";
 "Exams.noResults.message"="I can't find any exams for you.\nHave you entered your credentials correctly?";
 
+"Exams.Cell.time"="%@ – %@";
+
 "Exams.examiner"="Examiner: %@";
 "Exams.branch"="Branch: %@";
 
