@@ -49,7 +49,8 @@ class SettingsMainVC: TableViewController {
 				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
 			]),
             (Loca.Settings.sections.contact, [
-                SettingsItem(title: Loca.Settings.items.mail.title, action: self.composeMail())
+                SettingsItem(title: Loca.Settings.items.mail.title, action: self.composeMail()),
+                SettingsItem(title: Loca.Settings.items.legal.title, action: self.showLicense(name: "HTW-Impressum.html"))
             ]),
             (Loca.Settings.sections.openSource, [
                 SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
