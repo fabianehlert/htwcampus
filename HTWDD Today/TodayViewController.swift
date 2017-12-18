@@ -100,7 +100,7 @@ class TodayViewController: ViewController {
 			let sortedLectures = lectures.sorted(by: { $0.lecture.begin > $1.lecture.begin })
 			var currentLecture: AppLecture? = nil
 			for l in sortedLectures {
-				if components.timeBetween(start: l.lecture.begin, end: l.lecture.end) {
+				if components.timeBetween(start: l.lecture.begin, end: l.lecture.end.minus(minutes: 45)) {
 					return l
 				}
 				if l.lecture.end.isBefore(other: components) {
