@@ -72,6 +72,7 @@
 "Settings.items.github"="HTW iOS on GitHub";
 "Settings.sections.deleteAll"="Deletion";
 "Settings.credits"="Developed in Dresden ❤️";
+"Settings.items.legal.title"="Legal notice";
 
 "monday"="Monday";
 "tuesday"="Tuesday";

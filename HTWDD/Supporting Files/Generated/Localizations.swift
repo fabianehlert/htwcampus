@@ -372,14 +372,14 @@ public struct Loca {
 
         public struct items {
 
-            /// Base translation: Do you really want to delete all stored in the HTW app?
-            public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
+            /// Base translation: HTW iOS on GitHub
+            public static var github : String = NSLocalizedString("Settings.items.github", comment: "")
 
             /// Base translation: Delete all stored data
             public static var deleteAll : String = NSLocalizedString("Settings.items.deleteAll", comment: "")
 
-            /// Base translation: HTW iOS on GitHub
-            public static var github : String = NSLocalizedString("Settings.items.github", comment: "")
+            /// Base translation: Do you really want to delete all stored in the HTW app?
+            public static var deleteAllConfirmationText : String = NSLocalizedString("Settings.items.deleteAllConfirmationText", comment: "")
 
 
             public struct mail {
@@ -397,6 +397,13 @@ public struct Loca {
                     public static var title : String = NSLocalizedString("Settings.items.mail.fallback.title", comment: "")
 
                 }
+            }
+
+            public struct legal {
+
+                /// Base translation: Legal notice
+                public static var title : String = NSLocalizedString("Settings.items.legal.title", comment: "")
+
             }
 
             public struct setSchedule {
