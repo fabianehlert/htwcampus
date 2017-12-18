@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.stylizeUI()
 
 		Fabric.with([Crashlytics.self])
+        
+        UserDefaults.standard.saveAppVersion()
 
         return true
     }
