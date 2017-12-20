@@ -12,7 +12,7 @@ import RxSwift
 class CanteenMainVC: CollectionViewController {
 
     enum Const {
-        static let margin: CGFloat = 15
+        static let margin: CGFloat = 12
     }
     
     private let refreshControl = UIRefreshControl()
@@ -26,7 +26,10 @@ class CanteenMainVC: CollectionViewController {
     init(context: HasCanteen) {
         self.context = context
         super.init()
-        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +58,7 @@ class CanteenMainVC: CollectionViewController {
             attributedTitle.append(title)
             
             view.attributedTitle = attributedTitle
+			view.titleInset = Const.margin
         }
         
         self.dataSource.registerAction(cell: MealCell.self) { [weak self] meal, indexPath in
@@ -78,6 +82,8 @@ class CanteenMainVC: CollectionViewController {
         } else {
             self.collectionView.addSubview(self.refreshControl)
         }
+        
+        self.reload()
 
         let loading = self.dataSource.loading.filter { $0 == true }
         let notLoading = self.dataSource.loading.filter { $0 != true }
@@ -90,14 +96,12 @@ class CanteenMainVC: CollectionViewController {
             .disposed(by: self.rx_disposeBag)
         
         notLoading
-            .delay(0.5, scheduler: MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.endRefreshing()
                 self?.setLoading(false)
             })
             .disposed(by: self.rx_disposeBag)
-        
-        self.reload()
         
         DispatchQueue.main.async {
             self.register3DTouch()
@@ -136,12 +140,12 @@ class CanteenMainVC: CollectionViewController {
     // MARK: - UICollectionViewDelegate(FlowLayout) stuff
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 0, height: 60)
+        return CGSize(width: 0, height: 90)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.itemWidth(collectionView: collectionView)
-        let height: CGFloat = 120
+        let height: CGFloat = 122
         return CGSize(width: width, height: height)
     }
     
@@ -170,5 +174,11 @@ extension CanteenMainVC: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         self.presentDetail(viewControllerToCommit, animated: false)
+    }
+}
+
+extension CanteenMainVC: TabbarChildViewController {
+    func tabbarControllerDidSelectAlreadyActiveChild() {
+        self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: -self.view.htw.safeAreaInsets.top), animated: true)
     }
 }

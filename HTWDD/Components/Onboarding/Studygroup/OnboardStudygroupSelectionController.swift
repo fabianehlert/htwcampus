@@ -20,9 +20,17 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     
     private let layout = CollectionViewFlowLayout()
     private let dataSource: GenericBasicCollectionViewDataSource<Data>
-    private let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+    private let visualEffectView = UIVisualEffectView(effect: nil)
     private let selection: (Data?) -> Void
-    
+	
+	@available(iOS 10.0, *)
+	private lazy var animator: UIViewPropertyAnimator = {
+		let a = UIViewPropertyAnimator(duration: 0.4, curve: .linear, animations: {
+			self.visualEffectView.effect = UIBlurEffect(style: .extraLight)
+		})
+		return a
+	}()
+	
     // MARK: - Init
     
     init(data: [Data], selection: @escaping (Data?) -> Void) {
@@ -79,28 +87,48 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.collectionView.contentInset = UIEdgeInsets(top: self.view.height - self.collectionViewHeight, left: Const.margin, bottom: Const.margin, right: Const.margin)
+		
+		self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
+
         self.layout.itemSize = CGSize(width: self.itemWidth(collectionView: self.collectionView), height: Const.itemHeight)
         self.collectionView.backgroundColor = .clear
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .clear
-		self.view.alpha = 0
-        
+		
         self.visualEffectView.isUserInteractionEnabled = true
-        self.collectionView.backgroundView = self.visualEffectView
-        
+		self.visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+		self.view.insertSubview(self.visualEffectView, belowSubview: self.collectionView)
+		
         NSLayoutConstraint.activate([
+			self.visualEffectView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+			self.visualEffectView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+			self.visualEffectView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+			self.visualEffectView.topAnchor.constraint(equalTo: self.view.topAnchor),
+
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
-            ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel))
-        self.visualEffectView.addGestureRecognizer(tapGesture)
+		])
+		
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel))
+		self.collectionView.backgroundView = UIView()
+		self.collectionView.backgroundView?.addGestureRecognizer(tapGesture)
     }
-    
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		let top = (self.view.height - self.collectionView.contentSize.height - (self.view.htw.safeAreaInsets.bottom + 54))
+		self.collectionView.contentInset = UIEdgeInsets(top: max(44, top),
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
+	}
+	
     @objc
     func cancel(gesture: UITapGestureRecognizer) {
         self.selection(nil)
@@ -114,17 +142,37 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
     }
     
     func animate(source: CGRect, sourceView: UIView?, duration: TimeInterval, direction: Direction, completion: @escaping (Bool) -> Void) {
-        self.visualEffectView.effect = direction == .present ? nil : UIBlurEffect(style: .extraLight)
-        let startY = (self.view.height - self.collectionViewHeight) * -1
-        self.collectionView.contentOffset.y = direction == .present ? startY - 150 : startY
-        
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.curveEaseInOut], animations: {
-            self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
-			self.view.alpha = direction == .present ? 1 : 0
-            self.collectionView.contentOffset.y = direction == .present ? startY : startY - 150
-            
-        }, completion: completion)
-        
+		if #available(iOS 11.0, *) {
+			self.animator.pausesOnCompletion = true
+		}
+
+		if #available(iOS 10.0, *) {
+			self.animator.isReversed = direction == .dismiss
+			self.animator.startAnimation()
+		} else {
+			self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
+		}
+		
+		if direction == .present {
+			if #available(iOS 10.0, *) {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+					self.animator.pauseAnimation()
+				}
+			}
+		}
+
+		UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [.curveEaseIn], animations: {
+			self.collectionView.alpha = direction == .present ? 1 : 0
+			self.collectionView.contentOffset.y += direction == .present ? 150 : -150
+		}, completion: { completed in
+			if direction == .dismiss {
+				if #available(iOS 10.0, *) {
+					self.animator.stopAnimation(false)
+					self.animator.finishAnimation(at: .current)
+				}
+			}
+			completion(completed)
+		})
     }
     
 }

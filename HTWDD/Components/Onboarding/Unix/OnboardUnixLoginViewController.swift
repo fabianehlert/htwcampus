@@ -15,8 +15,27 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
         static let maxSNumberLength = 6
     }
 
-    private lazy var usernameTextField = TextField()
-    private lazy var passwordTextField = TextField()
+	private lazy var usernameTextField: TextField = {
+		let field = TextField()
+		field.placeholder = Loca.Onboarding.UnixLogin.sPlaceholder
+		return field
+	}()
+	private lazy var passwordTextField: PasswordField = {
+		let field = PasswordField()
+		field.placeholder = Loca.Onboarding.UnixLogin.passwordPlaceholder
+		field.onOnePasswordClick = { [weak self] in
+			guard let `self` = self else { return }
+			OnePasswordExtension.shared().findLogin(forURLString: "https://www.htw-dresden.de",
+													for: self,
+													sender: nil) { data, error in
+														guard let data = data else { return }
+														self.usernameTextField.text = data[AppExtensionUsernameKey] as? String
+														self.passwordTextField.text = data[AppExtensionPasswordKey] as? String
+														self.checkState()
+			}
+		}
+		return field
+	}()
 
     override func initialSetup() {
         self.config = .init(title: Loca.Onboarding.UnixLogin.title,
@@ -30,8 +49,6 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
 
         self.usernameTextField.text = "s"
         self.usernameTextField.keyboardType = .numberPad
-        self.passwordTextField.isSecureTextEntry = true
-        self.usernameTextField.becomeFirstResponder()
     }
 
     // MARK: - Actions

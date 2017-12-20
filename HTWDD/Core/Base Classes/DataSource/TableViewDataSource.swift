@@ -88,6 +88,10 @@ extension TableViewDataSource: UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.titleFor(section: section)
+    }
+    
     private func errorCell(tableView: UITableView, indexPath: IndexPath, error: String) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.errorIdentifier, for: indexPath) as! ErrorTableCell
         cell.error = error

@@ -35,6 +35,7 @@ protocol SupplementaryView: class, Identifiable {
 }
 
 protocol Highlightable {
+	var isHighlightable: Bool { get set }
     func highlight(animated: Bool)
     func unhighlight(animated: Bool)
 }

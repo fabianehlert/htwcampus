@@ -25,11 +25,13 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         static let highlightedShadowOpacity: Float = 0.3
     }
 
+	var isHighlightable: Bool = true
+	
 	// MARK: - UI
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
 		label.textAlignment = .center
 		label.numberOfLines = 1
@@ -40,9 +42,11 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 
 	let roomLabel: UILabel = {
 		let label = UILabel()
-		label.font = .systemFont(ofSize: 12, weight: .medium)
-		label.textColor = UIColor.htw.textBody
+		label.font = .systemFont(ofSize: 10, weight: .medium)
+		label.textColor = UIColor.htw.textHeadline
 		label.textAlignment = .center
+        label.numberOfLines = 1
+        label.lineBreakMode = .byCharWrapping
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -104,6 +108,7 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
 extension LectureCollectionViewCell: Highlightable {
 
     func highlight(animated: Bool) {
+		guard isHighlightable else { return }
         let animations: () -> Void = {
             self.contentView.backgroundColor = Const.highlightedColor
             self.transform = CGAffineTransform.identity.scaledBy(x: Const.highlightedScale, y: Const.highlightedScale)
@@ -133,6 +138,7 @@ extension LectureCollectionViewCell: Highlightable {
     }
 
     func unhighlight(animated: Bool) {
+		guard isHighlightable else { return }
         let animations: () -> Void = {
             self.contentView.backgroundColor = Const.color
             self.transform = CGAffineTransform.identity

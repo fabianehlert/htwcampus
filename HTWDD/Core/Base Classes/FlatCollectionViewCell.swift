@@ -23,6 +23,8 @@ class FlatCollectionViewCell: CollectionViewCell {
         static let highlightedShadowOpacity: Float = 0.15
     }
     
+	var isHighlightable: Bool = true
+	
     override func initialSetup() {
         super.initialSetup()
         
@@ -48,6 +50,7 @@ class FlatCollectionViewCell: CollectionViewCell {
 extension FlatCollectionViewCell: Highlightable {
     
     func highlight(animated: Bool) {
+		guard isHighlightable else { return }
         let animations: () -> Void = {
             self.contentView.backgroundColor = Const.highlightedColor
             self.transform = CGAffineTransform.identity.scaledBy(x: Const.highlightedScale, y: Const.highlightedScale)
@@ -77,7 +80,8 @@ extension FlatCollectionViewCell: Highlightable {
     }
     
     func unhighlight(animated: Bool) {
-        let animations: () -> Void = {
+		guard isHighlightable else { return }
+		let animations: () -> Void = {
             self.contentView.backgroundColor = Const.color
             self.transform = CGAffineTransform.identity
             self.layer.shadowRadius = Const.shadowRadius
@@ -106,4 +110,3 @@ extension FlatCollectionViewCell: Highlightable {
     }
     
 }
-

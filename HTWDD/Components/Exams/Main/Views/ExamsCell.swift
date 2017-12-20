@@ -14,13 +14,19 @@ struct ExamsViewModel: ViewModel {
 	let branch: String
 	let examiner: String
 	let room: String
+    
+    let day: String
+    let time: String
 	
     init(model: Exam) {
         self.title = model.title
 		self.type = model.type
-		self.branch = model.branch
+        self.branch = model.branch == "" ? "-" : model.branch
 		self.examiner = model.examiner
 		
+        self.day = model.day
+        self.time = Loca.Exams.Cell.time(model.start, model.end)
+        
 		if model.rooms.isEmpty {
 			self.room = Loca.Schedule.noRoom
 		} else if model.rooms.count == 1 {
@@ -41,6 +47,13 @@ class ExamsCell: FlatCollectionViewCell, Cell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = UIColor.htw.textHeadline
+        return label
+    }()
+    
+    private let timeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.textHeadline
         return label
     }()
@@ -78,7 +91,7 @@ class ExamsCell: FlatCollectionViewCell, Cell {
     override func initialSetup() {
         super.initialSetup()
 
-		let views: [UIView] = [self.titleLabel, self.branchLabel, self.examinerLabel, self.typeBadge, self.roomBadge]
+		let views: [UIView] = [self.titleLabel, self.timeLabel, self.branchLabel, self.examinerLabel, self.typeBadge, self.roomBadge]
 		views.forEach({
 			$0.translatesAutoresizingMaskIntoConstraints = false
 			self.contentView.addSubview($0)
@@ -88,10 +101,14 @@ class ExamsCell: FlatCollectionViewCell, Cell {
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
-			
+            
+            self.timeLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
+            self.timeLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
+            self.timeLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: Const.innerMargin),
+            
 			self.branchLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
 			self.branchLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
-			self.branchLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 0),
+			self.branchLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 0),
 
 			self.examinerLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),
 			self.examinerLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Const.margin),
@@ -111,6 +128,14 @@ class ExamsCell: FlatCollectionViewCell, Cell {
 		self.examinerLabel.text = Loca.Exams.examiner(viewModel.examiner)
 		self.typeBadge.text = viewModel.type.displayName
 		self.roomBadge.text = viewModel.room
+        
+        let time = NSMutableAttributedString()
+        time.append(NSAttributedString(string: viewModel.day,
+                                       attributes: [.font: UIFont.systemFont(ofSize: 15, weight: .bold)]))
+        time.append(NSAttributedString(string: " "))
+        time.append(NSAttributedString(string: viewModel.time,
+                                       attributes: [.font: UIFont.systemFont(ofSize: 15, weight: .medium)]))
+        self.timeLabel.attributedText = time
     }
     
 }

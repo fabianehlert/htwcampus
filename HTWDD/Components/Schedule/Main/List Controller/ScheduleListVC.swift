@@ -32,7 +32,10 @@ final class ScheduleListVC: ScheduleBaseVC {
 	override func initialSetup() {
         super.initialSetup()
         
-        self.collectionView.contentInset = UIEdgeInsets(top: Const.margin, left: Const.margin, bottom: Const.margin, right: Const.margin)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0,
+														left: Const.margin,
+														bottom: Const.margin,
+														right: Const.margin)
 
 		self.collectionView.isDirectionalLockEnabled = true
 
@@ -54,7 +57,9 @@ final class ScheduleListVC: ScheduleBaseVC {
     }
 
     override func jumpToToday() {
-        self.scrollToToday(animated: true)
+		DispatchQueue.main.async {
+			self.scrollToToday(animated: true)
+		}
     }
 
     private func scrollToToday(animated: Bool) {
@@ -67,7 +72,11 @@ final class ScheduleListVC: ScheduleBaseVC {
         }
         
         // scroll to item
-        self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
+		if let attributes = self.collectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
+			self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: attributes.frame.origin.y), animated: animated)
+		} else {
+			self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
+		}
     }
     
 }
@@ -90,7 +99,9 @@ extension ScheduleListVC {
 extension ScheduleListVC: ScheduleDataSourceDelegate {
 
     func scheduleDataSourceHasFinishedLoading() {
-        self.scrollToToday(animated: false)
+        DispatchQueue.main.async {
+            self.scrollToToday(animated: false)
+        }
     }
 
     func scheduleDataSourceHasUpdated() {

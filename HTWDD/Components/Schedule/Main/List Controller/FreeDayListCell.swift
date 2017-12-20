@@ -27,6 +27,9 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
     
     override func initialSetup() {
         super.initialSetup()
+		
+		self.isHighlightable = false
+		
         self.label.font = .systemFont(ofSize: 18, weight: .medium)
         self.label.textAlignment = .center
         self.label.textColor = Const.textColor

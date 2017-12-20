@@ -4,7 +4,7 @@
 "Onboarding.Welcome.GradesDescription"="Wer hat denn da eine 1 bekommen? Bestimmt Du!";
 
 "Onboarding.Studygroup.title"="Studiengruppe";
-"Onboarding.Studygroup.body"="Um Dir Deinen persönlichen Stundenplan anzeigen zu können, musst Du uns noch Deine Studiengruppe mitteilen.";
+"Onboarding.Studygroup.body"="Wähle hier Dein Immatrikulationsjahr, Deinen Studiengang und Deine Studiengruppe aus.\nDiese Information ist erforderlich, um Dir Deinen Stundenplan anzeigen zu können.";
 "Onboarding.Studygroup.notnow"="Später";
 
 "Onboarding.Studygroup.year"="Jahr";
@@ -18,6 +18,8 @@
 "Onboarding.UnixLogin.title"="Anmelden";
 "Onboarding.UnixLogin.body"="Damit wir Dir Deine Noten anzeigen können, musst Du Dich mit Deinen Zugangsdaten anmelden.";
 "Onboarding.UnixLogin.notnow"="Später";
+"Onboarding.UnixLogin.sPlaceholder"="S-Nummer";
+"Onboarding.UnixLogin.passwordPlaceholder"="Passwort";
 
 "Schedule.title"="Stundenplan";
 "Schedule.today"="Heute";
@@ -28,6 +30,7 @@
 "Schedule.freeDay"="Genieß Deinen freien Tag! 🎉";
 "Schedule.noResults.title"="Kein Plan...";
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
+"Schedule.NextLecture.unavailable"="Keine Stunden mehr für heute! 🚲🌴";
 
 "Schedule.LectureType.lecture"="Vorlesung";
 "Schedule.LectureType.practical"="Praktikum";
@@ -44,6 +47,8 @@
 "Exams.noResults.title"="Keine Prüfungen";
 "Exams.noResults.message"="Ich kann leider keine Prüfungen für Dich finden.\nSind Deine Zugangsdaten korrekt?";
 
+"Exams.Cell.time"="%@ – %@";
+
 "Exams.examiner"="Prüfer: %@";
 "Exams.branch"="Zweig: %@";
 
@@ -54,11 +59,22 @@
 "Settings.title"="Einstellungen";
 
 "Settings.items.setSchedule.title"="Studiengruppe ändern";
-"Settings.items.setSchedule.subtitle"="(%@/%@/%@)";
+"Settings.items.setSchedule.subtitle"="%@/%@/%@";
 "Settings.items.setGrades.title"="RZ-Zugangsdaten ändern";
-"Settings.items.setGrades.subtitle"="(%@)";
+"Settings.items.setGrades.subtitle"="%@";
 "Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
 "Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";
+"Settings.sections.authentication"="Deine Angaben";
+"Settings.sections.openSource"="Open Source Lizenzen";
+"Settings.sections.weAreOpenSource"="Wir sind Open Source!";
+"Settings.sections.contact"="Kontakt";
+"Settings.items.mail.title"="Mail an Entwickler schreiben";
+"Settings.items.mail.fallback.title"="Mailadresse kopiert!";
+"Settings.items.mail.fallback.message"="Es sieht so aus, als würdest du die Mail App von Apple nicht verwenden. Deshalb haben wir die Kontaktadresse für dich kopiert.";
+"Settings.items.github"="HTW iOS auf GitHub";
+"Settings.sections.deleteAll"="Löschung";
+"Settings.credits"="Entwickelt in Dresden ❤️";
+"Settings.items.legal.title"="Impressum";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
@@ -79,6 +95,7 @@
 "summerSemester"="Sommersemester";
 "winterSemester"="Wintersemester";
 
+"ok"="Okay";
 "close"="Schließen";
 "cancel"="Abbrechen";
 "nextStep"="Weiter";

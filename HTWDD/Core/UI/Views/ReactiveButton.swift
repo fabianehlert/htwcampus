@@ -9,6 +9,8 @@
 import UIKit
 
 class ReactiveButton: UIButton {
+	var isHighlightable: Bool = true
+	
 	override var isHighlighted: Bool {
 		didSet {
 			self.isHighlighted ? self.highlight(animated: true) : self.unhighlight(animated: true)

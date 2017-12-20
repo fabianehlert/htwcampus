@@ -4,7 +4,7 @@
 "Onboarding.Welcome.GradesDescription"="View what your professors graded you in your exams.";
 
 "Onboarding.Studygroup.title"="Study group";
-"Onboarding.Studygroup.body"="In order to show you your personal schedule, we need to know what study group you're in.";
+"Onboarding.Studygroup.body"="Select your enrollment year, major and study group here.\nThis information is necessary in order to show you your schedule.";
 "Onboarding.Studygroup.notnow"="Not now";
 
 "Onboarding.Studygroup.year"="Year";
@@ -18,6 +18,8 @@
 "Onboarding.UnixLogin.title"="Login";
 "Onboarding.UnixLogin.body"="To be able to view your grades, you have to login using your HTW credentials.";
 "Onboarding.UnixLogin.notnow"="Not now";
+"Onboarding.UnixLogin.sPlaceholder"="S-Number";
+"Onboarding.UnixLogin.passwordPlaceholder"="Password";
 
 "Schedule.title"="Schedule";
 "Schedule.today"="Today";
@@ -28,6 +30,7 @@
 "Schedule.freeDay"="Enjoy your free day! 🎉";
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
+"Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
 
 "Schedule.LectureType.lecture"="Lecture";
 "Schedule.LectureType.practical"="Practical";
@@ -44,6 +47,8 @@
 "Exams.noResults.title"="No exams";
 "Exams.noResults.message"="I can't find any exams for you.\nHave you entered your credentials correctly?";
 
+"Exams.Cell.time"="%@ – %@";
+
 "Exams.examiner"="Examiner: %@";
 "Exams.branch"="Branch: %@";
 
@@ -54,11 +59,22 @@
 "Settings.title"="Settings";
 
 "Settings.items.setSchedule.title"="Change studygroup";
-"Settings.items.setSchedule.subtitle"="(%@/%@/%@)";
+"Settings.items.setSchedule.subtitle"="%@/%@/%@";
 "Settings.items.setGrades.title"="Change datacenter credentials";
-"Settings.items.setGrades.subtitle"="(%@)";
+"Settings.items.setGrades.subtitle"="%@";
 "Settings.items.deleteAll"="Delete all stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
+"Settings.sections.authentication"="Your information";
+"Settings.sections.openSource"="Open-source licenses";
+"Settings.sections.weAreOpenSource"="We are Open Source!";
+"Settings.sections.contact"="Contact";
+"Settings.items.mail.title"="Write mail to developer";
+"Settings.items.mail.fallback.title"="Mail address copied!";
+"Settings.items.mail.fallback.message"="It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.";
+"Settings.items.github"="HTW iOS on GitHub";
+"Settings.sections.deleteAll"="Deletion";
+"Settings.credits"="Developed in Dresden ❤️";
+"Settings.items.legal.title"="Legal notice";
 
 "monday"="Monday";
 "tuesday"="Tuesday";
@@ -79,6 +95,7 @@
 "summerSemester"="Summer semester";
 "winterSemester"="Winter semester";
 
+"ok"="OK";
 "close"="Close";
 "cancel"="Cancel";
 "nextStep"="Continue";

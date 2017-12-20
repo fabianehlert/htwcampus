@@ -10,6 +10,12 @@ import UIKit
 
 class TextField: UITextField {
 
+	var insets: UIEdgeInsets = {
+		return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+	}()
+	
+	// MARK: - Init
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initialSetup()
@@ -22,4 +28,55 @@ class TextField: UITextField {
 
 	func initialSetup() {}
 
+	// MARK: - TextField
+	
+	override func textRect(forBounds bounds: CGRect) -> CGRect {
+		return UIEdgeInsetsInsetRect(bounds, insets)
+	}
+	
+	override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+		return UIEdgeInsetsInsetRect(bounds, insets)
+	}
+	
+	override func editingRect(forBounds bounds: CGRect) -> CGRect {
+		return UIEdgeInsetsInsetRect(bounds, insets)
+	}
+}
+
+class PasswordField: TextField {
+	
+	var onOnePasswordClick: (() -> Void)?
+	
+	private var onePasswordButton: UIButton = {
+		let button = UIButton(type: .custom)
+		button.setImage(#imageLiteral(resourceName: "onepassword-button"), for: .normal)
+		button.addTarget(self, action: #selector(find1PasswordLogin), for: .touchUpInside)
+		return button
+	}()
+	
+	override func initialSetup() {
+		self.isSecureTextEntry = true
+		
+		if OnePasswordExtension.shared().isAppExtensionAvailable() {
+			self.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 48)
+			
+			self.onePasswordButton.translatesAutoresizingMaskIntoConstraints = false
+			self.addSubview(self.onePasswordButton)
+			
+			NSLayoutConstraint.activate([
+				self.onePasswordButton.heightAnchor.constraint(equalToConstant: 44),
+				self.onePasswordButton.widthAnchor.constraint(equalToConstant: 44),
+				self.onePasswordButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+				self.onePasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
+			])
+		}
+	}
+	
+	// MARK: - Actions
+	
+	@objc
+	private func find1PasswordLogin() {
+		self.onOnePasswordClick?()
+	}
+	
 }

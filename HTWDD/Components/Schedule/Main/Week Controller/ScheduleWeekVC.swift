@@ -56,8 +56,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
             guard let `self` = self else { return }
             let info = self.dataSource.dayInformation(indexPath: indexPath)
             view.textAlignment = .center
-            let day = NSAttributedString(string: info.date.string(format: "E"), attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium)])
-            let date = NSAttributedString(string: info.date.string(format: "dd.MM."), attributes: [.font: UIFont.systemFont(ofSize: 12, weight: .light)])
+            let day = NSAttributedString(string: info.date.string(format: "E"), attributes: [.font: UIFont.systemFont(ofSize: 15, weight: .semibold)])
+            let date = NSAttributedString(string: info.date.string(format: "dd.MM."), attributes: [.font: UIFont.systemFont(ofSize: 12, weight: .medium)])
             view.attributedTitle = day + "\n" + date
         }
 	}

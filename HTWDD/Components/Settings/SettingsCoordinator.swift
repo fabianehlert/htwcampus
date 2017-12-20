@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SafariServices
+import MessageUI
 
 protocol SettingsCoordinatorDelegate: class {
     func deleteAllData()
@@ -49,7 +51,7 @@ class SettingsCoordinator: Coordinator {
 	}
 }
 
-extension SettingsCoordinator: SettingsMainVCDelegate {
+extension SettingsCoordinator: SettingsMainVCDelegate {	
     func deleteAllData() {
         self.delegate?.deleteAllData()
     }
@@ -60,5 +62,47 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
     
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void) {
         self.delegate?.triggerGradeOnboarding(completion: completion)
+    }
+	
+	func showLicense(name: String) {
+		let webVC = WebViewController(fileName: name)
+		if let root = self.rootViewController as? NavigationController {
+			root.pushViewController(webVC, animated: true)
+		}
+	}
+	
+	func showGitHub() {
+		let safariVC = SFSafariViewController(url: URL(string: "https://github.com/HTWDD/htwcampus")!)
+		if #available(iOS 10.0, *) {
+			safariVC.preferredControlTintColor = UIColor.htw.blue
+		}
+		self.rootViewController.present(safariVC, animated: true, completion: nil)
+	}
+    
+    func composeMail() {
+        if MFMailComposeViewController.canSendMail() {
+            guard let root = self.rootViewController as? NavigationController,
+                let settings = root.viewControllers.first as? MFMailComposeViewControllerDelegate else { return }
+            
+            let body = String(format: "\n\nHTW iOS App\nVersion: %@ (%@)\nDevice: %@ (%@ %@)",
+                              Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String,
+                              Bundle.main.infoDictionary!["CFBundleVersion"] as! String,
+                              UIDevice.current.modelName,
+                              UIDevice.current.systemName,
+                              UIDevice.current.systemVersion)
+            
+            
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = settings
+            composer.setToRecipients(["mail@htw.benchr.de"])
+            composer.setSubject("HTW iOS Feedback")
+            composer.setMessageBody(body, isHTML: false)
+            composer.navigationBar.tintColor = UIColor.white
+            self.rootViewController.present(composer, animated: true, completion: nil)
+        } else {
+            let info = UIAlertController(title: Loca.Settings.items.mail.fallback.title, message: Loca.Settings.items.mail.fallback.message, preferredStyle: .alert)
+            info.addAction(UIAlertAction(title: Loca.ok, style: .default, handler: nil))
+            self.rootViewController.present(info, animated: true, completion: nil)
+        }
     }
 }

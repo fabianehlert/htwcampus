@@ -22,11 +22,18 @@
 
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
+		1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */; };
 		1F1491B31FB450A10011B114 /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1491B21FB450A10011B114 /* NoResultsView.swift */; };
 		1F1491B41FB450A10011B114 /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1491B21FB450A10011B114 /* NoResultsView.swift */; };
 		1F1491B51FB451110011B114 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5111E1F1E71F44300D68155 /* View.swift */; };
 		1F1491B61FB456F70011B114 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		1F2B8A101F99029E00026099 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2B8A0F1F99029E00026099 /* TextField.swift */; };
+		1F36DA561FC323A700BD9B4A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F36DA541FC323A600BD9B4A /* WebViewController.swift */; };
+		1F36DA5B1FC3244E00BD9B4A /* RxSwift-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */; };
+		1F36DA5C1FC3244E00BD9B4A /* KeychainAccess-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */; };
+		1F36DA5D1FC3244E00BD9B4A /* Marshal-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */; };
+		1F3A7AC01FDA8DC800369420 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A7ABF1FDA8DC800369420 /* OnePasswordExtension.m */; };
+		1F3A7AC21FDA8DD100369420 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A7AC11FDA8DD100369420 /* 1Password.xcassets */; };
 		1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD52F1FAFA58F007E0817 /* Today.storyboard */; };
 		1F4BD5361FAFA895007E0817 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD5381FAFA895007E0817 /* InfoPlist.strings */; };
 		1F4BD53A1FAFAA68007E0817 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B538EF0F1E1D62040031077C /* UserDefaults.swift */; };
@@ -34,11 +41,14 @@
 		1F4BD53E1FAFAD63007E0817 /* HTWNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58ECB141F990D5300949F4F /* HTWNamespace.swift */; };
 		1F4BD53F1FAFAFF4007E0817 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B581DDB173600313FC3 /* ViewController.swift */; };
 		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
+		1F5783531FE42BE900956CEB /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5783521FE42BE900956CEB /* UIDevice.swift */; };
+		1F5783551FE42C6500956CEB /* MFMailComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */; };
 		1F74531F1FC1D76D00BC0087 /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F74531E1FC1D76D00BC0087 /* confetti.png */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
 		1F7E32091FA7B84000CCBDD6 /* ScheduleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */; };
 		1F7E32101FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */; };
+		1F862D271FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F862D261FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift */; };
 		1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* ReactiveButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F8E20C21FB34D6200347DB6 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5461B691FA7B82400564D6D /* KeychainAccess.framework */; };
@@ -148,6 +158,7 @@
 		B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5461B691FA7B82400564D6D /* KeychainAccess.framework */; };
 		B54642DD1FAA842100735589 /* FreeDayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54642DC1FAA842100735589 /* FreeDayListCell.swift */; };
 		B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */; };
+		B5499A071FE826210043749D /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5499A061FE826210043749D /* Tracker.swift */; };
 		B55507101E601AE300C16F5F /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B555070F1E601AE300C16F5F /* Lecture.swift */; };
 		B55507121E601FB400C16F5F /* DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55507111E601FB400C16F5F /* DateComponents.swift */; };
 		B556410C1F990CB9006B9B1B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556410B1F990CB8006B9B1B /* Colors.swift */; };
@@ -249,18 +260,30 @@
 
 /* Begin PBXFileReference section */
 		1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "HTW-Impressum.html"; sourceTree = "<group>"; };
 		1F1491B21FB450A10011B114 /* NoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		1F2B8A0F1F99029E00026099 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1F36DA541FC323A600BD9B4A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "RxSwift-license.html"; sourceTree = "<group>"; };
+		1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "KeychainAccess-license.html"; sourceTree = "<group>"; };
+		1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Marshal-license.html"; sourceTree = "<group>"; };
+		1F3A7ABD1FDA8DC700369420 /* HTWDD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTWDD-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F3A7ABE1FDA8DC800369420 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
+		1F3A7ABF1FDA8DC800369420 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		1F3A7AC11FDA8DD100369420 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		1F4BD52F1FAFA58F007E0817 /* Today.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
 		1F4BD5371FAFA895007E0817 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F4BD5391FAFA898007E0817 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F4BD53B1FAFAAF7007E0817 /* HTWDD Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HTWDD Today.entitlements"; sourceTree = "<group>"; };
 		1F54EE431FAA063B00415813 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
+		1F5783521FE42BE900956CEB /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFMailComposeViewController.swift; sourceTree = "<group>"; };
 		1F74531E1FC1D76D00BC0087 /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
 		1F7E32081FA7B84000CCBDD6 /* ScheduleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListVC.swift; sourceTree = "<group>"; };
 		1F7E320F1FA7BB3900CCBDD6 /* ScheduleWeekLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekLayout.swift; sourceTree = "<group>"; };
+		1F862D261FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPresentationHandler.swift; sourceTree = "<group>"; };
 		1F8874881F8FB07300EE6492 /* ReactiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveButton.swift; sourceTree = "<group>"; };
 		1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardStudygroupViewController.swift; sourceTree = "<group>"; };
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -330,6 +353,7 @@
 		B5461B6B1FA7B88700564D6D /* HTWDD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HTWDD.entitlements; sourceTree = "<group>"; };
 		B54642DC1FAA842100735589 /* FreeDayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeDayListCell.swift; sourceTree = "<group>"; };
 		B54642DE1FAB228500735589 /* FlatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5499A061FE826210043749D /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		B555070F1E601AE300C16F5F /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		B55507111E601FB400C16F5F /* DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateComponents.swift; sourceTree = "<group>"; };
 		B556410B1F990CB8006B9B1B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -440,10 +464,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F36DA571FC323AF00BD9B4A /* Licenses */ = {
+			isa = PBXGroup;
+			children = (
+				1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */,
+				1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */,
+				1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */,
+			);
+			path = Licenses;
+			sourceTree = "<group>";
+		};
+		1F36DA5E1FC3276100BD9B4A /* License */ = {
+			isa = PBXGroup;
+			children = (
+				1F36DA541FC323A600BD9B4A /* WebViewController.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		1F3A7ABC1FDA8DA100369420 /* 1Password */ = {
+			isa = PBXGroup;
+			children = (
+				1F3A7AC11FDA8DD100369420 /* 1Password.xcassets */,
+				1F3A7ABE1FDA8DC800369420 /* OnePasswordExtension.h */,
+				1F3A7ABF1FDA8DC800369420 /* OnePasswordExtension.m */,
+			);
+			path = 1Password;
+			sourceTree = "<group>";
+		};
 		1F74531D1FC1D75A00BC0087 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F36DA571FC323AF00BD9B4A /* Licenses */,
 				1F74531E1FC1D76D00BC0087 /* confetti.png */,
+				1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -596,6 +650,7 @@
 				1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */,
 				1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */,
 				1F864E6E1FB732CF002AA79B /* Main */,
+				1F36DA5E1FC3276100BD9B4A /* License */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -633,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE108051F8FF7A1002B8E69 /* Regex.swift */,
+				B5499A061FE826210043749D /* Tracker.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -695,6 +751,7 @@
 				B5111E191E71E68F00D68155 /* Localizable.strings */,
 				B54642D91FAA557F00735589 /* Generated */,
 				1F74531D1FC1D75A00BC0087 /* Resources */,
+				1F3A7ABC1FDA8DA100369420 /* 1Password */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -733,6 +790,7 @@
 				B5EA536F1E7FD24000183E07 /* UI */,
 				B58ECB141F990D5300949F4F /* HTWNamespace.swift */,
 				1FA589381FB735CF008EE474 /* GlobalFunctions.swift */,
+				1F3A7ABD1FDA8DC700369420 /* HTWDD-Bridging-Header.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -764,6 +822,8 @@
 				B516D8211FA9A47000551556 /* UIView.swift */,
 				B5EA53731E7FDA5E00183E07 /* UIViewController.swift */,
 				B538EF0F1E1D62040031077C /* UserDefaults.swift */,
+				1F5783521FE42BE900956CEB /* UIDevice.swift */,
+				1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -963,6 +1023,7 @@
 				B5EA53701E7FD24800183E07 /* Transitions */,
 				B556410B1F990CB8006B9B1B /* Colors.swift */,
 				B59879BB1FB0E87900320091 /* LayoutGuide.swift */,
+				1F862D261FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1103,7 +1164,7 @@
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3E4PGPNR47;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1116,7 +1177,7 @@
 					};
 					B59FA99A1DD09C8400259D7F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 2URYCAZR48;
+						DevelopmentTeam = 3E4PGPNR47;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B59FA9861DD09C8300259D7F;
@@ -1162,8 +1223,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5111E171E71E68F00D68155 /* Localizable.strings in Resources */,
+				1F36DA5C1FC3244E00BD9B4A /* KeychainAccess-license.html in Resources */,
+				1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */,
+				1F3A7AC21FDA8DD100369420 /* 1Password.xcassets in Resources */,
+				1F36DA5D1FC3244E00BD9B4A /* Marshal-license.html in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
+				1F36DA5B1FC3244E00BD9B4A /* RxSwift-license.html in Resources */,
 				1F74531F1FC1D76D00BC0087 /* confetti.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1327,11 +1393,13 @@
 				B5EF95831FAF53F6006BC7D1 /* GenericBasicCollectionViewDataSource.swift in Sources */,
 				B5EF958C1FAF8A9E006BC7D1 /* ExamsDataSource.swift in Sources */,
 				B5BE728E1E6C886400D05B6D /* Event.swift in Sources */,
+				B5499A071FE826210043749D /* Tracker.swift in Sources */,
 				B5111E241E71F7A200D68155 /* CollectionReusableView.swift in Sources */,
 				B50EB4FE1E6ADC0C0022E40C /* LectureCollectionViewCell.swift in Sources */,
 				B5461B631FA63CED00564D6D /* CanteenDataSource.swift in Sources */,
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B52329031FB8A029000C4F44 /* CollectionBackgroundView.swift in Sources */,
+				1F862D271FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift in Sources */,
 				B55ADF4B1FC08545004A5BB2 /* LoadingView.swift in Sources */,
 				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
@@ -1389,6 +1457,7 @@
 				B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */,
 				1F7E32091FA7B84000CCBDD6 /* ScheduleListVC.swift in Sources */,
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
+				1F3A7AC01FDA8DC800369420 /* OnePasswordExtension.m in Sources */,
 				B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */,
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
 				B5D3E83C1FA5E8D50055782D /* ScheduleService.swift in Sources */,
@@ -1398,6 +1467,7 @@
 				B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */,
 				B5EA53741E7FDA5E00183E07 /* UIViewController.swift in Sources */,
 				B529EDEA1FABA41C000C1677 /* CollectionViewFlowLayout.swift in Sources */,
+				1F36DA561FC323A700BD9B4A /* WebViewController.swift in Sources */,
 				B5EF95741FADB389006BC7D1 /* ExamsCoordinator.swift in Sources */,
 				B5D3E83E1FA5EBBE0055782D /* Service.swift in Sources */,
 				B5D3E83A1FA5E7630055782D /* ScheduleCoordinator.swift in Sources */,
@@ -1412,6 +1482,7 @@
 				B538EF071E1D58690031077C /* NSObject+Rx.swift in Sources */,
 				B50EB4F71E6AD42D0022E40C /* CollectionViewDataSource.swift in Sources */,
 				1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */,
+				1F5783551FE42C6500956CEB /* MFMailComposeViewController.swift in Sources */,
 				1F2B8A101F99029E00026099 /* TextField.swift in Sources */,
 				1FE108061F8FF7A1002B8E69 /* Regex.swift in Sources */,
 				B50EB5001E6ADC720022E40C /* CollectionViewCell.swift in Sources */,
@@ -1429,6 +1500,7 @@
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,
 				1F94C3FC1F90CD4F00988E72 /* Coordinator.swift in Sources */,
+				1F5783531FE42BE900956CEB /* UIDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1683,6 +1755,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3E4PGPNR47;
@@ -1699,6 +1772,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "23ac1ed9-d5ff-40dd-b6e6-65676b733551";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW App Dev";
+				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 4.0;
@@ -1710,6 +1785,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1727,6 +1803,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4be22951-7cfe-4d20-b1f6-7e62e809c6ee";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW App Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 4.0;
@@ -1739,7 +1816,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2URYCAZR48;
+				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1761,7 +1838,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 2URYCAZR48;
+				DEVELOPMENT_TEAM = 3E4PGPNR47;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

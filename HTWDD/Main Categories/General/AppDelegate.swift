@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSClassFromString("XCTestCase") != nil {
             return true
         }
+        
+        Tracker.track(.start)
 
         let window = UIWindow()
 
@@ -31,8 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.stylizeUI()
 
 		Fabric.with([Crashlytics.self])
+        
+        UserDefaults.standard.saveAppVersion()
 
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        Tracker.track(.open)
     }
 
 	// MARK: - UI Apperance
