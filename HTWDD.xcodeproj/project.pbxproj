@@ -92,6 +92,7 @@
 		1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94C4001F90DB4200988E72 /* AppCoordinator.swift */; };
 		1FA589391FB735D0008EE474 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA589381FB735CF008EE474 /* GlobalFunctions.swift */; };
 		1FA5893A1FB7360A008EE474 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA589381FB735CF008EE474 /* GlobalFunctions.swift */; };
+		1FA92C711FEACC7400A88B0D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA92C701FEACC7400A88B0D /* UIColor.swift */; };
 		1FB51A131FC1E89B00049DAA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A111FC1E89A00049DAA /* Crashlytics.framework */; };
 		1FB51A141FC1E89B00049DAA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A121FC1E89B00049DAA /* Fabric.framework */; };
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
@@ -289,6 +290,7 @@
 		1F94C3FB1F90CD4F00988E72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1FA589381FB735CF008EE474 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		1FA92C701FEACC7400A88B0D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1FB51A111FC1E89A00049DAA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1FB51A121FC1E89B00049DAA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -819,6 +821,7 @@
 				B5EA535E1E7FBB1500183E07 /* String.swift */,
 				B5EA53601E7FBB6600183E07 /* String_TestCase.swift */,
 				B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */,
+				1FA92C701FEACC7400A88B0D /* UIColor.swift */,
 				B516D8211FA9A47000551556 /* UIView.swift */,
 				B5EA53731E7FDA5E00183E07 /* UIViewController.swift */,
 				B538EF0F1E1D62040031077C /* UserDefaults.swift */,
@@ -1432,6 +1435,7 @@
 				B52A9B591DDB173600313FC3 /* ViewController.swift in Sources */,
 				B5D3E8381FA5E6C10055782D /* GradeCoordinator.swift in Sources */,
 				1FC1BDD41FADDF1C007F9D06 /* SettingsService.swift in Sources */,
+				1FA92C711FEACC7400A88B0D /* UIColor.swift in Sources */,
 				B5D3E8361FA5E3620055782D /* GradeService.swift in Sources */,
 				B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */,
 				B52DF0DA1E70A8870095C854 /* Week.swift in Sources */,
