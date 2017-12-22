@@ -101,12 +101,13 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
             
             let composer = MFMailComposeViewController()
             composer.mailComposeDelegate = settings
-            composer.setToRecipients(["mail@htw.benchr.de"])
+            composer.setToRecipients([Loca.Settings.items.mail.mail])
             composer.setSubject("HTW iOS Feedback")
             composer.setMessageBody(body, isHTML: false)
             composer.navigationBar.tintColor = UIColor.white
             self.rootViewController.present(composer, animated: true, completion: nil)
         } else {
+            UIPasteboard.general.string = Loca.Settings.items.mail.mail
             let info = UIAlertController(title: Loca.Settings.items.mail.fallback.title, message: Loca.Settings.items.mail.fallback.message, preferredStyle: .alert)
             info.addAction(UIAlertAction(title: Loca.ok, style: .default, handler: nil))
             self.rootViewController.present(info, animated: true, completion: nil)

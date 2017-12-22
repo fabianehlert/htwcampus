@@ -410,6 +410,9 @@ public struct Loca {
 
             public struct mail {
 
+                /// Base translation: mail@htw.benchr.de
+                public static var mail : String = NSLocalizedString("Settings.items.mail.mail", comment: "")
+
                 /// Base translation: Write mail to developer
                 public static var title : String = NSLocalizedString("Settings.items.mail.title", comment: "")
 

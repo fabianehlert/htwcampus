@@ -72,6 +72,7 @@
 "Settings.sections.openSource"="Open Source Lizenzen";
 "Settings.sections.weAreOpenSource"="Wir sind Open Source!";
 "Settings.sections.contact"="Kontakt";
+"Settings.items.mail.mail"="mail@htw.benchr.de";
 "Settings.items.mail.title"="Mail an Entwickler schreiben";
 "Settings.items.mail.fallback.title"="Mailadresse kopiert!";
 "Settings.items.mail.fallback.message"="Es sieht so aus, als würdest du die Mail App von Apple nicht verwenden. Deshalb haben wir die Kontaktadresse für dich kopiert.";

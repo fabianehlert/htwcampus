@@ -72,6 +72,7 @@
 "Settings.sections.openSource"="Open-source licenses";
 "Settings.sections.weAreOpenSource"="We are Open Source!";
 "Settings.sections.contact"="Contact";
+"Settings.items.mail.mail"="mail@htw.benchr.de";
 "Settings.items.mail.title"="Write mail to developer";
 "Settings.items.mail.fallback.title"="Mail address copied!";
 "Settings.items.mail.fallback.message"="It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.";
