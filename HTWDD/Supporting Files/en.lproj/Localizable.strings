@@ -32,6 +32,9 @@
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 "Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
 
+"Schedule.Settings.Hide.action"="Hide this lecture";
+"Schedule.Settings.Hide.otherAction"="Show lecture";
+
 "Schedule.LectureType.lecture"="Lecture";
 "Schedule.LectureType.practical"="Practical";
 "Schedule.LectureType.exercise"="Exercise";

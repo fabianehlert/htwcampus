@@ -171,11 +171,11 @@ public struct Loca {
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
 
-        /// Base translation: Enjoy your free day! 🎉
-        public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
-
         /// Base translation: Schedule
         public static var title : String = NSLocalizedString("Schedule.title", comment: "")
+
+        /// Base translation: Enjoy your free day! 🎉
+        public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
 
         public struct Cell {
@@ -185,6 +185,20 @@ public struct Loca {
                 return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
             }
 
+        }
+
+        public struct Settings {
+
+
+            public struct Hide {
+
+                /// Base translation: Show lecture
+                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
+
+                /// Base translation: Hide this lecture
+                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
+
+            }
         }
 
         public struct Style {
