@@ -26,6 +26,7 @@ class TableViewController: ViewController {
         super.viewDidLoad()
 
         self.tableView.backgroundColor = UIColor.htw.veryLightGrey
+        self.tableView.separatorColor = UIColor.htw.lightGrey
         self.tableView.frame = self.view.bounds
         self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.tableView)
@@ -38,7 +39,7 @@ class TableViewController: ViewController {
 extension TableViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 55
     }
 
 }

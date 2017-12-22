@@ -116,8 +116,6 @@ class SettingsMainVC: TableViewController {
         
         self.dataSource.tableView = self.tableView
         self.dataSource.register(type: SettingsCell.self)
-		
-		self.tableView.separatorColor = UIColor.htw.lightGrey
 	}
 	
     private func reset() {

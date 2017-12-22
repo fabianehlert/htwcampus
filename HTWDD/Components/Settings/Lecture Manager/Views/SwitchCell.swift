@@ -40,6 +40,8 @@ class SwitchCell: TableViewCell, Cell {
     override func initialSetup() {
         super.initialSetup()
         
+        self.selectionStyle = .none
+        
         let views: [UIView] = [self.titleLabel, self.activeSwitch]
         views.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
