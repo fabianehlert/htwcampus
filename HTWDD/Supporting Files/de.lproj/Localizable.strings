@@ -31,6 +31,9 @@
 "Schedule.noResults.title"="Kein Plan...";
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
 "Schedule.NextLecture.unavailable"="Keine Stunden mehr für heute! 🚲🌴";
+"Schedule.Weeks.all"="Jede Woche";
+"Schedule.Weeks.odd"="Ungerade Wochen";
+"Schedule.Weeks.even"="Gerade Wochen";
 
 "Schedule.Settings.Hide.title"="Stunden verwalten";
 "Schedule.Settings.Hide.action"="Diese Stunde ausblenden";

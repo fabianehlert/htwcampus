@@ -178,6 +178,19 @@ public struct Loca {
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
 
+        public struct Weeks {
+
+            /// Base translation: Ungerade Wochen
+            public static var odd : String = NSLocalizedString("Schedule.Weeks.odd", comment: "")
+
+            /// Base translation: Jede Woche
+            public static var all : String = NSLocalizedString("Schedule.Weeks.all", comment: "")
+
+            /// Base translation: Gerade Wochen
+            public static var even : String = NSLocalizedString("Schedule.Weeks.even", comment: "")
+
+        }
+
         public struct Cell {
 
             /// Base translation: %02d:%02d
@@ -185,23 +198,6 @@ public struct Loca {
                 return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
             }
 
-        }
-
-        public struct Settings {
-
-
-            public struct Hide {
-
-                /// Base translation: Manage lectures
-                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
-
-                /// Base translation: Show lecture
-                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
-
-                /// Base translation: Hide this lecture
-                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
-
-            }
         }
 
         public struct Style {
@@ -235,6 +231,23 @@ public struct Loca {
             /// Base translation: No plan...
             public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
 
+        }
+
+        public struct Settings {
+
+
+            public struct Hide {
+
+                /// Base translation: Manage lectures
+                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
+
+                /// Base translation: Show lecture
+                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
+
+                /// Base translation: Hide this lecture
+                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
+
+            }
         }
 
         public struct NextLecture {

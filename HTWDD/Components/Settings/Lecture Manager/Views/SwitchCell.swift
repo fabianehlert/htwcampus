@@ -19,7 +19,7 @@ struct SwitchViewModel: ViewModel {
         let begin = Loca.Schedule.Cell.time(model.lecture.begin.hour ?? 0, model.lecture.begin.minute ?? 0)
         let end = Loca.Schedule.Cell.time(model.lecture.end.hour ?? 0, model.lecture.end.minute ?? 0)
 
-        self.subtitle = "\(begin) – \(end) • \(model.lecture.week)"
+        self.subtitle = "\(begin) – \(end) | \(model.lecture.week.stringValue)"
         self.on = !model.hidden
     }
 }
