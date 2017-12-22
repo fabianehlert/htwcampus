@@ -192,6 +192,9 @@ public struct Loca {
 
             public struct Hide {
 
+                /// Base translation: Manage lectures
+                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
+
                 /// Base translation: Show lecture
                 public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
 
