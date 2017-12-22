@@ -99,6 +99,7 @@
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
 		1FC1BDD21FADDF11007F9D06 /* SettingsMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */; };
 		1FC1BDD41FADDF1C007F9D06 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */; };
+		1FC35F3F1FED1589002CD273 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC35F3E1FED1589002CD273 /* SwitchCell.swift */; };
 		1FC730F51FC0F4F2005A04D6 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BF1FB0F67800320091 /* BadgeLabel.swift */; };
 		1FCE29311FA7C0F300A66654 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE29301FA7C0F200A66654 /* Localizations.swift */; };
 		1FD757601FB4D1BD007F9CA1 /* LectureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE28FF1F77FA3500A2B77D /* LectureViewModel.swift */; };
@@ -298,6 +299,7 @@
 		1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainVC.swift; sourceTree = "<group>"; };
 		1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		1FC35F3E1FED1589002CD273 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		1FCE29301FA7C0F200A66654 /* Localizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		1FE108021F8FDAF5002B8E69 /* StudygroupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudygroupTextField.swift; sourceTree = "<group>"; };
 		1FE108051F8FF7A1002B8E69 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				1F5E1A631FED11BC0031ED82 /* LectureManagerViewController.swift */,
+				1FC35F3D1FED1572002CD273 /* Views */,
 			);
 			path = "Lecture Manager";
 			sourceTree = "<group>";
@@ -693,6 +696,14 @@
 			children = (
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
 				B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1FC35F3D1FED1572002CD273 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FC35F3E1FED1589002CD273 /* SwitchCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1505,6 +1516,7 @@
 				B58ECB151F990D5300949F4F /* HTWNamespace.swift in Sources */,
 				B5EF957B1FADC5B8006BC7D1 /* StudyYear.swift in Sources */,
 				B5F58E461E1EA7C8006D99AE /* Dictionary.swift in Sources */,
+				1FC35F3F1FED1589002CD273 /* SwitchCell.swift in Sources */,
 				B5BE72861E6C83A500D05B6D /* EventDate.swift in Sources */,
 				1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */,
 				1FCE29311FA7C0F300A66654 /* Localizations.swift in Sources */,
