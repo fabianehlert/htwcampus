@@ -27,6 +27,13 @@ class ScheduleDetailVC: ViewController {
 		return scrollView
 	}()
 	
+    let colorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.htw.orange
+        view.layer.cornerRadius = 2
+        return view
+    }()
+
 	private lazy var nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 30, weight: .bold)
@@ -34,7 +41,6 @@ class ScheduleDetailVC: ViewController {
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 
@@ -45,24 +51,14 @@ class ScheduleDetailVC: ViewController {
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
-	
-	let colorView: UIView = {
-		let view = UIView()
-		view.backgroundColor = UIColor.htw.orange
-		view.layer.cornerRadius = 2
-		view.translatesAutoresizingMaskIntoConstraints = false
-		return view
-	}()
-	
+		
 	private lazy var typeLabel: BadgeLabel = {
 		let label = BadgeLabel()
 		label.font = .systemFont(ofSize: 18, weight: .semibold)
 		label.textColor = UIColor.htw.textHeadline
 		label.backgroundColor = UIColor(hex: 0xE8E8E8)
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 
@@ -71,7 +67,6 @@ class ScheduleDetailVC: ViewController {
 		label.font = .systemFont(ofSize: 18, weight: .semibold)
 		label.textColor = UIColor.htw.textHeadline
 		label.backgroundColor = UIColor(hex: 0xCFCFCF)
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
@@ -81,9 +76,16 @@ class ScheduleDetailVC: ViewController {
 		label.textColor = UIColor.htw.textHeadline
 		label.numberOfLines = 1
 		label.textAlignment = .left
-		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
+
+    private lazy var hideButton: ReactiveButton = {
+        let button = ReactiveButton()
+        button.setTitleColor(UIColor.htw.blue, for: .normal)
+        button.backgroundColor = .clear
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        return button
+    }()
 
 	// MARK: - Init
 
@@ -121,22 +123,9 @@ class ScheduleDetailVC: ViewController {
 	}
 
 	// MARK: - UI
-
-	private func update(viewModel: LectureViewModel) {
-		self.title = viewModel.shortTitle
-
-		self.timeLabel.text = viewModel.time
-		self.colorView.backgroundColor = UIColor(hex: viewModel.color)
-		
-		self.nameLabel.text = viewModel.longTitle
-		self.professorLabel.text = viewModel.professor
-		self.typeLabel.text = viewModel.rawType
-		self.roomLabel.text = viewModel.room
-	}
 	
 	private func setupUI() {
-		// ScrollView
-		
+        // ScrollView
 		self.view.addSubview(self.scrollView)
 		
 		let layoutGuide = self.view.htw.safeAreaLayoutGuide
@@ -147,11 +136,19 @@ class ScheduleDetailVC: ViewController {
 			self.scrollView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
 		])
 		
-		// Heading
-		
-		[self.nameLabel, self.professorLabel].forEach({
-			self.scrollView.addSubview($0)
-		})
+        // Other views
+        let separator = UIView()
+        separator.backgroundColor = UIColor.htw.lightGrey
+
+        let bottomSeparator = UIView()
+        bottomSeparator.backgroundColor = UIColor.htw.lightGrey
+
+        [self.colorView, self.timeLabel, self.nameLabel, self.professorLabel, self.typeLabel, self.roomLabel, self.hideButton, separator, bottomSeparator].forEach({
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            self.scrollView.addSubview($0)
+        })
+        
+        self.hideButton.addTarget(self, action: #selector(hideLecture), for: .touchUpInside)
 		
 		NSLayoutConstraint.activate([
 			self.nameLabel.leadingAnchor.constraint(
@@ -167,90 +164,75 @@ class ScheduleDetailVC: ViewController {
 				equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
 			self.professorLabel.topAnchor.constraint(
 				equalTo: self.nameLabel.bottomAnchor, constant: 4),
-			self.professorLabel.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin)
-		])
-		
-		// Separator
-		
-		let separator = UIView()
-		separator.backgroundColor = UIColor.htw.lightGrey
-		separator.translatesAutoresizingMaskIntoConstraints = false
-		self.scrollView.addSubview(separator)
-		
-		NSLayoutConstraint.activate([
-			separator.leadingAnchor.constraint(
-				equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-			separator.topAnchor.constraint(
-				equalTo: self.professorLabel.bottomAnchor, constant: Const.spacing),
-			separator.trailingAnchor.constraint(
-				equalTo: self.scrollView.trailingAnchor),
-			separator.heightAnchor.constraint(
-				equalToConstant: Const.separator)
-		])
-		
-		// Color & Time
-		
-		[self.colorView, self.timeLabel].forEach({
-			self.scrollView.addSubview($0)
-		})
-		
-		NSLayoutConstraint.activate([
-			self.timeLabel.leadingAnchor.constraint(
-				equalTo: self.colorView.trailingAnchor, constant: 10),
-			self.timeLabel.topAnchor.constraint(
-				equalTo: separator.bottomAnchor, constant: Const.spacing)
-		])
-		
-		// Type & Room
-		
-		[self.typeLabel, self.roomLabel].forEach({
-			self.scrollView.addSubview($0)
-		})
-		
-		NSLayoutConstraint.activate([
-			self.typeLabel.leadingAnchor.constraint(
-				equalTo: self.colorView.trailingAnchor, constant: 10),
-			self.typeLabel.topAnchor.constraint(
-				equalTo: self.timeLabel.bottomAnchor, constant: 8),
-			self.roomLabel.leadingAnchor.constraint(
-				equalTo: self.typeLabel.trailingAnchor, constant: 8),
-			self.roomLabel.topAnchor.constraint(
-				equalTo: self.timeLabel.bottomAnchor, constant: 8)
-		])
-		
-		// Separator II
-		
-		let bottomSeparator = UIView()
-		bottomSeparator.backgroundColor = UIColor.htw.lightGrey
-		bottomSeparator.translatesAutoresizingMaskIntoConstraints = false
-		self.scrollView.addSubview(bottomSeparator)
-		
-		NSLayoutConstraint.activate([
-			bottomSeparator.leadingAnchor.constraint(
-				equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
-			bottomSeparator.topAnchor.constraint(
-				equalTo: self.colorView.bottomAnchor, constant: Const.spacing),
-			bottomSeparator.trailingAnchor.constraint(
-				equalTo: self.scrollView.trailingAnchor),
-			bottomSeparator.heightAnchor.constraint(
-				equalToConstant: Const.separator),
-			bottomSeparator.bottomAnchor.constraint(
-				equalTo: self.scrollView.bottomAnchor, constant: -Const.margin)
-		])
-		
-		// Color
-		
-		NSLayoutConstraint.activate([
-			self.colorView.leadingAnchor.constraint(
-				equalTo: separator.leadingAnchor, constant: 8),
-			self.colorView.topAnchor.constraint(
-				equalTo: separator.bottomAnchor, constant: Const.spacing),
-			self.colorView.bottomAnchor.constraint(
-				equalTo: self.typeLabel.bottomAnchor, constant: 5),
-			self.colorView.widthAnchor.constraint(equalToConstant: 4)
+			self.professorLabel.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -Const.margin),
+            
+            separator.leadingAnchor.constraint(
+                equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+            separator.topAnchor.constraint(
+                equalTo: self.professorLabel.bottomAnchor, constant: Const.spacing),
+            separator.trailingAnchor.constraint(
+                equalTo: self.scrollView.trailingAnchor),
+            separator.heightAnchor.constraint(
+                equalToConstant: Const.separator),
+
+            self.timeLabel.leadingAnchor.constraint(
+                equalTo: self.colorView.trailingAnchor, constant: 10),
+            self.timeLabel.topAnchor.constraint(
+                equalTo: separator.bottomAnchor, constant: Const.spacing),
+            
+            self.typeLabel.leadingAnchor.constraint(
+                equalTo: self.colorView.trailingAnchor, constant: 10),
+            self.typeLabel.topAnchor.constraint(
+                equalTo: self.timeLabel.bottomAnchor, constant: 8),
+            self.roomLabel.leadingAnchor.constraint(
+                equalTo: self.typeLabel.trailingAnchor, constant: 8),
+            self.roomLabel.topAnchor.constraint(
+                equalTo: self.timeLabel.bottomAnchor, constant: 8),
+
+            bottomSeparator.leadingAnchor.constraint(
+                equalTo: self.scrollView.leadingAnchor, constant: Const.margin),
+            bottomSeparator.topAnchor.constraint(
+                equalTo: self.colorView.bottomAnchor, constant: Const.spacing),
+            bottomSeparator.trailingAnchor.constraint(
+                equalTo: self.scrollView.trailingAnchor),
+            bottomSeparator.heightAnchor.constraint(
+                equalToConstant: Const.separator),
+            bottomSeparator.bottomAnchor.constraint(
+                equalTo: self.hideButton.topAnchor, constant: -Const.margin),
+
+            self.colorView.leadingAnchor.constraint(
+                equalTo: separator.leadingAnchor, constant: 8),
+            self.colorView.topAnchor.constraint(
+                equalTo: separator.bottomAnchor, constant: Const.spacing),
+            self.colorView.bottomAnchor.constraint(
+                equalTo: self.typeLabel.bottomAnchor, constant: 5),
+            self.colorView.widthAnchor.constraint(equalToConstant: 4),
+            
+            self.hideButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor,
+                                                     constant: Const.margin),
+            self.hideButton.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor,
+                                                      constant: -Const.margin),
+            self.hideButton.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor,
+                                                    constant: -Const.margin),
+            self.hideButton.heightAnchor.constraint(equalToConstant: 40)
 		])
 	}
-	
+
+    private func update(viewModel: LectureViewModel) {
+        self.title = viewModel.shortTitle
+        
+        self.timeLabel.text = viewModel.time
+        self.colorView.backgroundColor = UIColor(hex: viewModel.color)
+        
+        self.nameLabel.text = viewModel.longTitle
+        self.professorLabel.text = viewModel.professor
+        self.typeLabel.text = viewModel.rawType
+        self.roomLabel.text = viewModel.room
+        
+        // TODO: Check if lecture is set to hidden and set appropriate title
+        self.hideButton.setTitle(Loca.Schedule.Settings.Hide.action, for: .normal)
+    }
+
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
@@ -261,5 +243,10 @@ class ScheduleDetailVC: ViewController {
 	private func tapRecognized(_ sender: UIGestureRecognizer) {
 		self.dismiss(animated: true)
 	}
+    
+    @objc
+    private func hideLecture() {
+        // TODO: Actually hide lecture
+    }
 	
 }
