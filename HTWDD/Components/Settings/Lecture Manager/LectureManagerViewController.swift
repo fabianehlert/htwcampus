@@ -48,6 +48,10 @@ class LectureManagerViewController: TableViewController {
         }).disposed(by: self.rx_disposeBag)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
