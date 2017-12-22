@@ -13,7 +13,8 @@ protocol SettingsMainVCDelegate: class {
     func deleteAllData()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
-	
+	func showLectureManager()
+    
 	func showLicense(name: String)
 	func showGitHub()
     func composeMail()
@@ -45,6 +46,9 @@ class SettingsMainVC: TableViewController {
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
 							 action: self.showGradeOnboarding())
 			]),
+            (Loca.Schedule.title, [
+                SettingsItem(title: Loca.Schedule.Settings.Hide.title, action: self.showLectureManager())
+            ]),
             (Loca.Settings.sections.weAreOpenSource, [
 				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
 			]),
@@ -133,6 +137,10 @@ class SettingsMainVC: TableViewController {
         self.delegate?.triggerGradeOnboarding(completion: { [weak self] auth in
             self?.gradesAuth = auth
         })
+    }
+    
+    private func showLectureManager() {
+        self.delegate?.showLectureManager()
     }
 	
 	private func showLicense(name: String) {

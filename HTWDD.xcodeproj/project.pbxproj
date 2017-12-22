@@ -43,6 +43,7 @@
 		1F54EE441FAA063B00415813 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54EE431FAA063B00415813 /* LectureListCell.swift */; };
 		1F5783531FE42BE900956CEB /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5783521FE42BE900956CEB /* UIDevice.swift */; };
 		1F5783551FE42C6500956CEB /* MFMailComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */; };
+		1F5E1A641FED11BC0031ED82 /* LectureManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E1A631FED11BC0031ED82 /* LectureManagerViewController.swift */; };
 		1F74531F1FC1D76D00BC0087 /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F74531E1FC1D76D00BC0087 /* confetti.png */; };
 		1F77AD1B1F8FA67D00351A73 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */; };
 		1F7E32071FA7B82800CCBDD6 /* ScheduleWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */; };
@@ -279,6 +280,7 @@
 		1F54EE431FAA063B00415813 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
 		1F5783521FE42BE900956CEB /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFMailComposeViewController.swift; sourceTree = "<group>"; };
+		1F5E1A631FED11BC0031ED82 /* LectureManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureManagerViewController.swift; sourceTree = "<group>"; };
 		1F74531E1FC1D76D00BC0087 /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		1F77AD191F8FA67D00351A73 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		1F7E32061FA7B82800CCBDD6 /* ScheduleWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWeekVC.swift; sourceTree = "<group>"; };
@@ -494,6 +496,14 @@
 			path = 1Password;
 			sourceTree = "<group>";
 		};
+		1F5E1A621FED119B0031ED82 /* Lecture Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1F5E1A631FED11BC0031ED82 /* LectureManagerViewController.swift */,
+			);
+			path = "Lecture Manager";
+			sourceTree = "<group>";
+		};
 		1F74531D1FC1D75A00BC0087 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +662,7 @@
 				1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */,
 				1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */,
 				1F864E6E1FB732CF002AA79B /* Main */,
+				1F5E1A621FED119B0031ED82 /* Lecture Manager */,
 				1F36DA5E1FC3276100BD9B4A /* License */,
 			);
 			path = Settings;
@@ -1453,6 +1464,7 @@
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
 				B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,
+				1F5E1A641FED11BC0031ED82 /* LectureManagerViewController.swift in Sources */,
 				1F1491B31FB450A10011B114 /* NoResultsView.swift in Sources */,
 				B5EF95781FADB40C006BC7D1 /* ExamsService.swift in Sources */,
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,

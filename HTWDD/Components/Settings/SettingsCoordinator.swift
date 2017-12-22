@@ -64,9 +64,16 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
         self.delegate?.triggerGradeOnboarding(completion: completion)
     }
 	
+    func showLectureManager() {
+        if let root = self.rootViewController as? NavigationController {
+            let lectureManager = LectureManagerViewController()
+            root.pushViewController(lectureManager, animated: true)
+        }
+    }
+    
 	func showLicense(name: String) {
-		let webVC = WebViewController(fileName: name)
 		if let root = self.rootViewController as? NavigationController {
+            let webVC = WebViewController(fileName: name)
 			root.pushViewController(webVC, animated: true)
 		}
 	}
