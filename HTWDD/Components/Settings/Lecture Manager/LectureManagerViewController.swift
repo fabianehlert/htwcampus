@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class LectureManagerViewController: TableViewController {
     
+    var auth: ScheduleService.Auth?
+    
     // MARK: - Init
     
-    init() {
+    init(auth: ScheduleService.Auth?) {
         super.init(style: .grouped)
+        self.auth = auth
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -64,9 +64,9 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
         self.delegate?.triggerGradeOnboarding(completion: completion)
     }
 	
-    func showLectureManager() {
+    func showLectureManager(auth: ScheduleService.Auth?) {
         if let root = self.rootViewController as? NavigationController {
-            let lectureManager = LectureManagerViewController()
+            let lectureManager = LectureManagerViewController(auth: auth)
             root.pushViewController(lectureManager, animated: true)
         }
     }

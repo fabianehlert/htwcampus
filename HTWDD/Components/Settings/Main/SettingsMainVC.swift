@@ -13,7 +13,7 @@ protocol SettingsMainVCDelegate: class {
     func deleteAllData()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
-	func showLectureManager()
+    func showLectureManager(auth: ScheduleService.Auth?)
     
 	func showLicense(name: String)
 	func showGitHub()
@@ -140,7 +140,7 @@ class SettingsMainVC: TableViewController {
     }
     
     private func showLectureManager() {
-        self.delegate?.showLectureManager()
+        self.delegate?.showLectureManager(auth: self.scheduleAuth)
     }
 	
 	private func showLicense(name: String) {
