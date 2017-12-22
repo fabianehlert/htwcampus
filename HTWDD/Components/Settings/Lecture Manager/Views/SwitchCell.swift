@@ -33,14 +33,15 @@ class SwitchCell: TableViewCell, Cell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
-        label.textColor = UIColor.htw.mediumGrey
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.textColor = UIColor.htw.grey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

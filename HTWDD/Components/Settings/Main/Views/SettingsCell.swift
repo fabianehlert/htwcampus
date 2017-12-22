@@ -35,18 +35,45 @@ class SettingsCell: TableViewCell, Cell {
         static let margin: CGFloat = 15
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-		self.accessoryType = .disclosureIndicator
-    }
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private lazy var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.textColor = UIColor.htw.grey
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    // MARK: - Init
+    
+    override func initialSetup() {
+        super.initialSetup()
+        
+        self.accessoryType = .disclosureIndicator
+        
+        let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel])
+        stackView.axis = .horizontal
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
+                                               constant: Const.margin),
+            stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+        ])
     }
     
     func update(viewModel: SettingsItemViewModel) {
-        self.textLabel?.text = viewModel.title
-        self.detailTextLabel?.text = viewModel.subtitle
+        self.titleLabel.text = viewModel.title
+        self.subtitleLabel.text = viewModel.subtitle
     }
     
 }
