@@ -13,6 +13,9 @@ class LectureManagerViewController: TableViewController {
     
     var auth: ScheduleService.Auth?
     
+    private var lectures = [(String, [AppLecture])]()
+    private lazy var dataSource = GenericBasicTableViewDataSource(data: self.lectures)
+    
     // MARK: - Init
     
     init(auth: ScheduleService.Auth?) {
@@ -28,13 +31,21 @@ class LectureManagerViewController: TableViewController {
     
     override func initialSetup() {
         super.initialSetup()
-        
         self.title = Loca.Schedule.Settings.Hide.title
-        self.tableView.separatorColor = UIColor.htw.lightGrey
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ScheduleService().load(parameters: auth!).subscribe(onNext: { info in
+            self.lectures = info.lectures.map({
+                return ($0.key.stringValue, $0.value)
+            })
+            self.dataSource = GenericBasicTableViewDataSource(data: self.lectures)
+            self.dataSource.tableView = self.tableView
+            self.dataSource.register(type: SwitchCell.self)
+            self.dataSource.invalidate()
+        }).disposed(by: self.rx_disposeBag)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
