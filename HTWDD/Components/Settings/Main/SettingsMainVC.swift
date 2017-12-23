@@ -36,9 +36,9 @@ class SettingsMainVC: TableViewController {
     
     private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
 	
-	private var settings: [(String, [SettingsItem])] {
+	private var settings: [(String?, [SettingsItem])] {
 		return [
-			("", [
+			(nil, [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
 							 action: self.showScheduleOnboarding()),

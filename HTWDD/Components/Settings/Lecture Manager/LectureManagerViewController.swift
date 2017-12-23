@@ -12,8 +12,8 @@ class LectureManagerViewController: TableViewController {
     
     var auth: ScheduleService.Auth?
     
-    private var lectures = [(String, [AppLecture])]()
     private lazy var dataSource = GenericBasicTableViewDataSource(data: self.lectures)
+    private var lectures = [(String?, [AppLecture])]()
     
     // MARK: - Init
     
