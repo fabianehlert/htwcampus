@@ -37,7 +37,7 @@ class LectureManagerViewController: TableViewController {
         
         ScheduleService().load(parameters: auth!).subscribe(onNext: { info in
             self.lectures = info.lectures.sorted { $0.key.rawValue < $1.key.rawValue }.map({
-                return ($0.key.name, $0.value)
+                return ($0.key.name, $0.value.sorted { $0.lecture.begin < $1.lecture.end })
             })
             self.configure()
         }).disposed(by: self.rx_disposeBag)
