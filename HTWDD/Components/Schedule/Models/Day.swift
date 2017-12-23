@@ -15,6 +15,26 @@ enum Day: Int, Codable, CodingKey {
         case outOfBounds(Int)
     }
 
+    /// Localized name of the day
+    var name: String {
+        switch self {
+        case .monday:
+            return Loca.monday
+        case .tuesday:
+            return Loca.tuesday
+        case .wednesday:
+            return Loca.wednesday
+        case .thursday:
+            return Loca.thursday
+        case .friday:
+            return Loca.friday
+        case .saturday:
+            return Loca.saturday
+        case .sunday:
+            return Loca.sunday
+        }
+    }
+    
     /// Returns a day with the added number of days. (Use negative number to subtract)
     ///
     /// - Parameter days: the number of days to add/subtract.
