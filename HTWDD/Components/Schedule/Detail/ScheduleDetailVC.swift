@@ -18,6 +18,8 @@ class ScheduleDetailVC: ViewController {
 	
 	private let viewModel: LectureViewModel
 	
+    var onStatusChange: (() -> Void)?
+    
 	// MARK: - Views
 
 	private lazy var scrollView: UIScrollView = {
@@ -218,7 +220,7 @@ class ScheduleDetailVC: ViewController {
 		])
 	}
 
-    private func update(viewModel: LectureViewModel) {
+    func update(viewModel: LectureViewModel) {
         self.title = viewModel.shortTitle
         
         self.timeLabel.text = viewModel.time
@@ -246,7 +248,7 @@ class ScheduleDetailVC: ViewController {
     
     @objc
     private func hideLecture() {
-        // TODO: Actually hide lecture
+        self.onStatusChange?()
     }
 	
 }
