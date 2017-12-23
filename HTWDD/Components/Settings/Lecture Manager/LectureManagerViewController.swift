@@ -12,7 +12,6 @@ class LectureManagerViewController: TableViewController {
     
     var auth: ScheduleService.Auth?
     
-    private lazy var dataSource = GenericBasicTableViewDataSource(data: self.lectures)
     private var lectures = [(String?, [AppLecture])]()
     
     // MARK: - Init
@@ -40,15 +39,21 @@ class LectureManagerViewController: TableViewController {
             self.lectures = info.lectures.map({
                 return ($0.key.stringValue, $0.value)
             })
-            self.dataSource = GenericBasicTableViewDataSource(data: self.lectures)
-            self.dataSource.tableView = self.tableView
-            self.dataSource.register(type: SwitchCell.self)
-            self.dataSource.invalidate()
+            self.configure()
         }).disposed(by: self.rx_disposeBag)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - Private
+    
+    private func configure() {
+        self.dataSource = GenericBasicTableViewDataSource(data: self.lectures)
+        self.dataSource?.tableView = self.tableView
+        self.dataSource?.register(type: SwitchCell.self)
+        self.dataSource?.invalidate()
     }
 
 }

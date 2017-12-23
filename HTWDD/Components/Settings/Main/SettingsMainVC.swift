@@ -24,17 +24,15 @@ class SettingsMainVC: TableViewController {
 	
     var scheduleAuth: ScheduleService.Auth? {
         didSet {
-            self.reset()
+            self.configure()
         }
     }
     
     var gradesAuth: GradeService.Auth? {
         didSet {
-            self.reset()
+            self.configure()
         }
     }
-    
-    private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
 	
 	private var settings: [(String?, [SettingsItem])] {
 		return [
@@ -116,8 +114,7 @@ class SettingsMainVC: TableViewController {
 		self.title = Loca.Settings.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Settings")
         
-        self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: SettingsCell.self)
+        self.configure()
 	}
 	
     // MARK: - ViewController lifecycle
@@ -139,11 +136,11 @@ class SettingsMainVC: TableViewController {
     
     // MARK: - Private
     
-    private func reset() {
+    private func configure() {
         self.dataSource = GenericBasicTableViewDataSource(data: self.settings)
-        self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: SettingsCell.self)
-        self.dataSource.invalidate()
+        self.dataSource?.tableView = self.tableView
+        self.dataSource?.register(type: SettingsCell.self)
+        self.dataSource?.invalidate()
     }
     
     private func showScheduleOnboarding() {
@@ -186,7 +183,8 @@ class SettingsMainVC: TableViewController {
 // MARK: - UITableViewDelegate
 extension SettingsMainVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.dataSource.data(at: indexPath)
+        guard let d = self.dataSource as? GenericBasicTableViewDataSource<SettingsItem> else { return }
+        let item = d.data(at: indexPath)
         item.action()
         tableView.deselectRow(at: indexPath, animated: true)
     }

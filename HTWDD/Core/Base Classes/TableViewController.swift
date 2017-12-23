@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TableViewController: ViewController, UITableViewDelegate {
+class TableViewController: ViewController {
+    
+    var dataSource: TableViewDataSource?
     
     let tableView: UITableView
 
@@ -34,4 +36,33 @@ class TableViewController: ViewController, UITableViewDelegate {
         self.tableView.delegate = self
     }
 
+}
+
+extension TableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let _ = self.dataSource?.titleFor(section: section) else { return 0 }
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let x: CGFloat = 15
+        let label = UILabel(frame: CGRect(x: x, y: 35, width: tableView.width - 2*x, height: 20))
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.textColor = UIColor.htw.grey
+        label.text = self.dataSource?.titleFor(section: section)?.uppercased()
+        label.autoresizingMask = [.flexibleRightMargin]
+        
+        let v = UIView()
+        v.addSubview(label)
+        
+        return v
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
 }
