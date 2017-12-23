@@ -22,8 +22,8 @@ public struct Loca {
     /// Base translation: Friday
     public static var friday : String = NSLocalizedString("friday", comment: "")
 
-    /// Base translation: Wednesday
-    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
+    /// Base translation: Monday
+    public static var monday : String = NSLocalizedString("monday", comment: "")
 
     /// Base translation: Thursday
     public static var thursday : String = NSLocalizedString("thursday", comment: "")
@@ -46,11 +46,11 @@ public struct Loca {
     /// Base translation: Loading…
     public static var loading : String = NSLocalizedString("loading", comment: "")
 
-    /// Base translation: Close
-    public static var close : String = NSLocalizedString("close", comment: "")
-
     /// Base translation: Su
     public static var sunday_short : String = NSLocalizedString("sunday_short", comment: "")
+
+    /// Base translation: Close
+    public static var close : String = NSLocalizedString("close", comment: "")
 
     /// Base translation: Sunday
     public static var sunday : String = NSLocalizedString("sunday", comment: "")
@@ -82,11 +82,11 @@ public struct Loca {
     /// Base translation: Sa
     public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
 
-    /// Base translation: Monday
-    public static var monday : String = NSLocalizedString("monday", comment: "")
-
     /// Base translation: Winter semester
     public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
+
+    /// Base translation: Wednesday
+    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
 
 
     public struct Onboarding {
@@ -161,6 +161,16 @@ public struct Loca {
 
             }
         }
+    }
+
+    public struct CalendarWeek {
+
+        /// Base translation: CW
+        public static var short : String = NSLocalizedString("CalendarWeek.short", comment: "")
+
+        /// Base translation: Calendar week
+        public static var long : String = NSLocalizedString("CalendarWeek.long", comment: "")
+
     }
 
     public struct Schedule {
@@ -321,36 +331,6 @@ public struct Loca {
         }
     }
 
-    public struct Canteen {
-
-        /// Base translation: Canteens
-        public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
-
-        /// Base translation: Canteen
-        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
-
-        /// Base translation: Counter not known
-        public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
-
-
-        public struct noResults {
-
-            /// Base translation: I can't find any meals for today.
-            public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
-
-            /// Base translation: No food
-            public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
-
-        }
-
-        public struct Meal {
-
-            /// Base translation: More information
-            public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
-
-        }
-    }
-
     public struct Exams {
 
         /// Base translation: Examiner: %@
@@ -396,6 +376,36 @@ public struct Loca {
 
             /// Base translation: Oral
             public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
+
+        }
+    }
+
+    public struct Canteen {
+
+        /// Base translation: Canteens
+        public static var pluralTitle : String = NSLocalizedString("Canteen.pluralTitle", comment: "")
+
+        /// Base translation: Canteen
+        public static var title : String = NSLocalizedString("Canteen.title", comment: "")
+
+        /// Base translation: Counter not known
+        public static var noCounter : String = NSLocalizedString("Canteen.noCounter", comment: "")
+
+
+        public struct noResults {
+
+            /// Base translation: I can't find any meals for today.
+            public static var message : String = NSLocalizedString("Canteen.noResults.message", comment: "")
+
+            /// Base translation: No food
+            public static var title : String = NSLocalizedString("Canteen.noResults.title", comment: "")
+
+        }
+
+        public struct Meal {
+
+            /// Base translation: More information
+            public static var more : String = NSLocalizedString("Canteen.Meal.more", comment: "")
 
         }
     }

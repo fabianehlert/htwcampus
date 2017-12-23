@@ -84,6 +84,9 @@
 "Settings.credits"="Entwickelt in Dresden ❤️";
 "Settings.items.legal.title"="Impressum";
 
+"CalendarWeek.long"="Kalenderwoche";
+"CalendarWeek.short"="KW";
+
 "monday"="Montag";
 "tuesday"="Dienstag";
 "wednesday"="Mittwoch";
