@@ -59,6 +59,8 @@ class SwitchCell: TableViewCell, Cell {
         return s
     }()
     
+    var onStatusChange: ((Bool) -> Void)?
+    
     // MARK: - Init
     
     override func initialSetup() {
@@ -101,8 +103,7 @@ class SwitchCell: TableViewCell, Cell {
     
     @objc
     private func hiddenChanges(hiddenSwitch: UISwitch) {
-        print("\(hiddenSwitch.isOn)")
-        // TODO: Actually hide lecture
+        self.onStatusChange?(hiddenSwitch.isOn)
     }
 
 }
