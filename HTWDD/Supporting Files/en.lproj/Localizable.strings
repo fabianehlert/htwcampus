@@ -69,7 +69,7 @@
 "Settings.items.setSchedule.subtitle"="%@/%@/%@";
 "Settings.items.setGrades.title"="Change datacenter credentials";
 "Settings.items.setGrades.subtitle"="%@";
-"Settings.items.deleteAll"="Delete all stored data";
+"Settings.items.deleteAll"="Delete stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
 "Settings.sections.authentication"="Your information";
 "Settings.sections.openSource"="Open-source licenses";

@@ -414,7 +414,7 @@ public struct Loca {
             /// Base translation: HTW iOS on GitHub
             public static var github : String = NSLocalizedString("Settings.items.github", comment: "")
 
-            /// Base translation: Delete all stored data
+            /// Base translation: Delete stored data
             public static var deleteAll : String = NSLocalizedString("Settings.items.deleteAll", comment: "")
 
             /// Base translation: Do you really want to delete all stored in the HTW app?

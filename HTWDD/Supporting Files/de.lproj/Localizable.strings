@@ -69,7 +69,7 @@
 "Settings.items.setSchedule.subtitle"="%@/%@/%@";
 "Settings.items.setGrades.title"="RZ-Zugangsdaten ändern";
 "Settings.items.setGrades.subtitle"="%@";
-"Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
+"Settings.items.deleteAll"="Gespeicherte Daten löschen";
 "Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";
 "Settings.sections.authentication"="Deine Angaben";
 "Settings.sections.openSource"="Open Source Lizenzen";
