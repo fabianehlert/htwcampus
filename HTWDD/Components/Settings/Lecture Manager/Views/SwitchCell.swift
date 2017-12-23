@@ -34,7 +34,7 @@ class SwitchCell: TableViewCell, Cell {
  
     enum Const {
         static let margin: CGFloat = 15
-        static let verticalMargin: CGFloat = 8
+        static let verticalMargin: CGFloat = 10
     }
 
     private lazy var titleLabel: UILabel = {
