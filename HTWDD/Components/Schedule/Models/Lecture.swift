@@ -42,6 +42,11 @@ struct Lecture: Codable {
 
         return dayHash
     }
+    
+    func fullHash() -> Int {
+        // TODO: Parse id of lecture instead (?)
+        return self.name.hashValue ^ self.week.hashValue ^ self.day.hashValue ^ self.begin.hashValue ^ self.rooms.joined().hashValue
+    }
 }
 
 extension Lecture: Equatable {
