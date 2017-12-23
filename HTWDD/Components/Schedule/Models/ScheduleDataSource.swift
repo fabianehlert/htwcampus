@@ -176,7 +176,7 @@ class ScheduleDataSource: CollectionViewDataSource {
             } else {
                 freeDays = []
             }
-            return Data(day: day, date: date, lectures: l, freeDays: freeDays)
+            return Data(day: day, date: date, lectures: l.filter { !$0.hidden }, freeDays: freeDays)
         }
         if self.filterEmptySections {
             all = all.filter { $0.date.sameDayAs(other: Date()) || !$0.lectures.isEmpty || !$0.freeDays.isEmpty }
