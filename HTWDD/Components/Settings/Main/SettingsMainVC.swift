@@ -39,28 +39,45 @@ class SettingsMainVC: TableViewController {
 			(nil, [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
 							 action: self.showScheduleOnboarding()),
 				SettingsItem(title: Loca.Settings.items.setGrades.title,
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
 							 action: self.showGradeOnboarding())
 			]),
             (Loca.Schedule.title, [
-                SettingsItem(title: Loca.Schedule.Settings.Hide.title, action: self.showLectureManager())
+                SettingsItem(title: Loca.Schedule.Settings.Hide.title,
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             action: self.showLectureManager())
             ]),
             (Loca.Settings.sections.weAreOpenSource, [
-				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
+				SettingsItem(title: Loca.Settings.items.github,
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             action: self.showGitHub())
 			]),
             (Loca.Settings.sections.contact, [
-                SettingsItem(title: Loca.Settings.items.mail.title, action: self.composeMail()),
-                SettingsItem(title: Loca.Settings.items.legal.title, action: self.showLicense(name: "HTW-Impressum.html"))
+                SettingsItem(title: Loca.Settings.items.mail.title,
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             action: self.composeMail()),
+                SettingsItem(title: Loca.Settings.items.legal.title,
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             action: self.showLicense(name: "HTW-Impressum.html"))
             ]),
             (Loca.Settings.sections.openSource, [
-                SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
-                SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
-                SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
+                SettingsItem(title: "RxSwift",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "RxSwift-license.html")),
+                SettingsItem(title: "Marshal",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "Marshal-license.html")),
+                SettingsItem(title: "KeychainAccess",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "KeychainAccess-license.html"))
             ]),
 			(Loca.Settings.sections.deleteAll, [
 				SettingsItem(title: Loca.Settings.items.deleteAll,
+                             thumbnail: #imageLiteral(resourceName: "Trash"),
 							 action: self.showConfirmationAlert(title: Loca.attention,
 																message: Loca.Settings.items.deleteAllConfirmationText,
 																actionTitle: Loca.yes,
