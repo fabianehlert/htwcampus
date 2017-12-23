@@ -28,7 +28,7 @@ class SwitchCell: TableViewCell, Cell {
  
     enum Const {
         static let margin: CGFloat = 15
-        static let verticalMargin: CGFloat = 4
+        static let verticalMargin: CGFloat = 8
     }
 
     private lazy var titleLabel: UILabel = {
@@ -70,8 +70,12 @@ class SwitchCell: TableViewCell, Cell {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
                                                constant: Const.margin),
-            stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.activeSwitch.leadingAnchor, constant: -Const.margin),
+            stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                           constant: Const.verticalMargin),
+            stackView.trailingAnchor.constraint(equalTo: self.activeSwitch.leadingAnchor,
+                                                constant: -Const.margin),
+            stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+                                              constant: -Const.verticalMargin),
             
             self.activeSwitch.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,
                                                         constant: -Const.margin),

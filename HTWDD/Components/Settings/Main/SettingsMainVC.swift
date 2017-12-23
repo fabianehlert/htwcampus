@@ -100,6 +100,8 @@ class SettingsMainVC: TableViewController {
     
     weak var delegate: SettingsMainVCDelegate?
     
+    // MARK: - Init
+    
     init() {
         super.init(style: .grouped)
     }
@@ -118,6 +120,25 @@ class SettingsMainVC: TableViewController {
         self.dataSource.register(type: SettingsCell.self)
 	}
 	
+    // MARK: - ViewController lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .automatic
+        }
+        
+        self.tableView.tableFooterView = self.footerView
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Private
+    
     private func reset() {
         self.dataSource = GenericBasicTableViewDataSource(data: self.settings)
         self.dataSource.tableView = self.tableView
@@ -153,23 +174,6 @@ class SettingsMainVC: TableViewController {
         self.delegate?.composeMail()
     }
     
-	// MARK: - ViewController lifecycle
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		if #available(iOS 11.0, *) {
-			self.navigationController?.navigationBar.prefersLargeTitles = true
-			self.navigationItem.largeTitleDisplayMode = .automatic
-		}
-
-        self.tableView.tableFooterView = self.footerView
-	}
-	
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
-	}
-    
     private func showConfirmationAlert(title: String?, message: String?, actionTitle: String, action: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Loca.cancel, style: .cancel, handler: nil))
@@ -177,12 +181,15 @@ class SettingsMainVC: TableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+}
+
+// MARK: - UITableViewDelegate
+extension SettingsMainVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = self.dataSource.data(at: indexPath)
         item.action()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }
 
 extension SettingsMainVC: MFMailComposeViewControllerDelegate {

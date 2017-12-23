@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: ViewController {
+class TableViewController: ViewController, UITableViewDelegate {
     
     let tableView: UITableView
 
@@ -32,14 +32,6 @@ class TableViewController: ViewController {
         self.view.addSubview(self.tableView)
 
         self.tableView.delegate = self
-    }
-
-}
-
-extension TableViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
     }
 
 }

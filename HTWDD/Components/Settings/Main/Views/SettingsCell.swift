@@ -66,8 +66,11 @@ class SettingsCell: TableViewCell, Cell {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
                                                constant: Const.margin),
-            stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
+                                           constant: Const.margin),
             stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+                                              constant: -Const.margin)
         ])
     }
     

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RxSwift
 
 class LectureManagerViewController: TableViewController {
     
@@ -46,10 +45,6 @@ class LectureManagerViewController: TableViewController {
             self.dataSource.register(type: SwitchCell.self)
             self.dataSource.invalidate()
         }).disposed(by: self.rx_disposeBag)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
