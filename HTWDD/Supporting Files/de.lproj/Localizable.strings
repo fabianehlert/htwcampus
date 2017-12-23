@@ -39,6 +39,8 @@
 "Schedule.Settings.Hide.action"="Diese Stunde ausblenden";
 "Schedule.Settings.Hide.otherAction"="Stunde wieder einblenden";
 
+"Schedule.Settings.Cell.subtitle"="%@: %@ – %@";
+
 "Schedule.LectureType.lecture"="Vorlesung";
 "Schedule.LectureType.practical"="Praktikum";
 "Schedule.LectureType.exercise"="Übung";

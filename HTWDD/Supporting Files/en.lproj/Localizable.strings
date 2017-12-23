@@ -39,6 +39,8 @@
 "Schedule.Settings.Hide.action"="Hide this lecture";
 "Schedule.Settings.Hide.otherAction"="Show lecture";
 
+"Schedule.Settings.Cell.subtitle"="%@: %@ – %@";
+
 "Schedule.LectureType.lecture"="Lecture";
 "Schedule.LectureType.practical"="Practical";
 "Schedule.LectureType.exercise"="Exercise";
