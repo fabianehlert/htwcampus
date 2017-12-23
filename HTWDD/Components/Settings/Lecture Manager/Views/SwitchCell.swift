@@ -11,7 +11,7 @@ import UIKit
 struct SwitchViewModel: ViewModel {
     let title: String
     let subtitle: String
-    let on: Bool
+    let hidden: Bool
     
     init(model: AppLecture) {
         self.title = model.lecture.name
@@ -26,7 +26,7 @@ struct SwitchViewModel: ViewModel {
         }
         self.subtitle = s
         
-        self.on = !model.hidden
+        self.hidden = model.hidden
     }
 }
 
@@ -55,6 +55,7 @@ class SwitchCell: TableViewCell, Cell {
     
     private lazy var activeSwitch: UISwitch = {
         let s = UISwitch()
+        s.addTarget(self, action: #selector(hiddenChanges(hiddenSwitch:)), for: .valueChanged)
         return s
     }()
     
@@ -93,7 +94,15 @@ class SwitchCell: TableViewCell, Cell {
     func update(viewModel: SwitchViewModel) {
         self.titleLabel.text = viewModel.title
         self.subtitleLabel.text = viewModel.subtitle
-        self.activeSwitch.isOn = viewModel.on
+        self.activeSwitch.isOn = !viewModel.hidden
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func hiddenChanges(hiddenSwitch: UISwitch) {
+        print("\(hiddenSwitch.isOn)")
+        // TODO: Actually hide lecture
     }
 
 }
