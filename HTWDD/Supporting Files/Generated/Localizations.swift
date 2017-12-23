@@ -248,7 +248,7 @@ public struct Loca {
 
             public struct Cell {
 
-                /// Base translation: %@: %@ – %@
+                /// Base translation: %@: %@–%@
                 public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
                     return String(format: NSLocalizedString("Schedule.Settings.Cell.subtitle", comment: ""), value1, value2, value3)
                 }
