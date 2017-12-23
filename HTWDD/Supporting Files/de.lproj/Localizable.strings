@@ -67,7 +67,7 @@
 
 "Settings.items.setSchedule.title"="Studiengruppe ändern";
 "Settings.items.setSchedule.subtitle"="%@/%@/%@";
-"Settings.items.setGrades.title"="RZ-Zugangsdaten ändern";
+"Settings.items.setGrades.title"="Zugangsdaten ändern";
 "Settings.items.setGrades.subtitle"="%@";
 "Settings.items.deleteAll"="Gespeicherte Daten löschen";
 "Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";

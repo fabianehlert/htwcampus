@@ -467,7 +467,7 @@ public struct Loca {
                     return String(format: NSLocalizedString("Settings.items.setGrades.subtitle", comment: ""), value1)
                 }
 
-                /// Base translation: Change datacenter credentials
+                /// Base translation: Change credentials
                 public static var title : String = NSLocalizedString("Settings.items.setGrades.title", comment: "")
 
             }
