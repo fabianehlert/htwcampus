@@ -53,7 +53,7 @@ class SettingsMainVC: TableViewController {
             ]),
             (Loca.Settings.sections.weAreOpenSource, [
 				SettingsItem(title: Loca.Settings.items.github,
-                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             thumbnail: #imageLiteral(resourceName: "GitHub"),
                              action: self.showGitHub())
 			]),
             (Loca.Settings.sections.contact, [
