@@ -229,8 +229,8 @@ class ScheduleDetailVC: ViewController {
         self.typeLabel.text = viewModel.rawType
         self.roomLabel.text = viewModel.room
         
-        // TODO: Check if lecture is set to hidden and set appropriate title
-        self.hideButton.setTitle(Loca.Schedule.Settings.Hide.action, for: .normal)
+        self.hideButton.setTitle(viewModel.hidden ? Loca.Schedule.Settings.Hide.otherAction : Loca.Schedule.Settings.Hide.action,
+                                 for: .normal)
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
