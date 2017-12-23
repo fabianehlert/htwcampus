@@ -39,16 +39,16 @@ class SettingsMainVC: TableViewController {
 			(nil, [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
-                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             thumbnail: #imageLiteral(resourceName: "StudyGroup"),
 							 action: self.showScheduleOnboarding()),
 				SettingsItem(title: Loca.Settings.items.setGrades.title,
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
-                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             thumbnail: #imageLiteral(resourceName: "Credentials"),
 							 action: self.showGradeOnboarding())
 			]),
             (Loca.Schedule.title, [
                 SettingsItem(title: Loca.Schedule.Settings.Hide.title,
-                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             thumbnail: #imageLiteral(resourceName: "ScheduleManager"),
                              action: self.showLectureManager())
             ]),
             (Loca.Settings.sections.weAreOpenSource, [
@@ -61,7 +61,7 @@ class SettingsMainVC: TableViewController {
                              thumbnail: #imageLiteral(resourceName: "Mail"),
                              action: self.composeMail()),
                 SettingsItem(title: Loca.Settings.items.legal.title,
-                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             thumbnail: #imageLiteral(resourceName: "Impressum"),
                              action: self.showLicense(name: "HTW-Impressum.html"))
             ]),
             (Loca.Settings.sections.openSource, [
