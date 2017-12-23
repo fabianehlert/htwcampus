@@ -54,6 +54,7 @@ class LectureManagerViewController: TableViewController {
         self.dataSource?.tableView = self.tableView
         self.dataSource?.register(type: SwitchCell.self)
         self.dataSource?.invalidate()
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
     }
 
 }
