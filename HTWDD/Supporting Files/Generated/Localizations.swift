@@ -484,7 +484,7 @@ public struct Loca {
             /// Base translation: We are Open Source!
             public static var weAreOpenSource : String = NSLocalizedString("Settings.sections.weAreOpenSource", comment: "")
 
-            /// Base translation: Deletion
+            /// Base translation: Reset
             public static var deleteAll : String = NSLocalizedString("Settings.sections.deleteAll", comment: "")
 
             /// Base translation: Contact

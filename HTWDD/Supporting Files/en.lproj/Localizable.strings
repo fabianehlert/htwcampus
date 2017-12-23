@@ -80,7 +80,7 @@
 "Settings.items.mail.fallback.title"="Mail address copied!";
 "Settings.items.mail.fallback.message"="It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.";
 "Settings.items.github"="HTW iOS on GitHub";
-"Settings.sections.deleteAll"="Deletion";
+"Settings.sections.deleteAll"="Reset";
 "Settings.credits"="Developed in Dresden ❤️";
 "Settings.items.legal.title"="Legal notice";
 
