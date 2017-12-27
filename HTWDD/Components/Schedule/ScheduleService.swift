@@ -35,23 +35,26 @@ class ScheduleService: Service {
         let lectures: [Day: [AppLecture]]
         let semesters: [SemesterInformation]
         
-        init(lectures: [Day: [Lecture]], semesters: [SemesterInformation], colors: inout [Int: UInt]) {
+        init(lectures: [Day: [Lecture]], semesters: [SemesterInformation], hidden: inout [Int: Bool], colors: inout [Int: UInt]) {
             var counter = 0
-            self.lectures = lectures.mapValues({ Information.injectDomainLogic(lectures: $0, counter: &counter, colors: &colors) })
+            self.lectures = lectures.mapValues({ Information.injectDomainLogic(lectures: $0, counter: &counter, hidden: &hidden, colors: &colors) })
             self.semesters = semesters
         }
         
-        private static func injectDomainLogic(lectures: [Lecture], counter: inout Int, colors: inout [Int: UInt]) -> [AppLecture] {
+        private static func injectDomainLogic(lectures: [Lecture], counter: inout Int, hidden: inout [Int: Bool], colors: inout [Int: UInt]) -> [AppLecture] {
             return lectures.map { l in
-                let hash = l.name.hashValue
-                let savedColor = colors[hash]
+                let hash = l.fullHash()
+                let savedHidden = hidden[hash] ?? false
+                print("Name: \(l.name). Hidden: \(savedHidden)")
+                let nameHash = l.name.hashValue
+                let savedColor = colors[nameHash]
                 let color = savedColor ?? UIColor.htw.scheduleColors[counter % UIColor.htw.scheduleColors.count].hex()
                 if savedColor == nil {
                     counter += 1
-                    colors[hash] = color
+                    colors[nameHash] = color
                 }
-                // TODO: Inject hidden as well!
-                return AppLecture(lecture: l, color: color, hidden: false)
+                // TODO: Inject hidden as well! (get matching value from array)
+                return AppLecture(lecture: l, color: color, hidden: savedHidden)
             }
         }
         
@@ -98,13 +101,15 @@ class ScheduleService: Service {
 
         let lecturesObservable = Lecture.get(network: self.network, year: parameters.year, major: parameters.major, group: parameters.group)
             .map(Lecture.groupByDay)
+        var hidden = self.loadHidden()
         var colors = self.loadColors()
 
         let informationObservable = SemesterInformation.get(network: self.network)
         
         let cached = self.persistenceService.loadScheduleCache()
         let internetLoading: Observable<Information> = Observable.combineLatest(lecturesObservable, informationObservable) { [weak self] l, s in
-            let information = Information(lectures: l, semesters: s, colors: &colors)
+            let information = Information(lectures: l, semesters: s, hidden: &hidden, colors: &colors)
+            self?.saveHidden(hidden)
             self?.saveColors(colors)
             self?.cachedInformation[parameters] = information
             self?.persistenceService.save(information)
@@ -113,10 +118,18 @@ class ScheduleService: Service {
         return Observable.merge(cached, internetLoading).distinctUntilChanged()
     }
 
+    // MARK: - Hidden lectures
+    
+    private func loadHidden() -> [Int: Bool] {
+        return self.persistenceService.loadHidden()
+    }
+    
+    private func saveHidden(_ hidden: [Int: Bool]) {
+        self.persistenceService.save(hidden)
+    }
+    
 	// MARK: - Lecture Colors
-	
-	static let lectureColorsKey = "lectureColorsInformation"
-	
+		
     private func loadColors() -> [Int: UInt] {
         return self.persistenceService.loadScheduleColors()
     }

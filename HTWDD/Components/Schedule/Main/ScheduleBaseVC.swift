@@ -103,6 +103,13 @@ extension ScheduleBaseVC {
         }
         self.lastSelectedIndexPath = indexPath
         let detail = ScheduleDetailVC(lecture: item)
+        detail.onStatusChange = { [weak self, weak detail] in
+            // not working
+            // item.hidden = !item.hidden
+            PersistenceService().save([item.lecture.fullHash(): !item.hidden])
+            self?.dataSource.load()
+            detail?.update(viewModel: LectureViewModel(model: item))
+        }
         self.presentDetail(detail, animated: true)
     }
 }

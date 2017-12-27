@@ -125,7 +125,7 @@ class PersistenceService: Service {
     }
 
     // MARK: - Remove
-
+    // TODO: Remove colors, hidden upon changing study group. Or maybe leave for convenience???
     func clear() {
         self.removeGrade()
         self.removeSchedule()
