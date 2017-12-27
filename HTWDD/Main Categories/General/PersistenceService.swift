@@ -88,9 +88,7 @@ class PersistenceService: Service {
     
     func save(_ hidden: [Int: Bool]) {
         var all = self.loadHidden()
-        hidden.forEach { key, value in
-            all[key] = value
-        }
+        all.merge(hidden, uniquingKeysWith: { $0 || $1 })
         self.save(object: all, key: Const.scheduleHiddenKey)
     }
     
