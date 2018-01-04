@@ -73,9 +73,11 @@ class LectureCollectionViewCell: CollectionViewCell, Cell {
         self.layer.shadowRadius = Const.shadowRadius
         self.layer.shadowOpacity = Const.shadowOpacity
 
-        [self.colorView, self.titleLabel, self.roomLabel, self.typeLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.contentView.addSubview($0)
+        self.contentView.add(self.colorView,
+                             self.titleLabel,
+                             self.roomLabel,
+                             self.typeLabel) { v in
+            v.translatesAutoresizingMaskIntoConstraints = false
         }
         
 		NSLayoutConstraint.activate([

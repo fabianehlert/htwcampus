@@ -39,8 +39,8 @@ class OnboardWelcomeViewController: ViewController {
 
 		let titleContainer = UIView()
 		titleContainer.translatesAutoresizingMaskIntoConstraints = false
-		titleContainer.addSubview(titleLabel)
-		self.view.addSubview(titleContainer)
+		titleContainer.add(titleLabel)
+		self.view.add(titleContainer)
 
 		// --- Description box ---
 
@@ -73,7 +73,7 @@ class OnboardWelcomeViewController: ViewController {
 		descriptionStackView.axis = .vertical
 		descriptionStackView.distribution = .fillProportionally
 		descriptionStackView.spacing = 20.0
-		self.view.addSubview(descriptionStackView)
+		self.view.add(descriptionStackView)
 
 		// --- Continue Button ---
 
@@ -84,7 +84,7 @@ class OnboardWelcomeViewController: ViewController {
 		continueButton.layer.cornerRadius = 12
 		continueButton.translatesAutoresizingMaskIntoConstraints = false
 		continueButton.addTarget(self, action: #selector(continueBoarding), for: .touchUpInside)
-		self.view.addSubview(continueButton)
+		self.view.add(continueButton)
 
 		// --- Constraints ---
 

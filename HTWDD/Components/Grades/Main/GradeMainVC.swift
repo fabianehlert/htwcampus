@@ -66,7 +66,7 @@ class GradeMainVC: CollectionViewController {
 
             self.collectionView.refreshControl = self.refreshControl
         } else {
-            self.collectionView.addSubview(self.refreshControl)
+            self.collectionView.add(self.refreshControl)
         }
 
         self.dataSource.collectionView = self.collectionView

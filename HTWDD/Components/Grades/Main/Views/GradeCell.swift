@@ -74,10 +74,17 @@ class GradeCell: FlatCollectionViewCell {
         self.stateLabel.textColor = UIColor.htw.grey
 
         self.prepareForReuse()
-
-        [self.colorView, self.titleView, self.markView, self.formView, self.creditsView, self.triesView, self.dateView, self.stateLabel, self.noteView].forEach {
-            self.contentView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.contentView.add(self.colorView,
+                             self.titleView,
+                             self.markView,
+                             self.formView,
+                             self.creditsView,
+                             self.triesView,
+                             self.dateView,
+                             self.stateLabel,
+                             self.noteView) { v in
+                                v.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([

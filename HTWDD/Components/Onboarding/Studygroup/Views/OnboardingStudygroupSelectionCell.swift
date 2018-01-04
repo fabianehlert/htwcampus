@@ -61,7 +61,7 @@ class OnboardingStudygroupSelectionCell: FlatCollectionViewCell {
         stackView.axis = .vertical
         stackView.spacing = 4
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(stackView)
+        self.contentView.add(stackView)
         
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),

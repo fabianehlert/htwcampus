@@ -46,7 +46,7 @@ class CollectionHeaderView: CollectionReusableView, Identifiable {
         self.label.numberOfLines = 0
         self.label.textAlignment = self.textAlignment
 		self.label.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.label)
+        self.add(self.label)
 
         self.leading = self.label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: titleInset + self.htw.safeAreaInsets.left)
         self.trailing = self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(titleInset + self.htw.safeAreaInsets.right))

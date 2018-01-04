@@ -61,7 +61,7 @@ class ExamsMainVC: CollectionViewController {
 			
              self.collectionView.refreshControl = self.refreshControl
 		} else {
-             self.collectionView.addSubview(self.refreshControl)
+             self.collectionView.add(self.refreshControl)
 		}
         
         let loading = self.dataSource.loading.filter { $0 == true }

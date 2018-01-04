@@ -90,12 +90,15 @@ class ExamsCell: FlatCollectionViewCell, Cell {
 	
     override func initialSetup() {
         super.initialSetup()
-
-		let views: [UIView] = [self.titleLabel, self.timeLabel, self.branchLabel, self.examinerLabel, self.typeBadge, self.roomBadge]
-		views.forEach({
-			$0.translatesAutoresizingMaskIntoConstraints = false
-			self.contentView.addSubview($0)
-		})
+        
+        self.contentView.add(self.titleLabel,
+                             self.timeLabel,
+                             self.branchLabel,
+                             self.examinerLabel,
+                             self.typeBadge,
+                             self.roomBadge) { v in
+                                v.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         NSLayoutConstraint.activate([
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Const.margin),

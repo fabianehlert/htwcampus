@@ -31,7 +31,7 @@ class TableViewController: ViewController {
         self.tableView.separatorColor = UIColor.htw.lightGrey
         self.tableView.frame = self.view.bounds
         self.tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(self.tableView)
+        self.view.add(self.tableView)
 
         self.tableView.delegate = self
     }
@@ -53,7 +53,7 @@ extension TableViewController: UITableViewDelegate {
         label.autoresizingMask = [.flexibleRightMargin]
         
         let v = UIView()
-        v.addSubview(label)
+        v.add(label)
         
         return v
     }

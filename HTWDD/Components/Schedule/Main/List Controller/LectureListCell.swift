@@ -78,11 +78,14 @@ class LectureListCell: FlatCollectionViewCell, Cell {
 
 	override func initialSetup() {
         super.initialSetup()
-
-		let views: [UIView] = [self.beginLabel, self.endLabel, self.colorView, self.titleLabel, self.professorLabel, self.typeLabel, self.roomLabel]
-		views.forEach({
-			self.contentView.addSubview($0)
-		})
+        
+        self.contentView.add(self.beginLabel,
+                             self.endLabel,
+                             self.colorView,
+                             self.titleLabel,
+                             self.professorLabel,
+                             self.typeLabel,
+                             self.roomLabel)
 	}
     
     func updateLayout(width: CGFloat) {
