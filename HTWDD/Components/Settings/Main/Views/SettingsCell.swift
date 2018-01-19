@@ -81,12 +81,13 @@ class SettingsCell: TableViewCell, Cell {
         
         self.accessoryType = .disclosureIndicator
         
-        self.contentView.addSubview(self.thumbnailImageView)
+        self.contentView.add(self.thumbnailImageView)
         
         self.stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel])
         self.stackView.axis = .horizontal
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(self.stackView)
+        self.contentView.add(self.stackView) { v in
+            v.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         NSLayoutConstraint.activate([
             self.thumbnailImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),

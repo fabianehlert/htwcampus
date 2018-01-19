@@ -61,7 +61,7 @@ class PasswordField: TextField {
 			self.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 48)
 			
 			self.onePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-			self.addSubview(self.onePasswordButton)
+			self.add(self.onePasswordButton)
 			
 			NSLayoutConstraint.activate([
 				self.onePasswordButton.heightAnchor.constraint(equalToConstant: 44),

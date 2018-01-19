@@ -75,7 +75,7 @@ class NoResultsView: View {
 		stackView.axis = .vertical
 		stackView.spacing = 2
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		self.addSubview(stackView)
+		self.add(stackView)
 		
 		NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Const.horizontalMargin),

@@ -82,7 +82,7 @@ final class ScheduleMainVC: ViewController {
 		}.disposed(by: self.rx_disposeBag)
 
 		// Setup `containerView`
-		self.view.addSubview(self.containerView)
+		self.view.add(self.containerView)
 		layoutMatchingEdges(self.containerView, self.view)
 	}
 
@@ -129,7 +129,7 @@ final class ScheduleMainVC: ViewController {
 	private func addChild(_ child: ViewController?) {
 		guard let child = child else { return }
 		self.addChildViewController(child)
-		self.containerView.addSubview(child.view)
+		self.containerView.add(child.view)
 		child.didMove(toParentViewController: self)
         self.updateBarButtonItems(navigationItem: child.navigationItem)
 	}

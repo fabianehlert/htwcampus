@@ -71,10 +71,9 @@ class SwitchCell: TableViewCell, Cell {
         let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel])
         stackView.axis = .vertical
         
-        let views: [UIView] = [stackView, self.activeSwitch]
-        views.forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.contentView.addSubview($0)
+        self.contentView.add(stackView,
+                             self.activeSwitch) { v in
+                                v.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([

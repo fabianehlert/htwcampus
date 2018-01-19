@@ -128,7 +128,7 @@ class ScheduleDetailVC: ViewController {
 	
 	private func setupUI() {
         // ScrollView
-		self.view.addSubview(self.scrollView)
+		self.view.add(self.scrollView)
 		
 		let layoutGuide = self.view.htw.safeAreaLayoutGuide
 		NSLayoutConstraint.activate([
@@ -145,10 +145,17 @@ class ScheduleDetailVC: ViewController {
         let bottomSeparator = UIView()
         bottomSeparator.backgroundColor = UIColor.htw.lightGrey
 
-        [self.colorView, self.timeLabel, self.nameLabel, self.professorLabel, self.typeLabel, self.roomLabel, self.hideButton, separator, bottomSeparator].forEach({
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.scrollView.addSubview($0)
-        })
+        self.scrollView.add(self.colorView,
+                            self.timeLabel,
+                            self.nameLabel,
+                            self.professorLabel,
+                            self.typeLabel,
+                            self.roomLabel,
+                            self.hideButton,
+                            separator,
+                            bottomSeparator) { v in
+            v.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         self.hideButton.addTarget(self, action: #selector(hideLecture), for: .touchUpInside)
 		

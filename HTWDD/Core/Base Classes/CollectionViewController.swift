@@ -32,7 +32,7 @@ class CollectionViewController: ViewController {
         self.collectionView.backgroundColor = UIColor.htw.veryLightGrey
         self.collectionView.frame = self.view.bounds
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(self.collectionView)
+        self.view.add(self.collectionView)
 
         self.collectionView.delegate = self
         

@@ -37,12 +37,12 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
         self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.backgroundColor = .white
         
-        self.contentView.addSubview(self.label)
+        self.contentView.add(self.label)
         
         NSLayoutConstraint.activate([
             self.label.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
-            ])
+        ])
     }
     
     func update(viewModel: FreeDayViewModel) {

@@ -28,7 +28,7 @@ class LectureTimeView: CollectionReusableView, Identifiable {
 		self.label.font = .systemFont(ofSize: 14, weight: .semibold)
 		self.label.textColor = UIColor.htw.textBody
         self.label.textAlignment = .center
-        self.addSubview(self.label)
+        self.add(self.label)
     }
 
 }

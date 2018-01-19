@@ -94,6 +94,8 @@
 		1FA589391FB735D0008EE474 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA589381FB735CF008EE474 /* GlobalFunctions.swift */; };
 		1FA5893A1FB7360A008EE474 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA589381FB735CF008EE474 /* GlobalFunctions.swift */; };
 		1FA92C711FEACC7400A88B0D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA92C701FEACC7400A88B0D /* UIColor.swift */; };
+		1FB3FFD81FFE5E5F00EE695F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516D8211FA9A47000551556 /* UIView.swift */; };
+		1FB3FFD91FFE5E6700EE695F /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BB1FB0E87900320091 /* LayoutGuide.swift */; };
 		1FB51A131FC1E89B00049DAA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A111FC1E89A00049DAA /* Crashlytics.framework */; };
 		1FB51A141FC1E89B00049DAA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A121FC1E89B00049DAA /* Fabric.framework */; };
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
@@ -1369,6 +1371,7 @@
 				1F8E20DD1FB34F4E00347DB6 /* EventDate.swift in Sources */,
 				1F8E20C91FB34E6F00347DB6 /* Service.swift in Sources */,
 				1F8E20DF1FB34F7400347DB6 /* CanteenService.swift in Sources */,
+				1FB3FFD91FFE5E6700EE695F /* LayoutGuide.swift in Sources */,
 				1F8E20C71FB34E6200347DB6 /* PersistenceService.swift in Sources */,
 				1F8E20CF1FB34EB000347DB6 /* Lecture.swift in Sources */,
 				1F8E20CB1FB34E9000347DB6 /* Grade.swift in Sources */,
@@ -1384,6 +1387,7 @@
 				1FC730F51FC0F4F2005A04D6 /* BadgeLabel.swift in Sources */,
 				1F8E20D01FB34EC200347DB6 /* DataSourceProtocols.swift in Sources */,
 				1F8E20E41FB34FAD00347DB6 /* TimeInterval.swift in Sources */,
+				1FB3FFD81FFE5E5F00EE695F /* UIView.swift in Sources */,
 				1F8E20D51FB34EE100347DB6 /* Parameter.swift in Sources */,
 				1F8E20DE1FB34F5700347DB6 /* Localizations.swift in Sources */,
 				1F8E20DA1FB34F0B00347DB6 /* EventPeriod.swift in Sources */,
