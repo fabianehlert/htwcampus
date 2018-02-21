@@ -118,15 +118,16 @@
 "loading"="Loading…";
 
 "Grades.title"="Grades";
-"Grades.average" = "(Ø %.2f)";
+"Grades.average" = "(Ø %.1f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f credits";
 "Grades.detail.tries" = "%d. try";
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
-"Grades.status.signedUp" = "signed up";
-"Grades.status.passed" = "passed";
-"Grades.status.failed" = "failed";
+"Grades.detail.note" = "Note: %@";
+"Grades.status.signedUp" = "Signed up";
+"Grades.status.passed" = "Passed";
+"Grades.status.failed" = "Failed";
 "Grades.status.ultimatelyFailed" = "ultimately failed";
 "Grades.noResults.title"="No grades";
 "Grades.noResults.message"="I can't find any of your grades.\nHave you entered your credentials correctly?";
