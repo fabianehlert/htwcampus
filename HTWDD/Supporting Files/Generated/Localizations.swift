@@ -290,16 +290,16 @@ public struct Loca {
 
         public struct status {
 
-            /// Base translation: passed
+            /// Base translation: Passed
             public static var passed : String = NSLocalizedString("Grades.status.passed", comment: "")
 
-            /// Base translation: failed
+            /// Base translation: Failed
             public static var failed : String = NSLocalizedString("Grades.status.failed", comment: "")
 
             /// Base translation: ultimately failed
             public static var ultimatelyFailed : String = NSLocalizedString("Grades.status.ultimatelyFailed", comment: "")
 
-            /// Base translation: signed up
+            /// Base translation: Signed up
             public static var signedUp : String = NSLocalizedString("Grades.status.signedUp", comment: "")
 
         }
@@ -320,6 +320,11 @@ public struct Loca {
             /// Base translation: %d. try
             public static func tries(_ value1 : Int) -> String {
                 return String(format: NSLocalizedString("Grades.detail.tries", comment: ""), value1)
+            }
+
+            /// Base translation: Note: %@
+            public static func note(_ value1 : String) -> String {
+                return String(format: NSLocalizedString("Grades.detail.note", comment: ""), value1)
             }
 
             /// Base translation: %.0f credits
@@ -366,15 +371,6 @@ public struct Loca {
 
         }
 
-        public struct Cell {
-
-            /// Base translation: %@ – %@
-            public static func time(_ value1 : String, _ value2 : String) -> String {
-                return String(format: NSLocalizedString("Exams.Cell.time", comment: ""), value1, value2)
-            }
-
-        }
-
         public struct ExamType {
 
             /// Base translation: Written
@@ -385,6 +381,15 @@ public struct Loca {
 
             /// Base translation: Oral
             public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
+
+        }
+
+        public struct Cell {
+
+            /// Base translation: %@ – %@
+            public static func time(_ value1 : String, _ value2 : String) -> String {
+                return String(format: NSLocalizedString("Exams.Cell.time", comment: ""), value1, value2)
+            }
 
         }
     }
