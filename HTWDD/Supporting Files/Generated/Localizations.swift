@@ -190,14 +190,17 @@ public struct Loca {
 
         public struct Weeks {
 
-            /// Base translation: Odd weeks
-            public static var odd : String = NSLocalizedString("Schedule.Weeks.odd", comment: "")
+            /// Base translation: Once
+            public static var once : String = NSLocalizedString("Schedule.Weeks.once", comment: "")
 
             /// Base translation: Every week
             public static var all : String = NSLocalizedString("Schedule.Weeks.all", comment: "")
 
             /// Base translation: Even weeks
             public static var even : String = NSLocalizedString("Schedule.Weeks.even", comment: "")
+
+            /// Base translation: Odd weeks
+            public static var odd : String = NSLocalizedString("Schedule.Weeks.odd", comment: "")
 
         }
 

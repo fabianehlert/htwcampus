@@ -31,6 +31,7 @@
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 "Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
+"Schedule.Weeks.once"="Once";
 "Schedule.Weeks.all"="Every week";
 "Schedule.Weeks.odd"="Odd weeks";
 "Schedule.Weeks.even"="Even weeks";
