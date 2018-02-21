@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,22 +19,24 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-fh-A4F">
-                                <rect key="frame" x="37" y="276" width="300" height="115"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-fh-A4F">
+                                <rect key="frame" x="50" y="268.66666666666669" width="275" height="275.00000000000006"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fNx-fh-A4F" secondAttribute="height" multiplier="60:23" id="reG-ej-Lcr"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Gg8-JV-WeL"/>
+                                    <constraint firstAttribute="width" secondItem="fNx-fh-A4F" secondAttribute="height" multiplier="1:1" id="zJU-VC-rkk"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fNx-fh-A4F" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8:1" id="9Yy-v9-mhi"/>
-                            <constraint firstItem="fNx-fh-A4F" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="U1n-vK-O14"/>
-                            <constraint firstItem="fNx-fh-A4F" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cIp-lD-5QT"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fNx-fh-A4F" secondAttribute="trailing" constant="50" id="0MT-tk-moh"/>
+                            <constraint firstItem="fNx-fh-A4F" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="C4I-nt-tjK"/>
+                            <constraint firstItem="fNx-fh-A4F" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="seS-eU-3gf"/>
+                            <constraint firstItem="fNx-fh-A4F" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="50" id="wnd-8n-428"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="729" height="280"/>
+        <image name="launch" width="486" height="187"/>
     </resources>
 </document>
