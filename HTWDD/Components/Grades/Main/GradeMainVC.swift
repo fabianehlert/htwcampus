@@ -79,10 +79,10 @@ class GradeMainVC: CollectionViewController {
             let information = self?.dataSource.information(for: indexPath.section)
             let semesterTitle = information?.semester.localized
             let attributedTitle = NSAttributedString(string: (semesterTitle ?? ""),
-                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
+                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .bold)])
             let averageTitle = NSAttributedString(string: Loca.Grades.average(information?.average ?? 0),
-                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 20, weight: .light)])
-            view.attributedTitle = attributedTitle + averageTitle
+                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)])
+            view.attributedTitle = attributedTitle + " " + averageTitle
         }
         
         let loading = self.dataSource.loading.filter { $0 == true }
