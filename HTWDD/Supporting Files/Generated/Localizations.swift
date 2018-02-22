@@ -178,15 +178,64 @@ public struct Loca {
         /// Base translation: No room
         public static var noRoom : String = NSLocalizedString("Schedule.noRoom", comment: "")
 
-        /// Base translation: Today
-        public static var today : String = NSLocalizedString("Schedule.today", comment: "")
-
         /// Base translation: Schedule
         public static var title : String = NSLocalizedString("Schedule.title", comment: "")
+
+        /// Base translation: Semester break 🙌🚀
+        public static var holiday : String = NSLocalizedString("Schedule.holiday", comment: "")
+
+        /// Base translation: Today
+        public static var today : String = NSLocalizedString("Schedule.today", comment: "")
 
         /// Base translation: Enjoy your free day! 🎉
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
+
+        public struct Settings {
+
+
+            public struct Cell {
+
+                /// Base translation: %@: %@–%@
+                public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
+                    return String(format: NSLocalizedString("Schedule.Settings.Cell.subtitle", comment: ""), value1, value2, value3)
+                }
+
+            }
+
+            public struct Hide {
+
+                /// Base translation: Manage lectures
+                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
+
+                /// Base translation: Show lecture
+                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
+
+                /// Base translation: Hide this lecture
+                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
+
+            }
+        }
+
+        public struct noResults {
+
+            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
+
+            /// Base translation: No plan...
+            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
+
+        }
+
+        public struct Style {
+
+            /// Base translation: Week
+            public static var week : String = NSLocalizedString("Schedule.Style.week", comment: "")
+
+            /// Base translation: List
+            public static var list : String = NSLocalizedString("Schedule.Style.list", comment: "")
+
+        }
 
         public struct Weeks {
 
@@ -213,16 +262,6 @@ public struct Loca {
 
         }
 
-        public struct Style {
-
-            /// Base translation: Week
-            public static var week : String = NSLocalizedString("Schedule.Style.week", comment: "")
-
-            /// Base translation: List
-            public static var list : String = NSLocalizedString("Schedule.Style.list", comment: "")
-
-        }
-
         public struct LectureType {
 
             /// Base translation: Exercise
@@ -234,42 +273,6 @@ public struct Loca {
             /// Base translation: Practical
             public static var practical : String = NSLocalizedString("Schedule.LectureType.practical", comment: "")
 
-        }
-
-        public struct noResults {
-
-            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
-
-            /// Base translation: No plan...
-            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
-
-        }
-
-        public struct Settings {
-
-
-            public struct Cell {
-
-                /// Base translation: %@: %@–%@
-                public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
-                    return String(format: NSLocalizedString("Schedule.Settings.Cell.subtitle", comment: ""), value1, value2, value3)
-                }
-
-            }
-
-            public struct Hide {
-
-                /// Base translation: Manage lectures
-                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
-
-                /// Base translation: Show lecture
-                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
-
-                /// Base translation: Hide this lecture
-                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
-
-            }
         }
 
         public struct NextLecture {

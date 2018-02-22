@@ -28,6 +28,7 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day! 🎉";
+"Schedule.holiday"="Semester break 🙌🚀";
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 "Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
