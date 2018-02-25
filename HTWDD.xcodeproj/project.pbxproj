@@ -176,6 +176,10 @@
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
 		B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9931DD09C8400259D7F /* LaunchScreen.storyboard */; };
+		B5A0690E2042E63A0067B8D2 /* GradeAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0690D2042E63A0067B8D2 /* GradeAverage.swift */; };
+		B5A069102042E7BF0067B8D2 /* GradeAverageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0690F2042E7BF0067B8D2 /* GradeAverageCell.swift */; };
+		B5A069132042E9600067B8D2 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A069122042E9600067B8D2 /* Either.swift */; };
+		B5A069152042EC440067B8D2 /* GradeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A069142042EC440067B8D2 /* GradeServiceTests.swift */; };
 		B5A0D88A1E87B624007827A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0D8891E87B624007827A6 /* TabBarController.swift */; };
 		B5B3767D1FA6065700FC3A07 /* OnboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */; };
 		B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B376881FA6179F00FC3A07 /* Meal.swift */; };
@@ -378,6 +382,10 @@
 		B59FA9961DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B59FA99B1DD09C8400259D7F /* HTWDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTWDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA9A11DD09C8400259D7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A0690D2042E63A0067B8D2 /* GradeAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeAverage.swift; sourceTree = "<group>"; };
+		B5A0690F2042E7BF0067B8D2 /* GradeAverageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeAverageCell.swift; sourceTree = "<group>"; };
+		B5A069122042E9600067B8D2 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		B5A069142042EC440067B8D2 /* GradeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeServiceTests.swift; sourceTree = "<group>"; };
 		B5A0D8891E87B624007827A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B5B3767C1FA6065700FC3A07 /* OnboardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailViewController.swift; sourceTree = "<group>"; };
 		B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenMensaKit.framework; path = Carthage/Build/iOS/OpenMensaKit.framework; sourceTree = "<group>"; };
@@ -689,6 +697,7 @@
 				B538EF1B1E1D762E0031077C /* Grade.swift */,
 				B5F58E4A1E1EAC9A006D99AE /* Grade_Tests.swift */,
 				39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */,
+				B5A0690D2042E63A0067B8D2 /* GradeAverage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -697,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */,
+				B5A0690F2042E7BF0067B8D2 /* GradeAverageCell.swift */,
 				B524F4051FAA3BFA007DD104 /* GradeViewModel.swift */,
 			);
 			path = Views;
@@ -798,6 +808,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D3E8351FA5E3620055782D /* GradeService.swift */,
+				B5A069142042EC440067B8D2 /* GradeServiceTests.swift */,
 				B5D3E8371FA5E6C10055782D /* GradeCoordinator.swift */,
 				1FC21DCA1F8F9981003E244F /* Models */,
 				1FC21DC91F8F9976003E244F /* Main */,
@@ -808,6 +819,7 @@
 		B52A9B521DDB16D400313FC3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B5A069112042E9530067B8D2 /* Types */,
 				1F94C3FD1F90D28B00988E72 /* Coordinators */,
 				B52A9B561DDB170700313FC3 /* Base Classes */,
 				B52A9B551DDB170000313FC3 /* Extensions */,
@@ -971,6 +983,14 @@
 				B59FA9A11DD09C8400259D7F /* Info.plist */,
 			);
 			path = HTWDDTests;
+			sourceTree = "<group>";
+		};
+		B5A069112042E9530067B8D2 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				B5A069122042E9600067B8D2 /* Either.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		B5A0D8861E87B365007827A6 /* Models */ = {
@@ -1429,6 +1449,7 @@
 				B538EF1A1E1D761E0031077C /* Course.swift in Sources */,
 				B52329031FB8A029000C4F44 /* CollectionBackgroundView.swift in Sources */,
 				1F862D271FD1A7FF0051E2DF /* KeyboardPresentationHandler.swift in Sources */,
+				B5A0690E2042E63A0067B8D2 /* GradeAverage.swift in Sources */,
 				B55ADF4B1FC08545004A5BB2 /* LoadingView.swift in Sources */,
 				B5B3768F1FA61A2F00FC3A07 /* CanteenMainVC.swift in Sources */,
 				B5111E281E7206B500D68155 /* LectureTimeView.swift in Sources */,
@@ -1479,12 +1500,14 @@
 				B5CD5C731E5F37970083D75E /* CollectionViewController.swift in Sources */,
 				B5461B611FA62A2600564D6D /* CanteenService.swift in Sources */,
 				1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */,
+				B5A069132042E9600067B8D2 /* Either.swift in Sources */,
 				1F5E1A641FED11BC0031ED82 /* LectureManagerViewController.swift in Sources */,
 				1F1491B31FB450A10011B114 /* NoResultsView.swift in Sources */,
 				B5EF95781FADB40C006BC7D1 /* ExamsService.swift in Sources */,
 				B5BE72821E6C809200D05B6D /* SemesterInformation.swift in Sources */,
 				B5BE728A1E6C86A600D05B6D /* EventPeriod.swift in Sources */,
 				B5EA53721E7FD25C00183E07 /* AnimatedViewControllerTransition.swift in Sources */,
+				B5A069102042E7BF0067B8D2 /* GradeAverageCell.swift in Sources */,
 				B5B376891FA6179F00FC3A07 /* Meal.swift in Sources */,
 				1F7E32091FA7B84000CCBDD6 /* ScheduleListVC.swift in Sources */,
 				39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */,
@@ -1545,6 +1568,7 @@
 				B5F58E4B1E1EAC9A006D99AE /* Grade_Tests.swift in Sources */,
 				B5F58E4F1E1EB172006D99AE /* Semester_Tests.swift in Sources */,
 				B50EB4F51E6ACB3E0022E40C /* Lecture_TestCase.swift in Sources */,
+				B5A069152042EC440067B8D2 /* GradeServiceTests.swift in Sources */,
 				B5BE72881E6C83B300D05B6D /* EventDate_TestCase.swift in Sources */,
 				B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */,
 				B5BE728C1E6C86B400D05B6D /* EventPeriod_TestCase.swift in Sources */,

@@ -120,7 +120,9 @@
 "loading"="Laden…";
 
 "Grades.title"="Noten";
-"Grades.average" = "(Ø %.1f)";
+"Grades.totalAverage"="Gesamtdurchschnitt";
+"Grades.totalCredits"="%d Credits insgesamt";
+"Grades.average" = "(Ø %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f Credits";
 "Grades.detail.tries" = "%d.Versuch";
