@@ -119,11 +119,12 @@ class GradeCell: FlatCollectionViewCell {
             self.noteLabel.topAnchor.constraint(equalTo: self.triesLabel.bottomAnchor, constant: Const.verticalInnerItemMargin),
             self.noteLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.verticalMargin)
         ])
+        self.layoutIfNeeded()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.colorView.layer.cornerRadius = 2
+        self.colorView.layer.cornerRadius = self.colorView.width / 2
     }
 
     override func prepareForReuse() {

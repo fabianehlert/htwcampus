@@ -42,22 +42,39 @@ class GradeDataSource: CollectionViewDataSource {
         self.service = context.gradeService
     }
 
+    private var average = GradeAverage(average: 0.0, credits: 0)
     private var semesters = [GradeService.Information]() {
         didSet {
+            let average = GradeService.calculateAverage(from: self.semesters)
+            let credits = self.semesters.reduce(0) { res, inf in
+                return res + inf.grades.reduce(0, { res, grade in
+                    return res + Int(grade.credits)
+                })
+            }
+            self.average = GradeAverage(average: average, credits: credits)
             self.collectionView?.reloadData()
         }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.semesters.count
+        let semestersCount = self.semesters.count
+        // we have one section more for the average
+        return semestersCount > 0 ? semestersCount + 1 : 0
     }
 
     override func numberOfItems(in section: Int) -> Int {
-        return self.semesters[section].grades.count
+        guard section > 0 else {
+            // grades average
+            return 1
+        }
+        return self.semesters[safe: section - 1]?.grades.count ?? 0
     }
 
     override func item(at index: IndexPath) -> Identifiable? {
-        return self.semesters[index.section].grades[index.row]
+        guard index.section > 0 else {
+            return self.average
+        }
+        return self.semesters[safe: index.section - 1]?.grades[index.row]
     }
 
     func load() {
@@ -79,9 +96,12 @@ class GradeDataSource: CollectionViewDataSource {
                 })
             .disposed(by: self.disposeBag)
     }
-
-    func information(`for` section: Int) -> GradeService.Information {
-        return self.semesters[section]
+ 
+    func information(`for` section: Int) -> Either<GradeService.Information, String> {
+        guard section > 0 else {
+            return .right("")
+        }
+        return .left(self.semesters[section - 1])
     }
 
 }

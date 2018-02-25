@@ -27,7 +27,7 @@ struct GradeViewModel: ViewModel {
         case .passed:
             color = UIColor.htw.green
         case .failed:
-            color = UIColor.htw.martianRed
+            color = UIColor.htw.red
         case .signedUp:
             color = UIColor.htw.blue
         case .ultimatelyFailed:
