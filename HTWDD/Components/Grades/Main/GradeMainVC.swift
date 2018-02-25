@@ -140,6 +140,7 @@ class GradeMainVC: CollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let _ = collectionView.cellForItem(at: indexPath) as? GradeCell else { return }
         
         func animate(block: @escaping () -> Void) {
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.beginFromCurrentState, .curveEaseInOut], animations: block, completion: nil)
