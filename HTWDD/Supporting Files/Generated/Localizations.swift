@@ -285,7 +285,7 @@ public struct Loca {
 
     public struct Grades {
 
-        /// Base translation: (Ø %.1f)
+        /// Base translation: (∅ %.2f)
         public static func average(_ value1 : Double) -> String {
             return String(format: NSLocalizedString("Grades.average", comment: ""), value1)
         }
