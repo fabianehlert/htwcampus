@@ -144,10 +144,21 @@ class ScheduleDataSource: CollectionViewDataSource {
             let date = originDate.byAdding(days: TimeInterval(section))
             let day = date.weekday
 
+            // Check if date of section exists in semester information
             guard semesterInformation.lecturesContains(date: date) else {
+                // If not, check if date of section is today
+                if date.sameDayAs(other: Date()) {
+                    // If so, try to create a `Event` "Holiday" object
+                    if let eventDate = EventDate(date: date) {
+                        let freeDays = [Event(name: Loca.Schedule.holiday, period: EventPeriod(begin: eventDate, end: eventDate))]
+                        return Data(day: day, date: date, lectures: [], freeDays: freeDays)
+                    }
+                }
+                // Otherwise return an empty `Data` object
                 return Data(day: day, date: date, lectures: [], freeDays: [])
             }
 
+            // Check if `date` is marked as a free day
             if let freeDay = semesterInformation.freeDayContains(date: date) {
                 if self.splitFreeDaysInDays {
                     return Data(day: day, date: date, lectures: [], freeDays: [freeDay])
@@ -167,6 +178,7 @@ class ScheduleDataSource: CollectionViewDataSource {
                     return l1.lecture.begin < l2.lecture.begin
             }
             let freeDays: [Event]
+            
             if l.isEmpty && date.sameDayAs(other: Date()) {
                 if let eventDate = EventDate(date: Date()) {
                     freeDays = [Event(name: Loca.Schedule.freeDay, period: EventPeriod(begin: eventDate, end: eventDate))]

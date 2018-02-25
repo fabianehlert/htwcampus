@@ -95,7 +95,7 @@ extension ScheduleBaseVC {
         guard let item = self.dataSource.lecture(at: indexPath) else {
             // might be a free day
 			if let cell = collectionView.cellForItem(at: indexPath) as? FreeDayListCell {
-				if cell.label.text == Loca.Schedule.freeDay {
+				if cell.label.text == Loca.Schedule.freeDay || cell.label.text == Loca.Schedule.holiday {
 					self.tabBarController?.view.emitConfetti(duration: 4)
 				}
 			}
