@@ -189,6 +189,9 @@ extension GradeMainVC {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: self.itemWidth(collectionView: collectionView), height: 20)
+        }
         return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
     }
     

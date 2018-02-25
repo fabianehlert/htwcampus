@@ -99,7 +99,7 @@ class GradeDataSource: CollectionViewDataSource {
  
     func information(`for` section: Int) -> Either<GradeService.Information, String> {
         guard section > 0 else {
-            return .right(Loca.Grades.totalAverage)
+            return .right("")
         }
         return .left(self.semesters[section - 1])
     }
