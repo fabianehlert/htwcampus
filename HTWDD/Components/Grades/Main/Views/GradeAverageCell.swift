@@ -11,10 +11,10 @@ import UIKit
 struct GradeAverageViewModel: ViewModel {
     let text: NSAttributedString
     init(model: GradeAverage) {
-        let title = NSAttributedString(string: String(format: "%.2f", model.average),
-                                       attributes: [.foregroundColor: UIColor.htw.darkGrey, .font: UIFont.systemFont(ofSize: 30, weight: .medium)])
+        let title = NSAttributedString(string: String(format: "∅ %.2f", model.average),
+                                       attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 30, weight: .medium)])
         let subtitle = NSAttributedString(string: Loca.Grades.totalCredits(model.credits),
-                                          attributes: [.foregroundColor: UIColor.htw.grey, .font: UIFont.systemFont(ofSize: 18, weight: .light)])
+                                          attributes: [.foregroundColor: UIColor.htw.mediumGrey, .font: UIFont.systemFont(ofSize: 15, weight: .medium)])
         self.text = title + "\n" + subtitle
     }
 }
@@ -27,7 +27,7 @@ class GradeAverageCell: CollectionViewCell {
         super.initialSetup()
         
         self.averageLabel.font = .systemFont(ofSize: 30, weight: .medium)
-        self.averageLabel.textColor = UIColor.htw.grey
+        self.averageLabel.textColor = UIColor.htw.mediumGrey
         self.averageLabel.numberOfLines = 2
         self.averageLabel.textAlignment = .center
         
