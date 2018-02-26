@@ -120,7 +120,6 @@
 "loading"="Loading…";
 
 "Grades.title"="Grades";
-"Grades.totalAverage"="Overall average";
 "Grades.totalCredits"="%d total credits";
 "Grades.average" = "(∅ %.2f)";
 "Grades.detail.mark" = "%.1f";

@@ -285,21 +285,18 @@ public struct Loca {
 
     public struct Grades {
 
+        /// Base translation: Grades
+        public static var title : String = NSLocalizedString("Grades.title", comment: "")
+
         /// Base translation: (∅ %.2f)
         public static func average(_ value1 : Double) -> String {
             return String(format: NSLocalizedString("Grades.average", comment: ""), value1)
         }
 
-        /// Base translation: Grades
-        public static var title : String = NSLocalizedString("Grades.title", comment: "")
-
         /// Base translation: %d total credits
         public static func totalCredits(_ value1 : Int) -> String {
             return String(format: NSLocalizedString("Grades.totalCredits", comment: ""), value1)
         }
-
-        /// Base translation: Overall average
-        public static var totalAverage : String = NSLocalizedString("Grades.totalAverage", comment: "")
 
 
         public struct status {

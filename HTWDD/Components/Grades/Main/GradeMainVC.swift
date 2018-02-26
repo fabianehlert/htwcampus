@@ -78,24 +78,17 @@ class GradeMainVC: CollectionViewController {
             }
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            guard let either = self?.dataSource.information(for: indexPath.section) else {
+            guard let information = self?.dataSource.information(for: indexPath.section) else {
+                view.attributedTitle = nil
                 return
             }
             
-            let attributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .bold)]
-            
-            switch either {
-            case let .left(information):
-                let semesterTitle = information.semester.localized
-                let attributedTitle = NSAttributedString(string: (semesterTitle),
-                                                         attributes: attributes)
-                let averageTitle = NSAttributedString(string: Loca.Grades.average(information.average),
-                                                      attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)])
-                view.attributedTitle = attributedTitle + " " + averageTitle
-            case let .right(title):
-                view.attributedTitle = NSAttributedString(string: title, attributes: attributes)
-            }
-            
+            let semesterTitle = information.semester.localized
+            let attributedTitle = NSAttributedString(string: (semesterTitle),
+                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .bold)])
+            let averageTitle = NSAttributedString(string: Loca.Grades.average(information.average),
+                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)])
+            view.attributedTitle = attributedTitle + " " + averageTitle
         }
         
         let loading = self.dataSource.loading.filter { $0 == true }

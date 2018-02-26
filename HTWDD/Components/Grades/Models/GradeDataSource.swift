@@ -97,11 +97,11 @@ class GradeDataSource: CollectionViewDataSource {
             .disposed(by: self.disposeBag)
     }
  
-    func information(`for` section: Int) -> Either<GradeService.Information, String> {
+    func information(`for` section: Int) -> GradeService.Information? {
         guard section > 0 else {
-            return .right("")
+            return nil
         }
-        return .left(self.semesters[section - 1])
+        return self.semesters[section - 1]
     }
 
 }
