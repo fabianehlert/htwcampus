@@ -86,7 +86,6 @@ class GradeService: Service {
         let loadFromCache = self.persistenceService.loadGradesCache()
         
         return Observable.merge(loadFromNetwork, loadFromCache)
-//            .distinctUntilChanged(==)
             .observeOn(MainScheduler.instance)
             .map { [weak self] semesters in
                 self?.cachedInformation[parameters] = semesters
@@ -117,6 +116,29 @@ class GradeService: Service {
         return semesterHash.sorted {
             return $0.key > $1.key
         }.map(Information.init)
+    }
+    
+    /// Calculates the overall average of the given semesters.
+    ///
+    /// - Parameter information: the loaded information to calculate the average from
+    /// - Returns: the average of all grades weighted by credits
+    static func calculateAverage(from information: [Information]) -> Double {
+        var sumCredits = 0.0
+        var sumGrade = 0.0
+        
+        for semester in information {
+            for g in semester.grades {
+                sumCredits += g.credits
+                sumGrade += g.credits * (g.mark ?? 0)
+            }
+        }
+        
+        // Don't devide by zero!
+        guard sumCredits > 0 else {
+            return 0
+        }
+        
+        return sumGrade / sumCredits
     }
 
 }

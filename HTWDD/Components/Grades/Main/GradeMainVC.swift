@@ -70,19 +70,25 @@ class GradeMainVC: CollectionViewController {
         }
 
         self.dataSource.collectionView = self.collectionView
+        
+        self.dataSource.register(type: GradeAverageCell.self)
         self.dataSource.register(type: GradeCell.self) { [weak self] cell, _, indexPath in
             if self?.selectedIndexPath == indexPath {
                 cell.updatedExpanded(true)
             }
         }
         self.dataSource.registerSupplementary(CollectionHeaderView.self, kind: .header) { [weak self] view, indexPath in
-            let information = self?.dataSource.information(for: indexPath.section)
-            let semesterTitle = information?.semester.localized
-            let attributedTitle = NSAttributedString(string: (semesterTitle ?? ""),
-                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
-            let averageTitle = NSAttributedString(string: Loca.Grades.average(information?.average ?? 0),
-                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 20, weight: .light)])
-            view.attributedTitle = attributedTitle + averageTitle
+            guard let information = self?.dataSource.information(for: indexPath.section) else {
+                view.attributedTitle = nil
+                return
+            }
+            
+            let semesterTitle = information.semester.localized
+            let attributedTitle = NSAttributedString(string: (semesterTitle),
+                                                     attributes: [.foregroundColor: UIColor.htw.textHeadline, .font: UIFont.systemFont(ofSize: 22, weight: .bold)])
+            let averageTitle = NSAttributedString(string: Loca.Grades.average(information.average),
+                                                  attributes: [.foregroundColor: UIColor.htw.textBody, .font: UIFont.systemFont(ofSize: 16, weight: .semibold)])
+            view.attributedTitle = attributedTitle + " " + averageTitle
         }
         
         let loading = self.dataSource.loading.filter { $0 == true }
@@ -127,6 +133,7 @@ class GradeMainVC: CollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let _ = collectionView.cellForItem(at: indexPath) as? GradeCell else { return }
         
         func animate(block: @escaping () -> Void) {
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: [.beginFromCurrentState, .curveEaseInOut], animations: block, completion: nil)
@@ -175,6 +182,9 @@ extension GradeMainVC {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: self.itemWidth(collectionView: collectionView), height: 20)
+        }
         return CGSize(width: self.itemWidth(collectionView: collectionView), height: 60)
     }
     

@@ -20,9 +20,8 @@ struct SwitchViewModel: ViewModel {
         let end = Loca.Schedule.Cell.time(model.lecture.end.hour ?? 0, model.lecture.end.minute ?? 0)
         
         var s = Loca.Schedule.Settings.Cell.subtitle(model.lecture.week.stringValue, begin, end)
-        if let weeks = model.lecture.weeks {
-            let w = weeks.map { "\($0)" }.joined(separator: ", ")
-            s.append("\n\(Loca.CalendarWeek.short): \(w)")
+        if (model.lecture.weeks?.count ?? 0) == 1 {
+            s = Loca.Schedule.Settings.Cell.subtitle(Loca.Schedule.Weeks.once, begin, end)
         }
         self.subtitle = s
         
@@ -40,6 +39,7 @@ class SwitchCell: TableViewCell, Cell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,7 +48,7 @@ class SwitchCell: TableViewCell, Cell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.grey
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -16,10 +16,10 @@ class FlatCollectionViewCell: CollectionViewCell {
         
         static let highlightedScale: CGFloat = 0.97
         
-        static let shadowRadius: CGFloat = 5
+        static let shadowRadius: CGFloat = 4
         static let highlightedShadowRadius: CGFloat = 1
         
-        static let shadowOpacity: Float = 0.15
+        static let shadowOpacity: Float = 0.1
         static let highlightedShadowOpacity: Float = 0.15
     }
     
@@ -36,7 +36,6 @@ class FlatCollectionViewCell: CollectionViewCell {
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = Const.shadowRadius
         self.layer.shadowOpacity = Const.shadowOpacity
-        
     }
     
     override func layoutSubviews() {

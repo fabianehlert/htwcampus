@@ -28,9 +28,11 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day! 🎉";
+"Schedule.holiday"="Semester break 🙌🚀";
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 "Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
+"Schedule.Weeks.once"="Once";
 "Schedule.Weeks.all"="Every week";
 "Schedule.Weeks.odd"="Odd weeks";
 "Schedule.Weeks.even"="Even weeks";
@@ -118,15 +120,17 @@
 "loading"="Loading…";
 
 "Grades.title"="Grades";
-"Grades.average" = "(Ø %.2f)";
+"Grades.totalCredits"="%d total credits";
+"Grades.average" = "(∅ %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f credits";
 "Grades.detail.tries" = "%d. try";
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
-"Grades.status.signedUp" = "signed up";
-"Grades.status.passed" = "passed";
-"Grades.status.failed" = "failed";
+"Grades.detail.note" = "Note: %@";
+"Grades.status.signedUp" = "Signed up";
+"Grades.status.passed" = "Passed";
+"Grades.status.failed" = "Failed";
 "Grades.status.ultimatelyFailed" = "ultimately failed";
 "Grades.noResults.title"="No grades";
 "Grades.noResults.message"="I can't find any of your grades.\nHave you entered your credentials correctly?";
