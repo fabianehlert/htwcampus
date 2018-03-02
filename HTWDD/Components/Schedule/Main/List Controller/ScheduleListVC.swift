@@ -66,16 +66,20 @@ final class ScheduleListVC: ScheduleBaseVC {
         guard let indexPath = self.dataSource.indexPathOfToday else {
             return
         }
-
-        guard self.collectionView.numberOfSections >= indexPath.section else {
-            return
-        }
         
         // scroll to item
 		if let attributes = self.collectionView.collectionViewLayout.layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: indexPath) {
-			self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x, y: attributes.frame.origin.y), animated: animated)
+			self.collectionView.setContentOffset(CGPoint(x: self.collectionView.contentOffset.x,
+                                                         y: attributes.frame.origin.y),
+                                                 animated: animated)
 		} else {
-			self.collectionView.scrollToItem(at: indexPath, at: .top, animated: animated)
+            // Don't scroll to invalid indexPath
+            guard self.collectionView.isIndexPathValid(indexPath) else {
+                return
+            }
+			self.collectionView.scrollToItem(at: indexPath,
+                                             at: .top,
+                                             animated: animated)
 		}
     }
     
