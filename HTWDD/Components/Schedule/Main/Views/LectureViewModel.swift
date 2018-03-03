@@ -29,6 +29,8 @@ struct LectureViewModel: ViewModel {
 
 	let room: String?
 
+    let hidden: Bool
+    
     init(model appLecture: AppLecture) {
         let model = appLecture.lecture
         
@@ -65,6 +67,8 @@ struct LectureViewModel: ViewModel {
 		self.type = LectureViewModel.determineType(model.type)
 		self.rawType = model.type
         self.tag = model.tag ?? ""
+        
+        self.hidden = appLecture.hidden
     }
 	
 	static func determineType(_ type: String) -> String {

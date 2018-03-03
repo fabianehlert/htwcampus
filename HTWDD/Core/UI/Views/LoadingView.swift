@@ -32,7 +32,7 @@ class LoadingView: View {
         
         let stackView = UIStackView(arrangedSubviews: [self.label])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(stackView)
+        self.add(stackView)
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Const.horizontalMargin),

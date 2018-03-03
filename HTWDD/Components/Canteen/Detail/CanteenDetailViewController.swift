@@ -117,7 +117,7 @@ class CanteenDetailViewController: ViewController {
 	private func setupUI() {
 		// ScrollView
 		
-		self.view.addSubview(self.scrollView)
+		self.view.add(self.scrollView)
 		
 		let layoutGuide = self.view.htw.safeAreaLayoutGuide
 		NSLayoutConstraint.activate([
@@ -130,7 +130,7 @@ class CanteenDetailViewController: ViewController {
 		// Image
 		
 		self.imageView.translatesAutoresizingMaskIntoConstraints = false
-		self.imageContainerView.addSubview(self.imageView)
+		self.imageContainerView.add(self.imageView)
 		
 		NSLayoutConstraint.activate([
 			self.imageView.leadingAnchor.constraint(equalTo: self.imageContainerView.leadingAnchor),
@@ -145,10 +145,12 @@ class CanteenDetailViewController: ViewController {
         stackView.axis = .horizontal
         stackView.spacing = Const.spacing
 		
-		[self.imageContainerView, stackView, self.nameLabel, self.moreButton].forEach {
-			$0.translatesAutoresizingMaskIntoConstraints = false
-			self.scrollView.addSubview($0)
-		}
+        self.scrollView.add(self.imageContainerView,
+                            stackView,
+                            self.nameLabel,
+                            self.moreButton) { v in
+                                v.translatesAutoresizingMaskIntoConstraints = false
+        }
 		
 		self.moreButton.addTarget(self, action: #selector(openMealWebsite), for: .touchUpInside)
 		

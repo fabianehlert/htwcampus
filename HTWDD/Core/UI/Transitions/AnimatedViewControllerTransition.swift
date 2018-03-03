@@ -88,7 +88,7 @@ extension AnimatedViewControllerTransition: UIViewControllerAnimatedTransitionin
         }
 
         if self.direction == .present {
-            views.container.addSubview(views.destination)
+            views.container.add(views.destination)
         }
 
         views.destination.frame = views.container.bounds

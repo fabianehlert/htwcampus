@@ -10,8 +10,8 @@ import Foundation
 
 class GenericBasicTableViewDataSource<Data: Identifiable>: TableViewDataSource {
     
-    private let data: [(String, [Data])]
-    init(data: [(String, [Data])]) {
+    private let data: [(String?, [Data])]
+    init(data: [(String?, [Data])]) {
         self.data = data
         super.init()
     }

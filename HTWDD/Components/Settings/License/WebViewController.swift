@@ -38,7 +38,7 @@ class WebViewController: ViewController {
 		}
 		
 		self.webView.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addSubview(self.webView)
+		self.view.add(self.webView)
 		
 		let guide = self.view.htw.safeAreaLayoutGuide
 		NSLayoutConstraint.activate([

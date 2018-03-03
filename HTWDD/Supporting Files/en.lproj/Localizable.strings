@@ -28,9 +28,20 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="No room";
 "Schedule.freeDay"="Enjoy your free day! 🎉";
+"Schedule.holiday"="Semester break 🙌🚀";
 "Schedule.noResults.title"="No plan...";
 "Schedule.noResults.message"="I can't find any lectures for you.\nHave you entered your credentials correctly?";
 "Schedule.NextLecture.unavailable"="No more lectures today! 🚲🌴";
+"Schedule.Weeks.once"="Once";
+"Schedule.Weeks.all"="Every week";
+"Schedule.Weeks.odd"="Odd weeks";
+"Schedule.Weeks.even"="Even weeks";
+
+"Schedule.Settings.Hide.title"="Manage lectures";
+"Schedule.Settings.Hide.action"="Hide this lecture";
+"Schedule.Settings.Hide.otherAction"="Show lecture";
+
+"Schedule.Settings.Cell.subtitle"="%@: %@–%@";
 
 "Schedule.LectureType.lecture"="Lecture";
 "Schedule.LectureType.practical"="Practical";
@@ -60,21 +71,25 @@
 
 "Settings.items.setSchedule.title"="Change studygroup";
 "Settings.items.setSchedule.subtitle"="%@/%@/%@";
-"Settings.items.setGrades.title"="Change datacenter credentials";
+"Settings.items.setGrades.title"="Change credentials";
 "Settings.items.setGrades.subtitle"="%@";
-"Settings.items.deleteAll"="Delete all stored data";
+"Settings.items.deleteAll"="Delete stored data";
 "Settings.items.deleteAllConfirmationText"="Do you really want to delete all stored in the HTW app?";
 "Settings.sections.authentication"="Your information";
 "Settings.sections.openSource"="Open-source licenses";
 "Settings.sections.weAreOpenSource"="We are Open Source!";
 "Settings.sections.contact"="Contact";
+"Settings.items.mail.mail"="mail@htw.benchr.de";
 "Settings.items.mail.title"="Write mail to developer";
 "Settings.items.mail.fallback.title"="Mail address copied!";
 "Settings.items.mail.fallback.message"="It seems like you're not using the system Mail App, so we've added the contact mail address to your clipboard.";
 "Settings.items.github"="HTW iOS on GitHub";
-"Settings.sections.deleteAll"="Deletion";
+"Settings.sections.deleteAll"="Reset";
 "Settings.credits"="Developed in Dresden ❤️";
 "Settings.items.legal.title"="Legal notice";
+
+"CalendarWeek.long"="Calendar week";
+"CalendarWeek.short"="CW";
 
 "monday"="Monday";
 "tuesday"="Tuesday";
@@ -105,15 +120,17 @@
 "loading"="Loading…";
 
 "Grades.title"="Grades";
-"Grades.average" = "(Ø %.2f)";
+"Grades.totalCredits"="%d total credits";
+"Grades.average" = "(∅ %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f credits";
 "Grades.detail.tries" = "%d. try";
 "Grades.detail.noDate" = "No date";
 "Grades.detail.noNote" = "No notes";
-"Grades.status.signedUp" = "signed up";
-"Grades.status.passed" = "passed";
-"Grades.status.failed" = "failed";
+"Grades.detail.note" = "Note: %@";
+"Grades.status.signedUp" = "Signed up";
+"Grades.status.passed" = "Passed";
+"Grades.status.failed" = "Failed";
 "Grades.status.ultimatelyFailed" = "ultimately failed";
 "Grades.noResults.title"="No grades";
 "Grades.noResults.message"="I can't find any of your grades.\nHave you entered your credentials correctly?";

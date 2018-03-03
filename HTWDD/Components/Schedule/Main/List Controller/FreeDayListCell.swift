@@ -28,7 +28,7 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
     override func initialSetup() {
         super.initialSetup()
 		
-		self.isHighlightable = false
+		self.isHighlightable = true
 		
         self.label.font = .systemFont(ofSize: 18, weight: .medium)
         self.label.textAlignment = .center
@@ -37,12 +37,12 @@ class FreeDayListCell: FlatCollectionViewCell, Cell {
         self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.backgroundColor = .white
         
-        self.contentView.addSubview(self.label)
+        self.contentView.add(self.label)
         
         NSLayoutConstraint.activate([
             self.label.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.label.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
-            ])
+        ])
     }
     
     func update(viewModel: FreeDayViewModel) {

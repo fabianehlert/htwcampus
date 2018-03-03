@@ -13,7 +13,8 @@ protocol SettingsMainVCDelegate: class {
     func deleteAllData()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
-	
+    func showLectureManager(auth: ScheduleService.Auth?)
+    
 	func showLicense(name: String)
 	func showGitHub()
     func composeMail()
@@ -23,42 +24,60 @@ class SettingsMainVC: TableViewController {
 	
     var scheduleAuth: ScheduleService.Auth? {
         didSet {
-            self.reset()
+            self.configure()
         }
     }
     
     var gradesAuth: GradeService.Auth? {
         didSet {
-            self.reset()
+            self.configure()
         }
     }
-    
-    private lazy var dataSource = GenericBasicTableViewDataSource(data: self.settings)
 	
-	private var settings: [(String, [SettingsItem])] {
+	private var settings: [(String?, [SettingsItem])] {
 		return [
-			("", [
+			(nil, [
 				SettingsItem(title: Loca.Settings.items.setSchedule.title,
 							 subtitle: self.scheduleAuth.map { auth in Loca.Settings.items.setSchedule.subtitle(auth.year, auth.major, auth.group) },
+                             thumbnail: #imageLiteral(resourceName: "StudyGroup"),
 							 action: self.showScheduleOnboarding()),
 				SettingsItem(title: Loca.Settings.items.setGrades.title,
 							 subtitle: self.gradesAuth.map { auth in Loca.Settings.items.setGrades.subtitle(auth.username) },
+                             thumbnail: #imageLiteral(resourceName: "Credentials"),
 							 action: self.showGradeOnboarding())
 			]),
+            (Loca.Schedule.title, [
+                SettingsItem(title: Loca.Schedule.Settings.Hide.title,
+                             thumbnail: #imageLiteral(resourceName: "ScheduleManager"),
+                             action: self.showLectureManager())
+            ]),
             (Loca.Settings.sections.weAreOpenSource, [
-				SettingsItem(title: Loca.Settings.items.github, action: self.showGitHub())
+				SettingsItem(title: Loca.Settings.items.github,
+                             thumbnail: #imageLiteral(resourceName: "GitHub"),
+                             action: self.showGitHub())
 			]),
             (Loca.Settings.sections.contact, [
-                SettingsItem(title: Loca.Settings.items.mail.title, action: self.composeMail()),
-                SettingsItem(title: Loca.Settings.items.legal.title, action: self.showLicense(name: "HTW-Impressum.html"))
+                SettingsItem(title: Loca.Settings.items.mail.title,
+                             thumbnail: #imageLiteral(resourceName: "Mail"),
+                             action: self.composeMail()),
+                SettingsItem(title: Loca.Settings.items.legal.title,
+                             thumbnail: #imageLiteral(resourceName: "Impressum"),
+                             action: self.showLicense(name: "HTW-Impressum.html"))
             ]),
             (Loca.Settings.sections.openSource, [
-                SettingsItem(title: "RxSwift", action: self.showLicense(name: "RxSwift-license.html")),
-                SettingsItem(title: "Marshal", action: self.showLicense(name: "Marshal-license.html")),
-                SettingsItem(title: "KeychainAccess", action: self.showLicense(name: "KeychainAccess-license.html"))
+                SettingsItem(title: "RxSwift",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "RxSwift-license.html")),
+                SettingsItem(title: "Marshal",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "Marshal-license.html")),
+                SettingsItem(title: "KeychainAccess",
+                             thumbnail: nil,
+                             action: self.showLicense(name: "KeychainAccess-license.html"))
             ]),
 			(Loca.Settings.sections.deleteAll, [
 				SettingsItem(title: Loca.Settings.items.deleteAll,
+                             thumbnail: #imageLiteral(resourceName: "Trash"),
 							 action: self.showConfirmationAlert(title: Loca.attention,
 																message: Loca.Settings.items.deleteAllConfirmationText,
 																actionTitle: Loca.yes,
@@ -96,6 +115,8 @@ class SettingsMainVC: TableViewController {
     
     weak var delegate: SettingsMainVCDelegate?
     
+    // MARK: - Init
+    
     init() {
         super.init(style: .grouped)
     }
@@ -110,17 +131,33 @@ class SettingsMainVC: TableViewController {
 		self.title = Loca.Settings.title
 		self.tabBarItem.image = #imageLiteral(resourceName: "Settings")
         
-        self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: SettingsCell.self)
-		
-		self.tableView.separatorColor = UIColor.htw.lightGrey
+        self.configure()
 	}
 	
-    private func reset() {
+    // MARK: - ViewController lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .automatic
+        }
+        
+        self.tableView.tableFooterView = self.footerView
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Private
+    
+    private func configure() {
         self.dataSource = GenericBasicTableViewDataSource(data: self.settings)
-        self.dataSource.tableView = self.tableView
-        self.dataSource.register(type: SettingsCell.self)
-        self.dataSource.invalidate()
+        self.dataSource?.tableView = self.tableView
+        self.dataSource?.register(type: SettingsCell.self)
+        self.dataSource?.invalidate()
     }
     
     private func showScheduleOnboarding() {
@@ -133,6 +170,10 @@ class SettingsMainVC: TableViewController {
         self.delegate?.triggerGradeOnboarding(completion: { [weak self] auth in
             self?.gradesAuth = auth
         })
+    }
+    
+    private func showLectureManager() {
+        self.delegate?.showLectureManager(auth: self.scheduleAuth)
     }
 	
 	private func showLicense(name: String) {
@@ -147,23 +188,6 @@ class SettingsMainVC: TableViewController {
         self.delegate?.composeMail()
     }
     
-	// MARK: - ViewController lifecycle
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		if #available(iOS 11.0, *) {
-			self.navigationController?.navigationBar.prefersLargeTitles = true
-			self.navigationItem.largeTitleDisplayMode = .automatic
-		}
-
-        self.tableView.tableFooterView = self.footerView
-	}
-	
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
-	}
-    
     private func showConfirmationAlert(title: String?, message: String?, actionTitle: String, action: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Loca.cancel, style: .cancel, handler: nil))
@@ -171,12 +195,16 @@ class SettingsMainVC: TableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+}
+
+// MARK: - UITableViewDelegate
+extension SettingsMainVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.dataSource.data(at: indexPath)
+        guard let d = self.dataSource as? GenericBasicTableViewDataSource<SettingsItem> else { return }
+        let item = d.data(at: indexPath)
         item.action()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }
 
 extension SettingsMainVC: MFMailComposeViewControllerDelegate {

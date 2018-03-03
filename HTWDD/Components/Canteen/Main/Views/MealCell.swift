@@ -62,10 +62,10 @@ class MealCell: FlatCollectionViewCell, Cell {
         stackView.axis = .horizontal
         stackView.spacing = Const.innerItemMargin
         
-		let views: [UIView] = [self.imageView, stackView, self.titleView]
-        views.forEach {
-            self.contentView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.add(self.imageView,
+                             stackView,
+                             self.titleView) { v in
+                                v.translatesAutoresizingMaskIntoConstraints = false
         }
 		
         NSLayoutConstraint.activate([

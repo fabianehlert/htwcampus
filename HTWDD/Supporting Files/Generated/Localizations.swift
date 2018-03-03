@@ -22,8 +22,8 @@ public struct Loca {
     /// Base translation: Friday
     public static var friday : String = NSLocalizedString("friday", comment: "")
 
-    /// Base translation: Wednesday
-    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
+    /// Base translation: Monday
+    public static var monday : String = NSLocalizedString("monday", comment: "")
 
     /// Base translation: Thursday
     public static var thursday : String = NSLocalizedString("thursday", comment: "")
@@ -46,11 +46,11 @@ public struct Loca {
     /// Base translation: Loading…
     public static var loading : String = NSLocalizedString("loading", comment: "")
 
-    /// Base translation: Close
-    public static var close : String = NSLocalizedString("close", comment: "")
-
     /// Base translation: Su
     public static var sunday_short : String = NSLocalizedString("sunday_short", comment: "")
+
+    /// Base translation: Close
+    public static var close : String = NSLocalizedString("close", comment: "")
 
     /// Base translation: Sunday
     public static var sunday : String = NSLocalizedString("sunday", comment: "")
@@ -82,11 +82,11 @@ public struct Loca {
     /// Base translation: Sa
     public static var saturday_short : String = NSLocalizedString("saturday_short", comment: "")
 
-    /// Base translation: Monday
-    public static var monday : String = NSLocalizedString("monday", comment: "")
-
     /// Base translation: Winter semester
     public static var winterSemester : String = NSLocalizedString("winterSemester", comment: "")
+
+    /// Base translation: Wednesday
+    public static var wednesday : String = NSLocalizedString("wednesday", comment: "")
 
 
     public struct Onboarding {
@@ -163,10 +163,26 @@ public struct Loca {
         }
     }
 
+    public struct CalendarWeek {
+
+        /// Base translation: CW
+        public static var short : String = NSLocalizedString("CalendarWeek.short", comment: "")
+
+        /// Base translation: Calendar week
+        public static var long : String = NSLocalizedString("CalendarWeek.long", comment: "")
+
+    }
+
     public struct Schedule {
 
         /// Base translation: No room
         public static var noRoom : String = NSLocalizedString("Schedule.noRoom", comment: "")
+
+        /// Base translation: Schedule
+        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
+
+        /// Base translation: Semester break 🙌🚀
+        public static var holiday : String = NSLocalizedString("Schedule.holiday", comment: "")
 
         /// Base translation: Today
         public static var today : String = NSLocalizedString("Schedule.today", comment: "")
@@ -174,16 +190,40 @@ public struct Loca {
         /// Base translation: Enjoy your free day! 🎉
         public static var freeDay : String = NSLocalizedString("Schedule.freeDay", comment: "")
 
-        /// Base translation: Schedule
-        public static var title : String = NSLocalizedString("Schedule.title", comment: "")
+
+        public struct Settings {
 
 
-        public struct Cell {
+            public struct Cell {
 
-            /// Base translation: %02d:%02d
-            public static func time(_ value1 : Int, _ value2 : Int) -> String {
-                return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
+                /// Base translation: %@: %@–%@
+                public static func subtitle(_ value1 : String, _ value2 : String, _ value3 : String) -> String {
+                    return String(format: NSLocalizedString("Schedule.Settings.Cell.subtitle", comment: ""), value1, value2, value3)
+                }
+
             }
+
+            public struct Hide {
+
+                /// Base translation: Manage lectures
+                public static var title : String = NSLocalizedString("Schedule.Settings.Hide.title", comment: "")
+
+                /// Base translation: Show lecture
+                public static var otherAction : String = NSLocalizedString("Schedule.Settings.Hide.otherAction", comment: "")
+
+                /// Base translation: Hide this lecture
+                public static var action : String = NSLocalizedString("Schedule.Settings.Hide.action", comment: "")
+
+            }
+        }
+
+        public struct noResults {
+
+            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
+
+            /// Base translation: No plan...
+            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
 
         }
 
@@ -194,6 +234,31 @@ public struct Loca {
 
             /// Base translation: List
             public static var list : String = NSLocalizedString("Schedule.Style.list", comment: "")
+
+        }
+
+        public struct Weeks {
+
+            /// Base translation: Once
+            public static var once : String = NSLocalizedString("Schedule.Weeks.once", comment: "")
+
+            /// Base translation: Every week
+            public static var all : String = NSLocalizedString("Schedule.Weeks.all", comment: "")
+
+            /// Base translation: Even weeks
+            public static var even : String = NSLocalizedString("Schedule.Weeks.even", comment: "")
+
+            /// Base translation: Odd weeks
+            public static var odd : String = NSLocalizedString("Schedule.Weeks.odd", comment: "")
+
+        }
+
+        public struct Cell {
+
+            /// Base translation: %02d:%02d
+            public static func time(_ value1 : Int, _ value2 : Int) -> String {
+                return String(format: NSLocalizedString("Schedule.Cell.time", comment: ""), value1, value2)
+            }
 
         }
 
@@ -210,16 +275,6 @@ public struct Loca {
 
         }
 
-        public struct noResults {
-
-            /// Base translation: I can't find any lectures for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Schedule.noResults.message", comment: "")
-
-            /// Base translation: No plan...
-            public static var title : String = NSLocalizedString("Schedule.noResults.title", comment: "")
-
-        }
-
         public struct NextLecture {
 
             /// Base translation: No more lectures today! 🚲🌴
@@ -233,24 +288,29 @@ public struct Loca {
         /// Base translation: Grades
         public static var title : String = NSLocalizedString("Grades.title", comment: "")
 
-        /// Base translation: (Ø %.2f)
+        /// Base translation: (∅ %.2f)
         public static func average(_ value1 : Double) -> String {
             return String(format: NSLocalizedString("Grades.average", comment: ""), value1)
+        }
+
+        /// Base translation: %d total credits
+        public static func totalCredits(_ value1 : Int) -> String {
+            return String(format: NSLocalizedString("Grades.totalCredits", comment: ""), value1)
         }
 
 
         public struct status {
 
-            /// Base translation: passed
+            /// Base translation: Passed
             public static var passed : String = NSLocalizedString("Grades.status.passed", comment: "")
 
-            /// Base translation: failed
+            /// Base translation: Failed
             public static var failed : String = NSLocalizedString("Grades.status.failed", comment: "")
 
             /// Base translation: ultimately failed
             public static var ultimatelyFailed : String = NSLocalizedString("Grades.status.ultimatelyFailed", comment: "")
 
-            /// Base translation: signed up
+            /// Base translation: Signed up
             public static var signedUp : String = NSLocalizedString("Grades.status.signedUp", comment: "")
 
         }
@@ -278,6 +338,11 @@ public struct Loca {
                 return String(format: NSLocalizedString("Grades.detail.credits", comment: ""), value1)
             }
 
+            /// Base translation: Note: %@
+            public static func note(_ value1 : String) -> String {
+                return String(format: NSLocalizedString("Grades.detail.note", comment: ""), value1)
+            }
+
         }
 
         public struct noResults {
@@ -287,6 +352,55 @@ public struct Loca {
 
             /// Base translation: No grades
             public static var title : String = NSLocalizedString("Grades.noResults.title", comment: "")
+
+        }
+    }
+
+    public struct Exams {
+
+        /// Base translation: Examiner: %@
+        public static func examiner(_ value1 : String) -> String {
+            return String(format: NSLocalizedString("Exams.examiner", comment: ""), value1)
+        }
+
+        /// Base translation: Exams
+        public static var title : String = NSLocalizedString("Exams.title", comment: "")
+
+        /// Base translation: Branch: %@
+        public static func branch(_ value1 : String) -> String {
+            return String(format: NSLocalizedString("Exams.branch", comment: ""), value1)
+        }
+
+
+        public struct noResults {
+
+            /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
+            public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
+
+            /// Base translation: No exams
+            public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
+
+        }
+
+        public struct ExamType {
+
+            /// Base translation: Written
+            public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
+
+            /// Base translation: APL
+            public static var apl : String = NSLocalizedString("Exams.ExamType.apl", comment: "")
+
+            /// Base translation: Oral
+            public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
+
+        }
+
+        public struct Cell {
+
+            /// Base translation: %@ – %@
+            public static func time(_ value1 : String, _ value2 : String) -> String {
+                return String(format: NSLocalizedString("Exams.Cell.time", comment: ""), value1, value2)
+            }
 
         }
     }
@@ -321,55 +435,6 @@ public struct Loca {
         }
     }
 
-    public struct Exams {
-
-        /// Base translation: Examiner: %@
-        public static func examiner(_ value1 : String) -> String {
-            return String(format: NSLocalizedString("Exams.examiner", comment: ""), value1)
-        }
-
-        /// Base translation: Exams
-        public static var title : String = NSLocalizedString("Exams.title", comment: "")
-
-        /// Base translation: Branch: %@
-        public static func branch(_ value1 : String) -> String {
-            return String(format: NSLocalizedString("Exams.branch", comment: ""), value1)
-        }
-
-
-        public struct noResults {
-
-            /// Base translation: I can't find any exams for you. Have you entered your credentials correctly?
-            public static var message : String = NSLocalizedString("Exams.noResults.message", comment: "")
-
-            /// Base translation: No exams
-            public static var title : String = NSLocalizedString("Exams.noResults.title", comment: "")
-
-        }
-
-        public struct Cell {
-
-            /// Base translation: %@ – %@
-            public static func time(_ value1 : String, _ value2 : String) -> String {
-                return String(format: NSLocalizedString("Exams.Cell.time", comment: ""), value1, value2)
-            }
-
-        }
-
-        public struct ExamType {
-
-            /// Base translation: Written
-            public static var written : String = NSLocalizedString("Exams.ExamType.written", comment: "")
-
-            /// Base translation: APL
-            public static var apl : String = NSLocalizedString("Exams.ExamType.apl", comment: "")
-
-            /// Base translation: Oral
-            public static var oral : String = NSLocalizedString("Exams.ExamType.oral", comment: "")
-
-        }
-    }
-
     public struct Settings {
 
         /// Base translation: Settings
@@ -384,7 +449,7 @@ public struct Loca {
             /// Base translation: HTW iOS on GitHub
             public static var github : String = NSLocalizedString("Settings.items.github", comment: "")
 
-            /// Base translation: Delete all stored data
+            /// Base translation: Delete stored data
             public static var deleteAll : String = NSLocalizedString("Settings.items.deleteAll", comment: "")
 
             /// Base translation: Do you really want to delete all stored in the HTW app?
@@ -392,6 +457,9 @@ public struct Loca {
 
 
             public struct mail {
+
+                /// Base translation: mail@htw.benchr.de
+                public static var mail : String = NSLocalizedString("Settings.items.mail.mail", comment: "")
 
                 /// Base translation: Write mail to developer
                 public static var title : String = NSLocalizedString("Settings.items.mail.title", comment: "")
@@ -434,7 +502,7 @@ public struct Loca {
                     return String(format: NSLocalizedString("Settings.items.setGrades.subtitle", comment: ""), value1)
                 }
 
-                /// Base translation: Change datacenter credentials
+                /// Base translation: Change credentials
                 public static var title : String = NSLocalizedString("Settings.items.setGrades.title", comment: "")
 
             }
@@ -451,7 +519,7 @@ public struct Loca {
             /// Base translation: We are Open Source!
             public static var weAreOpenSource : String = NSLocalizedString("Settings.sections.weAreOpenSource", comment: "")
 
-            /// Base translation: Deletion
+            /// Base translation: Reset
             public static var deleteAll : String = NSLocalizedString("Settings.sections.deleteAll", comment: "")
 
             /// Base translation: Contact

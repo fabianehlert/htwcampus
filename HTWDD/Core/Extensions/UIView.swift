@@ -39,6 +39,13 @@ extension UIView {
         get { return self.left + self.width }
         set { self.left = newValue - self.width }
     }
+    
+    func add(_ views: UIView..., transform: ((UIView) -> Void)? = nil) {
+        views.forEach {
+            self.addSubview($0)
+            transform?($0)
+        }
+    }
 
 }
 

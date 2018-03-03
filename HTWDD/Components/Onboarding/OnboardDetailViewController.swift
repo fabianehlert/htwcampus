@@ -79,7 +79,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
 		// --- Container ---
 		
 		self.containerView.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addSubview(self.containerView)
+		self.view.add(self.containerView)
 		NSLayoutConstraint.activate([
 			self.containerView.leadingAnchor.constraint(equalTo: self.view.htw.safeAreaLayoutGuide.leadingAnchor),
 			self.topConstraint,
@@ -96,8 +96,8 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         self.titleContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.titleContainer.addSubview(titleLabel)
-        self.containerView.addSubview(self.titleContainer)
+        self.titleContainer.add(titleLabel)
+        self.containerView.add(self.titleContainer)
 
         // --- Description Label ---
 
@@ -139,7 +139,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
         self.centerStackView.distribution = .fill
         self.centerStackView.spacing = 40
         self.centerStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.containerView.addSubview(self.centerStackView)
+        self.containerView.add(self.centerStackView)
 
         // --- Continue Button ---
 
@@ -153,7 +153,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
             .controlEvent(.touchUpInside)
             .subscribe({ [weak self] _ in self?.continueBoarding() })
             .disposed(by: self.rx_disposeBag)
-        self.containerView.addSubview(self.continueButton)
+        self.containerView.add(self.continueButton)
 
         // --- Skip Button ---
 
@@ -166,7 +166,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
             .controlEvent(.touchUpInside)
             .subscribe({ [weak self] _ in self?.skipBoarding() })
             .disposed(by: self.rx_disposeBag)
-        self.containerView.addSubview(skip)
+        self.containerView.add(skip)
 
         // --- Constraints ---
 

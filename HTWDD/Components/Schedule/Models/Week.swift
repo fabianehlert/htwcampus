@@ -22,4 +22,14 @@ enum Week: Int, Codable {
         }
     }
 
+    var stringValue: String {
+        switch self {
+        case .all:
+            return Loca.Schedule.Weeks.all
+        case .even:
+            return Loca.Schedule.Weeks.even
+        case .odd:
+            return Loca.Schedule.Weeks.odd
+        }
+    }
 }

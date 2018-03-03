@@ -17,6 +17,7 @@ class PersistenceService: Service {
 		static let accessGroup = "3E4PGPNR47.keychain-group"
 		
         static let scheduleKey = "htw-dresden.schedule.auth"
+        static let scheduleHiddenKey = "htw-dresden.schedule.hidden"
         static let scheduleColorsKey = "htw-dresden.schedule.colors"
         static let gradesKey = "htw-dresden.grades.auth"
         
@@ -50,6 +51,10 @@ class PersistenceService: Service {
         return try? JSONDecoder().decode(T.self, from: data)
     }
     
+    func loadHidden() -> [Int: Bool] {
+        return self.load(type: [Int: Bool].self, key: Const.scheduleHiddenKey) ?? [:]
+    }
+    
     func loadScheduleColors() -> [Int: UInt] {
         return self.load(type: [Int: UInt].self, key: Const.scheduleColorsKey) ?? [:]
     }
@@ -79,6 +84,12 @@ class PersistenceService: Service {
 
     func save(_ schedule: ScheduleService.Auth) {
         self.save(object: schedule, key: Const.scheduleKey)
+    }
+    
+    func save(_ hidden: [Int: Bool]) {
+        var all = self.loadHidden()
+        all.merge(hidden, uniquingKeysWith: { $0 || $1 })
+        self.save(object: all, key: Const.scheduleHiddenKey)
     }
     
     func save(_ colors: [Int: UInt]) {
@@ -116,6 +127,7 @@ class PersistenceService: Service {
     func clear() {
         self.removeGrade()
         self.removeSchedule()
+        self.removeScheduleHidden()
         self.removeScheduleColors()
         self.removeGradesCache()
         self.removeScheduleCache()
@@ -123,6 +135,10 @@ class PersistenceService: Service {
 
     func removeSchedule() {
         self.remove(key: Const.scheduleKey)
+    }
+    
+    func removeScheduleHidden() {
+        self.remove(key: Const.scheduleHiddenKey)
     }
     
     func removeScheduleColors() {

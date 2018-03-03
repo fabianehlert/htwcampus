@@ -30,7 +30,7 @@ class ErrorCollectionCell: CollectionViewCell {
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
         self.label.font = UIFont.systemFont(ofSize: 10)
-        self.contentView.addSubview(self.label)
+        self.contentView.add(self.label)
     }
 
 }
@@ -56,7 +56,7 @@ class ErrorSupplementaryView: CollectionReusableView {
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
         self.label.font = UIFont.systemFont(ofSize: 10)
-        self.addSubview(self.label)
+        self.add(self.label)
     }
 
 }
@@ -81,6 +81,6 @@ class ErrorTableCell: TableViewCell {
         self.label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.label.numberOfLines = 0
         self.label.font = UIFont.systemFont(ofSize: 10)
-        self.contentView.addSubview(self.label)
+        self.contentView.add(self.label)
     }
 }

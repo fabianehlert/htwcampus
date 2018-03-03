@@ -28,9 +28,20 @@
 "Schedule.Cell.time" = "%02d:%02d";
 "Schedule.noRoom"="Kein Raum";
 "Schedule.freeDay"="Genieß Deinen freien Tag! 🎉";
+"Schedule.holiday"="Semesterferien 🙌🚀";
 "Schedule.noResults.title"="Kein Plan...";
 "Schedule.noResults.message"="Ich kann keine Stunden für Dich finden.\nIst Deine Studiengruppe korrekt?";
 "Schedule.NextLecture.unavailable"="Keine Stunden mehr für heute! 🚲🌴";
+"Schedule.Weeks.once"="Einmal";
+"Schedule.Weeks.all"="Jede Woche";
+"Schedule.Weeks.odd"="Ungerade Wochen";
+"Schedule.Weeks.even"="Gerade Wochen";
+
+"Schedule.Settings.Hide.title"="Stunden verwalten";
+"Schedule.Settings.Hide.action"="Diese Stunde ausblenden";
+"Schedule.Settings.Hide.otherAction"="Stunde wieder einblenden";
+
+"Schedule.Settings.Cell.subtitle"="%@: %@–%@";
 
 "Schedule.LectureType.lecture"="Vorlesung";
 "Schedule.LectureType.practical"="Praktikum";
@@ -60,21 +71,25 @@
 
 "Settings.items.setSchedule.title"="Studiengruppe ändern";
 "Settings.items.setSchedule.subtitle"="%@/%@/%@";
-"Settings.items.setGrades.title"="RZ-Zugangsdaten ändern";
+"Settings.items.setGrades.title"="Zugangsdaten ändern";
 "Settings.items.setGrades.subtitle"="%@";
-"Settings.items.deleteAll"="Alle gespeicherten Daten löschen";
+"Settings.items.deleteAll"="Gespeicherte Daten löschen";
 "Settings.items.deleteAllConfirmationText"="Möchtest Du wirklich alle in der HTW Dresden App gespeicherten Daten löschen?";
 "Settings.sections.authentication"="Deine Angaben";
 "Settings.sections.openSource"="Open Source Lizenzen";
 "Settings.sections.weAreOpenSource"="Wir sind Open Source!";
 "Settings.sections.contact"="Kontakt";
+"Settings.items.mail.mail"="mail@htw.benchr.de";
 "Settings.items.mail.title"="Mail an Entwickler schreiben";
 "Settings.items.mail.fallback.title"="Mailadresse kopiert!";
 "Settings.items.mail.fallback.message"="Es sieht so aus, als würdest du die Mail App von Apple nicht verwenden. Deshalb haben wir die Kontaktadresse für dich kopiert.";
 "Settings.items.github"="HTW iOS auf GitHub";
-"Settings.sections.deleteAll"="Löschung";
+"Settings.sections.deleteAll"="Zurücksetzen";
 "Settings.credits"="Entwickelt in Dresden ❤️";
 "Settings.items.legal.title"="Impressum";
+
+"CalendarWeek.long"="Kalenderwoche";
+"CalendarWeek.short"="KW";
 
 "monday"="Montag";
 "tuesday"="Dienstag";
@@ -102,18 +117,20 @@
 "letsgo"="Los geht's!";
 "attention"="Achtung";
 "yes"="Ja";
-"loading"="Lade…";
+"loading"="Laden…";
 
 "Grades.title"="Noten";
-"Grades.average" = "(Ø %.2f)";
+"Grades.totalCredits"="%d Credits insgesamt";
+"Grades.average" = "(∅ %.2f)";
 "Grades.detail.mark" = "%.1f";
 "Grades.detail.credits" = "%.0f Credits";
-"Grades.detail.tries" = "%d. Versuch";
+"Grades.detail.tries" = "%d.Versuch";
 "Grades.detail.noDate" = "Kein Datum";
 "Grades.detail.noNote" = "Keine Bemerkungen";
-"Grades.status.signedUp" = "angemeldet";
-"Grades.status.passed" = "bestanden";
-"Grades.status.failed" = "durchgefallen";
+"Grades.detail.note" = "Bemerkung: %@";
+"Grades.status.signedUp" = "Angemeldet";
+"Grades.status.passed" = "Bestanden";
+"Grades.status.failed" = "Durchgefallen";
 "Grades.status.ultimatelyFailed" = "letztmalig durchgefallen";
 "Grades.noResults.title"="Keine Noten";
 "Grades.noResults.message"="Ich kann leider keine Noten von Dir finden.\nSind Deine Zugangsdaten korrekt?";

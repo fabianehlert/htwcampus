@@ -64,7 +64,7 @@ class ExamsDataSource: CollectionViewDataSource {
             .load(parameters: auth)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] information in
-                self?.data = information.exams
+                self?.data = information.exams.sorted { $0.day < $1.day }
                 self?.loadingCount.value -= 1
             }, onError: { [weak self] err in
                 self?.loadingCount.value -= 1
