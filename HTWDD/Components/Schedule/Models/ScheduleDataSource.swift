@@ -196,7 +196,7 @@ class ScheduleDataSource: CollectionViewDataSource {
         self.indexPathOfToday = all
             .index(where: { $0.date.sameDayAs(other: Date()) })
             .map({ IndexPath(item: 0, section: $0) })
-				
+
         return all
     }
 

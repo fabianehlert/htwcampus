@@ -26,6 +26,10 @@ struct EventPeriod: Codable, Hashable {
     }
 
     func contains(date: EventDate) -> Bool {
+        if end.date < begin.date {
+            Log.error("In line \(#line) in \(#file): upperBound of a range should not be smaller than the lowerBound! Investigate if data in backend is inconsistent!")
+            return false
+        }
         return (begin.date...end.date).contains(date.date)
     }
 
