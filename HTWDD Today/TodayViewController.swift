@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import NotificationCenter
 
-class TodayViewController: ViewController {
+class TodayViewController: ViewController, UIGestureRecognizerDelegate {
 	
 	// - Private Properties
 	
@@ -53,7 +53,8 @@ class TodayViewController: ViewController {
 				
 		self.view.backgroundColor = .clear
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
-		
+		self.addGestureRecognizer()
+        
 		self.loadActiveLecture()
 			.subscribe(onNext: { [weak self] l in
 			self?.lecture = l
@@ -137,6 +138,20 @@ class TodayViewController: ViewController {
 		}
 	}
 	
+    // MARK: - UIGestureRecognizer
+    
+    fileprivate func addGestureRecognizer() {
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gestureRecognizer:)))
+        gestureRecognizer.delegate = self
+        self.containerView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    // MARK: - URL
+    
+    @objc func handleTap(gestureRecognizer: UIGestureRecognizer) {
+        extensionContext?.open(URL(string:"htwdd://schedule")!, completionHandler: nil)
+    }
 }
 
 // MARK: - NCWidgetProviding
