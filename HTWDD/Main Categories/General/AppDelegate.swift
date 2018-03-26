@@ -43,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Tracker.track(.open)
     }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let viewController = url.host?.removingPercentEncoding
+        
+        if(viewController == "schedule") {
+            let tababarController = self.window!.rootViewController as! UITabBarController
+            tababarController.selectedIndex = 0
+        }
+        return true
+    }
+    
 	// MARK: - UI Apperance
 	
 	private func stylizeUI() {
