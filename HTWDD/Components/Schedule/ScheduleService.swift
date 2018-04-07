@@ -45,7 +45,6 @@ class ScheduleService: Service {
             return lectures.map { l in
                 let hash = l.fullHash()
                 let savedHidden = hidden[hash] ?? false
-                print("Name: \(l.name). Hidden: \(savedHidden)")
                 let nameHash = l.name.hashValue
                 let savedColor = colors[nameHash]
                 let color = savedColor ?? UIColor.htw.scheduleColors[counter % UIColor.htw.scheduleColors.count].hex()
