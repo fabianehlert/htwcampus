@@ -115,6 +115,10 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
         self.showOnboarding(animated: true)
     }
     
+    func refreshSchedule() {
+        self.schedule.auth = self.schedule.auth
+    }
+    
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void) {
         self.triggerOnboarding(.studygroup) { [weak self] schedule, _ in
             guard let auth = schedule else {
