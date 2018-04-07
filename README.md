@@ -21,6 +21,9 @@
 ## About
 The 'HTW Dresden iOS App' is a student-initiated project that enables students of the [University of Applied Sciences Dresden](https://www.htw-dresden.de/en/home.html) to access their schedule, audit plan, grades and more easily.
 
+## Questions
+If you have questions about any aspect of this project, please feel free to [open an issue](https://github.com/HTWDD/htwcampus/issues/new). We'd love to hear from you!
+
 ## License
 This project is licensed under the [MIT](https://github.com/HTWDD/htwcampus/blob/develop/LICENSE) license.
 
