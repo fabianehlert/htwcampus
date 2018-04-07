@@ -1,5 +1,5 @@
 //
-//  CanteenDetailView.swift
+//  MealDetailViewController.swift
 //  HTWDD
 //
 //  Created by Benjamin Herzog on 06.11.17.
@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class CanteenDetailViewController: ViewController {
+class MealDetailViewController: ViewController {
     
     enum Const {
         static let imageAspectRatio: CGFloat = 1.5
