@@ -120,11 +120,12 @@ extension ScheduleBaseVC: UIViewControllerPreviewingDelegate {
         guard
             let indexPath = self.collectionView.indexPathForItem(at: location),
             let item = self.dataSource.lecture(at: indexPath)
-            else {
-                return nil
+        else {
+            return nil
         }
 
         if let cell = self.collectionView.cellForItem(at: indexPath) {
+            cell.transform = .identity
             previewingContext.sourceRect = cell.frame
         }
 
