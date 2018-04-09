@@ -40,11 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let viewController = url.host?.removingPercentEncoding
         
-        if(viewController == "schedule") {
-            let tababarController = self.window!.rootViewController as! UITabBarController
-            tababarController.selectedIndex = 0
+        if let viewController = url.host?.removingPercentEncoding {
+            self.appCoordinator?.loadTab(childCoordinator: viewController)
         }
         return true
     }
