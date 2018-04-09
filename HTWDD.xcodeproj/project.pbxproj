@@ -96,8 +96,6 @@
 		1FA92C711FEACC7400A88B0D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA92C701FEACC7400A88B0D /* UIColor.swift */; };
 		1FB3FFD81FFE5E5F00EE695F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B516D8211FA9A47000551556 /* UIView.swift */; };
 		1FB3FFD91FFE5E6700EE695F /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BB1FB0E87900320091 /* LayoutGuide.swift */; };
-		1FB51A131FC1E89B00049DAA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A111FC1E89A00049DAA /* Crashlytics.framework */; };
-		1FB51A141FC1E89B00049DAA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB51A121FC1E89B00049DAA /* Fabric.framework */; };
 		1FC1BDCE1FADDEFF007F9D06 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */; };
 		1FC1BDD21FADDF11007F9D06 /* SettingsMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */; };
 		1FC1BDD41FADDF1C007F9D06 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */; };
@@ -172,7 +170,7 @@
 		B56957881FAA3F7F00CE2318 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56957871FAA3F7F00CE2318 /* CollectionHeaderView.swift */; };
 		B58ECB151F990D5300949F4F /* HTWNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58ECB141F990D5300949F4F /* HTWNamespace.swift */; };
 		B59879BC1FB0E87900320091 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BB1FB0E87900320091 /* LayoutGuide.swift */; };
-		B59879BE1FB0F52000320091 /* CanteenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */; };
+		B59879BE1FB0F52000320091 /* MealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BD1FB0F52000320091 /* MealDetailViewController.swift */; };
 		B59879C01FB0F67800320091 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879BF1FB0F67800320091 /* BadgeLabel.swift */; };
 		B59FA98B1DD09C8400259D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59FA98A1DD09C8400259D7F /* AppDelegate.swift */; };
 		B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59FA9911DD09C8400259D7F /* Assets.xcassets */; };
@@ -301,8 +299,6 @@
 		1F94C4001F90DB4200988E72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1FA589381FB735CF008EE474 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		1FA92C701FEACC7400A88B0D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		1FB51A111FC1E89A00049DAA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		1FB51A121FC1E89B00049DAA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1FC1BDCD1FADDEFF007F9D06 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		1FC1BDD11FADDF11007F9D06 /* SettingsMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainVC.swift; sourceTree = "<group>"; };
 		1FC1BDD31FADDF1C007F9D06 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -375,7 +371,7 @@
 		B56957871FAA3F7F00CE2318 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		B58ECB141F990D5300949F4F /* HTWNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTWNamespace.swift; sourceTree = "<group>"; };
 		B59879BB1FB0E87900320091 /* LayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
-		B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenDetailViewController.swift; sourceTree = "<group>"; };
+		B59879BD1FB0F52000320091 /* MealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
 		B59879BF1FB0F67800320091 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		B59FA9871DD09C8400259D7F /* HTWDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTWDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59FA98A1DD09C8400259D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -461,11 +457,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */,
-				1FB51A131FC1E89B00049DAA /* Crashlytics.framework in Frameworks */,
 				B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */,
 				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
 				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
-				1FB51A141FC1E89B00049DAA /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +583,7 @@
 		1F864E6D1FB732A3002AA79B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				B59879BD1FB0F52000320091 /* CanteenDetailViewController.swift */,
+				B59879BD1FB0F52000320091 /* MealDetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -895,8 +889,6 @@
 		B52A9B5A1DDB1B7C00313FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FB51A111FC1E89A00049DAA /* Crashlytics.framework */,
-				1FB51A121FC1E89B00049DAA /* Fabric.framework */,
 				B5461B691FA7B82400564D6D /* KeychainAccess.framework */,
 				B5B376821FA6161D00FC3A07 /* OpenMensaKit.framework */,
 				B52DF0D71E7096F30095C854 /* Marshal.framework */,
@@ -1152,7 +1144,6 @@
 				B52A9B5F1DDB1B8000313FC3 /* Carthage */,
 				B59FA9851DD09C8300259D7F /* Resources */,
 				1FED52C51FAFA1C000260D5B /* Embed App Extensions */,
-				1FB51A101FC1E81900049DAA /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1190,7 +1181,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "HTW Dresden";
 				TargetAttributes = {
 					1FED52B41FAFA1C000260D5B = {
@@ -1295,20 +1286,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1FB51A101FC1E81900049DAA /* Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Crashlytics;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run d721f89d464946136dcea515986ec1de3d28c929 a5327721f5230bd3594b8396561237ad277e4306dff4035fdd869fd467bf5da6";
-		};
 		1FBC0E2C1FA366D800B2C0E1 /* Laurine */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1436,7 +1413,7 @@
 				B59879C01FB0F67800320091 /* BadgeLabel.swift in Sources */,
 				B5B3768B1FA6182800FC3A07 /* Double.swift in Sources */,
 				B538EF181E1D6AEF0031077C /* Network.swift in Sources */,
-				B59879BE1FB0F52000320091 /* CanteenDetailViewController.swift in Sources */,
+				B59879BE1FB0F52000320091 /* MealDetailViewController.swift in Sources */,
 				B5F3F8701FB8552800F0D1DB /* AppLecture.swift in Sources */,
 				B5EF957E1FAF4BAF006BC7D1 /* OnboardStudygroupSelectionController.swift in Sources */,
 				1F94C4011F90DB4200988E72 /* AppCoordinator.swift in Sources */,
@@ -1715,6 +1692,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1722,6 +1700,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1773,6 +1752,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1780,6 +1760,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
