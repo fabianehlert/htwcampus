@@ -103,6 +103,22 @@ class AppCoordinator: Coordinator {
             .disposed(by: self.disposeBag)
     }
 	
+    func loadTab(childCoordinator: String) {
+
+        var coordinators = self.childCoordinators.description
+        
+        coordinators = coordinators.replacingOccurrences(of: "[", with: "")
+        coordinators = coordinators.replacingOccurrences(of: "]", with: "")
+        coordinators = coordinators.replacingOccurrences(of: "HTWDD.", with: "")
+        coordinators = coordinators.replacingOccurrences(of: "Coordinator", with: "")
+        coordinators = coordinators.lowercased()
+        
+        let array = coordinators.components(separatedBy: ", ")
+        
+        if let index = array.index(of: childCoordinator) {
+            self.tabBarController.selectedIndex = index
+        }
+    }
 }
 
 extension AppCoordinator: SettingsCoordinatorDelegate {
