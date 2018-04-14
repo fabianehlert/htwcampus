@@ -61,7 +61,7 @@ extension EventDate: ValueType {
             throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))
         }
 
-        let parts = raw.components(separatedBy: "-").flatMap { s -> Int? in Int(s) }
+        let parts = raw.components(separatedBy: "-").compactMap { s -> Int? in Int(s) }
         guard parts.count == 3 else {
             throw MarshalError.typeMismatch(expected: 3, actual: parts.count)
         }
