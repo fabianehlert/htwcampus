@@ -45,7 +45,7 @@ extension TableViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let x: CGFloat = 15
+        let x: CGFloat = tableView.layoutMargins.left
         let label = UILabel(frame: CGRect(x: x, y: 35, width: tableView.width - 2*x, height: 20))
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.grey

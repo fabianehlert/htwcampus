@@ -91,15 +91,14 @@ class SettingsCell: TableViewCell, Cell {
         
         NSLayoutConstraint.activate([
             self.thumbnailImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.thumbnailImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor,
-                                                             constant: Const.margin),
+            self.thumbnailImageView.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor),
             self.thumbnailImageView.heightAnchor.constraint(equalToConstant: Const.imageSize),
             self.imageWidthConstraint,
             
             self.imageSpaceConstraint,
             self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
                                                 constant: Const.margin),
-            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor),
             self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
                                                    constant: -Const.margin)
         ])
