@@ -28,6 +28,11 @@ class TextField: UITextField {
 
 	func initialSetup() {}
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 12
+    }
+    
 	// MARK: - TextField
 	
 	override func textRect(forBounds bounds: CGRect) -> CGRect {
