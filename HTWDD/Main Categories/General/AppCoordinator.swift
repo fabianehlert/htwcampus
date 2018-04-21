@@ -50,7 +50,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
         self.window.makeKeyAndVisible()
 		
-        self.showOnboarding(animated: false)		
+        self.showOnboarding(animated: false)
 	}
 
     private func injectAuthentication(schedule: ScheduleService.Auth?, grade: GradeService.Auth?) {
