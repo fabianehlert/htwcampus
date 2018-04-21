@@ -45,17 +45,17 @@ extension TableViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let x: CGFloat = tableView.layoutMargins.left
+        let x = tableView.layoutMargins.left
+        
         let label = UILabel(frame: CGRect(x: x, y: 35, width: tableView.width - 2*x, height: 20))
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.grey
         label.text = self.dataSource?.titleFor(section: section)?.uppercased()
-        label.autoresizingMask = [.flexibleRightMargin]
         
-        let v = UIView()
-        v.add(label)
+        let container = UIView(frame: .zero)
+        container.add(label)
         
-        return v
+        return container
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
