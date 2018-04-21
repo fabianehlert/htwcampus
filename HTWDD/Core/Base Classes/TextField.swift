@@ -36,15 +36,15 @@ class TextField: UITextField {
 	// MARK: - TextField
 	
 	override func textRect(forBounds bounds: CGRect) -> CGRect {
-		return UIEdgeInsetsInsetRect(bounds, insets)
+		return UIEdgeInsetsInsetRect(bounds, self.insets)
 	}
 	
 	override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-		return UIEdgeInsetsInsetRect(bounds, insets)
+		return UIEdgeInsetsInsetRect(bounds, self.insets)
 	}
 	
 	override func editingRect(forBounds bounds: CGRect) -> CGRect {
-		return UIEdgeInsetsInsetRect(bounds, insets)
+		return UIEdgeInsetsInsetRect(bounds, self.insets)
 	}
 }
 
