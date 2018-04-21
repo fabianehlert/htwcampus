@@ -107,7 +107,7 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
             let composer = MFMailComposeViewController()
             composer.mailComposeDelegate = settings
             composer.setToRecipients([Loca.Settings.items.mail.mail])
-            composer.setSubject("HTW iOS Feedback")
+            composer.setSubject("[iOS] HTW App Feedback")
             composer.setMessageBody(body, isHTML: false)
             composer.navigationBar.tintColor = UIColor.white
             self.rootViewController.present(composer, animated: true, completion: nil)
