@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import NotificationCenter
 
-class TodayViewController: ViewController, UIGestureRecognizerDelegate {
+class TodayViewController: ViewController {
 	
 	// - Private Properties
 	
@@ -140,10 +140,9 @@ class TodayViewController: ViewController, UIGestureRecognizerDelegate {
 	
     // MARK: - UIGestureRecognizer
     
-    fileprivate func addGestureRecognizer() {
+    private func addGestureRecognizer() {
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gestureRecognizer:)))
-        gestureRecognizer.delegate = self
         self.containerView.addGestureRecognizer(gestureRecognizer)
     }
     
