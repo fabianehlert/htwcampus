@@ -149,7 +149,8 @@ class TodayViewController: ViewController {
     // MARK: - URL
     
     @objc func handleTap(gestureRecognizer: UIGestureRecognizer) {
-        extensionContext?.open(URL(string:"htwdd://schedule")!, completionHandler: nil)
+        guard let url = URL.htw.urlFromComponent(component: Component.scheduleTab) else { return }
+        extensionContext?.open(url, completionHandler: nil)
     }
 }
 

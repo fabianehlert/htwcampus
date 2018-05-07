@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        if let viewController = url.host?.removingPercentEncoding {
-            self.appCoordinator?.loadTab(childCoordinator: viewController)
+        if let component = url.host?.removingPercentEncoding {
+            self.appCoordinator?.setActiveComponent(childCoordinator: URL.htw.caseForValue(componentValue: component))
         }
         return true
     }
