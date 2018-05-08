@@ -8,42 +8,20 @@
 
 import Foundation
 
-enum Component: Int {
-    
-    case scheduleTab
-    case examsTab
-    case gradesTab
-    case canteenTab
-    case settingsTab
-    
-    static let components: [Component: String] = [
-        .scheduleTab: "schedule",
-        .examsTab: "exams",
-        .gradesTab: "grades",
-        .canteenTab: "canteen",
-        .settingsTab: "settings",
-        ]
-    
-    var string: String {
-        return Component.components[self]!
-    }
+enum CoordinatorRoute: String {
+    case schedule
+    case exams
+    case grades
+    case canteen
+    case settings
 }
 
 extension HTWNamespace where Base == URL {
-    
-    static var prefix: String {
+    static var schemePrefix: String {
         return "htwdd://"
     }
     
-    static func urlFromComponent(component: Component) -> URL? {
-        return URL(string: prefix + component.string)
-    }
-    
-    static func caseForValue(componentValue: String) -> Component {
-        
-        if let index = Component.components.values.index(of: componentValue) {
-            return Component.components.keys[index]
-        }
-        return Component.scheduleTab
+    static func route(`for` host: CoordinatorRoute) -> URL? {
+        return URL(string: URL.htw.schemePrefix + host.rawValue)
     }
 }

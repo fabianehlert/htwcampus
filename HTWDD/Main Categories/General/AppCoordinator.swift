@@ -102,12 +102,29 @@ class AppCoordinator: Coordinator {
             })
             .disposed(by: self.disposeBag)
     }
-	
-    func setActiveComponent(childCoordinator: Component) {
+}
+
+// MARK: - Routing
+
+extension AppCoordinator {
+    func selectChild(`for` url: URL) {
+        guard let route = url.host?.removingPercentEncoding else { return }
+        self.selectChild(coordinator: CoordinatorRoute(rawValue: route))
+    }
+    
+    func selectChild(coordinator: CoordinatorRoute?) {
+        guard let coordinator = coordinator else { return }
         
-        self.tabBarController.selectedIndex = childCoordinator.rawValue
+        switch coordinator {
+        case .schedule:
+            self.tabBarController.selectedIndex = 0
+        default:
+            break
+        }
     }
 }
+
+// MARK: - Data handling
 
 extension AppCoordinator: SettingsCoordinatorDelegate {
     

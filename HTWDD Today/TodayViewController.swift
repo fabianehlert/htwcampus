@@ -148,9 +148,10 @@ class TodayViewController: ViewController {
     
     // MARK: - URL
     
-    @objc func handleTap() {
-        guard let url = URL.htw.urlFromComponent(component: Component.scheduleTab) else { return }
-        extensionContext?.open(url, completionHandler: nil)
+    @objc
+    func handleTap() {
+        guard let url = URL.htw.route(for: .schedule) else { return }
+        extensionContext?.open(url)
     }
     
 }
