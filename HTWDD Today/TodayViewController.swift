@@ -53,7 +53,8 @@ class TodayViewController: ViewController {
 				
 		self.view.backgroundColor = .clear
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
-		
+		self.addGestureRecognizer()
+        
 		self.loadActiveLecture()
 			.subscribe(onNext: { [weak self] l in
 			self?.lecture = l
@@ -137,6 +138,20 @@ class TodayViewController: ViewController {
 		}
 	}
 	
+    // MARK: - UIGestureRecognizer
+    
+    private func addGestureRecognizer() {
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gestureRecognizer:)))
+        self.containerView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    // MARK: - URL
+    
+    @objc func handleTap(gestureRecognizer: UIGestureRecognizer) {
+        guard let url = URL.htw.urlFromComponent(component: Component.scheduleTab) else { return }
+        extensionContext?.open(url, completionHandler: nil)
+    }
 }
 
 // MARK: - NCWidgetProviding

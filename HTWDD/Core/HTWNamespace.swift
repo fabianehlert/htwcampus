@@ -49,3 +49,4 @@ import class Foundation.NSObject
 
 /// Extend NSObject with `htw` proxy.
 extension NSObject: HTWNamespaceCompatible { }
+extension URL: HTWNamespaceCompatible { }

@@ -113,6 +113,8 @@
 		39FB084B1E9E5375001CC2F5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */; };
 		39FB084D1E9E57A2001CC2F5 /* GradeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */; };
 		39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */; };
+		5B6B4FF6209B693E00A572F8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B4FF5209B693E00A572F8 /* URL.swift */; };
+		5B6B4FF7209B693E00A572F8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B4FF5209B693E00A572F8 /* URL.swift */; };
 		B50875481ED40BE6004A320E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50875471ED40BE6004A320E /* TableViewController.swift */; };
 		B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */; };
 		B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */; };
@@ -314,6 +316,7 @@
 		39FB084A1E9E5375001CC2F5 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
 		39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
+		5B6B4FF5209B693E00A572F8 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		B50875471ED40BE6004A320E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
@@ -857,6 +860,7 @@
 				1FA92C701FEACC7400A88B0D /* UIColor.swift */,
 				B516D8211FA9A47000551556 /* UIView.swift */,
 				B5EA53731E7FDA5E00183E07 /* UIViewController.swift */,
+				5B6B4FF5209B693E00A572F8 /* URL.swift */,
 				B538EF0F1E1D62040031077C /* UserDefaults.swift */,
 				1F5783521FE42BE900956CEB /* UIDevice.swift */,
 				1F5783541FE42C6500956CEB /* MFMailComposeViewController.swift */,
@@ -1379,6 +1383,7 @@
 				1F4BD53C1FAFABDD007E0817 /* String.swift in Sources */,
 				1F8E20CC1FB34E9700347DB6 /* Network.swift in Sources */,
 				1F1491B51FB451110011B114 /* View.swift in Sources */,
+				5B6B4FF7209B693E00A572F8 /* URL.swift in Sources */,
 				1F8E20E61FB34FC300347DB6 /* Array.swift in Sources */,
 				1F8E20DB1FB34F1000347DB6 /* Event.swift in Sources */,
 				1FA5893A1FB7360A008EE474 /* GlobalFunctions.swift in Sources */,
@@ -1497,6 +1502,7 @@
 				39FB08491E9E52B5001CC2F5 /* TableViewDataSource.swift in Sources */,
 				B5D3E83C1FA5E8D50055782D /* ScheduleService.swift in Sources */,
 				1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */,
+				5B6B4FF6209B693E00A572F8 /* URL.swift in Sources */,
 				B5EF95851FAF7C8A006BC7D1 /* GenericBasicTableViewDataSource.swift in Sources */,
 				B55507101E601AE300C16F5F /* Lecture.swift in Sources */,
 				B54642DF1FAB228500735589 /* FlatCollectionViewCell.swift in Sources */,

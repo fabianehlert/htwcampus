@@ -39,6 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Tracker.track(.open)
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if let component = url.host?.removingPercentEncoding {
+            self.appCoordinator?.setActiveComponent(childCoordinator: URL.htw.caseForValue(componentValue: component))
+        }
+        return true
+    }
+    
 	// MARK: - UI Apperance
 	
 	private func stylizeUI() {

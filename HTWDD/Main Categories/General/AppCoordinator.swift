@@ -103,6 +103,10 @@ class AppCoordinator: Coordinator {
             .disposed(by: self.disposeBag)
     }
 	
+    func setActiveComponent(childCoordinator: Component) {
+        
+        self.tabBarController.selectedIndex = childCoordinator.rawValue
+    }
 }
 
 extension AppCoordinator: SettingsCoordinatorDelegate {
