@@ -115,6 +115,11 @@ extension AppCoordinator {
     func selectChild(coordinator: CoordinatorRoute?) {
         guard let coordinator = coordinator else { return }
         
+        // Dismiss any ViewController presented on tabBarController
+        if let presented = self.tabBarController.presentedViewController {
+            presented.dismiss(animated: false)
+        }
+        
         switch coordinator {
         case .schedule:
             self.tabBarController.selectedIndex = 0
