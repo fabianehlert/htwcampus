@@ -10,6 +10,7 @@ import Foundation
 
 enum CoordinatorRoute: String {
     case schedule
+    case scheduleToday
     case exams
     case grades
     case canteen
