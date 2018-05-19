@@ -143,7 +143,7 @@ class TodayViewController: ViewController {
     
     private func addTapRecognizer() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
-        self.containerView.addGestureRecognizer(tapRecognizer)
+        self.view.addGestureRecognizer(tapRecognizer)
     }
     
     // MARK: - URL
