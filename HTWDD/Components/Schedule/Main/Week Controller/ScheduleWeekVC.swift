@@ -62,8 +62,8 @@ final class ScheduleWeekVC: ScheduleBaseVC {
         }
 	}
 
-    override func jumpToToday() {
-        self.scrollToToday(animated: true)
+    override func jumpToToday(animated: Bool = true) {
+        self.scrollToToday(animated: animated)
     }
     
     private func scrollToToday(animated: Bool) {

@@ -41,7 +41,7 @@ class ScheduleBaseVC: CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let todayButton = UIBarButtonItem(title: Loca.Schedule.today, style: .plain, target: self, action: #selector(jumpToToday))
+        let todayButton = UIBarButtonItem(title: Loca.Schedule.today, style: .plain, target: self, action: #selector(self.handleJumpToToday))
         self.navigationItem.rightBarButtonItem = todayButton
 
         self.dataSource.load()
@@ -82,7 +82,12 @@ class ScheduleBaseVC: CollectionViewController {
     }
 
     @objc
-    func jumpToToday() {
+    func handleJumpToToday() {
+        self.jumpToToday(animated: true)
+    }
+    
+    @objc
+    func jumpToToday(animated: Bool = true) {
         let left = CGPoint(x: -self.collectionView.contentInset.left, y: self.collectionView.contentOffset.y)
         self.collectionView.setContentOffset(left, animated: true)
     }
