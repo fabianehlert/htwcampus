@@ -28,4 +28,14 @@ class ScheduleCoordinator: Coordinator {
         self.context = context
     }
 
+    /// Pops the navigation stack back to root.
+    func popViewControllers(animated: Bool = true) {
+        self.scheduleMainViewController.inNavigationController().popToRootViewController(animated: animated)
+    }
+    
+    /// Pops the navigation stack back to root and scrolls to the current lecture.
+    func jumpToToday(animated: Bool = true) {
+        self.popViewControllers(animated: animated)
+        self.scheduleMainViewController.jumpToToday(animated: animated)
+    }
 }
