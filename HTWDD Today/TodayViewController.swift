@@ -150,7 +150,7 @@ class TodayViewController: ViewController {
     
     @objc
     func handleTap() {
-        guard let url = URL.htw.route(for: .schedule) else { return }
+        guard let url = URL.htw.route(for: .scheduleToday) else { return }
         extensionContext?.open(url)
     }
     
