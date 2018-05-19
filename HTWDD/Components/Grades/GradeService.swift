@@ -69,20 +69,24 @@ class GradeService: Service {
         return Grade.get(network: network, course: course)
     }
 
-    func load(parameters: Auth) -> Observable<[Information]> {
-        if let cached = self.cachedInformation[parameters] {
-            return Observable.just(cached)
-        }
-
-        let network = Network(authenticator: Base(username: parameters.username, password: parameters.password))
-
-        let loadFromNetwork = loadCourses(network: network)
+    func loadFromNetwork(_ auth: Auth) -> Observable<[Information]> {
+        let network = Network(authenticator: Base(username: auth.username, password: auth.password))
+        
+        return loadCourses(network: network)
             .flatMap { (courses) -> Observable<[Information]> in
                 let grades = courses.map { self.loadGrades(network: network, for: $0) }
                 return Observable.combineLatest(grades)
                     .map { Array($0.joined()) }
                     .map(GradeService.groupAndOrderBySemester)
-            }
+        }
+    }
+    
+    func load(parameters: Auth) -> Observable<[Information]> {
+        if let cached = self.cachedInformation[parameters] {
+            return Observable.just(cached)
+        }
+
+        let loadFromNetwork = self.loadFromNetwork(parameters)
         let loadFromCache = self.persistenceService.loadGradesCache()
         
         return Observable.merge(loadFromNetwork, loadFromCache)
@@ -139,6 +143,24 @@ class GradeService: Service {
         }
         
         return sumGrade / sumCredits
+    }
+    
+    static func checkIfValid(auth: Auth, completion: @escaping (Bool) -> Void) {
+        let service = GradeService()
+        var disposable: Disposable?
+        let callCompletionAndDispose: (Bool) -> Void = {
+            completion($0)
+            disposable?.dispose()
+            disposable = nil
+        }
+        disposable = service.loadFromNetwork(auth)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                callCompletionAndDispose(true)
+            }, onError: { _ in
+                callCompletionAndDispose(false)
+            })
+        
     }
 
 }

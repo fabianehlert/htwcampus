@@ -53,8 +53,12 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
 
     // MARK: - Actions
 
+    private var loading = false
+    
     @objc
     override func continueBoarding() {
+        guard !self.loading else { return }
+        
         guard
             let sNumber = self.usernameTextField.text,
             let password = self.passwordTextField.text
@@ -63,8 +67,19 @@ class OnboardUnixLoginViewController: OnboardDetailViewController<GradeService.A
             return
         }
 
+        self.loading = true
         let auth = GradeService.Auth(username: sNumber, password: password)
-        self.onFinish?(auth)
+        GradeService.checkIfValid(auth: auth) { [weak self] success in
+            self?.loading = false
+            if success {
+                self?.onFinish?(auth)
+                return
+            }
+            
+            let alert = UIAlertController(title: Loca.Grades.noResults.title, message: Loca.Grades.noResults.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Loca.ok, style: .default, handler: nil))
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
 
     override func shouldContinue() -> Bool {
