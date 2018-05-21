@@ -202,6 +202,15 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
         ])
 		
 		self.registerForKeyboardNotifications()
+        
+        #if DEBUG
+        // Add Key Commands for debug mode
+        let returnKeyCommand = UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(continueBoarding))
+        self.addKeyCommand(returnKeyCommand)
+        
+        let escapeKeyCommand = UIKeyCommand(input: UIKeyInputEscape, modifierFlags: [], action: #selector(skipBoarding))
+        self.addKeyCommand(escapeKeyCommand)
+        #endif
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
