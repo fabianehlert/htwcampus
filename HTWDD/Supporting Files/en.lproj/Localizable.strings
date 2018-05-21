@@ -50,8 +50,8 @@
 "Canteen.title"="Canteen";
 "Canteen.pluralTitle"="Canteens";
 "Canteen.noCounter"="Counter not known";
-"Canteen.noResults.title"="No food";
-"Canteen.noResults.message"="I can't find any meals for today.";
+"Canteen.noResults.title"="No meals";
+"Canteen.noResults.message"="I can't find any food for today :-/";
 "Canteen.Meal.more"="More information";
 
 "Exams.title"="Exams";
@@ -115,7 +115,7 @@
 "cancel"="Cancel";
 "nextStep"="Continue";
 "letsgo"="Let's go!";
-"attention"="Attention";
+"attention"="Attention ⚠️";
 "yes"="Yes";
 "loading"="Loading…";
 

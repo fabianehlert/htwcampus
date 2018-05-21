@@ -51,7 +51,7 @@
 "Canteen.pluralTitle"="Mensen";
 "Canteen.noCounter"="Ausgabeort nicht bekannt";
 "Canteen.noResults.title"="Kein Essen";
-"Canteen.noResults.message"="Heute gibt's nichts zu essen.";
+"Canteen.noResults.message"="Heute gibt's nichts zu essen :-/";
 "Canteen.Meal.more"="Mehr Informationen";
 
 "Exams.title"="Prüfungen";
@@ -115,7 +115,7 @@
 "cancel"="Abbrechen";
 "nextStep"="Weiter";
 "letsgo"="Los geht's!";
-"attention"="Achtung";
+"attention"="Achtung ⚠️";
 "yes"="Ja";
 "loading"="Laden…";
 
