@@ -46,7 +46,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
     // MARK: - Overwrite functions
 
     @objc func continueBoarding() {
-        preconditionFailure("Overwrite this  method in your subclass!")
+        preconditionFailure("Overwrite this method in your subclass!")
     }
 
     @objc func skipBoarding() {
