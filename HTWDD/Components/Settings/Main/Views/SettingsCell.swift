@@ -39,6 +39,7 @@ class SettingsCell: TableViewCell, Cell {
     enum Const {
         static let margin: CGFloat = 15
         static let imageSize: CGFloat = 25
+        static let maximumSubtitleWidth: CGFloat = 100
     }
     
     private lazy var thumbnailImageView: UIImageView = {
@@ -48,12 +49,11 @@ class SettingsCell: TableViewCell, Cell {
         return imageView
     }()
     
-    private var stackView = UIStackView()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         label.font = .systemFont(ofSize: 17, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -61,7 +61,8 @@ class SettingsCell: TableViewCell, Cell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor.htw.grey
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
 
@@ -70,8 +71,8 @@ class SettingsCell: TableViewCell, Cell {
     }()
     
     private lazy var imageSpaceConstraint: NSLayoutConstraint = {
-        return self.stackView.leadingAnchor.constraint(equalTo: self.thumbnailImageView.trailingAnchor,
-                                                       constant: Const.margin)
+        return self.titleLabel.leadingAnchor.constraint(equalTo: self.thumbnailImageView.trailingAnchor,
+                                                        constant: Const.margin)
     }()
     
     // MARK: - Init
@@ -81,12 +82,8 @@ class SettingsCell: TableViewCell, Cell {
         
         self.accessoryType = .disclosureIndicator
         
-        self.contentView.add(self.thumbnailImageView)
-        
-        self.stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.subtitleLabel])
-        self.stackView.axis = .horizontal
-        self.contentView.add(self.stackView) { v in
-            v.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.add(self.thumbnailImageView, self.titleLabel, self.subtitleLabel) { view in
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
@@ -96,11 +93,15 @@ class SettingsCell: TableViewCell, Cell {
             self.imageWidthConstraint,
             
             self.imageSpaceConstraint,
-            self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor,
-                                                constant: Const.margin),
-            self.stackView.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor),
-            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
-                                                   constant: -Const.margin)
+            
+            self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.subtitleLabel.leadingAnchor, constant: -Const.margin),
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.margin),
+            
+            self.subtitleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Const.margin),
+            self.subtitleLabel.trailingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.trailingAnchor),
+            self.subtitleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Const.margin),
+            self.subtitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: Const.maximumSubtitleWidth)
         ])
     }
     
