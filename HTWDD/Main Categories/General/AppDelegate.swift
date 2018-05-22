@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.window = window
 
 		self.stylizeUI()
-
-		Fabric.with([Crashlytics.self])
         
         UserDefaults.standard.saveAppVersion()
 
@@ -43,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Tracker.track(.open)
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        self.appCoordinator?.selectChild(for: url)
+        return true
+    }
+    
 	// MARK: - UI Apperance
 	
 	private func stylizeUI() {

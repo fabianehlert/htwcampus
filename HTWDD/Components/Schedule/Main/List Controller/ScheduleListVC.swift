@@ -56,9 +56,9 @@ final class ScheduleListVC: ScheduleBaseVC {
 		self.dataSource.delegate = self
     }
 
-    override func jumpToToday() {
+    override func jumpToToday(animated: Bool = true) {
 		DispatchQueue.main.async {
-			self.scrollToToday(animated: true)
+			self.scrollToToday(animated: animated)
 		}
     }
 

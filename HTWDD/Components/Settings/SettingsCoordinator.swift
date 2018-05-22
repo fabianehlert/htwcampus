@@ -12,6 +12,7 @@ import MessageUI
 
 protocol SettingsCoordinatorDelegate: class {
     func deleteAllData()
+    func refreshSchedule()
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void)
     func triggerGradeOnboarding(completion: @escaping (GradeService.Auth) -> Void)
 }
@@ -67,6 +68,10 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
     func showLectureManager(auth: ScheduleService.Auth?) {
         if let root = self.rootViewController as? NavigationController {
             let lectureManager = LectureManagerViewController(auth: auth)
+            lectureManager.onFinish = { [weak self] in
+                // TODO: Applying changes like this???
+                self?.delegate?.refreshSchedule()
+            }
             root.pushViewController(lectureManager, animated: true)
         }
     }
@@ -102,7 +107,7 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
             let composer = MFMailComposeViewController()
             composer.mailComposeDelegate = settings
             composer.setToRecipients([Loca.Settings.items.mail.mail])
-            composer.setSubject("HTW iOS Feedback")
+            composer.setSubject("[iOS] HTW App Feedback")
             composer.setMessageBody(body, isHTML: false)
             composer.navigationBar.tintColor = UIColor.white
             self.rootViewController.present(composer, animated: true, completion: nil)

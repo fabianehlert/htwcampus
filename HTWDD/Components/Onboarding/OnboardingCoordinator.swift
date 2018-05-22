@@ -45,7 +45,7 @@ class OnboardingCoordinator: Coordinator {
     }
 
     private func startFlow() {
-        let functions = self.onboardings.flatMap { self.onboardingFunctions[$0] }
+        let functions = self.onboardings.compactMap { self.onboardingFunctions[$0] }
         let response = Response()
         self.callFunctions(response: response, functions: functions) { [weak self] in
             self?.onFinish?(response)

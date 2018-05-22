@@ -63,7 +63,7 @@ class CanteenMainVC: CollectionViewController {
         
         self.dataSource.registerAction(cell: MealCell.self) { [weak self] meal, indexPath in
             let vm = MealViewModel(model: meal)
-            let dc = CanteenDetailViewController(viewModel: vm)
+            let dc = MealDetailViewController(viewModel: vm)
             self?.presentDetail(dc, animated: true)
         }
     }
@@ -169,7 +169,7 @@ extension CanteenMainVC: UIViewControllerPreviewingDelegate {
             previewingContext.sourceRect = cell.frame
         }
         
-        return CanteenDetailViewController(viewModel: MealViewModel(model: item))
+        return MealDetailViewController(viewModel: MealViewModel(model: item))
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {

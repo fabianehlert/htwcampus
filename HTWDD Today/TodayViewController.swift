@@ -54,6 +54,8 @@ class TodayViewController: ViewController {
 		self.view.backgroundColor = .clear
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
 		
+        self.addTapRecognizer()
+        
 		self.loadActiveLecture()
 			.subscribe(onNext: { [weak self] l in
 			self?.lecture = l
@@ -137,6 +139,21 @@ class TodayViewController: ViewController {
 		}
 	}
 	
+    // MARK: - UIGestureRecognizer
+    
+    private func addTapRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    // MARK: - URL
+    
+    @objc
+    func handleTap() {
+        guard let url = URL.htw.route(for: .scheduleToday) else { return }
+        extensionContext?.open(url)
+    }
+    
 }
 
 // MARK: - NCWidgetProviding

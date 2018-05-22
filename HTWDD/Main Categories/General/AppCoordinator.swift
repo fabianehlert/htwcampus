@@ -50,7 +50,7 @@ class AppCoordinator: Coordinator {
 		self.window.tintColor = UIColor.htw.blue
         self.window.makeKeyAndVisible()
 		
-        self.showOnboarding(animated: false)		
+        self.showOnboarding(animated: false)
 	}
 
     private func injectAuthentication(schedule: ScheduleService.Auth?, grade: GradeService.Auth?) {
@@ -102,8 +102,42 @@ class AppCoordinator: Coordinator {
             })
             .disposed(by: self.disposeBag)
     }
-	
 }
+
+// MARK: - Routing
+
+extension AppCoordinator {
+    func selectChild(`for` url: URL) {
+        guard let route = url.host?.removingPercentEncoding else { return }
+        self.selectChild(coordinator: CoordinatorRoute(rawValue: route))
+    }
+    
+    func selectChild(coordinator: CoordinatorRoute?) {
+        guard let coordinator = coordinator else { return }
+        
+        switch coordinator {
+        case .schedule:
+            // Dismiss any ViewController presented on tabBarController
+            if let presented = self.tabBarController.presentedViewController {
+                presented.dismiss(animated: false)
+            }
+            self.tabBarController.selectedIndex = 0
+        case .scheduleToday:
+            // Dismiss any ViewController presented on tabBarController
+            if let presented = self.tabBarController.presentedViewController {
+                presented.dismiss(animated: false)
+            }
+            
+            self.schedule.jumpToToday(animated: false)
+            
+            self.tabBarController.selectedIndex = 0
+        default:
+            break
+        }
+    }
+}
+
+// MARK: - Data handling
 
 extension AppCoordinator: SettingsCoordinatorDelegate {
     
@@ -113,6 +147,10 @@ extension AppCoordinator: SettingsCoordinatorDelegate {
         self.exams.auth = nil
         self.grades.auth = nil
         self.showOnboarding(animated: true)
+    }
+    
+    func refreshSchedule() {
+        self.schedule.auth = self.schedule.auth
     }
     
     func triggerScheduleOnboarding(completion: @escaping (ScheduleService.Auth) -> Void) {

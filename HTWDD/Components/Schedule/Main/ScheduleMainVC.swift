@@ -160,6 +160,10 @@ final class ScheduleMainVC: ViewController {
         ])
 	}
 
+    func jumpToToday(animated: Bool = true) {
+        self.currentScheduleVC?.jumpToToday(animated: animated)
+    }
+    
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
