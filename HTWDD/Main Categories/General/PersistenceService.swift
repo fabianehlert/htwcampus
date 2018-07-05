@@ -14,7 +14,7 @@ class PersistenceService: Service {
 
     private enum Const {
         static let service = "de.htw-dresden.ios"
-		static let accessGroup = "3E4PGPNR47.keychain-group"
+		static let accessGroup = "8ZBZEMF37H.keychain-group"
 		
         static let scheduleKey = "htw-dresden.schedule.auth"
         static let scheduleHiddenKey = "htw-dresden.schedule.hidden"

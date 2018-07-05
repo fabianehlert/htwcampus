@@ -1190,7 +1190,7 @@
 				TargetAttributes = {
 					1FED52B41FAFA1C000260D5B = {
 						CreatedOnToolsVersion = 9.1;
-						DevelopmentTeam = 3E4PGPNR47;
+						DevelopmentTeam = 8ZBZEMF37H;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1208,7 +1208,7 @@
 					};
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3E4PGPNR47;
+						DevelopmentTeam = 8ZBZEMF37H;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1222,7 +1222,7 @@
 					};
 					B59FA99A1DD09C8400259D7F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3E4PGPNR47;
+						DevelopmentTeam = 8ZBZEMF37H;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B59FA9861DD09C8300259D7F;
@@ -1620,7 +1620,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HTWDD Today/HTWDD Today.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1629,10 +1629,10 @@
 				INFOPLIST_FILE = "HTWDD Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDD-Today";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDDToday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ef0b95a2-a2e2-4ede-8338-869c61f82adb";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Widget Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Development";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1649,7 +1649,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1658,10 +1658,10 @@
 				INFOPLIST_FILE = "HTWDD Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDD-Today";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios.HTWDDToday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d1585622-2dd2-42f1-b99f-771ae6d06ec8";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Widget Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1805,7 +1805,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1818,7 +1818,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "23ac1ed9-d5ff-40dd-b6e6-65676b733551";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW App Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1836,7 +1836,7 @@
 				CODE_SIGN_ENTITLEMENTS = HTWDD/HTWDD.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1849,7 +1849,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4be22951-7cfe-4d20-b1f6-7e62e809c6ee";
-				PROVISIONING_PROFILE_SPECIFIER = "HTW App Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "HTW Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -1863,7 +1863,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1885,7 +1885,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3E4PGPNR47;
+				DEVELOPMENT_TEAM = 8ZBZEMF37H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
