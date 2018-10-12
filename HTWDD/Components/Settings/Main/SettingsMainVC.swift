@@ -46,12 +46,11 @@ class SettingsMainVC: TableViewController {
                              thumbnail: #imageLiteral(resourceName: "Credentials"),
 							 action: self.showGradeOnboarding())
 			]),
-            /*
             (Loca.Schedule.title, [
                 SettingsItem(title: Loca.Schedule.Settings.Hide.title,
                              thumbnail: #imageLiteral(resourceName: "ScheduleManager"),
                              action: self.showLectureManager())
-            ]),*/
+            ]),
             (Loca.Settings.sections.weAreOpenSource, [
 				SettingsItem(title: Loca.Settings.items.github,
                              thumbnail: #imageLiteral(resourceName: "GitHub"),
