@@ -51,7 +51,7 @@ class ScheduleBaseVC: CollectionViewController {
 		}
 		
 		NotificationCenter.default.rx
-			.notification(.UIApplicationWillEnterForeground)
+			.notification(UIApplication.willEnterForegroundNotification)
 			.subscribe(onNext: { [weak self] _ in
 				self?.dataSource.invalidate()
 			})

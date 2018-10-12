@@ -16,7 +16,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
         var title: String
         var description: String
         var contentViews: [UIView]
-        var contentViewsStackViewAxis: UILayoutConstraintAxis
+        var contentViewsStackViewAxis: NSLayoutConstraint.Axis
         var notNowText: String
         var continueButtonText: String
     }
@@ -208,7 +208,7 @@ class OnboardDetailViewController<Product>: ViewController, UITextFieldDelegate,
         let returnKeyCommand = UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(continueBoarding))
         self.addKeyCommand(returnKeyCommand)
         
-        let escapeKeyCommand = UIKeyCommand(input: UIKeyInputEscape, modifierFlags: [], action: #selector(skipBoarding))
+        let escapeKeyCommand = UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(skipBoarding))
         self.addKeyCommand(escapeKeyCommand)
         #endif
     }
