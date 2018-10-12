@@ -78,7 +78,7 @@ class OnboardStudygroupViewController: OnboardDetailViewController<ScheduleServi
         self.config = .init(title: Loca.Onboarding.Studygroup.title,
                             description: Loca.Onboarding.Studygroup.body,
                             contentViews: buttons,
-                            contentViewsStackViewAxis: UILayoutConstraintAxis.horizontal,
+                            contentViewsStackViewAxis: NSLayoutConstraint.Axis.horizontal,
                             notNowText: Loca.Onboarding.Studygroup.notnow,
                             continueButtonText: Loca.nextStep)
 

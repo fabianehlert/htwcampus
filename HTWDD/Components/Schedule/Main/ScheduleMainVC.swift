@@ -103,9 +103,9 @@ final class ScheduleMainVC: ViewController {
         UserDefaults.standard.set(style.rawValue, forKey: ScheduleLayoutStyle.cachingKey)
 
 		if let vc = self.currentScheduleVC {
-			vc.willMove(toParentViewController: nil)
+			vc.willMove(toParent: nil)
 			vc.view.removeFromSuperview()
-			vc.removeFromParentViewController()
+			vc.removeFromParent()
 		}
 
         if let cached = self.cachedStyles[style] {
@@ -128,9 +128,9 @@ final class ScheduleMainVC: ViewController {
 
 	private func addChild(_ child: ViewController?) {
 		guard let child = child else { return }
-		self.addChildViewController(child)
+		self.addChild(child)
 		self.containerView.add(child.view)
-		child.didMove(toParentViewController: self)
+		child.didMove(toParent: self)
         self.updateBarButtonItems(navigationItem: child.navigationItem)
 	}
 

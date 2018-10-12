@@ -20,25 +20,25 @@ extension KeyboardPresentationHandler {
 	func registerForKeyboardNotifications() {
 		NotificationCenter.default.addObserver(self,
 											   selector: #selector(keyboardWillShow(_:)),
-											   name: .UIKeyboardWillShow,
+											   name: UIResponder.keyboardWillShowNotification,
 											   object: nil)
 		
 		NotificationCenter.default.addObserver(self,
 											   selector: #selector(keyboardWillHide(_:)),
-											   name: .UIKeyboardWillHide,
+											   name: UIResponder.keyboardWillHideNotification,
 											   object: nil)
 	}
 	
-	func handleKeyboardNotification(_ notification: Notification, handler: (TimeInterval, UIViewAnimationCurve, CGRect) -> Void) {
+	func handleKeyboardNotification(_ notification: Notification, handler: (TimeInterval, UIView.AnimationCurve, CGRect) -> Void) {
 		guard
-			let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-			let curveValue = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Int,
-			let frame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+			let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+			let curveValue = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int,
+			let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
 			else {
 				return
 		}
 		// the animation curve may be undocumented
-		var animationCurve = UIViewAnimationCurve.easeOut
+		var animationCurve = UIView.AnimationCurve.easeOut
 		NSNumber(value: curveValue).getValue(&animationCurve)
 		
 		handler(duration, animationCurve, frame)

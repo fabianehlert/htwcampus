@@ -14,7 +14,7 @@ class TableViewController: ViewController {
     
     let tableView: UITableView
 
-    init(style: UITableViewStyle = .plain) {
+    init(style: UITableView.Style = .plain) {
         self.tableView = UITableView(frame: .zero, style: style)
         super.init()
     }
