@@ -29,10 +29,10 @@ class OnboardWelcomeViewController: ViewController {
 
 		let w = Loca.Onboarding.Welcome.Title
 		let welcome = NSMutableAttributedString(string: w)
-		welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.textHeadline, range: NSRange(location: 0, length: w.count))
+		welcome.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.htw.textHeadline, range: NSRange(location: 0, length: w.count))
 
 		if let r = w.rangeOfSubString("HTW") {
-			welcome.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.htw.orange, range: r)
+			welcome.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.htw.orange, range: r)
 		}
 
 		titleLabel.attributedText = welcome

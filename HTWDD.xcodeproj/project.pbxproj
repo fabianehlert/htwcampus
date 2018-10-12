@@ -1191,6 +1191,7 @@
 					1FED52B41FAFA1C000260D5B = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = 8ZBZEMF37H;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1209,7 +1210,7 @@
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 8ZBZEMF37H;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1223,7 +1224,7 @@
 					B59FA99A1DD09C8400259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 8ZBZEMF37H;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B59FA9861DD09C8300259D7F;
 					};
@@ -1634,7 +1635,7 @@
 				PROVISIONING_PROFILE = "ef0b95a2-a2e2-4ede-8338-869c61f82adb";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Development";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1663,7 +1664,7 @@
 				PROVISIONING_PROFILE = "d1585622-2dd2-42f1-b99f-771ae6d06ec8";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW Today Distribution";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1821,9 +1822,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "HTW Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1851,9 +1851,8 @@
 				PROVISIONING_PROFILE = "4be22951-7cfe-4d20-b1f6-7e62e809c6ee";
 				PROVISIONING_PROFILE_SPECIFIER = "HTW Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "HTWDD/Core/HTWDD-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1873,8 +1872,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDDTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTWDD.app/HTWDD";
 			};
 			name = Debug;
@@ -1894,8 +1892,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.htw-dresden.HTWDDTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTWDD.app/HTWDD";
 			};
 			name = Release;

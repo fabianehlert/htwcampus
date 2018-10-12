@@ -77,7 +77,7 @@ extension UIView {
 		let emitter = CAEmitterLayer()
 		
 		emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
-		emitter.emitterShape = kCAEmitterLayerLine
+		emitter.emitterShape = CAEmitterLayerEmitterShape.line
 		emitter.emitterSize = CGSize(width: frame.size.width, height: 1)
 		emitter.beginTime = CACurrentMediaTime()
 		
