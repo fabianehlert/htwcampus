@@ -69,9 +69,6 @@ class SettingsMainVC: TableViewController {
                 SettingsItem(title: "RxSwift",
                              thumbnail: nil,
                              action: self.showLicense(name: "RxSwift-license.html")),
-                SettingsItem(title: "Marshal",
-                             thumbnail: nil,
-                             action: self.showLicense(name: "Marshal-license.html")),
                 SettingsItem(title: "KeychainAccess",
                              thumbnail: nil,
                              action: self.showLicense(name: "KeychainAccess-license.html"))

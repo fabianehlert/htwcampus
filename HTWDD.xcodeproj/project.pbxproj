@@ -31,7 +31,6 @@
 		1F36DA561FC323A700BD9B4A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F36DA541FC323A600BD9B4A /* WebViewController.swift */; };
 		1F36DA5B1FC3244E00BD9B4A /* RxSwift-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */; };
 		1F36DA5C1FC3244E00BD9B4A /* KeychainAccess-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */; };
-		1F36DA5D1FC3244E00BD9B4A /* Marshal-license.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */; };
 		1F3A7AC01FDA8DC800369420 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A7ABF1FDA8DC800369420 /* OnePasswordExtension.m */; };
 		1F3A7AC21FDA8DD100369420 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A7AC11FDA8DD100369420 /* 1Password.xcassets */; };
 		1F4BD5301FAFA58F007E0817 /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD52F1FAFA58F007E0817 /* Today.storyboard */; };
@@ -276,7 +275,6 @@
 		1F36DA541FC323A600BD9B4A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "RxSwift-license.html"; sourceTree = "<group>"; };
 		1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "KeychainAccess-license.html"; sourceTree = "<group>"; };
-		1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Marshal-license.html"; sourceTree = "<group>"; };
 		1F3A7ABD1FDA8DC700369420 /* HTWDD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTWDD-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F3A7ABE1FDA8DC800369420 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		1F3A7ABF1FDA8DC800369420 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
@@ -483,7 +481,6 @@
 			isa = PBXGroup;
 			children = (
 				1F36DA581FC3244D00BD9B4A /* RxSwift-license.html */,
-				1F36DA5A1FC3244D00BD9B4A /* Marshal-license.html */,
 				1F36DA591FC3244D00BD9B4A /* KeychainAccess-license.html */,
 			);
 			path = Licenses;
@@ -1272,7 +1269,6 @@
 				1F36DA5C1FC3244E00BD9B4A /* KeychainAccess-license.html in Resources */,
 				1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */,
 				1F3A7AC21FDA8DD100369420 /* 1Password.xcassets in Resources */,
-				1F36DA5D1FC3244E00BD9B4A /* Marshal-license.html in Resources */,
 				B59FA9951DD09C8400259D7F /* LaunchScreen.storyboard in Resources */,
 				B59FA9921DD09C8400259D7F /* Assets.xcassets in Resources */,
 				1F36DA5B1FC3244E00BD9B4A /* RxSwift-license.html in Resources */,
