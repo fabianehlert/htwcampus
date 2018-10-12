@@ -145,32 +145,23 @@ class OnboardStudygroupSelectionController<Data: Identifiable>: CollectionViewCo
 		if #available(iOS 11.0, *) {
 			self.animator.pausesOnCompletion = true
 		}
-
-		if #available(iOS 10.0, *) {
-			self.animator.isReversed = direction == .dismiss
-			self.animator.startAnimation()
-		} else {
-			self.visualEffectView.effect = direction == .present ? UIBlurEffect(style: .extraLight) : nil
-		}
+        self.animator.isReversed = direction == .dismiss
+        self.animator.startAnimation()
 		
 		if direction == .present {
-			if #available(iOS 10.0, *) {
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-					self.animator.pauseAnimation()
-				}
-			}
-		}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                self.animator.pauseAnimation()
+            }
+        }
 
 		UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [.curveEaseIn], animations: {
 			self.collectionView.alpha = direction == .present ? 1 : 0
 			self.collectionView.contentOffset.y += direction == .present ? 150 : -150
 		}, completion: { completed in
 			if direction == .dismiss {
-				if #available(iOS 10.0, *) {
-					self.animator.stopAnimation(false)
-					self.animator.finishAnimation(at: .current)
-				}
-			}
+                self.animator.stopAnimation(false)
+                self.animator.finishAnimation(at: .current)
+            }
 			completion(completed)
 		})
     }

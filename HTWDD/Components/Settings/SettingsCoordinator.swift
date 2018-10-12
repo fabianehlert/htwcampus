@@ -85,9 +85,7 @@ extension SettingsCoordinator: SettingsMainVCDelegate {
 	
 	func showGitHub() {
 		let safariVC = SFSafariViewController(url: URL(string: "https://github.com/HTWDD/htwcampus")!)
-		if #available(iOS 10.0, *) {
-			safariVC.preferredControlTintColor = UIColor.htw.blue
-		}
+        safariVC.preferredControlTintColor = UIColor.htw.blue
 		self.rootViewController.present(safariVC, animated: true, completion: nil)
 	}
     
