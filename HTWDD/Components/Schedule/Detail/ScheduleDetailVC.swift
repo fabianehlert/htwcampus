@@ -80,14 +80,14 @@ class ScheduleDetailVC: ViewController {
 		label.textAlignment = .left
 		return label
 	}()
-/*
+    
     private lazy var hideButton: ReactiveButton = {
         let button = ReactiveButton()
         button.setTitleColor(UIColor.htw.blue, for: .normal)
         button.backgroundColor = .clear
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return button
-    }()*/
+    }()
 
 	// MARK: - Init
 
@@ -151,13 +151,13 @@ class ScheduleDetailVC: ViewController {
                             self.professorLabel,
                             self.typeLabel,
                             self.roomLabel,
-                            //self.hideButton,
+                            self.hideButton,
                             separator,
                             bottomSeparator) { v in
             v.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        // self.hideButton.addTarget(self, action: #selector(hideLecture), for: .touchUpInside)
+         self.hideButton.addTarget(self, action: #selector(hideLecture), for: .touchUpInside)
 		
 		NSLayoutConstraint.activate([
 			self.nameLabel.leadingAnchor.constraint(
@@ -213,15 +213,15 @@ class ScheduleDetailVC: ViewController {
                 equalTo: separator.bottomAnchor, constant: Const.spacing),
             self.colorView.bottomAnchor.constraint(
                 equalTo: self.typeLabel.bottomAnchor, constant: 5),
-            self.colorView.widthAnchor.constraint(equalToConstant: 4)/*,
+            self.colorView.widthAnchor.constraint(equalToConstant: 4),
             
             self.hideButton.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor,
                                                      constant: Const.margin),
             self.hideButton.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor,
                                                       constant: -Const.margin),
-            self.hideButton.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor,
-                                                    constant: -Const.margin),
-            self.hideButton.heightAnchor.constraint(equalToConstant: 40)*/
+            self.hideButton.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor,
+                                                    constant: Const.spacing),
+            self.hideButton.heightAnchor.constraint(equalToConstant: 40),
 		])
 	}
 
@@ -236,7 +236,7 @@ class ScheduleDetailVC: ViewController {
         self.typeLabel.text = viewModel.rawType
         self.roomLabel.text = viewModel.room
         
-        //self.hideButton.setTitle(viewModel.hidden ? Loca.Schedule.Settings.Hide.otherAction : Loca.Schedule.Settings.Hide.action, for: .normal)
+        self.hideButton.setTitle(viewModel.hidden ? Loca.Schedule.Settings.Hide.otherAction : Loca.Schedule.Settings.Hide.action, for: .normal)
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
