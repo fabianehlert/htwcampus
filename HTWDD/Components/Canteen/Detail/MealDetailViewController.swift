@@ -202,9 +202,7 @@ class MealDetailViewController: ViewController {
     
     @objc private func openMealWebsite() {
         let safariVC = SFSafariViewController(url: self.viewModel.detailUrl)
-        if #available(iOS 10.0, *) {
-            safariVC.preferredControlTintColor = UIColor.htw.blue
-        }
+        safariVC.preferredControlTintColor = UIColor.htw.blue
         self.present(safariVC, animated: true, completion: nil)
     }
     
