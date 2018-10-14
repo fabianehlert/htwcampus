@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode10
 xcode_project: HTWDD.xcodeproj
-xcode_scheme: HTWDDTests
+xcode_scheme: HTWDD
 xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone XS
 before_script:
     - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
