@@ -1,7 +1,10 @@
 language: objective-c
 osx_image: xcode10
+xcode_project: HTWDD.xcodeproj
+xcode_scheme: HTWDDTests
+xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone XS
 before_script:
-  - bundle install
-  - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
-script:
-  - ./fastlane/travis.sh
+    - set -o pipefail && xcodebuild -project HTWDD.xcodeproj -scheme "HTWDD Generate" | xcpretty
+notifications:
+  slack:
+    secure: nWi9Ho4G3vHTIktq09bxZmkGbeqfn+B9buVG9WKRco5pc58IpsuMv4j4Nih7T8ykkHGA0mOr2ViFwxI7EdN8v+KZkRxnOAXZWMnX4g0XFkc78vPy20FHctyaeEUn+PmVsnal3aWwM8ytue6+IO08uM/EWdDQjUFuLMWLb4v8RgJYm4NmEjGbLqLcg39LEldf85bh/wC/p7iWqNF4juB8fw+H9sfkfgxxYyaOESOVrUZnH4shL+NS7yYdjsW2d7ky/kKaauA8eXuuj0L555TdCLNjLnO/7j1iWh7tQ7CkdBZJ5zk1X6lOPmEvMYoMAM584iB0ndo1xF7EPTXW2i8bOQAi2jH3jurrWvPgGkpaejcPLVTfULq2Jwx21MpLFCjOaB5Sn5EhvJmmUQI8fSmFRGB+lo9Lt7Unt2bgIvQUCuJH/pPcEcfEzYP+H1Qwrd4QDYqyHZ2ad8UV0tcek+UUZg7LGdnxCkHlX02zbMkXnfl1TfjBnChth4vlin9BjDwP3C1fYpbNkFIl2CN2eBq3ufORCBYOgdqfVu+wGvcNbg9xcDPOsw7argz9gajndDMyddMXHzIX4X2Vw4KU2k/fyrXKdi3vbh+1jOtIUVpPsUpIGDN4fd/E/GrifxSUlPe37zudmUUiYoyRSCU2R6stA3Tl7T2zfT9kZvOWtAPJJA0=
