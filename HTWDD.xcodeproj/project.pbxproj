@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B52A9B651DDB1E7C00313FC3 /* HTWDD Generate */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */;
-			buildPhases = (
-				B52A9B691DDB1E8500313FC3 /* Run Carthage Bootstrap */,
-			);
-			dependencies = (
-			);
-			name = "HTWDD Generate";
-			productName = "HTWDD Generate";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		1F048F461F90095800A1FBD9 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F048F451F90095800A1FBD9 /* OnboardingCoordinator.swift */; };
 		1F0CB4B41FE81DF3002B7744 /* HTW-Impressum.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CB4B31FE81DF3002B7744 /* HTW-Impressum.html */; };
@@ -1199,11 +1185,6 @@
 							};
 						};
 					};
-					B52A9B651DDB1E7C00313FC3 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 2URYCAZR48;
-						ProvisioningStyle = Automatic;
-					};
 					B59FA9861DD09C8300259D7F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3E4PGPNR47;
@@ -1244,7 +1225,6 @@
 				B59FA9861DD09C8300259D7F /* HTWDD */,
 				1FED52B41FAFA1C000260D5B /* HTWDD Today */,
 				B59FA99A1DD09C8400259D7F /* HTWDDTests */,
-				B52A9B651DDB1E7C00313FC3 /* HTWDD Generate */,
 			);
 		};
 /* End PBXProject section */
@@ -1318,20 +1298,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		B52A9B691DDB1E8500313FC3 /* Run Carthage Bootstrap */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Carthage Bootstrap";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which carthage >/dev/null; then\n    carthage bootstrap --platform iOS --no-use-binaries --verbose\nelse\n    echo \"error: Carthage is not installed. Aborting.\"\n    exit 1\nfi\n";
 		};
 		B538EF111E1D63AA0031077C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1665,22 +1631,6 @@
 			};
 			name = Release;
 		};
-		B52A9B671DDB1E7C00313FC3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 2URYCAZR48;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B52A9B681DDB1E7C00313FC3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 2URYCAZR48;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		B59FA9A21DD09C8400259D7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1731,7 +1681,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1785,7 +1735,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1901,15 +1851,6 @@
 			buildConfigurations = (
 				1FED52C21FAFA1C000260D5B /* Debug */,
 				1FED52C31FAFA1C000260D5B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B52A9B661DDB1E7C00313FC3 /* Build configuration list for PBXAggregateTarget "HTWDD Generate" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B52A9B671DDB1E7C00313FC3 /* Debug */,
-				B52A9B681DDB1E7C00313FC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
