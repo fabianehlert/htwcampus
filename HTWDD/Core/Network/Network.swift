@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Marshal
 
 public class Network {
 
@@ -56,17 +55,6 @@ public class Network {
             return URLSession.shared.rx.json(request: req).map { $0 as Any }
         }
     }
-
-    /// get a single object as response.
-    ///
-    /// - Parameters:
-    ///   - url: url to load the object from
-    ///   - params: optional parameters to add to the url
-    /// - Returns: Observable containing the loaded object
-    @available(*, deprecated, message: "Please update to Codable to get rid of Marshal")
-    public func getM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<T> {
-        return get(url: url, params: params).map(self.mapSingleObject)
-    }
     
     /// get a single object as response.
     ///
@@ -78,17 +66,6 @@ public class Network {
         return self.request(url: url, params: params).flatMap { req in
             return URLSession.shared.rx.data(request: req).map({ try JSONDecoder().decode(T.self, from: $0) })
         }
-    }
-
-    /// get an array of objects as response
-    ///
-    /// - Parameters:
-    ///   - url: url to load the object from
-    ///   - params: optional parameters to add to the url
-    /// - Returns: Observable containing the loaded objects
-    @available(*, deprecated, message: "Please update to Codable to get rid of Marshal")
-    public func getArrayM<T: Unmarshaling>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
-        return get(url: url, params: params).map(self.mapArray)
     }
     
     /// get an array of objects as response
@@ -129,7 +106,7 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: parameters to attach to the request (http body)
     /// - Returns: Observable containing the loaded object
-    public func post<T: Unmarshaling>(url: String, params: Parameter) -> Observable<T> {
+    public func post<T: Decodable>(url: String, params: Parameter) -> Observable<T> {
         return post(url: url, params: params).map(self.mapSingleObject)
     }
 
@@ -139,21 +116,29 @@ public class Network {
     ///   - url: url to load the object from
     ///   - params: parameters to attach to the request (http body)
     /// - Returns: Observable containing the loaded objects
-    public func postArray<T: Unmarshaling>(url: String, params: Parameter) -> Observable<[T]> {
+    public func postArray<T: Decodable>(url: String, params: Parameter) -> Observable<[T]> {
         return post(url: url, params: params).map(self.mapArray)
     }
 
-    private func mapSingleObject<T: Unmarshaling>(json: Any) throws -> T {
+    private func mapSingleObject<T: Decodable>(json: Any) throws -> T {
         guard let jsonObject = json as? [String: Any] else {
             throw Error.wrongType(expected: [String: Any].self, got: type(of: json))
         }
-        return try T(object: jsonObject)
+        
+        let decoder = JSONDecoder()
+        let data = NSKeyedArchiver.archivedData(withRootObject: jsonObject)
+        
+        return try decoder.decode(T.self, from: data)
     }
 
-    private func mapArray<T: Unmarshaling>(json: Any) throws -> [T] {
+    private func mapArray<T: Decodable>(json: Any) throws -> [T] {
         guard let jsonArray = json as? [[String: Any]] else {
             throw Error.wrongType(expected: [[String: Any]].self, got: type(of: json))
         }
-        return try jsonArray.map(T.init)
+        
+        let decoder = JSONDecoder()
+        let data = NSKeyedArchiver.archivedData(withRootObject: jsonArray)
+        
+        return try decoder.decode([T].self, from: data)
     }
 }

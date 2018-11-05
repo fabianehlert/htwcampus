@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Marshal
 
 struct EventDate: Codable, Hashable {
 
@@ -54,27 +53,31 @@ extension EventDate {
 
 }
 
-extension EventDate: ValueType {
+extension EventDate {
 
+    private enum ParseError: Error {
+        case wrongType
+    }
+    
     public static func value(from object: Any) throws -> EventDate {
         guard let raw = object as? String else {
-            throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))
+            throw ParseError.wrongType
         }
 
         let parts = raw.components(separatedBy: "-").compactMap { s -> Int? in Int(s) }
         guard parts.count == 3 else {
-            throw MarshalError.typeMismatch(expected: 3, actual: parts.count)
+            throw ParseError.wrongType
         }
 
         let newDate = EventDate(day: parts[2], month: parts[1], year: parts[0])
 
         guard Set(1...12).contains(newDate.month) else {
-            throw MarshalError.typeMismatch(expected: (1...12), actual: newDate.month)
+            throw ParseError.wrongType
         }
 
         // it would maybe make sense to check this dependend on the month
         guard Set(1...31).contains(newDate.day) else {
-            throw MarshalError.typeMismatch(expected: (1...31), actual: newDate.day)
+            throw ParseError.wrongType
         }
         return newDate
     }

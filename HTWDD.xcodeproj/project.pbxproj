@@ -38,7 +38,6 @@
 		1F8874891F8FB07300EE6492 /* ReactiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8874881F8FB07300EE6492 /* ReactiveButton.swift */; };
 		1F88748F1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F88748D1F8FB2BF00EE6492 /* OnboardStudygroupViewController.swift */; };
 		1F8E20C21FB34D6200347DB6 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5461B691FA7B82400564D6D /* KeychainAccess.framework */; };
-		1F8E20C31FB34D6500347DB6 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52DF0D71E7096F30095C854 /* Marshal.framework */; };
 		1F8E20C41FB34D6A00347DB6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		1F8E20C51FB34D6E00347DB6 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		1F8E20C71FB34E6200347DB6 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5461B671FA7B4C400564D6D /* PersistenceService.swift */; };
@@ -128,7 +127,6 @@
 		B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5B1DDB1B7D00313FC3 /* RxCocoa.framework */; };
 		B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52A9B5C1DDB1B7D00313FC3 /* RxSwift.framework */; };
 		B52A9B6C1DDBA35F00313FC3 /* HTWDDTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52A9B6B1DDBA35F00313FC3 /* HTWDDTest.swift */; };
-		B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52DF0D71E7096F30095C854 /* Marshal.framework */; };
 		B52DF0DA1E70A8870095C854 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0D91E70A8870095C854 /* Week.swift */; };
 		B52DF0DC1E71DB5C0095C854 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DF0DB1E71DB5C0095C854 /* TimeInterval.swift */; };
 		B535D828204921CE00440034 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535D827204921CE00440034 /* UICollectionView.swift */; };
@@ -433,7 +431,6 @@
 			files = (
 				1FED52B71FAFA1C000260D5B /* NotificationCenter.framework in Frameworks */,
 				1F8E20C21FB34D6200347DB6 /* KeychainAccess.framework in Frameworks */,
-				1F8E20C31FB34D6500347DB6 /* Marshal.framework in Frameworks */,
 				1F8E20C51FB34D6E00347DB6 /* RxCocoa.framework in Frameworks */,
 				1F8E20C41FB34D6A00347DB6 /* RxSwift.framework in Frameworks */,
 			);
@@ -444,7 +441,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5461B6A1FA7B82400564D6D /* KeychainAccess.framework in Frameworks */,
-				B52DF0D81E7096F30095C854 /* Marshal.framework in Frameworks */,
 				B52A9B5D1DDB1B7D00313FC3 /* RxCocoa.framework in Frameworks */,
 				B52A9B5E1DDB1B7D00313FC3 /* RxSwift.framework in Frameworks */,
 			);
@@ -1279,7 +1275,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/../scripts/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Supporting Files/en.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Supporting Files/Generated/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi";
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/../scripts/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Supporting Files/en.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Supporting Files/Generated/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\nif [ \"$OUTPUT_PATH\" -ot \"$SOURCE_PATH\" ]; then\n\"$LAURINE_PATH\" -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"\nfi\n";
 		};
 		B52A9B5F1DDB1B8000313FC3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1289,7 +1285,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Marshal.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = Carthage;
@@ -1297,7 +1292,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		B538EF111E1D63AA0031077C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1314,7 +1309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

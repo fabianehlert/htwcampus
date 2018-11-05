@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Marshal
 
 extension DateComponents {
 
@@ -69,7 +68,7 @@ extension DateComponents {
     }
 
 }
-
+/*
 extension DateComponents: ValueType {
 
     public static func value(from object: Any) throws -> DateComponents {
@@ -83,7 +82,7 @@ extension DateComponents: ValueType {
         return components
     }
 
-}
+}*/
 
 extension DateComponents: Comparable {
     public static func <(lhs: DateComponents, rhs: DateComponents) -> Bool {

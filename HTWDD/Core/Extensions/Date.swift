@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Marshal
 
 private var dateFormatters = [String: DateFormatter]()
 private func dateFormatter(format: String) -> DateFormatter {
@@ -21,11 +20,21 @@ private func dateFormatter(format: String) -> DateFormatter {
     return new
 }
 
+struct ParseError: Error {
+    enum Kind {
+        case typeMismatch
+    }
+    
+    let line: Int
+    let kind: Kind
+    let message: String?
+}
+
 extension Date {
 
     static func from(string: String, format: String) throws -> Date {
         guard let date = dateFormatter(format: format).date(from: string) else {
-            throw MarshalError.typeMismatch(expected: format, actual: string)
+            throw ParseError(line: #line, kind: .typeMismatch, message: "Expected: \(format). Actual: \(string)")
         }
         return date
     }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Marshal
 
 enum Semester: Hashable, CustomStringConvertible, Comparable {
     case summer(year: Int)
@@ -77,17 +76,17 @@ enum Semester: Hashable, CustomStringConvertible, Comparable {
     }
 }
 
-extension Semester: ValueType {
+extension Semester {
 
     static func value(from object: Any) throws -> Semester {
         guard let number = object as? Int else {
-            throw MarshalError.typeMismatch(expected: Int.self, actual: type(of: object))
+            throw ParseError(line: #line, kind: .typeMismatch, message: nil)
         }
 
         let rawValue = "\(number)"
 
         guard rawValue.count == 5 else {
-            throw MarshalError.typeMismatch(expected: 5, actual: rawValue.count)
+            throw ParseError(line: #line, kind: .typeMismatch, message: nil)
         }
 
         var raw = rawValue
@@ -95,14 +94,14 @@ extension Semester: ValueType {
         let rawType = raw.removeLast()
 
         guard let year = Int(raw) else {
-            throw MarshalError.typeMismatch(expected: Int.self, actual: raw)
+            throw ParseError(line: #line, kind: .typeMismatch, message: nil)
         }
         if rawType == "1" {
             return .summer(year: year)
         } else if rawType == "2" {
             return .winter(year: year)
         } else {
-            throw MarshalError.typeMismatch(expected: "1 or 2", actual: rawType)
+            throw ParseError(line: #line, kind: .typeMismatch, message: nil)
         }
     }
 
@@ -123,6 +122,4 @@ extension Semester: Codable {
         let number = try decoder.singleValueContainer().decode(Int.self)
         self = try Semester.value(from: number)
     }
-    
-    
 }

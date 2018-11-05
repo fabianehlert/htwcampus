@@ -8,30 +8,27 @@
 
 import Foundation
 import RxSwift
-import Marshal
 
-struct Course {
+struct Course: Codable {
     let abschlTxt: String
     let POVersion: Int
     let abschlNr: String
     let stgNr: String
     let stgTxt: String
-
-    static func get(network: Network) -> Observable<[Course]> {
-        return network.getArrayM(url: Course.url)
+    
+    enum CodingKeys: String, CodingKey {
+        case abschlTxt = "AbschlTxt"
+        case POVersion = "POVersion"
+        case abschlNr = "AbschlNr"
+        case stgNr = "StgNr"
+        case stgTxt = "StgTxt"
     }
-
 }
 
-extension Course: Unmarshaling {
+extension Course {
     static let url = "https://wwwqis.htw-dresden.de/appservice/v2/getcourses"
-
-    init(object: MarshaledObject) throws {
-        self.abschlTxt = try object <| "AbschlTxt"
-        self.POVersion = try object <| "POVersion"
-        self.abschlNr = try object <| "AbschlNr"
-        self.stgNr = try object <| "StgNr"
-        self.stgTxt = try object <| "StgTxt"
+    
+    static func get(network: Network) -> Observable<[Course]> {
+        return network.getArray(url: Course.url)
     }
-
 }

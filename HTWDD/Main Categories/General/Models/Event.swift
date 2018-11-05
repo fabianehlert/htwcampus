@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Marshal
 
 struct Event: Codable, Hashable {
     let name: String
@@ -19,17 +18,27 @@ struct Event: Codable, Hashable {
         hash = ((hash << 5) &+ hash) &+ period.hashValue
         return hash
     }
-
-    static func ==(lhs: Event, rhs: Event) -> Bool {
-        return lhs.name == rhs.name && lhs.period == rhs.period
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case period
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.name = try container.decode(String.self, forKey: .name)
+        self.period = try EventPeriod(from: decoder)
+    }
+    
+    init(name: String, period: EventPeriod) {
+        self.name = name
+        self.period = period
     }
 }
 
-extension Event: Unmarshaling {
-
-    init(object: MarshaledObject) throws {
-        self.name = try object <| "name"
-        self.period = try EventPeriod(object: object)
+extension Event {
+    static func ==(lhs: Event, rhs: Event) -> Bool {
+        return lhs.name == rhs.name && lhs.period == rhs.period
     }
-
 }

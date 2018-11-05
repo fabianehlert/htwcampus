@@ -8,24 +8,58 @@
 
 import Foundation
 import RxSwift
-import Marshal
 
 struct SemesterInformation: Codable {
-
-    let semester: Semester
-    var year: Int {
-        return semester.year
+    private let year: Int
+    private let type: String
+    var semester: Semester {
+        if self.type == "W" {
+            return .winter(year: self.year)
+        }
+        return .summer(year: self.year)
     }
+    
     let period: EventPeriod
     let freeDays: Set<Event>
-    let lectures: EventPeriod
-    let exams: EventPeriod
+    let lecturePeriod: EventPeriod
+    let examsPeriod: EventPeriod
     let reregistration: EventPeriod
-
-    static func get(network: Network) -> Observable<[SemesterInformation]> {
-        return network.getArrayM(url: SemesterInformation.url)
+    
+    enum CodingKeys: String, CodingKey {
+        case year
+        case type
+        case period
+        case freeDays
+        case lecturePeriod
+        case examsPeriod
+        case reregistration
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.year = try container.decode(Int.self, forKey: .year)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.period = try container.decode(EventPeriod.self, forKey: .period)
+        
+        let freeDays = try container.decode([Event].self, forKey: .freeDays)
+        self.freeDays = Set(freeDays)
+        
+        self.lecturePeriod = try container.decode(EventPeriod.self, forKey: .lecturePeriod)
+        self.examsPeriod = try container.decode(EventPeriod.self, forKey: .examsPeriod)
+        self.reregistration = try container.decode(EventPeriod.self, forKey: .reregistration)
+    }
+}
 
+extension SemesterInformation {
+    static let url = "https://www2.htw-dresden.de/~app/API/semesterplan.json"
+    
+    static func get(network: Network) -> Observable<[SemesterInformation]> {
+        return network.getArray(url: SemesterInformation.url)
+    }
+}
+
+extension SemesterInformation {
     static func information(date: Date, input: [SemesterInformation]) -> SemesterInformation? {
         for e in input {
             if e.contains(date: date) {
@@ -34,26 +68,26 @@ struct SemesterInformation: Codable {
         }
         return nil
     }
-
+    
     func contains(date: Date) -> Bool {
         guard let eventDate = EventDate(date: date) else {
             return false
         }
         return self.period.contains(date: eventDate)
     }
-
+    
     func lecturesContains(date: Date) -> Bool {
         guard let eventDate = EventDate(date: date) else {
             return false
         }
-        return self.lectures.contains(date: eventDate)
+        return self.lecturePeriod.contains(date: eventDate)
     }
-
+    
     func freeDayContains(date: Date) -> Event? {
         guard let eventDate = EventDate(date: date) else {
             return nil
         }
-
+        
         for d in self.freeDays {
             if d.period.contains(date: eventDate) {
                 return d
@@ -67,28 +101,4 @@ extension SemesterInformation: Equatable {
     static func ==(lhs: SemesterInformation, rhs: SemesterInformation) -> Bool {
         return lhs.semester == rhs.semester
     }
-}
-
-extension SemesterInformation: Unmarshaling {
-
-    static let url = "https://www2.htw-dresden.de/~app/API/semesterplan.json"
-
-    init(object: MarshaledObject) throws {
-        let year: Int = try object <| "year"
-        let type: String = try object <| "type"
-        if type == "W" {
-            self.semester = .winter(year: year)
-        } else if type == "S" {
-            self.semester = .summer(year: year)
-        } else {
-            throw MarshalError.typeMismatch(expected: Semester.self, actual: "\(year)\(type)")
-        }
-        self.period = try object <| "period"
-        let freeDays: [Event] = try object <| "freeDays"
-        self.freeDays = Set(freeDays)
-        self.lectures = try object <| "lecturePeriod"
-        self.exams = try object <| "examsPeriod"
-        self.reregistration = try object <| "reregistration"
-    }
-
 }
