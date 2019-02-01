@@ -89,20 +89,20 @@ struct Canteen {
         return canteen
     }
 
-    enum Id: String {
-        case reichenbachstrasse = "mensa_reichenbachstraße"
-        case siedepunkt = "mensa_siedepunkt"
-        case zeltschloesschen = "zeltschloesschen"
-        case alteMensa = "alte_mensa"
-        case wuEins = "mensa_wueins"
-        case bioMensaUboot = "biomensa_u_boot"
-        case mensaBruehl = "mensa_bruehl"
-        case stimmGabel = "mensa_stimm_gabel"
-        case johannStadt = "mensa_johannstadt"
-        case paluccaSchule = "mensa_palucca_hochschule"
-        case sport = "mensa_sport"
-        case mensologie = "mensologie"
-        case kreuzGymnasium = "mensa_kreuzgymnasium"
+    enum Id: Int {
+        case reichenbachstrasse = 1
+        case siedepunkt
+        case zeltschloesschen
+        case alteMensa
+        case wuEins
+        case bioMensaUboot
+        case mensaBruehl
+        case stimmGabel
+        case johannStadt
+        case paluccaSchule
+        case sport
+        case mensologie
+        case kreuzGymnasium
         
         static let all: [Id] = [.reichenbachstrasse, .siedepunkt, .zeltschloesschen, .alteMensa, .wuEins, .bioMensaUboot, .mensaBruehl, .stimmGabel, .johannStadt, .paluccaSchule, .sport, .mensologie, .kreuzGymnasium]
     }
@@ -114,6 +114,7 @@ extension Canteen {
     }
 
     func getMeals(network: Network) -> Observable<[Meal]> {
-        return network.getArray(url: "http://lucas-vogel.de/mensa2/backend", params: ["mensaId": self.id.rawValue])
+        //return network.getArray(url: "https://rubu2.rz.htw-dresden.de/API/emeal/meals/" + String(self.id.rawValue))
+        return network.getArray(url: "https://rubu2.rz.htw-dresden.de/API/emeal/meals/1")
     }
 }

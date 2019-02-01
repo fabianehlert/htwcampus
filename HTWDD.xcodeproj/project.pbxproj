@@ -101,6 +101,8 @@
 		39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */; };
 		5B6B4FF6209B693E00A572F8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B4FF5209B693E00A572F8 /* URL.swift */; };
 		5B6B4FF7209B693E00A572F8 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6B4FF5209B693E00A572F8 /* URL.swift */; };
+		5BDD2866220503690042FCF4 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD2865220503690042FCF4 /* DateFormatter.swift */; };
+		5BDD2867220507AD0042FCF4 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD2865220503690042FCF4 /* DateFormatter.swift */; };
 		B50875481ED40BE6004A320E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50875471ED40BE6004A320E /* TableViewController.swift */; };
 		B50EB4EF1E6A1DAA0022E40C /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */; };
 		B50EB4F11E6ABF320022E40C /* Day_TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */; };
@@ -303,6 +305,7 @@
 		39FB084C1E9E57A2001CC2F5 /* GradeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradeDataSource.swift; path = HTWDD/Components/Grades/Models/GradeDataSource.swift; sourceTree = SOURCE_ROOT; };
 		39FB084E1E9E68B6001CC2F5 /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		5B6B4FF5209B693E00A572F8 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		5BDD2865220503690042FCF4 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		B50875471ED40BE6004A320E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B50EB4EE1E6A1DAA0022E40C /* ScheduleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		B50EB4F01E6ABF320022E40C /* Day_TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_TestCase.swift; sourceTree = "<group>"; };
@@ -834,6 +837,7 @@
 				B529EDE71FAB7F40000C1677 /* CodableDictionary.swift */,
 				B538EF1D1E1D9E6D0031077C /* Date.swift */,
 				B55507111E601FB400C16F5F /* DateComponents.swift */,
+				5BDD2865220503690042FCF4 /* DateFormatter.swift */,
 				B5F58E451E1EA7C8006D99AE /* Dictionary.swift */,
 				B5B3768A1FA6182800FC3A07 /* Double.swift */,
 				B5ECAB9F1FBCCFE80017B8F4 /* NSAttributedString.swift */,
@@ -1351,6 +1355,7 @@
 				1F8E20CC1FB34E9700347DB6 /* Network.swift in Sources */,
 				1F1491B51FB451110011B114 /* View.swift in Sources */,
 				5B6B4FF7209B693E00A572F8 /* URL.swift in Sources */,
+				5BDD2867220507AD0042FCF4 /* DateFormatter.swift in Sources */,
 				1F8E20E61FB34FC300347DB6 /* Array.swift in Sources */,
 				1F8E20DB1FB34F1000347DB6 /* Event.swift in Sources */,
 				1FA5893A1FB7360A008EE474 /* GlobalFunctions.swift in Sources */,
@@ -1505,6 +1510,7 @@
 				B5BE727B1E6C4CBD00D05B6D /* Observable.swift in Sources */,
 				B50EB4F91E6ADADC0022E40C /* ErrorViews.swift in Sources */,
 				B5F58E4D1E1EB15A006D99AE /* Semester.swift in Sources */,
+				5BDD2866220503690042FCF4 /* DateFormatter.swift in Sources */,
 				B5EF95811FAF4D8C006BC7D1 /* OnboardingStudygroupSelectionCell.swift in Sources */,
 				39FB084F1E9E68B6001CC2F5 /* GradeCell.swift in Sources */,
 				B55507121E601FB400C16F5F /* DateComponents.swift in Sources */,

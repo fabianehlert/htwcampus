@@ -12,7 +12,7 @@ struct MealViewModel: ViewModel {
     let title: String
     let mensa: String
     let price: String?
-    let counter: String
+    let counter: String?
     
     let detailUrl: URL
     let imageUrl: URL?

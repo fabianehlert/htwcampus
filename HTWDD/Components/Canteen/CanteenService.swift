@@ -29,7 +29,7 @@ class CanteenService: Service {
                 let meals = canteen.getMeals(network: self.network)
                 return meals
                     .map { meals in
-                        return Information(canteen: canteen, meals: meals)
+                        return Information(canteen: canteen, meals: meals.filter( { Calendar.current.isDateInToday($0.date) } ))
                     }
             }
             return Observable

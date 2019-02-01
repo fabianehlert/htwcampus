@@ -38,10 +38,11 @@ public class Network {
         return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? string
     }
     
-    private func request(url: String, params: [String: String]) -> Observable<URLRequest> {
+    private func request(url: String, params: [String: String] = [:]) -> Observable<URLRequest> {
         let p: [String] = params.map { self.escapedQuery($0.key) + "=" + self.escapedQuery($0.value) }
         let joinedParameters = p.joined(separator: "&")
-        let urlString = url + "?" + joinedParameters
+        let urlString = params.isEmpty ? url : url + "?" + joinedParameters
+        
         guard let url = URL(string: urlString) else {
             return Observable.error(Error.invalidURL(urlString))
         }
@@ -99,7 +100,14 @@ public class Network {
     /// - Returns: Observable containing the loaded objects
     public func getArray<T: Decodable>(url: String, params: [String: String] = [:]) -> Observable<[T]> {
         return self.request(url: url, params: params).flatMap { req in
-            return URLSession.shared.rx.data(request: req).map({ try JSONDecoder().decode([T].self, from: $0) })
+            return URLSession.shared.rx.data(request: req).map({
+                if let data = String(data: $0, encoding: .ascii)?.data(using: .utf8) {
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
+                        return try decoder.decode([T].self, from: data)
+                }
+                return []
+            })
         }
     }
 
