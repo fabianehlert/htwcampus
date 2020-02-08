@@ -1,5 +1,11 @@
 # HTW Dresden iOS App
 
+<span style="color:red;font-size:25px;font-weight:bold">Important Note:</span>
+</br>
+<span style="font-size:18px">This open-source project is no longer maintained. The "HTW Dresden" app you can currently find on the App Store is a closed-source fork of this project that has not been created by the original authors.</span>
+
+---
+
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/HTWDD/htwcampus/blob/develop/LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)](https://github.com/HTWDD/htwcampus)
 [![Version](https://img.shields.io/badge/version-2.0.1-green.svg)](http://appstore.com/htwdresden)
@@ -7,8 +13,6 @@
 
 
 ![App Screenshots](resources/AllScreens.png)
-
-[![App Store](https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg)](http://appstore.com/htwdresden)
 
 ---
 
