@@ -1,8 +1,7 @@
 # HTW Dresden iOS App
 
-<span style="color:red;font-size:25px;font-weight:bold">Important Note:</span>
-</br>
-<span style="font-size:18px">This open-source project is no longer maintained. The "HTW Dresden" app you can currently find on the App Store is a closed-source fork of this project that has not been created by the original authors.</span>
+## Important Note:
+**This open-source project is no longer maintained. The "HTW Dresden" app you can currently find on the App Store is a closed-source fork of this project that has not been created by the original authors.**
 
 ---
 
